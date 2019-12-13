@@ -30,7 +30,7 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.leftPanel = new System.Windows.Forms.Panel();
-      this.btnLogout = new System.Windows.Forms.Button();
+      this.btnExit = new System.Windows.Forms.Button();
       this.btnSettings = new System.Windows.Forms.Button();
       this.btnUsers = new System.Windows.Forms.Button();
       this.labelUsername = new System.Windows.Forms.Label();
@@ -38,15 +38,20 @@
       this.btnDashboard = new System.Windows.Forms.Button();
       this.sideMarker = new System.Windows.Forms.Panel();
       this.pbAvatar = new System.Windows.Forms.PictureBox();
+      this.panelStocksSubMenu = new System.Windows.Forms.Panel();
+      this.btnStockCategories = new System.Windows.Forms.Button();
+      this.btnStockList = new System.Windows.Forms.Button();
       this.leftPanel.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
+      this.panelStocksSubMenu.SuspendLayout();
       this.SuspendLayout();
       // 
       // leftPanel
       // 
       this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.leftPanel.Controls.Add(this.panelStocksSubMenu);
       this.leftPanel.Controls.Add(this.pbAvatar);
-      this.leftPanel.Controls.Add(this.btnLogout);
+      this.leftPanel.Controls.Add(this.btnExit);
       this.leftPanel.Controls.Add(this.labelUsername);
       this.leftPanel.Controls.Add(this.btnSettings);
       this.leftPanel.Controls.Add(this.btnUsers);
@@ -59,25 +64,25 @@
       this.leftPanel.Size = new System.Drawing.Size(203, 644);
       this.leftPanel.TabIndex = 2;
       // 
-      // btnLogout
+      // btnExit
       // 
-      this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-      this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-      this.btnLogout.FlatAppearance.BorderSize = 0;
-      this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnLogout.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnLogout.ForeColor = System.Drawing.Color.White;
-      this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-      this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnLogout.Location = new System.Drawing.Point(10, 602);
-      this.btnLogout.Name = "btnLogout";
-      this.btnLogout.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnLogout.Size = new System.Drawing.Size(190, 31);
-      this.btnLogout.TabIndex = 9;
-      this.btnLogout.Text = " Logout";
-      this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btnLogout.UseVisualStyleBackColor = false;
+      this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnExit.FlatAppearance.BorderSize = 0;
+      this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnExit.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnExit.ForeColor = System.Drawing.Color.White;
+      this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+      this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnExit.Location = new System.Drawing.Point(10, 602);
+      this.btnExit.Name = "btnExit";
+      this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnExit.Size = new System.Drawing.Size(190, 31);
+      this.btnExit.TabIndex = 9;
+      this.btnExit.Text = " Exit";
+      this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnExit.UseVisualStyleBackColor = false;
       // 
       // btnSettings
       // 
@@ -89,7 +94,7 @@
       this.btnSettings.ForeColor = System.Drawing.Color.White;
       this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
       this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSettings.Location = new System.Drawing.Point(10, 222);
+      this.btnSettings.Location = new System.Drawing.Point(10, 299);
       this.btnSettings.Name = "btnSettings";
       this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnSettings.Size = new System.Drawing.Size(190, 31);
@@ -110,7 +115,7 @@
       this.btnUsers.ForeColor = System.Drawing.Color.White;
       this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
       this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnUsers.Location = new System.Drawing.Point(10, 185);
+      this.btnUsers.Location = new System.Drawing.Point(10, 262);
       this.btnUsers.Name = "btnUsers";
       this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnUsers.Size = new System.Drawing.Size(190, 31);
@@ -183,6 +188,7 @@
       // 
       // pbAvatar
       // 
+      this.pbAvatar.ErrorImage = null;
       this.pbAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pbAvatar.Image")));
       this.pbAvatar.Location = new System.Drawing.Point(76, 12);
       this.pbAvatar.Name = "pbAvatar";
@@ -191,6 +197,53 @@
       this.pbAvatar.TabIndex = 3;
       this.pbAvatar.TabStop = false;
       // 
+      // panelStocksSubMenu
+      // 
+      this.panelStocksSubMenu.Controls.Add(this.btnStockList);
+      this.panelStocksSubMenu.Controls.Add(this.btnStockCategories);
+      this.panelStocksSubMenu.Location = new System.Drawing.Point(39, 185);
+      this.panelStocksSubMenu.Name = "panelStocksSubMenu";
+      this.panelStocksSubMenu.Size = new System.Drawing.Size(161, 71);
+      this.panelStocksSubMenu.TabIndex = 0;
+      // 
+      // btnStockCategories
+      // 
+      this.btnStockCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnStockCategories.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnStockCategories.FlatAppearance.BorderSize = 0;
+      this.btnStockCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnStockCategories.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnStockCategories.ForeColor = System.Drawing.Color.White;
+      this.btnStockCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnStockCategories.Location = new System.Drawing.Point(3, 3);
+      this.btnStockCategories.Name = "btnStockCategories";
+      this.btnStockCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnStockCategories.Size = new System.Drawing.Size(155, 27);
+      this.btnStockCategories.TabIndex = 10;
+      this.btnStockCategories.Text = "Categories";
+      this.btnStockCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnStockCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnStockCategories.UseVisualStyleBackColor = false;
+      // 
+      // btnStockList
+      // 
+      this.btnStockList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnStockList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnStockList.FlatAppearance.BorderSize = 0;
+      this.btnStockList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnStockList.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnStockList.ForeColor = System.Drawing.Color.White;
+      this.btnStockList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnStockList.Location = new System.Drawing.Point(3, 36);
+      this.btnStockList.Name = "btnStockList";
+      this.btnStockList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnStockList.Size = new System.Drawing.Size(155, 27);
+      this.btnStockList.TabIndex = 11;
+      this.btnStockList.Text = "List";
+      this.btnStockList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnStockList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnStockList.UseVisualStyleBackColor = false;
+      // 
       // MainForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -198,12 +251,14 @@
       this.ClientSize = new System.Drawing.Size(1242, 644);
       this.Controls.Add(this.leftPanel);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Stock Manager";
       this.leftPanel.ResumeLayout(false);
       this.leftPanel.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
+      this.panelStocksSubMenu.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -214,9 +269,12 @@
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel sideMarker;
         private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.PictureBox pbAvatar;
+        private System.Windows.Forms.Panel panelStocksSubMenu;
+        private System.Windows.Forms.Button btnStockList;
+        private System.Windows.Forms.Button btnStockCategories;
     }
 }
