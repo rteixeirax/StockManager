@@ -33,5 +33,15 @@ namespace StockManager.Forms
     {
       this.MoveSideMarker(btnStocks);
     }
+
+    private void btnUsers_Click(object sender, EventArgs e)
+    {
+      this.MoveSideMarker(btnUsers);
+    }
+
+    private void btnSettings_Click(object sender, EventArgs e)
+    {
+      this.MoveSideMarker(btnSettings);
+    }
   }
 }
