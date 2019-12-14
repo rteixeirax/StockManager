@@ -88,5 +88,10 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnSettings);
     }
     #endregion FORM EVENTS
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+      Application.Exit();
+    }
   }
 }

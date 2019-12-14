@@ -94,10 +94,10 @@
       // labelTitle
       // 
       this.labelTitle.AutoSize = true;
-      this.labelTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelTitle.Location = new System.Drawing.Point(11, 11);
       this.labelTitle.Name = "labelTitle";
-      this.labelTitle.Size = new System.Drawing.Size(230, 21);
+      this.labelTitle.Size = new System.Drawing.Size(208, 18);
       this.labelTitle.TabIndex = 1;
       this.labelTitle.Text = "Inventory categories";
       // 
@@ -109,7 +109,7 @@
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
-      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "InventoryCategoriesUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       this.panelTopBar.ResumeLayout(false);

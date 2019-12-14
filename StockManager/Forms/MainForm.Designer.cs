@@ -68,7 +68,7 @@
       this.leftPanel.Dock = System.Windows.Forms.DockStyle.Left;
       this.leftPanel.Location = new System.Drawing.Point(0, 0);
       this.leftPanel.Name = "leftPanel";
-      this.leftPanel.Size = new System.Drawing.Size(203, 729);
+      this.leftPanel.Size = new System.Drawing.Size(229, 729);
       this.leftPanel.TabIndex = 2;
       // 
       // panelSideBarAvatar
@@ -79,14 +79,14 @@
       this.panelSideBarAvatar.ForeColor = System.Drawing.Color.White;
       this.panelSideBarAvatar.Location = new System.Drawing.Point(0, 0);
       this.panelSideBarAvatar.Name = "panelSideBarAvatar";
-      this.panelSideBarAvatar.Size = new System.Drawing.Size(203, 43);
+      this.panelSideBarAvatar.Size = new System.Drawing.Size(229, 43);
       this.panelSideBarAvatar.TabIndex = 7;
       // 
       // pictureBoxAvatar
       // 
       this.pictureBoxAvatar.ErrorImage = null;
       this.pictureBoxAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAvatar.Image")));
-      this.pictureBoxAvatar.Location = new System.Drawing.Point(11, 10);
+      this.pictureBoxAvatar.Location = new System.Drawing.Point(16, 12);
       this.pictureBoxAvatar.Name = "pictureBoxAvatar";
       this.pictureBoxAvatar.Size = new System.Drawing.Size(24, 24);
       this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -96,9 +96,9 @@
       // labelUsername
       // 
       this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.labelUsername.Location = new System.Drawing.Point(39, 14);
+      this.labelUsername.Location = new System.Drawing.Point(44, 16);
       this.labelUsername.Name = "labelUsername";
-      this.labelUsername.Size = new System.Drawing.Size(161, 17);
+      this.labelUsername.Size = new System.Drawing.Size(172, 17);
       this.labelUsername.TabIndex = 5;
       this.labelUsername.Text = "Ricardo Teixeira";
       this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -109,7 +109,7 @@
       this.panelInventorySubMenu.Controls.Add(this.btnStockCategories);
       this.panelInventorySubMenu.Location = new System.Drawing.Point(39, 146);
       this.panelInventorySubMenu.Name = "panelInventorySubMenu";
-      this.panelInventorySubMenu.Size = new System.Drawing.Size(161, 71);
+      this.panelInventorySubMenu.Size = new System.Drawing.Size(187, 71);
       this.panelInventorySubMenu.TabIndex = 0;
       // 
       // btnStocks
@@ -163,15 +163,16 @@
       this.btnExit.ForeColor = System.Drawing.Color.White;
       this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
       this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnExit.Location = new System.Drawing.Point(10, 677);
+      this.btnExit.Location = new System.Drawing.Point(12, 677);
       this.btnExit.Name = "btnExit";
       this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnExit.Size = new System.Drawing.Size(190, 40);
+      this.btnExit.Size = new System.Drawing.Size(214, 40);
       this.btnExit.TabIndex = 9;
       this.btnExit.Text = " Exit";
       this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
       this.btnExit.UseVisualStyleBackColor = false;
+      this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
       // 
       // btnSettings
       // 
@@ -186,7 +187,7 @@
       this.btnSettings.Location = new System.Drawing.Point(10, 260);
       this.btnSettings.Name = "btnSettings";
       this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnSettings.Size = new System.Drawing.Size(190, 31);
+      this.btnSettings.Size = new System.Drawing.Size(216, 31);
       this.btnSettings.TabIndex = 8;
       this.btnSettings.Text = " Settings";
       this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,7 +208,7 @@
       this.btnUsers.Location = new System.Drawing.Point(10, 223);
       this.btnUsers.Name = "btnUsers";
       this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnUsers.Size = new System.Drawing.Size(190, 31);
+      this.btnUsers.Size = new System.Drawing.Size(216, 31);
       this.btnUsers.TabIndex = 7;
       this.btnUsers.Text = " Users";
       this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,7 +229,7 @@
       this.btnInventory.Location = new System.Drawing.Point(10, 109);
       this.btnInventory.Name = "btnInventory";
       this.btnInventory.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnInventory.Size = new System.Drawing.Size(190, 31);
+      this.btnInventory.Size = new System.Drawing.Size(216, 31);
       this.btnInventory.TabIndex = 4;
       this.btnInventory.Text = " Inventory";
       this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -249,7 +250,7 @@
       this.btnDashboard.Location = new System.Drawing.Point(10, 72);
       this.btnDashboard.Name = "btnDashboard";
       this.btnDashboard.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnDashboard.Size = new System.Drawing.Size(190, 31);
+      this.btnDashboard.Size = new System.Drawing.Size(216, 31);
       this.btnDashboard.TabIndex = 3;
       this.btnDashboard.Text = " Dashboard";
       this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -271,10 +272,10 @@
       this.inventoryCategoriesUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.inventoryCategoriesUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.inventoryCategoriesUserControl.ForeColor = System.Drawing.Color.White;
-      this.inventoryCategoriesUserControl.Location = new System.Drawing.Point(203, 0);
+      this.inventoryCategoriesUserControl.Location = new System.Drawing.Point(229, 0);
       this.inventoryCategoriesUserControl.Margin = new System.Windows.Forms.Padding(4);
       this.inventoryCategoriesUserControl.Name = "inventoryCategoriesUserControl";
-      this.inventoryCategoriesUserControl.Size = new System.Drawing.Size(805, 729);
+      this.inventoryCategoriesUserControl.Size = new System.Drawing.Size(779, 729);
       this.inventoryCategoriesUserControl.TabIndex = 6;
       // 
       // inventoryStocksUserControl
@@ -283,10 +284,10 @@
       this.inventoryStocksUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.inventoryStocksUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.inventoryStocksUserControl.ForeColor = System.Drawing.Color.White;
-      this.inventoryStocksUserControl.Location = new System.Drawing.Point(203, 0);
+      this.inventoryStocksUserControl.Location = new System.Drawing.Point(229, 0);
       this.inventoryStocksUserControl.Margin = new System.Windows.Forms.Padding(4);
       this.inventoryStocksUserControl.Name = "inventoryStocksUserControl";
-      this.inventoryStocksUserControl.Size = new System.Drawing.Size(805, 729);
+      this.inventoryStocksUserControl.Size = new System.Drawing.Size(779, 729);
       this.inventoryStocksUserControl.TabIndex = 5;
       // 
       // usersUserControl
@@ -295,10 +296,10 @@
       this.usersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.usersUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.usersUserControl.ForeColor = System.Drawing.Color.White;
-      this.usersUserControl.Location = new System.Drawing.Point(203, 0);
+      this.usersUserControl.Location = new System.Drawing.Point(229, 0);
       this.usersUserControl.Margin = new System.Windows.Forms.Padding(4);
       this.usersUserControl.Name = "usersUserControl";
-      this.usersUserControl.Size = new System.Drawing.Size(805, 729);
+      this.usersUserControl.Size = new System.Drawing.Size(779, 729);
       this.usersUserControl.TabIndex = 4;
       // 
       // dashboardUserControl
@@ -307,10 +308,10 @@
       this.dashboardUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dashboardUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dashboardUserControl.ForeColor = System.Drawing.Color.White;
-      this.dashboardUserControl.Location = new System.Drawing.Point(203, 0);
+      this.dashboardUserControl.Location = new System.Drawing.Point(229, 0);
       this.dashboardUserControl.Margin = new System.Windows.Forms.Padding(4);
       this.dashboardUserControl.Name = "dashboardUserControl";
-      this.dashboardUserControl.Size = new System.Drawing.Size(805, 729);
+      this.dashboardUserControl.Size = new System.Drawing.Size(779, 729);
       this.dashboardUserControl.TabIndex = 0;
       // 
       // settingsUserControl
@@ -319,10 +320,10 @@
       this.settingsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
       this.settingsUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.settingsUserControl.ForeColor = System.Drawing.Color.White;
-      this.settingsUserControl.Location = new System.Drawing.Point(203, 0);
+      this.settingsUserControl.Location = new System.Drawing.Point(229, 0);
       this.settingsUserControl.Margin = new System.Windows.Forms.Padding(4);
       this.settingsUserControl.Name = "settingsUserControl";
-      this.settingsUserControl.Size = new System.Drawing.Size(805, 729);
+      this.settingsUserControl.Size = new System.Drawing.Size(779, 729);
       this.settingsUserControl.TabIndex = 3;
       // 
       // MainForm
