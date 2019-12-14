@@ -43,6 +43,9 @@
       this.btnDashboard = new System.Windows.Forms.Button();
       this.sideMarker = new System.Windows.Forms.Panel();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+      this.dashboardUserControl = new StockManager.UserControls.DashboardUserControl();
+      this.settingsUserControl = new StockManager.Controls.SettingsUserControl();
+      this.usersUserControl = new StockManager.UserControls.UsersUserControl();
       this.leftPanel.SuspendLayout();
       this.panelSideBarAvatar.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
@@ -257,11 +260,50 @@
       this.sideMarker.Size = new System.Drawing.Size(6, 32);
       this.sideMarker.TabIndex = 3;
       // 
+      // dashboardUserControl
+      // 
+      this.dashboardUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.dashboardUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.dashboardUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dashboardUserControl.ForeColor = System.Drawing.Color.White;
+      this.dashboardUserControl.Location = new System.Drawing.Point(203, 0);
+      this.dashboardUserControl.Margin = new System.Windows.Forms.Padding(4);
+      this.dashboardUserControl.Name = "dashboardUserControl";
+      this.dashboardUserControl.Size = new System.Drawing.Size(805, 729);
+      this.dashboardUserControl.TabIndex = 0;
+      // 
+      // settingsUserControl
+      // 
+      this.settingsUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.settingsUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.settingsUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.settingsUserControl.ForeColor = System.Drawing.Color.White;
+      this.settingsUserControl.Location = new System.Drawing.Point(203, 0);
+      this.settingsUserControl.Margin = new System.Windows.Forms.Padding(4);
+      this.settingsUserControl.Name = "settingsUserControl";
+      this.settingsUserControl.Size = new System.Drawing.Size(805, 729);
+      this.settingsUserControl.TabIndex = 3;
+      // 
+      // usersUserControl
+      // 
+      this.usersUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.usersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.usersUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.usersUserControl.ForeColor = System.Drawing.Color.White;
+      this.usersUserControl.Location = new System.Drawing.Point(203, 0);
+      this.usersUserControl.Margin = new System.Windows.Forms.Padding(4);
+      this.usersUserControl.Name = "usersUserControl";
+      this.usersUserControl.Size = new System.Drawing.Size(805, 729);
+      this.usersUserControl.TabIndex = 4;
+      // 
       // MainForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
       this.ClientSize = new System.Drawing.Size(1008, 729);
+      this.Controls.Add(this.usersUserControl);
+      this.Controls.Add(this.dashboardUserControl);
+      this.Controls.Add(this.settingsUserControl);
       this.Controls.Add(this.leftPanel);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -293,5 +335,8 @@
         private System.Windows.Forms.Button btnStockCategories;
         private System.Windows.Forms.Panel panelSideBarAvatar;
     private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Controls.SettingsUserControl settingsUserControl;
+        private UserControls.DashboardUserControl dashboardUserControl;
+    private UserControls.UsersUserControl usersUserControl;
   }
 }

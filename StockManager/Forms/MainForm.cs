@@ -17,6 +17,9 @@ namespace StockManager.Forms
       InitializeComponent();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
+
+      // initialize with dashboard panel
+      dashboardUserControl.BringToFront();
     }
 
     #region HELPER FUNCTIONS
@@ -48,6 +51,7 @@ namespace StockManager.Forms
     #region FORM EVENTS
     private void btnDashboard_Click(object sender, EventArgs e)
     {
+      dashboardUserControl.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
     }
@@ -60,15 +64,22 @@ namespace StockManager.Forms
 
     private void btnUsers_Click(object sender, EventArgs e)
     {
+      usersUserControl.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
     }
 
     private void btnSettings_Click(object sender, EventArgs e)
     {
+      settingsUserControl.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
     }
     #endregion FORM EVENTS
+
+    private void dashboardUserControl1_Load(object sender, EventArgs e)
+    {
+
+    }
   }
 }
