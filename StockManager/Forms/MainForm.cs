@@ -48,6 +48,7 @@ namespace StockManager.Forms
     #region FORM EVENTS
     private void btnDashboard_Click(object sender, EventArgs e)
     {
+      this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
     }
 
