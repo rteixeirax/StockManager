@@ -30,6 +30,9 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.leftPanel = new System.Windows.Forms.Panel();
+      this.panelSideBarAvatar = new System.Windows.Forms.Panel();
+      this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
+      this.labelUsername = new System.Windows.Forms.Label();
       this.panelStocksSubMenu = new System.Windows.Forms.Panel();
       this.btnStockList = new System.Windows.Forms.Button();
       this.btnStockCategories = new System.Windows.Forms.Button();
@@ -39,13 +42,11 @@
       this.btnStocks = new System.Windows.Forms.Button();
       this.btnDashboard = new System.Windows.Forms.Button();
       this.sideMarker = new System.Windows.Forms.Panel();
-      this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
-      this.labelUsername = new System.Windows.Forms.Label();
-      this.panelSideBarAvatar = new System.Windows.Forms.Panel();
+      this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
       this.leftPanel.SuspendLayout();
-      this.panelStocksSubMenu.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
       this.panelSideBarAvatar.SuspendLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
+      this.panelStocksSubMenu.SuspendLayout();
       this.SuspendLayout();
       // 
       // leftPanel
@@ -64,6 +65,37 @@
       this.leftPanel.Name = "leftPanel";
       this.leftPanel.Size = new System.Drawing.Size(203, 729);
       this.leftPanel.TabIndex = 2;
+      // 
+      // panelSideBarAvatar
+      // 
+      this.panelSideBarAvatar.Controls.Add(this.pictureBoxAvatar);
+      this.panelSideBarAvatar.Controls.Add(this.labelUsername);
+      this.panelSideBarAvatar.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panelSideBarAvatar.Location = new System.Drawing.Point(0, 0);
+      this.panelSideBarAvatar.Name = "panelSideBarAvatar";
+      this.panelSideBarAvatar.Size = new System.Drawing.Size(203, 104);
+      this.panelSideBarAvatar.TabIndex = 7;
+      // 
+      // pictureBoxAvatar
+      // 
+      this.pictureBoxAvatar.ErrorImage = null;
+      this.pictureBoxAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAvatar.Image")));
+      this.pictureBoxAvatar.Location = new System.Drawing.Point(73, 15);
+      this.pictureBoxAvatar.Name = "pictureBoxAvatar";
+      this.pictureBoxAvatar.Size = new System.Drawing.Size(50, 50);
+      this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+      this.pictureBoxAvatar.TabIndex = 3;
+      this.pictureBoxAvatar.TabStop = false;
+      // 
+      // labelUsername
+      // 
+      this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelUsername.Location = new System.Drawing.Point(3, 73);
+      this.labelUsername.Name = "labelUsername";
+      this.labelUsername.Size = new System.Drawing.Size(194, 17);
+      this.labelUsername.TabIndex = 5;
+      this.labelUsername.Text = "Ricardo Teixeira";
+      this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       // 
       // panelStocksSubMenu
       // 
@@ -225,37 +257,6 @@
       this.sideMarker.Size = new System.Drawing.Size(6, 32);
       this.sideMarker.TabIndex = 3;
       // 
-      // pictureBoxAvatar
-      // 
-      this.pictureBoxAvatar.ErrorImage = null;
-      this.pictureBoxAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAvatar.Image")));
-      this.pictureBoxAvatar.Location = new System.Drawing.Point(73, 15);
-      this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-      this.pictureBoxAvatar.Size = new System.Drawing.Size(50, 50);
-      this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-      this.pictureBoxAvatar.TabIndex = 3;
-      this.pictureBoxAvatar.TabStop = false;
-      // 
-      // labelUsername
-      // 
-      this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.labelUsername.Location = new System.Drawing.Point(3, 73);
-      this.labelUsername.Name = "labelUsername";
-      this.labelUsername.Size = new System.Drawing.Size(194, 17);
-      this.labelUsername.TabIndex = 5;
-      this.labelUsername.Text = "Ricardo Teixeira";
-      this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-      // 
-      // panelSideBarAvatar
-      // 
-      this.panelSideBarAvatar.Controls.Add(this.pictureBoxAvatar);
-      this.panelSideBarAvatar.Controls.Add(this.labelUsername);
-      this.panelSideBarAvatar.Dock = System.Windows.Forms.DockStyle.Top;
-      this.panelSideBarAvatar.Location = new System.Drawing.Point(0, 0);
-      this.panelSideBarAvatar.Name = "panelSideBarAvatar";
-      this.panelSideBarAvatar.Size = new System.Drawing.Size(203, 104);
-      this.panelSideBarAvatar.TabIndex = 7;
-      // 
       // MainForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -263,15 +264,16 @@
       this.ClientSize = new System.Drawing.Size(1008, 729);
       this.Controls.Add(this.leftPanel);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MinimumSize = new System.Drawing.Size(800, 600);
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Stock Manager";
       this.leftPanel.ResumeLayout(false);
-      this.panelStocksSubMenu.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
       this.panelSideBarAvatar.ResumeLayout(false);
       this.panelSideBarAvatar.PerformLayout();
+      ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
+      this.panelStocksSubMenu.ResumeLayout(false);
       this.ResumeLayout(false);
 
     }
@@ -290,5 +292,6 @@
         private System.Windows.Forms.Button btnStockList;
         private System.Windows.Forms.Button btnStockCategories;
         private System.Windows.Forms.Panel panelSideBarAvatar;
-    }
+    private System.ComponentModel.BackgroundWorker backgroundWorker1;
+  }
 }
