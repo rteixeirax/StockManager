@@ -31,7 +31,7 @@ namespace StockManager.Forms
 
     private void SetSubMenusVisibility(Control subMenu = null)
     {
-      panelStocksSubMenu.Visible = ((subMenu != null) && (subMenu == panelStocksSubMenu) && (!panelStocksSubMenu.Visible))
+      panelInventorySubMenu.Visible = ((subMenu != null) && (subMenu == panelInventorySubMenu) && (!panelInventorySubMenu.Visible))
         ? true
         : false;
 
@@ -41,9 +41,9 @@ namespace StockManager.Forms
     private void SetSidebarButtonsPosition(Control subMenu = null)
     {
       // If no sub menu sent, reset all the positions
-      btnUsers.Top = ((subMenu != null) && (subMenu == panelStocksSubMenu) && (panelStocksSubMenu.Visible))
-        ? panelStocksSubMenu.Bottom
-        : panelStocksSubMenu.Top;
+      btnUsers.Top = ((subMenu != null) && (subMenu == panelInventorySubMenu) && (panelInventorySubMenu.Visible))
+        ? panelInventorySubMenu.Bottom
+        : panelInventorySubMenu.Top;
       btnSettings.Top = btnUsers.Bottom + 6;
     }
     #endregion HELPER FUNCTIONS
@@ -56,10 +56,22 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnDashboard);
     }
 
+    private void btnInventory_Click(object sender, EventArgs e)
+    {
+      this.SetSubMenusVisibility(panelInventorySubMenu);
+      this.SetMarkerPosition(btnInventory);
+    }
+    private void btnStockCategories_Click(object sender, EventArgs e)
+    {
+      inventoryCategoriesUserControl.BringToFront();
+    }
+    private void btnStockCategories_Click_1(object sender, EventArgs e)
+    {
+      inventoryCategoriesUserControl.BringToFront();
+    }
     private void btnStocks_Click(object sender, EventArgs e)
     {
-      this.SetSubMenusVisibility(panelStocksSubMenu);
-      this.SetMarkerPosition(btnStocks);
+      inventoryStocksUserControl.BringToFront();
     }
 
     private void btnUsers_Click(object sender, EventArgs e)
@@ -76,10 +88,5 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnSettings);
     }
     #endregion FORM EVENTS
-
-    private void dashboardUserControl1_Load(object sender, EventArgs e)
-    {
-
-    }
   }
 }

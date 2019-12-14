@@ -56,6 +56,12 @@
     <Compile Include="UserControls\DashboardUserControl.Designer.cs">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\InventoryCategoriesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InventoryCategoriesUserControl.Designer.cs">
+      <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SettingsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\InventoryStocksUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\InventoryStocksUserControl.Designer.cs">
+      <DependentUpon>InventoryStocksUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UsersUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,8 +103,14 @@
     <EmbeddedResource Include="UserControls\DashboardUserControl.resx">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InventoryCategoriesUserControl.resx">
+      <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingsUserControl.resx">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\InventoryStocksUserControl.resx">
+      <DependentUpon>InventoryStocksUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UsersUserControl.resx">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
