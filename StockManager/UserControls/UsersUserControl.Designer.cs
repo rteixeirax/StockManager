@@ -35,9 +35,21 @@
       this.textBoxSearch = new System.Windows.Forms.TextBox();
       this.panelTitle = new System.Windows.Forms.Panel();
       this.labelTitle = new System.Windows.Forms.Label();
+      this.textBoxFirstName = new System.Windows.Forms.TextBox();
+      this.labelFirstName = new System.Windows.Forms.Label();
+      this.labelLastName = new System.Windows.Forms.Label();
+      this.textBoxLastName = new System.Windows.Forms.TextBox();
+      this.panel1 = new System.Windows.Forms.Panel();
+      this.comboBoxRoles = new System.Windows.Forms.ComboBox();
+      this.labelRole = new System.Windows.Forms.Label();
+      this.textBoxPassword = new System.Windows.Forms.TextBox();
+      this.labelPassword = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.buttonCreateUser = new System.Windows.Forms.Button();
       this.panelTopBar.SuspendLayout();
       this.panelSearch.SuspendLayout();
       this.panelTitle.SuspendLayout();
+      this.panel1.SuspendLayout();
       this.SuspendLayout();
       // 
       // panelTopBar
@@ -101,11 +113,145 @@
       this.labelTitle.TabIndex = 1;
       this.labelTitle.Text = "Application users";
       // 
+      // textBoxFirstName
+      // 
+      this.textBoxFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.textBoxFirstName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.textBoxFirstName.ForeColor = System.Drawing.Color.White;
+      this.textBoxFirstName.Location = new System.Drawing.Point(99, 63);
+      this.textBoxFirstName.Name = "textBoxFirstName";
+      this.textBoxFirstName.Size = new System.Drawing.Size(182, 22);
+      this.textBoxFirstName.TabIndex = 3;
+      // 
+      // labelFirstName
+      // 
+      this.labelFirstName.AutoSize = true;
+      this.labelFirstName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.labelFirstName.Location = new System.Drawing.Point(5, 65);
+      this.labelFirstName.Name = "labelFirstName";
+      this.labelFirstName.Size = new System.Drawing.Size(88, 16);
+      this.labelFirstName.TabIndex = 2;
+      this.labelFirstName.Text = "First name";
+      // 
+      // labelLastName
+      // 
+      this.labelLastName.AutoSize = true;
+      this.labelLastName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelLastName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.labelLastName.Location = new System.Drawing.Point(13, 104);
+      this.labelLastName.Name = "labelLastName";
+      this.labelLastName.Size = new System.Drawing.Size(80, 16);
+      this.labelLastName.TabIndex = 4;
+      this.labelLastName.Text = "Last name";
+      // 
+      // textBoxLastName
+      // 
+      this.textBoxLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.textBoxLastName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.textBoxLastName.ForeColor = System.Drawing.Color.White;
+      this.textBoxLastName.Location = new System.Drawing.Point(99, 102);
+      this.textBoxLastName.Name = "textBoxLastName";
+      this.textBoxLastName.Size = new System.Drawing.Size(182, 22);
+      this.textBoxLastName.TabIndex = 5;
+      // 
+      // panel1
+      // 
+      this.panel1.Controls.Add(this.label5);
+      this.panel1.Controls.Add(this.textBoxPassword);
+      this.panel1.Controls.Add(this.labelPassword);
+      this.panel1.Controls.Add(this.labelRole);
+      this.panel1.Controls.Add(this.textBoxFirstName);
+      this.panel1.Controls.Add(this.comboBoxRoles);
+      this.panel1.Controls.Add(this.labelLastName);
+      this.panel1.Controls.Add(this.labelFirstName);
+      this.panel1.Controls.Add(this.textBoxLastName);
+      this.panel1.Location = new System.Drawing.Point(14, 112);
+      this.panel1.Name = "panel1";
+      this.panel1.Size = new System.Drawing.Size(314, 242);
+      this.panel1.TabIndex = 6;
+      // 
+      // comboBoxRoles
+      // 
+      this.comboBoxRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.comboBoxRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.comboBoxRoles.ForeColor = System.Drawing.Color.White;
+      this.comboBoxRoles.FormattingEnabled = true;
+      this.comboBoxRoles.Items.AddRange(new object[] {
+            "Admin",
+            "User"});
+      this.comboBoxRoles.Location = new System.Drawing.Point(99, 183);
+      this.comboBoxRoles.Name = "comboBoxRoles";
+      this.comboBoxRoles.Size = new System.Drawing.Size(182, 24);
+      this.comboBoxRoles.TabIndex = 7;
+      // 
+      // labelRole
+      // 
+      this.labelRole.AutoSize = true;
+      this.labelRole.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelRole.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.labelRole.Location = new System.Drawing.Point(53, 186);
+      this.labelRole.Name = "labelRole";
+      this.labelRole.Size = new System.Drawing.Size(40, 16);
+      this.labelRole.TabIndex = 8;
+      this.labelRole.Text = "Role";
+      // 
+      // textBoxPassword
+      // 
+      this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.textBoxPassword.ForeColor = System.Drawing.Color.White;
+      this.textBoxPassword.Location = new System.Drawing.Point(99, 141);
+      this.textBoxPassword.Name = "textBoxPassword";
+      this.textBoxPassword.PasswordChar = '*';
+      this.textBoxPassword.Size = new System.Drawing.Size(182, 22);
+      this.textBoxPassword.TabIndex = 10;
+      this.textBoxPassword.UseSystemPasswordChar = true;
+      // 
+      // labelPassword
+      // 
+      this.labelPassword.AutoSize = true;
+      this.labelPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.labelPassword.Location = new System.Drawing.Point(21, 143);
+      this.labelPassword.Name = "labelPassword";
+      this.labelPassword.Size = new System.Drawing.Size(72, 16);
+      this.labelPassword.TabIndex = 9;
+      this.labelPassword.Text = "Password";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label5.Location = new System.Drawing.Point(5, 16);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(98, 18);
+      this.label5.TabIndex = 11;
+      this.label5.Text = "User info";
+      // 
+      // buttonCreateUser
+      // 
+      this.buttonCreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.buttonCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.buttonCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.buttonCreateUser.Location = new System.Drawing.Point(14, 61);
+      this.buttonCreateUser.Name = "buttonCreateUser";
+      this.buttonCreateUser.Size = new System.Drawing.Size(136, 32);
+      this.buttonCreateUser.TabIndex = 7;
+      this.buttonCreateUser.Text = "Add new";
+      this.buttonCreateUser.UseVisualStyleBackColor = false;
+      // 
       // UsersUserControl
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.Controls.Add(this.buttonCreateUser);
+      this.Controls.Add(this.panel1);
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
@@ -117,6 +263,8 @@
       this.panelSearch.PerformLayout();
       this.panelTitle.ResumeLayout(false);
       this.panelTitle.PerformLayout();
+      this.panel1.ResumeLayout(false);
+      this.panel1.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -129,5 +277,16 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.Label labelFirstName;
+        private System.Windows.Forms.Label labelLastName;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelRole;
+        private System.Windows.Forms.ComboBox comboBoxRoles;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonCreateUser;
     }
 }
