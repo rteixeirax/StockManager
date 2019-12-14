@@ -43,9 +43,9 @@
       this.btnDashboard = new System.Windows.Forms.Button();
       this.sideMarker = new System.Windows.Forms.Panel();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+      this.usersUserControl = new StockManager.UserControls.UsersUserControl();
       this.dashboardUserControl = new StockManager.UserControls.DashboardUserControl();
       this.settingsUserControl = new StockManager.Controls.SettingsUserControl();
-      this.usersUserControl = new StockManager.UserControls.UsersUserControl();
       this.leftPanel.SuspendLayout();
       this.panelSideBarAvatar.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
@@ -74,18 +74,19 @@
       this.panelSideBarAvatar.Controls.Add(this.pictureBoxAvatar);
       this.panelSideBarAvatar.Controls.Add(this.labelUsername);
       this.panelSideBarAvatar.Dock = System.Windows.Forms.DockStyle.Top;
+      this.panelSideBarAvatar.ForeColor = System.Drawing.Color.White;
       this.panelSideBarAvatar.Location = new System.Drawing.Point(0, 0);
       this.panelSideBarAvatar.Name = "panelSideBarAvatar";
-      this.panelSideBarAvatar.Size = new System.Drawing.Size(203, 104);
+      this.panelSideBarAvatar.Size = new System.Drawing.Size(203, 43);
       this.panelSideBarAvatar.TabIndex = 7;
       // 
       // pictureBoxAvatar
       // 
       this.pictureBoxAvatar.ErrorImage = null;
       this.pictureBoxAvatar.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAvatar.Image")));
-      this.pictureBoxAvatar.Location = new System.Drawing.Point(73, 15);
+      this.pictureBoxAvatar.Location = new System.Drawing.Point(11, 10);
       this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-      this.pictureBoxAvatar.Size = new System.Drawing.Size(50, 50);
+      this.pictureBoxAvatar.Size = new System.Drawing.Size(24, 24);
       this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
       this.pictureBoxAvatar.TabIndex = 3;
       this.pictureBoxAvatar.TabStop = false;
@@ -93,18 +94,18 @@
       // labelUsername
       // 
       this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.labelUsername.Location = new System.Drawing.Point(3, 73);
+      this.labelUsername.Location = new System.Drawing.Point(39, 14);
       this.labelUsername.Name = "labelUsername";
-      this.labelUsername.Size = new System.Drawing.Size(194, 17);
+      this.labelUsername.Size = new System.Drawing.Size(161, 17);
       this.labelUsername.TabIndex = 5;
       this.labelUsername.Text = "Ricardo Teixeira";
-      this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+      this.labelUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // panelStocksSubMenu
       // 
       this.panelStocksSubMenu.Controls.Add(this.btnStockList);
       this.panelStocksSubMenu.Controls.Add(this.btnStockCategories);
-      this.panelStocksSubMenu.Location = new System.Drawing.Point(39, 184);
+      this.panelStocksSubMenu.Location = new System.Drawing.Point(39, 146);
       this.panelStocksSubMenu.Name = "panelStocksSubMenu";
       this.panelStocksSubMenu.Size = new System.Drawing.Size(161, 71);
       this.panelStocksSubMenu.TabIndex = 0;
@@ -178,7 +179,7 @@
       this.btnSettings.ForeColor = System.Drawing.Color.White;
       this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
       this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSettings.Location = new System.Drawing.Point(10, 298);
+      this.btnSettings.Location = new System.Drawing.Point(10, 260);
       this.btnSettings.Name = "btnSettings";
       this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnSettings.Size = new System.Drawing.Size(190, 31);
@@ -199,7 +200,7 @@
       this.btnUsers.ForeColor = System.Drawing.Color.White;
       this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
       this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnUsers.Location = new System.Drawing.Point(10, 261);
+      this.btnUsers.Location = new System.Drawing.Point(10, 223);
       this.btnUsers.Name = "btnUsers";
       this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnUsers.Size = new System.Drawing.Size(190, 31);
@@ -220,7 +221,7 @@
       this.btnStocks.ForeColor = System.Drawing.Color.White;
       this.btnStocks.Image = ((System.Drawing.Image)(resources.GetObject("btnStocks.Image")));
       this.btnStocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnStocks.Location = new System.Drawing.Point(10, 147);
+      this.btnStocks.Location = new System.Drawing.Point(10, 109);
       this.btnStocks.Name = "btnStocks";
       this.btnStocks.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnStocks.Size = new System.Drawing.Size(190, 31);
@@ -241,7 +242,7 @@
       this.btnDashboard.ForeColor = System.Drawing.Color.White;
       this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
       this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDashboard.Location = new System.Drawing.Point(10, 110);
+      this.btnDashboard.Location = new System.Drawing.Point(10, 72);
       this.btnDashboard.Name = "btnDashboard";
       this.btnDashboard.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnDashboard.Size = new System.Drawing.Size(190, 31);
@@ -255,10 +256,22 @@
       // sideMarker
       // 
       this.sideMarker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.sideMarker.Location = new System.Drawing.Point(0, 110);
+      this.sideMarker.Location = new System.Drawing.Point(0, 72);
       this.sideMarker.Name = "sideMarker";
       this.sideMarker.Size = new System.Drawing.Size(6, 32);
       this.sideMarker.TabIndex = 3;
+      // 
+      // usersUserControl
+      // 
+      this.usersUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.usersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.usersUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.usersUserControl.ForeColor = System.Drawing.Color.White;
+      this.usersUserControl.Location = new System.Drawing.Point(203, 0);
+      this.usersUserControl.Margin = new System.Windows.Forms.Padding(4);
+      this.usersUserControl.Name = "usersUserControl";
+      this.usersUserControl.Size = new System.Drawing.Size(805, 729);
+      this.usersUserControl.TabIndex = 4;
       // 
       // dashboardUserControl
       // 
@@ -283,18 +296,6 @@
       this.settingsUserControl.Name = "settingsUserControl";
       this.settingsUserControl.Size = new System.Drawing.Size(805, 729);
       this.settingsUserControl.TabIndex = 3;
-      // 
-      // usersUserControl
-      // 
-      this.usersUserControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.usersUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.usersUserControl.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.usersUserControl.ForeColor = System.Drawing.Color.White;
-      this.usersUserControl.Location = new System.Drawing.Point(203, 0);
-      this.usersUserControl.Margin = new System.Windows.Forms.Padding(4);
-      this.usersUserControl.Name = "usersUserControl";
-      this.usersUserControl.Size = new System.Drawing.Size(805, 729);
-      this.usersUserControl.TabIndex = 4;
       // 
       // MainForm
       // 

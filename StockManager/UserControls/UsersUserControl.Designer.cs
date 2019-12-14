@@ -88,7 +88,7 @@
       this.panelTitle.Dock = System.Windows.Forms.DockStyle.Left;
       this.panelTitle.Location = new System.Drawing.Point(0, 0);
       this.panelTitle.Name = "panelTitle";
-      this.panelTitle.Size = new System.Drawing.Size(128, 43);
+      this.panelTitle.Size = new System.Drawing.Size(217, 43);
       this.panelTitle.TabIndex = 1;
       // 
       // labelTitle
@@ -97,9 +97,9 @@
       this.labelTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.labelTitle.Location = new System.Drawing.Point(11, 11);
       this.labelTitle.Name = "labelTitle";
-      this.labelTitle.Size = new System.Drawing.Size(65, 21);
+      this.labelTitle.Size = new System.Drawing.Size(197, 21);
       this.labelTitle.TabIndex = 1;
-      this.labelTitle.Text = "Users";
+      this.labelTitle.Text = "Application users";
       // 
       // UsersUserControl
       // 
@@ -109,7 +109,7 @@
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
-      this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+      this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "UsersUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       this.panelTopBar.ResumeLayout(false);

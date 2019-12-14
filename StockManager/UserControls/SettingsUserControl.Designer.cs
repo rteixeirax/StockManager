@@ -30,14 +30,14 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsUserControl));
       this.panelTopBar = new System.Windows.Forms.Panel();
-      this.labelTitle = new System.Windows.Forms.Label();
-      this.panelTitle = new System.Windows.Forms.Panel();
       this.panelSearch = new System.Windows.Forms.Panel();
       this.buttonSearch = new System.Windows.Forms.Button();
       this.textBoxSearch = new System.Windows.Forms.TextBox();
+      this.panelTitle = new System.Windows.Forms.Panel();
+      this.labelTitle = new System.Windows.Forms.Label();
       this.panelTopBar.SuspendLayout();
-      this.panelTitle.SuspendLayout();
       this.panelSearch.SuspendLayout();
+      this.panelTitle.SuspendLayout();
       this.SuspendLayout();
       // 
       // panelTopBar
@@ -50,25 +50,6 @@
       this.panelTopBar.Name = "panelTopBar";
       this.panelTopBar.Size = new System.Drawing.Size(860, 43);
       this.panelTopBar.TabIndex = 0;
-      // 
-      // labelTitle
-      // 
-      this.labelTitle.AutoSize = true;
-      this.labelTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTitle.Location = new System.Drawing.Point(11, 11);
-      this.labelTitle.Name = "labelTitle";
-      this.labelTitle.Size = new System.Drawing.Size(98, 21);
-      this.labelTitle.TabIndex = 1;
-      this.labelTitle.Text = "Settings";
-      // 
-      // panelTitle
-      // 
-      this.panelTitle.Controls.Add(this.labelTitle);
-      this.panelTitle.Dock = System.Windows.Forms.DockStyle.Left;
-      this.panelTitle.Location = new System.Drawing.Point(0, 0);
-      this.panelTitle.Name = "panelTitle";
-      this.panelTitle.Size = new System.Drawing.Size(119, 43);
-      this.panelTitle.TabIndex = 1;
       // 
       // panelSearch
       // 
@@ -101,6 +82,25 @@
       this.textBoxSearch.Size = new System.Drawing.Size(179, 22);
       this.textBoxSearch.TabIndex = 0;
       // 
+      // panelTitle
+      // 
+      this.panelTitle.Controls.Add(this.labelTitle);
+      this.panelTitle.Dock = System.Windows.Forms.DockStyle.Left;
+      this.panelTitle.Location = new System.Drawing.Point(0, 0);
+      this.panelTitle.Name = "panelTitle";
+      this.panelTitle.Size = new System.Drawing.Size(249, 43);
+      this.panelTitle.TabIndex = 1;
+      // 
+      // labelTitle
+      // 
+      this.labelTitle.AutoSize = true;
+      this.labelTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTitle.Location = new System.Drawing.Point(11, 11);
+      this.labelTitle.Name = "labelTitle";
+      this.labelTitle.Size = new System.Drawing.Size(230, 21);
+      this.labelTitle.TabIndex = 1;
+      this.labelTitle.Text = "Application settings";
+      // 
       // SettingsUserControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -113,10 +113,10 @@
       this.Name = "SettingsUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       this.panelTopBar.ResumeLayout(false);
-      this.panelTitle.ResumeLayout(false);
-      this.panelTitle.PerformLayout();
       this.panelSearch.ResumeLayout(false);
       this.panelSearch.PerformLayout();
+      this.panelTitle.ResumeLayout(false);
+      this.panelTitle.PerformLayout();
       this.ResumeLayout(false);
 
     }
