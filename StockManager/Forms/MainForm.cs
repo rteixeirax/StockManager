@@ -65,10 +65,6 @@ namespace StockManager.Forms
     {
       inventoryCategoriesUserControl.BringToFront();
     }
-    private void btnStockCategories_Click_1(object sender, EventArgs e)
-    {
-      inventoryCategoriesUserControl.BringToFront();
-    }
     private void btnStocks_Click(object sender, EventArgs e)
     {
       inventoryStocksUserControl.BringToFront();

@@ -40,11 +40,11 @@
       this.labelLastName = new System.Windows.Forms.Label();
       this.textBoxLastName = new System.Windows.Forms.TextBox();
       this.panel1 = new System.Windows.Forms.Panel();
-      this.comboBoxRoles = new System.Windows.Forms.ComboBox();
-      this.labelRole = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
       this.textBoxPassword = new System.Windows.Forms.TextBox();
       this.labelPassword = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
+      this.labelRole = new System.Windows.Forms.Label();
+      this.comboBoxRoles = new System.Windows.Forms.ComboBox();
       this.buttonCreateUser = new System.Windows.Forms.Button();
       this.panelTopBar.SuspendLayout();
       this.panelSearch.SuspendLayout();
@@ -173,31 +173,15 @@
       this.panel1.Size = new System.Drawing.Size(314, 242);
       this.panel1.TabIndex = 6;
       // 
-      // comboBoxRoles
+      // label5
       // 
-      this.comboBoxRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-      this.comboBoxRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.comboBoxRoles.ForeColor = System.Drawing.Color.White;
-      this.comboBoxRoles.FormattingEnabled = true;
-      this.comboBoxRoles.Items.AddRange(new object[] {
-            "Admin",
-            "User"});
-      this.comboBoxRoles.Location = new System.Drawing.Point(99, 183);
-      this.comboBoxRoles.Name = "comboBoxRoles";
-      this.comboBoxRoles.Size = new System.Drawing.Size(182, 24);
-      this.comboBoxRoles.TabIndex = 7;
-      // 
-      // labelRole
-      // 
-      this.labelRole.AutoSize = true;
-      this.labelRole.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.labelRole.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.labelRole.Location = new System.Drawing.Point(53, 186);
-      this.labelRole.Name = "labelRole";
-      this.labelRole.Size = new System.Drawing.Size(40, 16);
-      this.labelRole.TabIndex = 8;
-      this.labelRole.Text = "Role";
+      this.label5.AutoSize = true;
+      this.label5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.label5.Location = new System.Drawing.Point(5, 16);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(98, 18);
+      this.label5.TabIndex = 11;
+      this.label5.Text = "User info";
       // 
       // textBoxPassword
       // 
@@ -223,15 +207,31 @@
       this.labelPassword.TabIndex = 9;
       this.labelPassword.Text = "Password";
       // 
-      // label5
+      // labelRole
       // 
-      this.label5.AutoSize = true;
-      this.label5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label5.Location = new System.Drawing.Point(5, 16);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(98, 18);
-      this.label5.TabIndex = 11;
-      this.label5.Text = "User info";
+      this.labelRole.AutoSize = true;
+      this.labelRole.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.labelRole.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.labelRole.Location = new System.Drawing.Point(53, 186);
+      this.labelRole.Name = "labelRole";
+      this.labelRole.Size = new System.Drawing.Size(40, 16);
+      this.labelRole.TabIndex = 8;
+      this.labelRole.Text = "Role";
+      // 
+      // comboBoxRoles
+      // 
+      this.comboBoxRoles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.comboBoxRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.comboBoxRoles.ForeColor = System.Drawing.Color.White;
+      this.comboBoxRoles.FormattingEnabled = true;
+      this.comboBoxRoles.Items.AddRange(new object[] {
+            "Admin",
+            "User"});
+      this.comboBoxRoles.Location = new System.Drawing.Point(99, 183);
+      this.comboBoxRoles.Name = "comboBoxRoles";
+      this.comboBoxRoles.Size = new System.Drawing.Size(182, 24);
+      this.comboBoxRoles.TabIndex = 7;
       // 
       // buttonCreateUser
       // 
@@ -239,7 +239,7 @@
       this.buttonCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
       this.buttonCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-      this.buttonCreateUser.Location = new System.Drawing.Point(14, 61);
+      this.buttonCreateUser.Location = new System.Drawing.Point(14, 58);
       this.buttonCreateUser.Name = "buttonCreateUser";
       this.buttonCreateUser.Size = new System.Drawing.Size(136, 32);
       this.buttonCreateUser.TabIndex = 7;
