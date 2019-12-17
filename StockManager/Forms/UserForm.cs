@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockManager.Entities;
+using StockManager.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +22,18 @@ namespace StockManager.Forms
     public void ShowUserForm()
     {
       this.ShowDialog();
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+      User user = new User();
+      user.lastName = tbLastName.Text;
+      user.firstName = tbFirstName.Text;
+      user.password = tbPassword.Text;
+      user.role = cbRoles.SelectedItem.ToString();
+
+      UserServices.CreateUser(user);
+      this.Close();
     }
   }
 }
