@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StockManager.UserControls
+namespace StockManager.Forms
 {
-  public partial class UsersUserControl : UserControl
+  public partial class UserForm : Form
   {
-    public UsersUserControl()
+    public UserForm()
     {
       InitializeComponent();
     }
 
-    private void btnCreateUser_Click(object sender, EventArgs e)
+    public void ShowUserForm()
     {
-      Program.userForm.ShowUserForm();
+      this.ShowDialog();
     }
   }
 }

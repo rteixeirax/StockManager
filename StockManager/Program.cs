@@ -9,6 +9,9 @@ namespace StockManager
 {
   static class Program
   {
+    public static MainForm mainForm { get; private set; }
+    public static UserForm userForm { get; private set; }
+
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
@@ -17,7 +20,11 @@ namespace StockManager
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-      Application.Run(new MainForm());
+
+      mainForm = new MainForm();
+      userForm = new UserForm();
+
+      Application.Run(mainForm);
     }
   }
 }
