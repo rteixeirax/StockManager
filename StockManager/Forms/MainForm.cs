@@ -19,19 +19,19 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnDashboard);
 
       // initialize with dashboard panel
-      dashboardUserControl.BringToFront();
+      ucDashboard.BringToFront();
     }
 
     #region HELPER FUNCTIONS
     private void SetMarkerPosition(Control btn)
     {
-      sideMarker.Height = btn.Height;
-      sideMarker.Top = btn.Top;
+      pnlSideMarker.Height = btn.Height;
+      pnlSideMarker.Top = btn.Top;
     }
 
     private void SetSubMenusVisibility(Control subMenu = null)
     {
-      panelInventorySubMenu.Visible = ((subMenu != null) && (subMenu == panelInventorySubMenu) && (!panelInventorySubMenu.Visible))
+      pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (!pnlInventorySubMenu.Visible))
         ? true
         : false;
 
@@ -41,9 +41,9 @@ namespace StockManager.Forms
     private void SetSidebarButtonsPosition(Control subMenu = null)
     {
       // If no sub menu sent, reset all the positions
-      btnUsers.Top = ((subMenu != null) && (subMenu == panelInventorySubMenu) && (panelInventorySubMenu.Visible))
-        ? panelInventorySubMenu.Bottom
-        : panelInventorySubMenu.Top;
+      btnUsers.Top = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (pnlInventorySubMenu.Visible))
+        ? pnlInventorySubMenu.Bottom
+        : pnlInventorySubMenu.Top;
       btnSettings.Top = btnUsers.Bottom + 6;
     }
     #endregion HELPER FUNCTIONS
@@ -51,35 +51,35 @@ namespace StockManager.Forms
     #region FORM EVENTS
     private void btnDashboard_Click(object sender, EventArgs e)
     {
-      dashboardUserControl.BringToFront();
+      ucDashboard.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
     }
 
     private void btnInventory_Click(object sender, EventArgs e)
     {
-      this.SetSubMenusVisibility(panelInventorySubMenu);
+      this.SetSubMenusVisibility(pnlInventorySubMenu);
       this.SetMarkerPosition(btnInventory);
     }
     private void btnStockCategories_Click(object sender, EventArgs e)
     {
-      inventoryCategoriesUserControl.BringToFront();
+      ucInventoryCategories.BringToFront();
     }
     private void btnStocks_Click(object sender, EventArgs e)
     {
-      inventoryStocksUserControl.BringToFront();
+      ucInventoryStocks.BringToFront();
     }
 
     private void btnUsers_Click(object sender, EventArgs e)
     {
-      usersUserControl.BringToFront();
+      ucUsers.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
     }
 
     private void btnSettings_Click(object sender, EventArgs e)
     {
-      settingsUserControl.BringToFront();
+      ucSettings.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
     }
