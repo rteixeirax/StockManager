@@ -11,5 +11,6 @@ namespace StockManager.Entities
     public string username { get; set; }
     public string password { get; set; }
     public string role { get; set; }
+    public DateTime lastLogin { get; set; }
   }
 }

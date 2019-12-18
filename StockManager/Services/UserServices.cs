@@ -18,8 +18,23 @@ namespace StockManager.Services
       {
         return false;
       }
-
+      
       return true;
+    }
+
+    public List<User> GetAllUsers()
+    {
+      List<User> users = new List<User>();
+      User user = new User();
+
+      user.username = "Manel";
+      user.password = "123";
+      user.role = "Admin";
+      user.lastLogin = DateTime.Now;
+
+      users.Add(user);
+
+      return users;
     }
   }
 }

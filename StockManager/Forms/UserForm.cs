@@ -48,6 +48,7 @@ namespace StockManager.Forms
 
       if (this.services.CreateUser(user))
       {
+        Program.usersUserControl.LoadUsers();
         this.Close();
       }
       else
