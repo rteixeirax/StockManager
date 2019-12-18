@@ -30,6 +30,9 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
       this.pnlUserFormBody = new System.Windows.Forms.Panel();
+      this.lbErrorRole = new System.Windows.Forms.Label();
+      this.lbErrorPassword = new System.Windows.Forms.Label();
+      this.lbErrorUsername = new System.Windows.Forms.Label();
       this.btnSave = new System.Windows.Forms.Button();
       this.lbTitle = new System.Windows.Forms.Label();
       this.tbPassword = new System.Windows.Forms.TextBox();
@@ -38,9 +41,6 @@
       this.tbUsername = new System.Windows.Forms.TextBox();
       this.cbRoles = new System.Windows.Forms.ComboBox();
       this.lbFirstName = new System.Windows.Forms.Label();
-      this.lbErrorFirstName = new System.Windows.Forms.Label();
-      this.lbErrorPassword = new System.Windows.Forms.Label();
-      this.lbErrorRole = new System.Windows.Forms.Label();
       this.pnlUserFormBody.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -48,7 +48,7 @@
       // 
       this.pnlUserFormBody.Controls.Add(this.lbErrorRole);
       this.pnlUserFormBody.Controls.Add(this.lbErrorPassword);
-      this.pnlUserFormBody.Controls.Add(this.lbErrorFirstName);
+      this.pnlUserFormBody.Controls.Add(this.lbErrorUsername);
       this.pnlUserFormBody.Controls.Add(this.btnSave);
       this.pnlUserFormBody.Controls.Add(this.lbTitle);
       this.pnlUserFormBody.Controls.Add(this.tbPassword);
@@ -62,6 +62,36 @@
       this.pnlUserFormBody.Name = "pnlUserFormBody";
       this.pnlUserFormBody.Size = new System.Drawing.Size(416, 314);
       this.pnlUserFormBody.TabIndex = 7;
+      // 
+      // lbErrorRole
+      // 
+      this.lbErrorRole.AutoSize = true;
+      this.lbErrorRole.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorRole.Location = new System.Drawing.Point(121, 204);
+      this.lbErrorRole.Name = "lbErrorRole";
+      this.lbErrorRole.Size = new System.Drawing.Size(184, 16);
+      this.lbErrorRole.TabIndex = 16;
+      this.lbErrorRole.Text = "This field is required";
+      // 
+      // lbErrorPassword
+      // 
+      this.lbErrorPassword.AutoSize = true;
+      this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorPassword.Location = new System.Drawing.Point(121, 147);
+      this.lbErrorPassword.Name = "lbErrorPassword";
+      this.lbErrorPassword.Size = new System.Drawing.Size(184, 16);
+      this.lbErrorPassword.TabIndex = 15;
+      this.lbErrorPassword.Text = "This field is required";
+      // 
+      // lbErrorUsername
+      // 
+      this.lbErrorUsername.AutoSize = true;
+      this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorUsername.Location = new System.Drawing.Point(121, 93);
+      this.lbErrorUsername.Name = "lbErrorUsername";
+      this.lbErrorUsername.Size = new System.Drawing.Size(184, 16);
+      this.lbErrorUsername.TabIndex = 14;
+      this.lbErrorUsername.Text = "This field is required";
       // 
       // btnSave
       // 
@@ -159,36 +189,6 @@
       this.lbFirstName.TabIndex = 2;
       this.lbFirstName.Text = "Username";
       // 
-      // lbErrorFirstName
-      // 
-      this.lbErrorFirstName.AutoSize = true;
-      this.lbErrorFirstName.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorFirstName.Location = new System.Drawing.Point(121, 93);
-      this.lbErrorFirstName.Name = "lbErrorFirstName";
-      this.lbErrorFirstName.Size = new System.Drawing.Size(184, 16);
-      this.lbErrorFirstName.TabIndex = 14;
-      this.lbErrorFirstName.Text = "This field is required";
-      // 
-      // lbErrorPassword
-      // 
-      this.lbErrorPassword.AutoSize = true;
-      this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorPassword.Location = new System.Drawing.Point(121, 147);
-      this.lbErrorPassword.Name = "lbErrorPassword";
-      this.lbErrorPassword.Size = new System.Drawing.Size(184, 16);
-      this.lbErrorPassword.TabIndex = 15;
-      this.lbErrorPassword.Text = "This field is required";
-      // 
-      // lbErrorRole
-      // 
-      this.lbErrorRole.AutoSize = true;
-      this.lbErrorRole.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorRole.Location = new System.Drawing.Point(121, 204);
-      this.lbErrorRole.Name = "lbErrorRole";
-      this.lbErrorRole.Size = new System.Drawing.Size(184, 16);
-      this.lbErrorRole.TabIndex = 16;
-      this.lbErrorRole.Text = "This field is required";
-      // 
       // UserForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -223,6 +223,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lbErrorRole;
         private System.Windows.Forms.Label lbErrorPassword;
-        private System.Windows.Forms.Label lbErrorFirstName;
+        private System.Windows.Forms.Label lbErrorUsername;
     }
 }

@@ -25,7 +25,7 @@ namespace StockManager.Forms
     public void ShowUserForm()
     {
       // hide the error labels
-      lbErrorFirstName.Visible = false;
+      lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
       lbErrorRole.Visible = false;
 
@@ -34,7 +34,7 @@ namespace StockManager.Forms
 
     private void ShowFormErrors(User user)
     {
-      lbErrorFirstName.Visible = String.IsNullOrEmpty(user.username) ? true : false;
+      lbErrorUsername.Visible = String.IsNullOrEmpty(user.username) ? true : false;
       lbErrorPassword.Visible = String.IsNullOrEmpty(user.password) ? true : false;
       lbErrorRole.Visible = String.IsNullOrEmpty(user.role) ? true : false;
     }
