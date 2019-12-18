@@ -146,7 +146,7 @@
       dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
       dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -160,27 +160,24 @@
       // 
       // columnUsername
       // 
-      this.columnUsername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.columnUsername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.columnUsername.HeaderText = "Username";
       this.columnUsername.Name = "columnUsername";
       this.columnUsername.ReadOnly = true;
-      this.columnUsername.Width = 97;
       // 
       // columnRole
       // 
-      this.columnRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.columnRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.columnRole.HeaderText = "Role";
       this.columnRole.Name = "columnRole";
       this.columnRole.ReadOnly = true;
-      this.columnRole.Width = 65;
       // 
       // columnLastLogIn
       // 
-      this.columnLastLogIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+      this.columnLastLogIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.columnLastLogIn.HeaderText = "Last login";
       this.columnLastLogIn.Name = "columnLastLogIn";
       this.columnLastLogIn.ReadOnly = true;
-      this.columnLastLogIn.Width = 113;
       // 
       // UsersUserControl
       // 

@@ -26,6 +26,7 @@ namespace StockManager.Services
     {
       List<User> users = new List<User>();
       User user = new User();
+      User user2 = new User();
 
       user.username = "Manel";
       user.password = "123";
@@ -33,6 +34,13 @@ namespace StockManager.Services
       user.lastLogin = DateTime.Now;
 
       users.Add(user);
+
+      user2.username = "Antonio";
+      user2.password = "123";
+      user2.role = "User";
+      user2.lastLogin = DateTime.Now;
+
+      users.Add(user2);
 
       return users;
     }
