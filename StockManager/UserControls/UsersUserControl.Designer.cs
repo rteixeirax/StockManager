@@ -108,6 +108,7 @@
       this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
       this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnCreateUser.Location = new System.Drawing.Point(14, 58);
       this.btnCreateUser.Name = "btnCreateUser";
       this.btnCreateUser.Size = new System.Drawing.Size(136, 32);

@@ -1,4 +1,5 @@
-﻿using StockManager.Entities;
+﻿using StockManager.Database.Repositories;
+using StockManager.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace StockManager.Services
 {
-  static class UserServices
+  public class UserServices : IUserRepository
   {
-    public static bool CreateUser(User user)
+    public bool CreateUser(User user)
     {
-      Console.WriteLine(user);
+      if (String.IsNullOrEmpty(user.username)
+        || String.IsNullOrEmpty(user.password)
+        || String.IsNullOrEmpty(user.role))
+      {
+        return false;
+      }
 
       return true;
     }

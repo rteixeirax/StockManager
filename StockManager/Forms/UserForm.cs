@@ -14,26 +14,46 @@ namespace StockManager.Forms
 {
   public partial class UserForm : Form
   {
+    private readonly UserServices services;
+
     public UserForm()
     {
       InitializeComponent();
+      this.services = new UserServices();
     }
 
     public void ShowUserForm()
     {
+      // hide the error labels
+      lbErrorFirstName.Visible = false;
+      lbErrorPassword.Visible = false;
+      lbErrorRole.Visible = false;
+
       this.ShowDialog();
+    }
+
+    private void ShowFormErrors(User user)
+    {
+      lbErrorFirstName.Visible = String.IsNullOrEmpty(user.username) ? true : false;
+      lbErrorPassword.Visible = String.IsNullOrEmpty(user.password) ? true : false;
+      lbErrorRole.Visible = String.IsNullOrEmpty(user.role) ? true : false;
     }
 
     private void btnSave_Click(object sender, EventArgs e)
     {
       User user = new User();
-      user.lastName = tbLastName.Text;
-      user.firstName = tbFirstName.Text;
+      user.username = tbUsername.Text;
       user.password = tbPassword.Text;
-      user.role = cbRoles.SelectedItem.ToString();
+      user.role = (cbRoles.SelectedItem != null) ? cbRoles.SelectedItem.ToString() : null;
 
-      UserServices.CreateUser(user);
-      this.Close();
+      if (this.services.CreateUser(user))
+      {
+        this.Close();
+      }
+      else
+      {
+        this.ShowFormErrors(user);
+      }
     }
   }
 }
