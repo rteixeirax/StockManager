@@ -25,7 +25,7 @@ namespace StockManager.UserControls
       {
         dgvUsers.Rows.Add(
           user.Username,
-          user.Role.Code,
+          "user.Role.Code",
           user.LastLogin.ToString("MM/dd/yyyy")
         );
       }
