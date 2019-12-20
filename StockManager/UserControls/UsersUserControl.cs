@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Entities;
+using StockManager.Database.Models;
 using StockManager.Services;
 
 namespace StockManager.UserControls
@@ -30,9 +24,9 @@ namespace StockManager.UserControls
       foreach (User user in users)
       {
         dgvUsers.Rows.Add(
-          user.username,
-          user.role,
-          user.lastLogin.ToString("MM/dd/yyyy")
+          user.Username,
+          user.Role.Code,
+          user.LastLogin.ToString("MM/dd/yyyy")
         );
       }
     }

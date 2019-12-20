@@ -1,5 +1,5 @@
-﻿using StockManager.Database.Repositories;
-using StockManager.Entities;
+﻿using StockManager.Database.Models;
+using StockManager.Database.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +12,9 @@ namespace StockManager.Services
   {
     public bool CreateUser(User user)
     {
-      if (String.IsNullOrEmpty(user.username)
-        || String.IsNullOrEmpty(user.password)
-        || String.IsNullOrEmpty(user.role))
+      if (string.IsNullOrEmpty(user.Username)
+        || string.IsNullOrEmpty(user.Password)
+        || (user.RoleId == Guid.Empty))
       {
         return false;
       }
@@ -28,17 +28,17 @@ namespace StockManager.Services
       User user = new User();
       User user2 = new User();
 
-      user.username = "Manel";
-      user.password = "123";
-      user.role = "Admin";
-      user.lastLogin = DateTime.Now;
+      user.Username = "Manel";
+      user.Password = "123";
+      user.RoleId = new Guid();
+      user.LastLogin = DateTime.Now;
 
       users.Add(user);
 
-      user2.username = "Antonio";
-      user2.password = "123";
-      user2.role = "User";
-      user2.lastLogin = DateTime.Now;
+      user2.Username = "Antonio";
+      user2.Password = "123";
+      user2.RoleId = new Guid();
+      user2.LastLogin = DateTime.Now;
 
       users.Add(user2);
 
