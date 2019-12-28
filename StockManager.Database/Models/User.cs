@@ -7,10 +7,7 @@ namespace StockManager.Database.Models
   public class User
   {
     [Key]
-    public Guid UserId
-    {
-      get => UserId; set => Guid.NewGuid();
-    }
+    public int UserId { get; set; }
 
     [Required(ErrorMessage = "Username is required")]
     public string Username { get; set; }
@@ -21,7 +18,7 @@ namespace StockManager.Database.Models
     public DateTime LastLogin { get; set; }
 
     [ForeignKey("Role")]
-    public Guid RoleId { get; set; }
+    public int RoleId { get; set; }
     public virtual Role Role { get; set; }
   }
 }

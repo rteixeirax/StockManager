@@ -14,11 +14,11 @@ namespace StockManager.Services
     {
       if (string.IsNullOrEmpty(user.Username)
         || string.IsNullOrEmpty(user.Password)
-        || (user.RoleId == Guid.Empty))
+        || user.RoleId == 0)
       {
         return false;
       }
-      
+
       return true;
     }
 
@@ -30,14 +30,14 @@ namespace StockManager.Services
 
       user.Username = "Manel";
       user.Password = "123";
-      user.RoleId = new Guid();
+      user.RoleId = 1;
       user.LastLogin = DateTime.Now;
 
       users.Add(user);
 
       user2.Username = "Antonio";
       user2.Password = "123";
-      user2.RoleId = new Guid();
+      user2.RoleId = 2;
       user2.LastLogin = DateTime.Now;
 
       users.Add(user2);

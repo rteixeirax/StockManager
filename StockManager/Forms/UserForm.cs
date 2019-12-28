@@ -7,12 +7,14 @@ namespace StockManager.Forms
 {
   public partial class UserForm : Form
   {
-    private readonly UserServices services;
+    private readonly UserServices userServices;
+    private readonly RoleServices roleServices;
 
     public UserForm()
     {
       InitializeComponent();
-      this.services = new UserServices();
+      this.userServices = new UserServices();
+      this.roleServices = new RoleServices();
     }
 
     public void ShowUserForm()
@@ -22,6 +24,12 @@ namespace StockManager.Forms
       lbErrorPassword.Visible = false;
       lbErrorRole.Visible = false;
 
+      // Populate the combo box
+      var roles = this.roleServices.GetRoles();
+      cbRoles.DisplayMember = "Select user role";
+      cbRoles.ValueMember = "RoleId";
+      cbRoles.DataSource = roles;
+      
       this.ShowDialog();
     }
 
@@ -29,7 +37,7 @@ namespace StockManager.Forms
     {
       lbErrorUsername.Visible = string.IsNullOrEmpty(user.Username) ? true : false;
       lbErrorPassword.Visible = string.IsNullOrEmpty(user.Password) ? true : false;
-      lbErrorRole.Visible = (user.RoleId == Guid.Empty) ? true : false;
+      lbErrorRole.Visible = (user.RoleId == 0) ? true : false;
     }
 
     private void btnSave_Click(object sender, EventArgs e)
@@ -37,9 +45,9 @@ namespace StockManager.Forms
       User user = new User();
       user.Username = tbUsername.Text;
       user.Password = tbPassword.Text;
-      user.RoleId = Guid.Parse(cbRoles.SelectedItem?.ToString());
+      user.RoleId = int.Parse(cbRoles.SelectedItem?.ToString());
 
-      if (this.services.CreateUser(user))
+      if (this.userServices.CreateUser(user))
       {
         Program.usersUserControl.LoadUsers();
         this.Close();

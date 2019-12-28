@@ -162,14 +162,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Services\UserServices.cs" />
     <Compile Include="UserControls\DashboardUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,6 +236,9 @@
     <EmbeddedResource Include="UserControls\UsersUserControl.resx">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="AppData\StockManagerDB.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -257,7 +258,15 @@
       <Project>{c3c9810d-b92c-4dbf-b68e-0272114cbab9}</Project>
       <Name>StockManager.Database</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StockManager.Services\StockManager.Services.csproj">
+      <Project>{06e6df51-756b-4d4c-bbbc-5fc389f681f3}</Project>
+      <Name>StockManager.Services</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

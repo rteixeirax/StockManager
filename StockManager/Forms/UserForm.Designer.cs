@@ -169,9 +169,6 @@
       this.cbRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.cbRoles.ForeColor = System.Drawing.Color.White;
       this.cbRoles.FormattingEnabled = true;
-      this.cbRoles.Items.AddRange(new object[] {
-            "Admin",
-            "User"});
       this.cbRoles.Location = new System.Drawing.Point(118, 177);
       this.cbRoles.Name = "cbRoles";
       this.cbRoles.Size = new System.Drawing.Size(252, 24);

@@ -10,10 +10,7 @@ namespace StockManager.Database.Models
   public class Role
   {
     [Key]
-    public Guid RoleId
-    {
-      get => RoleId; set => Guid.NewGuid();
-    }
+    public int RoleId { get; set; }
 
     [Required(ErrorMessage = "Code is required")]
     public string Code { get; set; }
