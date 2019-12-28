@@ -25,10 +25,9 @@ namespace StockManager.Forms
       lbErrorRole.Visible = false;
 
       // Populate the combo box
-      var roles = this.roleServices.GetRoles();
-      cbRoles.DisplayMember = "Select user role";
+      cbRoles.DataSource = this.roleServices.GetRoles();
       cbRoles.ValueMember = "RoleId";
-      cbRoles.DataSource = roles;
+      cbRoles.DisplayMember = "Code";
       
       this.ShowDialog();
     }
