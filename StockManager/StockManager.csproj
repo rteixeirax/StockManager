@@ -237,7 +237,7 @@
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="AppData\StockManagerDB.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

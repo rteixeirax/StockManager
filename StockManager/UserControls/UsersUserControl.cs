@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using StockManager.Forms;
 using StockManager.Database.Models;
 using StockManager.Services;
 
@@ -8,24 +9,25 @@ namespace StockManager.UserControls
 {
   public partial class UsersUserControl : UserControl
   {
-    private readonly UserServices services;
+    private readonly UserServices userServices;
 
     public UsersUserControl()
     {
       InitializeComponent();
-      this.services = new UserServices();
+      this.userServices = new UserServices();
       this.LoadUsers();
     }
 
     public void LoadUsers()
     {
-      List<User> users = this.services.GetAllUsers();
+      dgvUsers.Rows.Clear();
+      var users = this.userServices.GetUsers();
 
-      foreach (User user in users)
+      foreach (var user in users)
       {
         dgvUsers.Rows.Add(
           user.Username,
-          "user.Role.Code",
+          user.Role.Code,
           user.LastLogin.ToString("MM/dd/yyyy")
         );
       }
@@ -33,7 +35,8 @@ namespace StockManager.UserControls
 
     private void btnCreateUser_Click(object sender, EventArgs e)
     {
-      Program.userForm.ShowUserForm();
+      var userForm = new UserForm(this);
+      userForm.ShowDialog();
     }
   }
 }

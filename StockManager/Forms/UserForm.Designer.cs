@@ -30,7 +30,6 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
       this.pnlUserFormBody = new System.Windows.Forms.Panel();
-      this.lbErrorRole = new System.Windows.Forms.Label();
       this.lbErrorPassword = new System.Windows.Forms.Label();
       this.lbErrorUsername = new System.Windows.Forms.Label();
       this.btnSave = new System.Windows.Forms.Button();
@@ -46,7 +45,6 @@
       // 
       // pnlUserFormBody
       // 
-      this.pnlUserFormBody.Controls.Add(this.lbErrorRole);
       this.pnlUserFormBody.Controls.Add(this.lbErrorPassword);
       this.pnlUserFormBody.Controls.Add(this.lbErrorUsername);
       this.pnlUserFormBody.Controls.Add(this.btnSave);
@@ -62,16 +60,6 @@
       this.pnlUserFormBody.Name = "pnlUserFormBody";
       this.pnlUserFormBody.Size = new System.Drawing.Size(416, 314);
       this.pnlUserFormBody.TabIndex = 7;
-      // 
-      // lbErrorRole
-      // 
-      this.lbErrorRole.AutoSize = true;
-      this.lbErrorRole.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorRole.Location = new System.Drawing.Point(121, 204);
-      this.lbErrorRole.Name = "lbErrorRole";
-      this.lbErrorRole.Size = new System.Drawing.Size(184, 16);
-      this.lbErrorRole.TabIndex = 16;
-      this.lbErrorRole.Text = "This field is required";
       // 
       // lbErrorPassword
       // 
@@ -218,7 +206,6 @@
         private System.Windows.Forms.ComboBox cbRoles;
         private System.Windows.Forms.Label lbFirstName;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label lbErrorRole;
         private System.Windows.Forms.Label lbErrorPassword;
         private System.Windows.Forms.Label lbErrorUsername;
     }

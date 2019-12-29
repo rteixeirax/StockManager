@@ -12,9 +12,9 @@ namespace StockManager.Database
      * (In this case i added the "AppData" folder with the file inside)
      * 2. Right click on it and go to properties.
      * 3. Set the Build Action to content.
-     * 4. Set the Copy to Output Directory to copy always.
+     * 4. Set the Copy to Output Directory to copy if newer.
      * 
-     * With this changes, your DB file will always be copied to your /bin/debug directory,
+     * With this changes, your DB file will be copied to your /bin/debug directory once,
      * otherwise when you start the project you will get the "table not found" error.
      * 
      * ## Usefull commands ##   

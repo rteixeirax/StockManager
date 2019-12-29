@@ -10,13 +10,6 @@ namespace StockManager
 {
   static class Program
   {
-    // FORMS
-    public static MainForm mainForm { get; private set; }
-    public static UserForm userForm { get; private set; }
-
-    // USER CONTROLS
-    public static UsersUserControl usersUserControl { get; private set; }
-
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
@@ -25,15 +18,7 @@ namespace StockManager
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
-
-      // FORMS
-      mainForm = new MainForm();
-      userForm = new UserForm();
-
-      // USER CONTROLS
-      usersUserControl = new UsersUserControl();
-
-      Application.Run(mainForm);
+      Application.Run(new MainForm());
     }
   }
 }
