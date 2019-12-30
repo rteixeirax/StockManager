@@ -28,9 +28,11 @@
     /// </summary>
     private void InitializeComponent()
     {
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
       this.panelTopBar = new System.Windows.Forms.Panel();
       this.panelActions = new System.Windows.Forms.Panel();
       this.btnDeleteUser = new System.Windows.Forms.Button();
@@ -50,7 +52,7 @@
       // 
       // panelTopBar
       // 
-      this.panelTopBar.BackColor = System.Drawing.Color.Gray;
+      this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
       this.panelTopBar.Controls.Add(this.panelActions);
       this.panelTopBar.Controls.Add(this.panelTitle);
       this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -74,9 +76,10 @@
       // 
       this.btnDeleteUser.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnDeleteUser.BackColor = System.Drawing.Color.Firebrick;
-      this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnDeleteUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnDeleteUser.ForeColor = System.Drawing.Color.Black;
+      this.btnDeleteUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
       this.btnDeleteUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnDeleteUser.Location = new System.Drawing.Point(214, 7);
       this.btnDeleteUser.Name = "btnDeleteUser";
@@ -89,9 +92,10 @@
       // 
       this.btnEditUser.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnEditUser.BackColor = System.Drawing.Color.Goldenrod;
-      this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnEditUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnEditUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnEditUser.ForeColor = System.Drawing.Color.Black;
+      this.btnEditUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
       this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnEditUser.Location = new System.Drawing.Point(115, 7);
       this.btnEditUser.Name = "btnEditUser";
@@ -103,10 +107,11 @@
       // btnCreateUser
       // 
       this.btnCreateUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnCreateUser.BackColor = System.Drawing.Color.Green;
-      this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnCreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      this.btnCreateUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCreateUser.ForeColor = System.Drawing.Color.Black;
+      this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
       this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnCreateUser.Location = new System.Drawing.Point(16, 7);
       this.btnCreateUser.Name = "btnCreateUser";
@@ -128,9 +133,9 @@
       // labelTitle
       // 
       this.labelTitle.AutoSize = true;
-      this.labelTitle.BackColor = System.Drawing.Color.Gray;
+      this.labelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
       this.labelTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.labelTitle.ForeColor = System.Drawing.Color.Black;
+      this.labelTitle.ForeColor = System.Drawing.Color.White;
       this.labelTitle.Location = new System.Drawing.Point(11, 11);
       this.labelTitle.Name = "labelTitle";
       this.labelTitle.Size = new System.Drawing.Size(178, 18);
@@ -142,42 +147,60 @@
       this.dgvUsers.AllowUserToAddRows = false;
       this.dgvUsers.AllowUserToDeleteRows = false;
       this.dgvUsers.AllowUserToOrderColumns = true;
-      dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.dgvUsers.BackgroundColor = System.Drawing.Color.LightGray;
+      this.dgvUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
       this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-      dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-      dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+      this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnUsername,
             this.columnRole,
             this.columnLastLogIn});
-      dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGray;
-      dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-      dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle6;
-      this.dgvUsers.Location = new System.Drawing.Point(0, 40);
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
+      this.dgvUsers.EnableHeadersVisualStyles = false;
+      this.dgvUsers.GridColor = System.Drawing.Color.DarkGray;
+      this.dgvUsers.Location = new System.Drawing.Point(0, 49);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.ReadOnly = true;
+      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
+      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
+      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+      this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(860, 380);
+      this.dgvUsers.Size = new System.Drawing.Size(860, 371);
       this.dgvUsers.TabIndex = 0;
       // 
       // columnUsername
@@ -205,7 +228,7 @@
       // UsersUserControl
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-      this.BackColor = System.Drawing.Color.WhiteSmoke;
+      this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
       this.Controls.Add(this.dgvUsers);
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

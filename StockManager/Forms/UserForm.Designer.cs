@@ -84,7 +84,7 @@
       // btnSave
       // 
       this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
       this.btnSave.Location = new System.Drawing.Point(234, 255);
