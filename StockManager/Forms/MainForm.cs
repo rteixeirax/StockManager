@@ -72,9 +72,9 @@ namespace StockManager.Forms
 
     private void btnUsers_Click(object sender, EventArgs e)
     {
-      ucUsers.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
+      ucUsers.ShowUserControl();
     }
 
     private void btnSettings_Click(object sender, EventArgs e)

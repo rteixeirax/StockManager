@@ -15,7 +15,13 @@ namespace StockManager.UserControls
     {
       InitializeComponent();
       this.userServices = new UserServices();
+    }
+
+    public void ShowUserControl()
+    {
+      Cursor.Current = Cursors.WaitCursor;
       this.LoadUsers();
+      this.BringToFront();
     }
 
     public void LoadUsers()
