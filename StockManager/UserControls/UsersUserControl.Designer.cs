@@ -127,6 +127,8 @@
       // 
       // dgvUsers
       // 
+      this.dgvUsers.AllowUserToAddRows = false;
+      this.dgvUsers.AllowUserToDeleteRows = false;
       this.dgvUsers.AllowUserToOrderColumns = true;
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,6 +162,7 @@
       this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
       this.dgvUsers.Location = new System.Drawing.Point(3, 93);
       this.dgvUsers.Name = "dgvUsers";
+      this.dgvUsers.ReadOnly = true;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvUsers.Size = new System.Drawing.Size(854, 324);
       this.dgvUsers.TabIndex = 0;
