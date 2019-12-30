@@ -58,7 +58,7 @@
       this.pnlUserFormBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlUserFormBody.Location = new System.Drawing.Point(0, 0);
       this.pnlUserFormBody.Name = "pnlUserFormBody";
-      this.pnlUserFormBody.Size = new System.Drawing.Size(416, 314);
+      this.pnlUserFormBody.Size = new System.Drawing.Size(428, 314);
       this.pnlUserFormBody.TabIndex = 7;
       // 
       // lbErrorPassword
@@ -90,7 +90,7 @@
       this.btnSave.Location = new System.Drawing.Point(234, 255);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(136, 32);
-      this.btnSave.TabIndex = 12;
+      this.btnSave.TabIndex = 4;
       this.btnSave.Text = "Save";
       this.btnSave.UseVisualStyleBackColor = false;
       this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -114,7 +114,7 @@
       this.tbPassword.Name = "tbPassword";
       this.tbPassword.PasswordChar = '*';
       this.tbPassword.Size = new System.Drawing.Size(252, 22);
-      this.tbPassword.TabIndex = 10;
+      this.tbPassword.TabIndex = 2;
       this.tbPassword.UseSystemPasswordChar = true;
       // 
       // lbPassword
@@ -149,7 +149,7 @@
       this.tbUsername.Location = new System.Drawing.Point(118, 68);
       this.tbUsername.Name = "tbUsername";
       this.tbUsername.Size = new System.Drawing.Size(252, 22);
-      this.tbUsername.TabIndex = 3;
+      this.tbUsername.TabIndex = 1;
       // 
       // cbRoles
       // 
@@ -160,7 +160,7 @@
       this.cbRoles.Location = new System.Drawing.Point(118, 177);
       this.cbRoles.Name = "cbRoles";
       this.cbRoles.Size = new System.Drawing.Size(252, 24);
-      this.cbRoles.TabIndex = 7;
+      this.cbRoles.TabIndex = 3;
       // 
       // lbFirstName
       // 
@@ -178,7 +178,7 @@
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.ClientSize = new System.Drawing.Size(416, 314);
+      this.ClientSize = new System.Drawing.Size(428, 314);
       this.Controls.Add(this.pnlUserFormBody);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
@@ -188,7 +188,7 @@
       this.MinimizeBox = false;
       this.Name = "UserForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-      this.Text = "Create new user";
+      this.Text = "Stock Manager - Create new user";
       this.pnlUserFormBody.ResumeLayout(false);
       this.pnlUserFormBody.PerformLayout();
       this.ResumeLayout(false);
