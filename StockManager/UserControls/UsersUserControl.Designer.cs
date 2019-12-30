@@ -28,31 +28,30 @@
     /// </summary>
     private void InitializeComponent()
     {
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersUserControl));
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.panelTopBar = new System.Windows.Forms.Panel();
-      this.panelSearch = new System.Windows.Forms.Panel();
-      this.buttonSearch = new System.Windows.Forms.Button();
-      this.textBoxSearch = new System.Windows.Forms.TextBox();
+      this.panelActions = new System.Windows.Forms.Panel();
+      this.btnDeleteUser = new System.Windows.Forms.Button();
+      this.btnEditUser = new System.Windows.Forms.Button();
+      this.btnCreateUser = new System.Windows.Forms.Button();
       this.panelTitle = new System.Windows.Forms.Panel();
       this.labelTitle = new System.Windows.Forms.Label();
-      this.btnCreateUser = new System.Windows.Forms.Button();
       this.dgvUsers = new System.Windows.Forms.DataGridView();
       this.columnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnLastLogIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.panelTopBar.SuspendLayout();
-      this.panelSearch.SuspendLayout();
+      this.panelActions.SuspendLayout();
       this.panelTitle.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
       this.SuspendLayout();
       // 
       // panelTopBar
       // 
-      this.panelTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-      this.panelTopBar.Controls.Add(this.panelSearch);
+      this.panelTopBar.BackColor = System.Drawing.Color.Gray;
+      this.panelTopBar.Controls.Add(this.panelActions);
       this.panelTopBar.Controls.Add(this.panelTitle);
       this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
       this.panelTopBar.Location = new System.Drawing.Point(0, 0);
@@ -60,36 +59,62 @@
       this.panelTopBar.Size = new System.Drawing.Size(860, 43);
       this.panelTopBar.TabIndex = 2;
       // 
-      // panelSearch
+      // panelActions
       // 
-      this.panelSearch.Controls.Add(this.buttonSearch);
-      this.panelSearch.Controls.Add(this.textBoxSearch);
-      this.panelSearch.Dock = System.Windows.Forms.DockStyle.Right;
-      this.panelSearch.Location = new System.Drawing.Point(620, 0);
-      this.panelSearch.Name = "panelSearch";
-      this.panelSearch.Size = new System.Drawing.Size(240, 43);
-      this.panelSearch.TabIndex = 3;
+      this.panelActions.Controls.Add(this.btnDeleteUser);
+      this.panelActions.Controls.Add(this.btnEditUser);
+      this.panelActions.Controls.Add(this.btnCreateUser);
+      this.panelActions.Dock = System.Windows.Forms.DockStyle.Right;
+      this.panelActions.Location = new System.Drawing.Point(555, 0);
+      this.panelActions.Name = "panelActions";
+      this.panelActions.Size = new System.Drawing.Size(305, 43);
+      this.panelActions.TabIndex = 3;
       // 
-      // buttonSearch
+      // btnDeleteUser
       // 
-      this.buttonSearch.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-      this.buttonSearch.FlatAppearance.BorderSize = 0;
-      this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.buttonSearch.Image = ((System.Drawing.Image)(resources.GetObject("buttonSearch.Image")));
-      this.buttonSearch.Location = new System.Drawing.Point(197, 11);
-      this.buttonSearch.Name = "buttonSearch";
-      this.buttonSearch.Size = new System.Drawing.Size(26, 21);
-      this.buttonSearch.TabIndex = 2;
-      this.buttonSearch.UseVisualStyleBackColor = true;
+      this.btnDeleteUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnDeleteUser.BackColor = System.Drawing.Color.Firebrick;
+      this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnDeleteUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnDeleteUser.ForeColor = System.Drawing.Color.Black;
+      this.btnDeleteUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnDeleteUser.Location = new System.Drawing.Point(209, 7);
+      this.btnDeleteUser.Name = "btnDeleteUser";
+      this.btnDeleteUser.Size = new System.Drawing.Size(93, 27);
+      this.btnDeleteUser.TabIndex = 9;
+      this.btnDeleteUser.Text = "Delete";
+      this.btnDeleteUser.UseVisualStyleBackColor = false;
       // 
-      // textBoxSearch
+      // btnEditUser
       // 
-      this.textBoxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
-      this.textBoxSearch.ForeColor = System.Drawing.Color.White;
-      this.textBoxSearch.Location = new System.Drawing.Point(15, 11);
-      this.textBoxSearch.Name = "textBoxSearch";
-      this.textBoxSearch.Size = new System.Drawing.Size(179, 22);
-      this.textBoxSearch.TabIndex = 0;
+      this.btnEditUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnEditUser.BackColor = System.Drawing.Color.Goldenrod;
+      this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnEditUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnEditUser.ForeColor = System.Drawing.Color.Black;
+      this.btnEditUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnEditUser.Location = new System.Drawing.Point(110, 7);
+      this.btnEditUser.Name = "btnEditUser";
+      this.btnEditUser.Size = new System.Drawing.Size(93, 27);
+      this.btnEditUser.TabIndex = 8;
+      this.btnEditUser.Text = "Edit";
+      this.btnEditUser.UseVisualStyleBackColor = false;
+      // 
+      // btnCreateUser
+      // 
+      this.btnCreateUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnCreateUser.BackColor = System.Drawing.Color.Green;
+      this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+      this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnCreateUser.ForeColor = System.Drawing.Color.Black;
+      this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnCreateUser.Location = new System.Drawing.Point(11, 7);
+      this.btnCreateUser.Name = "btnCreateUser";
+      this.btnCreateUser.Size = new System.Drawing.Size(93, 27);
+      this.btnCreateUser.TabIndex = 7;
+      this.btnCreateUser.Text = "Add new";
+      this.btnCreateUser.UseVisualStyleBackColor = false;
+      this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
       // 
       // panelTitle
       // 
@@ -103,27 +128,14 @@
       // labelTitle
       // 
       this.labelTitle.AutoSize = true;
-      this.labelTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTitle.BackColor = System.Drawing.Color.Gray;
+      this.labelTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.labelTitle.ForeColor = System.Drawing.Color.Black;
       this.labelTitle.Location = new System.Drawing.Point(11, 11);
       this.labelTitle.Name = "labelTitle";
       this.labelTitle.Size = new System.Drawing.Size(178, 18);
       this.labelTitle.TabIndex = 1;
       this.labelTitle.Text = "Application users";
-      // 
-      // btnCreateUser
-      // 
-      this.btnCreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(232)))), ((int)(((byte)(166)))));
-      this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-      this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
-      this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnCreateUser.Location = new System.Drawing.Point(5, 56);
-      this.btnCreateUser.Name = "btnCreateUser";
-      this.btnCreateUser.Size = new System.Drawing.Size(136, 27);
-      this.btnCreateUser.TabIndex = 7;
-      this.btnCreateUser.Text = "Add new";
-      this.btnCreateUser.UseVisualStyleBackColor = false;
-      this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
       // 
       // dgvUsers
       // 
@@ -138,10 +150,11 @@
       this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.dgvUsers.BackgroundColor = System.Drawing.Color.LightGray;
       this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
       dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
       dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
       dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -155,16 +168,16 @@
       dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
       dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
       dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
       this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
-      this.dgvUsers.Location = new System.Drawing.Point(3, 93);
+      this.dgvUsers.Location = new System.Drawing.Point(0, 40);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.ReadOnly = true;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(854, 324);
+      this.dgvUsers.Size = new System.Drawing.Size(860, 380);
       this.dgvUsers.TabIndex = 0;
       // 
       // columnUsername
@@ -192,9 +205,8 @@
       // UsersUserControl
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-      this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
+      this.BackColor = System.Drawing.Color.WhiteSmoke;
       this.Controls.Add(this.dgvUsers);
-      this.Controls.Add(this.btnCreateUser);
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
@@ -202,8 +214,7 @@
       this.Name = "UsersUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       this.panelTopBar.ResumeLayout(false);
-      this.panelSearch.ResumeLayout(false);
-      this.panelSearch.PerformLayout();
+      this.panelActions.ResumeLayout(false);
       this.panelTitle.ResumeLayout(false);
       this.panelTitle.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
@@ -214,9 +225,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelTopBar;
-        private System.Windows.Forms.Panel panelSearch;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Panel panelActions;
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Button btnCreateUser;
@@ -224,5 +233,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn columnUsername;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnRole;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogIn;
+    private System.Windows.Forms.Button btnEditUser;
+    private System.Windows.Forms.Button btnDeleteUser;
   }
 }
