@@ -30,6 +30,8 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersUserControl));
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       this.panelTopBar = new System.Windows.Forms.Panel();
       this.panelSearch = new System.Windows.Forms.Panel();
       this.buttonSearch = new System.Windows.Forms.Button();
@@ -37,7 +39,6 @@
       this.panelTitle = new System.Windows.Forms.Panel();
       this.labelTitle = new System.Windows.Forms.Label();
       this.btnCreateUser = new System.Windows.Forms.Button();
-      this.pnlTable = new System.Windows.Forms.Panel();
       this.dgvUsers = new System.Windows.Forms.DataGridView();
       this.columnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +46,6 @@
       this.panelTopBar.SuspendLayout();
       this.panelSearch.SuspendLayout();
       this.panelTitle.SuspendLayout();
-      this.pnlTable.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
       this.SuspendLayout();
       // 
@@ -117,45 +117,51 @@
       this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCreateUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(69)))));
       this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnCreateUser.Location = new System.Drawing.Point(14, 58);
+      this.btnCreateUser.Location = new System.Drawing.Point(5, 56);
       this.btnCreateUser.Name = "btnCreateUser";
-      this.btnCreateUser.Size = new System.Drawing.Size(136, 32);
+      this.btnCreateUser.Size = new System.Drawing.Size(136, 27);
       this.btnCreateUser.TabIndex = 7;
       this.btnCreateUser.Text = "Add new";
       this.btnCreateUser.UseVisualStyleBackColor = false;
       this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
       // 
-      // pnlTable
-      // 
-      this.pnlTable.Controls.Add(this.dgvUsers);
-      this.pnlTable.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.pnlTable.Location = new System.Drawing.Point(0, 111);
-      this.pnlTable.Name = "pnlTable";
-      this.pnlTable.Size = new System.Drawing.Size(860, 309);
-      this.pnlTable.TabIndex = 8;
-      // 
       // dgvUsers
       // 
       this.dgvUsers.AllowUserToOrderColumns = true;
+      dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+      dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+      this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.dgvUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
       this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnUsername,
             this.columnRole,
             this.columnLastLogIn});
-      dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DimGray;
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle1;
-      this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.dgvUsers.Location = new System.Drawing.Point(0, 0);
+      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightGray;
+      dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
+      this.dgvUsers.Location = new System.Drawing.Point(3, 93);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(860, 309);
+      this.dgvUsers.Size = new System.Drawing.Size(854, 324);
       this.dgvUsers.TabIndex = 0;
       // 
       // columnUsername
@@ -164,6 +170,7 @@
       this.columnUsername.HeaderText = "Username";
       this.columnUsername.Name = "columnUsername";
       this.columnUsername.ReadOnly = true;
+      this.columnUsername.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       // 
       // columnRole
       // 
@@ -183,7 +190,7 @@
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.Controls.Add(this.pnlTable);
+      this.Controls.Add(this.dgvUsers);
       this.Controls.Add(this.btnCreateUser);
       this.Controls.Add(this.panelTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -196,7 +203,6 @@
       this.panelSearch.PerformLayout();
       this.panelTitle.ResumeLayout(false);
       this.panelTitle.PerformLayout();
-      this.pnlTable.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
       this.ResumeLayout(false);
 
@@ -211,10 +217,9 @@
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Button btnCreateUser;
-        private System.Windows.Forms.Panel pnlTable;
-        private System.Windows.Forms.DataGridView dgvUsers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnUsername;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnRole;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogIn;
-    }
+    private System.Windows.Forms.DataGridView dgvUsers;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnUsername;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnRole;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogIn;
+  }
 }
