@@ -46,11 +46,11 @@
       this.pnlSideMarker = new System.Windows.Forms.Panel();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
       this.pnlViews = new System.Windows.Forms.Panel();
-      this.ucUsers = new StockManager.UserControls.UsersUserControl();
       this.ucDashboard = new StockManager.UserControls.DashboardUserControl();
       this.ucSettings = new StockManager.Controls.SettingsUserControl();
       this.ucInventoryStocks = new StockManager.UserControls.InventoryStocksUserControl();
       this.ucInventoryCategories = new StockManager.UserControls.InventoryCategoriesUserControl();
+      this.ucUsers = new StockManager.UserControls.UsersUserControl();
       this.pnlSidebar.SuspendLayout();
       this.pnlSideBarAvatar.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -109,14 +109,14 @@
       this.pnlSideBarAvatar.ForeColor = System.Drawing.Color.White;
       this.pnlSideBarAvatar.Location = new System.Drawing.Point(0, 0);
       this.pnlSideBarAvatar.Name = "pnlSideBarAvatar";
-      this.pnlSideBarAvatar.Size = new System.Drawing.Size(241, 66);
+      this.pnlSideBarAvatar.Size = new System.Drawing.Size(241, 65);
       this.pnlSideBarAvatar.TabIndex = 7;
       // 
       // label1
       // 
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(57, 22);
+      this.label1.Location = new System.Drawing.Point(59, 21);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(153, 22);
       this.label1.TabIndex = 1;
@@ -299,17 +299,65 @@
       // 
       this.pnlViews.AutoSize = true;
       this.pnlViews.BackColor = System.Drawing.SystemColors.Control;
-      this.pnlViews.Controls.Add(this.ucUsers);
       this.pnlViews.Controls.Add(this.ucDashboard);
       this.pnlViews.Controls.Add(this.ucSettings);
       this.pnlViews.Controls.Add(this.ucInventoryStocks);
       this.pnlViews.Controls.Add(this.ucInventoryCategories);
+      this.pnlViews.Controls.Add(this.ucUsers);
       this.pnlViews.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlViews.ForeColor = System.Drawing.Color.White;
       this.pnlViews.Location = new System.Drawing.Point(241, 0);
       this.pnlViews.Name = "pnlViews";
       this.pnlViews.Size = new System.Drawing.Size(767, 729);
       this.pnlViews.TabIndex = 8;
+      // 
+      // ucDashboard
+      // 
+      this.ucDashboard.BackColor = System.Drawing.Color.Transparent;
+      this.ucDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ucDashboard.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ucDashboard.ForeColor = System.Drawing.Color.White;
+      this.ucDashboard.Location = new System.Drawing.Point(0, 0);
+      this.ucDashboard.Margin = new System.Windows.Forms.Padding(4);
+      this.ucDashboard.Name = "ucDashboard";
+      this.ucDashboard.Size = new System.Drawing.Size(767, 729);
+      this.ucDashboard.TabIndex = 0;
+      // 
+      // ucSettings
+      // 
+      this.ucSettings.BackColor = System.Drawing.Color.Transparent;
+      this.ucSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ucSettings.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ucSettings.ForeColor = System.Drawing.Color.White;
+      this.ucSettings.Location = new System.Drawing.Point(0, 0);
+      this.ucSettings.Margin = new System.Windows.Forms.Padding(4);
+      this.ucSettings.Name = "ucSettings";
+      this.ucSettings.Size = new System.Drawing.Size(767, 729);
+      this.ucSettings.TabIndex = 4;
+      // 
+      // ucInventoryStocks
+      // 
+      this.ucInventoryStocks.BackColor = System.Drawing.Color.Transparent;
+      this.ucInventoryStocks.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ucInventoryStocks.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ucInventoryStocks.ForeColor = System.Drawing.Color.White;
+      this.ucInventoryStocks.Location = new System.Drawing.Point(0, 0);
+      this.ucInventoryStocks.Margin = new System.Windows.Forms.Padding(4);
+      this.ucInventoryStocks.Name = "ucInventoryStocks";
+      this.ucInventoryStocks.Size = new System.Drawing.Size(767, 729);
+      this.ucInventoryStocks.TabIndex = 3;
+      // 
+      // ucInventoryCategories
+      // 
+      this.ucInventoryCategories.BackColor = System.Drawing.Color.Transparent;
+      this.ucInventoryCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.ucInventoryCategories.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.ucInventoryCategories.ForeColor = System.Drawing.Color.White;
+      this.ucInventoryCategories.Location = new System.Drawing.Point(0, 0);
+      this.ucInventoryCategories.Margin = new System.Windows.Forms.Padding(4);
+      this.ucInventoryCategories.Name = "ucInventoryCategories";
+      this.ucInventoryCategories.Size = new System.Drawing.Size(767, 729);
+      this.ucInventoryCategories.TabIndex = 2;
       // 
       // ucUsers
       // 
@@ -322,54 +370,6 @@
       this.ucUsers.Name = "ucUsers";
       this.ucUsers.Size = new System.Drawing.Size(767, 729);
       this.ucUsers.TabIndex = 1;
-      // 
-      // ucDashboard
-      // 
-      this.ucDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.ucDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucDashboard.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucDashboard.ForeColor = System.Drawing.Color.White;
-      this.ucDashboard.Location = new System.Drawing.Point(0, 0);
-      this.ucDashboard.Margin = new System.Windows.Forms.Padding(4);
-      this.ucDashboard.Name = "ucDashboard";
-      this.ucDashboard.Size = new System.Drawing.Size(767, 729);
-      this.ucDashboard.TabIndex = 0;
-      // 
-      // ucSettings
-      // 
-      this.ucSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.ucSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucSettings.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucSettings.ForeColor = System.Drawing.Color.White;
-      this.ucSettings.Location = new System.Drawing.Point(0, 0);
-      this.ucSettings.Margin = new System.Windows.Forms.Padding(4);
-      this.ucSettings.Name = "ucSettings";
-      this.ucSettings.Size = new System.Drawing.Size(767, 729);
-      this.ucSettings.TabIndex = 4;
-      // 
-      // ucInventoryStocks
-      // 
-      this.ucInventoryStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.ucInventoryStocks.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucInventoryStocks.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucInventoryStocks.ForeColor = System.Drawing.Color.White;
-      this.ucInventoryStocks.Location = new System.Drawing.Point(0, 0);
-      this.ucInventoryStocks.Margin = new System.Windows.Forms.Padding(4);
-      this.ucInventoryStocks.Name = "ucInventoryStocks";
-      this.ucInventoryStocks.Size = new System.Drawing.Size(767, 729);
-      this.ucInventoryStocks.TabIndex = 3;
-      // 
-      // ucInventoryCategories
-      // 
-      this.ucInventoryCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
-      this.ucInventoryCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucInventoryCategories.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucInventoryCategories.ForeColor = System.Drawing.Color.White;
-      this.ucInventoryCategories.Location = new System.Drawing.Point(0, 0);
-      this.ucInventoryCategories.Margin = new System.Windows.Forms.Padding(4);
-      this.ucInventoryCategories.Name = "ucInventoryCategories";
-      this.ucInventoryCategories.Size = new System.Drawing.Size(767, 729);
-      this.ucInventoryCategories.TabIndex = 2;
       // 
       // MainForm
       // 
