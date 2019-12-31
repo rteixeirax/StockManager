@@ -9,7 +9,7 @@ using StockManager.Database;
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191231010858_InitialMigration")]
+    [Migration("20191231192227_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

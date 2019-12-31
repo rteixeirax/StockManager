@@ -11,7 +11,7 @@ namespace StockManager.Database
      * 1. Go to your .db file and add it to the solution. 
      * (In this case i added the "AppData" folder with the file inside)
      * 2. Right click on it and go to properties.
-     * 3. Set the Build Action to content.
+     * 3. Set the Build Action to none.
      * 4. Set the Copy to Output Directory to copy if newer.
      * 
      * With this changes, your DB file will be copied to your /bin/debug directory once,
@@ -33,7 +33,7 @@ namespace StockManager.Database
       // And how to set the DB auth. (if possible)
 
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlite(@"Data Source=.\AppData\StockManagerDB.db");
+      optionsBuilder.UseSqlite(@"Data Source=.\AppData\StockManagerDB.sqlite");
     }
 
     // Add Database Tables Here..    
