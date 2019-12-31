@@ -9,7 +9,7 @@ using StockManager.Database;
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191228202817_InitialMigration")]
+    [Migration("20191231010858_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace StockManager.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("LastLogin")
+                    b.Property<DateTime?>("LastLogin")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")

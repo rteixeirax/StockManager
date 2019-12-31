@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,7 +16,8 @@ namespace StockManager.Database.Models
     [Required(ErrorMessage = "Password is required")]
     public string Password { get; set; }
 
-    public DateTime LastLogin { get; set; }
+    // Allow null
+    public DateTime? LastLogin { get; set; }
 
     [ForeignKey("Role")]
     public int RoleId { get; set; }

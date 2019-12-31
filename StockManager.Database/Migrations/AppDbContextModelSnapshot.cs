@@ -37,7 +37,7 @@ namespace StockManager.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("LastLogin")
+                    b.Property<DateTime?>("LastLogin")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")

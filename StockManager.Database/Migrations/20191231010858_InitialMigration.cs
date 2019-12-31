@@ -28,7 +28,7 @@ namespace StockManager.Database.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    LastLogin = table.Column<DateTime>(nullable: false),
+                    LastLogin = table.Column<DateTime>(nullable: true),
                     RoleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
