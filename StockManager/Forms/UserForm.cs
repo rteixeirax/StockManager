@@ -18,11 +18,13 @@ namespace StockManager.Forms
       this.usersUserControl = usersUserControl;
       this.userServices = new UserServices();
       this.roleServices = new RoleServices();
-      this.LoadUserForm();
     }
 
-    public void LoadUserForm()
+    public void ShowUserForm()
     {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
       // hide the error labels
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
@@ -31,6 +33,8 @@ namespace StockManager.Forms
       cbRoles.DataSource = this.roleServices.GetRoles();
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
+
+      this.ShowDialog();
     }
 
     private void ShowFormErrors(User user)
@@ -55,6 +59,11 @@ namespace StockManager.Forms
       {
         this.ShowFormErrors(user);
       }
+    }
+
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+      this.Close();
     }
   }
 }

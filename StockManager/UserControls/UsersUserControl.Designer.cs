@@ -103,7 +103,6 @@
       // 
       this.btnDeleteUser.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnDeleteUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-      this.btnDeleteUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
       this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnDeleteUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnDeleteUser.ForeColor = System.Drawing.Color.White;
@@ -119,7 +118,6 @@
       // 
       this.btnEditUser.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
-      this.btnEditUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
       this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnEditUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnEditUser.ForeColor = System.Drawing.Color.White;
@@ -135,7 +133,6 @@
       // 
       this.btnCreateUser.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnCreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-      this.btnCreateUser.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
       this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCreateUser.ForeColor = System.Drawing.Color.White;
@@ -188,7 +185,7 @@
       this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
       this.dgvUsers.EnableHeadersVisualStyles = false;
       this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.dgvUsers.Location = new System.Drawing.Point(8, 90);
+      this.dgvUsers.Location = new System.Drawing.Point(8, 87);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.ReadOnly = true;
       dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -207,7 +204,7 @@
       dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
       this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(845, 330);
+      this.dgvUsers.Size = new System.Drawing.Size(845, 321);
       this.dgvUsers.TabIndex = 0;
       // 
       // columnUsername
@@ -237,19 +234,19 @@
       this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.tbSeachText.BackColor = System.Drawing.Color.White;
       this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tbSeachText.Location = new System.Drawing.Point(30, 4);
+      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
       this.tbSeachText.Name = "tbSeachText";
-      this.tbSeachText.Size = new System.Drawing.Size(291, 27);
+      this.tbSeachText.Size = new System.Drawing.Size(291, 22);
       this.tbSeachText.TabIndex = 4;
       // 
       // pnbSearchBox
       // 
       this.pnbSearchBox.Controls.Add(pbSearchIcon);
       this.pnbSearchBox.Controls.Add(this.tbSeachText);
-      this.pnbSearchBox.Location = new System.Drawing.Point(3, 51);
+      this.pnbSearchBox.Location = new System.Drawing.Point(3, 48);
       this.pnbSearchBox.Name = "pnbSearchBox";
-      this.pnbSearchBox.Size = new System.Drawing.Size(324, 34);
+      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
       this.pnbSearchBox.TabIndex = 9;
       // 
       // pbSearchIcon
@@ -257,9 +254,9 @@
       pbSearchIcon.BackColor = System.Drawing.Color.LightGray;
       pbSearchIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       pbSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchIcon.Image")));
-      pbSearchIcon.Location = new System.Drawing.Point(5, 4);
+      pbSearchIcon.Location = new System.Drawing.Point(5, 6);
       pbSearchIcon.Name = "pbSearchIcon";
-      pbSearchIcon.Size = new System.Drawing.Size(24, 27);
+      pbSearchIcon.Size = new System.Drawing.Size(24, 22);
       pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       pbSearchIcon.TabIndex = 5;
       pbSearchIcon.TabStop = false;

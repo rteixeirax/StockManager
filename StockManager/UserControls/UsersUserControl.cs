@@ -19,7 +19,9 @@ namespace StockManager.UserControls
 
     public void ShowUserControl()
     {
+      // Spinner
       Cursor.Current = Cursors.WaitCursor;
+
       this.LoadUsers();
       this.BringToFront();
     }
@@ -42,7 +44,7 @@ namespace StockManager.UserControls
     private void btnCreateUser_Click(object sender, EventArgs e)
     {
       var userForm = new UserForm(this);
-      userForm.ShowDialog();
+      userForm.ShowUserForm();
     }
   }
 }
