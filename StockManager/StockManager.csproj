@@ -262,6 +262,10 @@
       <Project>{06e6df51-756b-4d4c-bbbc-5fc389f681f3}</Project>
       <Name>StockManager.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj">
+      <Project>{40d9acbf-76a7-4f70-84cf-b82571830b53}</Project>
+      <Name>StockManager.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

@@ -119,9 +119,9 @@
       this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
       this.lbErrorPassword.Location = new System.Drawing.Point(104, 138);
       this.lbErrorPassword.Name = "lbErrorPassword";
-      this.lbErrorPassword.Size = new System.Drawing.Size(162, 16);
+      this.lbErrorPassword.Size = new System.Drawing.Size(113, 16);
       this.lbErrorPassword.TabIndex = 15;
-      this.lbErrorPassword.Text = "This field is required";
+      this.lbErrorPassword.Text = "Password errors";
       // 
       // lbErrorUsername
       // 
@@ -130,9 +130,9 @@
       this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
       this.lbErrorUsername.Location = new System.Drawing.Point(104, 88);
       this.lbErrorUsername.Name = "lbErrorUsername";
-      this.lbErrorUsername.Size = new System.Drawing.Size(162, 16);
+      this.lbErrorUsername.Size = new System.Drawing.Size(113, 16);
       this.lbErrorUsername.TabIndex = 14;
-      this.lbErrorUsername.Text = "This field is required";
+      this.lbErrorUsername.Text = "Username errors";
       // 
       // btnSave
       // 

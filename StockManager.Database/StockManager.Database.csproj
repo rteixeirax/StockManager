@@ -12,4 +12,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,9 @@
 ﻿using StockManager.Database.Models;
 using StockManager.Services;
+using StockManager.Types;
 using StockManager.UserControls;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace StockManager.Forms
@@ -37,10 +39,25 @@ namespace StockManager.Forms
       this.ShowDialog();
     }
 
-    private void ShowFormErrors(User user)
+    private void ShowFormErrors(List<ErrorType> errors)
     {
-      lbErrorUsername.Visible = string.IsNullOrEmpty(user.Username) ? true : false;
-      lbErrorPassword.Visible = string.IsNullOrEmpty(user.Password) ? true : false;
+      lbErrorUsername.Visible = false;
+      lbErrorPassword.Visible = false;
+
+      foreach (var err in errors)
+      {
+        if (err.Field == "Username")
+        {
+          lbErrorUsername.Text = err.Error;
+          lbErrorUsername.Visible = true;
+        }
+
+        if (err.Field == "Password")
+        {
+          lbErrorPassword.Text = err.Error;
+          lbErrorPassword.Visible = true;
+        }
+      }
     }
 
     private void btnSave_Click(object sender, EventArgs e)
@@ -50,14 +67,16 @@ namespace StockManager.Forms
       user.Password = tbPassword.Text;
       user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
 
-      if (this.userServices.CreateUser(user))
+      List<ErrorType> errors = this.userServices.CreateUser(user);
+
+      if (errors.Count == 0)
       {
         this.usersUserControl.LoadUsers();
         this.Close();
       }
       else
       {
-        this.ShowFormErrors(user);
+        this.ShowFormErrors(errors);
       }
     }
 

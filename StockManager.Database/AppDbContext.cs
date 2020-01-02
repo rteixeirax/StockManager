@@ -36,6 +36,23 @@ namespace StockManager.Database
       optionsBuilder.UseSqlite(@"Data Source=.\AppData\StockManagerDB.sqlite");
     }
 
+    /*
+     * Add models indexes
+     * https://docs.microsoft.com/en-us/ef/core/modeling/indexes
+     */
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Role>()
+          .HasIndex(x => x.Code)
+          .IsUnique()
+          .HasName("UniqueCode");
+
+      modelBuilder.Entity<User>()
+          .HasIndex(x => x.Username)
+          .IsUnique()
+          .HasName("UniqueUsername");
+    }
+
     // Add Database Tables Here..    
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
