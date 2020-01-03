@@ -10,7 +10,7 @@ namespace StockManager.Database
     /*
      * ## How to set the Database connection ##
      *
-     * 1. Go to your .db file and add it to the solution.
+     * 1. Go to your .sqlite file and add it to the solution.
      * (In this case i added the "AppData" folder with the file inside)
      * 2. Right click on it and go to properties.
      * 3. Set the Build Action to none.
