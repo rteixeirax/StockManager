@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database.Models
 {
-  public class Role
+  public class Role : BaseEntity
   {
     [Key]
     public int RoleId { get; set; }

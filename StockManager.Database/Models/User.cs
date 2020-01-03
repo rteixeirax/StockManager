@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockManager.Database.Models
 {
-  public class User
+  public class User : BaseEntity
   {
     [Key]
     public int UserId { get; set; }
