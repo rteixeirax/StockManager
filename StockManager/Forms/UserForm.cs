@@ -51,7 +51,6 @@ namespace StockManager.Forms
       if (user != null)
       {
         tbUsername.Text = user.Username;
-        //tbPassword.Text = user.Password;
         cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
       }
 
