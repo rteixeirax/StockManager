@@ -68,7 +68,7 @@ namespace StockManager.UserControls
       var selectedUsers = dgvUsers.SelectedRows;
 
       if (MessageBox.Show(
-        $"Delete {selectedUsers.Count} Users?",
+        $"Delete {selectedUsers.Count} user(s)?",
         "Are you sure?",
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       )
