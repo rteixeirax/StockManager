@@ -62,9 +62,6 @@ namespace StockManager.UserControls
 
     private void btnDeleteUser_Click(object sender, EventArgs e)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
       var selectedUsers = dgvUsers.SelectedRows;
 
       if (MessageBox.Show(
@@ -73,6 +70,9 @@ namespace StockManager.UserControls
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       )
       {
+        // Spinner
+        Cursor.Current = Cursors.WaitCursor;
+
         int[] userIds = new int[selectedUsers.Count];
 
         for (int i = 0; i < selectedUsers.Count; i++)

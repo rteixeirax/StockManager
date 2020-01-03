@@ -32,7 +32,6 @@
       this.pnlUserFormBody = new System.Windows.Forms.Panel();
       this.btnCancel = new System.Windows.Forms.Button();
       this.pnlTopBar = new System.Windows.Forms.Panel();
-      this.pnlDivider = new System.Windows.Forms.Panel();
       this.lbTitle = new System.Windows.Forms.Label();
       this.lbErrorPassword = new System.Windows.Forms.Label();
       this.lbErrorUsername = new System.Windows.Forms.Label();
@@ -84,21 +83,13 @@
       // pnlTopBar
       // 
       this.pnlTopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.pnlTopBar.Controls.Add(this.pnlDivider);
+      this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.pnlTopBar.Controls.Add(this.lbTitle);
       this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
       this.pnlTopBar.Name = "pnlTopBar";
       this.pnlTopBar.Size = new System.Drawing.Size(372, 44);
       this.pnlTopBar.TabIndex = 16;
-      // 
-      // pnlDivider
-      // 
-      this.pnlDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.pnlDivider.Location = new System.Drawing.Point(8, 43);
-      this.pnlDivider.Name = "pnlDivider";
-      this.pnlDivider.Size = new System.Drawing.Size(380, 1);
-      this.pnlDivider.TabIndex = 4;
       // 
       // lbTitle
       // 
@@ -255,7 +246,6 @@
         private System.Windows.Forms.Label lbErrorPassword;
         private System.Windows.Forms.Label lbErrorUsername;
         private System.Windows.Forms.Panel pnlTopBar;
-        private System.Windows.Forms.Panel pnlDivider;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnCancel;
     }
