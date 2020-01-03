@@ -27,7 +27,7 @@ namespace StockManager.Services
         errors.Add(new ErrorType { Field = "Username", Error = "This field is required." });
       }
 
-      if (string.IsNullOrEmpty(user.Password))
+      if ((dbUser == null) && string.IsNullOrEmpty(user.Password))
       {
         errors.Add(new ErrorType { Field = "Password", Error = "This field is required." });
       }
@@ -65,6 +65,9 @@ namespace StockManager.Services
         return errors;
       }
 
+      // Encrypt password
+      data.Password = BCrypt.Net.BCrypt.HashPassword(data.Password);
+
       this.db.Add(data);
       this.db.SaveChanges();
 
@@ -83,8 +86,11 @@ namespace StockManager.Services
       }
 
       dbUser.Username = user.Username;
-      dbUser.Password = user.Password;
       dbUser.RoleId = user.RoleId;
+      // If change password, encrypt it
+      dbUser.Password = string.IsNullOrEmpty(user.Password)
+        ? dbUser.Password
+        : BCrypt.Net.BCrypt.HashPassword(user.Password);
 
       this.db.SaveChanges();
 
