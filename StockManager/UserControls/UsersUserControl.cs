@@ -34,6 +34,7 @@ namespace StockManager.UserControls
       foreach (var user in users)
       {
         dgvUsers.Rows.Add(
+          user.UserId,
           user.Username,
           user.Role.Code,
           user.LastLogin?.ToString("MM/dd/yyyy")
@@ -45,6 +46,46 @@ namespace StockManager.UserControls
     {
       var userForm = new UserForm(this);
       userForm.ShowUserForm();
+    }
+
+    private void btnEditUser_Click(object sender, EventArgs e)
+    {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
+      var selectedUserId = dgvUsers.SelectedRows[0].Cells[0].Value.ToString();
+      var user = this.userServices.GetUserById(int.Parse(selectedUserId));
+
+      var userForm = new UserForm(this);
+      userForm.ShowUserForm(user);
+    }
+
+    private void btnDeleteUser_Click(object sender, EventArgs e)
+    {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
+      var selectedUsers = dgvUsers.SelectedRows;
+
+      if (MessageBox.Show(
+        $"Delete {selectedUsers.Count} Users?",
+        "Are you sure?",
+        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+      )
+      {
+        int[] userIds = new int[selectedUsers.Count];
+
+        for (int i = 0; i < selectedUsers.Count; i++)
+        {
+          var userId = selectedUsers[i].Cells[0].Value.ToString();
+          userIds[i] = int.Parse(userId);
+        }
+
+        if (this.userServices.DeleteUsers(userIds))
+        {
+          this.LoadUsers();
+        }
+      }
     }
   }
 }

@@ -108,9 +108,9 @@
       this.lbTitle.ForeColor = System.Drawing.Color.White;
       this.lbTitle.Location = new System.Drawing.Point(12, 11);
       this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(230, 22);
+      this.lbTitle.Size = new System.Drawing.Size(109, 22);
       this.lbTitle.TabIndex = 1;
-      this.lbTitle.Text = "Insert the user info";
+      this.lbTitle.Text = "User info";
       // 
       // lbErrorPassword
       // 

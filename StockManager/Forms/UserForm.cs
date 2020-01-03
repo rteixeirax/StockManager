@@ -4,12 +4,14 @@ using StockManager.Types;
 using StockManager.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace StockManager.Forms
 {
   public partial class UserForm : Form
   {
+    private int userId = 0;
     private readonly UsersUserControl usersUserControl;
     private readonly UserServices userServices;
     private readonly RoleServices roleServices;
@@ -22,19 +24,36 @@ namespace StockManager.Forms
       this.roleServices = new RoleServices();
     }
 
-    public void ShowUserForm()
+    public void ShowUserForm(User user = null)
     {
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
+
+      // Set the userId. Means that is a edit
+      this.userId = (user != null) ? user.UserId : 0;
+
+      // Set the Form title
+      this.Text = (this.userId != 0)
+        ? "Stock Manager | Edit user"
+        : "Stock Manager | Create new user";
 
       // hide the error labels
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      cbRoles.DataSource = this.roleServices.GetRoles();
+      var roles = this.roleServices.GetRoles();
+      cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
+
+      // Edit
+      if (user != null)
+      {
+        tbUsername.Text = user.Username;
+        tbPassword.Text = user.Password;
+        cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
+      }
 
       this.ShowDialog();
     }
@@ -67,7 +86,9 @@ namespace StockManager.Forms
       user.Password = tbPassword.Text;
       user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
 
-      List<ErrorType> errors = this.userServices.CreateUser(user);
+      List<ErrorType> errors = (this.userId != 0)
+        ? this.userServices.UpdateUser(this.userId, user)
+        : this.userServices.CreateUser(user);
 
       if (errors.Count == 0)
       {

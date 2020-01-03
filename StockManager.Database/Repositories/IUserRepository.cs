@@ -6,8 +6,14 @@ namespace StockManager.Database.Repositories
 {
   public interface IUserRepository
   {
-    List<ErrorType> CreateUser(User user);
+    List<ErrorType> CreateUser(User data);
+
+    List<ErrorType> UpdateUser(int userId, User data);
 
     IEnumerable<User> GetUsers();
+
+    User GetUserById(int userId);
+
+    bool DeleteUsers(int[] userIds);
   }
 }

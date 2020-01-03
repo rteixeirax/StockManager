@@ -17,7 +17,8 @@ namespace StockManager.Services
       this.db = new AppDbContext();
     }
 
-    private List<ErrorType> ValidateUser(User user)
+    /* Validate User form data */
+    private List<ErrorType> ValidateUserData(User user, User dbUser = null)
     {
       List<ErrorType> errors = new List<ErrorType>();
 
@@ -39,9 +40,12 @@ namespace StockManager.Services
 
       // Check if the username already exist
       // This validation only occurs when all form fields have no errors
-      int userNameCount = this.db.Users.Where(x => x.Username == user.Username).Count();
+      // And only if is a create or an update and the username has changed
+      int usernameCount = ((dbUser == null) || (dbUser.Username != user.Username))
+        ? this.db.Users.Where(x => x.Username == user.Username).Count()
+        : 0;
 
-      if (userNameCount > 0)
+      if (usernameCount > 0)
       {
         errors.Add(new ErrorType { Field = "Username", Error = "This username already exist." });
         return errors;
@@ -51,21 +55,60 @@ namespace StockManager.Services
       return errors;
     }
 
-    public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
-
-    public List<ErrorType> CreateUser(User user)
+    /* Create User */
+    public List<ErrorType> CreateUser(User data)
     {
-      List<ErrorType> errors = this.ValidateUser(user);
+      List<ErrorType> errors = this.ValidateUserData(data);
 
       if (errors.Count > 0)
       {
         return errors;
       }
 
-      this.db.Add(user);
+      this.db.Add(data);
       this.db.SaveChanges();
 
       return errors;
+    }
+
+    /* Update User */
+    public List<ErrorType> UpdateUser(int userId, User user)
+    {
+      User dbUser = this.GetUserById(userId);
+      List<ErrorType> errors = this.ValidateUserData(user, dbUser);
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      dbUser.Username = user.Username;
+      dbUser.Password = user.Password;
+      dbUser.RoleId = user.RoleId;
+
+      this.db.SaveChanges();
+
+      return errors;
+    }
+
+    /* Get All Users */
+    public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
+
+    /* Get User by Id */
+    public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
+
+    /* Delete Users */
+    public bool DeleteUsers(int[] userIds)
+    {
+      foreach (int userId in userIds)
+      {
+        User user = this.GetUserById(userId);
+        this.db.Users.Remove(user);
+      }
+
+      this.db.SaveChanges();
+
+      return true;
     }
   }
 }
