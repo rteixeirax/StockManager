@@ -166,6 +166,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorTables\MenuStripProfessionalColorTable.cs" />
+    <Compile Include="Forms\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     <Compile Include="UserControls\UsersUserControl.Designer.cs">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

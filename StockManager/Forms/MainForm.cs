@@ -20,7 +20,6 @@ namespace StockManager.Forms
       msUsername.Items[0].Text = "Ricardo Teixeira";
     }
 
-    #region HELPER FUNCTIONS
     private void SetMarkerPosition(Control btn)
     {
       pnlSideMarker.Height = btn.Height;
@@ -44,9 +43,7 @@ namespace StockManager.Forms
         : pnlInventorySubMenu.Top;
       btnSettings.Top = btnUsers.Bottom + 6;
     }
-    #endregion HELPER FUNCTIONS
 
-    #region FORM EVENTS
     private void btnDashboard_Click(object sender, EventArgs e)
     {
       ucDashboard.BringToFront();
@@ -81,7 +78,12 @@ namespace StockManager.Forms
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
     }
-    #endregion FORM EVENTS
+
+    private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      var changePasswordForm = new ChangePasswordForm();
+      changePasswordForm.ShowChangePasswordForm();
+    }
 
     private void btnExit_Click(object sender, EventArgs e)
     {
