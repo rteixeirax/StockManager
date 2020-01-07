@@ -165,6 +165,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorTables\MenuStripProfessionalColorTable.cs" />
     <Compile Include="Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>

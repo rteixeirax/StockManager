@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StockManager.ColorTables;
+using System;
 using System.Windows.Forms;
 
 namespace StockManager.Forms
@@ -20,6 +14,10 @@ namespace StockManager.Forms
 
       // initialize with dashboard panel
       ucDashboard.BringToFront();
+
+      // Set the logged in username
+      msUsername.Renderer = new ToolStripProfessionalRenderer(new MenuStripProfessionalColorTable());
+      msUsername.Items[0].Text = "Ricardo Teixeira";
     }
 
     #region HELPER FUNCTIONS

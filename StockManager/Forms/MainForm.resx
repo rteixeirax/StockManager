@@ -3309,6 +3309,16 @@
         fsD0R24GBrtnexss7X6YXq9+8gjmYx4GW/yA6Y9cP/nrRC4mLe0+jpdrFgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="msUsername.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>181, 17</value>
+  </metadata>
+  <data name="usernameToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAEBJREFUOE9jGAWDEuRu42Mr3RWKDYPkoKrwA5bSHeWsZTv/I2OWsh31UGniALIh
+        JGuGAdbSnQ0gDOWOgkEKGBgAjL0i6RlB1JUAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

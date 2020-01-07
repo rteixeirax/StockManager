@@ -30,10 +30,9 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.pnlSidebar = new System.Windows.Forms.Panel();
-      this.lbUsername = new System.Windows.Forms.Label();
       this.lbSignIn = new System.Windows.Forms.Label();
       this.pnlSideBarAvatar = new System.Windows.Forms.Panel();
-      this.label1 = new System.Windows.Forms.Label();
+      this.lbAppName = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.pnlInventorySubMenu = new System.Windows.Forms.Panel();
       this.btnStocks = new System.Windows.Forms.Button();
@@ -44,6 +43,10 @@
       this.btnInventory = new System.Windows.Forms.Button();
       this.btnDashboard = new System.Windows.Forms.Button();
       this.pnlSideMarker = new System.Windows.Forms.Panel();
+      this.msUsername = new System.Windows.Forms.MenuStrip();
+      this.usernameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
       this.pnlViews = new System.Windows.Forms.Panel();
       this.ucDashboard = new StockManager.UserControls.DashboardUserControl();
@@ -55,13 +58,13 @@
       this.pnlSideBarAvatar.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.pnlInventorySubMenu.SuspendLayout();
+      this.msUsername.SuspendLayout();
       this.pnlViews.SuspendLayout();
       this.SuspendLayout();
       // 
       // pnlSidebar
       // 
       this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.pnlSidebar.Controls.Add(this.lbUsername);
       this.pnlSidebar.Controls.Add(this.lbSignIn);
       this.pnlSidebar.Controls.Add(this.pnlSideBarAvatar);
       this.pnlSidebar.Controls.Add(this.pnlInventorySubMenu);
@@ -71,23 +74,12 @@
       this.pnlSidebar.Controls.Add(this.btnInventory);
       this.pnlSidebar.Controls.Add(this.btnDashboard);
       this.pnlSidebar.Controls.Add(this.pnlSideMarker);
+      this.pnlSidebar.Controls.Add(this.msUsername);
       this.pnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
       this.pnlSidebar.Location = new System.Drawing.Point(0, 0);
       this.pnlSidebar.Name = "pnlSidebar";
       this.pnlSidebar.Size = new System.Drawing.Size(241, 729);
       this.pnlSidebar.TabIndex = 2;
-      // 
-      // lbUsername
-      // 
-      this.lbUsername.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-      this.lbUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbUsername.ForeColor = System.Drawing.Color.White;
-      this.lbUsername.Location = new System.Drawing.Point(20, 648);
-      this.lbUsername.Name = "lbUsername";
-      this.lbUsername.Size = new System.Drawing.Size(172, 17);
-      this.lbUsername.TabIndex = 5;
-      this.lbUsername.Text = "Ricardo Teixeira";
-      this.lbUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // lbSignIn
       // 
@@ -95,7 +87,7 @@
       this.lbSignIn.AutoSize = true;
       this.lbSignIn.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbSignIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbSignIn.Location = new System.Drawing.Point(18, 632);
+      this.lbSignIn.Location = new System.Drawing.Point(15, 621);
       this.lbSignIn.Name = "lbSignIn";
       this.lbSignIn.Size = new System.Drawing.Size(91, 14);
       this.lbSignIn.TabIndex = 6;
@@ -103,7 +95,7 @@
       // 
       // pnlSideBarAvatar
       // 
-      this.pnlSideBarAvatar.Controls.Add(this.label1);
+      this.pnlSideBarAvatar.Controls.Add(this.lbAppName);
       this.pnlSideBarAvatar.Controls.Add(this.pictureBox1);
       this.pnlSideBarAvatar.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlSideBarAvatar.ForeColor = System.Drawing.Color.White;
@@ -112,15 +104,15 @@
       this.pnlSideBarAvatar.Size = new System.Drawing.Size(241, 65);
       this.pnlSideBarAvatar.TabIndex = 7;
       // 
-      // label1
+      // lbAppName
       // 
-      this.label1.AutoSize = true;
-      this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(59, 21);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(153, 22);
-      this.label1.TabIndex = 1;
-      this.label1.Text = "Stock Manager";
+      this.lbAppName.AutoSize = true;
+      this.lbAppName.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAppName.Location = new System.Drawing.Point(59, 21);
+      this.lbAppName.Name = "lbAppName";
+      this.lbAppName.Size = new System.Drawing.Size(153, 22);
+      this.lbAppName.TabIndex = 1;
+      this.lbAppName.Text = "Stock Manager";
       // 
       // pictureBox1
       // 
@@ -295,6 +287,54 @@
       this.pnlSideMarker.Size = new System.Drawing.Size(6, 32);
       this.pnlSideMarker.TabIndex = 3;
       // 
+      // msUsername
+      // 
+      this.msUsername.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.msUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.msUsername.Dock = System.Windows.Forms.DockStyle.None;
+      this.msUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.msUsername.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usernameToolStripMenuItem});
+      this.msUsername.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+      this.msUsername.Location = new System.Drawing.Point(7, 635);
+      this.msUsername.Name = "msUsername";
+      this.msUsername.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+      this.msUsername.Size = new System.Drawing.Size(219, 24);
+      this.msUsername.TabIndex = 10;
+      this.msUsername.Text = "menuStrip1";
+      // 
+      // usernameToolStripMenuItem
+      // 
+      this.usernameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.usernameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem,
+            this.logoutToolStripMenuItem});
+      this.usernameToolStripMenuItem.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.usernameToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+      this.usernameToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usernameToolStripMenuItem.Image")));
+      this.usernameToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+      this.usernameToolStripMenuItem.Name = "usernameToolStripMenuItem";
+      this.usernameToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+      this.usernameToolStripMenuItem.Text = "Username";
+      // 
+      // changePasswordToolStripMenuItem
+      // 
+      this.changePasswordToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.changePasswordToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.changePasswordToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+      this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+      this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.changePasswordToolStripMenuItem.Text = "Change password";
+      // 
+      // logoutToolStripMenuItem
+      // 
+      this.logoutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.logoutToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+      this.logoutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+      this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+      this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.logoutToolStripMenuItem.Text = "Logout";
+      // 
       // pnlViews
       // 
       this.pnlViews.AutoSize = true;
@@ -380,6 +420,7 @@
       this.Controls.Add(this.pnlSidebar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+      this.MainMenuStrip = this.msUsername;
       this.MinimumSize = new System.Drawing.Size(800, 600);
       this.Name = "MainForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -390,6 +431,8 @@
       this.pnlSideBarAvatar.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       this.pnlInventorySubMenu.ResumeLayout(false);
+      this.msUsername.ResumeLayout(false);
+      this.msUsername.PerformLayout();
       this.pnlViews.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -401,7 +444,6 @@
         private System.Windows.Forms.Button btnInventory;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.Panel pnlSideMarker;
-        private System.Windows.Forms.Label lbUsername;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnUsers;
@@ -416,8 +458,12 @@
         private Controls.SettingsUserControl ucSettings;
         private UserControls.InventoryStocksUserControl ucInventoryStocks;
         private UserControls.InventoryCategoriesUserControl ucInventoryCategories;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbAppName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbSignIn;
-    }
+        private System.Windows.Forms.MenuStrip msUsername;
+        private System.Windows.Forms.ToolStripMenuItem usernameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+  }
 }
