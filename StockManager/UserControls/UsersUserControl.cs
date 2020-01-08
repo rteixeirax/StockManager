@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using StockManager.Database.Models;
 using StockManager.Forms;
 
 namespace StockManager.UserControls
@@ -23,7 +25,7 @@ namespace StockManager.UserControls
     public void LoadUsers()
     {
       dgvUsers.Rows.Clear();
-      var users = Program.userServices.GetUsers();
+      IEnumerable<User> users = Program.userServices.GetUsers();
 
       foreach (var user in users)
       {
@@ -38,7 +40,7 @@ namespace StockManager.UserControls
 
     private void btnCreateUser_Click(object sender, EventArgs e)
     {
-      var userForm = new UserForm(this);
+      UserForm userForm = new UserForm(this);
       userForm.ShowUserForm();
     }
 
@@ -47,16 +49,16 @@ namespace StockManager.UserControls
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
-      var selectedUserId = dgvUsers.SelectedRows[0].Cells[0].Value.ToString();
-      var user = Program.userServices.GetUserById(int.Parse(selectedUserId));
+      User user = Program.userServices
+        .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
-      var userForm = new UserForm(this);
+      UserForm userForm = new UserForm(this);
       userForm.ShowUserForm(user);
     }
 
     private void btnDeleteUser_Click(object sender, EventArgs e)
     {
-      var selectedUsers = dgvUsers.SelectedRows;
+      DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
 
       if (MessageBox.Show(
         $"Delete {selectedUsers.Count} user(s)?",
@@ -71,8 +73,7 @@ namespace StockManager.UserControls
 
         for (int i = 0; i < selectedUsers.Count; i++)
         {
-          var userId = selectedUsers[i].Cells[0].Value.ToString();
-          userIds[i] = int.Parse(userId);
+          userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
         }
 
         if (Program.userServices.DeleteUsers(userIds))

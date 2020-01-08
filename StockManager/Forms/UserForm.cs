@@ -37,7 +37,7 @@ namespace StockManager.Forms
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      var roles = Program.roleServices.GetRoles();
+      IEnumerable<Role> roles = Program.roleServices.GetRoles();
       cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
