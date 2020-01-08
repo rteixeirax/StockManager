@@ -12,9 +12,9 @@ namespace StockManager.Services
   {
     private readonly AppDbContext db;
 
-    public UserServices()
+    public UserServices(AppDbContext db)
     {
-      this.db = new AppDbContext();
+      this.db = db;
     }
 
     /* Validate User form data */

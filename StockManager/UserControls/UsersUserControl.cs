@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using StockManager.Forms;
-using StockManager.Database.Models;
-using StockManager.Services;
 
 namespace StockManager.UserControls
 {
   public partial class UsersUserControl : UserControl
   {
-    private readonly UserServices userServices;
-
     public UsersUserControl()
     {
       InitializeComponent();
-      this.userServices = new UserServices();
     }
 
     public void ShowUserControl()
@@ -29,7 +23,7 @@ namespace StockManager.UserControls
     public void LoadUsers()
     {
       dgvUsers.Rows.Clear();
-      var users = this.userServices.GetUsers();
+      var users = Program.userServices.GetUsers();
 
       foreach (var user in users)
       {
@@ -54,7 +48,7 @@ namespace StockManager.UserControls
       Cursor.Current = Cursors.WaitCursor;
 
       var selectedUserId = dgvUsers.SelectedRows[0].Cells[0].Value.ToString();
-      var user = this.userServices.GetUserById(int.Parse(selectedUserId));
+      var user = Program.userServices.GetUserById(int.Parse(selectedUserId));
 
       var userForm = new UserForm(this);
       userForm.ShowUserForm(user);
@@ -81,7 +75,7 @@ namespace StockManager.UserControls
           userIds[i] = int.Parse(userId);
         }
 
-        if (this.userServices.DeleteUsers(userIds))
+        if (Program.userServices.DeleteUsers(userIds))
         {
           this.LoadUsers();
         }

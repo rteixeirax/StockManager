@@ -12,9 +12,9 @@ namespace StockManager.Services
   {
     private readonly AppDbContext db;
 
-    public RoleServices()
+    public RoleServices(AppDbContext db)
     {
-      this.db = new AppDbContext();
+      this.db = db;
     }
 
     public IEnumerable<Role> GetRoles() => this.db.Roles.ToList();

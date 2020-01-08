@@ -1,5 +1,4 @@
 ﻿using StockManager.Database.Models;
-using StockManager.Services;
 using StockManager.Types;
 using StockManager.UserControls;
 using System;
@@ -13,15 +12,11 @@ namespace StockManager.Forms
   {
     private int userId = 0;
     private readonly UsersUserControl usersUserControl;
-    private readonly UserServices userServices;
-    private readonly RoleServices roleServices;
 
     public UserForm(UsersUserControl usersUserControl)
     {
       InitializeComponent();
       this.usersUserControl = usersUserControl;
-      this.userServices = new UserServices();
-      this.roleServices = new RoleServices();
     }
 
     public void ShowUserForm(User user = null)
@@ -42,7 +37,7 @@ namespace StockManager.Forms
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      var roles = this.roleServices.GetRoles();
+      var roles = Program.roleServices.GetRoles();
       cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
@@ -86,8 +81,8 @@ namespace StockManager.Forms
       user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
 
       List<ErrorType> errors = (this.userId != 0)
-        ? this.userServices.UpdateUser(this.userId, user)
-        : this.userServices.CreateUser(user);
+        ? Program.userServices.UpdateUser(this.userId, user)
+        : Program.userServices.CreateUser(user);
 
       if (errors.Count == 0)
       {
