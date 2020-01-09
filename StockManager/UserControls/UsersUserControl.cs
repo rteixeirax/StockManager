@@ -15,15 +15,15 @@ namespace StockManager.UserControls
 
     public void ShowUserControl()
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
       this.LoadUsers();
       this.BringToFront();
     }
 
     public void LoadUsers()
     {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
       dgvUsers.Rows.Clear();
       IEnumerable<User> users = Program.userServices.GetUsers();
 
@@ -33,7 +33,8 @@ namespace StockManager.UserControls
           user.UserId,
           user.Username,
           user.Role.Code,
-          user.LastLogin?.ToString("MM/dd/yyyy")
+          user.LastLogin?.ToString("MM/dd/yyyy HH:mm:ss"),
+          user.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
         );
       }
     }
