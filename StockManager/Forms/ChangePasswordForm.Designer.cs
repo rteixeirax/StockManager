@@ -34,12 +34,12 @@
       this.pnlTopBar = new System.Windows.Forms.Panel();
       this.lbTitle = new System.Windows.Forms.Label();
       this.lbErrorNewPassword = new System.Windows.Forms.Label();
-      this.lbErrorOldPassword = new System.Windows.Forms.Label();
+      this.lbErrorCurrentPassword = new System.Windows.Forms.Label();
       this.btnSave = new System.Windows.Forms.Button();
       this.tbNewPassword = new System.Windows.Forms.TextBox();
       this.lbNewPassword = new System.Windows.Forms.Label();
-      this.tbOldPassword = new System.Windows.Forms.TextBox();
-      this.lbOldPassword = new System.Windows.Forms.Label();
+      this.tbCurrentPassword = new System.Windows.Forms.TextBox();
+      this.lbCurrentPassword = new System.Windows.Forms.Label();
       this.pnlBody.SuspendLayout();
       this.pnlTopBar.SuspendLayout();
       this.SuspendLayout();
@@ -50,12 +50,12 @@
       this.pnlBody.Controls.Add(this.btnCancel);
       this.pnlBody.Controls.Add(this.pnlTopBar);
       this.pnlBody.Controls.Add(this.lbErrorNewPassword);
-      this.pnlBody.Controls.Add(this.lbErrorOldPassword);
+      this.pnlBody.Controls.Add(this.lbErrorCurrentPassword);
       this.pnlBody.Controls.Add(this.btnSave);
       this.pnlBody.Controls.Add(this.tbNewPassword);
       this.pnlBody.Controls.Add(this.lbNewPassword);
-      this.pnlBody.Controls.Add(this.tbOldPassword);
-      this.pnlBody.Controls.Add(this.lbOldPassword);
+      this.pnlBody.Controls.Add(this.tbCurrentPassword);
+      this.pnlBody.Controls.Add(this.lbCurrentPassword);
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
@@ -110,16 +110,16 @@
       this.lbErrorNewPassword.TabIndex = 15;
       this.lbErrorNewPassword.Text = "New password errors";
       // 
-      // lbErrorOldPassword
+      // lbErrorCurrentPassword
       // 
-      this.lbErrorOldPassword.AutoSize = true;
-      this.lbErrorOldPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorOldPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorOldPassword.Location = new System.Drawing.Point(26, 101);
-      this.lbErrorOldPassword.Name = "lbErrorOldPassword";
-      this.lbErrorOldPassword.Size = new System.Drawing.Size(141, 16);
-      this.lbErrorOldPassword.TabIndex = 14;
-      this.lbErrorOldPassword.Text = "Old password errors";
+      this.lbErrorCurrentPassword.AutoSize = true;
+      this.lbErrorCurrentPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbErrorCurrentPassword.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorCurrentPassword.Location = new System.Drawing.Point(26, 101);
+      this.lbErrorCurrentPassword.Name = "lbErrorCurrentPassword";
+      this.lbErrorCurrentPassword.Size = new System.Drawing.Size(169, 16);
+      this.lbErrorCurrentPassword.TabIndex = 14;
+      this.lbErrorCurrentPassword.Text = "Current password errors";
       // 
       // btnSave
       // 
@@ -133,6 +133,7 @@
       this.btnSave.TabIndex = 4;
       this.btnSave.Text = "Save";
       this.btnSave.UseVisualStyleBackColor = false;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
       // tbNewPassword
       // 
@@ -158,29 +159,29 @@
       this.lbNewPassword.TabIndex = 9;
       this.lbNewPassword.Text = "New password";
       // 
-      // tbOldPassword
+      // tbCurrentPassword
       // 
-      this.tbOldPassword.BackColor = System.Drawing.Color.White;
-      this.tbOldPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbOldPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbOldPassword.Location = new System.Drawing.Point(17, 78);
-      this.tbOldPassword.Name = "tbOldPassword";
-      this.tbOldPassword.PasswordChar = '*';
-      this.tbOldPassword.Size = new System.Drawing.Size(252, 20);
-      this.tbOldPassword.TabIndex = 1;
-      this.tbOldPassword.UseSystemPasswordChar = true;
+      this.tbCurrentPassword.BackColor = System.Drawing.Color.White;
+      this.tbCurrentPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.tbCurrentPassword.ForeColor = System.Drawing.Color.Black;
+      this.tbCurrentPassword.Location = new System.Drawing.Point(17, 78);
+      this.tbCurrentPassword.Name = "tbCurrentPassword";
+      this.tbCurrentPassword.PasswordChar = '*';
+      this.tbCurrentPassword.Size = new System.Drawing.Size(252, 20);
+      this.tbCurrentPassword.TabIndex = 1;
+      this.tbCurrentPassword.UseSystemPasswordChar = true;
       // 
-      // lbOldPassword
+      // lbCurrentPassword
       // 
-      this.lbOldPassword.AutoSize = true;
-      this.lbOldPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbOldPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbOldPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbOldPassword.Location = new System.Drawing.Point(14, 59);
-      this.lbOldPassword.Name = "lbOldPassword";
-      this.lbOldPassword.Size = new System.Drawing.Size(104, 16);
-      this.lbOldPassword.TabIndex = 2;
-      this.lbOldPassword.Text = "Old password";
+      this.lbCurrentPassword.AutoSize = true;
+      this.lbCurrentPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbCurrentPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      this.lbCurrentPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+      this.lbCurrentPassword.Location = new System.Drawing.Point(14, 59);
+      this.lbCurrentPassword.Name = "lbCurrentPassword";
+      this.lbCurrentPassword.Size = new System.Drawing.Size(136, 16);
+      this.lbCurrentPassword.TabIndex = 2;
+      this.lbCurrentPassword.Text = "Current password";
       // 
       // ChangePasswordForm
       // 
@@ -209,11 +210,11 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Label lbErrorNewPassword;
-        private System.Windows.Forms.Label lbErrorOldPassword;
+        private System.Windows.Forms.Label lbErrorCurrentPassword;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbNewPassword;
         private System.Windows.Forms.Label lbNewPassword;
-        private System.Windows.Forms.TextBox tbOldPassword;
-        private System.Windows.Forms.Label lbOldPassword;
+        private System.Windows.Forms.TextBox tbCurrentPassword;
+        private System.Windows.Forms.Label lbCurrentPassword;
     }
 }

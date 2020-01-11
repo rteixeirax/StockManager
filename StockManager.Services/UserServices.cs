@@ -97,6 +97,44 @@ namespace StockManager.Services
       return errors;
     }
 
+    /* Change Password */
+    public List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword)
+    {
+      List<ErrorType> errors = new List<ErrorType>();
+
+      // Validate data
+      if (string.IsNullOrEmpty(currentPassword))
+      {
+        errors.Add(new ErrorType { Field = "CurrentPassword", Error = "This field is required." });
+      }
+
+      if (string.IsNullOrEmpty(newPassword))
+      {
+        errors.Add(new ErrorType { Field = "NewPassword", Error = "This field is required." });
+      }
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      // Get the user to verify the current password
+      User dbUser = this.GetUserById(userId);
+
+      if ((dbUser != null) && BCrypt.Net.BCrypt.Verify(currentPassword, dbUser.Password))
+      {
+        // Encrypt password
+        dbUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
+        this.db.SaveChanges();
+      }
+      else
+      {
+        errors.Add(new ErrorType { Field = "CurrentPassword", Error = "Invalid password." });
+      }
+
+      return errors;
+    }
+
     /* Get All Users */
     public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
 

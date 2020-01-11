@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StockManager.Database.Models;
+using StockManager.Types;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +22,52 @@ namespace StockManager.Forms
     public void ShowChangePasswordForm()
     {
       // hide the error labels
-      lbErrorOldPassword.Visible = false;
+      lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
 
       this.ShowDialog();
+    }
+
+    private void SetFormErrors(List<ErrorType> errors)
+    {
+      lbErrorCurrentPassword.Visible = false;
+      lbErrorNewPassword.Visible = false;
+
+      foreach (var err in errors)
+      {
+        if (err.Field == "CurrentPassword")
+        {
+          lbErrorCurrentPassword.Text = err.Error;
+          lbErrorCurrentPassword.Visible = true;
+        }
+
+        if (err.Field == "NewPassword")
+        {
+          lbErrorNewPassword.Text = err.Error;
+          lbErrorNewPassword.Visible = true;
+        }
+      }
+    }
+
+    private void btnSave_Click(object sender, EventArgs e)
+    {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
+      List<ErrorType> errors = Program.userServices.ChangePassword(
+        Program.loggedInUser.UserId,
+        tbCurrentPassword.Text,
+        tbNewPassword.Text
+      );
+
+      if (errors.Count == 0)
+      {
+        this.Close();
+      }
+      else
+      {
+        this.SetFormErrors(errors);
+      }
     }
 
     private void btnCancel_Click(object sender, EventArgs e)

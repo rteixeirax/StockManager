@@ -10,6 +10,8 @@ namespace StockManager.Database.Repositories
 
     List<ErrorType> UpdateUser(int userId, User data);
 
+    List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword);
+    
     IEnumerable<User> GetUsers();
 
     User GetUserById(int userId);
