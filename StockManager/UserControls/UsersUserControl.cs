@@ -11,12 +11,7 @@ namespace StockManager.UserControls
     public UsersUserControl()
     {
       InitializeComponent();
-    }
-
-    public void ShowUserControl()
-    {
       this.LoadUsers();
-      this.BringToFront();
     }
 
     public void LoadUsers()

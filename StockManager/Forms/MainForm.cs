@@ -1,4 +1,5 @@
 ﻿using StockManager.ColorTables;
+using StockManager.UserControls;
 using System;
 using System.Windows.Forms;
 
@@ -12,8 +13,11 @@ namespace StockManager.Forms
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
 
-      // initialize with dashboard panel
-      ucDashboard.BringToFront();
+      // Set initial view
+      pnlViews.Controls.Clear();
+      UserControl ucDashboard = new DashboardUserControl();
+      ucDashboard.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucDashboard);
 
       // Set the logged in username
       msUsername.Renderer = new ToolStripProfessionalRenderer(new MenuStripProfessionalColorTable());
@@ -46,9 +50,14 @@ namespace StockManager.Forms
 
     private void btnDashboard_Click(object sender, EventArgs e)
     {
-      ucDashboard.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
+
+      // Show the Dashboard view 
+      pnlViews.Controls.Clear();
+      UserControl ucDashboard = new DashboardUserControl();
+      ucDashboard.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucDashboard);
     }
 
     private void btnInventory_Click(object sender, EventArgs e)
@@ -58,25 +67,43 @@ namespace StockManager.Forms
     }
     private void btnStockCategories_Click(object sender, EventArgs e)
     {
-      ucInventoryCategories.BringToFront();
+      // Show the InventoryCategories view 
+      pnlViews.Controls.Clear();
+      UserControl ucInventoryCategories = new InventoryCategoriesUserControl();
+      ucInventoryCategories.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryCategories);
     }
     private void btnStocks_Click(object sender, EventArgs e)
     {
-      ucInventoryStocks.BringToFront();
+      // Show the InventoryCategories view 
+      pnlViews.Controls.Clear();
+      UserControl ucInventoryStocks = new InventoryStocksUserControl();
+      ucInventoryStocks.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryStocks);
     }
 
     private void btnUsers_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
-      ucUsers.ShowUserControl();
+
+      // Show the UsersUser view 
+      pnlViews.Controls.Clear();
+      UserControl ucUsers = new UsersUserControl();
+      ucUsers.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucUsers);
     }
 
     private void btnSettings_Click(object sender, EventArgs e)
     {
-      ucSettings.BringToFront();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
+
+      // Show the Settings view 
+      pnlViews.Controls.Clear();
+      UserControl ucSettings = new SettingsUserControl();
+      ucSettings.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucSettings);
     }
 
     private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)

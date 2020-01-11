@@ -49,17 +49,11 @@
       this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
       this.pnlViews = new System.Windows.Forms.Panel();
-      this.ucDashboard = new StockManager.UserControls.DashboardUserControl();
-      this.ucSettings = new StockManager.Controls.SettingsUserControl();
-      this.ucInventoryStocks = new StockManager.UserControls.InventoryStocksUserControl();
-      this.ucInventoryCategories = new StockManager.UserControls.InventoryCategoriesUserControl();
-      this.ucUsers = new StockManager.UserControls.UsersUserControl();
       this.pnlSidebar.SuspendLayout();
       this.pnlSideBarAvatar.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.pnlInventorySubMenu.SuspendLayout();
       this.msUsername.SuspendLayout();
-      this.pnlViews.SuspendLayout();
       this.SuspendLayout();
       // 
       // pnlSidebar
@@ -299,7 +293,7 @@
       this.msUsername.Location = new System.Drawing.Point(7, 635);
       this.msUsername.Name = "msUsername";
       this.msUsername.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-      this.msUsername.Size = new System.Drawing.Size(219, 24);
+      this.msUsername.Size = new System.Drawing.Size(99, 24);
       this.msUsername.TabIndex = 10;
       this.msUsername.Text = "menuStrip1";
       // 
@@ -323,7 +317,7 @@
       this.changePasswordToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
       this.changePasswordToolStripMenuItem.ForeColor = System.Drawing.Color.White;
       this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-      this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
       this.changePasswordToolStripMenuItem.Text = "Change password";
       this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
       // 
@@ -333,84 +327,19 @@
       this.logoutToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
       this.logoutToolStripMenuItem.ForeColor = System.Drawing.Color.White;
       this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-      this.logoutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.logoutToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
       this.logoutToolStripMenuItem.Text = "Logout";
       // 
       // pnlViews
       // 
       this.pnlViews.AutoSize = true;
       this.pnlViews.BackColor = System.Drawing.SystemColors.Control;
-      this.pnlViews.Controls.Add(this.ucDashboard);
-      this.pnlViews.Controls.Add(this.ucSettings);
-      this.pnlViews.Controls.Add(this.ucInventoryStocks);
-      this.pnlViews.Controls.Add(this.ucInventoryCategories);
-      this.pnlViews.Controls.Add(this.ucUsers);
       this.pnlViews.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlViews.ForeColor = System.Drawing.Color.White;
       this.pnlViews.Location = new System.Drawing.Point(241, 0);
       this.pnlViews.Name = "pnlViews";
       this.pnlViews.Size = new System.Drawing.Size(767, 729);
       this.pnlViews.TabIndex = 8;
-      // 
-      // ucDashboard
-      // 
-      this.ucDashboard.BackColor = System.Drawing.Color.Transparent;
-      this.ucDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucDashboard.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucDashboard.ForeColor = System.Drawing.Color.White;
-      this.ucDashboard.Location = new System.Drawing.Point(0, 0);
-      this.ucDashboard.Margin = new System.Windows.Forms.Padding(4);
-      this.ucDashboard.Name = "ucDashboard";
-      this.ucDashboard.Size = new System.Drawing.Size(767, 729);
-      this.ucDashboard.TabIndex = 0;
-      // 
-      // ucSettings
-      // 
-      this.ucSettings.BackColor = System.Drawing.Color.Transparent;
-      this.ucSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucSettings.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucSettings.ForeColor = System.Drawing.Color.White;
-      this.ucSettings.Location = new System.Drawing.Point(0, 0);
-      this.ucSettings.Margin = new System.Windows.Forms.Padding(4);
-      this.ucSettings.Name = "ucSettings";
-      this.ucSettings.Size = new System.Drawing.Size(767, 729);
-      this.ucSettings.TabIndex = 4;
-      // 
-      // ucInventoryStocks
-      // 
-      this.ucInventoryStocks.BackColor = System.Drawing.Color.Transparent;
-      this.ucInventoryStocks.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucInventoryStocks.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucInventoryStocks.ForeColor = System.Drawing.Color.White;
-      this.ucInventoryStocks.Location = new System.Drawing.Point(0, 0);
-      this.ucInventoryStocks.Margin = new System.Windows.Forms.Padding(4);
-      this.ucInventoryStocks.Name = "ucInventoryStocks";
-      this.ucInventoryStocks.Size = new System.Drawing.Size(767, 729);
-      this.ucInventoryStocks.TabIndex = 3;
-      // 
-      // ucInventoryCategories
-      // 
-      this.ucInventoryCategories.BackColor = System.Drawing.Color.Transparent;
-      this.ucInventoryCategories.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucInventoryCategories.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucInventoryCategories.ForeColor = System.Drawing.Color.White;
-      this.ucInventoryCategories.Location = new System.Drawing.Point(0, 0);
-      this.ucInventoryCategories.Margin = new System.Windows.Forms.Padding(4);
-      this.ucInventoryCategories.Name = "ucInventoryCategories";
-      this.ucInventoryCategories.Size = new System.Drawing.Size(767, 729);
-      this.ucInventoryCategories.TabIndex = 2;
-      // 
-      // ucUsers
-      // 
-      this.ucUsers.BackColor = System.Drawing.Color.Transparent;
-      this.ucUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.ucUsers.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.ucUsers.ForeColor = System.Drawing.Color.White;
-      this.ucUsers.Location = new System.Drawing.Point(0, 0);
-      this.ucUsers.Margin = new System.Windows.Forms.Padding(4);
-      this.ucUsers.Name = "ucUsers";
-      this.ucUsers.Size = new System.Drawing.Size(767, 729);
-      this.ucUsers.TabIndex = 1;
       // 
       // MainForm
       // 
@@ -434,7 +363,6 @@
       this.pnlInventorySubMenu.ResumeLayout(false);
       this.msUsername.ResumeLayout(false);
       this.msUsername.PerformLayout();
-      this.pnlViews.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -454,11 +382,6 @@
         private System.Windows.Forms.Panel pnlSideBarAvatar;
     private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel pnlViews;
-        private UserControls.DashboardUserControl ucDashboard;
-        private UserControls.UsersUserControl ucUsers;
-        private Controls.SettingsUserControl ucSettings;
-        private UserControls.InventoryStocksUserControl ucInventoryStocks;
-        private UserControls.InventoryCategoriesUserControl ucInventoryCategories;
         private System.Windows.Forms.Label lbAppName;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbSignIn;
