@@ -14,6 +14,10 @@ namespace StockManager.Database.Repositories
 
     User GetUserById(int userId);
 
+    User GetUserByUsername(string username);
+
     bool DeleteUsers(int[] userIds);
+
+    List<ErrorType> Login(string username, string password);
   }
 }

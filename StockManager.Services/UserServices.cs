@@ -103,6 +103,9 @@ namespace StockManager.Services
     /* Get User by Id */
     public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
 
+    /* Get User by Username */
+    public User GetUserByUsername(string username) => this.db.Users.FirstOrDefault(x => x.Username == username);
+
     /* Delete Users */
     public bool DeleteUsers(int[] userIds)
     {
@@ -115,6 +118,43 @@ namespace StockManager.Services
       this.db.SaveChanges();
 
       return true;
+    }
+
+    /* Login */
+    public List<ErrorType> Login(string username, string password)
+    {
+      List<ErrorType> errors = new List<ErrorType>();
+
+      // Validate login data
+      if (string.IsNullOrEmpty(username))
+      {
+        errors.Add(new ErrorType { Field = "Username", Error = "This field is required." });
+      }
+
+      if (string.IsNullOrEmpty(password))
+      {
+        errors.Add(new ErrorType { Field = "Password", Error = "This field is required." });
+      }
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      // get the user from the DB
+      User user = this.GetUserByUsername(username);
+
+      // If the user exist and the password are match, return zero errors
+      if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+      {
+        return errors;
+      }
+      else
+      {
+        errors.Add(new ErrorType { Field = "Generic", Error = "Invalid username and password combination." });
+      }
+
+      return errors;
     }
   }
 }

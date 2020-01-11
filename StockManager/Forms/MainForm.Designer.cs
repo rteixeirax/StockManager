@@ -182,7 +182,7 @@
       this.btnExit.Name = "btnExit";
       this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnExit.Size = new System.Drawing.Size(214, 40);
-      this.btnExit.TabIndex = 9;
+      this.btnExit.TabIndex = 5;
       this.btnExit.Text = " Exit";
       this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -203,7 +203,7 @@
       this.btnSettings.Name = "btnSettings";
       this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnSettings.Size = new System.Drawing.Size(216, 31);
-      this.btnSettings.TabIndex = 8;
+      this.btnSettings.TabIndex = 4;
       this.btnSettings.Text = " Settings";
       this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -224,7 +224,7 @@
       this.btnUsers.Name = "btnUsers";
       this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnUsers.Size = new System.Drawing.Size(216, 31);
-      this.btnUsers.TabIndex = 7;
+      this.btnUsers.TabIndex = 3;
       this.btnUsers.Text = " Users";
       this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -245,7 +245,7 @@
       this.btnInventory.Name = "btnInventory";
       this.btnInventory.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnInventory.Size = new System.Drawing.Size(216, 31);
-      this.btnInventory.TabIndex = 4;
+      this.btnInventory.TabIndex = 2;
       this.btnInventory.Text = " Inventory";
       this.btnInventory.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnInventory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -266,7 +266,7 @@
       this.btnDashboard.Name = "btnDashboard";
       this.btnDashboard.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnDashboard.Size = new System.Drawing.Size(216, 31);
-      this.btnDashboard.TabIndex = 3;
+      this.btnDashboard.TabIndex = 1;
       this.btnDashboard.Text = " Dashboard";
       this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -329,6 +329,7 @@
       this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
       this.logoutToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
       this.logoutToolStripMenuItem.Text = "Logout";
+      this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
       // 
       // pnlViews
       // 

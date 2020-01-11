@@ -190,6 +190,12 @@
     <Compile Include="UserControls\InventoryCategoriesUserControl.Designer.cs">
       <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LoginUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\LoginUserControl.Designer.cs">
+      <DependentUpon>LoginUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SettingsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\InventoryCategoriesUserControl.resx">
       <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\LoginUserControl.resx">
+      <DependentUpon>LoginUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingsUserControl.resx">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using StockManager.ColorTables;
+using StockManager.Database.Models;
 using StockManager.UserControls;
 using System;
 using System.Windows.Forms;
@@ -12,16 +13,43 @@ namespace StockManager.Forms
       InitializeComponent();
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
+      this.SetUi();
+    }
+
+    public void SetUi()
+    {
+      // Get the logged In User, if any.
+      User loggedInUser = Program.loggedInUser;
+
+      // Clear panels
+      pnlViews.Controls.Clear();
 
       // Set initial view
-      pnlViews.Controls.Clear();
-      UserControl ucDashboard = new DashboardUserControl();
-      ucDashboard.Dock = DockStyle.Fill;
-      pnlViews.Controls.Add(ucDashboard);
+      if (loggedInUser == null)
+      {
+        UserControl ucLogin = new LoginUserControl(this);
+        ucLogin.Dock = DockStyle.Fill;
+        pnlViews.Controls.Add(ucLogin);
+      }
+      else
+      {
+        UserControl ucDashboard = new DashboardUserControl();
+        ucDashboard.Dock = DockStyle.Fill;
+        pnlViews.Controls.Add(ucDashboard);
 
-      // Set the logged in username
-      msUsername.Renderer = new ToolStripProfessionalRenderer(new MenuStripProfessionalColorTable());
-      msUsername.Items[0].Text = "Ricardo Teixeira";
+        // Set the logged in username
+        msUsername.Renderer = new ToolStripProfessionalRenderer(new MenuStripProfessionalColorTable());
+        msUsername.Items[0].Text = loggedInUser.Username;
+      }
+
+      // Set Ui
+      btnDashboard.Enabled = (loggedInUser == null) ? false : true;
+      btnInventory.Enabled = (loggedInUser == null) ? false : true;
+      btnUsers.Enabled = (loggedInUser == null) ? false : true;
+      btnSettings.Enabled = (loggedInUser == null) ? false : true;
+
+      lbSignIn.Visible = (loggedInUser == null) ? false : true;
+      msUsername.Visible = (loggedInUser == null) ? false : true;
     }
 
     private void SetMarkerPosition(Control btn)
@@ -110,6 +138,11 @@ namespace StockManager.Forms
     {
       var changePasswordForm = new ChangePasswordForm();
       changePasswordForm.ShowChangePasswordForm();
+    }
+    private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      Program.Logout();
+      this.SetUi();
     }
 
     private void btnExit_Click(object sender, EventArgs e)
