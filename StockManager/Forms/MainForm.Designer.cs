@@ -77,11 +77,11 @@
       // 
       // lbSignIn
       // 
-      this.lbSignIn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbSignIn.Anchor = System.Windows.Forms.AnchorStyles.Top;
       this.lbSignIn.AutoSize = true;
       this.lbSignIn.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbSignIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbSignIn.Location = new System.Drawing.Point(15, 621);
+      this.lbSignIn.Location = new System.Drawing.Point(15, 68);
       this.lbSignIn.Name = "lbSignIn";
       this.lbSignIn.Size = new System.Drawing.Size(91, 14);
       this.lbSignIn.TabIndex = 6;
@@ -122,7 +122,7 @@
       // 
       this.pnlInventorySubMenu.Controls.Add(this.btnStocks);
       this.pnlInventorySubMenu.Controls.Add(this.btnStockCategories);
-      this.pnlInventorySubMenu.Location = new System.Drawing.Point(39, 165);
+      this.pnlInventorySubMenu.Location = new System.Drawing.Point(39, 202);
       this.pnlInventorySubMenu.Name = "pnlInventorySubMenu";
       this.pnlInventorySubMenu.Size = new System.Drawing.Size(187, 71);
       this.pnlInventorySubMenu.TabIndex = 0;
@@ -178,7 +178,7 @@
       this.btnExit.ForeColor = System.Drawing.Color.White;
       this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
       this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnExit.Location = new System.Drawing.Point(18, 677);
+      this.btnExit.Location = new System.Drawing.Point(18, 672);
       this.btnExit.Name = "btnExit";
       this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnExit.Size = new System.Drawing.Size(214, 40);
@@ -199,7 +199,7 @@
       this.btnSettings.ForeColor = System.Drawing.Color.White;
       this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
       this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnSettings.Location = new System.Drawing.Point(10, 279);
+      this.btnSettings.Location = new System.Drawing.Point(10, 316);
       this.btnSettings.Name = "btnSettings";
       this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnSettings.Size = new System.Drawing.Size(216, 31);
@@ -220,7 +220,7 @@
       this.btnUsers.ForeColor = System.Drawing.Color.White;
       this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
       this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnUsers.Location = new System.Drawing.Point(10, 242);
+      this.btnUsers.Location = new System.Drawing.Point(10, 279);
       this.btnUsers.Name = "btnUsers";
       this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnUsers.Size = new System.Drawing.Size(216, 31);
@@ -241,7 +241,7 @@
       this.btnInventory.ForeColor = System.Drawing.Color.White;
       this.btnInventory.Image = ((System.Drawing.Image)(resources.GetObject("btnInventory.Image")));
       this.btnInventory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnInventory.Location = new System.Drawing.Point(10, 128);
+      this.btnInventory.Location = new System.Drawing.Point(10, 165);
       this.btnInventory.Name = "btnInventory";
       this.btnInventory.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnInventory.Size = new System.Drawing.Size(216, 31);
@@ -262,7 +262,7 @@
       this.btnDashboard.ForeColor = System.Drawing.Color.White;
       this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
       this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDashboard.Location = new System.Drawing.Point(10, 91);
+      this.btnDashboard.Location = new System.Drawing.Point(10, 128);
       this.btnDashboard.Name = "btnDashboard";
       this.btnDashboard.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnDashboard.Size = new System.Drawing.Size(216, 31);
@@ -276,24 +276,24 @@
       // pnlSideMarker
       // 
       this.pnlSideMarker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.pnlSideMarker.Location = new System.Drawing.Point(0, 91);
+      this.pnlSideMarker.Location = new System.Drawing.Point(0, 128);
       this.pnlSideMarker.Name = "pnlSideMarker";
       this.pnlSideMarker.Size = new System.Drawing.Size(6, 32);
       this.pnlSideMarker.TabIndex = 3;
       // 
       // msUsername
       // 
-      this.msUsername.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.msUsername.Anchor = System.Windows.Forms.AnchorStyles.Top;
       this.msUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
       this.msUsername.Dock = System.Windows.Forms.DockStyle.None;
       this.msUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.msUsername.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usernameToolStripMenuItem});
       this.msUsername.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-      this.msUsername.Location = new System.Drawing.Point(7, 635);
+      this.msUsername.Location = new System.Drawing.Point(7, 82);
       this.msUsername.Name = "msUsername";
       this.msUsername.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-      this.msUsername.Size = new System.Drawing.Size(99, 24);
+      this.msUsername.Size = new System.Drawing.Size(219, 24);
       this.msUsername.TabIndex = 10;
       this.msUsername.Text = "menuStrip1";
       // 

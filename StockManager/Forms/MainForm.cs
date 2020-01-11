@@ -11,8 +11,6 @@ namespace StockManager.Forms
     public MainForm()
     {
       InitializeComponent();
-      this.SetSubMenusVisibility();
-      this.SetMarkerPosition(btnDashboard);
       this.SetUi();
     }
 
@@ -50,6 +48,9 @@ namespace StockManager.Forms
 
       lbSignIn.Visible = (loggedInUser == null) ? false : true;
       msUsername.Visible = (loggedInUser == null) ? false : true;
+
+      this.SetSubMenusVisibility();
+      this.SetMarkerPosition(btnDashboard);
     }
 
     private void SetMarkerPosition(Control btn)

@@ -65,6 +65,9 @@ namespace StockManager.UserControls
 
     private void btnSave_Click(object sender, EventArgs e)
     {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
       List<ErrorType> errors = Program.userServices.Login(
         tbUsername.Text,
         tbPassword.Text
