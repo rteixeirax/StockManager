@@ -105,10 +105,22 @@ namespace StockManager.UserControls
       if (!string.IsNullOrEmpty(searchValue))
       {
         this.LoadUsers(searchValue);
-        
+
         // Remove spinner
         Cursor.Current = Cursors.Default;
       }
+    }
+
+    /*
+     * Clear search value picture box click
+     */
+    private void pbClearSearchValue_Click(object sender, EventArgs e)
+    {
+      tbSeachText.Text = "";
+      this.LoadUsers();
+
+      // Remove spinner
+      Cursor.Current = Cursors.Default;
     }
 
     /*
@@ -119,6 +131,12 @@ namespace StockManager.UserControls
       if (e.KeyChar == (char)Keys.Enter)
       {
         this.pbSearchIcon_Click(sender, e);
+        // Remove the annoying beep
+        e.Handled = true;
+      }
+      else if (e.KeyChar == (char)Keys.Escape)
+      {
+        this.pbClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
       }
