@@ -54,11 +54,14 @@ namespace StockManager.UserControls
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
-      User user = Program.userServices
-        .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
+      if (dgvUsers.SelectedRows.Count > 0)
+      {
+        User user = Program.userServices
+          .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
-      UserForm userForm = new UserForm(this);
-      userForm.ShowUserForm(user);
+        UserForm userForm = new UserForm(this);
+        userForm.ShowUserForm(user);
+      }
     }
 
     /*
@@ -68,7 +71,8 @@ namespace StockManager.UserControls
     {
       DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
 
-      if (MessageBox.Show(
+      if ((selectedUsers.Count > 0)
+        && MessageBox.Show(
         $"Delete {selectedUsers.Count} user(s)?",
         "Are you sure?",
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
