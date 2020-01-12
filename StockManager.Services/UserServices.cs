@@ -3,6 +3,7 @@ using StockManager.Database;
 using StockManager.Database.Models;
 using StockManager.Database.Repositories;
 using StockManager.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -179,6 +180,9 @@ namespace StockManager.Services
       // If the user exist and the password are match, return zero errors
       if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
       {
+        // Set the last login data
+        user.LastLogin = DateTime.UtcNow;
+        
         return errors;
       }
       else
