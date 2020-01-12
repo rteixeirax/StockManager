@@ -11,6 +11,10 @@ namespace StockManager.UserControls
     public UsersUserControl()
     {
       InitializeComponent();
+
+      // Hide the X button on the search textbox
+      btnClearSearchValue.Visible = false;
+
       this.LoadUsers();
     }
 
@@ -114,7 +118,7 @@ namespace StockManager.UserControls
     /*
      * Clear search value picture box click
      */
-    private void pbClearSearchValue_Click(object sender, EventArgs e)
+    private void btnClearSearchValue_Click(object sender, EventArgs e)
     {
       tbSeachText.Text = "";
       this.LoadUsers();
@@ -136,10 +140,18 @@ namespace StockManager.UserControls
       }
       else if (e.KeyChar == (char)Keys.Escape)
       {
-        this.pbClearSearchValue_Click(sender, e);
+        this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
       }
+    }
+
+    /*
+     * Show/Hide the X button on the search textbox
+     */
+    private void tbSeachText_TextChanged(object sender, EventArgs e)
+    {
+      btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
     }
   }
 }

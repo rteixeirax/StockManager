@@ -30,12 +30,11 @@
     {
       System.Windows.Forms.PictureBox pbSearchIcon;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersUserControl));
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.PictureBox pbClearSearchValue;
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
       this.pnlActions = new System.Windows.Forms.Panel();
       this.btnDeleteUser = new System.Windows.Forms.Button();
       this.btnEditUser = new System.Windows.Forms.Button();
@@ -48,13 +47,12 @@
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.tbSeachText = new System.Windows.Forms.TextBox();
       this.pnbSearchBox = new System.Windows.Forms.Panel();
+      this.btnClearSearchValue = new System.Windows.Forms.Button();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
-      pbClearSearchValue = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
       this.pnlActions.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
       this.pnbSearchBox.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(pbClearSearchValue)).BeginInit();
       this.SuspendLayout();
       // 
       // pbSearchIcon
@@ -135,25 +133,25 @@
       this.dgvUsers.AllowUserToAddRows = false;
       this.dgvUsers.AllowUserToDeleteRows = false;
       this.dgvUsers.AllowUserToOrderColumns = true;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGray;
+      dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
       this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dgvUsers.BackgroundColor = System.Drawing.SystemColors.Control;
       this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      dataGridViewCellStyle7.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
       this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnUserId,
@@ -161,34 +159,34 @@
             this.columnRole,
             this.columnLastLogIn,
             this.ColumnCreatedAt});
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle8.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle8;
       this.dgvUsers.EnableHeadersVisualStyles = false;
       this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
       this.dgvUsers.Location = new System.Drawing.Point(8, 46);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.ReadOnly = true;
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle9.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
       this.dgvUsers.RowHeadersWidth = 25;
-      dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-      this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
+      dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+      this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle10;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvUsers.Size = new System.Drawing.Size(845, 371);
       this.dgvUsers.TabIndex = 0;
@@ -235,35 +233,38 @@
       this.tbSeachText.BackColor = System.Drawing.Color.White;
       this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tbSeachText.Location = new System.Drawing.Point(31, 6);
+      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
       this.tbSeachText.Name = "tbSeachText";
       this.tbSeachText.Size = new System.Drawing.Size(274, 22);
       this.tbSeachText.TabIndex = 4;
+      this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
       this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
       // 
       // pnbSearchBox
       // 
-      this.pnbSearchBox.Controls.Add(pbClearSearchValue);
       this.pnbSearchBox.Controls.Add(pbSearchIcon);
+      this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
       this.pnbSearchBox.Controls.Add(this.tbSeachText);
       this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
       this.pnbSearchBox.Name = "pnbSearchBox";
-      this.pnbSearchBox.Size = new System.Drawing.Size(326, 33);
+      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
       this.pnbSearchBox.TabIndex = 9;
       // 
-      // pbClearSearchValue
+      // btnClearSearchValue
       // 
-      pbClearSearchValue.BackColor = System.Drawing.Color.White;
-      pbClearSearchValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      pbClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
-      pbClearSearchValue.Image = ((System.Drawing.Image)(resources.GetObject("pbClearSearchValue.Image")));
-      pbClearSearchValue.Location = new System.Drawing.Point(291, 6);
-      pbClearSearchValue.Name = "pbClearSearchValue";
-      pbClearSearchValue.Size = new System.Drawing.Size(14, 22);
-      pbClearSearchValue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-      pbClearSearchValue.TabIndex = 6;
-      pbClearSearchValue.TabStop = false;
-      pbClearSearchValue.Click += new System.EventHandler(this.pbClearSearchValue_Click);
+      this.btnClearSearchValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnClearSearchValue.BackColor = System.Drawing.Color.White;
+      this.btnClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnClearSearchValue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnClearSearchValue.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnClearSearchValue.ForeColor = System.Drawing.Color.White;
+      this.btnClearSearchValue.Image = ((System.Drawing.Image)(resources.GetObject("btnClearSearchValue.Image")));
+      this.btnClearSearchValue.Location = new System.Drawing.Point(285, 7);
+      this.btnClearSearchValue.Name = "btnClearSearchValue";
+      this.btnClearSearchValue.Size = new System.Drawing.Size(17, 20);
+      this.btnClearSearchValue.TabIndex = 11;
+      this.btnClearSearchValue.UseVisualStyleBackColor = false;
+      this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
       // 
       // UsersUserControl
       // 
@@ -282,7 +283,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
       this.pnbSearchBox.ResumeLayout(false);
       this.pnbSearchBox.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(pbClearSearchValue)).EndInit();
       this.ResumeLayout(false);
 
     }
@@ -300,5 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnRole;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
+        private System.Windows.Forms.Button btnClearSearchValue;
     }
 }
