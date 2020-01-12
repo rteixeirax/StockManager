@@ -17,7 +17,9 @@ namespace StockManager.Services
       this.db = db;
     }
 
-    /* Validate User form data */
+    /* 
+     * Validate User form data 
+     */
     private List<ErrorType> ValidateUserData(User user, User dbUser = null)
     {
       List<ErrorType> errors = new List<ErrorType>();
@@ -55,7 +57,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* Create User */
+    /* 
+     * Create User 
+     */
     public List<ErrorType> CreateUser(User data)
     {
       List<ErrorType> errors = this.ValidateUserData(data);
@@ -74,7 +78,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* Update User */
+    /* 
+     * Update User 
+     */
     public List<ErrorType> UpdateUser(int userId, User user)
     {
       User dbUser = this.GetUserById(userId);
@@ -97,7 +103,79 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* Change Password */
+    /* 
+     * Get All Users 
+     */
+    public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
+
+    /* 
+     * Get User by Id 
+     */
+    public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
+
+    /* 
+     * Get User by Username 
+     */
+    public User GetUserByUsername(string username) => this.db.Users.FirstOrDefault(x => x.Username == username);
+
+    /* 
+     * Delete Users 
+     */
+    public bool DeleteUsers(int[] userIds)
+    {
+      foreach (int userId in userIds)
+      {
+        User user = this.GetUserById(userId);
+        this.db.Users.Remove(user);
+      }
+
+      this.db.SaveChanges();
+
+      return true;
+    }
+
+    /* 
+     * Login 
+     */
+    public List<ErrorType> Login(string username, string password)
+    {
+      List<ErrorType> errors = new List<ErrorType>();
+
+      // Validate login data
+      if (string.IsNullOrEmpty(username))
+      {
+        errors.Add(new ErrorType { Field = "Username", Error = "This field is required." });
+      }
+
+      if (string.IsNullOrEmpty(password))
+      {
+        errors.Add(new ErrorType { Field = "Password", Error = "This field is required." });
+      }
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      // get the user from the DB
+      User user = this.GetUserByUsername(username);
+
+      // If the user exist and the password are match, return zero errors
+      if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+      {
+        return errors;
+      }
+      else
+      {
+        errors.Add(new ErrorType { Field = "Generic", Error = "Invalid username and password combination." });
+      }
+
+      return errors;
+    }
+
+    /* 
+   * Change Password 
+   */
     public List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword)
     {
       List<ErrorType> errors = new List<ErrorType>();
@@ -130,66 +208,6 @@ namespace StockManager.Services
       else
       {
         errors.Add(new ErrorType { Field = "CurrentPassword", Error = "Invalid password." });
-      }
-
-      return errors;
-    }
-
-    /* Get All Users */
-    public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
-
-    /* Get User by Id */
-    public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
-
-    /* Get User by Username */
-    public User GetUserByUsername(string username) => this.db.Users.FirstOrDefault(x => x.Username == username);
-
-    /* Delete Users */
-    public bool DeleteUsers(int[] userIds)
-    {
-      foreach (int userId in userIds)
-      {
-        User user = this.GetUserById(userId);
-        this.db.Users.Remove(user);
-      }
-
-      this.db.SaveChanges();
-
-      return true;
-    }
-
-    /* Login */
-    public List<ErrorType> Login(string username, string password)
-    {
-      List<ErrorType> errors = new List<ErrorType>();
-
-      // Validate login data
-      if (string.IsNullOrEmpty(username))
-      {
-        errors.Add(new ErrorType { Field = "Username", Error = "This field is required." });
-      }
-
-      if (string.IsNullOrEmpty(password))
-      {
-        errors.Add(new ErrorType { Field = "Password", Error = "This field is required." });
-      }
-
-      if (errors.Count > 0)
-      {
-        return errors;
-      }
-
-      // get the user from the DB
-      User user = this.GetUserByUsername(username);
-
-      // If the user exist and the password are match, return zero errors
-      if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
-      {
-        return errors;
-      }
-      else
-      {
-        errors.Add(new ErrorType { Field = "Generic", Error = "Invalid username and password combination." });
       }
 
       return errors;

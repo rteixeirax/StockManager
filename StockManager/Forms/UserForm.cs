@@ -19,6 +19,9 @@ namespace StockManager.Forms
       this.usersUserControl = usersUserControl;
     }
 
+    /*
+     * Show User Form and set the initial values
+     */
     public void ShowUserForm(User user = null)
     {
       // Spinner
@@ -52,6 +55,9 @@ namespace StockManager.Forms
       this.ShowDialog();
     }
 
+    /*
+     * Show the form errors, if any.
+     */
     private void ShowFormErrors(List<ErrorType> errors)
     {
       lbErrorUsername.Visible = false;
@@ -73,6 +79,9 @@ namespace StockManager.Forms
       }
     }
 
+    /*
+     * Create/Update button click
+     */
     private void btnSave_Click(object sender, EventArgs e)
     {
       User user = new User();
@@ -95,6 +104,9 @@ namespace StockManager.Forms
       }
     }
 
+    /*
+     * Close button click
+     */
     private void btnCancel_Click(object sender, EventArgs e)
     {
       this.Close();

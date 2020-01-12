@@ -14,6 +14,9 @@ namespace StockManager.Forms
       this.SetUi();
     }
 
+    /*
+     * Set the Ui after Login/Logout
+     */
     public void SetUi()
     {
       // Get the logged In User, if any.
@@ -53,12 +56,18 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnDashboard);
     }
 
+    /*
+     * Set the sidebar marker position
+     */
     private void SetMarkerPosition(Control btn)
     {
       pnlSideMarker.Height = btn.Height;
       pnlSideMarker.Top = btn.Top;
     }
 
+    /*
+     * Show/Hide the Inventory sub-menu
+     */
     private void SetSubMenusVisibility(Control subMenu = null)
     {
       pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (!pnlInventorySubMenu.Visible))
@@ -68,6 +77,9 @@ namespace StockManager.Forms
       this.SetSidebarButtonsPosition(subMenu);
     }
 
+    /*
+     * Set the sidebar buttons position when the sub menu is open/closed
+     */
     private void SetSidebarButtonsPosition(Control subMenu = null)
     {
       // If no sub menu sent, reset all the positions
@@ -77,6 +89,9 @@ namespace StockManager.Forms
       btnSettings.Top = btnUsers.Bottom + 6;
     }
 
+    /*
+     * Dashboard button click
+     */
     private void btnDashboard_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -89,11 +104,18 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucDashboard);
     }
 
+    /*
+     * Inventory button click
+     */
     private void btnInventory_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility(pnlInventorySubMenu);
       this.SetMarkerPosition(btnInventory);
     }
+
+    /*
+     * Inventory > Categories button click
+     */
     private void btnStockCategories_Click(object sender, EventArgs e)
     {
       // Show the InventoryCategories view 
@@ -102,6 +124,10 @@ namespace StockManager.Forms
       ucInventoryCategories.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryCategories);
     }
+
+    /*
+     * Inventory > Stocks button click
+     */
     private void btnStocks_Click(object sender, EventArgs e)
     {
       // Show the InventoryCategories view 
@@ -111,6 +137,9 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucInventoryStocks);
     }
 
+    /*
+     * User button click
+     */
     private void btnUsers_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -123,6 +152,9 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucUsers);
     }
 
+    /*
+     * Settings button click
+     */
     private void btnSettings_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -135,17 +167,27 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucSettings);
     }
 
+    /*
+     * Change password menu strip item click
+     */
     private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
     {
       var changePasswordForm = new ChangePasswordForm();
       changePasswordForm.ShowChangePasswordForm();
     }
+
+    /*
+     * Do Logout menu strip item click
+     */
     private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Program.Logout();
       this.SetUi();
     }
 
+    /*
+     * Exit button click
+     */
     private void btnExit_Click(object sender, EventArgs e)
     {
       Application.Exit();

@@ -32,16 +32,16 @@
       this.lbTitle = new System.Windows.Forms.Label();
       this.pnlTopBar = new System.Windows.Forms.Panel();
       this.pnlLoginForm = new System.Windows.Forms.Panel();
-      this.btnCancel = new System.Windows.Forms.Button();
+      this.lbErrorGeneric = new System.Windows.Forms.Label();
+      this.lbLoginFormTitle = new System.Windows.Forms.Label();
+      this.btnClean = new System.Windows.Forms.Button();
       this.lbErrorPassword = new System.Windows.Forms.Label();
       this.lbErrorUsername = new System.Windows.Forms.Label();
-      this.btnSave = new System.Windows.Forms.Button();
+      this.btnLogin = new System.Windows.Forms.Button();
       this.tbPassword = new System.Windows.Forms.TextBox();
       this.lbPassword = new System.Windows.Forms.Label();
       this.tbUsername = new System.Windows.Forms.TextBox();
       this.lbFirstName = new System.Windows.Forms.Label();
-      this.lbLoginFormTitle = new System.Windows.Forms.Label();
-      this.lbErrorGeneric = new System.Windows.Forms.Label();
       this.pnlTopBar.SuspendLayout();
       this.pnlLoginForm.SuspendLayout();
       this.SuspendLayout();
@@ -84,10 +84,10 @@
       this.pnlLoginForm.BackColor = System.Drawing.SystemColors.ControlLight;
       this.pnlLoginForm.Controls.Add(this.lbErrorGeneric);
       this.pnlLoginForm.Controls.Add(this.lbLoginFormTitle);
-      this.pnlLoginForm.Controls.Add(this.btnCancel);
+      this.pnlLoginForm.Controls.Add(this.btnClean);
       this.pnlLoginForm.Controls.Add(this.lbErrorPassword);
       this.pnlLoginForm.Controls.Add(this.lbErrorUsername);
-      this.pnlLoginForm.Controls.Add(this.btnSave);
+      this.pnlLoginForm.Controls.Add(this.btnLogin);
       this.pnlLoginForm.Controls.Add(this.tbPassword);
       this.pnlLoginForm.Controls.Add(this.lbPassword);
       this.pnlLoginForm.Controls.Add(this.tbUsername);
@@ -97,19 +97,42 @@
       this.pnlLoginForm.Size = new System.Drawing.Size(277, 275);
       this.pnlLoginForm.TabIndex = 28;
       // 
-      // btnCancel
+      // lbErrorGeneric
       // 
-      this.btnCancel.BackColor = System.Drawing.Color.DarkGray;
-      this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(13, 223);
-      this.btnCancel.Name = "btnCancel";
-      this.btnCancel.Size = new System.Drawing.Size(120, 32);
-      this.btnCancel.TabIndex = 35;
-      this.btnCancel.Text = "Clear";
-      this.btnCancel.UseVisualStyleBackColor = false;
-      this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+      this.lbErrorGeneric.AutoSize = true;
+      this.lbErrorGeneric.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbErrorGeneric.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorGeneric.Location = new System.Drawing.Point(10, 43);
+      this.lbErrorGeneric.Name = "lbErrorGeneric";
+      this.lbErrorGeneric.Size = new System.Drawing.Size(120, 16);
+      this.lbErrorGeneric.TabIndex = 37;
+      this.lbErrorGeneric.Text = "Generic errors";
+      // 
+      // lbLoginFormTitle
+      // 
+      this.lbLoginFormTitle.AutoSize = true;
+      this.lbLoginFormTitle.BackColor = System.Drawing.Color.Transparent;
+      this.lbLoginFormTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
+      this.lbLoginFormTitle.ForeColor = System.Drawing.Color.Black;
+      this.lbLoginFormTitle.Location = new System.Drawing.Point(9, 13);
+      this.lbLoginFormTitle.Name = "lbLoginFormTitle";
+      this.lbLoginFormTitle.Size = new System.Drawing.Size(87, 22);
+      this.lbLoginFormTitle.TabIndex = 36;
+      this.lbLoginFormTitle.Text = "Sign in";
+      // 
+      // btnClean
+      // 
+      this.btnClean.BackColor = System.Drawing.Color.DarkGray;
+      this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnClean.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnClean.ForeColor = System.Drawing.Color.White;
+      this.btnClean.Location = new System.Drawing.Point(13, 223);
+      this.btnClean.Name = "btnClean";
+      this.btnClean.Size = new System.Drawing.Size(120, 32);
+      this.btnClean.TabIndex = 35;
+      this.btnClean.Text = "Clear";
+      this.btnClean.UseVisualStyleBackColor = false;
+      this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
       // 
       // lbErrorPassword
       // 
@@ -133,19 +156,19 @@
       this.lbErrorUsername.TabIndex = 33;
       this.lbErrorUsername.Text = "Username errors";
       // 
-      // btnSave
+      // btnLogin
       // 
-      this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-      this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(145, 223);
-      this.btnSave.Name = "btnSave";
-      this.btnSave.Size = new System.Drawing.Size(120, 32);
-      this.btnSave.TabIndex = 31;
-      this.btnSave.Text = "Login";
-      this.btnSave.UseVisualStyleBackColor = false;
-      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+      this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+      this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnLogin.ForeColor = System.Drawing.Color.White;
+      this.btnLogin.Location = new System.Drawing.Point(145, 223);
+      this.btnLogin.Name = "btnLogin";
+      this.btnLogin.Size = new System.Drawing.Size(120, 32);
+      this.btnLogin.TabIndex = 31;
+      this.btnLogin.Text = "Login";
+      this.btnLogin.UseVisualStyleBackColor = false;
+      this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
       // 
       // tbPassword
       // 
@@ -193,29 +216,6 @@
       this.lbFirstName.TabIndex = 30;
       this.lbFirstName.Text = "Username";
       // 
-      // lbLoginFormTitle
-      // 
-      this.lbLoginFormTitle.AutoSize = true;
-      this.lbLoginFormTitle.BackColor = System.Drawing.Color.Transparent;
-      this.lbLoginFormTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-      this.lbLoginFormTitle.ForeColor = System.Drawing.Color.Black;
-      this.lbLoginFormTitle.Location = new System.Drawing.Point(9, 13);
-      this.lbLoginFormTitle.Name = "lbLoginFormTitle";
-      this.lbLoginFormTitle.Size = new System.Drawing.Size(87, 22);
-      this.lbLoginFormTitle.TabIndex = 36;
-      this.lbLoginFormTitle.Text = "Sign in";
-      // 
-      // lbErrorGeneric
-      // 
-      this.lbErrorGeneric.AutoSize = true;
-      this.lbErrorGeneric.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorGeneric.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorGeneric.Location = new System.Drawing.Point(10, 43);
-      this.lbErrorGeneric.Name = "lbErrorGeneric";
-      this.lbErrorGeneric.Size = new System.Drawing.Size(120, 16);
-      this.lbErrorGeneric.TabIndex = 37;
-      this.lbErrorGeneric.Text = "Generic errors";
-      // 
       // LoginUserControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,10 +239,10 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlLoginForm;
         private System.Windows.Forms.Label lbLoginFormTitle;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnClean;
         private System.Windows.Forms.Label lbErrorPassword;
         private System.Windows.Forms.Label lbErrorUsername;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label lbPassword;
         private System.Windows.Forms.TextBox tbUsername;

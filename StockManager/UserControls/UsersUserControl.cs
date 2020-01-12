@@ -14,6 +14,9 @@ namespace StockManager.UserControls
       this.LoadUsers();
     }
 
+    /*
+     * Fill the Data Grid View
+     */
     public void LoadUsers()
     {
       // Spinner
@@ -34,12 +37,18 @@ namespace StockManager.UserControls
       }
     }
 
+    /*
+     * Create user button click
+     */
     private void btnCreateUser_Click(object sender, EventArgs e)
     {
       UserForm userForm = new UserForm(this);
       userForm.ShowUserForm();
     }
 
+    /*
+     * Edit user button click
+     */
     private void btnEditUser_Click(object sender, EventArgs e)
     {
       // Spinner
@@ -52,6 +61,9 @@ namespace StockManager.UserControls
       userForm.ShowUserForm(user);
     }
 
+    /*
+     * Delete user button click
+     */
     private void btnDeleteUser_Click(object sender, EventArgs e)
     {
       DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;

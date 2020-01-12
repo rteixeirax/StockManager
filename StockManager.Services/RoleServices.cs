@@ -17,6 +17,9 @@ namespace StockManager.Services
       this.db = db;
     }
 
+    /*
+     * Get All Roles 
+     */
     public IEnumerable<Role> GetRoles() => this.db.Roles.ToList();
   }
 }
