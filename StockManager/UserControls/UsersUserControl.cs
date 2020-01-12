@@ -105,6 +105,22 @@ namespace StockManager.UserControls
       if (!string.IsNullOrEmpty(searchValue))
       {
         this.LoadUsers(searchValue);
+        
+        // Remove spinner
+        Cursor.Current = Cursors.Default;
+      }
+    }
+
+    /*
+     * Call search button click when pressed enter in the textbox
+     */
+    private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (e.KeyChar == (char)Keys.Enter)
+      {
+        this.pbSearchIcon_Click(sender, e);
+        // Remove the annoying beep
+        e.Handled = true;
       }
     }
   }

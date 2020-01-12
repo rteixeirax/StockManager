@@ -145,6 +145,7 @@
       this.tbPassword.Size = new System.Drawing.Size(252, 20);
       this.tbPassword.TabIndex = 29;
       this.tbPassword.UseSystemPasswordChar = true;
+      this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
       // 
       // lbPassword
       // 
