@@ -182,6 +182,7 @@ namespace StockManager.Services
       {
         // Set the last login data
         user.LastLogin = DateTime.UtcNow;
+        this.db.SaveChanges();
         
         return errors;
       }

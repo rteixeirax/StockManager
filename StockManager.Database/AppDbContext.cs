@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StockManager.Database.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace StockManager.Database
@@ -44,11 +46,12 @@ namespace StockManager.Database
      */
     public override int SaveChanges()
     {
-      var entries = ChangeTracker
+      IEnumerable<EntityEntry> entries = ChangeTracker
           .Entries()
-          .Where(x => x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
+          .Where(x => x.Entity is BaseEntity
+            && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
-      foreach (var entityEntry in entries)
+      foreach (EntityEntry entityEntry in entries)
       {
         ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
 
