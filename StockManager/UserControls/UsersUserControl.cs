@@ -88,7 +88,7 @@ namespace StockManager.UserControls
           userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
         }
 
-        if (Program.userServices.DeleteUsers(userIds))
+        if (Program.userServices.DeleteUsers(userIds, Program.loggedInUser.UserId))
         {
           this.LoadUsers();
         }

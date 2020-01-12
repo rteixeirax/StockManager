@@ -122,12 +122,16 @@ namespace StockManager.Services
     /* 
      * Delete Users 
      */
-    public bool DeleteUsers(int[] userIds)
+    public bool DeleteUsers(int[] userIds, int loggedInUserId)
     {
       foreach (int userId in userIds)
       {
-        User user = this.GetUserById(userId);
-        this.db.Users.Remove(user);
+        // You can't delete yourself
+        if (userId != loggedInUserId)
+        {
+          User user = this.GetUserById(userId);
+          this.db.Users.Remove(user);
+        }
       }
 
       this.db.SaveChanges();
