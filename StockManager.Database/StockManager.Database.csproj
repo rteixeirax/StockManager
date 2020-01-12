@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200112204823_WipSeed.cs" />
+    <Compile Remove="Migrations\20200112204823_WipSeed.Designer.cs" />
+    <Compile Remove="Migrations\20200112210149_AddDatabaseSeeds.cs" />
+    <Compile Remove="Migrations\20200112210149_AddDatabaseSeeds.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>

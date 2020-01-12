@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StockManager.Database.Models;
+using StockManager.Database.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +80,13 @@ namespace StockManager.Database
           .HasIndex(x => x.Username)
           .IsUnique()
           .HasName("UniqueUsername");
+
+      // Seed the DB with the initial values
+      // https://code-maze.com/migrations-and-seed-data-efcore/
+      modelBuilder.ApplyConfiguration(new RolesConfiguration());
+      modelBuilder.ApplyConfiguration(new UsersConfiguration());
     }
+
 
     // Add Database Tables Here..
     public DbSet<Role> Roles { get; set; }
