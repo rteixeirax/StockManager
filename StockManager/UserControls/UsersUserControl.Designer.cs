@@ -65,6 +65,7 @@
       pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       pbSearchIcon.TabIndex = 5;
       pbSearchIcon.TabStop = false;
+      pbSearchIcon.Click += new System.EventHandler(this.pbSearchIcon_Click);
       // 
       // pnlActions
       // 

@@ -106,7 +106,18 @@ namespace StockManager.Services
     /* 
      * Get All Users 
      */
-    public IEnumerable<User> GetUsers() => this.db.Users.Include(x => x.Role).ToList();
+    public IEnumerable<User> GetUsers(string searchValue = null) 
+    {
+      if (!string.IsNullOrEmpty(searchValue))
+      {
+        return this.db.Users
+          .Include(x => x.Role)
+          .Where(x => x.Username.ToLower().Contains(searchValue.ToLower()))
+          .ToList();
+      }
+
+      return this.db.Users.Include(x => x.Role).ToList();
+    }
 
     /* 
      * Get User by Id 

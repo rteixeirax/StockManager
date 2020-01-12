@@ -17,13 +17,13 @@ namespace StockManager.UserControls
     /*
      * Fill the Data Grid View
      */
-    public void LoadUsers()
+    public void LoadUsers(string searchValue = null)
     {
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
       dgvUsers.Rows.Clear();
-      IEnumerable<User> users = Program.userServices.GetUsers();
+      IEnumerable<User> users = Program.userServices.GetUsers(searchValue);
 
       foreach (var user in users)
       {
@@ -92,6 +92,19 @@ namespace StockManager.UserControls
         {
           this.LoadUsers();
         }
+      }
+    }
+
+    /*
+     * Search button click
+     */
+    private void pbSearchIcon_Click(object sender, EventArgs e)
+    {
+      string searchValue = tbSeachText.Text;
+
+      if (!string.IsNullOrEmpty(searchValue))
+      {
+        this.LoadUsers(searchValue);
       }
     }
   }

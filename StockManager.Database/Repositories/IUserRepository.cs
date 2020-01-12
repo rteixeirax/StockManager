@@ -12,7 +12,7 @@ namespace StockManager.Database.Repositories
 
     List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword);
     
-    IEnumerable<User> GetUsers();
+    IEnumerable<User> GetUsers(string searchValue = null);
 
     User GetUserById(int userId);
 
