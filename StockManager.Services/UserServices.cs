@@ -116,7 +116,8 @@ namespace StockManager.Services
     /* 
      * Get User by Username 
      */
-    public User GetUserByUsername(string username) => this.db.Users.FirstOrDefault(x => x.Username == username);
+    public User GetUserByUsername(string username) => this.db.Users.Include(x => x.Role)
+      .FirstOrDefault(x => x.Username == username);
 
     /* 
      * Delete Users 

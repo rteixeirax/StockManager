@@ -43,17 +43,45 @@ namespace StockManager.Forms
         msUsername.Items[0].Text = loggedInUser.Username;
       }
 
-      // Set Ui
-      btnDashboard.Enabled = (loggedInUser == null) ? false : true;
-      btnInventory.Enabled = (loggedInUser == null) ? false : true;
-      btnUsers.Enabled = (loggedInUser == null) ? false : true;
-      btnSettings.Enabled = (loggedInUser == null) ? false : true;
+      // Set the Ui by role
+      this.RenderButtonsByRole();
 
-      lbSignIn.Visible = (loggedInUser == null) ? false : true;
-      msUsername.Visible = (loggedInUser == null) ? false : true;
-
+      // Set the sub-menu visibility and sidebar marker position
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
+    }
+
+    /*
+     * Render only the sidebar button for the logged in user role.
+     */
+    private void RenderButtonsByRole()
+    {
+      User loggedInUser = Program.loggedInUser;
+
+      lbSignIn.Visible = false;
+      msUsername.Visible = false;
+      pnlSideMarker.Visible = false;
+      btnDashboard.Visible = false;
+      btnInventory.Visible = false;
+      btnUsers.Visible = false;
+      btnSettings.Visible = false;
+
+      // If logged in, show the "User" buttons
+      if (loggedInUser != null)
+      { 
+        lbSignIn.Visible = true;
+        msUsername.Visible = true;
+        pnlSideMarker.Visible = true;
+        btnDashboard.Visible = true;
+      }
+
+      // If logged in as "Admin" unlock the other buttons
+      if ((loggedInUser != null) && (loggedInUser.Role.Code == "Admin"))
+      { 
+        btnInventory.Visible = true;
+        btnUsers.Visible = true;
+        btnSettings.Visible = true;
+      }
     }
 
     /*
