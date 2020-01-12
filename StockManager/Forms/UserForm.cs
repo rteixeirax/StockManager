@@ -50,6 +50,7 @@ namespace StockManager.Forms
       {
         tbUsername.Text = user.Username;
         cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
+        cbRoles.Enabled = (user.UserId == Program.loggedInUser.UserId) ? false : true;
       }
 
       this.ShowDialog();
