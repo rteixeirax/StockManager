@@ -59,7 +59,7 @@
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
-      this.pnlBody.Size = new System.Drawing.Size(291, 266);
+      this.pnlBody.Size = new System.Drawing.Size(451, 277);
       this.pnlBody.TabIndex = 8;
       // 
       // btnCancel
@@ -68,7 +68,7 @@
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(17, 215);
+      this.btnCancel.Location = new System.Drawing.Point(99, 219);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(120, 32);
       this.btnCancel.TabIndex = 17;
@@ -84,7 +84,7 @@
       this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
       this.pnlTopBar.Name = "pnlTopBar";
-      this.pnlTopBar.Size = new System.Drawing.Size(291, 44);
+      this.pnlTopBar.Size = new System.Drawing.Size(451, 44);
       this.pnlTopBar.TabIndex = 16;
       // 
       // lbTitle
@@ -104,7 +104,7 @@
       this.lbErrorNewPassword.AutoSize = true;
       this.lbErrorNewPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorNewPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorNewPassword.Location = new System.Drawing.Point(26, 169);
+      this.lbErrorNewPassword.Location = new System.Drawing.Point(108, 173);
       this.lbErrorNewPassword.Name = "lbErrorNewPassword";
       this.lbErrorNewPassword.Size = new System.Drawing.Size(141, 16);
       this.lbErrorNewPassword.TabIndex = 15;
@@ -115,7 +115,7 @@
       this.lbErrorCurrentPassword.AutoSize = true;
       this.lbErrorCurrentPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorCurrentPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorCurrentPassword.Location = new System.Drawing.Point(26, 101);
+      this.lbErrorCurrentPassword.Location = new System.Drawing.Point(108, 105);
       this.lbErrorCurrentPassword.Name = "lbErrorCurrentPassword";
       this.lbErrorCurrentPassword.Size = new System.Drawing.Size(169, 16);
       this.lbErrorCurrentPassword.TabIndex = 14;
@@ -127,7 +127,7 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(149, 215);
+      this.btnSave.Location = new System.Drawing.Point(231, 219);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(120, 32);
       this.btnSave.TabIndex = 4;
@@ -140,7 +140,7 @@
       this.tbNewPassword.BackColor = System.Drawing.Color.White;
       this.tbNewPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbNewPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbNewPassword.Location = new System.Drawing.Point(17, 146);
+      this.tbNewPassword.Location = new System.Drawing.Point(99, 150);
       this.tbNewPassword.Name = "tbNewPassword";
       this.tbNewPassword.PasswordChar = '*';
       this.tbNewPassword.Size = new System.Drawing.Size(252, 20);
@@ -153,7 +153,7 @@
       this.lbNewPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbNewPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbNewPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbNewPassword.Location = new System.Drawing.Point(14, 127);
+      this.lbNewPassword.Location = new System.Drawing.Point(96, 131);
       this.lbNewPassword.Name = "lbNewPassword";
       this.lbNewPassword.Size = new System.Drawing.Size(104, 16);
       this.lbNewPassword.TabIndex = 9;
@@ -164,7 +164,7 @@
       this.tbCurrentPassword.BackColor = System.Drawing.Color.White;
       this.tbCurrentPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbCurrentPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbCurrentPassword.Location = new System.Drawing.Point(17, 78);
+      this.tbCurrentPassword.Location = new System.Drawing.Point(99, 82);
       this.tbCurrentPassword.Name = "tbCurrentPassword";
       this.tbCurrentPassword.PasswordChar = '*';
       this.tbCurrentPassword.Size = new System.Drawing.Size(252, 20);
@@ -177,7 +177,7 @@
       this.lbCurrentPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbCurrentPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbCurrentPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbCurrentPassword.Location = new System.Drawing.Point(14, 59);
+      this.lbCurrentPassword.Location = new System.Drawing.Point(96, 63);
       this.lbCurrentPassword.Name = "lbCurrentPassword";
       this.lbCurrentPassword.Size = new System.Drawing.Size(136, 16);
       this.lbCurrentPassword.TabIndex = 2;
@@ -187,7 +187,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(291, 266);
+      this.ClientSize = new System.Drawing.Size(451, 277);
       this.Controls.Add(this.pnlBody);
       this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MaximizeBox = false;

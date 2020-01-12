@@ -63,7 +63,7 @@
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
-      this.pnlBody.Size = new System.Drawing.Size(290, 341);
+      this.pnlBody.Size = new System.Drawing.Size(451, 341);
       this.pnlBody.TabIndex = 7;
       // 
       // btnCancel
@@ -72,7 +72,7 @@
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(17, 287);
+      this.btnCancel.Location = new System.Drawing.Point(103, 286);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(120, 32);
       this.btnCancel.TabIndex = 17;
@@ -88,7 +88,7 @@
       this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
       this.pnlTopBar.Name = "pnlTopBar";
-      this.pnlTopBar.Size = new System.Drawing.Size(290, 44);
+      this.pnlTopBar.Size = new System.Drawing.Size(451, 44);
       this.pnlTopBar.TabIndex = 16;
       // 
       // lbTitle
@@ -108,7 +108,7 @@
       this.lbErrorPassword.AutoSize = true;
       this.lbErrorPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorPassword.Location = new System.Drawing.Point(20, 175);
+      this.lbErrorPassword.Location = new System.Drawing.Point(106, 174);
       this.lbErrorPassword.Name = "lbErrorPassword";
       this.lbErrorPassword.Size = new System.Drawing.Size(113, 16);
       this.lbErrorPassword.TabIndex = 15;
@@ -119,7 +119,7 @@
       this.lbErrorUsername.AutoSize = true;
       this.lbErrorUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorUsername.Location = new System.Drawing.Point(20, 109);
+      this.lbErrorUsername.Location = new System.Drawing.Point(106, 108);
       this.lbErrorUsername.Name = "lbErrorUsername";
       this.lbErrorUsername.Size = new System.Drawing.Size(113, 16);
       this.lbErrorUsername.TabIndex = 14;
@@ -131,7 +131,7 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(149, 287);
+      this.btnSave.Location = new System.Drawing.Point(235, 286);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(120, 32);
       this.btnSave.TabIndex = 4;
@@ -144,7 +144,7 @@
       this.tbPassword.BackColor = System.Drawing.Color.White;
       this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbPassword.Location = new System.Drawing.Point(17, 150);
+      this.tbPassword.Location = new System.Drawing.Point(103, 149);
       this.tbPassword.Name = "tbPassword";
       this.tbPassword.PasswordChar = '*';
       this.tbPassword.Size = new System.Drawing.Size(252, 22);
@@ -157,7 +157,7 @@
       this.lbPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbPassword.Location = new System.Drawing.Point(14, 131);
+      this.lbPassword.Location = new System.Drawing.Point(100, 130);
       this.lbPassword.Name = "lbPassword";
       this.lbPassword.Size = new System.Drawing.Size(72, 16);
       this.lbPassword.TabIndex = 9;
@@ -169,7 +169,7 @@
       this.lbRole.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbRole.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbRole.Location = new System.Drawing.Point(14, 202);
+      this.lbRole.Location = new System.Drawing.Point(100, 201);
       this.lbRole.Name = "lbRole";
       this.lbRole.Size = new System.Drawing.Size(40, 16);
       this.lbRole.TabIndex = 8;
@@ -180,7 +180,7 @@
       this.tbUsername.BackColor = System.Drawing.Color.White;
       this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbUsername.ForeColor = System.Drawing.Color.Black;
-      this.tbUsername.Location = new System.Drawing.Point(17, 84);
+      this.tbUsername.Location = new System.Drawing.Point(103, 83);
       this.tbUsername.Name = "tbUsername";
       this.tbUsername.Size = new System.Drawing.Size(252, 22);
       this.tbUsername.TabIndex = 1;
@@ -192,7 +192,7 @@
       this.cbRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbRoles.ForeColor = System.Drawing.Color.Black;
       this.cbRoles.FormattingEnabled = true;
-      this.cbRoles.Location = new System.Drawing.Point(17, 221);
+      this.cbRoles.Location = new System.Drawing.Point(103, 220);
       this.cbRoles.Name = "cbRoles";
       this.cbRoles.Size = new System.Drawing.Size(252, 24);
       this.cbRoles.TabIndex = 3;
@@ -203,7 +203,7 @@
       this.lbFirstName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbFirstName.Location = new System.Drawing.Point(14, 65);
+      this.lbFirstName.Location = new System.Drawing.Point(100, 64);
       this.lbFirstName.Name = "lbFirstName";
       this.lbFirstName.Size = new System.Drawing.Size(72, 16);
       this.lbFirstName.TabIndex = 2;
@@ -213,7 +213,7 @@
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
       this.BackColor = System.Drawing.SystemColors.Control;
-      this.ClientSize = new System.Drawing.Size(290, 341);
+      this.ClientSize = new System.Drawing.Size(451, 341);
       this.Controls.Add(this.pnlBody);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
