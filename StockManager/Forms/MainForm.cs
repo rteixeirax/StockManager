@@ -28,12 +28,14 @@ namespace StockManager.Forms
       // Set initial view
       if (loggedInUser == null)
       {
+        lbViewTitle.Text = "Welcome";
         UserControl ucLogin = new LoginUserControl(this);
         ucLogin.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucLogin);
       }
       else
       {
+        lbViewTitle.Text = "Dashboard";
         UserControl ucDashboard = new DashboardUserControl();
         ucDashboard.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucDashboard);
@@ -58,7 +60,6 @@ namespace StockManager.Forms
     {
       User loggedInUser = Program.loggedInUser;
 
-      lbSignIn.Visible = false;
       msUsername.Visible = false;
       pnlSideMarker.Visible = false;
       btnDashboard.Visible = false;
@@ -69,7 +70,6 @@ namespace StockManager.Forms
       // If logged in, show the "User" buttons
       if (loggedInUser != null)
       { 
-        lbSignIn.Visible = true;
         msUsername.Visible = true;
         pnlSideMarker.Visible = true;
         btnDashboard.Visible = true;
@@ -127,6 +127,7 @@ namespace StockManager.Forms
 
       // Show the Dashboard view 
       pnlViews.Controls.Clear();
+      lbViewTitle.Text = "Dashboard"; 
       UserControl ucDashboard = new DashboardUserControl();
       ucDashboard.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucDashboard);
@@ -148,6 +149,7 @@ namespace StockManager.Forms
     {
       // Show the InventoryCategories view 
       pnlViews.Controls.Clear();
+      lbViewTitle.Text = "Inventory > Categories";
       UserControl ucInventoryCategories = new InventoryCategoriesUserControl();
       ucInventoryCategories.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryCategories);
@@ -158,8 +160,9 @@ namespace StockManager.Forms
      */
     private void btnStocks_Click(object sender, EventArgs e)
     {
-      // Show the InventoryCategories view 
+      // Show the InventoryStocks view 
       pnlViews.Controls.Clear();
+      lbViewTitle.Text = "Inventory > Stocks";
       UserControl ucInventoryStocks = new InventoryStocksUserControl();
       ucInventoryStocks.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryStocks);
@@ -175,6 +178,7 @@ namespace StockManager.Forms
 
       // Show the UsersUser view 
       pnlViews.Controls.Clear();
+      lbViewTitle.Text = "Users";
       UserControl ucUsers = new UsersUserControl();
       ucUsers.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucUsers);
@@ -190,6 +194,7 @@ namespace StockManager.Forms
 
       // Show the Settings view 
       pnlViews.Controls.Clear();
+      lbViewTitle.Text = "Settings";
       UserControl ucSettings = new SettingsUserControl();
       ucSettings.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucSettings);

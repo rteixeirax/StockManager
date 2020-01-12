@@ -28,9 +28,6 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.pnlDivider = new System.Windows.Forms.Panel();
-      this.lbTitle = new System.Windows.Forms.Label();
-      this.pnlTopBar = new System.Windows.Forms.Panel();
       this.pnlLoginForm = new System.Windows.Forms.Panel();
       this.lbErrorGeneric = new System.Windows.Forms.Label();
       this.lbLoginFormTitle = new System.Windows.Forms.Label();
@@ -42,41 +39,8 @@
       this.lbPassword = new System.Windows.Forms.Label();
       this.tbUsername = new System.Windows.Forms.TextBox();
       this.lbFirstName = new System.Windows.Forms.Label();
-      this.pnlTopBar.SuspendLayout();
       this.pnlLoginForm.SuspendLayout();
       this.SuspendLayout();
-      // 
-      // pnlDivider
-      // 
-      this.pnlDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.pnlDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.pnlDivider.Location = new System.Drawing.Point(0, 43);
-      this.pnlDivider.Name = "pnlDivider";
-      this.pnlDivider.Size = new System.Drawing.Size(860, 1);
-      this.pnlDivider.TabIndex = 4;
-      // 
-      // lbTitle
-      // 
-      this.lbTitle.AutoSize = true;
-      this.lbTitle.BackColor = System.Drawing.Color.Transparent;
-      this.lbTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbTitle.ForeColor = System.Drawing.Color.Black;
-      this.lbTitle.Location = new System.Drawing.Point(4, 12);
-      this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(87, 22);
-      this.lbTitle.TabIndex = 1;
-      this.lbTitle.Text = "Welcome";
-      // 
-      // pnlTopBar
-      // 
-      this.pnlTopBar.BackColor = System.Drawing.SystemColors.Control;
-      this.pnlTopBar.Controls.Add(this.pnlDivider);
-      this.pnlTopBar.Controls.Add(this.lbTitle);
-      this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
-      this.pnlTopBar.Name = "pnlTopBar";
-      this.pnlTopBar.Size = new System.Drawing.Size(860, 44);
-      this.pnlTopBar.TabIndex = 4;
       // 
       // pnlLoginForm
       // 
@@ -92,7 +56,7 @@
       this.pnlLoginForm.Controls.Add(this.lbPassword);
       this.pnlLoginForm.Controls.Add(this.tbUsername);
       this.pnlLoginForm.Controls.Add(this.lbFirstName);
-      this.pnlLoginForm.Location = new System.Drawing.Point(290, 68);
+      this.pnlLoginForm.Location = new System.Drawing.Point(290, 62);
       this.pnlLoginForm.Name = "pnlLoginForm";
       this.pnlLoginForm.Size = new System.Drawing.Size(277, 275);
       this.pnlLoginForm.TabIndex = 28;
@@ -221,11 +185,8 @@
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.pnlLoginForm);
-      this.Controls.Add(this.pnlTopBar);
       this.Name = "LoginUserControl";
       this.Size = new System.Drawing.Size(860, 420);
-      this.pnlTopBar.ResumeLayout(false);
-      this.pnlTopBar.PerformLayout();
       this.pnlLoginForm.ResumeLayout(false);
       this.pnlLoginForm.PerformLayout();
       this.ResumeLayout(false);
@@ -233,10 +194,6 @@
     }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlDivider;
-        private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlLoginForm;
         private System.Windows.Forms.Label lbLoginFormTitle;
         private System.Windows.Forms.Button btnClean;

@@ -35,24 +35,20 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-      this.pnlTopBar = new System.Windows.Forms.Panel();
-      this.pnlDivider = new System.Windows.Forms.Panel();
-      this.lbTitle = new System.Windows.Forms.Label();
       this.pnlActions = new System.Windows.Forms.Panel();
       this.btnDeleteUser = new System.Windows.Forms.Button();
       this.btnEditUser = new System.Windows.Forms.Button();
       this.btnCreateUser = new System.Windows.Forms.Button();
       this.dgvUsers = new System.Windows.Forms.DataGridView();
-      this.tbSeachText = new System.Windows.Forms.TextBox();
-      this.pnbSearchBox = new System.Windows.Forms.Panel();
       this.columnUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnLastLogIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.tbSeachText = new System.Windows.Forms.TextBox();
+      this.pnbSearchBox = new System.Windows.Forms.Panel();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
-      this.pnlTopBar.SuspendLayout();
       this.pnlActions.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
       this.pnbSearchBox.SuspendLayout();
@@ -70,45 +66,13 @@
       pbSearchIcon.TabIndex = 5;
       pbSearchIcon.TabStop = false;
       // 
-      // pnlTopBar
-      // 
-      this.pnlTopBar.BackColor = System.Drawing.SystemColors.Control;
-      this.pnlTopBar.Controls.Add(this.pnlDivider);
-      this.pnlTopBar.Controls.Add(this.lbTitle);
-      this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-      this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
-      this.pnlTopBar.Name = "pnlTopBar";
-      this.pnlTopBar.Size = new System.Drawing.Size(860, 44);
-      this.pnlTopBar.TabIndex = 2;
-      // 
-      // pnlDivider
-      // 
-      this.pnlDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.pnlDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
-      this.pnlDivider.Location = new System.Drawing.Point(0, 43);
-      this.pnlDivider.Name = "pnlDivider";
-      this.pnlDivider.Size = new System.Drawing.Size(860, 1);
-      this.pnlDivider.TabIndex = 4;
-      // 
-      // lbTitle
-      // 
-      this.lbTitle.AutoSize = true;
-      this.lbTitle.BackColor = System.Drawing.Color.Transparent;
-      this.lbTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbTitle.ForeColor = System.Drawing.Color.Black;
-      this.lbTitle.Location = new System.Drawing.Point(4, 12);
-      this.lbTitle.Name = "lbTitle";
-      this.lbTitle.Size = new System.Drawing.Size(65, 22);
-      this.lbTitle.TabIndex = 1;
-      this.lbTitle.Text = "Users";
-      // 
       // pnlActions
       // 
       this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlActions.Controls.Add(this.btnDeleteUser);
       this.pnlActions.Controls.Add(this.btnEditUser);
       this.pnlActions.Controls.Add(this.btnCreateUser);
-      this.pnlActions.Location = new System.Drawing.Point(557, 47);
+      this.pnlActions.Location = new System.Drawing.Point(557, 6);
       this.pnlActions.Name = "pnlActions";
       this.pnlActions.Size = new System.Drawing.Size(300, 34);
       this.pnlActions.TabIndex = 3;
@@ -202,7 +166,7 @@
       this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
       this.dgvUsers.EnableHeadersVisualStyles = false;
       this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.dgvUsers.Location = new System.Drawing.Point(8, 87);
+      this.dgvUsers.Location = new System.Drawing.Point(8, 46);
       this.dgvUsers.Name = "dgvUsers";
       this.dgvUsers.ReadOnly = true;
       dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -221,28 +185,8 @@
       dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
       this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(845, 325);
+      this.dgvUsers.Size = new System.Drawing.Size(845, 371);
       this.dgvUsers.TabIndex = 0;
-      // 
-      // tbSeachText
-      // 
-      this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.tbSeachText.BackColor = System.Drawing.Color.White;
-      this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
-      this.tbSeachText.Name = "tbSeachText";
-      this.tbSeachText.Size = new System.Drawing.Size(291, 22);
-      this.tbSeachText.TabIndex = 4;
-      // 
-      // pnbSearchBox
-      // 
-      this.pnbSearchBox.Controls.Add(pbSearchIcon);
-      this.pnbSearchBox.Controls.Add(this.tbSeachText);
-      this.pnbSearchBox.Location = new System.Drawing.Point(3, 48);
-      this.pnbSearchBox.Name = "pnbSearchBox";
-      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
-      this.pnbSearchBox.TabIndex = 9;
       // 
       // columnUserId
       // 
@@ -280,6 +224,26 @@
       this.ColumnCreatedAt.Name = "ColumnCreatedAt";
       this.ColumnCreatedAt.ReadOnly = true;
       // 
+      // tbSeachText
+      // 
+      this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.tbSeachText.BackColor = System.Drawing.Color.White;
+      this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
+      this.tbSeachText.Name = "tbSeachText";
+      this.tbSeachText.Size = new System.Drawing.Size(291, 22);
+      this.tbSeachText.TabIndex = 4;
+      // 
+      // pnbSearchBox
+      // 
+      this.pnbSearchBox.Controls.Add(pbSearchIcon);
+      this.pnbSearchBox.Controls.Add(this.tbSeachText);
+      this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
+      this.pnbSearchBox.Name = "pnbSearchBox";
+      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
+      this.pnbSearchBox.TabIndex = 9;
+      // 
       // UsersUserControl
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -287,15 +251,12 @@
       this.Controls.Add(this.pnbSearchBox);
       this.Controls.Add(this.pnlActions);
       this.Controls.Add(this.dgvUsers);
-      this.Controls.Add(this.pnlTopBar);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "UsersUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).EndInit();
-      this.pnlTopBar.ResumeLayout(false);
-      this.pnlTopBar.PerformLayout();
       this.pnlActions.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
       this.pnbSearchBox.ResumeLayout(false);
@@ -305,15 +266,11 @@
     }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlActions;
-        private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnCreateUser;
     private System.Windows.Forms.DataGridView dgvUsers;
     private System.Windows.Forms.Button btnEditUser;
     private System.Windows.Forms.Button btnDeleteUser;
-        private System.Windows.Forms.Panel pnlDivider;
         private System.Windows.Forms.TextBox tbSeachText;
         private System.Windows.Forms.Panel pnbSearchBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnUserId;
