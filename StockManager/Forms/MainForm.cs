@@ -19,6 +19,8 @@ namespace StockManager.Forms
      */
     public void SetUi()
     {
+      lbAppVersion.Text = "v.0.0.1";
+
       // Get the logged In User, if any.
       User loggedInUser = Program.loggedInUser;
 
@@ -69,7 +71,7 @@ namespace StockManager.Forms
 
       // If logged in, show the "User" buttons
       if (loggedInUser != null)
-      { 
+      {
         msUsername.Visible = true;
         pnlSideMarker.Visible = true;
         btnDashboard.Visible = true;
@@ -77,7 +79,7 @@ namespace StockManager.Forms
 
       // If logged in as "Admin" unlock the other buttons
       if ((loggedInUser != null) && (loggedInUser.Role.Code == "Admin"))
-      { 
+      {
         btnInventory.Visible = true;
         btnUsers.Visible = true;
         btnSettings.Visible = true;
@@ -127,7 +129,7 @@ namespace StockManager.Forms
 
       // Show the Dashboard view 
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Dashboard"; 
+      lbViewTitle.Text = "Dashboard";
       UserControl ucDashboard = new DashboardUserControl();
       ucDashboard.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucDashboard);
@@ -217,6 +219,15 @@ namespace StockManager.Forms
       Program.Logout();
       this.SetUi();
     }
+
+    /*
+     * LinkLabel click
+     */
+    private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+      System.Diagnostics.Process.Start("https://twitter.com/ricardotx86");
+    }
+
 
     /*
      * Exit button click

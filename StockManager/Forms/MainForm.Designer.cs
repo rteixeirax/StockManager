@@ -30,7 +30,10 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
       this.pnlSidebar = new System.Windows.Forms.Panel();
+      this.linklbTwitter = new System.Windows.Forms.LinkLabel();
+      this.lbPoweredBy = new System.Windows.Forms.Label();
       this.pnlSideBarAvatar = new System.Windows.Forms.Panel();
+      this.lbAppVersion = new System.Windows.Forms.Label();
       this.lbAppName = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.pnlInventorySubMenu = new System.Windows.Forms.Panel();
@@ -62,6 +65,8 @@
       // pnlSidebar
       // 
       this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.pnlSidebar.Controls.Add(this.linklbTwitter);
+      this.pnlSidebar.Controls.Add(this.lbPoweredBy);
       this.pnlSidebar.Controls.Add(this.pnlSideBarAvatar);
       this.pnlSidebar.Controls.Add(this.pnlInventorySubMenu);
       this.pnlSidebar.Controls.Add(this.btnExit);
@@ -76,8 +81,39 @@
       this.pnlSidebar.Size = new System.Drawing.Size(241, 729);
       this.pnlSidebar.TabIndex = 2;
       // 
+      // linklbTwitter
+      // 
+      this.linklbTwitter.ActiveLinkColor = System.Drawing.Color.Transparent;
+      this.linklbTwitter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.linklbTwitter.AutoSize = true;
+      this.linklbTwitter.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
+      this.linklbTwitter.ForeColor = System.Drawing.Color.White;
+      this.linklbTwitter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+      this.linklbTwitter.LinkColor = System.Drawing.Color.Transparent;
+      this.linklbTwitter.Location = new System.Drawing.Point(12, 634);
+      this.linklbTwitter.Name = "linklbTwitter";
+      this.linklbTwitter.Size = new System.Drawing.Size(136, 17);
+      this.linklbTwitter.TabIndex = 0;
+      this.linklbTwitter.TabStop = true;
+      this.linklbTwitter.Text = "Ricardo Teixeira";
+      this.linklbTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbTwitter_LinkClicked);
+      // 
+      // lbPoweredBy
+      // 
+      this.lbPoweredBy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+      this.lbPoweredBy.AutoSize = true;
+      this.lbPoweredBy.BackColor = System.Drawing.Color.Transparent;
+      this.lbPoweredBy.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbPoweredBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      this.lbPoweredBy.Location = new System.Drawing.Point(12, 616);
+      this.lbPoweredBy.Name = "lbPoweredBy";
+      this.lbPoweredBy.Size = new System.Drawing.Size(88, 17);
+      this.lbPoweredBy.TabIndex = 11;
+      this.lbPoweredBy.Text = "Powered by";
+      // 
       // pnlSideBarAvatar
       // 
+      this.pnlSideBarAvatar.Controls.Add(this.lbAppVersion);
       this.pnlSideBarAvatar.Controls.Add(this.lbAppName);
       this.pnlSideBarAvatar.Controls.Add(this.pictureBox1);
       this.pnlSideBarAvatar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -86,6 +122,18 @@
       this.pnlSideBarAvatar.Name = "pnlSideBarAvatar";
       this.pnlSideBarAvatar.Size = new System.Drawing.Size(241, 65);
       this.pnlSideBarAvatar.TabIndex = 7;
+      // 
+      // lbAppVersion
+      // 
+      this.lbAppVersion.AutoSize = true;
+      this.lbAppVersion.BackColor = System.Drawing.Color.Transparent;
+      this.lbAppVersion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbAppVersion.ForeColor = System.Drawing.Color.White;
+      this.lbAppVersion.Location = new System.Drawing.Point(65, 41);
+      this.lbAppVersion.Name = "lbAppVersion";
+      this.lbAppVersion.Size = new System.Drawing.Size(56, 15);
+      this.lbAppVersion.TabIndex = 13;
+      this.lbAppVersion.Text = "v.0.0.0";
       // 
       // lbAppName
       // 
@@ -167,7 +215,7 @@
       this.btnExit.ForeColor = System.Drawing.Color.White;
       this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
       this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnExit.Location = new System.Drawing.Point(10, 677);
+      this.btnExit.Location = new System.Drawing.Point(10, 674);
       this.btnExit.Name = "btnExit";
       this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
       this.btnExit.Size = new System.Drawing.Size(216, 40);
@@ -385,6 +433,7 @@
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Stock Manager";
       this.pnlSidebar.ResumeLayout(false);
+      this.pnlSidebar.PerformLayout();
       this.pnlSideBarAvatar.ResumeLayout(false);
       this.pnlSideBarAvatar.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -421,5 +470,8 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlDivider;
         private System.Windows.Forms.Label lbViewTitle;
+    private System.Windows.Forms.Label lbPoweredBy;
+    private System.Windows.Forms.Label lbAppVersion;
+    private System.Windows.Forms.LinkLabel linklbTwitter;
   }
 }
