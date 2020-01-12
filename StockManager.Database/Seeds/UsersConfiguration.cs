@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StockManager.Database.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StockManager.Database.Seeds
 {
@@ -18,7 +16,8 @@ namespace StockManager.Database.Seeds
           Username = "Admin",
           Password = BCrypt.Net.BCrypt.HashPassword("admin"),
           RoleId = 1,
-          CreatedAt = DateTime.UtcNow
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
         }
       );
     }

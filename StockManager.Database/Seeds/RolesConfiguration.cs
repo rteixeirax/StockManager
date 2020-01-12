@@ -14,13 +14,15 @@ namespace StockManager.Database.Seeds
         {
           RoleId = 1,
           Code = "Admin",
-          CreatedAt = DateTime.UtcNow
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
         },
         new Role
         {
           RoleId = 2,
           Code = "User",
-          CreatedAt = DateTime.UtcNow
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
         }
       );
     }

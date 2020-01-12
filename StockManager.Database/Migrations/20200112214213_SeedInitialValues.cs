@@ -10,17 +10,17 @@ namespace StockManager.Database.Migrations
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1, "Admin", new DateTime(2020, 1, 12, 21, 16, 22, 330, DateTimeKind.Utc).AddTicks(5897), null });
+                values: new object[] { 1, "Admin", new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230), new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 2, "User", new DateTime(2020, 1, 12, 21, 16, 22, 330, DateTimeKind.Utc).AddTicks(5897), null });
+                values: new object[] { 2, "User", new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230), new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230) });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "LastLogin", "Password", "RoleId", "UpdatedAt", "Username" },
-                values: new object[] { 1, new DateTime(2020, 1, 12, 21, 16, 22, 436, DateTimeKind.Utc).AddTicks(5282), null, "$2b$10$8gdHDF.HUVrM3v4w/WoaMu4NULDzydzWh2sTrSbWiHuM3DkKP3Yla", 1, null, "Admin" });
+                values: new object[] { 1, new DateTime(2020, 1, 12, 21, 42, 13, 238, DateTimeKind.Utc).AddTicks(9795), null, "$2b$10$eGGf5hvPB.DFTm5c1CkMS..tESLBS1ny7Jf06Y6UiKaOULQAXGQjK", 1, new DateTime(2020, 1, 12, 21, 42, 13, 238, DateTimeKind.Utc).AddTicks(9795), "Admin" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

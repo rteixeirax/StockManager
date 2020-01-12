@@ -9,7 +9,7 @@ using StockManager.Database;
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200112211623_SeedInitialValues")]
+    [Migration("20200112214213_SeedInitialValues")]
     partial class SeedInitialValues
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,13 +47,15 @@ namespace StockManager.Database.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 12, 21, 16, 22, 330, DateTimeKind.Utc).AddTicks(5897)
+                            CreatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230),
+                            UpdatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 12, 21, 16, 22, 330, DateTimeKind.Utc).AddTicks(5897)
+                            CreatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230),
+                            UpdatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 141, DateTimeKind.Utc).AddTicks(230)
                         });
                 });
 
@@ -97,9 +99,10 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 12, 21, 16, 22, 436, DateTimeKind.Utc).AddTicks(5282),
-                            Password = "$2b$10$8gdHDF.HUVrM3v4w/WoaMu4NULDzydzWh2sTrSbWiHuM3DkKP3Yla",
+                            CreatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 238, DateTimeKind.Utc).AddTicks(9795),
+                            Password = "$2b$10$eGGf5hvPB.DFTm5c1CkMS..tESLBS1ny7Jf06Y6UiKaOULQAXGQjK",
                             RoleId = 1,
+                            UpdatedAt = new DateTime(2020, 1, 12, 21, 42, 13, 238, DateTimeKind.Utc).AddTicks(9795),
                             Username = "Admin"
                         });
                 });
