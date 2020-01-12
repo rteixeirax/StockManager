@@ -44,7 +44,7 @@ namespace StockManager.Services
       // This validation only occurs when all form fields have no errors
       // And only if is a create or an update and the username has changed
       int usernameCount = ((dbUser == null) || (dbUser.Username != user.Username))
-        ? this.db.Users.Where(x => x.Username == user.Username).Count()
+        ? this.db.Users.Where(x => x.Username.ToLower() == user.Username.ToLower()).Count()
         : 0;
 
       if (usernameCount > 0)
@@ -117,7 +117,7 @@ namespace StockManager.Services
      * Get User by Username 
      */
     public User GetUserByUsername(string username) => this.db.Users.Include(x => x.Role)
-      .FirstOrDefault(x => x.Username == username);
+      .FirstOrDefault(x => (x.Username == username) || (x.Username.ToLower() == username.ToLower()));
 
     /* 
      * Delete Users 
