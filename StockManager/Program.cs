@@ -1,4 +1,5 @@
-﻿using StockManager.Database;
+using Microsoft.EntityFrameworkCore;
+using StockManager.Database;
 using StockManager.Database.Models;
 using StockManager.Database.Repositories;
 using StockManager.Forms;
@@ -43,6 +44,7 @@ namespace StockManager
 
       // Instantiate our DB
       appDbContext = new AppDbContext();
+      appDbContext.Database.Migrate();
 
       // Instantiate our services
       userServices = new UserServices(appDbContext);
