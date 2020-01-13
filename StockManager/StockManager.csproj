@@ -308,9 +308,10 @@
       <MoveRuntimeToLibFolder Include="$(OutputPath)runtimes\**\**\*.*" />
     </ItemGroup>
     <!--Move the normal ones-->
-    <!--Move the sqlite dlls keeping the directory structure (RecursiveDir)-->
     <Move SourceFiles="@(MoveToLibFolder)" DestinationFolder="$(OutputPath)lib" OverwriteReadOnlyFiles="true" />
+    <!--Move the sqlite dlls keeping the directory structure (RecursiveDir)-->
     <Move SourceFiles="@(MoveRuntimeToLibFolder)" DestinationFolder="$(OutputPath)lib\runtimes\%(RecursiveDir)" OverwriteReadOnlyFiles="true" />
+    <!--Delete the moved sqlite runtimes folder its now empty-->
     <RemoveDir Directories="$(OutputPath)runtimes" />
   </Target>
 </Project>
