@@ -57,15 +57,21 @@ namespace StockManager.Database
           .IsUnique()
           .HasName("UniqueUsername");
 
+      modelBuilder.Entity<Product>()
+          .HasIndex(x => x.Reference)
+          .IsUnique()
+          .HasName("UniqueReference");
+
       // Seed the DB with the initial values
       // https://code-maze.com/migrations-and-seed-data-efcore/
       modelBuilder.ApplyConfiguration(new RolesConfiguration());
       modelBuilder.ApplyConfiguration(new UsersConfiguration());
     }
 
-
     /* Add Database Tables Here.. */
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<Location> Locations { get; set; }
+    public DbSet<Product> Products { get; set; }
   }
 }

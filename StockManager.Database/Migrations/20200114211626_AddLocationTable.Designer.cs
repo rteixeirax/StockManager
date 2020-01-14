@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockManager.Database;
 
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200114211626_AddLocationTable")]
+    partial class AddLocationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,35 +37,6 @@ namespace StockManager.Database.Migrations
                     b.HasKey("LocationId");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("StockManager.Database.Models.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reference")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("Reference")
-                        .IsUnique()
-                        .HasName("UniqueReference");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("StockManager.Database.Models.Role", b =>
@@ -95,15 +68,15 @@ namespace StockManager.Database.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 302, DateTimeKind.Utc).AddTicks(7033),
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 302, DateTimeKind.Utc).AddTicks(7033)
+                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 25, 911, DateTimeKind.Utc).AddTicks(764),
+                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 25, 911, DateTimeKind.Utc).AddTicks(764)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 303, DateTimeKind.Utc).AddTicks(7022),
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 303, DateTimeKind.Utc).AddTicks(7022)
+                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 25, 911, DateTimeKind.Utc).AddTicks(764),
+                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 25, 911, DateTimeKind.Utc).AddTicks(764)
                         });
                 });
 
@@ -147,10 +120,10 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 399, DateTimeKind.Utc).AddTicks(6469),
-                            Password = "$2b$10$e19yxQbXCjdErdS96O3obexMTcqNL4hLsLX8HcMj16qJUd8AU5IpW",
+                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 26, 29, DateTimeKind.Utc).AddTicks(67),
+                            Password = "$2b$10$8WFi8YXxHcshPC/r7j3yq.WMh46F4QQnk5RemCeZOKmtgfhh4FVwW",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 399, DateTimeKind.Utc).AddTicks(6469),
+                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 26, 29, DateTimeKind.Utc).AddTicks(67),
                             Username = "Admin"
                         });
                 });
