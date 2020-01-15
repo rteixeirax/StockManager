@@ -62,6 +62,19 @@ namespace StockManager.Database
           .IsUnique()
           .HasName("UniqueReference");
 
+      modelBuilder.Entity<ProductLocation>()
+         .Property(x => x.Stock)
+         .HasDefaultValue(0);
+
+      modelBuilder.Entity<ProductLocation>()
+         .Property(x => x.MinStock)
+         .HasDefaultValue(0);
+
+      modelBuilder.Entity<ProductLocation>()
+        .HasIndex(x => new { x.ProductId, x.LocationId })
+        .IsUnique()
+        .HasName("UniqueProductIdLocationIdPair");
+
       // Seed the DB with the initial values
       // https://code-maze.com/migrations-and-seed-data-efcore/
       modelBuilder.ApplyConfiguration(new RolesConfiguration());
@@ -73,5 +86,6 @@ namespace StockManager.Database
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }
     public DbSet<Product> Products { get; set; }
+    public DbSet<ProductLocation> ProductLocations { get; set; }
   }
 }
