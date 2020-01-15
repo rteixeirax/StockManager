@@ -9,8 +9,8 @@ using StockManager.Database;
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200115211500_AddStockMovementTable")]
-    partial class AddStockMovementTable
+    [Migration("20200115215122_AddProductLocationTable")]
+    partial class AddProductLocationTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -136,60 +136,16 @@ namespace StockManager.Database.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789)
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789)
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728)
                         });
-                });
-
-            modelBuilder.Entity("StockManager.Database.Models.StockMovement", b =>
-                {
-                    b.Property<int>("StockMovementId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("FromLocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("LocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("Qty")
-                        .HasColumnType("REAL");
-
-                    b.Property<float>("Stock")
-                        .HasColumnType("REAL");
-
-                    b.Property<int>("ToLocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("StockMovementId");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("StockMovements");
                 });
 
             modelBuilder.Entity("StockManager.Database.Models.User", b =>
@@ -232,10 +188,10 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235),
-                            Password = "$2b$10$vL3qzkYxXl6C4Iq4Rqeby.0eoBK8TGZn2KXVyHp3Lo4iJQQre9Cuu",
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 492, DateTimeKind.Utc).AddTicks(5147),
+                            Password = "$2b$10$3C1rUtKBWz8Q3xOQFtPVAe56so25kIJgRLlynP0f5vBZINlwyeBqa",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 51, 21, 492, DateTimeKind.Utc).AddTicks(5147),
                             Username = "Admin"
                         });
                 });
@@ -251,25 +207,6 @@ namespace StockManager.Database.Migrations
                     b.HasOne("StockManager.Database.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("StockManager.Database.Models.StockMovement", b =>
-                {
-                    b.HasOne("StockManager.Database.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId");
-
-                    b.HasOne("StockManager.Database.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockManager.Database.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

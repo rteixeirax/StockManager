@@ -19,24 +19,29 @@ namespace StockManager.Database.Migrations
                     ProductId = table.Column<int>(nullable: false),
                     FromLocationId = table.Column<int>(nullable: false),
                     ToLocationId = table.Column<int>(nullable: false),
-                    LocationId = table.Column<int>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true)
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StockMovements", x => x.StockMovementId);
                     table.ForeignKey(
-                        name: "FK_StockMovements_Locations_LocationId",
-                        column: x => x.LocationId,
+                        name: "FK_StockMovements_Locations_FromLocationId",
+                        column: x => x.FromLocationId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_StockMovements_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StockMovements_Locations_ToLocationId",
+                        column: x => x.ToLocationId,
+                        principalTable: "Locations",
+                        principalColumn: "LocationId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_StockMovements_Users_UserId",
@@ -51,31 +56,36 @@ namespace StockManager.Database.Migrations
                 keyColumn: "RoleId",
                 keyValue: 1,
                 columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789), new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086), new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086) });
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "RoleId",
                 keyValue: 2,
                 columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789), new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086), new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "UserId",
                 keyValue: 1,
                 columns: new[] { "CreatedAt", "Password", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235), "$2b$10$vL3qzkYxXl6C4Iq4Rqeby.0eoBK8TGZn2KXVyHp3Lo4iJQQre9Cuu", new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443), "$2b$10$RB3mgMvdY7yaykuMNVtmde.w0sQyO4AZJWeFrKjWnLy0Y0v6hAobe", new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443) });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StockMovements_LocationId",
+                name: "IX_StockMovements_FromLocationId",
                 table: "StockMovements",
-                column: "LocationId");
+                column: "FromLocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StockMovements_ProductId",
                 table: "StockMovements",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StockMovements_ToLocationId",
+                table: "StockMovements",
+                column: "ToLocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_StockMovements_UserId",
@@ -93,21 +103,21 @@ namespace StockManager.Database.Migrations
                 keyColumn: "RoleId",
                 keyValue: 1,
                 columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 20, 49, 38, 414, DateTimeKind.Utc).AddTicks(8334), new DateTime(2020, 1, 15, 20, 49, 38, 414, DateTimeKind.Utc).AddTicks(8334) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728), new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728) });
 
             migrationBuilder.UpdateData(
                 table: "Roles",
                 keyColumn: "RoleId",
                 keyValue: 2,
                 columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 20, 49, 38, 414, DateTimeKind.Utc).AddTicks(8334), new DateTime(2020, 1, 15, 20, 49, 38, 414, DateTimeKind.Utc).AddTicks(8334) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728), new DateTime(2020, 1, 15, 21, 51, 21, 391, DateTimeKind.Utc).AddTicks(5728) });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "UserId",
                 keyValue: 1,
                 columns: new[] { "CreatedAt", "Password", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 1, 15, 20, 49, 38, 512, DateTimeKind.Utc).AddTicks(7695), "$2b$10$igFEt.SfiNWrAwi/t9AtO.xEpWJh7hi2DJ2VBrjxMxf7deHQNPudy", new DateTime(2020, 1, 15, 20, 49, 38, 512, DateTimeKind.Utc).AddTicks(7695) });
+                values: new object[] { new DateTime(2020, 1, 15, 21, 51, 21, 492, DateTimeKind.Utc).AddTicks(5147), "$2b$10$3C1rUtKBWz8Q3xOQFtPVAe56so25kIJgRLlynP0f5vBZINlwyeBqa", new DateTime(2020, 1, 15, 21, 51, 21, 492, DateTimeKind.Utc).AddTicks(5147) });
         }
     }
 }

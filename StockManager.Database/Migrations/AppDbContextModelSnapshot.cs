@@ -134,15 +134,15 @@ namespace StockManager.Database.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789)
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 14, 59, 907, DateTimeKind.Utc).AddTicks(4789)
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086)
                         });
                 });
 
@@ -155,10 +155,8 @@ namespace StockManager.Database.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("FromLocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("LocationId")
+                    b.Property<int?>("FromLocationId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductId")
@@ -170,7 +168,8 @@ namespace StockManager.Database.Migrations
                     b.Property<float>("Stock")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("ToLocationId")
+                    b.Property<int?>("ToLocationId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -181,9 +180,11 @@ namespace StockManager.Database.Migrations
 
                     b.HasKey("StockMovementId");
 
-                    b.HasIndex("LocationId");
+                    b.HasIndex("FromLocationId");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("ToLocationId");
 
                     b.HasIndex("UserId");
 
@@ -230,10 +231,10 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235),
-                            Password = "$2b$10$vL3qzkYxXl6C4Iq4Rqeby.0eoBK8TGZn2KXVyHp3Lo4iJQQre9Cuu",
+                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443),
+                            Password = "$2b$10$RB3mgMvdY7yaykuMNVtmde.w0sQyO4AZJWeFrKjWnLy0Y0v6hAobe",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 15, 0, 5, DateTimeKind.Utc).AddTicks(4235),
+                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443),
                             Username = "Admin"
                         });
                 });
@@ -255,13 +256,21 @@ namespace StockManager.Database.Migrations
 
             modelBuilder.Entity("StockManager.Database.Models.StockMovement", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Location", "Location")
+                    b.HasOne("StockManager.Database.Models.Location", "FromLocation")
                         .WithMany()
-                        .HasForeignKey("LocationId");
+                        .HasForeignKey("FromLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StockManager.Database.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StockManager.Database.Models.Location", "ToLocation")
+                        .WithMany()
+                        .HasForeignKey("ToLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
