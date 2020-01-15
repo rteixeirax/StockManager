@@ -87,5 +87,6 @@ namespace StockManager.Database
     public DbSet<Location> Locations { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductLocation> ProductLocations { get; set; }
+    public DbSet<StockMovement> StockMovements { get; set; }
   }
 }
