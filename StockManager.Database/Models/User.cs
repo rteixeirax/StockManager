@@ -21,6 +21,7 @@ namespace StockManager.Database.Models
 
     [ForeignKey("Role")]
     public int RoleId { get; set; }
+
     public virtual Role Role { get; set; }
   }
 }

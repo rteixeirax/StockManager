@@ -13,9 +13,9 @@ namespace StockManager.Database.Migrations
                 {
                     LocationId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

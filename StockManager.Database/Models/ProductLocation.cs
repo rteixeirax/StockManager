@@ -15,11 +15,12 @@ namespace StockManager.Database.Models
     [Required(ErrorMessage = "ProductId is required")]
     [ForeignKey("Product")]
     public int ProductId { get; set; }
-    public virtual Product Product { get; set; }
 
     [Required(ErrorMessage = "LocationId is required")]
     [ForeignKey("Location")]
     public int LocationId { get; set; }
+
+    public virtual Product Product { get; set; }
     public virtual Location Location { get; set; }
   }
 }

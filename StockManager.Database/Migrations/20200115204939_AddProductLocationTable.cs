@@ -13,12 +13,12 @@ namespace StockManager.Database.Migrations
                 {
                     ProductLocationId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
                     Stock = table.Column<float>(nullable: false, defaultValue: 0f),
                     MinStock = table.Column<float>(nullable: false, defaultValue: 0f),
                     ProductId = table.Column<int>(nullable: false),
-                    LocationId = table.Column<int>(nullable: false)
+                    LocationId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

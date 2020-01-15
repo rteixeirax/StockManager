@@ -30,7 +30,6 @@ namespace StockManager.Database.Models
     [ForeignKey("LocationId")]
     public int ToLocationId { get; set; }
 
-
     public virtual User User { get; set; }
     public virtual Product Product { get; set; }
     public virtual Location Location { get; set; }
