@@ -184,11 +184,11 @@
     <Compile Include="UserControls\DashboardUserControl.Designer.cs">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\InventoryCategoriesUserControl.cs">
+    <Compile Include="UserControls\InventoryLocationsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\InventoryCategoriesUserControl.Designer.cs">
-      <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\InventoryLocationsUserControl.Designer.cs">
+      <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LoginUserControl.cs">
       <SubType>UserControl</SubType>
@@ -243,8 +243,8 @@
     <EmbeddedResource Include="UserControls\DashboardUserControl.resx">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InventoryCategoriesUserControl.resx">
-      <DependentUpon>InventoryCategoriesUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\InventoryLocationsUserControl.resx">
+      <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LoginUserControl.resx">
       <DependentUpon>LoginUserControl.cs</DependentUpon>

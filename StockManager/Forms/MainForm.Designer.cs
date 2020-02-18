@@ -37,8 +37,8 @@
       this.lbAppName = new System.Windows.Forms.Label();
       this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.pnlInventorySubMenu = new System.Windows.Forms.Panel();
-      this.btnStocks = new System.Windows.Forms.Button();
-      this.btnStockCategories = new System.Windows.Forms.Button();
+      this.btnInventoryStocks = new System.Windows.Forms.Button();
+      this.btnInventoryLocations = new System.Windows.Forms.Button();
       this.btnExit = new System.Windows.Forms.Button();
       this.btnSettings = new System.Windows.Forms.Button();
       this.btnUsers = new System.Windows.Forms.Button();
@@ -157,52 +157,52 @@
       // 
       // pnlInventorySubMenu
       // 
-      this.pnlInventorySubMenu.Controls.Add(this.btnStocks);
-      this.pnlInventorySubMenu.Controls.Add(this.btnStockCategories);
+      this.pnlInventorySubMenu.Controls.Add(this.btnInventoryStocks);
+      this.pnlInventorySubMenu.Controls.Add(this.btnInventoryLocations);
       this.pnlInventorySubMenu.Location = new System.Drawing.Point(39, 174);
       this.pnlInventorySubMenu.Name = "pnlInventorySubMenu";
       this.pnlInventorySubMenu.Size = new System.Drawing.Size(187, 71);
       this.pnlInventorySubMenu.TabIndex = 0;
       // 
-      // btnStocks
+      // btnInventoryStocks
       // 
-      this.btnStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.btnStocks.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.btnStocks.FlatAppearance.BorderSize = 0;
-      this.btnStocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnStocks.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnStocks.ForeColor = System.Drawing.Color.White;
-      this.btnStocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnStocks.Location = new System.Drawing.Point(3, 36);
-      this.btnStocks.Name = "btnStocks";
-      this.btnStocks.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnStocks.Size = new System.Drawing.Size(155, 27);
-      this.btnStocks.TabIndex = 11;
-      this.btnStocks.Text = "Stocks";
-      this.btnStocks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnStocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btnStocks.UseVisualStyleBackColor = false;
-      this.btnStocks.Click += new System.EventHandler(this.btnStocks_Click);
+      this.btnInventoryStocks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.btnInventoryStocks.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.btnInventoryStocks.FlatAppearance.BorderSize = 0;
+      this.btnInventoryStocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnInventoryStocks.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnInventoryStocks.ForeColor = System.Drawing.Color.White;
+      this.btnInventoryStocks.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnInventoryStocks.Location = new System.Drawing.Point(3, 36);
+      this.btnInventoryStocks.Name = "btnInventoryStocks";
+      this.btnInventoryStocks.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnInventoryStocks.Size = new System.Drawing.Size(155, 27);
+      this.btnInventoryStocks.TabIndex = 11;
+      this.btnInventoryStocks.Text = "Stocks";
+      this.btnInventoryStocks.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnInventoryStocks.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnInventoryStocks.UseVisualStyleBackColor = false;
+      this.btnInventoryStocks.Click += new System.EventHandler(this.btnInventoryStocks_Click);
       // 
-      // btnStockCategories
+      // btnInventoryLocations
       // 
-      this.btnStockCategories.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.btnStockCategories.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.btnStockCategories.FlatAppearance.BorderSize = 0;
-      this.btnStockCategories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnStockCategories.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnStockCategories.ForeColor = System.Drawing.Color.White;
-      this.btnStockCategories.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnStockCategories.Location = new System.Drawing.Point(3, 3);
-      this.btnStockCategories.Name = "btnStockCategories";
-      this.btnStockCategories.RightToLeft = System.Windows.Forms.RightToLeft.No;
-      this.btnStockCategories.Size = new System.Drawing.Size(155, 27);
-      this.btnStockCategories.TabIndex = 10;
-      this.btnStockCategories.Text = "Categories";
-      this.btnStockCategories.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnStockCategories.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-      this.btnStockCategories.UseVisualStyleBackColor = false;
-      this.btnStockCategories.Click += new System.EventHandler(this.btnStockCategories_Click);
+      this.btnInventoryLocations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.btnInventoryLocations.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.btnInventoryLocations.FlatAppearance.BorderSize = 0;
+      this.btnInventoryLocations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnInventoryLocations.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnInventoryLocations.ForeColor = System.Drawing.Color.White;
+      this.btnInventoryLocations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnInventoryLocations.Location = new System.Drawing.Point(3, 3);
+      this.btnInventoryLocations.Name = "btnInventoryLocations";
+      this.btnInventoryLocations.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.btnInventoryLocations.Size = new System.Drawing.Size(155, 27);
+      this.btnInventoryLocations.TabIndex = 10;
+      this.btnInventoryLocations.Text = "Locations";
+      this.btnInventoryLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnInventoryLocations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+      this.btnInventoryLocations.UseVisualStyleBackColor = false;
+      this.btnInventoryLocations.Click += new System.EventHandler(this.btnInventoryLocations_Click);
       // 
       // btnExit
       // 
@@ -456,8 +456,8 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Panel pnlInventorySubMenu;
-        private System.Windows.Forms.Button btnStocks;
-        private System.Windows.Forms.Button btnStockCategories;
+        private System.Windows.Forms.Button btnInventoryStocks;
+        private System.Windows.Forms.Button btnInventoryLocations;
         private System.Windows.Forms.Panel pnlSideBarAvatar;
     private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Panel pnlViews;

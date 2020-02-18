@@ -100,7 +100,8 @@ namespace StockManager.Forms
     /// </summary>
     private void SetSubMenusVisibility(Control subMenu = null)
     {
-      pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (!pnlInventorySubMenu.Visible))
+      pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) 
+        && (!pnlInventorySubMenu.Visible))
         ? true
         : false;
 
@@ -145,14 +146,14 @@ namespace StockManager.Forms
     }
 
     /// <summary>
-    /// Inventory > Categories button click
+    /// Inventory > Locations button click
     /// </summary>
-    private void btnStockCategories_Click(object sender, EventArgs e)
+    private void btnInventoryLocations_Click(object sender, EventArgs e)
     {
-      // Show the InventoryCategories view 
+      // Show the InventoryLocations view 
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Inventory > Categories";
-      UserControl ucInventoryCategories = new InventoryCategoriesUserControl();
+      lbViewTitle.Text = "Inventory > Locations";
+      UserControl ucInventoryCategories = new InventoryLocationsUserControl();
       ucInventoryCategories.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryCategories);
     }
@@ -160,7 +161,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Inventory > Stocks button click
     /// </summary>
-    private void btnStocks_Click(object sender, EventArgs e)
+    private void btnInventoryStocks_Click(object sender, EventArgs e)
     {
       // Show the InventoryStocks view 
       pnlViews.Controls.Clear();

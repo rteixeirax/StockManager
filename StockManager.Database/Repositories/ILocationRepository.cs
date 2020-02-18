@@ -10,9 +10,9 @@ namespace StockManager.Database.Repositories
 
     List<ErrorType> UpdateLocation(int locationId, Location data);
     
-    IEnumerable<User> GetLocations(string searchValue = null);
+    IEnumerable<Location> GetLocations(string searchValue = null);
 
-    User GetLocationById(int locationId);
+    Location GetLocationById(int locationId);
 
     bool DeleteLocations(int[] locationIds);
   }
