@@ -19,9 +19,65 @@ namespace StockManager.Services
       this.db = db;
     }
 
+    /// <summary>
+    /// Validate Location form data 
+    /// </summary>
+    private List<ErrorType> ValidateLocationData(Location location, Location dbLocation = null)
+    {
+      List<ErrorType> errors = new List<ErrorType>();
+
+      if (string.IsNullOrEmpty(location.Name))
+      {
+        errors.Add(new ErrorType { Field = "Name", Error = "This field is required." });
+      }
+
+      // Validate the form values
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      // no errors (count == 0)
+      return errors;
+    }
+
+    /// <summary>
+    /// Create location
+    /// </summary>
     public List<ErrorType> CreateLocation(Location data)
     {
-      throw new NotImplementedException();
+      List<ErrorType> errors = this.ValidateLocationData(data);
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      this.db.Add(data);
+      this.db.SaveChanges();
+
+      return errors;
+    }
+
+    /// <summary>
+    /// Update Location
+    /// </summary>
+    public List<ErrorType> UpdateLocation(int locationId, Location data)
+    {
+      Location dbLocation = this.GetLocationById(locationId);
+      List<ErrorType> errors = this.ValidateLocationData(data, dbLocation);
+
+      if (errors.Count > 0)
+      {
+        return errors;
+      }
+
+      dbLocation.Name = data.Name;
+      dbLocation.LocationId = locationId;
+
+      this.db.SaveChanges();
+
+      return errors;
     }
 
     /// <summary>
@@ -63,11 +119,6 @@ namespace StockManager.Services
       }
 
       return this.db.Locations.ToList();
-    }
-
-    public List<ErrorType> UpdateLocation(int locationId, Location data)
-    {
-      throw new NotImplementedException();
     }
   }
 }

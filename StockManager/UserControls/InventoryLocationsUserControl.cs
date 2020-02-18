@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Database.Models;
+using StockManager.Forms;
 
 namespace StockManager.UserControls
 {
@@ -42,6 +43,33 @@ namespace StockManager.UserControls
           999,
           location.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
         );
+      }
+    }
+
+    /// <summary>
+    /// Create location button click
+    /// </summary>
+    private void btnCreate_Click(object sender, EventArgs e)
+    {
+      LocationForm locationForm = new LocationForm(this);
+      locationForm.ShowLocationForm();
+    }
+
+    /// <summary>
+    /// Edit location button click
+    /// </summary>
+    private void btnEdit_Click(object sender, EventArgs e)
+    {
+      // Spinner
+      Cursor.Current = Cursors.WaitCursor;
+
+      if (dgvLocations.SelectedRows.Count > 0)
+      {
+        Location location = Program.LocationServices
+          .GetLocationById(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
+
+        LocationForm locationForm = new LocationForm(this);
+        locationForm.ShowLocationForm(location);
       }
     }
 
@@ -122,7 +150,7 @@ namespace StockManager.UserControls
         e.Handled = true;
       }
     }
-  
+
     /// <summary>
     /// Show/Hide the X button on the search textbox
     /// </summary>
