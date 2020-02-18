@@ -63,7 +63,7 @@ namespace StockManager.Forms
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
-      List<ErrorType> errors = Program.userServices.ChangePassword(
+      List<ErrorType> errors = Program.UserServices.ChangePassword(
         Program.loggedInUser.UserId,
         tbCurrentPassword.Text,
         tbNewPassword.Text

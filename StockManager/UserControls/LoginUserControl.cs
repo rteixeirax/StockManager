@@ -77,7 +77,7 @@ namespace StockManager.UserControls
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
-      List<ErrorType> errors = Program.userServices.Login(
+      List<ErrorType> errors = Program.UserServices.Login(
         tbUsername.Text,
         tbPassword.Text
       );

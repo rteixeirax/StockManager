@@ -15,8 +15,8 @@ namespace StockManager
     private static AppDbContext appDbContext { get; set; }
 
     // Application repositories
-    public static IUserRepository userServices { get; private set; }
-    public static IRoleRepository roleServices { get; private set; }
+    public static IUserRepository UserServices { get; private set; }
+    public static IRoleRepository RoleServices { get; private set; }
     
     // Logged in user
     public static User loggedInUser { get; private set; }
@@ -24,7 +24,7 @@ namespace StockManager
     // Set the user after login validation
     public static void SetLoggedInUser(string username)
     {
-      loggedInUser = userServices.GetUserByUsername(username);
+      loggedInUser = UserServices.GetUserByUsername(username);
     }
 
     // Kill the "Session"
@@ -47,8 +47,8 @@ namespace StockManager
       appDbContext.Database.Migrate();
 
       // Instantiate our services
-      userServices = new UserServices(appDbContext);
-      roleServices = new RoleServices(appDbContext);
+      UserServices = new UserServices(appDbContext);
+      RoleServices = new RoleServices(appDbContext);
 
       Application.Run(new MainForm());
     }

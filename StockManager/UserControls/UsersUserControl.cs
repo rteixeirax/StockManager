@@ -27,7 +27,7 @@ namespace StockManager.UserControls
       Cursor.Current = Cursors.WaitCursor;
 
       dgvUsers.Rows.Clear();
-      IEnumerable<User> users = Program.userServices.GetUsers(searchValue);
+      IEnumerable<User> users = Program.UserServices.GetUsers(searchValue);
 
       foreach (var user in users)
       {
@@ -60,7 +60,7 @@ namespace StockManager.UserControls
 
       if (dgvUsers.SelectedRows.Count > 0)
       {
-        User user = Program.userServices
+        User user = Program.UserServices
           .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
         UserForm userForm = new UserForm(this);
@@ -92,7 +92,7 @@ namespace StockManager.UserControls
           userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
         }
 
-        if (Program.userServices.DeleteUsers(userIds, Program.loggedInUser.UserId))
+        if (Program.UserServices.DeleteUsers(userIds, Program.loggedInUser.UserId))
         {
           this.LoadUsers();
         }

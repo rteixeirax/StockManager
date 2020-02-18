@@ -40,7 +40,7 @@ namespace StockManager.Forms
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      IEnumerable<Role> roles = Program.roleServices.GetRoles();
+      IEnumerable<Role> roles = Program.RoleServices.GetRoles();
       cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
@@ -91,8 +91,8 @@ namespace StockManager.Forms
       user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
 
       List<ErrorType> errors = (this.userId != 0)
-        ? Program.userServices.UpdateUser(this.userId, user)
-        : Program.userServices.CreateUser(user);
+        ? Program.UserServices.UpdateUser(this.userId, user)
+        : Program.UserServices.CreateUser(user);
 
       if (errors.Count == 0)
       {
