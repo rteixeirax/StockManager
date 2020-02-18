@@ -14,15 +14,15 @@ namespace StockManager.Forms
       this.SetUi();
     }
 
-    /*
-     * Set the Ui after Login/Logout
-     */
+    /// <summary>
+    /// Set the Ui after Login/Logout
+    /// </summary>
     public void SetUi()
     {
       lbAppVersion.Text = "v.0.0.1";
 
       // Get the logged In User, if any.
-      User loggedInUser = Program.loggedInUser;
+      User loggedInUser = Program.LoggedInUser;
 
       // Clear panels
       pnlViews.Controls.Clear();
@@ -55,12 +55,12 @@ namespace StockManager.Forms
       this.SetMarkerPosition(btnDashboard);
     }
 
-    /*
-     * Render only the sidebar button for the logged in user role.
-     */
+    /// <summary>
+    /// Render only the sidebar button for the logged in user role.
+    /// </summary>
     private void RenderButtonsByRole()
     {
-      User loggedInUser = Program.loggedInUser;
+      User loggedInUser = Program.LoggedInUser;
 
       msUsername.Visible = false;
       pnlSideMarker.Visible = false;
@@ -86,18 +86,18 @@ namespace StockManager.Forms
       }
     }
 
-    /*
-     * Set the sidebar marker position
-     */
+    /// <summary>
+    /// Set the sidebar marker position
+    /// </summary>
     private void SetMarkerPosition(Control btn)
     {
       pnlSideMarker.Height = btn.Height;
       pnlSideMarker.Top = btn.Top;
     }
 
-    /*
-     * Show/Hide the Inventory sub-menu
-     */
+    /// <summary>
+    /// Show/Hide the Inventory sub-menu
+    /// </summary>
     private void SetSubMenusVisibility(Control subMenu = null)
     {
       pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (!pnlInventorySubMenu.Visible))
@@ -107,9 +107,9 @@ namespace StockManager.Forms
       this.SetSidebarButtonsPosition(subMenu);
     }
 
-    /*
-     * Set the sidebar buttons position when the sub menu is open/closed
-     */
+    /// <summary>
+    /// Set the sidebar buttons position when the sub menu is open/closed
+    /// </summary>
     private void SetSidebarButtonsPosition(Control subMenu = null)
     {
       // If no sub menu sent, reset all the positions
@@ -119,9 +119,9 @@ namespace StockManager.Forms
       btnSettings.Top = btnUsers.Bottom + 6;
     }
 
-    /*
-     * Dashboard button click
-     */
+    /// <summary>
+    /// Dashboard button click
+    /// </summary>
     private void btnDashboard_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -135,18 +135,18 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucDashboard);
     }
 
-    /*
-     * Inventory button click
-     */
+    /// <summary>
+    /// Inventory button click
+    /// </summary>
     private void btnInventory_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility(pnlInventorySubMenu);
       this.SetMarkerPosition(btnInventory);
     }
 
-    /*
-     * Inventory > Categories button click
-     */
+    /// <summary>
+    /// Inventory > Categories button click
+    /// </summary>
     private void btnStockCategories_Click(object sender, EventArgs e)
     {
       // Show the InventoryCategories view 
@@ -157,9 +157,9 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucInventoryCategories);
     }
 
-    /*
-     * Inventory > Stocks button click
-     */
+    /// <summary>
+    /// Inventory > Stocks button click
+    /// </summary>
     private void btnStocks_Click(object sender, EventArgs e)
     {
       // Show the InventoryStocks view 
@@ -170,9 +170,9 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucInventoryStocks);
     }
 
-    /*
-     * User button click
-     */
+    /// <summary>
+    /// User button click
+    /// </summary>
     private void btnUsers_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -186,9 +186,9 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucUsers);
     }
 
-    /*
-     * Settings button click
-     */
+    /// <summary>
+    /// Settings button click
+    /// </summary>
     private void btnSettings_Click(object sender, EventArgs e)
     {
       this.SetSubMenusVisibility();
@@ -202,36 +202,36 @@ namespace StockManager.Forms
       pnlViews.Controls.Add(ucSettings);
     }
 
-    /*
-     * Change password menu strip item click
-     */
+    /// <summary>
+    /// Change password menu strip item click
+    /// </summary>
     private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
     {
       var changePasswordForm = new ChangePasswordForm();
       changePasswordForm.ShowChangePasswordForm();
     }
 
-    /*
-     * Do Logout menu strip item click
-     */
+    /// <summary>
+    /// Do Logout menu strip item click
+    /// </summary>
     private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
     {
       Program.Logout();
       this.SetUi();
     }
 
-    /*
-     * LinkLabel click
-     */
+    /// <summary>
+    /// LinkLabel click
+    /// </summary>
     private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {
       System.Diagnostics.Process.Start("https://twitter.com/ricardotx86");
     }
 
 
-    /*
-     * Exit button click
-     */
+    /// <summary>
+    /// Exit button click
+    /// </summary>
     private void btnExit_Click(object sender, EventArgs e)
     {
       Application.Exit();

@@ -19,9 +19,9 @@ namespace StockManager.Forms
       InitializeComponent();
     }
 
-    /*
-     * Show the Change Password Form and set the initial values
-     */
+    /// <summary>
+    /// Show the Change Password Form and set the initial values
+    /// </summary>
     public void ShowChangePasswordForm()
     {
       // hide the error labels
@@ -31,9 +31,9 @@ namespace StockManager.Forms
       this.ShowDialog();
     }
 
-    /*
-     * Show form errors
-     */
+    /// <summary>
+    /// Show form errors
+    /// </summary>
     private void SetFormErrors(List<ErrorType> errors)
     {
       lbErrorCurrentPassword.Visible = false;
@@ -55,16 +55,16 @@ namespace StockManager.Forms
       }
     }
 
-    /*
-     * Update button click
-     */
+    /// <summary>
+    /// Update button click
+    /// </summary>
     private void btnSave_Click(object sender, EventArgs e)
     {
       // Spinner
       Cursor.Current = Cursors.WaitCursor;
 
       List<ErrorType> errors = Program.UserServices.ChangePassword(
-        Program.loggedInUser.UserId,
+        Program.LoggedInUser.UserId,
         tbCurrentPassword.Text,
         tbNewPassword.Text
       );
@@ -79,9 +79,9 @@ namespace StockManager.Forms
       }
     }
 
-    /*
-     * Close button click
-     */
+    /// <summary>
+    /// Close button click
+    /// </summary>
     private void btnCancel_Click(object sender, EventArgs e)
     {
       this.Close();

@@ -18,9 +18,9 @@ namespace StockManager.UserControls
       this.LoadUsers();
     }
 
-    /*
-     * Fill the Data Grid View
-     */
+    /// <summary>
+    /// Fill the Data Grid View
+    /// </summary>
     public void LoadUsers(string searchValue = null)
     {
       // Spinner
@@ -29,7 +29,7 @@ namespace StockManager.UserControls
       dgvUsers.Rows.Clear();
       IEnumerable<User> users = Program.UserServices.GetUsers(searchValue);
 
-      foreach (var user in users)
+      foreach (User user in users)
       {
         dgvUsers.Rows.Add(
           user.UserId,
@@ -41,18 +41,18 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Create user button click
-     */
+    /// <summary>
+    /// Create user button click
+    /// </summary>
     private void btnCreateUser_Click(object sender, EventArgs e)
     {
       UserForm userForm = new UserForm(this);
       userForm.ShowUserForm();
     }
 
-    /*
-     * Edit user button click
-     */
+    /// <summary>
+    /// Edit user button click
+    /// </summary>
     private void btnEditUser_Click(object sender, EventArgs e)
     {
       // Spinner
@@ -68,9 +68,9 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Delete user button click
-     */
+    /// <summary>
+    /// Delete user button click
+    /// </summary>
     private void btnDeleteUser_Click(object sender, EventArgs e)
     {
       DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
@@ -92,16 +92,16 @@ namespace StockManager.UserControls
           userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
         }
 
-        if (Program.UserServices.DeleteUsers(userIds, Program.loggedInUser.UserId))
+        if (Program.UserServices.DeleteUsers(userIds, Program.LoggedInUser.UserId))
         {
           this.LoadUsers();
         }
       }
     }
 
-    /*
-     * Search button click
-     */
+    /// <summary>
+    /// Search button click
+    /// </summary>
     private void pbSearchIcon_Click(object sender, EventArgs e)
     {
       string searchValue = tbSeachText.Text;
@@ -115,9 +115,9 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Clear search value picture box click
-     */
+    /// <summary>
+    /// Clear search value picture box click
+    /// </summary>
     private void btnClearSearchValue_Click(object sender, EventArgs e)
     {
       tbSeachText.Text = "";
@@ -127,9 +127,9 @@ namespace StockManager.UserControls
       Cursor.Current = Cursors.Default;
     }
 
-    /*
-     * Call search button click when pressed enter in the textbox
-     */
+    /// <summary>
+    /// Call search button click when pressed enter in the textbox
+    /// </summary>
     private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
     {
       if (e.KeyChar == (char)Keys.Enter)
@@ -146,9 +146,9 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Show/Hide the X button on the search textbox
-     */
+    /// <summary>
+    /// Show/Hide the X button on the search textbox
+    /// </summary>
     private void tbSeachText_TextChanged(object sender, EventArgs e)
     {
       btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);

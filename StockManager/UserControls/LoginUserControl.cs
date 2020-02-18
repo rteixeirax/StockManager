@@ -27,9 +27,9 @@ namespace StockManager.UserControls
       lbErrorPassword.Visible = false;
     }
 
-    /*
-     * Set the form errors
-     */
+    /// <summary>
+    /// Set the form errors
+    /// </summary>
     private void SetFormErrors(List<ErrorType> errors)
     {
       lbErrorGeneric.Visible = false;
@@ -58,9 +58,9 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Clean all the form content
-     */
+    /// <summary>
+    /// Clean all the form content
+    /// </summary>
     private void btnClean_Click(object sender, EventArgs e)
     {
       lbErrorUsername.Visible = false;
@@ -69,9 +69,9 @@ namespace StockManager.UserControls
       tbPassword.Text = "";
     }
 
-    /*
-     * Login button click
-     */
+    /// <summary>
+    /// Login button click
+    /// </summary>
     private void btnLogin_Click(object sender, EventArgs e)
     {
       // Spinner
@@ -93,9 +93,9 @@ namespace StockManager.UserControls
       }
     }
 
-    /*
-     * Call Login button click when pressed enter in the password textbox
-     */
+    /// <summary>
+    /// Call Login button click when pressed enter in the password textbox
+    /// </summary>
     private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
     {
       if (e.KeyChar == (char)Keys.Enter)

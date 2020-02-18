@@ -18,9 +18,9 @@ namespace StockManager.Services
       this.db = db;
     }
 
-    /* 
-     * Validate User form data 
-     */
+    /// <summary>
+    /// Validate User form data 
+    /// </summary>
     private List<ErrorType> ValidateUserData(User user, User dbUser = null)
     {
       List<ErrorType> errors = new List<ErrorType>();
@@ -58,9 +58,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* 
-     * Create User 
-     */
+    /// <summary>
+    /// Create User
+    /// </summary>
     public List<ErrorType> CreateUser(User data)
     {
       List<ErrorType> errors = this.ValidateUserData(data);
@@ -79,9 +79,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* 
-     * Update User 
-     */
+    /// <summary>
+    /// Update User 
+    /// </summary>
     public List<ErrorType> UpdateUser(int userId, User user)
     {
       User dbUser = this.GetUserById(userId);
@@ -104,9 +104,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* 
-     * Get All Users 
-     */
+    /// <summary>
+    /// Get All Users 
+    /// </summary>
     public IEnumerable<User> GetUsers(string searchValue = null) 
     {
       if (!string.IsNullOrEmpty(searchValue))
@@ -120,20 +120,20 @@ namespace StockManager.Services
       return this.db.Users.Include(x => x.Role).ToList();
     }
 
-    /* 
-     * Get User by Id 
-     */
+    /// <summary>
+    /// Get User by Id 
+    /// </summary>
     public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
 
-    /* 
-     * Get User by Username 
-     */
+    /// <summary>
+    /// Get User by Username
+    /// </summary>
     public User GetUserByUsername(string username) => this.db.Users.Include(x => x.Role)
       .FirstOrDefault(x => (x.Username == username) || (x.Username.ToLower() == username.ToLower()));
 
-    /* 
-     * Delete Users 
-     */
+    /// <summary>
+    /// Delete Users 
+    /// </summary>
     public bool DeleteUsers(int[] userIds, int loggedInUserId)
     {
       foreach (int userId in userIds)
@@ -151,9 +151,9 @@ namespace StockManager.Services
       return true;
     }
 
-    /* 
-     * Login 
-     */
+    /// <summary>
+    /// Login 
+    /// </summary>
     public List<ErrorType> Login(string username, string password)
     {
       List<ErrorType> errors = new List<ErrorType>();
@@ -194,9 +194,9 @@ namespace StockManager.Services
       return errors;
     }
 
-    /* 
-   * Change Password 
-   */
+    /// <summary>
+    /// Change Password 
+    /// </summary>
     public List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword)
     {
       List<ErrorType> errors = new List<ErrorType>();

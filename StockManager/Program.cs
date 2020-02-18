@@ -11,26 +11,37 @@ namespace StockManager
 {
   static class Program
   {
-    // Application DB context
+    /// <summary>
+    /// Application DB context
+    /// </summary>
     private static AppDbContext appDbContext { get; set; }
 
-    // Application repositories
+    /// <summary>
+    /// Application repositories
+    /// </summary>
     public static IUserRepository UserServices { get; private set; }
     public static IRoleRepository RoleServices { get; private set; }
-    
-    // Logged in user
-    public static User loggedInUser { get; private set; }
+    public static ILocationRepository LocationServices { get; private set; }
 
-    // Set the user after login validation
+    /// <summary>
+    /// Logged in user
+    /// </summary>
+    public static User LoggedInUser { get; private set; }
+
+    /// <summary>
+    /// Set the user after login validation
+    /// </summary>
     public static void SetLoggedInUser(string username)
     {
-      loggedInUser = UserServices.GetUserByUsername(username);
+      LoggedInUser = UserServices.GetUserByUsername(username);
     }
 
-    // Kill the "Session"
+    /// <summary>
+    /// Kill the "Session"
+    /// </summary>
     public static void Logout()
     {
-      loggedInUser = null;
+      LoggedInUser = null;
     }
 
     /// <summary>
@@ -49,6 +60,7 @@ namespace StockManager
       // Instantiate our services
       UserServices = new UserServices(appDbContext);
       RoleServices = new RoleServices(appDbContext);
+      LocationServices = new LocationServices(appDbContext);
 
       Application.Run(new MainForm());
     }

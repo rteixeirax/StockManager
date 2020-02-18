@@ -19,9 +19,9 @@ namespace StockManager.Forms
       this.usersUserControl = usersUserControl;
     }
 
-    /*
-     * Show User Form and set the initial values
-     */
+    /// <summary>
+    /// Show User Form and set the initial values
+    /// </summary>
     public void ShowUserForm(User user = null)
     {
       // Spinner
@@ -50,15 +50,15 @@ namespace StockManager.Forms
       {
         tbUsername.Text = user.Username;
         cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
-        cbRoles.Enabled = (user.UserId == Program.loggedInUser.UserId) ? false : true;
+        cbRoles.Enabled = (user.UserId == Program.LoggedInUser.UserId) ? false : true;
       }
 
       this.ShowDialog();
     }
 
-    /*
-     * Show the form errors, if any.
-     */
+    /// <summary>
+    /// Show the form errors, if any.
+    /// </summary>
     private void ShowFormErrors(List<ErrorType> errors)
     {
       lbErrorUsername.Visible = false;
@@ -80,9 +80,9 @@ namespace StockManager.Forms
       }
     }
 
-    /*
-     * Create/Update button click
-     */
+    /// <summary>
+    /// Create/Update button click
+    /// </summary>
     private void btnSave_Click(object sender, EventArgs e)
     {
       User user = new User();
@@ -105,9 +105,9 @@ namespace StockManager.Forms
       }
     }
 
-    /*
-     * Close button click
-     */
+    /// <summary>
+    /// Close button click
+    /// </summary>
     private void btnCancel_Click(object sender, EventArgs e)
     {
       this.Close();

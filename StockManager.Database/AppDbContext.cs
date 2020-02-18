@@ -17,10 +17,10 @@ namespace StockManager.Database
       optionsBuilder.UseSqlite(@"Data Source=.\StockManagerDB.sqlite");
     }
 
-    /*
-     * Auto fill the CreatedAt and the UpdatedAt model fields
-     * https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
-     */
+    /// <summary>
+    /// Auto fill the CreatedAt and the UpdatedAt model fields
+    /// https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
+    /// </summary>
     public override int SaveChanges()
     {
       IEnumerable<EntityEntry> entries = ChangeTracker
@@ -41,10 +41,10 @@ namespace StockManager.Database
       return base.SaveChanges();
     }
 
-    /*
-     * Add models indexes and seed the inital DB values
-     * https://docs.microsoft.com/en-us/ef/core/modeling/indexes
-     */
+    /// <summary>
+    /// Add models indexes and seed the inital DB values
+    /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
+    /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Role>()
@@ -81,7 +81,9 @@ namespace StockManager.Database
       modelBuilder.ApplyConfiguration(new UsersConfiguration());
     }
 
-    /* Add Database Tables Here.. */
+    /// <summary>
+    /// Add Database Tables Here..
+    /// </summary>
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }
