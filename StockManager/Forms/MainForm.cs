@@ -153,9 +153,9 @@ namespace StockManager.Forms
       // Show the InventoryLocations view 
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Inventory > Locations";
-      UserControl ucInventoryCategories = new InventoryLocationsUserControl();
-      ucInventoryCategories.Dock = DockStyle.Fill;
-      pnlViews.Controls.Add(ucInventoryCategories);
+      UserControl ucInventoryLocations = new InventoryLocationsUserControl();
+      ucInventoryLocations.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryLocations);
     }
 
     /// <summary>
