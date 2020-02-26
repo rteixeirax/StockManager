@@ -55,7 +55,6 @@ namespace StockManager
 
       // Instantiate our DB
       appDbContext = new AppDbContext();
-      appDbContext.Database.Migrate();
 
       // Instantiate our services
       UserServices = new UserServices(appDbContext);

@@ -10,7 +10,12 @@ namespace StockManager.Database
 {
   public class AppDbContext : DbContext
   {
-    public AppDbContext() : base() { }
+    public AppDbContext() : base()
+    {
+      // Run the migrations when the DB is instantiated 
+      this.Database.Migrate();
+    }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       base.OnConfiguring(optionsBuilder);
