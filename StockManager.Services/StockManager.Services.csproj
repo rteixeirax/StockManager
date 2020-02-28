@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StockManager.Database\StockManager.Database.csproj" />
+    <ProjectReference Include="..\StockManager.Database\StockManager.Storage.csproj" />
     <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj" />
   </ItemGroup>
 </Project>
