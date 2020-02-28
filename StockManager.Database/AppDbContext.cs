@@ -5,6 +5,8 @@ using StockManager.Database.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace StockManager.Database
 {
@@ -26,7 +28,7 @@ namespace StockManager.Database
     /// Auto fill the CreatedAt and the UpdatedAt model fields
     /// https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
     /// </summary>
-    public override int SaveChanges()
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
     {
       IEnumerable<EntityEntry> entries = ChangeTracker
           .Entries()
@@ -43,7 +45,7 @@ namespace StockManager.Database
         }
       }
 
-      return base.SaveChanges();
+      return await base.SaveChangesAsync(true, cancellationToken);
     }
 
     /// <summary>

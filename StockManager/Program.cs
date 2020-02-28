@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StockManager.Database;
+using StockManager.Database.Brokers;
 using StockManager.Database.Models;
 using StockManager.Database.Repositories;
 using StockManager.Forms;
@@ -11,18 +12,6 @@ namespace StockManager
 {
   static class Program
   {
-    /// <summary>
-    /// Application DB context
-    /// </summary>
-    private static AppDbContext appDbContext { get; set; }
-
-    /// <summary>
-    /// Application repositories
-    /// </summary>
-    public static IUserRepository UserServices { get; private set; }
-    public static IRoleRepository RoleServices { get; private set; }
-    public static ILocationRepository LocationServices { get; private set; }
-
     /// <summary>
     /// Logged in user
     /// </summary>
@@ -45,6 +34,19 @@ namespace StockManager
     }
 
     /// <summary>
+    /// Application DB context and brokers
+    /// </summary>
+    private static AppDbContext AppDbContext { get; set; }
+    public static IUserRepository UserServices { get; private set; }
+    public static IRoleRepository RoleServices { get; private set; }
+    public static ILocationBroker LocationBroker { get; private set; }
+
+    /// <summary>
+    /// Application services
+    /// </summary>
+    public static ILocationService LocationService { get; private set; }
+
+    /// <summary>
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
@@ -53,13 +55,14 @@ namespace StockManager
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      // Instantiate our DB
-      appDbContext = new AppDbContext();
+      // Instantiate our DB and brokers
+      AppDbContext = new AppDbContext();
+      LocationBroker = new LocationBroker(AppDbContext);
 
       // Instantiate our services
-      UserServices = new UserServices(appDbContext);
-      RoleServices = new RoleServices(appDbContext);
-      LocationServices = new LocationServices(appDbContext);
+      UserServices = new UserServices(AppDbContext);
+      RoleServices = new RoleServices(AppDbContext);
+      LocationService = new LocationService(LocationBroker);
 
       Application.Run(new MainForm());
     }

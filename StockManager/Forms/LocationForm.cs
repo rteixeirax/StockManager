@@ -25,13 +25,19 @@ namespace StockManager.Forms
     }
 
     /// <summary>
+    /// Init the loading spinner
+    /// </summary>
+    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    /// <summary>
+    /// Stop the loading spinner
+    /// </summary>
+    private void StopSpinner() { Cursor.Current = Cursors.Default; }
+
+    /// <summary>
     /// Show Location Form and set the initial values
     /// </summary>
     public void ShowLocationForm(Location location = null)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
       // Set the locationId. Means that is a edit
       this.locationId = (location != null) ? location.LocationId : 0;
 
@@ -72,23 +78,39 @@ namespace StockManager.Forms
     /// <summary>
     /// Create/Update button click
     /// </summary>
-    private void btnSave_Click(object sender, EventArgs e)
+    private async void btnSave_Click(object sender, EventArgs e)
     {
-      Location location = new Location();
-      location.Name = tbName.Text;
-
-      List<ErrorType> errors = (this.locationId != 0)
-        ? Program.LocationServices.UpdateLocation(this.locationId, location)
-        : Program.LocationServices.CreateLocation(location);
-
-      if (errors.Count == 0)
+      try
       {
-        this.inventoryLocationsUserControl.LoadLocations();
+        Location location = new Location();
+        location.LocationId = locationId;
+        location.Name = tbName.Text;
+
+        this.InitSpinner();
+
+        if ((this.locationId != 0))
+        {
+          await Program.LocationService.EditLocationAsync(location);
+        }
+        else
+        {
+          await Program.LocationService.CreateLocationAsync(location);
+        }
+
+        this.StopSpinner();
+
+        await this.inventoryLocationsUserControl.LoadLocations();
+
         this.Close();
       }
-      else
+      catch (OperationErrorException ex)
       {
-        this.ShowFormErrors(errors);
+        this.StopSpinner();
+
+        if (ex.Errors.Count() > 0)
+        {
+          this.ShowFormErrors(ex.Errors);
+        }
       }
     }
 

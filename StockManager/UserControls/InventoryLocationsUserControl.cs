@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Database.Models;
 using StockManager.Forms;
+using StockManager.Types;
 
 namespace StockManager.UserControls
 {
@@ -20,20 +16,29 @@ namespace StockManager.UserControls
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
-
-      this.LoadLocations();
+      this.LoadLocations().Wait();
     }
+
+    /// <summary>
+    /// Init the loading spinner
+    /// </summary>
+    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    /// <summary>
+    /// Stop the loading spinner
+    /// </summary>
+    private void StopSpinner() { Cursor.Current = Cursors.Default; }
 
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
-    public void LoadLocations(string searchValue = null)
+    public async Task LoadLocations(string searchValue = null)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
+      this.InitSpinner();
 
       dgvLocations.Rows.Clear();
-      IEnumerable<Location> locations = Program.LocationServices.GetLocations(searchValue);
+
+      IEnumerable<Location> locations = await Program.LocationService
+        .GetLocationsAsync(searchValue);
 
       foreach (Location location in locations)
       {
@@ -44,6 +49,8 @@ namespace StockManager.UserControls
           location.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
         );
       }
+
+      this.StopSpinner();
     }
 
     /// <summary>
@@ -58,15 +65,16 @@ namespace StockManager.UserControls
     /// <summary>
     /// Edit location button click
     /// </summary>
-    private void btnEdit_Click(object sender, EventArgs e)
+    private async void btnEdit_Click(object sender, EventArgs e)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
       if (dgvLocations.SelectedRows.Count > 0)
       {
-        Location location = Program.LocationServices
-          .GetLocationById(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
+        this.InitSpinner();
+
+        Location location = await Program.LocationService
+          .GetLocationByIdAsync(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
+
+        this.StopSpinner();
 
         LocationForm locationForm = new LocationForm(this);
         locationForm.ShowLocationForm(location);
@@ -76,7 +84,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Delete location button click
     /// </summary>
-    private void btnDelete_Click(object sender, EventArgs e)
+    private async void btnDelete_Click(object sender, EventArgs e)
     {
       DataGridViewSelectedRowCollection selectedLocations = dgvLocations.SelectedRows;
 
@@ -87,19 +95,31 @@ namespace StockManager.UserControls
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       )
       {
-        // Spinner
-        Cursor.Current = Cursors.WaitCursor;
-
-        int[] locationIds = new int[selectedLocations.Count];
-
-        for (int i = 0; i < selectedLocations.Count; i++)
+        try
         {
-          locationIds[i] = int.Parse(selectedLocations[i].Cells[0].Value.ToString());
+          this.InitSpinner();
+
+          int[] locationIds = new int[selectedLocations.Count];
+
+          for (int i = 0; i < selectedLocations.Count; i++)
+          {
+            locationIds[i] = int.Parse(selectedLocations[i].Cells[0].Value.ToString());
+          }
+
+          await Program.LocationService.DeleteLocationAsync(locationIds);
+
+          this.StopSpinner();
+
+          await this.LoadLocations();
         }
-
-        if (Program.LocationServices.DeleteLocations(locationIds))
+        catch (OperationErrorException ex)
         {
-          this.LoadLocations();
+          this.StopSpinner();
+
+          MessageBox.Show(
+          $"{ex.Errors[0].Error}",
+          "Operation error",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
       }
     }
@@ -107,29 +127,23 @@ namespace StockManager.UserControls
     /// <summary>
     /// Search button click
     /// </summary>
-    private void pbSearchIcon_Click(object sender, EventArgs e)
+    private async void pbSearchIcon_Click(object sender, EventArgs e)
     {
       string searchValue = tbSeachText.Text;
 
       if (!string.IsNullOrEmpty(searchValue))
       {
-        this.LoadLocations(searchValue);
-
-        // Remove spinner
-        Cursor.Current = Cursors.Default;
+        await this.LoadLocations(searchValue);
       }
     }
 
     /// <summary>
     /// Clear search value picture box click
     /// </summary>
-    private void btnClearSearchValue_Click(object sender, EventArgs e)
+    private async void btnClearSearchValue_Click(object sender, EventArgs e)
     {
       tbSeachText.Text = "";
-      this.LoadLocations();
-
-      // Remove spinner
-      Cursor.Current = Cursors.Default;
+      await this.LoadLocations();
     }
 
     /// <summary>
