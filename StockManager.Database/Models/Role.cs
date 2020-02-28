@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace StockManager.Database.Models
 {
@@ -9,5 +10,16 @@ namespace StockManager.Database.Models
 
     [Required(ErrorMessage = "Code is required")]
     public string Code { get; set; }
+  }
+
+  public static class RoleModelBuilder
+  {
+    public static void Build(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Role>()
+          .HasIndex(x => x.Code)
+          .IsUnique()
+          .HasName("UniqueCode");
+    }
   }
 }

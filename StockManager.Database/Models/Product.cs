@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockManager.Database.Models
 {
@@ -15,5 +14,19 @@ namespace StockManager.Database.Models
 
     [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
+  }
+
+  /// <summary>
+  /// Model Builder
+  /// </summary>
+  public static class ProductModelBuilder
+  {
+    public static void Build(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Product>()
+          .HasIndex(x => x.Reference)
+          .IsUnique()
+          .HasName("UniqueReference");
+    }
   }
 }

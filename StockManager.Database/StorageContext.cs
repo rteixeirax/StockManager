@@ -49,38 +49,16 @@ namespace StockManager.Database
     }
 
     /// <summary>
-    /// Add models indexes and seed the inital DB values
+    /// Add models indexes/constraints and seed the inital DB values
     /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<Role>()
-          .HasIndex(x => x.Code)
-          .IsUnique()
-          .HasName("UniqueCode");
-
-      modelBuilder.Entity<User>()
-          .HasIndex(x => x.Username)
-          .IsUnique()
-          .HasName("UniqueUsername");
-
-      modelBuilder.Entity<Product>()
-          .HasIndex(x => x.Reference)
-          .IsUnique()
-          .HasName("UniqueReference");
-
-      modelBuilder.Entity<ProductLocation>()
-         .Property(x => x.Stock)
-         .HasDefaultValue(0);
-
-      modelBuilder.Entity<ProductLocation>()
-         .Property(x => x.MinStock)
-         .HasDefaultValue(0);
-
-      modelBuilder.Entity<ProductLocation>()
-        .HasIndex(x => new { x.ProductId, x.LocationId })
-        .IsUnique()
-        .HasName("UniqueProductIdLocationIdPair");
+      // Models constraints
+      RoleModelBuilder.Build(modelBuilder);
+      UserModelBuilder.Build(modelBuilder);
+      ProductModelBuilder.Build(modelBuilder);
+      ProductLocationModelBuilder.Build(modelBuilder);
 
       // Seed the DB with the initial values
       // https://code-maze.com/migrations-and-seed-data-efcore/

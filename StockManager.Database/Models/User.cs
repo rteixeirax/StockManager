@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,5 +24,19 @@ namespace StockManager.Database.Models
     public int RoleId { get; set; }
 
     public virtual Role Role { get; set; }
+  }
+
+  /// <summary>
+  /// Model Builder
+  /// </summary>
+  public static class UserModelBuilder
+  {
+    public static void Build(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<User>()
+          .HasIndex(x => x.Username)
+          .IsUnique()
+          .HasName("UniqueUsername");
+    }
   }
 }

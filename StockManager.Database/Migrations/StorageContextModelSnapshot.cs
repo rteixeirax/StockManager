@@ -8,7 +8,7 @@ using StockManager.Database;
 namespace StockManager.Database.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    partial class StorageContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

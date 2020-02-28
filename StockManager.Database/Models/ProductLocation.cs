@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockManager.Database.Models
@@ -22,5 +23,27 @@ namespace StockManager.Database.Models
 
     public virtual Product Product { get; set; }
     public virtual Location Location { get; set; }
+  }
+
+  /// <summary>
+  /// Model Builder
+  /// </summary>
+  public static class ProductLocationModelBuilder
+  {
+    public static void Build(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<ProductLocation>()
+        .Property(x => x.Stock)
+        .HasDefaultValue(0);
+
+      modelBuilder.Entity<ProductLocation>()
+         .Property(x => x.MinStock)
+         .HasDefaultValue(0);
+
+      modelBuilder.Entity<ProductLocation>()
+        .HasIndex(x => new { x.ProductId, x.LocationId })
+        .IsUnique()
+        .HasName("UniqueProductIdLocationIdPair");
+    }
   }
 }
