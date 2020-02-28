@@ -8,7 +8,7 @@ using StockManager.Database;
 
 namespace StockManager.Database.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(StorageContext))]
     [Migration("20191231192227_InitialMigration")]
     partial class InitialMigration
     {

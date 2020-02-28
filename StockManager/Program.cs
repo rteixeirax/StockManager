@@ -36,7 +36,7 @@ namespace StockManager
     /// <summary>
     /// Application DB context and brokers
     /// </summary>
-    private static AppDbContext AppDbContext { get; set; }
+    private static StorageContext StorageContext { get; set; }
     public static IUserRepository UserServices { get; private set; }
     public static IRoleRepository RoleServices { get; private set; }
     public static ILocationBroker LocationBroker { get; private set; }
@@ -56,12 +56,12 @@ namespace StockManager
       Application.SetCompatibleTextRenderingDefault(false);
 
       // Instantiate our DB and brokers
-      AppDbContext = new AppDbContext();
-      LocationBroker = new LocationBroker(AppDbContext);
+      StorageContext = new StorageContext();
+      LocationBroker = new LocationBroker(StorageContext);
 
       // Instantiate our services
-      UserServices = new UserServices(AppDbContext);
-      RoleServices = new RoleServices(AppDbContext);
+      UserServices = new UserServices(StorageContext);
+      RoleServices = new RoleServices(StorageContext);
       LocationService = new LocationService(LocationBroker);
 
       Application.Run(new MainForm());

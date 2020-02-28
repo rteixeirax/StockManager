@@ -8,7 +8,7 @@ using StockManager.Database;
 
 namespace StockManager.Database.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(StorageContext))]
     [Migration("20200115215241_AddStockMovementTable")]
     partial class AddStockMovementTable
     {

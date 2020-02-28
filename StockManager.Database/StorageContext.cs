@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database
 {
-  public class AppDbContext : DbContext
+  public class StorageContext : DbContext
   {
-    public AppDbContext() : base()
+    public StorageContext() : base()
     {
       // Run the migrations when the DB is instantiated 
       this.Database.Migrate();

@@ -8,9 +8,9 @@ namespace StockManager.Database.Brokers
 {
   public class LocationBroker : ILocationBroker
   {
-    private readonly AppDbContext db;
+    private readonly StorageContext db;
 
-    public LocationBroker(AppDbContext db)
+    public LocationBroker(StorageContext db)
     {
       this.db = db;
     }

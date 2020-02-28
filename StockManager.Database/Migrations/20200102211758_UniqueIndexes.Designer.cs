@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockManager.Database.Migrations
 {
-  [DbContext(typeof(AppDbContext))]
+  [DbContext(typeof(StorageContext))]
     [Migration("20200102211758_UniqueIndexes")]
     partial class UniqueIndexes
     {

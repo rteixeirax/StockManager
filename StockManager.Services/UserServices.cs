@@ -11,9 +11,9 @@ namespace StockManager.Services
 {
   public class UserServices : IUserRepository
   {
-    private readonly AppDbContext db;
+    private readonly StorageContext db;
 
-    public UserServices(AppDbContext db)
+    public UserServices(StorageContext db)
     {
       this.db = db;
     }

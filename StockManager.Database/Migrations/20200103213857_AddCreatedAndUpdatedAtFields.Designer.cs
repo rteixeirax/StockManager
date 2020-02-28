@@ -8,7 +8,7 @@ using StockManager.Database;
 
 namespace StockManager.Database.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(StorageContext))]
     [Migration("20200103213857_AddCreatedAndUpdatedAtFields")]
     partial class AddCreatedAndUpdatedAtFields
     {

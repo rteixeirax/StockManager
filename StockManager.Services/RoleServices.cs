@@ -10,9 +10,9 @@ namespace StockManager.Services
 {
   public class RoleServices : IRoleRepository
   {
-    private readonly AppDbContext db;
+    private readonly StorageContext db;
 
-    public RoleServices(AppDbContext db)
+    public RoleServices(StorageContext db)
     {
       this.db = db;
     }
