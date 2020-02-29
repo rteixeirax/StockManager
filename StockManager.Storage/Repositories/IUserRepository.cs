@@ -1,8 +1,8 @@
-﻿using StockManager.Database.Models;
+﻿using StockManager.Storage.Models;
 using StockManager.Types;
 using System.Collections.Generic;
 
-namespace StockManager.Database.Repositories
+namespace StockManager.Storage.Repositories
 {
   public interface IUserRepository
   {
@@ -11,7 +11,7 @@ namespace StockManager.Database.Repositories
     List<ErrorType> UpdateUser(int userId, User data);
 
     List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword);
-    
+
     IEnumerable<User> GetUsers(string searchValue = null);
 
     User GetUserById(int userId);

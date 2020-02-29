@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Database.Models;
+using StockManager.Storage.Models;
 using StockManager.Forms;
 using StockManager.Types;
 

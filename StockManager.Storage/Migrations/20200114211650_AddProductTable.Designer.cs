@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockManager.Database;
+using StockManager.Storage;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Storage.Migrations
 {
     [DbContext(typeof(StorageContext))]
     [Migration("20200114211650_AddProductTable")]
@@ -18,7 +18,7 @@ namespace StockManager.Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
 
-            modelBuilder.Entity("StockManager.Database.Models.Location", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.Product", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.Role", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -109,7 +109,7 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -157,9 +157,9 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Role", "Role")
+                    b.HasOne("StockManager.Storage.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)

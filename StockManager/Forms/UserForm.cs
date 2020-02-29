@@ -1,4 +1,4 @@
-﻿using StockManager.Database.Models;
+﻿using StockManager.Storage.Models;
 using StockManager.Types;
 using StockManager.UserControls;
 using System;

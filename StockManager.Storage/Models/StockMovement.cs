@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Database.Models
+namespace StockManager.Storage.Models
 {
   public class StockMovement :BaseEntity
   {

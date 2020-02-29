@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Database.Models
+namespace StockManager.Storage.Models
 {
   public class Role : BaseEntity
   {

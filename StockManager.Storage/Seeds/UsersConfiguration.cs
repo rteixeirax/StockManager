@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StockManager.Database.Models;
+using StockManager.Storage.Models;
 using System;
 
-namespace StockManager.Database.Seeds
+namespace StockManager.Storage.Seeds
 {
   public class UsersConfiguration : IEntityTypeConfiguration<User>
   {

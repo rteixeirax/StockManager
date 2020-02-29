@@ -1,5 +1,5 @@
-﻿using StockManager.Database.Brokers;
-using StockManager.Database.Models;
+﻿using StockManager.Storage.Brokers;
+using StockManager.Storage.Models;
 using StockManager.Types;
 using System;
 using System.Collections.Generic;
@@ -114,7 +114,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Validate Location form data 
+    /// Validate Location form data
     /// </summary>
     private void ValidateLocationFormData(Location location, Location dbLocation = null)
     {

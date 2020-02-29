@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using StockManager.Database.Models;
-using StockManager.Database.Seeds;
+using StockManager.Storage.Models;
+using StockManager.Storage.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StockManager.Database
+namespace StockManager.Storage
 {
   public class StorageContext : DbContext
   {
     public StorageContext() : base()
     {
-      // Run the migrations when the DB is instantiated 
+      // Run the migrations when the DB is instantiated
       this.Database.Migrate();
     }
 

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockManager.Database.Models;
+using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Brokers
+namespace StockManager.Storage.Brokers
 {
   public class LocationBroker : ILocationBroker
   {

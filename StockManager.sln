@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockManager", "StockManager\StockManager.csproj", "{78693E87-582F-4287-B9F6-676D5C97AFD2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Storage", "StockManager.Database\StockManager.Storage.csproj", "{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Storage", "StockManager.Storage\StockManager.Storage.csproj", "{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Services", "StockManager.Services\StockManager.Services.csproj", "{06E6DF51-756B-4D4C-BBBC-5FC389F681F3}"
 EndProject

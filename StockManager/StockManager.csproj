@@ -282,7 +282,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StockManager.Database\StockManager.Storage.csproj">
+    <ProjectReference Include="..\StockManager.Storage\StockManager.Storage.csproj">
       <Project>{c3c9810d-b92c-4dbf-b68e-0272114cbab9}</Project>
       <Name>StockManager.Storage</Name>
     </ProjectReference>

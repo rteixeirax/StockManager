@@ -1,6 +1,6 @@
-﻿using StockManager.Database;
-using StockManager.Database.Models;
-using StockManager.Database.Repositories;
+﻿using StockManager.Storage;
+using StockManager.Storage.Models;
+using StockManager.Storage.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace StockManager.Services
     }
 
     /*
-     * Get All Roles 
+     * Get All Roles
      */
     public IEnumerable<Role> GetRoles() => this.db.Roles.ToList();
   }

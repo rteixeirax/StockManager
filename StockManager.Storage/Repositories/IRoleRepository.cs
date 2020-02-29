@@ -1,7 +1,7 @@
-﻿using StockManager.Database.Models;
+﻿using StockManager.Storage.Models;
 using System.Collections.Generic;
 
-namespace StockManager.Database.Repositories
+namespace StockManager.Storage.Repositories
 {
   public interface IRoleRepository
   {

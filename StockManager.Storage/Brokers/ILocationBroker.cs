@@ -1,9 +1,9 @@
-﻿using StockManager.Database.Models;
+﻿using StockManager.Storage.Models;
 using StockManager.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Brokers
+namespace StockManager.Storage.Brokers
 {
   public interface ILocationBroker
   {

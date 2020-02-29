@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockManager.Database;
+using StockManager.Storage;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Storage.Migrations
 {
     [DbContext(typeof(StorageContext))]
     [Migration("20200112214213_SeedInitialValues")]
@@ -18,7 +18,7 @@ namespace StockManager.Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
 
-            modelBuilder.Entity("StockManager.Database.Models.Role", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -107,9 +107,9 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Role", "Role")
+                    b.HasOne("StockManager.Storage.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)

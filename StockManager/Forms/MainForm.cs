@@ -1,5 +1,5 @@
 ﻿using StockManager.ColorTables;
-using StockManager.Database.Models;
+using StockManager.Storage.Models;
 using StockManager.UserControls;
 using System;
 using System.Windows.Forms;
@@ -100,7 +100,7 @@ namespace StockManager.Forms
     /// </summary>
     private void SetSubMenusVisibility(Control subMenu = null)
     {
-      pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu) 
+      pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu)
         && (!pnlInventorySubMenu.Visible))
         ? true
         : false;
@@ -128,7 +128,7 @@ namespace StockManager.Forms
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
 
-      // Show the Dashboard view 
+      // Show the Dashboard view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Dashboard";
       UserControl ucDashboard = new DashboardUserControl();
@@ -150,7 +150,7 @@ namespace StockManager.Forms
     /// </summary>
     private void btnInventoryLocations_Click(object sender, EventArgs e)
     {
-      // Show the InventoryLocations view 
+      // Show the InventoryLocations view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Inventory > Locations";
       UserControl ucInventoryLocations = new InventoryLocationsUserControl();
@@ -163,7 +163,7 @@ namespace StockManager.Forms
     /// </summary>
     private void btnInventoryStocks_Click(object sender, EventArgs e)
     {
-      // Show the InventoryStocks view 
+      // Show the InventoryStocks view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Inventory > Stocks";
       UserControl ucInventoryStocks = new InventoryStocksUserControl();
@@ -179,7 +179,7 @@ namespace StockManager.Forms
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
 
-      // Show the UsersUser view 
+      // Show the UsersUser view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Users";
       UserControl ucUsers = new UsersUserControl();
@@ -195,7 +195,7 @@ namespace StockManager.Forms
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
 
-      // Show the Settings view 
+      // Show the Settings view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Settings";
       UserControl ucSettings = new SettingsUserControl();

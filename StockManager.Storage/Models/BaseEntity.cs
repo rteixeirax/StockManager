@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace StockManager.Database.Models
+namespace StockManager.Storage.Models
 {
-  /* 
-   * Commom models fields 
-   * 
+  /*
+   * Commom models fields
+   *
    * In this abstract class, you should add the fields that every models
    * will have in common. "CreatedAt and UpdatedAt" for instance.
    */

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using StockManager.Database.Models;
+using StockManager.Storage.Models;
 using StockManager.Forms;
 
 namespace StockManager.UserControls

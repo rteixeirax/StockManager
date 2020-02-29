@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockManager.Database;
+using StockManager.Storage;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Storage.Migrations
 {
     [DbContext(typeof(StorageContext))]
     [Migration("20200115215241_AddStockMovementTable")]
@@ -18,7 +18,7 @@ namespace StockManager.Database.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
 
-            modelBuilder.Entity("StockManager.Database.Models.Location", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
@@ -39,7 +39,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.Product", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -68,7 +68,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.ProductLocation", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.ProductLocation", b =>
                 {
                     b.Property<int>("ProductLocationId")
                         .ValueGeneratedOnAdd()
@@ -107,7 +107,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("ProductLocations");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.Role", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -148,7 +148,7 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.StockMovement", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.StockMovement", b =>
                 {
                     b.Property<int>("StockMovementId")
                         .ValueGeneratedOnAdd()
@@ -193,7 +193,7 @@ namespace StockManager.Database.Migrations
                     b.ToTable("StockMovements");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -241,51 +241,51 @@ namespace StockManager.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.ProductLocation", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.ProductLocation", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Location", "Location")
+                    b.HasOne("StockManager.Storage.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Models.Product", "Product")
+                    b.HasOne("StockManager.Storage.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.StockMovement", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.StockMovement", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Location", "FromLocation")
+                    b.HasOne("StockManager.Storage.Models.Location", "FromLocation")
                         .WithMany()
                         .HasForeignKey("FromLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Models.Product", "Product")
+                    b.HasOne("StockManager.Storage.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Models.Location", "ToLocation")
+                    b.HasOne("StockManager.Storage.Models.Location", "ToLocation")
                         .WithMany()
                         .HasForeignKey("ToLocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Models.User", "User")
+                    b.HasOne("StockManager.Storage.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StockManager.Database.Models.User", b =>
+            modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
-                    b.HasOne("StockManager.Database.Models.Role", "Role")
+                    b.HasOne("StockManager.Storage.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)

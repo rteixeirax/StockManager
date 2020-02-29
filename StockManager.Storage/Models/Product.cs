@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Database.Models
+namespace StockManager.Storage.Models
 {
   public class Product : BaseEntity
   {

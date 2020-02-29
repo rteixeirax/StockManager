@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Storage.Migrations
 {
     public partial class AddProductTable : Migration
     {

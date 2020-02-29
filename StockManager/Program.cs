@@ -1,10 +1,9 @@
-using Microsoft.EntityFrameworkCore;
-using StockManager.Database;
-using StockManager.Database.Brokers;
-using StockManager.Database.Models;
-using StockManager.Database.Repositories;
 using StockManager.Forms;
 using StockManager.Services;
+using StockManager.Storage;
+using StockManager.Storage.Brokers;
+using StockManager.Storage.Models;
+using StockManager.Storage.Repositories;
 using System;
 using System.Windows.Forms;
 

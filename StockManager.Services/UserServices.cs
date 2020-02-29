@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockManager.Database;
-using StockManager.Database.Models;
-using StockManager.Database.Repositories;
+using StockManager.Storage;
+using StockManager.Storage.Models;
+using StockManager.Storage.Repositories;
 using StockManager.Types;
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Validate User form data 
+    /// Validate User form data
     /// </summary>
     private List<ErrorType> ValidateUserData(User user, User dbUser = null)
     {
@@ -80,7 +80,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Update User 
+    /// Update User
     /// </summary>
     public List<ErrorType> UpdateUser(int userId, User user)
     {
@@ -105,9 +105,9 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Get All Users 
+    /// Get All Users
     /// </summary>
-    public IEnumerable<User> GetUsers(string searchValue = null) 
+    public IEnumerable<User> GetUsers(string searchValue = null)
     {
       if (!string.IsNullOrEmpty(searchValue))
       {
@@ -121,7 +121,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Get User by Id 
+    /// Get User by Id
     /// </summary>
     public User GetUserById(int userId) => this.db.Users.FirstOrDefault(x => x.UserId == userId);
 
@@ -132,7 +132,7 @@ namespace StockManager.Services
       .FirstOrDefault(x => (x.Username == username) || (x.Username.ToLower() == username.ToLower()));
 
     /// <summary>
-    /// Delete Users 
+    /// Delete Users
     /// </summary>
     public bool DeleteUsers(int[] userIds, int loggedInUserId)
     {
@@ -152,7 +152,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Login 
+    /// Login
     /// </summary>
     public List<ErrorType> Login(string username, string password)
     {
@@ -183,7 +183,7 @@ namespace StockManager.Services
         // Set the last login data
         user.LastLogin = DateTime.UtcNow;
         this.db.SaveChanges();
-        
+
         return errors;
       }
       else
@@ -195,7 +195,7 @@ namespace StockManager.Services
     }
 
     /// <summary>
-    /// Change Password 
+    /// Change Password
     /// </summary>
     public List<ErrorType> ChangePassword(int userId, string currentPassword, string newPassword)
     {
