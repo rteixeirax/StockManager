@@ -4,6 +4,7 @@ using StockManager.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StockManager.Forms
@@ -19,13 +20,21 @@ namespace StockManager.Forms
       this.usersUserControl = usersUserControl;
     }
 
+    /// <summary> 
+    /// Init the loading spinner 
+    /// </summary> 
+    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    /// <summary> 
+    /// Stop the loading spinner 
+    /// </summary> 
+    private void StopSpinner() { Cursor.Current = Cursors.Default; }
+
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
-    public void ShowUserForm(User user = null)
+    public async Task ShowUserForm(User user = null)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
+      this.InitSpinner();
 
       // Set the userId. Means that is a edit
       this.userId = (user != null) ? user.UserId : 0;
@@ -40,7 +49,7 @@ namespace StockManager.Forms
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      IEnumerable<Role> roles = Program.RoleServices.GetRoles();
+      IEnumerable<Role> roles = await Program.RoleService.GetRolesAsync();
       cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
@@ -53,6 +62,7 @@ namespace StockManager.Forms
         cbRoles.Enabled = (user.UserId == Program.LoggedInUser.UserId) ? false : true;
       }
 
+      this.StopSpinner();
       this.ShowDialog();
     }
 

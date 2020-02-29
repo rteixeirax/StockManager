@@ -68,8 +68,7 @@ namespace StockManager.Services
         {
           int locationId = locationIds[i];
 
-          //TODO:
-          // Change this verification to check if after delete
+          //TODO: Change this verification to check if after delete
           // the app still have at least one location
 
           // You can't delete the main location
@@ -129,8 +128,7 @@ namespace StockManager.Services
         });
       }
 
-      // TODO:
-      // Add verification for unique name
+      // TODO: Add verification for unique name
 
       if (errorsList.HasErrors())
       {

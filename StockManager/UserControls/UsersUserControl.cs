@@ -44,27 +44,24 @@ namespace StockManager.UserControls
     /// <summary>
     /// Create user button click
     /// </summary>
-    private void btnCreateUser_Click(object sender, EventArgs e)
+    private async void btnCreateUser_Click(object sender, EventArgs e)
     {
       UserForm userForm = new UserForm(this);
-      userForm.ShowUserForm();
+      await userForm.ShowUserForm();
     }
 
     /// <summary>
     /// Edit user button click
     /// </summary>
-    private void btnEditUser_Click(object sender, EventArgs e)
+    private async void btnEditUser_Click(object sender, EventArgs e)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
       if (dgvUsers.SelectedRows.Count > 0)
       {
         User user = Program.UserServices
           .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
         UserForm userForm = new UserForm(this);
-        userForm.ShowUserForm(user);
+        await userForm.ShowUserForm(user);
       }
     }
 
