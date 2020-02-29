@@ -32,7 +32,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
-    public async Task ShowUserForm(User user = null)
+    public async Task ShowUserFormAsync(User user = null)
     {
       this.InitSpinner();
 
@@ -93,25 +93,41 @@ namespace StockManager.Forms
     /// <summary>
     /// Create/Update button click
     /// </summary>
-    private void btnSave_Click(object sender, EventArgs e)
+    private async void btnSave_Click(object sender, EventArgs e)
     {
-      User user = new User();
-      user.Username = tbUsername.Text;
-      user.Password = tbPassword.Text;
-      user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
-
-      List<ErrorType> errors = (this.userId != 0)
-        ? Program.UserServices.UpdateUser(this.userId, user)
-        : Program.UserServices.CreateUser(user);
-
-      if (errors.Count == 0)
+      try
       {
-        this.usersUserControl.LoadUsers();
+        User user = new User();
+        user.Username = tbUsername.Text;
+        user.Password = tbPassword.Text;
+        user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
+
+        this.InitSpinner();
+
+        if ((this.userId != 0))
+        {
+          user.UserId = this.userId;
+          await Program.UserService.EditUserAsync(user);
+        }
+        else
+        {
+          await Program.UserService.CreateUserAsync(user);
+        }
+
+        this.StopSpinner();
+        
+        await this.usersUserControl.LoadUsersAsync();
+
         this.Close();
       }
-      else
+      catch (OperationErrorException ex)
       {
-        this.ShowFormErrors(errors);
+        this.StopSpinner();
+
+        if (ex.Errors.Count() > 0)
+        {
+          this.ShowFormErrors(ex.Errors);
+        }
       }
     }
 

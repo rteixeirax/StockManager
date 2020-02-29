@@ -3,7 +3,6 @@ using StockManager.Services;
 using StockManager.Storage;
 using StockManager.Storage.Brokers;
 using StockManager.Storage.Models;
-using StockManager.Storage.Repositories;
 using System;
 using System.Windows.Forms;
 
@@ -17,11 +16,11 @@ namespace StockManager
     public static User LoggedInUser { get; private set; }
 
     /// <summary>
-    /// Set the user after login validation
+    /// Set the user after authentication
     /// </summary>
-    public static void SetLoggedInUser(string username)
+    public static void SetLoggedInUser(User user)
     {
-      LoggedInUser = UserServices.GetUserByUsername(username);
+      LoggedInUser = user;
     }
 
     /// <summary>
@@ -36,15 +35,17 @@ namespace StockManager
     /// Application DB context and brokers
     /// </summary>
     private static StorageContext StorageContext { get; set; }
-    public static IUserRepository UserServices { get; private set; }
+    public static IUserBroker UserBroker { get; private set; }
     public static IRoleBroker RoleBroker { get; private set; }
     public static ILocationBroker LocationBroker { get; private set; }
 
     /// <summary>
     /// Application services
     /// </summary>
-    public static ILocationService LocationService { get; private set; }
+    /// 
+    public static IUserService UserService { get; private set; }
     public static IRoleService RoleService { get; private set; }
+    public static ILocationService LocationService { get; private set; }
 
     /// <summary>
     /// The main entry point for the application.
@@ -55,13 +56,14 @@ namespace StockManager
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      // Instantiate our DB and brokers
+      // Instantiate our storage
       StorageContext = new StorageContext();
+      UserBroker = new UserBroker(StorageContext);
       RoleBroker = new RoleBroker(StorageContext);
       LocationBroker = new LocationBroker(StorageContext);
 
       // Instantiate our services
-      UserServices = new UserServices(StorageContext);
+      UserService = new UserService(UserBroker);
       RoleService = new RoleService(RoleBroker);
       LocationService = new LocationService(LocationBroker);
 

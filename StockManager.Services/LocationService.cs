@@ -75,9 +75,12 @@ namespace StockManager.Services
           if (locationId != 1)
           {
             Location location = await this.locationBroker
-            .FindLocationByIdAsync(locationId);
+              .FindLocationByIdAsync(locationId);
 
-            this.locationBroker.RemoveLocation(location);
+            if (location != null)
+            {
+              this.locationBroker.RemoveLocation(location);
+            }
           }
         }
 

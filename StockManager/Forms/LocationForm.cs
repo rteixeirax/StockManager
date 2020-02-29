@@ -83,13 +83,13 @@ namespace StockManager.Forms
       try
       {
         Location location = new Location();
-        location.LocationId = locationId;
         location.Name = tbName.Text;
 
         this.InitSpinner();
 
         if ((this.locationId != 0))
         {
+          location.LocationId = locationId;
           await Program.LocationService.EditLocationAsync(location);
         }
         else
@@ -99,7 +99,7 @@ namespace StockManager.Forms
 
         this.StopSpinner();
 
-        await this.inventoryLocationsUserControl.LoadLocations();
+        await this.inventoryLocationsUserControl.LoadLocationsAsync();
 
         this.Close();
       }

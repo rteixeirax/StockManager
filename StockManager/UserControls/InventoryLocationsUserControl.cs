@@ -16,7 +16,7 @@ namespace StockManager.UserControls
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
-      this.LoadLocations().Wait();
+      this.LoadLocationsAsync().Wait();
     }
 
     /// <summary>
@@ -31,10 +31,9 @@ namespace StockManager.UserControls
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
-    public async Task LoadLocations(string searchValue = null)
+    public async Task LoadLocationsAsync(string searchValue = null)
     {
       this.InitSpinner();
-
       dgvLocations.Rows.Clear();
 
       IEnumerable<Location> locations = await Program.LocationService
@@ -110,7 +109,7 @@ namespace StockManager.UserControls
 
           this.StopSpinner();
 
-          await this.LoadLocations();
+          await this.LoadLocationsAsync();
         }
         catch (OperationErrorException ex)
         {
@@ -133,7 +132,7 @@ namespace StockManager.UserControls
 
       if (!string.IsNullOrEmpty(searchValue))
       {
-        await this.LoadLocations(searchValue);
+        await this.LoadLocationsAsync(searchValue);
       }
     }
 
@@ -143,7 +142,7 @@ namespace StockManager.UserControls
     private async void btnClearSearchValue_Click(object sender, EventArgs e)
     {
       tbSeachText.Text = "";
-      await this.LoadLocations();
+      await this.LoadLocationsAsync();
     }
 
     /// <summary>

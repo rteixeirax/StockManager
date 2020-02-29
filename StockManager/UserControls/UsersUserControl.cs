@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using StockManager.Storage.Models;
 using StockManager.Forms;
+using System.Threading.Tasks;
+using StockManager.Types;
 
 namespace StockManager.UserControls
 {
@@ -14,20 +16,27 @@ namespace StockManager.UserControls
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
-
-      this.LoadUsers();
+      this.LoadUsersAsync().Wait();
     }
+
+    /// <summary>  
+    /// Init the loading spinner  
+    /// </summary>  
+    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    /// <summary>  
+    /// Stop the loading spinner  
+    /// </summary>  
+    private void StopSpinner() { Cursor.Current = Cursors.Default; }
 
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
-    public void LoadUsers(string searchValue = null)
+    public async Task LoadUsersAsync(string searchValue = null)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
+      this.InitSpinner();
       dgvUsers.Rows.Clear();
-      IEnumerable<User> users = Program.UserServices.GetUsers(searchValue);
+
+      IEnumerable<User> users = await Program.UserService.GetUsersAsync(searchValue);
 
       foreach (User user in users)
       {
@@ -39,6 +48,8 @@ namespace StockManager.UserControls
           user.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
         );
       }
+
+      this.StopSpinner();
     }
 
     /// <summary>
@@ -47,7 +58,7 @@ namespace StockManager.UserControls
     private async void btnCreateUser_Click(object sender, EventArgs e)
     {
       UserForm userForm = new UserForm(this);
-      await userForm.ShowUserForm();
+      await userForm.ShowUserFormAsync();
     }
 
     /// <summary>
@@ -57,18 +68,22 @@ namespace StockManager.UserControls
     {
       if (dgvUsers.SelectedRows.Count > 0)
       {
-        User user = Program.UserServices
-          .GetUserById(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
+        this.InitSpinner();
+
+        User user = await Program.UserService
+          .GetUserByIdAsync(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
+
+        this.StopSpinner();
 
         UserForm userForm = new UserForm(this);
-        await userForm.ShowUserForm(user);
+        await userForm.ShowUserFormAsync(user);
       }
     }
 
     /// <summary>
     /// Delete user button click
     /// </summary>
-    private void btnDeleteUser_Click(object sender, EventArgs e)
+    private async void btnDeleteUser_Click(object sender, EventArgs e)
     {
       DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
 
@@ -79,19 +94,30 @@ namespace StockManager.UserControls
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       )
       {
-        // Spinner
-        Cursor.Current = Cursors.WaitCursor;
-
-        int[] userIds = new int[selectedUsers.Count];
-
-        for (int i = 0; i < selectedUsers.Count; i++)
+        try
         {
-          userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
+          this.InitSpinner();
+
+          int[] userIds = new int[selectedUsers.Count];
+
+          for (int i = 0; i < selectedUsers.Count; i++)
+          {
+            userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
+          }
+
+          await Program.UserService.DeleteUserAsync(userIds, Program.LoggedInUser.UserId);
+
+          this.StopSpinner();
+          await this.LoadUsersAsync();
         }
-
-        if (Program.UserServices.DeleteUsers(userIds, Program.LoggedInUser.UserId))
+        catch (OperationErrorException ex)
         {
-          this.LoadUsers();
+          this.StopSpinner();
+
+          MessageBox.Show(
+          $"{ex.Errors[0].Error}",
+          "Operation error",
+          MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
       }
     }
@@ -99,29 +125,23 @@ namespace StockManager.UserControls
     /// <summary>
     /// Search button click
     /// </summary>
-    private void pbSearchIcon_Click(object sender, EventArgs e)
+    private async void pbSearchIcon_Click(object sender, EventArgs e)
     {
       string searchValue = tbSeachText.Text;
 
       if (!string.IsNullOrEmpty(searchValue))
       {
-        this.LoadUsers(searchValue);
-
-        // Remove spinner
-        Cursor.Current = Cursors.Default;
+        await this.LoadUsersAsync(searchValue);
       }
     }
 
     /// <summary>
     /// Clear search value picture box click
     /// </summary>
-    private void btnClearSearchValue_Click(object sender, EventArgs e)
+    private async void btnClearSearchValue_Click(object sender, EventArgs e)
     {
       tbSeachText.Text = "";
-      this.LoadUsers();
-
-      // Remove spinner
-      Cursor.Current = Cursors.Default;
+      await this.LoadUsersAsync();
     }
 
     /// <summary>

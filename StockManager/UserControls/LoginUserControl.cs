@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Types;
 using StockManager.Forms;
+using StockManager.Storage.Models;
 
 namespace StockManager.UserControls
 {
@@ -26,6 +27,15 @@ namespace StockManager.UserControls
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
     }
+
+    /// <summary>  
+    /// Init the loading spinner  
+    /// </summary>  
+    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    /// <summary>  
+    /// Stop the loading spinner  
+    /// </summary>  
+    private void StopSpinner() { Cursor.Current = Cursors.Default; }
 
     /// <summary>
     /// Set the form errors
@@ -72,24 +82,23 @@ namespace StockManager.UserControls
     /// <summary>
     /// Login button click
     /// </summary>
-    private void btnLogin_Click(object sender, EventArgs e)
+    private async void btnLogin_Click(object sender, EventArgs e)
     {
-      // Spinner
-      Cursor.Current = Cursors.WaitCursor;
-
-      List<ErrorType> errors = Program.UserServices.Login(
-        tbUsername.Text,
-        tbPassword.Text
-      );
-
-      if (errors.Count == 0)
+      try
       {
-        Program.SetLoggedInUser(tbUsername.Text);
+        this.InitSpinner();
+
+        User user = await Program.UserService
+          .AuthenticateAsync(tbUsername.Text, tbPassword.Text);
+
+        this.StopSpinner();
+
+        Program.SetLoggedInUser(user);
         mainForm.SetUi();
       }
-      else
+      catch (OperationErrorException ex)
       {
-        this.SetFormErrors(errors);
+        this.SetFormErrors(ex.Errors);
       }
     }
 
