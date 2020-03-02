@@ -24,7 +24,7 @@ namespace StockManager.Services
     {
       try
       {
-        this.ValidateLocationFormData(location);
+        await this.ValidateLocationFormData(location);
 
         await this.locationBroker.AddLocationAsync(location);
         await this.locationBroker.SaveDbChangesAsync();
@@ -45,7 +45,7 @@ namespace StockManager.Services
         Location dbLocation = await this.locationBroker
           .FindLocationByIdAsync(location.LocationId);
 
-        this.ValidateLocationFormData(location, dbLocation);
+        await this.ValidateLocationFormData(location, dbLocation);
 
         dbLocation.Name = location.Name;
 
@@ -118,7 +118,7 @@ namespace StockManager.Services
     /// <summary>
     /// Validate Location form data
     /// </summary>
-    private void ValidateLocationFormData(Location location, Location dbLocation = null)
+    private async Task ValidateLocationFormData(Location location, Location dbLocation = null)
     {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -131,10 +131,26 @@ namespace StockManager.Services
         });
       }
 
-      // TODO: Add verification for unique name
-
       if (errorsList.HasErrors())
       {
+        throw new OperationErrorException(errorsList);
+      }
+
+      // Check if the name already exist
+      // This validation only occurs when all form fields have no errors
+      // And only if is a create or an update and the name has changed
+      Location nameCheck = ((dbLocation == null) || (dbLocation.Name != location.Name))
+        ? await this.locationBroker.FindLocationByNameAsync(location.Name)
+        : null;
+
+      if (nameCheck != null)
+      {
+        errorsList.AddError(new ErrorType
+        {
+          Field = "Name",
+          Error = "A location with this name already exist."
+        });
+
         throw new OperationErrorException(errorsList);
       }
     }

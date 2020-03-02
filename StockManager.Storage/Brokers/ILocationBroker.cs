@@ -17,5 +17,6 @@ namespace StockManager.Storage.Brokers
 
     Task<Location> FindLocationByIdAsync(int locationId);
 
+    Task<Location> FindLocationByNameAsync(string name);
   }
 }

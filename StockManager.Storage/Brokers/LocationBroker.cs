@@ -63,5 +63,15 @@ namespace StockManager.Storage.Brokers
         .Where(location => location.LocationId == locationId)
         .FirstOrDefaultAsync();
     }
+
+    /// <summary>
+    /// Find user by name async
+    /// </summary>
+    public async Task<Location> FindLocationByNameAsync(string name)
+    {
+      return await this.db.Locations
+        .Where(location => location.Name.ToLower() == name.ToLower())
+        .FirstOrDefaultAsync();
+    }
   }
 }
