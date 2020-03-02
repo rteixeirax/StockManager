@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -23,20 +24,30 @@ namespace StockManager.Storage.Models
     [ForeignKey("Role")]
     public int RoleId { get; set; }
 
-    public virtual Role Role { get; set; }
+    public Role Role { get; set; }
   }
 
-  /// <summary>
-  /// Model Builder
-  /// </summary>
-  public static class UserModelBuilder
+  public class UserConfiguration : IEntityTypeConfiguration<User>
   {
-    public static void Build(ModelBuilder modelBuilder)
+    public void Configure(EntityTypeBuilder<User> builder)
     {
-      modelBuilder.Entity<User>()
-          .HasIndex(x => x.Username)
-          .IsUnique()
-          .HasName("UniqueUsername");
+      builder
+        .HasIndex(x => x.Username)
+        .IsUnique()
+        .HasName("UniqueUsername");
+
+      // Initial data
+      builder.HasData(
+        new User
+        {
+          UserId = 1,
+          Username = "Admin",
+          Password = BCrypt.Net.BCrypt.HashPassword("admin"),
+          RoleId = 1,
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
+        }
+      );
     }
   }
 }

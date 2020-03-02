@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,17 +17,14 @@ namespace StockManager.Storage.Models
     public string Name { get; set; }
   }
 
-  /// <summary>
-  /// Model Builder
-  /// </summary>
-  public static class ProductModelBuilder
+  public class ProductConfiguration : IEntityTypeConfiguration<Product>
   {
-    public static void Build(ModelBuilder modelBuilder)
+    public void Configure(EntityTypeBuilder<Product> builder)
     {
-      modelBuilder.Entity<Product>()
-          .HasIndex(x => x.Reference)
-          .IsUnique()
-          .HasName("UniqueReference");
+      builder
+        .HasIndex(x => x.Reference)
+        .IsUnique()
+        .HasName("UniqueReference");
     }
   }
 }

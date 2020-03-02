@@ -9,8 +9,8 @@ using StockManager.Storage;
 namespace StockManager.Storage.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    [Migration("20200114211650_AddProductTable")]
-    partial class AddProductTable
+    [Migration("20200302223035_initial-migration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,36 +36,11 @@ namespace StockManager.Storage.Migrations
 
                     b.HasKey("LocationId");
 
-                    b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reference")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("Reference")
+                    b.HasIndex("Name")
                         .IsUnique()
-                        .HasName("UniqueReference");
+                        .HasName("UniqueName");
 
-                    b.ToTable("Products");
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("StockManager.Storage.Models.Role", b =>
@@ -97,15 +72,15 @@ namespace StockManager.Storage.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 302, DateTimeKind.Utc).AddTicks(7033),
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 302, DateTimeKind.Utc).AddTicks(7033)
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 303, DateTimeKind.Utc).AddTicks(7022),
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 303, DateTimeKind.Utc).AddTicks(7022)
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466)
                         });
                 });
 
@@ -149,10 +124,10 @@ namespace StockManager.Storage.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 399, DateTimeKind.Utc).AddTicks(6469),
-                            Password = "$2b$10$e19yxQbXCjdErdS96O3obexMTcqNL4hLsLX8HcMj16qJUd8AU5IpW",
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963),
+                            Password = "$2b$10$.ScdPhsJPOmKhzKPnjJu6ePTS38RwwHYmw/4INfm5NVawGWuNiG4G",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 1, 14, 21, 16, 50, 399, DateTimeKind.Utc).AddTicks(6469),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963),
                             Username = "Admin"
                         });
                 });
@@ -160,9 +135,9 @@ namespace StockManager.Storage.Migrations
             modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
                     b.HasOne("StockManager.Storage.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

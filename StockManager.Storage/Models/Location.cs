@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace StockManager.Storage.Models
 {
@@ -13,5 +11,16 @@ namespace StockManager.Storage.Models
 
     [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
+  }
+
+  public class LocationConfiguration : IEntityTypeConfiguration<Location>
+  {
+    public void Configure(EntityTypeBuilder<Location> builder)
+    {
+      builder
+        .HasIndex(x => x.Name)
+        .IsUnique()
+        .HasName("UniqueName");
+    }
   }
 }

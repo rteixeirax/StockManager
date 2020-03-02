@@ -34,75 +34,11 @@ namespace StockManager.Storage.Migrations
 
                     b.HasKey("LocationId");
 
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasName("UniqueName");
+
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.Product", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reference")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProductId");
-
-                    b.HasIndex("Reference")
-                        .IsUnique()
-                        .HasName("UniqueReference");
-
-                    b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.ProductLocation", b =>
-                {
-                    b.Property<int>("ProductLocationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("LocationId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("MinStock")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("REAL")
-                        .HasDefaultValue(0f);
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("Stock")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("REAL")
-                        .HasDefaultValue(0f);
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProductLocationId");
-
-                    b.HasIndex("LocationId");
-
-                    b.HasIndex("ProductId", "LocationId")
-                        .IsUnique()
-                        .HasName("UniqueProductIdLocationIdPair");
-
-                    b.ToTable("ProductLocations");
                 });
 
             modelBuilder.Entity("StockManager.Storage.Models.Role", b =>
@@ -134,61 +70,16 @@ namespace StockManager.Storage.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086)
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086),
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 801, DateTimeKind.Utc).AddTicks(7086)
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466)
                         });
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.StockMovement", b =>
-                {
-                    b.Property<int>("StockMovementId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("FromLocationId")
-                        .IsRequired()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<float>("Qty")
-                        .HasColumnType("REAL");
-
-                    b.Property<float>("Stock")
-                        .HasColumnType("REAL");
-
-                    b.Property<int?>("ToLocationId")
-                        .IsRequired()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("StockMovementId");
-
-                    b.HasIndex("FromLocationId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ToLocationId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("StockMovements");
                 });
 
             modelBuilder.Entity("StockManager.Storage.Models.User", b =>
@@ -231,62 +122,20 @@ namespace StockManager.Storage.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443),
-                            Password = "$2b$10$RB3mgMvdY7yaykuMNVtmde.w0sQyO4AZJWeFrKjWnLy0Y0v6hAobe",
+                            CreatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963),
+                            Password = "$2b$10$.ScdPhsJPOmKhzKPnjJu6ePTS38RwwHYmw/4INfm5NVawGWuNiG4G",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 1, 15, 21, 52, 40, 895, DateTimeKind.Utc).AddTicks(6443),
+                            UpdatedAt = new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963),
                             Username = "Admin"
                         });
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.ProductLocation", b =>
-                {
-                    b.HasOne("StockManager.Storage.Models.Location", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockManager.Storage.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("StockManager.Storage.Models.StockMovement", b =>
-                {
-                    b.HasOne("StockManager.Storage.Models.Location", "FromLocation")
-                        .WithMany()
-                        .HasForeignKey("FromLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockManager.Storage.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockManager.Storage.Models.Location", "ToLocation")
-                        .WithMany()
-                        .HasForeignKey("ToLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StockManager.Storage.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("StockManager.Storage.Models.User", b =>
                 {
                     b.HasOne("StockManager.Storage.Models.Role", "Role")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StockManager.Storage.Models;
-using StockManager.Storage.Seeds;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +27,7 @@ namespace StockManager.Storage
     /// Auto fill the CreatedAt and the UpdatedAt model fields
     /// https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
     /// </summary>
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
       IEnumerable<EntityEntry> entries = ChangeTracker
           .Entries()
@@ -47,23 +46,20 @@ namespace StockManager.Storage
 
       return await base.SaveChangesAsync(true, cancellationToken);
     }
-
+    
     /// <summary>
-    /// Add models indexes/constraints and seed the inital DB values
+    /// Define the models relationships constraints, indexes and seed the initial data
     /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
+    /// https://code-maze.com/efcore-relationships/
+    /// https://code-maze.com/migrations-and-seed-data-efcore/
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      // Models constraints
-      RoleModelBuilder.Build(modelBuilder);
-      UserModelBuilder.Build(modelBuilder);
-      ProductModelBuilder.Build(modelBuilder);
-      ProductLocationModelBuilder.Build(modelBuilder);
-
-      // Seed the DB with the initial values
-      // https://code-maze.com/migrations-and-seed-data-efcore/
-      modelBuilder.ApplyConfiguration(new RolesConfiguration());
-      modelBuilder.ApplyConfiguration(new UsersConfiguration());
+      modelBuilder.ApplyConfiguration(new RoleConfiguration());
+      modelBuilder.ApplyConfiguration(new UserConfiguration());
+      modelBuilder.ApplyConfiguration(new LocationConfiguration());
+      //modelBuilder.ApplyConfiguration(new ProductConfiguration());
+      //modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
     }
 
     /// <summary>
@@ -72,8 +68,8 @@ namespace StockManager.Storage
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<ProductLocation> ProductLocations { get; set; }
-    public DbSet<StockMovement> StockMovements { get; set; }
+    //public DbSet<Product> Products { get; set; }
+    //public DbSet<ProductLocation> ProductLocations { get; set; }
+    //public DbSet<StockMovement> StockMovements { get; set; }
   }
 }

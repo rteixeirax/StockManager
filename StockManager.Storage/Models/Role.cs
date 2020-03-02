@@ -1,4 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StockManager.Storage.Models
@@ -10,16 +13,42 @@ namespace StockManager.Storage.Models
 
     [Required(ErrorMessage = "Code is required")]
     public string Code { get; set; }
+
+    public ICollection<User> Users { get; set; }
   }
 
-  public static class RoleModelBuilder
+  public class RoleConfiguration : IEntityTypeConfiguration<Role>
   {
-    public static void Build(ModelBuilder modelBuilder)
+    public void Configure(EntityTypeBuilder<Role> builder)
     {
-      modelBuilder.Entity<Role>()
-          .HasIndex(x => x.Code)
-          .IsUnique()
-          .HasName("UniqueCode");
+      builder
+        .HasMany(x => x.Users)
+        .WithOne(x => x.Role)
+        .HasForeignKey(x => x.RoleId)
+        .OnDelete(DeleteBehavior.Restrict);
+
+      builder
+        .HasIndex(x => x.Code)
+        .IsUnique()
+        .HasName("UniqueCode");
+
+      // Initial data
+      builder.HasData(
+        new Role
+        {
+          RoleId = 1,
+          Code = "Admin",
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
+        },
+        new Role
+        {
+          RoleId = 2,
+          Code = "User",
+          CreatedAt = DateTime.UtcNow,
+          UpdatedAt = DateTime.UtcNow
+        }
+      );
     }
   }
 }
