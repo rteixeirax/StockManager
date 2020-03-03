@@ -19,19 +19,16 @@ namespace StockManager.Storage.Models
     public int ProductId { get; set; }
     public Product Product { get; set; }
 
-    [Required(ErrorMessage = "FromLocationId is required")]
     [ForeignKey("FromLocation")]
-    public int FromLocationId { get; set; }
+    public int? FromLocationId { get; set; }
     public Location FromLocation { get; set; }
 
-    [Required(ErrorMessage = "ToLocationId is required")]
     [ForeignKey("ToLocation")]
-    public int ToLocationId { get; set; }
+    public int? ToLocationId { get; set; }
     public virtual Location ToLocation { get; set; }
 
-    [Required(ErrorMessage = "UserId is required")]
     [ForeignKey("User")]
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
     public User User { get; set; }
   }
 }

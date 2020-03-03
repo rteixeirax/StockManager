@@ -41,7 +41,7 @@ namespace StockManager.Storage.Models
        .HasMany(x => x.StockMovements)
        .WithOne(x => x.User)
        .HasForeignKey(x => x.UserId)
-       .OnDelete(DeleteBehavior.Cascade);
+       .OnDelete(DeleteBehavior.SetNull);
 
       builder.HasData(
         new User

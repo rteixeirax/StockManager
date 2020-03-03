@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockManager.Storage.Migrations
 {
-    public partial class addrelationsbetweentables : Migration
+    public partial class Addtablesandconstraints : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Locations",
+                columns: table => new
+                {
+                    LocationId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Locations", x => x.LocationId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
@@ -21,6 +36,21 @@ namespace StockManager.Storage.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Roles",
+                columns: table => new
+                {
+                    RoleId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Code = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Roles", x => x.RoleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,13 +74,37 @@ namespace StockManager.Storage.Migrations
                         column: x => x.LocationId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ProductLocations_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Username = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false),
+                    LastLogin = table.Column<DateTime>(nullable: true),
+                    RoleId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_Users_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "RoleId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -62,9 +116,9 @@ namespace StockManager.Storage.Migrations
                     Qty = table.Column<float>(nullable: false),
                     Stock = table.Column<float>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
-                    FromLocationId = table.Column<int>(nullable: false),
-                    ToLocationId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    FromLocationId = table.Column<int>(nullable: true),
+                    ToLocationId = table.Column<int>(nullable: true),
+                    UserId = table.Column<int>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true),
                 },
@@ -76,7 +130,7 @@ namespace StockManager.Storage.Migrations
                         column: x => x.FromLocationId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_StockMovements_Products_ProductId",
                         column: x => x.ProductId,
@@ -88,45 +142,45 @@ namespace StockManager.Storage.Migrations
                         column: x => x.ToLocationId,
                         principalTable: "Locations",
                         principalColumn: "LocationId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_StockMovements_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205), "Main warehouse", new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205) });
+                values: new object[] { 1, new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789), "Warehouse", new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 2, new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205), "Vehicle #1", new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205) });
+                values: new object[] { 2, new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789), "Vehicle #1", new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789) });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Roles",
-                keyColumn: "RoleId",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422), new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422) });
+                columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
+                values: new object[] { 1, "Admin", new DateTime(2020, 3, 3, 20, 32, 32, 401, DateTimeKind.Utc).AddTicks(9296), new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238) });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Roles",
-                keyColumn: "RoleId",
-                keyValue: 2,
-                columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422), new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422) });
+                columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
+                values: new object[] { 2, "User", new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238), new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238) });
 
-            migrationBuilder.UpdateData(
+            migrationBuilder.InsertData(
                 table: "Users",
-                keyColumn: "UserId",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "Password", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 3, 19, 55, 1, 964, DateTimeKind.Utc).AddTicks(5328), "$2b$10$JFa0IACJtHHalxRjsAeMhOZa5pr.8sZMiHpKz9490hQRNmh2RIS0i", new DateTime(2020, 3, 3, 19, 55, 1, 964, DateTimeKind.Utc).AddTicks(5328) });
+                columns: new[] { "UserId", "CreatedAt", "LastLogin", "Password", "RoleId", "UpdatedAt", "Username" },
+                values: new object[] { 1, new DateTime(2020, 3, 3, 20, 32, 32, 505, DateTimeKind.Utc).AddTicks(4339), null, "$2b$10$ecP/6WJSV3M9QQHeKWjucukTuv5AGTLLIEMOxPCRVqYR65KPVuYA6", 1, new DateTime(2020, 3, 3, 20, 32, 32, 505, DateTimeKind.Utc).AddTicks(4339), "Admin" });
+
+            migrationBuilder.CreateIndex(
+                name: "UniqueName",
+                table: "Locations",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductLocations_LocationId",
@@ -143,6 +197,12 @@ namespace StockManager.Storage.Migrations
                 name: "UniqueReference",
                 table: "Products",
                 column: "Reference",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "UniqueCode",
+                table: "Roles",
+                column: "Code",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -164,6 +224,17 @@ namespace StockManager.Storage.Migrations
                 name: "IX_StockMovements_UserId",
                 table: "StockMovements",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_RoleId",
+                table: "Users",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "UniqueUsername",
+                table: "Users",
+                column: "Username",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -175,38 +246,16 @@ namespace StockManager.Storage.Migrations
                 name: "StockMovements");
 
             migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
                 name: "Products");
 
-            migrationBuilder.DeleteData(
-                table: "Locations",
-                keyColumn: "LocationId",
-                keyValue: 1);
+            migrationBuilder.DropTable(
+                name: "Users");
 
-            migrationBuilder.DeleteData(
-                table: "Locations",
-                keyColumn: "LocationId",
-                keyValue: 2);
-
-            migrationBuilder.UpdateData(
-                table: "Roles",
-                keyColumn: "RoleId",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466), new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466) });
-
-            migrationBuilder.UpdateData(
-                table: "Roles",
-                keyColumn: "RoleId",
-                keyValue: 2,
-                columns: new[] { "CreatedAt", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466), new DateTime(2020, 3, 2, 22, 30, 34, 443, DateTimeKind.Utc).AddTicks(5466) });
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "UserId",
-                keyValue: 1,
-                columns: new[] { "CreatedAt", "Password", "UpdatedAt" },
-                values: new object[] { new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963), "$2b$10$.ScdPhsJPOmKhzKPnjJu6ePTS38RwwHYmw/4INfm5NVawGWuNiG4G", new DateTime(2020, 3, 2, 22, 30, 34, 557, DateTimeKind.Utc).AddTicks(7963) });
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }

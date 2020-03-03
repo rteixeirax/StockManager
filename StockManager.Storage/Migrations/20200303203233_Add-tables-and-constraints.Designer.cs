@@ -9,8 +9,8 @@ using StockManager.Storage;
 namespace StockManager.Storage.Migrations
 {
     [DbContext(typeof(StorageContext))]
-    [Migration("20200303195503_add-relations-between-tables")]
-    partial class addrelationsbetweentables
+    [Migration("20200303203233_Add-tables-and-constraints")]
+    partial class Addtablesandconstraints
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,16 +46,16 @@ namespace StockManager.Storage.Migrations
                         new
                         {
                             LocationId = 1,
-                            CreatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205),
-                            Name = "Main warehouse",
-                            UpdatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205)
+                            CreatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789),
+                            Name = "Warehouse",
+                            UpdatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789)
                         },
                         new
                         {
                             LocationId = 2,
-                            CreatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205),
+                            CreatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789),
                             Name = "Vehicle #1",
-                            UpdatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 978, DateTimeKind.Utc).AddTicks(2205)
+                            UpdatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 520, DateTimeKind.Utc).AddTicks(789)
                         });
                 });
 
@@ -156,15 +156,15 @@ namespace StockManager.Storage.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422),
-                            UpdatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422)
+                            CreatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 401, DateTimeKind.Utc).AddTicks(9296),
+                            UpdatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422),
-                            UpdatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 861, DateTimeKind.Utc).AddTicks(422)
+                            CreatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238),
+                            UpdatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 402, DateTimeKind.Utc).AddTicks(9238)
                         });
                 });
 
@@ -177,7 +177,7 @@ namespace StockManager.Storage.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("FromLocationId")
+                    b.Property<int?>("FromLocationId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductId")
@@ -189,13 +189,13 @@ namespace StockManager.Storage.Migrations
                     b.Property<float>("Stock")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("ToLocationId")
+                    b.Property<int?>("ToLocationId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("StockMovementId");
@@ -251,10 +251,10 @@ namespace StockManager.Storage.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 964, DateTimeKind.Utc).AddTicks(5328),
-                            Password = "$2b$10$JFa0IACJtHHalxRjsAeMhOZa5pr.8sZMiHpKz9490hQRNmh2RIS0i",
+                            CreatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 505, DateTimeKind.Utc).AddTicks(4339),
+                            Password = "$2b$10$ecP/6WJSV3M9QQHeKWjucukTuv5AGTLLIEMOxPCRVqYR65KPVuYA6",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 3, 3, 19, 55, 1, 964, DateTimeKind.Utc).AddTicks(5328),
+                            UpdatedAt = new DateTime(2020, 3, 3, 20, 32, 32, 505, DateTimeKind.Utc).AddTicks(4339),
                             Username = "Admin"
                         });
                 });
@@ -264,7 +264,7 @@ namespace StockManager.Storage.Migrations
                     b.HasOne("StockManager.Storage.Models.Location", "Location")
                         .WithMany("ProductLocations")
                         .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("StockManager.Storage.Models.Product", "Product")
@@ -279,8 +279,7 @@ namespace StockManager.Storage.Migrations
                     b.HasOne("StockManager.Storage.Models.Location", "FromLocation")
                         .WithMany("StockMovementsFrom")
                         .HasForeignKey("FromLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("StockManager.Storage.Models.Product", "Product")
                         .WithMany("StockMovements")
@@ -291,14 +290,12 @@ namespace StockManager.Storage.Migrations
                     b.HasOne("StockManager.Storage.Models.Location", "ToLocation")
                         .WithMany("StockMovementsTo")
                         .HasForeignKey("ToLocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("StockManager.Storage.Models.User", "User")
                         .WithMany("StockMovements")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("StockManager.Storage.Models.User", b =>

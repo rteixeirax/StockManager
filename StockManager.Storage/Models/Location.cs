@@ -35,19 +35,19 @@ namespace StockManager.Storage.Models
        .HasMany(x => x.ProductLocations)
        .WithOne(x => x.Location)
        .HasForeignKey(x => x.LocationId)
-       .OnDelete(DeleteBehavior.Cascade);
+       .OnDelete(DeleteBehavior.Restrict);
 
       builder
        .HasMany(x => x.StockMovementsFrom)
        .WithOne(x => x.FromLocation)
        .HasForeignKey(x => x.FromLocationId)
-       .OnDelete(DeleteBehavior.Cascade);
+       .OnDelete(DeleteBehavior.SetNull);
 
       builder
        .HasMany(x => x.StockMovementsTo)
        .WithOne(x => x.ToLocation)
        .HasForeignKey(x => x.ToLocationId)
-       .OnDelete(DeleteBehavior.Cascade);
+       .OnDelete(DeleteBehavior.SetNull);
 
       builder.HasData(
        new Location
