@@ -47,11 +47,12 @@ namespace StockManager.Storage.Brokers
       if (!string.IsNullOrEmpty(searchValue))
       {
         return await this.db.Locations
-        .Where(location => location.Name.ToLower().Contains(searchValue.ToLower()))
-        .ToListAsync();
+          .Include(x => x.ProductLocations)
+          .Where(location => location.Name.ToLower().Contains(searchValue.ToLower()))
+          .ToListAsync();
       }
 
-      return await this.db.Locations.ToListAsync();
+      return await this.db.Locations.Include(x => x.ProductLocations).ToListAsync();
     }
 
     /// <summary>

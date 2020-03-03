@@ -71,6 +71,8 @@ namespace StockManager.Services
           //TODO: Change this verification to check if after delete
           // the app still have at least one location
 
+          // TODO: If have Products, can't be deleted
+
           // You can't delete the main location
           if (locationId != 1)
           {

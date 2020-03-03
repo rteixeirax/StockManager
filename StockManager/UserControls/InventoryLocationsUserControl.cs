@@ -44,7 +44,7 @@ namespace StockManager.UserControls
         dgvLocations.Rows.Add(
           location.LocationId,
           location.Name,
-          999,
+          location.ProductLocations.Count,
           location.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
         );
       }
