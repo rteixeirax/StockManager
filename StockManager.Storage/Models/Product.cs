@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StockManager.Storage.Models
@@ -15,6 +16,10 @@ namespace StockManager.Storage.Models
 
     [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
+
+    public ICollection<ProductLocation> ProductLocations { get; set; }
+
+    public ICollection<StockMovement> StockMovements { get; set; }
   }
 
   public class ProductConfiguration : IEntityTypeConfiguration<Product>
@@ -25,6 +30,18 @@ namespace StockManager.Storage.Models
         .HasIndex(x => x.Reference)
         .IsUnique()
         .HasName("UniqueReference");
+
+      builder
+        .HasMany(x => x.ProductLocations)
+        .WithOne(x => x.Product)
+        .HasForeignKey(x => x.ProductId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+      builder
+        .HasMany(x => x.StockMovements)
+        .WithOne(x => x.Product)
+        .HasForeignKey(x => x.ProductId)
+        .OnDelete(DeleteBehavior.Cascade);
     }
   }
 }

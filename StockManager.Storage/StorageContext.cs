@@ -58,8 +58,8 @@ namespace StockManager.Storage
       modelBuilder.ApplyConfiguration(new RoleConfiguration());
       modelBuilder.ApplyConfiguration(new UserConfiguration());
       modelBuilder.ApplyConfiguration(new LocationConfiguration());
-      //modelBuilder.ApplyConfiguration(new ProductConfiguration());
-      //modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
+      modelBuilder.ApplyConfiguration(new ProductConfiguration());
+      modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
     }
 
     /// <summary>
@@ -68,8 +68,8 @@ namespace StockManager.Storage
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }
-    //public DbSet<Product> Products { get; set; }
-    //public DbSet<ProductLocation> ProductLocations { get; set; }
-    //public DbSet<StockMovement> StockMovements { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<ProductLocation> ProductLocations { get; set; }
+    public DbSet<StockMovement> StockMovements { get; set; }
   }
 }

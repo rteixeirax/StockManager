@@ -22,17 +22,16 @@ namespace StockManager.Storage.Models
     public void Configure(EntityTypeBuilder<Role> builder)
     {
       builder
+        .HasIndex(x => x.Code)
+        .IsUnique()
+        .HasName("UniqueCode");
+
+      builder
         .HasMany(x => x.Users)
         .WithOne(x => x.Role)
         .HasForeignKey(x => x.RoleId)
         .OnDelete(DeleteBehavior.Restrict);
 
-      builder
-        .HasIndex(x => x.Code)
-        .IsUnique()
-        .HasName("UniqueCode");
-
-      // Initial data
       builder.HasData(
         new Role
         {

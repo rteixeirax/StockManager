@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StockManager.Storage.Models
@@ -11,6 +13,13 @@ namespace StockManager.Storage.Models
 
     [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
+
+    public ICollection<ProductLocation> ProductLocations { get; set; }
+    
+    public ICollection<StockMovement> StockMovementsFrom { get; set; }
+
+    public ICollection<StockMovement> StockMovementsTo { get; set; }
+
   }
 
   public class LocationConfiguration : IEntityTypeConfiguration<Location>
@@ -21,6 +30,41 @@ namespace StockManager.Storage.Models
         .HasIndex(x => x.Name)
         .IsUnique()
         .HasName("UniqueName");
+
+      builder
+       .HasMany(x => x.ProductLocations)
+       .WithOne(x => x.Location)
+       .HasForeignKey(x => x.LocationId)
+       .OnDelete(DeleteBehavior.Cascade);
+
+      builder
+       .HasMany(x => x.StockMovementsFrom)
+       .WithOne(x => x.FromLocation)
+       .HasForeignKey(x => x.FromLocationId)
+       .OnDelete(DeleteBehavior.Cascade);
+
+      builder
+       .HasMany(x => x.StockMovementsTo)
+       .WithOne(x => x.ToLocation)
+       .HasForeignKey(x => x.ToLocationId)
+       .OnDelete(DeleteBehavior.Cascade);
+
+      builder.HasData(
+       new Location
+       {
+         LocationId = 1,
+         Name = "Warehouse",
+         CreatedAt = DateTime.UtcNow,
+         UpdatedAt = DateTime.UtcNow
+       },
+       new Location
+       {
+         LocationId = 2,
+         Name = "Vehicle #1",
+         CreatedAt = DateTime.UtcNow,
+         UpdatedAt = DateTime.UtcNow
+       }
+     );
     }
   }
 }

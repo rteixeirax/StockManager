@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,13 +19,13 @@ namespace StockManager.Storage.Models
     [Required(ErrorMessage = "Password is required")]
     public string Password { get; set; }
 
-    // Allow null
     public DateTime? LastLogin { get; set; }
 
     [ForeignKey("Role")]
     public int RoleId { get; set; }
-
     public Role Role { get; set; }
+
+    public ICollection<StockMovement> StockMovements { get; set; }
   }
 
   public class UserConfiguration : IEntityTypeConfiguration<User>
@@ -36,7 +37,12 @@ namespace StockManager.Storage.Models
         .IsUnique()
         .HasName("UniqueUsername");
 
-      // Initial data
+      builder
+       .HasMany(x => x.StockMovements)
+       .WithOne(x => x.User)
+       .HasForeignKey(x => x.UserId)
+       .OnDelete(DeleteBehavior.Cascade);
+
       builder.HasData(
         new User
         {
