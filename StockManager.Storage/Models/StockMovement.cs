@@ -25,7 +25,7 @@ namespace StockManager.Storage.Models
 
     [ForeignKey("ToLocation")]
     public int? ToLocationId { get; set; }
-    public virtual Location ToLocation { get; set; }
+    public Location ToLocation { get; set; }
 
     [ForeignKey("User")]
     public int? UserId { get; set; }
