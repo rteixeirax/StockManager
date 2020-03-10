@@ -9,8 +9,11 @@ namespace StockManager.Types {
       this.ErrorsList = new List<ErrorType>();
     }
 
-    public void AddError(ErrorType error) {
-      this.ErrorsList.Add(error);
+    public void AddError(string field, string errorMessage) {
+      this.ErrorsList.Add(new ErrorType {
+        Field = field,
+        Error = errorMessage,
+      });
     }
 
     public bool HasErrors() {
