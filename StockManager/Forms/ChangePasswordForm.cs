@@ -1,21 +1,11 @@
-﻿using StockManager.Storage.Models;
-using StockManager.Types;
+﻿using StockManager.Types;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StockManager.Forms
-{
-  public partial class ChangePasswordForm : Form
-  {
-    public ChangePasswordForm()
-    {
+namespace StockManager.Forms {
+  public partial class ChangePasswordForm : Form {
+    public ChangePasswordForm() {
       InitializeComponent();
     }
 
@@ -27,12 +17,11 @@ namespace StockManager.Forms
     /// Stop the loading spinner  
     /// </summary>  
     private void StopSpinner() { Cursor.Current = Cursors.Default; }
-    
+
     /// <summary>
     /// Show the Change Password Form and set the initial values
     /// </summary>
-    public void ShowChangePasswordForm()
-    {
+    public void ShowChangePasswordForm() {
       // hide the error labels
       lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
@@ -43,21 +32,17 @@ namespace StockManager.Forms
     /// <summary>
     /// Show form errors
     /// </summary>
-    private void SetFormErrors(List<ErrorType> errors)
-    {
+    private void SetFormErrors(List<ErrorType> errors) {
       lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
 
-      foreach (var err in errors)
-      {
-        if (err.Field == "CurrentPassword")
-        {
+      foreach (var err in errors) {
+        if (err.Field == "CurrentPassword") {
           lbErrorCurrentPassword.Text = err.Error;
           lbErrorCurrentPassword.Visible = true;
         }
 
-        if (err.Field == "NewPassword")
-        {
+        if (err.Field == "NewPassword") {
           lbErrorNewPassword.Text = err.Error;
           lbErrorNewPassword.Visible = true;
         }
@@ -67,10 +52,8 @@ namespace StockManager.Forms
     /// <summary>
     /// Update button click
     /// </summary>
-    private async void btnSave_Click(object sender, EventArgs e)
-    {
-      try
-      {
+    private async void btnSave_Click(object sender, EventArgs e) {
+      try {
         this.InitSpinner();
 
         await Program.UserService.ChangePasswordAsync(
@@ -78,12 +61,10 @@ namespace StockManager.Forms
           tbCurrentPassword.Text,
           tbNewPassword.Text
         );
-        
+
         this.StopSpinner();
         this.btnCancel_Click(sender, e);
-      }
-      catch (OperationErrorException ex)
-      {
+      } catch (OperationErrorException ex) {
         this.StopSpinner();
         this.SetFormErrors(ex.Errors);
       }
@@ -92,8 +73,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Close button click
     /// </summary>
-    private void btnCancel_Click(object sender, EventArgs e)
-    {
+    private void btnCancel_Click(object sender, EventArgs e) {
       this.Close();
     }
   }

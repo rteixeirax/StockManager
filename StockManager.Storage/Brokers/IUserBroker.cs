@@ -1,13 +1,9 @@
 ﻿using StockManager.Storage.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Brokers
-{
-  public interface IUserBroker
-  {
+namespace StockManager.Storage.Brokers {
+  public interface IUserBroker {
     Task SaveDbChangesAsync();
 
     Task AddUserAsync(User user);

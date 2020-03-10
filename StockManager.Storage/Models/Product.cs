@@ -4,10 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Storage.Models
-{
-  public class Product : BaseEntity
-  {
+namespace StockManager.Storage.Models {
+  public class Product : BaseEntity {
     [Key]
     public int ProductId { get; set; }
 
@@ -22,10 +20,8 @@ namespace StockManager.Storage.Models
     public ICollection<StockMovement> StockMovements { get; set; }
   }
 
-  public class ProductConfiguration : IEntityTypeConfiguration<Product>
-  {
-    public void Configure(EntityTypeBuilder<Product> builder)
-    {
+  public class ProductConfiguration : IEntityTypeConfiguration<Product> {
+    public void Configure(EntityTypeBuilder<Product> builder) {
       builder
         .HasIndex(x => x.Reference)
         .IsUnique()

@@ -7,15 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StockManager.Forms
-{
-  public partial class UserForm : Form
-  {
+namespace StockManager.Forms {
+  public partial class UserForm : Form {
     private int userId = 0;
     private readonly UsersUserControl usersUserControl;
 
-    public UserForm(UsersUserControl usersUserControl)
-    {
+    public UserForm(UsersUserControl usersUserControl) {
       InitializeComponent();
       this.usersUserControl = usersUserControl;
     }
@@ -32,8 +29,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
-    public async Task ShowUserFormAsync(User user = null)
-    {
+    public async Task ShowUserFormAsync(User user = null) {
       this.InitSpinner();
 
       // Set the userId. Means that is a edit
@@ -55,8 +51,7 @@ namespace StockManager.Forms
       cbRoles.DisplayMember = "Code";
 
       // Edit
-      if (user != null)
-      {
+      if (user != null) {
         tbUsername.Text = user.Username;
         cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
         cbRoles.Enabled = (user.UserId == Program.LoggedInUser.UserId) ? false : true;
@@ -69,21 +64,17 @@ namespace StockManager.Forms
     /// <summary>
     /// Show the form errors, if any.
     /// </summary>
-    private void ShowFormErrors(List<ErrorType> errors)
-    {
+    private void ShowFormErrors(List<ErrorType> errors) {
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
 
-      foreach (var err in errors)
-      {
-        if (err.Field == "Username")
-        {
+      foreach (var err in errors) {
+        if (err.Field == "Username") {
           lbErrorUsername.Text = err.Error;
           lbErrorUsername.Visible = true;
         }
 
-        if (err.Field == "Password")
-        {
+        if (err.Field == "Password") {
           lbErrorPassword.Text = err.Error;
           lbErrorPassword.Visible = true;
         }
@@ -93,10 +84,8 @@ namespace StockManager.Forms
     /// <summary>
     /// Create/Update button click
     /// </summary>
-    private async void btnSave_Click(object sender, EventArgs e)
-    {
-      try
-      {
+    private async void btnSave_Click(object sender, EventArgs e) {
+      try {
         User user = new User();
         user.Username = tbUsername.Text;
         user.Password = tbPassword.Text;
@@ -104,28 +93,22 @@ namespace StockManager.Forms
 
         this.InitSpinner();
 
-        if ((this.userId != 0))
-        {
+        if ((this.userId != 0)) {
           user.UserId = this.userId;
           await Program.UserService.EditUserAsync(user);
-        }
-        else
-        {
+        } else {
           await Program.UserService.CreateUserAsync(user);
         }
 
         this.StopSpinner();
-        
+
         await this.usersUserControl.LoadUsersAsync();
 
         this.Close();
-      }
-      catch (OperationErrorException ex)
-      {
+      } catch (OperationErrorException ex) {
         this.StopSpinner();
 
-        if (ex.Errors.Count() > 0)
-        {
+        if (ex.Errors.Count() > 0) {
           this.ShowFormErrors(ex.Errors);
         }
       }
@@ -134,8 +117,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Close button click
     /// </summary>
-    private void btnCancel_Click(object sender, EventArgs e)
-    {
+    private void btnCancel_Click(object sender, EventArgs e) {
       this.Close();
     }
   }

@@ -6,10 +6,8 @@ using StockManager.Storage.Models;
 using System;
 using System.Windows.Forms;
 
-namespace StockManager
-{
-  static class Program
-  {
+namespace StockManager {
+  static class Program {
     /// <summary>
     /// Logged in user
     /// </summary>
@@ -18,16 +16,14 @@ namespace StockManager
     /// <summary>
     /// Set the user after authentication
     /// </summary>
-    public static void SetLoggedInUser(User user)
-    {
+    public static void SetLoggedInUser(User user) {
       LoggedInUser = user;
     }
 
     /// <summary>
     /// Kill the "Session"
     /// </summary>
-    public static void Logout()
-    {
+    public static void Logout() {
       LoggedInUser = null;
     }
 
@@ -51,8 +47,7 @@ namespace StockManager
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main()
-    {
+    static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 

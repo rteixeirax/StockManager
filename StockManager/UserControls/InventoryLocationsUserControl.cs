@@ -1,17 +1,14 @@
-﻿using System;
+﻿using StockManager.Forms;
+using StockManager.Storage.Models;
+using StockManager.Types;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Storage.Models;
-using StockManager.Forms;
-using StockManager.Types;
 
-namespace StockManager.UserControls
-{
-  public partial class InventoryLocationsUserControl : UserControl
-  {
-    public InventoryLocationsUserControl()
-    {
+namespace StockManager.UserControls {
+  public partial class InventoryLocationsUserControl : UserControl {
+    public InventoryLocationsUserControl() {
       InitializeComponent();
 
       // Hide the X button on the search textbox
@@ -31,16 +28,14 @@ namespace StockManager.UserControls
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
-    public async Task LoadLocationsAsync(string searchValue = null)
-    {
+    public async Task LoadLocationsAsync(string searchValue = null) {
       this.InitSpinner();
       dgvLocations.Rows.Clear();
 
       IEnumerable<Location> locations = await Program.LocationService
         .GetLocationsAsync(searchValue);
 
-      foreach (Location location in locations)
-      {
+      foreach (Location location in locations) {
         dgvLocations.Rows.Add(
           location.LocationId,
           location.Name,
@@ -55,8 +50,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Create location button click
     /// </summary>
-    private void btnCreate_Click(object sender, EventArgs e)
-    {
+    private void btnCreate_Click(object sender, EventArgs e) {
       LocationForm locationForm = new LocationForm(this);
       locationForm.ShowLocationForm();
     }
@@ -64,10 +58,8 @@ namespace StockManager.UserControls
     /// <summary>
     /// Edit location button click
     /// </summary>
-    private async void btnEdit_Click(object sender, EventArgs e)
-    {
-      if (dgvLocations.SelectedRows.Count > 0)
-      {
+    private async void btnEdit_Click(object sender, EventArgs e) {
+      if (dgvLocations.SelectedRows.Count > 0) {
         this.InitSpinner();
 
         Location location = await Program.LocationService
@@ -83,8 +75,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Delete location button click
     /// </summary>
-    private async void btnDelete_Click(object sender, EventArgs e)
-    {
+    private async void btnDelete_Click(object sender, EventArgs e) {
       DataGridViewSelectedRowCollection selectedLocations = dgvLocations.SelectedRows;
 
       if ((selectedLocations.Count > 0)
@@ -92,16 +83,13 @@ namespace StockManager.UserControls
         $"Delete {selectedLocations.Count} location(s)?",
         "Are you sure?",
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-      )
-      {
-        try
-        {
+      ) {
+        try {
           this.InitSpinner();
 
           int[] locationIds = new int[selectedLocations.Count];
 
-          for (int i = 0; i < selectedLocations.Count; i++)
-          {
+          for (int i = 0; i < selectedLocations.Count; i++) {
             locationIds[i] = int.Parse(selectedLocations[i].Cells[0].Value.ToString());
           }
 
@@ -110,9 +98,7 @@ namespace StockManager.UserControls
           this.StopSpinner();
 
           await this.LoadLocationsAsync();
-        }
-        catch (OperationErrorException ex)
-        {
+        } catch (OperationErrorException ex) {
           this.StopSpinner();
 
           MessageBox.Show(
@@ -126,12 +112,10 @@ namespace StockManager.UserControls
     /// <summary>
     /// Search button click
     /// </summary>
-    private async void pbSearchIcon_Click(object sender, EventArgs e)
-    {
+    private async void pbSearchIcon_Click(object sender, EventArgs e) {
       string searchValue = tbSeachText.Text;
 
-      if (!string.IsNullOrEmpty(searchValue))
-      {
+      if (!string.IsNullOrEmpty(searchValue)) {
         await this.LoadLocationsAsync(searchValue);
       }
     }
@@ -139,8 +123,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Clear search value picture box click
     /// </summary>
-    private async void btnClearSearchValue_Click(object sender, EventArgs e)
-    {
+    private async void btnClearSearchValue_Click(object sender, EventArgs e) {
       tbSeachText.Text = "";
       await this.LoadLocationsAsync();
     }
@@ -148,16 +131,12 @@ namespace StockManager.UserControls
     /// <summary>
     /// Call search button click when pressed enter in the textbox
     /// </summary>
-    private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
-    {
-      if (e.KeyChar == (char)Keys.Enter)
-      {
+    private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e) {
+      if (e.KeyChar == (char)Keys.Enter) {
         this.pbSearchIcon_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      }
-      else if (e.KeyChar == (char)Keys.Escape)
-      {
+      } else if (e.KeyChar == (char)Keys.Escape) {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
@@ -167,8 +146,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Show/Hide the X button on the search textbox
     /// </summary>
-    private void tbSeachText_TextChanged(object sender, EventArgs e)
-    {
+    private void tbSeachText_TextChanged(object sender, EventArgs e) {
       btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
     }
   }

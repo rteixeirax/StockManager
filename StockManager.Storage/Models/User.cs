@@ -6,10 +6,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Storage.Models
-{
-  public class User : BaseEntity
-  {
+namespace StockManager.Storage.Models {
+  public class User : BaseEntity {
     [Key]
     public int UserId { get; set; }
 
@@ -28,10 +26,8 @@ namespace StockManager.Storage.Models
     public ICollection<StockMovement> StockMovements { get; set; }
   }
 
-  public class UserConfiguration : IEntityTypeConfiguration<User>
-  {
-    public void Configure(EntityTypeBuilder<User> builder)
-    {
+  public class UserConfiguration : IEntityTypeConfiguration<User> {
+    public void Configure(EntityTypeBuilder<User> builder) {
       builder
         .HasIndex(x => x.Username)
         .IsUnique()
@@ -44,8 +40,7 @@ namespace StockManager.Storage.Models
        .OnDelete(DeleteBehavior.SetNull);
 
       builder.HasData(
-        new User
-        {
+        new User {
           UserId = 1,
           Username = "Admin",
           Password = BCrypt.Net.BCrypt.HashPassword("admin"),

@@ -4,12 +4,9 @@ using StockManager.UserControls;
 using System;
 using System.Windows.Forms;
 
-namespace StockManager.Forms
-{
-  public partial class MainForm : Form
-  {
-    public MainForm()
-    {
+namespace StockManager.Forms {
+  public partial class MainForm : Form {
+    public MainForm() {
       InitializeComponent();
       this.SetUi();
     }
@@ -17,8 +14,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Set the Ui after Login/Logout
     /// </summary>
-    public void SetUi()
-    {
+    public void SetUi() {
       lbAppVersion.Text = "v.0.0.1";
 
       // Get the logged In User, if any.
@@ -28,15 +24,12 @@ namespace StockManager.Forms
       pnlViews.Controls.Clear();
 
       // Set initial view
-      if (loggedInUser == null)
-      {
+      if (loggedInUser == null) {
         lbViewTitle.Text = "Welcome";
         UserControl ucLogin = new LoginUserControl(this);
         ucLogin.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucLogin);
-      }
-      else
-      {
+      } else {
         lbViewTitle.Text = "Dashboard";
         UserControl ucDashboard = new DashboardUserControl();
         ucDashboard.Dock = DockStyle.Fill;
@@ -58,8 +51,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Render only the sidebar button for the logged in user role.
     /// </summary>
-    private void RenderButtonsByRole()
-    {
+    private void RenderButtonsByRole() {
       User loggedInUser = Program.LoggedInUser;
 
       msUsername.Visible = false;
@@ -70,16 +62,14 @@ namespace StockManager.Forms
       btnSettings.Visible = false;
 
       // If logged in, show the "User" buttons
-      if (loggedInUser != null)
-      {
+      if (loggedInUser != null) {
         msUsername.Visible = true;
         pnlSideMarker.Visible = true;
         btnDashboard.Visible = true;
       }
 
       // If logged in as "Admin" unlock the other buttons
-      if ((loggedInUser != null) && (loggedInUser.Role.Code == "Admin"))
-      {
+      if ((loggedInUser != null) && (loggedInUser.Role.Code == "Admin")) {
         btnInventory.Visible = true;
         btnUsers.Visible = true;
         btnSettings.Visible = true;
@@ -89,8 +79,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Set the sidebar marker position
     /// </summary>
-    private void SetMarkerPosition(Control btn)
-    {
+    private void SetMarkerPosition(Control btn) {
       pnlSideMarker.Height = btn.Height;
       pnlSideMarker.Top = btn.Top;
     }
@@ -98,8 +87,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Show/Hide the Inventory sub-menu
     /// </summary>
-    private void SetSubMenusVisibility(Control subMenu = null)
-    {
+    private void SetSubMenusVisibility(Control subMenu = null) {
       pnlInventorySubMenu.Visible = ((subMenu != null) && (subMenu == pnlInventorySubMenu)
         && (!pnlInventorySubMenu.Visible))
         ? true
@@ -111,8 +99,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Set the sidebar buttons position when the sub menu is open/closed
     /// </summary>
-    private void SetSidebarButtonsPosition(Control subMenu = null)
-    {
+    private void SetSidebarButtonsPosition(Control subMenu = null) {
       // If no sub menu sent, reset all the positions
       btnUsers.Top = ((subMenu != null) && (subMenu == pnlInventorySubMenu) && (pnlInventorySubMenu.Visible))
         ? pnlInventorySubMenu.Bottom
@@ -123,8 +110,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Dashboard button click
     /// </summary>
-    private void btnDashboard_Click(object sender, EventArgs e)
-    {
+    private void btnDashboard_Click(object sender, EventArgs e) {
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnDashboard);
 
@@ -139,8 +125,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Inventory button click
     /// </summary>
-    private void btnInventory_Click(object sender, EventArgs e)
-    {
+    private void btnInventory_Click(object sender, EventArgs e) {
       this.SetSubMenusVisibility(pnlInventorySubMenu);
       this.SetMarkerPosition(btnInventory);
     }
@@ -148,8 +133,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Inventory > Locations button click
     /// </summary>
-    private void btnInventoryLocations_Click(object sender, EventArgs e)
-    {
+    private void btnInventoryLocations_Click(object sender, EventArgs e) {
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Inventory > Locations";
@@ -161,8 +145,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Inventory > Stocks button click
     /// </summary>
-    private void btnInventoryStocks_Click(object sender, EventArgs e)
-    {
+    private void btnInventoryStocks_Click(object sender, EventArgs e) {
       // Show the InventoryStocks view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Inventory > Stocks";
@@ -174,8 +157,7 @@ namespace StockManager.Forms
     /// <summary>
     /// User button click
     /// </summary>
-    private void btnUsers_Click(object sender, EventArgs e)
-    {
+    private void btnUsers_Click(object sender, EventArgs e) {
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnUsers);
 
@@ -190,8 +172,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Settings button click
     /// </summary>
-    private void btnSettings_Click(object sender, EventArgs e)
-    {
+    private void btnSettings_Click(object sender, EventArgs e) {
       this.SetSubMenusVisibility();
       this.SetMarkerPosition(btnSettings);
 
@@ -206,8 +187,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Change password menu strip item click
     /// </summary>
-    private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-    {
+    private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e) {
       var changePasswordForm = new ChangePasswordForm();
       changePasswordForm.ShowChangePasswordForm();
     }
@@ -215,8 +195,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Do Logout menu strip item click
     /// </summary>
-    private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-    {
+    private void logoutToolStripMenuItem_Click(object sender, EventArgs e) {
       Program.Logout();
       this.SetUi();
     }
@@ -224,8 +203,7 @@ namespace StockManager.Forms
     /// <summary>
     /// LinkLabel click
     /// </summary>
-    private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-    {
+    private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
       System.Diagnostics.Process.Start("https://twitter.com/ricardotx86");
     }
 
@@ -233,8 +211,7 @@ namespace StockManager.Forms
     /// <summary>
     /// Exit button click
     /// </summary>
-    private void btnExit_Click(object sender, EventArgs e)
-    {
+    private void btnExit_Click(object sender, EventArgs e) {
       Application.Exit();
     }
   }

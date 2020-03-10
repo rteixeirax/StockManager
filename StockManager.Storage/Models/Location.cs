@@ -4,10 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Storage.Models
-{
-  public class Location : BaseEntity
-  {
+namespace StockManager.Storage.Models {
+  public class Location : BaseEntity {
     [Key]
     public int LocationId { get; set; }
 
@@ -15,17 +13,15 @@ namespace StockManager.Storage.Models
     public string Name { get; set; }
 
     public ICollection<ProductLocation> ProductLocations { get; set; }
-    
+
     public ICollection<StockMovement> StockMovementsFrom { get; set; }
 
     public ICollection<StockMovement> StockMovementsTo { get; set; }
 
   }
 
-  public class LocationConfiguration : IEntityTypeConfiguration<Location>
-  {
-    public void Configure(EntityTypeBuilder<Location> builder)
-    {
+  public class LocationConfiguration : IEntityTypeConfiguration<Location> {
+    public void Configure(EntityTypeBuilder<Location> builder) {
       builder
         .HasIndex(x => x.Name)
         .IsUnique()
@@ -50,15 +46,13 @@ namespace StockManager.Storage.Models
        .OnDelete(DeleteBehavior.SetNull);
 
       builder.HasData(
-       new Location
-       {
+       new Location {
          LocationId = 1,
          Name = "Warehouse",
          CreatedAt = DateTime.UtcNow,
          UpdatedAt = DateTime.UtcNow
        },
-       new Location
-       {
+       new Location {
          LocationId = 2,
          Name = "Vehicle #1",
          CreatedAt = DateTime.UtcNow,

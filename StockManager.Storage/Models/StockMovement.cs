@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Storage.Models
-{
-  public class StockMovement :BaseEntity
-  {
+namespace StockManager.Storage.Models {
+  public class StockMovement : BaseEntity {
     [Key]
     public int StockMovementId { get; set; }
 
@@ -13,7 +11,7 @@ namespace StockManager.Storage.Models
 
     [Required(ErrorMessage = "Stock is required")]
     public float Stock { get; set; }
-    
+
     [Required(ErrorMessage = "ProductId is required")]
     [ForeignKey("Product")]
     public int ProductId { get; set; }

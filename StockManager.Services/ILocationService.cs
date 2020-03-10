@@ -1,13 +1,9 @@
 ﻿using StockManager.Storage.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace StockManager.Services
-{
-  public interface ILocationService
-  {
+namespace StockManager.Services {
+  public interface ILocationService {
     Task CreateLocationAsync(Location location);
 
     Task EditLocationAsync(Location location);

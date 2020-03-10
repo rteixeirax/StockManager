@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using StockManager.Types;
-using StockManager.Forms;
+﻿using StockManager.Forms;
 using StockManager.Storage.Models;
+using StockManager.Types;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
-namespace StockManager.UserControls
-{
-  public partial class LoginUserControl : UserControl
-  {
+namespace StockManager.UserControls {
+  public partial class LoginUserControl : UserControl {
     private readonly MainForm mainForm;
 
-    public LoginUserControl(MainForm mainForm)
-    {
+    public LoginUserControl(MainForm mainForm) {
       InitializeComponent();
       this.mainForm = mainForm;
 
@@ -40,28 +31,23 @@ namespace StockManager.UserControls
     /// <summary>
     /// Set the form errors
     /// </summary>
-    private void SetFormErrors(List<ErrorType> errors)
-    {
+    private void SetFormErrors(List<ErrorType> errors) {
       lbErrorGeneric.Visible = false;
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
 
-      foreach (var err in errors)
-      {
-        if (err.Field == "Generic")
-        {
+      foreach (var err in errors) {
+        if (err.Field == "Generic") {
           lbErrorGeneric.Text = err.Error;
           lbErrorGeneric.Visible = true;
         }
 
-        if (err.Field == "Username")
-        {
+        if (err.Field == "Username") {
           lbErrorUsername.Text = err.Error;
           lbErrorUsername.Visible = true;
         }
 
-        if (err.Field == "Password")
-        {
+        if (err.Field == "Password") {
           lbErrorPassword.Text = err.Error;
           lbErrorPassword.Visible = true;
         }
@@ -71,8 +57,7 @@ namespace StockManager.UserControls
     /// <summary>
     /// Clean all the form content
     /// </summary>
-    private void btnClean_Click(object sender, EventArgs e)
-    {
+    private void btnClean_Click(object sender, EventArgs e) {
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
       tbUsername.Text = "";
@@ -82,10 +67,8 @@ namespace StockManager.UserControls
     /// <summary>
     /// Login button click
     /// </summary>
-    private async void btnLogin_Click(object sender, EventArgs e)
-    {
-      try
-      {
+    private async void btnLogin_Click(object sender, EventArgs e) {
+      try {
         this.InitSpinner();
 
         User user = await Program.UserService
@@ -95,9 +78,7 @@ namespace StockManager.UserControls
 
         Program.SetLoggedInUser(user);
         mainForm.SetUi();
-      }
-      catch (OperationErrorException ex)
-      {
+      } catch (OperationErrorException ex) {
         this.SetFormErrors(ex.Errors);
       }
     }
@@ -105,10 +86,8 @@ namespace StockManager.UserControls
     /// <summary>
     /// Call Login button click when pressed enter in the password textbox
     /// </summary>
-    private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
-    {
-      if (e.KeyChar == (char)Keys.Enter)
-      {
+    private void tbPassword_KeyPress(object sender, KeyPressEventArgs e) {
+      if (e.KeyChar == (char)Keys.Enter) {
         this.btnLogin_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
