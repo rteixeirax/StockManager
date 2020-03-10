@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Brokers {
-  public interface IRoleBroker {
+namespace StockManager.Storage.Repositories {
+  public interface IRoleRepository {
     Task<IEnumerable<Role>> FindAllRolesAsync();
   }
 }

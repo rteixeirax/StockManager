@@ -1,7 +1,7 @@
 using StockManager.Forms;
 using StockManager.Services;
 using StockManager.Storage;
-using StockManager.Storage.Brokers;
+using StockManager.Storage.Repositories;
 using StockManager.Storage.Models;
 using System;
 using System.Windows.Forms;
@@ -28,17 +28,17 @@ namespace StockManager {
     }
 
     /// <summary>
-    /// Application DB context and brokers
+    /// Application DB context and repositories
     /// </summary>
     private static StorageContext StorageContext { get; set; }
-    public static IUserBroker UserBroker { get; private set; }
-    public static IRoleBroker RoleBroker { get; private set; }
-    public static ILocationBroker LocationBroker { get; private set; }
+    public static IUserRepository UserRepository { get; private set; }
+    public static IRoleRepository RoleRepository { get; private set; }
+    public static ILocationRepository LocationRepository { get; private set; }
 
     /// <summary>
     /// Application services
     /// </summary>
-    /// 
+    ///
     public static IUserService UserService { get; private set; }
     public static IRoleService RoleService { get; private set; }
     public static ILocationService LocationService { get; private set; }
@@ -53,14 +53,14 @@ namespace StockManager {
 
       // Instantiate our storage
       StorageContext = new StorageContext();
-      UserBroker = new UserBroker(StorageContext);
-      RoleBroker = new RoleBroker(StorageContext);
-      LocationBroker = new LocationBroker(StorageContext);
+      UserRepository = new UserRepository(StorageContext);
+      RoleRepository = new RoleRepository(StorageContext);
+      LocationRepository = new LocationRepository(StorageContext);
 
       // Instantiate our services
-      UserService = new UserService(UserBroker);
-      RoleService = new RoleService(RoleBroker);
-      LocationService = new LocationService(LocationBroker);
+      UserService = new UserService(UserRepository);
+      RoleService = new RoleService(RoleRepository);
+      LocationService = new LocationService(LocationRepository);
 
       Application.Run(new MainForm());
     }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Brokers {
-  public interface ILocationBroker {
+namespace StockManager.Storage.Repositories {
+  public interface ILocationRepository {
     Task SaveDbChangesAsync();
 
     Task AddLocationAsync(Location location);

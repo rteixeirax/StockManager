@@ -3,11 +3,11 @@ using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Brokers {
-  public class RoleBroker : IRoleBroker {
+namespace StockManager.Storage.Repositories {
+  public class RoleRepository : IRoleRepository {
     private readonly StorageContext db;
 
-    public RoleBroker(StorageContext db) {
+    public RoleRepository(StorageContext db) {
       this.db = db;
     }
 

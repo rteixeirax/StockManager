@@ -1,4 +1,4 @@
-﻿using StockManager.Storage.Brokers;
+﻿using StockManager.Storage.Repositories;
 using StockManager.Storage.Models;
 using StockManager.Types;
 using System;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace StockManager.Services {
   public class UserService : IUserService {
-    private readonly IUserBroker userBroker;
+    private readonly IUserRepository userRepo;
 
-    public UserService(IUserBroker userBroker) {
-      this.userBroker = userBroker;
+    public UserService(IUserRepository userRepo) {
+      this.userRepo = userRepo;
     }
 
     /// <summary>
@@ -20,8 +20,8 @@ namespace StockManager.Services {
     public async Task CreateUserAsync(User user) {
       try {
         await this.ValidateUserFormDataAsync(user);
-        await this.userBroker.AddUserAsync(user);
-        await this.userBroker.SaveDbChangesAsync();
+        await this.userRepo.AddUserAsync(user);
+        await this.userRepo.SaveDbChangesAsync();
       } catch (OperationErrorException operationErrorException) {
         throw operationErrorException;
       }
@@ -32,7 +32,7 @@ namespace StockManager.Services {
     /// </summary>
     public async Task EditUserAsync(User user) {
       try {
-        User dbUser = await this.userBroker.FindUserByIdAsync(user.UserId);
+        User dbUser = await this.userRepo.FindUserByIdAsync(user.UserId);
         await this.ValidateUserFormDataAsync(user, dbUser);
 
         dbUser.Username = user.Username;
@@ -43,7 +43,7 @@ namespace StockManager.Services {
           ? dbUser.Password
           : BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-        await this.userBroker.SaveDbChangesAsync();
+        await this.userRepo.SaveDbChangesAsync();
       } catch (OperationErrorException operationErrorException) {
         throw operationErrorException;
       }
@@ -69,12 +69,12 @@ namespace StockManager.Services {
       }
 
       // Get the user to verify the current password
-      User dbUser = await this.userBroker.FindUserByIdAsync(userId);
+      User dbUser = await this.userRepo.FindUserByIdAsync(userId);
 
       if ((dbUser != null) && BCrypt.Net.BCrypt.Verify(currentPassword, dbUser.Password)) {
         // Encrypt password
         dbUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
-        await this.userBroker.SaveDbChangesAsync();
+        await this.userRepo.SaveDbChangesAsync();
       } else {
         errorsList.AddError("CurrentPassword", "Invalid password.");
 
@@ -102,13 +102,13 @@ namespace StockManager.Services {
       }
 
       // get the user from the DB
-      User user = await this.userBroker.FindUserByUsernameAsync(username);
+      User user = await this.userRepo.FindUserByUsernameAsync(username);
 
       // If the user exist and the password are match, it's all good.
       if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password)) {
         // Set the last login data
         user.LastLogin = DateTime.UtcNow;
-        await this.userBroker.SaveDbChangesAsync();
+        await this.userRepo.SaveDbChangesAsync();
       } else {
         errorsList.AddError("Generic", "Invalid username and password combination.");
 
@@ -135,14 +135,14 @@ namespace StockManager.Services {
         for (int i = 0; i < userIds.Length; i += 1) {
           int userId = userIds[i];
 
-          User user = await this.userBroker.FindUserByIdAsync(userId);
+          User user = await this.userRepo.FindUserByIdAsync(userId);
 
           if (user != null) {
-            this.userBroker.RemoveUser(user);
+            this.userRepo.RemoveUser(user);
           }
         }
 
-        await this.userBroker.SaveDbChangesAsync();
+        await this.userRepo.SaveDbChangesAsync();
 
         // Catch operation errors
       } catch (OperationErrorException operationErrorException) {
@@ -160,14 +160,14 @@ namespace StockManager.Services {
     /// Get all users async
     /// </summary>
     public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null) {
-      return await this.userBroker.FindAllUsersAsync(searchValue);
+      return await this.userRepo.FindAllUsersAsync(searchValue);
     }
 
     /// <summary>
     /// Get user by id async
     /// </summary>
     public async Task<User> GetUserByIdAsync(int userId) {
-      return await this.userBroker.FindUserByIdAsync(userId);
+      return await this.userRepo.FindUserByIdAsync(userId);
     }
 
     /// <summary>
@@ -193,7 +193,7 @@ namespace StockManager.Services {
       // This validation only occurs when all form fields have no errors
       // And only if is a create or an update and the username has changed
       User usernameCheck = ((dbUser == null) || (dbUser.Username != user.Username))
-        ? await this.userBroker.FindUserByUsernameAsync(user.Username)
+        ? await this.userRepo.FindUserByUsernameAsync(user.Username)
         : null;
 
       if (usernameCheck != null) {

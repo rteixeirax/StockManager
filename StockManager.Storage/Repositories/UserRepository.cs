@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Brokers {
-  public class UserBroker : IUserBroker {
+namespace StockManager.Storage.Repositories {
+  public class UserRepository : IUserRepository {
     private readonly StorageContext db;
 
-    public UserBroker(StorageContext db) {
+    public UserRepository(StorageContext db) {
       this.db = db;
     }
 

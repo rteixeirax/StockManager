@@ -1,21 +1,21 @@
-﻿using StockManager.Storage.Brokers;
+﻿using StockManager.Storage.Repositories;
 using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StockManager.Services {
   public class RoleService : IRoleService {
-    private readonly IRoleBroker roleBroker;
+    private readonly IRoleRepository roleRepo;
 
-    public RoleService(IRoleBroker roleBroker) {
-      this.roleBroker = roleBroker;
+    public RoleService(IRoleRepository roleRepo) {
+      this.roleRepo = roleRepo;
     }
 
     /// <summary>
     /// Get all roles async
     /// </summary>
     public async Task<IEnumerable<Role>> GetRolesAsync() {
-      return await this.roleBroker.FindAllRolesAsync();
+      return await this.roleRepo.FindAllRolesAsync();
     }
   }
 }
