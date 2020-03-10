@@ -49,7 +49,7 @@
       this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
       this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
       this.pnlTopBar.Name = "pnlTopBar";
-      this.pnlTopBar.Size = new System.Drawing.Size(451, 44);
+      this.pnlTopBar.Size = new System.Drawing.Size(438, 44);
       this.pnlTopBar.TabIndex = 16;
       // 
       // lbTitle
@@ -76,7 +76,7 @@
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
-      this.pnlBody.Size = new System.Drawing.Size(451, 341);
+      this.pnlBody.Size = new System.Drawing.Size(438, 234);
       this.pnlBody.TabIndex = 8;
       // 
       // btnCancel
@@ -85,7 +85,7 @@
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(103, 286);
+      this.btnCancel.Location = new System.Drawing.Point(96, 159);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(120, 32);
       this.btnCancel.TabIndex = 17;
@@ -98,7 +98,7 @@
       this.lbErrorName.AutoSize = true;
       this.lbErrorName.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorName.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorName.Location = new System.Drawing.Point(106, 108);
+      this.lbErrorName.Location = new System.Drawing.Point(98, 108);
       this.lbErrorName.Name = "lbErrorName";
       this.lbErrorName.Size = new System.Drawing.Size(85, 16);
       this.lbErrorName.TabIndex = 14;
@@ -110,7 +110,7 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(235, 286);
+      this.btnSave.Location = new System.Drawing.Point(228, 159);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(120, 32);
       this.btnSave.TabIndex = 4;
@@ -123,7 +123,7 @@
       this.tbName.BackColor = System.Drawing.Color.White;
       this.tbName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbName.ForeColor = System.Drawing.Color.Black;
-      this.tbName.Location = new System.Drawing.Point(103, 83);
+      this.tbName.Location = new System.Drawing.Point(96, 83);
       this.tbName.Name = "tbName";
       this.tbName.Size = new System.Drawing.Size(252, 22);
       this.tbName.TabIndex = 1;
@@ -134,7 +134,7 @@
       this.lbName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbName.Location = new System.Drawing.Point(100, 64);
+      this.lbName.Location = new System.Drawing.Point(93, 64);
       this.lbName.Name = "lbName";
       this.lbName.Size = new System.Drawing.Size(40, 16);
       this.lbName.TabIndex = 2;
@@ -143,7 +143,7 @@
       // LocationForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-      this.ClientSize = new System.Drawing.Size(451, 341);
+      this.ClientSize = new System.Drawing.Size(438, 234);
       this.Controls.Add(this.pnlBody);
       this.Font = new System.Drawing.Font("Courier New", 9.75F);
       this.ForeColor = System.Drawing.Color.White;
