@@ -52,6 +52,7 @@ namespace StockManager.Storage.Brokers {
     /// </summary>
     public async Task<Location> FindLocationByIdAsync(int locationId) {
       return await this.db.Locations
+        .Include(x => x.ProductLocations)
         .Where(location => location.LocationId == locationId)
         .FirstOrDefaultAsync();
     }
@@ -63,6 +64,13 @@ namespace StockManager.Storage.Brokers {
       return await this.db.Locations
         .Where(location => location.Name.ToLower() == name.ToLower())
         .FirstOrDefaultAsync();
+    }
+
+    /// <summary>
+    /// Count async all the locations in the DB
+    /// </summary>
+    public async Task<int> CountLocationsAsync() {
+      return await this.db.Locations.CountAsync();
     }
   }
 }

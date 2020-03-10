@@ -78,8 +78,7 @@ namespace StockManager.UserControls {
     private async void btnDelete_Click(object sender, EventArgs e) {
       DataGridViewSelectedRowCollection selectedLocations = dgvLocations.SelectedRows;
 
-      if ((selectedLocations.Count > 0)
-        && MessageBox.Show(
+      if ((selectedLocations.Count > 0) && MessageBox.Show(
         $"Delete {selectedLocations.Count} location(s)?",
         "Are you sure?",
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
@@ -96,15 +95,27 @@ namespace StockManager.UserControls {
           await Program.LocationService.DeleteLocationAsync(locationIds);
 
           this.StopSpinner();
-
           await this.LoadLocationsAsync();
+
         } catch (OperationErrorException ex) {
           this.StopSpinner();
 
           MessageBox.Show(
-          $"{ex.Errors[0].Error}",
-          "Operation error",
-          MessageBoxButtons.OK, MessageBoxIcon.Error);
+            $"{ex.Errors[0].Error}",
+            "Warning",
+            MessageBoxButtons.OK, 
+            MessageBoxIcon.Warning
+          );
+
+        } catch (ServiceErrorException ex) {
+          this.StopSpinner();
+
+          MessageBox.Show(
+            $"{ex.Errors[0].Error}",
+            "Error",
+            MessageBoxButtons.OK, 
+            MessageBoxIcon.Error
+          );
         }
       }
     }

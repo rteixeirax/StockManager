@@ -48,35 +48,53 @@ namespace StockManager.Services {
     /// Delete locations async
     /// </summary>
     public async Task DeleteLocationAsync(int[] locationIds) {
+      OperationErrorsList errorsList = new OperationErrorsList();
+
       try {
+        int locationsCount = await this.locationBroker.CountLocationsAsync();
+
+        // Must have at least one location, can't delete all
+        if (locationIds.Length >= locationsCount) {
+          errorsList.AddError(
+            "LocationsCount",
+            "It is not possible delete all locations, you must have at least one location."
+          );
+
+          throw new OperationErrorException(errorsList);
+        }
+
         for (int i = 0; i < locationIds.Length; i += 1) {
           int locationId = locationIds[i];
 
-          //TODO: Change this verification to check if after delete
-          // the app still have at least one location
+          Location location = await this.locationBroker
+            .FindLocationByIdAsync(locationId);
+          
+          if (location != null) {
+            // If have Products, it can't be deleted.
+            if (location.ProductLocations.Count > 0) {
+              errorsList.AddError(
+                "LocationWithProducts",
+                "You can't delete locations that have products. You need to move them first."
+             );
 
-          // TODO: If have Products, can't be deleted
-
-          // You can't delete the main location
-          if (locationId != 1) {
-            Location location = await this.locationBroker
-              .FindLocationByIdAsync(locationId);
-
-            if (location != null) {
-              this.locationBroker.RemoveLocation(location);
+              throw new OperationErrorException(errorsList);
             }
+
+            this.locationBroker.RemoveLocation(location);
           }
         }
 
         await this.locationBroker.SaveDbChangesAsync();
-      } catch {
-        OperationErrorsList errorsList = new OperationErrorsList();
-        errorsList.AddError(new ErrorType {
-          Field = "delete-location-db-error",
-          Error = "Oops.. something went wrong. Try it again!"
-        });
 
-        throw new OperationErrorException(errorsList);
+        // Catch operation errors
+      } catch (OperationErrorException operationErrorException) {
+        throw operationErrorException;
+
+        // catch other errors and send a Service Error Exception
+      } catch {
+        errorsList.AddError("delete-location-db-error", "Oops.. something went wrong. Try it again!");
+
+        throw new ServiceErrorException(errorsList);
       }
     }
 
@@ -101,10 +119,7 @@ namespace StockManager.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       if (string.IsNullOrEmpty(location.Name)) {
-        errorsList.AddError(new ErrorType {
-          Field = "Name",
-          Error = "This field is required."
-        });
+        errorsList.AddError("Name", "This field is required.");
       }
 
       if (errorsList.HasErrors()) {
@@ -119,10 +134,7 @@ namespace StockManager.Services {
         : null;
 
       if (nameCheck != null) {
-        errorsList.AddError(new ErrorType {
-          Field = "Name",
-          Error = "A location with this name already exist."
-        });
+        errorsList.AddError("Name", "A location with this name already exist.");
 
         throw new OperationErrorException(errorsList);
       }

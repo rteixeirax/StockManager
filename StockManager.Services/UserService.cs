@@ -3,6 +3,7 @@ using StockManager.Storage.Models;
 using StockManager.Types;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StockManager.Services {
@@ -56,17 +57,11 @@ namespace StockManager.Services {
 
       // Validate data
       if (string.IsNullOrEmpty(currentPassword)) {
-        errorsList.AddError(new ErrorType {
-          Field = "CurrentPassword",
-          Error = "This field is required."
-        });
+        errorsList.AddError("CurrentPassword", "This field is required.");
       }
 
       if (string.IsNullOrEmpty(newPassword)) {
-        errorsList.AddError(new ErrorType {
-          Field = "NewPassword",
-          Error = "This field is required."
-        });
+        errorsList.AddError("NewPassword", "This field is required.");
       }
 
       if (errorsList.HasErrors()) {
@@ -81,10 +76,7 @@ namespace StockManager.Services {
         dbUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
         await this.userBroker.SaveDbChangesAsync();
       } else {
-        errorsList.AddError(new ErrorType {
-          Field = "CurrentPassword",
-          Error = "Invalid password."
-        });
+        errorsList.AddError("CurrentPassword", "Invalid password.");
 
         throw new OperationErrorException(errorsList);
       }
@@ -98,17 +90,11 @@ namespace StockManager.Services {
 
       // Validate data
       if (string.IsNullOrEmpty(username)) {
-        errorsList.AddError(new ErrorType {
-          Field = "Username",
-          Error = "This field is required."
-        });
+        errorsList.AddError("Username", "This field is required.");
       }
 
       if (string.IsNullOrEmpty(password)) {
-        errorsList.AddError(new ErrorType {
-          Field = "Password",
-          Error = "This field is required."
-        });
+        errorsList.AddError("Password", "This field is required.");
       }
 
       if (errorsList.HasErrors()) {
@@ -124,10 +110,7 @@ namespace StockManager.Services {
         user.LastLogin = DateTime.UtcNow;
         await this.userBroker.SaveDbChangesAsync();
       } else {
-        errorsList.AddError(new ErrorType {
-          Field = "Generic",
-          Error = "Invalid username and password combination."
-        });
+        errorsList.AddError("Generic", "Invalid username and password combination.");
 
         throw new OperationErrorException(errorsList);
       }
@@ -139,29 +122,37 @@ namespace StockManager.Services {
     /// Delete users async
     /// </summary>
     public async Task DeleteUserAsync(int[] userIds, int loggedInUserId) {
+      OperationErrorsList errorsList = new OperationErrorsList();
+
       try {
+        // You can't delete yourself
+        if (userIds.Contains(loggedInUserId)) {
+          errorsList.AddError("LoggedInUserId", "You can't delete yourself.");
+
+          throw new OperationErrorException(errorsList);
+        }
+
         for (int i = 0; i < userIds.Length; i += 1) {
           int userId = userIds[i];
 
-          // You can't delete yourself
-          if (userId != loggedInUserId) {
-            User user = await this.userBroker.FindUserByIdAsync(userId);
+          User user = await this.userBroker.FindUserByIdAsync(userId);
 
-            if (user != null) {
-              this.userBroker.RemoveUser(user);
-            }
+          if (user != null) {
+            this.userBroker.RemoveUser(user);
           }
         }
 
         await this.userBroker.SaveDbChangesAsync();
-      } catch {
-        OperationErrorsList errorsList = new OperationErrorsList();
-        errorsList.AddError(new ErrorType {
-          Field = "delete-user-db-error",
-          Error = "Oops.. something went wrong. Try it again!"
-        });
 
-        throw new OperationErrorException(errorsList);
+        // Catch operation errors
+      } catch (OperationErrorException operationErrorException) {
+        throw operationErrorException;
+
+        // catch other errors and send a Service Error Exception
+      } catch {
+        errorsList.AddError("delete-user-db-error", "Oops.. something went wrong. Try it again!");
+
+        throw new ServiceErrorException(errorsList);
       }
     }
 
@@ -186,17 +177,11 @@ namespace StockManager.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       if (string.IsNullOrEmpty(user.Username)) {
-        errorsList.AddError(new ErrorType {
-          Field = "Username",
-          Error = "This field is required."
-        });
+        errorsList.AddError("Username", "This field is required.");
       }
 
       if ((dbUser == null) && string.IsNullOrEmpty(user.Password)) {
-        errorsList.AddError(new ErrorType {
-          Field = "Password",
-          Error = "This field is required."
-        });
+        errorsList.AddError("Password", "This field is required.");
       }
 
       // Validate the form values
@@ -212,10 +197,7 @@ namespace StockManager.Services {
         : null;
 
       if (usernameCheck != null) {
-        errorsList.AddError(new ErrorType {
-          Field = "Username",
-          Error = "This username already exist."
-        });
+        errorsList.AddError("Username", "This username already exist.");
 
         throw new OperationErrorException(errorsList);
       }
