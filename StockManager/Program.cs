@@ -34,6 +34,7 @@ namespace StockManager {
     public static IUserRepository UserRepository { get; private set; }
     public static IRoleRepository RoleRepository { get; private set; }
     public static ILocationRepository LocationRepository { get; private set; }
+    public static IProductRepository ProductRepository { get; private set; }
 
     /// <summary>
     /// Application services
@@ -42,6 +43,7 @@ namespace StockManager {
     public static IUserService UserService { get; private set; }
     public static IRoleService RoleService { get; private set; }
     public static ILocationService LocationService { get; private set; }
+    public static IProductService ProductService { get; private set; }
 
     /// <summary>
     /// The main entry point for the application.
@@ -56,11 +58,13 @@ namespace StockManager {
       UserRepository = new UserRepository(StorageContext);
       RoleRepository = new RoleRepository(StorageContext);
       LocationRepository = new LocationRepository(StorageContext);
+      ProductRepository = new ProductRepository(StorageContext);
 
       // Instantiate our services
       UserService = new UserService(UserRepository);
       RoleService = new RoleService(RoleRepository);
       LocationService = new LocationService(LocationRepository);
+      ProductService = new ProductService(ProductRepository);
 
       Application.Run(new MainForm());
     }
