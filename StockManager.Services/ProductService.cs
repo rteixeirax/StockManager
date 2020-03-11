@@ -3,6 +3,7 @@ using StockManager.Storage.Models;
 using StockManager.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace StockManager.Services {
   public class ProductService : IProductService {
@@ -77,7 +78,10 @@ namespace StockManager.Services {
     public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null) {
       IEnumerable<Product> products = await this.productRepo.FindAllProductsAsync(searchValue);
 
-      // TODO: For each product, calculate the total stock
+      // Calculate the product total stock
+      foreach (Product product in products) {
+        product.Stock = product.ProductLocations?.Sum(x => x.Stock);
+      }
 
       return products;
     }

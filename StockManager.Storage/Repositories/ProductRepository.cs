@@ -40,7 +40,8 @@ namespace StockManager.Storage.Repositories {
       if (!string.IsNullOrEmpty(searchValue)) {
         return await this.db.Products
           .Include(x => x.ProductLocations)
-          .Where(product => product.Name.ToLower().Contains(searchValue.ToLower()))
+          .Where(product => product.Reference.ToLower().Contains(searchValue.ToLower())
+            || product.Name.ToLower().Contains(searchValue.ToLower()))
           .ToListAsync();
       }
 
