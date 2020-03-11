@@ -143,15 +143,15 @@ namespace StockManager.Forms {
     }
 
     /// <summary>
-    /// Inventory > Stocks button click
+    /// Inventory > Products button click
     /// </summary>
-    private void btnInventoryStocks_Click(object sender, EventArgs e) {
-      // Show the InventoryStocks view
+    private void btnInventoryProducts_Click(object sender, EventArgs e) {
+      // Show the InventoryProducts view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Inventory > Stocks";
-      UserControl ucInventoryStocks = new InventoryStocksUserControl();
-      ucInventoryStocks.Dock = DockStyle.Fill;
-      pnlViews.Controls.Add(ucInventoryStocks);
+      lbViewTitle.Text = "Inventory > Products";
+      UserControl ucInventoryProducts = new InventoryProductsUserControl();
+      ucInventoryProducts.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryProducts);
     }
 
     /// <summary>

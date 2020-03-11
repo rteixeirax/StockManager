@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
 namespace StockManager.UserControls {
-  public partial class InventoryStocksUserControl : UserControl {
-    public InventoryStocksUserControl() {
+  public partial class InventoryProductsUserControl : UserControl {
+    public InventoryProductsUserControl() {
       InitializeComponent();
     }
   }
