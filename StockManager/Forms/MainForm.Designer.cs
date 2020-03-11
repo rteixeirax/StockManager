@@ -1,4 +1,4 @@
-﻿namespace StockManager.Forms
+namespace StockManager.Forms
 {
   partial class MainForm
   {
@@ -86,6 +86,7 @@
       this.linklbTwitter.ActiveLinkColor = System.Drawing.Color.Transparent;
       this.linklbTwitter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
       this.linklbTwitter.AutoSize = true;
+      this.linklbTwitter.Cursor = System.Windows.Forms.Cursors.Hand;
       this.linklbTwitter.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
       this.linklbTwitter.ForeColor = System.Drawing.Color.White;
       this.linklbTwitter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;

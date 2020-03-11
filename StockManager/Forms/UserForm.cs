@@ -68,7 +68,7 @@ namespace StockManager.Forms {
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
 
-      foreach (var err in errors) {
+      foreach (ErrorType err in errors) {
         if (err.Field == "Username") {
           lbErrorUsername.Text = err.Error;
           lbErrorUsername.Visible = true;
@@ -86,10 +86,11 @@ namespace StockManager.Forms {
     /// </summary>
     private async void btnSave_Click(object sender, EventArgs e) {
       try {
-        User user = new User();
-        user.Username = tbUsername.Text;
-        user.Password = tbPassword.Text;
-        user.RoleId = int.Parse(cbRoles.SelectedValue.ToString());
+        User user = new User {
+          Username = tbUsername.Text,
+          Password = tbPassword.Text,
+          RoleId = int.Parse(cbRoles.SelectedValue.ToString())
+        };
 
         this.InitSpinner();
 

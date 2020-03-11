@@ -20,6 +20,10 @@ namespace StockManager.Services {
     public async Task CreateUserAsync(User user) {
       try {
         await this.ValidateUserFormDataAsync(user);
+
+        // Encrypt password
+        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
         await this.userRepo.AddUserAsync(user);
         await this.userRepo.SaveDbChangesAsync();
       } catch (OperationErrorException operationErrorException) {

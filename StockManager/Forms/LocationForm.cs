@@ -54,7 +54,7 @@ namespace StockManager.Forms {
     private void ShowFormErrors(List<ErrorType> errors) {
       lbErrorName.Visible = false;
 
-      foreach (var err in errors) {
+      foreach (ErrorType err in errors) {
         if (err.Field == "Name") {
           lbErrorName.Text = err.Error;
           lbErrorName.Visible = true;
@@ -67,8 +67,9 @@ namespace StockManager.Forms {
     /// </summary>
     private async void btnSave_Click(object sender, EventArgs e) {
       try {
-        Location location = new Location();
-        location.Name = tbName.Text;
+        Location location = new Location {
+          Name = tbName.Text
+        };
 
         this.InitSpinner();
 

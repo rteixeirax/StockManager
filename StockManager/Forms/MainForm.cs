@@ -207,7 +207,6 @@ namespace StockManager.Forms {
       System.Diagnostics.Process.Start("https://twitter.com/ricardotx86");
     }
 
-
     /// <summary>
     /// Exit button click
     /// </summary>
