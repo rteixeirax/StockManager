@@ -17,20 +17,11 @@ namespace StockManager.Forms {
       this.inventoryProductsUserControl = inventoryProductsUserControl;
     }
 
-    /// <summary> 
-    /// Init the loading spinner 
-    /// </summary> 
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary> 
-    /// Stop the loading spinner 
-    /// </summary> 
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
     public void ShowProductForm(Product product = null) {
-      this.InitSpinner();
+      Spinner.InitSpinner();
 
       // Set the productId. Means that is a edit
       this.productId = (product != null) ? product.ProductId : 0;
@@ -50,7 +41,7 @@ namespace StockManager.Forms {
         tbName.Text = product.Name;
       }
 
-      this.StopSpinner();
+      Spinner.StopSpinner();
       this.ShowDialog();
     }
 
@@ -84,7 +75,7 @@ namespace StockManager.Forms {
           Name = tbName.Text,
         };
 
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         if ((this.productId != 0)) {
           product.ProductId = this.productId;
@@ -93,12 +84,12 @@ namespace StockManager.Forms {
           await Program.ProductService.CreateProductAsync(product);
         }
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
         await this.inventoryProductsUserControl.LoadProductsAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         if (ex.Errors.Count() > 0) {
           this.ShowFormErrors(ex.Errors);

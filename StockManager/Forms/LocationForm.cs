@@ -17,15 +17,6 @@ namespace StockManager.Forms {
     }
 
     /// <summary>
-    /// Init the loading spinner
-    /// </summary>
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary>
-    /// Stop the loading spinner
-    /// </summary>
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
-    /// <summary>
     /// Show Location Form and set the initial values
     /// </summary>
     public void ShowLocationForm(Location location = null) {
@@ -71,7 +62,7 @@ namespace StockManager.Forms {
           Name = tbName.Text
         };
 
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         if ((this.locationId != 0)) {
           location.LocationId = locationId;
@@ -80,13 +71,13 @@ namespace StockManager.Forms {
           await Program.LocationService.CreateLocationAsync(location);
         }
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         await this.inventoryLocationsUserControl.LoadLocationsAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         if (ex.Errors.Count() > 0) {
           this.ShowFormErrors(ex.Errors);

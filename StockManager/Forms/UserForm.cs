@@ -17,20 +17,11 @@ namespace StockManager.Forms {
       this.usersUserControl = usersUserControl;
     }
 
-    /// <summary> 
-    /// Init the loading spinner 
-    /// </summary> 
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary> 
-    /// Stop the loading spinner 
-    /// </summary> 
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
     public async Task ShowUserFormAsync(User user = null) {
-      this.InitSpinner();
+      Spinner.InitSpinner();
 
       // Set the userId. Means that is a edit
       this.userId = (user != null) ? user.UserId : 0;
@@ -57,7 +48,7 @@ namespace StockManager.Forms {
         cbRoles.Enabled = (user.UserId == Program.LoggedInUser.UserId) ? false : true;
       }
 
-      this.StopSpinner();
+      Spinner.StopSpinner();
       this.ShowDialog();
     }
 
@@ -92,7 +83,7 @@ namespace StockManager.Forms {
           RoleId = int.Parse(cbRoles.SelectedValue.ToString())
         };
 
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         if ((this.userId != 0)) {
           user.UserId = this.userId;
@@ -101,13 +92,13 @@ namespace StockManager.Forms {
           await Program.UserService.CreateUserAsync(user);
         }
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         await this.usersUserControl.LoadUsersAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         if (ex.Errors.Count() > 0) {
           this.ShowFormErrors(ex.Errors);

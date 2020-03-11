@@ -190,6 +190,7 @@
     <Compile Include="Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Spinner.cs" />
     <Compile Include="UserControls\DashboardUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -16,20 +16,11 @@ namespace StockManager.UserControls {
       this.LoadUsersAsync().Wait();
     }
 
-    /// <summary>  
-    /// Init the loading spinner  
-    /// </summary>  
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary>  
-    /// Stop the loading spinner  
-    /// </summary>  
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
     public async Task LoadUsersAsync(string searchValue = null) {
-      this.InitSpinner();
+      Spinner.InitSpinner();
       dgvUsers.Rows.Clear();
 
       IEnumerable<User> users = await Program.UserService.GetUsersAsync(searchValue);
@@ -44,7 +35,7 @@ namespace StockManager.UserControls {
         );
       }
 
-      this.StopSpinner();
+      Spinner.StopSpinner();
     }
 
     /// <summary>
@@ -60,12 +51,12 @@ namespace StockManager.UserControls {
     /// </summary>
     private async void btnEditUser_Click(object sender, EventArgs e) {
       if (dgvUsers.SelectedRows.Count > 0) {
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         User user = await Program.UserService
           .GetUserByIdAsync(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         UserForm userForm = new UserForm(this);
         await userForm.ShowUserFormAsync(user);
@@ -84,7 +75,7 @@ namespace StockManager.UserControls {
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       ) {
         try {
-          this.InitSpinner();
+          Spinner.InitSpinner();
 
           int[] userIds = new int[selectedUsers.Count];
 
@@ -94,11 +85,11 @@ namespace StockManager.UserControls {
 
           await Program.UserService.DeleteUserAsync(userIds, Program.LoggedInUser.UserId);
 
-          this.StopSpinner();
+          Spinner.StopSpinner();
           await this.LoadUsersAsync();
 
         } catch (OperationErrorException ex) {
-          this.StopSpinner();
+          Spinner.StopSpinner();
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
@@ -108,7 +99,7 @@ namespace StockManager.UserControls {
           );
 
         } catch (ServiceErrorException ex) {
-          this.StopSpinner();
+          Spinner.StopSpinner();
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",

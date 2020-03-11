@@ -9,15 +9,6 @@ namespace StockManager.Forms {
       InitializeComponent();
     }
 
-    /// <summary>  
-    /// Init the loading spinner  
-    /// </summary>  
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary>  
-    /// Stop the loading spinner  
-    /// </summary>  
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
     /// <summary>
     /// Show the Change Password Form and set the initial values
     /// </summary>
@@ -54,7 +45,7 @@ namespace StockManager.Forms {
     /// </summary>
     private async void btnSave_Click(object sender, EventArgs e) {
       try {
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         await Program.UserService.ChangePasswordAsync(
           Program.LoggedInUser.UserId,
@@ -62,10 +53,10 @@ namespace StockManager.Forms {
           tbNewPassword.Text
         );
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
         this.btnCancel_Click(sender, e);
       } catch (OperationErrorException ex) {
-        this.StopSpinner();
+        Spinner.StopSpinner();
         this.SetFormErrors(ex.Errors);
       }
     }

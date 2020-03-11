@@ -19,15 +19,6 @@ namespace StockManager.UserControls {
       lbErrorPassword.Visible = false;
     }
 
-    /// <summary>  
-    /// Init the loading spinner  
-    /// </summary>  
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary>  
-    /// Stop the loading spinner  
-    /// </summary>  
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
     /// <summary>
     /// Set the form errors
     /// </summary>
@@ -69,12 +60,12 @@ namespace StockManager.UserControls {
     /// </summary>
     private async void btnLogin_Click(object sender, EventArgs e) {
       try {
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         User user = await Program.UserService
           .AuthenticateAsync(tbUsername.Text, tbPassword.Text);
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         Program.SetLoggedInUser(user);
         mainForm.SetUi();
