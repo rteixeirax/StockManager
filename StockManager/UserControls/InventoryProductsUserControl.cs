@@ -1,6 +1,7 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
 using StockManager.Types;
+using StockManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

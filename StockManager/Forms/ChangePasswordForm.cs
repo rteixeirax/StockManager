@@ -1,4 +1,5 @@
 ﻿using StockManager.Types;
+using StockManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
