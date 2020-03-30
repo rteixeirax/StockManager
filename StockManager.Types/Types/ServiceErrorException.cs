@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StockManager.Types {
+namespace StockManager.Types.Types {
   public class ServiceErrorException : ArgumentException {
     public List<ErrorType> Errors { get; private set; }
 

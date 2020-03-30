@@ -1,7 +1,8 @@
-﻿using System;
+﻿using StockManager.Types.Types;
+using System;
 using System.Collections.Generic;
 
-namespace StockManager.Types {
+namespace StockManager.Types.Types {
   public class OperationErrorException : ArgumentException {
     public List<ErrorType> Errors { get; private set; }
 

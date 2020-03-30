@@ -1,12 +1,11 @@
-﻿using StockManager.Storage.Repositories;
-using StockManager.Storage.Models;
-using StockManager.Types;
+﻿using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using StockManager.Services.Contracts;
 using StockManager.Storage.Contracts;
+using StockManager.Types.Types;
 
-namespace StockManager.Services {
+namespace StockManager.Services.Services {
   public class LocationService : ILocationService {
     private readonly ILocationRepository locationRepo;
 

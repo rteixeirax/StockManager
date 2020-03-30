@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace StockManager.Types {
+namespace StockManager.Types.Types {
   public class OperationErrorsList {
     public List<ErrorType> ErrorsList { get; private set; }
 

@@ -1,4 +1,4 @@
-﻿using StockManager.Types;
+﻿using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
 using System.Collections.Generic;

@@ -1,13 +1,12 @@
-﻿using StockManager.Storage.Repositories;
-using StockManager.Storage.Models;
-using StockManager.Types;
+﻿using StockManager.Storage.Models;
+using StockManager.Types.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using StockManager.Services.Contracts;
 using StockManager.Storage.Contracts;
 
-namespace StockManager.Services {
+namespace StockManager.Services.Services {
   public class ProductService : IProductService {
     private readonly IProductRepository productRepo;
 

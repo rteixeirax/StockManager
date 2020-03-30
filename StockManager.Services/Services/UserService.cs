@@ -1,14 +1,13 @@
-﻿using StockManager.Storage.Repositories;
-using StockManager.Storage.Models;
-using StockManager.Types;
+﻿using StockManager.Storage.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using StockManager.Storage.Contracts;
 using StockManager.Services.Contracts;
+using StockManager.Types.Types;
 
-namespace StockManager.Services {
+namespace StockManager.Services.Services {
   public class UserService : IUserService {
     private readonly IUserRepository userRepo;
 

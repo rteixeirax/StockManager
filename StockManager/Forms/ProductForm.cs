@@ -1,11 +1,10 @@
 ﻿using StockManager.Storage.Models;
-using StockManager.Types;
+using StockManager.Types.Types;
 using StockManager.UserControls;
 using StockManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StockManager.Forms {

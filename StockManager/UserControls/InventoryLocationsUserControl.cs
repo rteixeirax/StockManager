@@ -1,6 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
-using StockManager.Types;
+using StockManager.Types.Types;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -103,7 +103,7 @@ namespace StockManager.UserControls {
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
             "Warning",
-            MessageBoxButtons.OK, 
+            MessageBoxButtons.OK,
             MessageBoxIcon.Warning
           );
 
@@ -113,7 +113,7 @@ namespace StockManager.UserControls {
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
             "Error",
-            MessageBoxButtons.OK, 
+            MessageBoxButtons.OK,
             MessageBoxIcon.Error
           );
         }

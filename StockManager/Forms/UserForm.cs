@@ -1,5 +1,5 @@
 ﻿using StockManager.Storage.Models;
-using StockManager.Types;
+using StockManager.Types.Types;
 using StockManager.UserControls;
 using StockManager.Utils;
 using System;

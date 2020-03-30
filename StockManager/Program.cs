@@ -1,12 +1,12 @@
 using StockManager.Forms;
-using StockManager.Services;
+using StockManager.Services.Contracts;
+using StockManager.Services.Services;
 using StockManager.Storage;
-using StockManager.Storage.Repositories;
+using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
+using StockManager.Storage.Repositories;
 using System;
 using System.Windows.Forms;
-using StockManager.Storage.Contracts;
-using StockManager.Services.Contracts;
 
 namespace StockManager {
   static class Program {
