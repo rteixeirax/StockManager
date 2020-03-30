@@ -79,9 +79,9 @@ namespace StockManager.Services {
       IEnumerable<Product> products = await this.productRepo.FindAllProductsAsync(searchValue);
 
       // Calculate the product total stock
-      foreach (Product product in products) {
+      products.ToList().ForEach(product => {
         product.Stock = product.ProductLocations?.Sum(x => x.Stock);
-      }
+      });
 
       return products;
     }
