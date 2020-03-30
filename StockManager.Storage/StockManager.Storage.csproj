@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200112204823_WipSeed.cs" />
-    <Compile Remove="Migrations\20200112204823_WipSeed.Designer.cs" />
-    <Compile Remove="Migrations\20200112210149_AddDatabaseSeeds.cs" />
-    <Compile Remove="Migrations\20200112210149_AddDatabaseSeeds.Designer.cs" />
-    <Compile Remove="Migrations\20200112211623_SeedInitialValues.cs" />
-    <Compile Remove="Migrations\20200112211623_SeedInitialValues.Designer.cs" />
+    <Compile Remove="Src\Migrations\20200112204823_WipSeed.cs" />
+    <Compile Remove="Src\Migrations\20200112204823_WipSeed.Designer.cs" />
+    <Compile Remove="Src\Migrations\20200112210149_AddDatabaseSeeds.cs" />
+    <Compile Remove="Src\Migrations\20200112210149_AddDatabaseSeeds.Designer.cs" />
+    <Compile Remove="Src\Migrations\20200112211623_SeedInitialValues.cs" />
+    <Compile Remove="Src\Migrations\20200112211623_SeedInitialValues.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
