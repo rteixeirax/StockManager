@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Repositories {
+namespace StockManager.Storage.Contracts {
   public interface IUserRepository {
     Task SaveDbChangesAsync();
 

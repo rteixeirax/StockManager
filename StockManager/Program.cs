@@ -5,6 +5,8 @@ using StockManager.Storage.Repositories;
 using StockManager.Storage.Models;
 using System;
 using System.Windows.Forms;
+using StockManager.Storage.Contracts;
+using StockManager.Services.Contracts;
 
 namespace StockManager {
   static class Program {

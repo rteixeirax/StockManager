@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Services {
+namespace StockManager.Services.Contracts {
   public interface IUserService {
     Task CreateUserAsync(User user);
 

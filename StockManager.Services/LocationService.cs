@@ -3,6 +3,8 @@ using StockManager.Storage.Models;
 using StockManager.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using StockManager.Services.Contracts;
+using StockManager.Storage.Contracts;
 
 namespace StockManager.Services {
   public class LocationService : ILocationService {

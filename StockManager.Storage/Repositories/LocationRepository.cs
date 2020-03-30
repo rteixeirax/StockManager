@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Linq;

@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using StockManager.Storage.Contracts;
+using StockManager.Services.Contracts;
 
 namespace StockManager.Services {
   public class UserService : IUserService {

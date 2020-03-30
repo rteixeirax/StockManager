@@ -4,6 +4,8 @@ using StockManager.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using StockManager.Services.Contracts;
+using StockManager.Storage.Contracts;
 
 namespace StockManager.Services {
   public class ProductService : IProductService {
