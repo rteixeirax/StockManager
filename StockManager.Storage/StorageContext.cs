@@ -9,20 +9,15 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage {
   public class StorageContext : DbContext {
-    private readonly string connectionString;
 
-    public StorageContext(string connectionString) : base() {
-      // Set the connectionString variable
-      // We only want the "Data Source"...
-      this.connectionString = connectionString.Split(';')[0];  
-
+    public StorageContext() : base() {
       // Run the migrations when the DB is instantiated
       this.Database.Migrate();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlite(this.connectionString);
+      optionsBuilder.UseSqlite(@"Data Source=.\App.db.sqlite");
     }
 
     /// <summary>

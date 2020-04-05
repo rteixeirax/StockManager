@@ -6,7 +6,6 @@ using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using StockManager.Storage.Repositories;
 using System;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace StockManager {
@@ -56,10 +55,8 @@ namespace StockManager {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      string connectionString = ConfigurationManager.ConnectionStrings["Default"].ConnectionString;
-
       // Instantiate our storage
-      StorageContext = new StorageContext(connectionString);
+      StorageContext = new StorageContext();
       UserRepository = new UserRepository(StorageContext);
       RoleRepository = new RoleRepository(StorageContext);
       LocationRepository = new LocationRepository(StorageContext);
