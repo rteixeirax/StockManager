@@ -277,9 +277,6 @@
     <EmbeddedResource Include="UserControls\UsersUserControl.resx">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.db.sqlite">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
