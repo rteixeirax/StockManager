@@ -16,7 +16,7 @@ namespace StockManager.Storage {
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlite(@"Data Source=.\StockManagerDB.sqlite");
+      optionsBuilder.UseSqlite(@"Data Source=.\App.db.sqlite");
     }
 
     /// <summary>
