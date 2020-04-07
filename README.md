@@ -10,12 +10,12 @@
 
 **Notes:**
 
-If the file `App.db.sqlite` isn't in the project **StockManager** 
-    
+If the file `App.db.sqlite` isn't in the project **StockManager**
+
 *  Include it into the project.
 *  Right click on it and go to properties.
 *  Change the **Copy to Output Directory** to `Copy if newer`. With this changes, your DB file will be copied to project `/bin/debug` directory on the run, if it is newer.
-*  Change the code that has been added to the file **StockManager.csproj** to be the following: 
+*  Change the code that has been added to the file **StockManager.csproj** to be the following:
 
     ````
     <None Include="App.db.sqlite" Condition="Exists('.\App.db.sqlite')">
@@ -39,3 +39,8 @@ From now on, your application will save the data in the `/bin/debug/App.db.sqlit
 * [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)
 * [Microsoft.EntityFrameworkCore.Tool](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools)
 * [BCrypt.Net-Core](https://www.nuget.org/packages/BCrypt.Net-Core)
+
+## Nuget packages for unit-tests
+* [Moq](https://www.nuget.org/packages/Moq)
+* [Tynamix.ObjectFiller](https://www.nuget.org/packages/Tynamix.ObjectFiller)
+
