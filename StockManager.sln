@@ -10,6 +10,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Services", "St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Types", "StockManager.Types\StockManager.Types.csproj", "{40D9ACBF-76A7-4F70-84CF-B82571830B53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockManager.Tests", "StockManager.Tests\StockManager.Tests.csproj", "{7CA69608-48C0-4CE7-A4E9-BD7107026ACB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{40D9ACBF-76A7-4F70-84CF-B82571830B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40D9ACBF-76A7-4F70-84CF-B82571830B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40D9ACBF-76A7-4F70-84CF-B82571830B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA69608-48C0-4CE7-A4E9-BD7107026ACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA69608-48C0-4CE7-A4E9-BD7107026ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA69608-48C0-4CE7-A4E9-BD7107026ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA69608-48C0-4CE7-A4E9-BD7107026ACB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
