@@ -10,14 +10,26 @@ using System.Threading.Tasks;
 namespace StockManager.Storage {
   public class StorageContext : DbContext {
 
-    public StorageContext() : base() {
+    public StorageContext(): base() {
+      // Run the migrations when the DB is instantiated
+      //this.Database.Migrate();
+    }
+
+    /// <summary>
+    /// This contructor is to configure the test database
+    /// </summary>
+    public StorageContext(DbContextOptions<StorageContext> options)
+      : base(options) {
       // Run the migrations when the DB is instantiated
       this.Database.Migrate();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
       base.OnConfiguring(optionsBuilder);
-      optionsBuilder.UseSqlite(@"Data Source=.\App.db.sqlite");
+
+      if (!optionsBuilder.IsConfigured) {
+        optionsBuilder.UseSqlite(@"Data Source=.\App.db.sqlite");
+      }
     }
 
     /// <summary>
