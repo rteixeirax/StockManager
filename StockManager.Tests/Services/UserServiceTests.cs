@@ -69,10 +69,10 @@ namespace StockManager.Tests.Services {
     }
 
     /// <summary>
-    /// Should search user for username
+    /// Should search user by username
     /// </summary>
     [TestMethod]
-    public async Task ShouldSearchUserForUsername() {
+    public async Task ShouldSearchUserByUsername() {
       // Arrange 
       User adminUser = await this.userService.GetUserByIdAsync(1);
       User newUser = new User() {
@@ -82,6 +82,7 @@ namespace StockManager.Tests.Services {
       };
 
       // Act 
+      await this.userService.CreateUserAsync(newUser);
       IEnumerable<User> users = await this.userService.GetUsersAsync(adminUser.Username);
 
       // Assert 
