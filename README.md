@@ -39,8 +39,3 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
 * [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)
 * [Microsoft.EntityFrameworkCore.Tool](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools)
 * [BCrypt.Net-Core](https://www.nuget.org/packages/BCrypt.Net-Core)
-
-## Nuget packages for unit-tests
-* [Moq](https://www.nuget.org/packages/Moq)
-* [Tynamix.ObjectFiller](https://www.nuget.org/packages/Tynamix.ObjectFiller)
-
