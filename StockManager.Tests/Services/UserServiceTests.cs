@@ -38,22 +38,15 @@ namespace StockManager.Tests.Services {
         RoleId = 1, // admin
       };
 
-      // TODO: When the newUser is sent to the DB
-      // After saveChanges, the newUser got the password updated
-      // I can avoid get the user becouse his data already change?!!
-
       // Act 
       await this.userService.CreateUserAsync(newUser);
-      User dbUser = await this.db.Users
-        .Where(x => x.Username.ToLower() == newUser.Username.ToLower())
-        .FirstOrDefaultAsync();
 
       // Assert 
-      Assert.AreEqual(dbUser.Username, newUser.Username);
-      Assert.AreEqual(dbUser.RoleId, newUser.RoleId);
-      Assert.IsTrue(BCrypt.Net.BCrypt.Verify(newUser.Password, dbUser.Password));
-      Assert.IsNotNull(dbUser.CreatedAt);
-      Assert.IsNotNull(dbUser.UpdatedAt);
+      Assert.AreEqual(newUser.Username, "manel");
+      Assert.AreEqual(newUser.RoleId, 1);
+      Assert.IsTrue(BCrypt.Net.BCrypt.Verify("123", newUser.Password));
+      Assert.IsNotNull(newUser.CreatedAt);
+      Assert.IsNotNull(newUser.UpdatedAt);
     }
 
     /// <summary>
@@ -62,7 +55,7 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShoulFailCreateUserWithExistingUsername() {
       // Arrange 
-      User user = new User() {
+      User newUser = new User() {
         Username = "admin",
         Password = "123",
         RoleId = 1, // admin
@@ -70,7 +63,7 @@ namespace StockManager.Tests.Services {
 
       try {
         // Act 
-        await this.userService.CreateUserAsync(user);
+        await this.userService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -87,11 +80,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShoulFailCreateUserNoUsernameAndPassword() {
       // Arrange 
-      User user = new User() { RoleId = 1 };
+      User newUser = new User() { RoleId = 1 };
 
       try {
         // Act 
-        await this.userService.CreateUserAsync(user);
+        await this.userService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -110,15 +103,13 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldEditUserAsync() {
       // Arrange 
-      await this.userService.CreateUserAsync(new User() {
+      User mockUser = new User() {
         Username = "manelito",
         Password = "123",
         RoleId = 2, // user
-      });
+      };
 
-      User mockUser = await this.db.Users
-       .Where(x => x.Username.ToLower() == "manelito")
-       .FirstOrDefaultAsync();
+      await this.userService.CreateUserAsync(mockUser);
 
       // Act
       User updatedUser = new User() {
@@ -144,15 +135,13 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShoulFailEditUserWithExistingUsername() {
       // Arrange 
-      await this.userService.CreateUserAsync(new User() {
+      User mockUser = new User() {
         Username = "manelito",
         Password = "123",
         RoleId = 2, // user
-      });
+      };
 
-      User mockUser = await this.db.Users
-       .Where(x => x.Username.ToLower() == "manelito")
-       .FirstOrDefaultAsync();
+      await this.userService.CreateUserAsync(mockUser);
 
       try {
         // Act
