@@ -1,16 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
-using Tynamix.ObjectFiller;
 using StockManager.Services.Services;
 using System.Threading.Tasks;
 using StockManager.Types.Types;
 using StockManager.Storage.Repositories;
 using StockManager.Services.Contracts;
 using StockManager.Storage;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace StockManager.Tests.Services {
   /// <summary>
