@@ -6,7 +6,7 @@
 1) Run `rebuild solution` to install all dependencies.
 2) In the **Package Manager Console**, select the **StockManager.Storage** as the Default project and run `Update-Database` to create the `App.db.sqlite` file in `/StockManager` folder.
 
-*The database will have a default user with the credentials, **username:** `Admin` and **password:** `admin`.*
+👉 *The database will have a default user with the credentials, **username:** `Admin` and **password:** `admin`.*
 
 **Notes:**
 
@@ -23,7 +23,7 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
     </None>
     ````
 
-From now on, your application will save the data in the `/bin/debug/App.db.sqlite`. The `App.db.sqlite` outside the `/bin/debug` will remain with the initial values only.
+👉 *From now on, your application will save the data in the `/bin/debug/App.db.sqlite`. The `App.db.sqlite` outside the `/bin/debug` will remain with the initial values only.*
 
 ## Helpful commands to run in the Package Manager Console
 * **Create a migration:** <br/>
