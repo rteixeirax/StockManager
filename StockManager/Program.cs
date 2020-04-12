@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using StockManager.Forms;
 using StockManager.Services.Contracts;
 using StockManager.Services.Services;
@@ -6,6 +7,7 @@ using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using StockManager.Storage.Repositories;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace StockManager {
@@ -55,8 +57,16 @@ namespace StockManager {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
+      // Set the options builder for our storage context
+      DbContextOptionsBuilder<StorageContext> builder = new DbContextOptionsBuilder<StorageContext>();
+      string connectionString = ConfigurationManager
+        .ConnectionStrings["Default"]
+        .ConnectionString.Split(';')[0]; // SQLite only want the "Data Source" part
+
+      builder.UseSqlite(connectionString);
+
       // Instantiate our storage
-      StorageContext = new StorageContext();
+      StorageContext = new StorageContext(builder.Options);
       UserRepository = new UserRepository(StorageContext);
       RoleRepository = new RoleRepository(StorageContext);
       LocationRepository = new LocationRepository(StorageContext);

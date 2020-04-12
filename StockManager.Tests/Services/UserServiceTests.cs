@@ -15,11 +15,11 @@ namespace StockManager.Tests.Services {
   /// </summary>
   [TestClass]
   public class UserServiceTests {
-    private readonly StorageContext db;
+    private readonly StorageContext db = new StorageConfiguration().StorageContext;
     private readonly IUserService userService;
 
     public UserServiceTests() {
-      this.db = new StorageConfiguration().StorageContext;
+      // this.db = new StorageConfiguration().StorageContext;
       this.userService = new UserService(new UserRepository(this.db));
     }
 
