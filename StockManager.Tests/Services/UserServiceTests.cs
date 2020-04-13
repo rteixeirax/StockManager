@@ -1,13 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Storage.Models;
-using StockManager.Services.Services;
-using System.Threading.Tasks;
-using StockManager.Types.Types;
-using StockManager.Storage.Repositories;
 using StockManager.Services.Contracts;
-using StockManager.Storage;
+using StockManager.Storage.Models;
+using StockManager.Types.Types;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StockManager.Tests.Services {
   /// <summary>
@@ -15,12 +12,18 @@ namespace StockManager.Tests.Services {
   /// </summary>
   [TestClass]
   public class UserServiceTests {
-    private readonly StorageContext db = new StorageConfiguration().StorageContext;
-    private readonly IUserService userService;
+    private Configuration config;
+    private IUserService userService;
 
-    public UserServiceTests() {
-      // this.db = new StorageConfiguration().StorageContext;
-      this.userService = new UserService(new UserRepository(this.db));
+    [TestInitialize]
+    public void BeforEach() {
+      this.config = new Configuration();
+      this.userService = this.config.SetUserService();
+    }
+
+    [TestCleanup]
+    public void AfterEach() {
+      this.config.CloseConnection();
     }
 
     /// <summary>

@@ -9,25 +9,32 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage {
   public class StorageContext : DbContext {
-
-    public StorageContext(DbContextOptions<StorageContext> options) : base(options) { }
+    public StorageContext(DbContextOptions<StorageContext> options)
+      : base(options) => this.Database.Migrate(); // Run the migrations when the DB is instantiated
 
     /// <summary>
-    /// This contructor is to configure the test database
+    /// Add Database Tables Here..
     /// </summary>
-    //public StorageContext(DbContextOptions<StorageContext> options)
-    //  : base(options) {
-    //  // Run the migrations when the DB is instantiated
-    //  this.Database.Migrate();
-    //}
+    public DbSet<Role> Roles { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Location> Locations { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<ProductLocation> ProductLocations { get; set; }
+    public DbSet<StockMovement> StockMovements { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-    //  base.OnConfiguring(optionsBuilder);
-
-    //  if (!optionsBuilder.IsConfigured) {
-    //    optionsBuilder.UseSqlite(@"Data Source=.\App.db.sqlite");
-    //  }
-    //}
+    /// <summary>
+    /// Define the models relationships constraints, indexes and seed the initial data
+    /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
+    /// https://code-maze.com/efcore-relationships/
+    /// https://code-maze.com/migrations-and-seed-data-efcore/
+    /// </summary>
+    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+      modelBuilder.ApplyConfiguration(new RoleConfiguration());
+      modelBuilder.ApplyConfiguration(new UserConfiguration());
+      modelBuilder.ApplyConfiguration(new LocationConfiguration());
+      modelBuilder.ApplyConfiguration(new ProductConfiguration());
+      modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
+    }
 
     /// <summary>
     /// Auto fill the CreatedAt and the UpdatedAt model fields
@@ -49,29 +56,5 @@ namespace StockManager.Storage {
 
       return await base.SaveChangesAsync(true, cancellationToken);
     }
-
-    /// <summary>
-    /// Define the models relationships constraints, indexes and seed the initial data
-    /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
-    /// https://code-maze.com/efcore-relationships/
-    /// https://code-maze.com/migrations-and-seed-data-efcore/
-    /// </summary>
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {
-      modelBuilder.ApplyConfiguration(new RoleConfiguration());
-      modelBuilder.ApplyConfiguration(new UserConfiguration());
-      modelBuilder.ApplyConfiguration(new LocationConfiguration());
-      modelBuilder.ApplyConfiguration(new ProductConfiguration());
-      modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
-    }
-
-    /// <summary>
-    /// Add Database Tables Here..
-    /// </summary>
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Location> Locations { get; set; }
-    public DbSet<Product> Products { get; set; }
-    public DbSet<ProductLocation> ProductLocations { get; set; }
-    public DbSet<StockMovement> StockMovements { get; set; }
   }
 }

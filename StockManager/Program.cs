@@ -58,9 +58,9 @@ namespace StockManager {
       Application.SetCompatibleTextRenderingDefault(false);
 
       // Set the options builder for our storage context
-      DbContextOptionsBuilder<StorageContext> builder = new DbContextOptionsBuilder<StorageContext>();
+      var builder = new DbContextOptionsBuilder<StorageContext>();
       string connectionString = ConfigurationManager
-        .ConnectionStrings["Default"]
+        .ConnectionStrings["StockManagerDB"]
         .ConnectionString.Split(';')[0]; // SQLite only want the "Data Source" part
 
       builder.UseSqlite(connectionString);
