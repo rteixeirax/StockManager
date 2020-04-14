@@ -16,7 +16,7 @@ namespace StockManager.Tests.Services {
     private IUserService userService;
 
     [TestInitialize]
-    public void BeforEach() {
+    public void BeforeEach() {
       this.config = new Configuration();
       this.userService = this.config.SetUserService();
     }
