@@ -1,10 +1,10 @@
-﻿using StockManager.Storage.Models;
+﻿using StockManager.Services.Contracts;
+using StockManager.Storage.Contracts;
+using StockManager.Storage.Models;
 using StockManager.Types.Types;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
-using StockManager.Services.Contracts;
-using StockManager.Storage.Contracts;
+using System.Threading.Tasks;
 
 namespace StockManager.Services.Services {
   public class ProductService : IProductService {

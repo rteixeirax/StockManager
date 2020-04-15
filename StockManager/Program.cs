@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using StockManager.Forms;
 using StockManager.Services.Contracts;
 using StockManager.Services.Services;
@@ -55,8 +56,12 @@ namespace StockManager {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
+      // Set the options builder for our storage context
+      var builder = new DbContextOptionsBuilder<StorageContext>();
+      builder.UseSqlite(Constants.connectionString);
+
       // Instantiate our storage
-      StorageContext = new StorageContext();
+      StorageContext = new StorageContext(builder.Options);
       UserRepository = new UserRepository(StorageContext);
       RoleRepository = new RoleRepository(StorageContext);
       LocationRepository = new LocationRepository(StorageContext);

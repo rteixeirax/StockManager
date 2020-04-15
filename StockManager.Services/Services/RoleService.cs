@@ -1,8 +1,8 @@
-﻿using StockManager.Storage.Models;
+﻿using StockManager.Services.Contracts;
+using StockManager.Storage.Contracts;
+using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using StockManager.Services.Contracts;
-using StockManager.Storage.Contracts;
 
 namespace StockManager.Services.Services {
   public class RoleService : IRoleService {
