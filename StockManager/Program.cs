@@ -59,11 +59,7 @@ namespace StockManager {
 
       // Set the options builder for our storage context
       var builder = new DbContextOptionsBuilder<StorageContext>();
-      string connectionString = ConfigurationManager
-        .ConnectionStrings["StockManagerDB"]
-        .ConnectionString.Split(';')[0]; // SQLite only want the "Data Source" part
-
-      builder.UseSqlite(connectionString);
+      builder.UseSqlite(Constants.connectionString);
 
       // Instantiate our storage
       StorageContext = new StorageContext(builder.Options);

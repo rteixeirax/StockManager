@@ -12,7 +12,7 @@ namespace StockManager.Tests {
 
     public Configuration() {
       // Set the Sqlite in memory database connection
-      this.connection = new SqliteConnection("DataSource =:memory:");
+      this.connection = new SqliteConnection(Constants.connectionStringTestDB);
 
       // Open database connection 
       this.connection.Open();

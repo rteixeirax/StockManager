@@ -9,8 +9,19 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage {
   public class StorageContext : DbContext {
+    // Need to keep a contructor without parameters for "Add/Remove-Migration"
+    public StorageContext() { }
+
+    // Run the migrations when the DB is instantiated
     public StorageContext(DbContextOptions<StorageContext> options)
-      : base(options) => this.Database.Migrate(); // Run the migrations when the DB is instantiated
+      : base(options) => this.Database.Migrate();
+
+    // Need to have this override to make "Add-Migration" work properly
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+      if (!optionsBuilder.IsConfigured) {
+        optionsBuilder.UseSqlite(Constants.connectionString);
+      }
+    }
 
     /// <summary>
     /// Add Database Tables Here..
