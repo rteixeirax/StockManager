@@ -7,7 +7,6 @@ using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using StockManager.Storage.Repositories;
 using System;
-using System.Configuration;
 using System.Windows.Forms;
 
 namespace StockManager {
