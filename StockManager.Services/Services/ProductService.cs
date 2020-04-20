@@ -1,6 +1,7 @@
 ﻿using StockManager.Services.Contracts;
 using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,7 @@ namespace StockManager.Services.Services {
 
         await this.productRepo.SaveDbChangesAsync();
       } catch {
-        errorsList.AddError("delete-product-db-error", "Oops.. something went wrong. Try it again!");
+        errorsList.AddError("delete-product-db-error", Phrases.GlobalErrorOperationDB);
 
         throw new ServiceErrorException(errorsList);
       }
@@ -101,11 +102,11 @@ namespace StockManager.Services.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       if (string.IsNullOrEmpty(product.Name)) {
-        errorsList.AddError("Name", "This field is required.");
+        errorsList.AddError("Name", Phrases.GlobalRequiredField);
       }
 
       if (string.IsNullOrEmpty(product.Reference)) {
-        errorsList.AddError("Reference", "This field is required.");
+        errorsList.AddError("Reference", Phrases.GlobalRequiredField);
       }
 
       if (errorsList.HasErrors()) {
@@ -120,7 +121,7 @@ namespace StockManager.Services.Services {
         : null;
 
       if (nameCheck != null) {
-        errorsList.AddError("Reference", "A product with this reference already exist.");
+        errorsList.AddError("Reference", Phrases.ProductErrorReference);
 
         throw new OperationErrorException(errorsList);
       }

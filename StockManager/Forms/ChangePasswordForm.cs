@@ -27,7 +27,7 @@ namespace StockManager.Forms {
     /// Set the content string for the correct app language
     /// </summary>
     private void SetTranslatedPhrases() {
-      this.Text = AppTitle.GetViewTitle(Phrases.UserChangePassword);
+      this.Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
       lbTitle.Text = Phrases.UserChangePassword;
       lbCurrentPassword.Text = Phrases.UserCurrentPassword;
       lbNewPassword.Text = Phrases.UserNewPassword;

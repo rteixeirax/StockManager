@@ -43,8 +43,8 @@ namespace StockManager.Forms {
 
       // Set the Form title
       this.Text = (this.userId != 0)
-        ? AppTitle.GetViewTitle(Phrases.UserEditUser)
-        : AppTitle.GetViewTitle(Phrases.UserCreateNewUser);
+        ? AppInfo.GetViewTitle(Phrases.UserEditUser)
+        : AppInfo.GetViewTitle(Phrases.UserCreateNewUser);
 
       // hide the error labels
       lbErrorUsername.Visible = false;

@@ -120,7 +120,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            Phrases.GlobalDialogOperationErrorTitle,
+            Phrases.GlobalDialogErrorTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
           );

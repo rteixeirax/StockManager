@@ -1,5 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
@@ -14,7 +15,21 @@ namespace StockManager.UserControls {
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
+      this.SetTranslatedPhrases();
       this.LoadProductsAsync().Wait();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      btnCreate.Text = Phrases.GlobalCreate;
+      btnEdit.Text = Phrases.GlobalEdit;
+      btnDelete.Text = Phrases.GlobalDelete;
+      dgvProducts.Columns[1].HeaderText = Phrases.GlobalReference;
+      dgvProducts.Columns[2].HeaderText = Phrases.GlobalName;
+      dgvProducts.Columns[3].HeaderText = Phrases.GlobalStock;
+      dgvProducts.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
     }
 
     /// <summary>
@@ -72,8 +87,8 @@ namespace StockManager.UserControls {
       DataGridViewSelectedRowCollection selectedProducts = dgvProducts.SelectedRows;
 
       if ((selectedProducts.Count > 0) && MessageBox.Show(
-        $"Delete {selectedProducts.Count} product(s)?",
-        "Are you sure?",
+        string.Format(Phrases.ProductDialogDeleteBody, selectedProducts.Count),
+        Phrases.GlobalDialogDeleteTitle,
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       ) {
         try {
@@ -95,7 +110,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Warning",
+            Phrases.GlobalDialogWarningTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning
           );
@@ -105,7 +120,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Error",
+            Phrases.GlobalDialogErrorTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
           );

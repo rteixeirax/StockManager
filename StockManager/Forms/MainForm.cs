@@ -2,6 +2,7 @@
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.UserControls;
+using StockManager.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -16,7 +17,9 @@ namespace StockManager.Forms {
     /// Set the Ui after Login/Logout
     /// </summary>
     public void SetUi() {
-      lbAppVersion.Text = "v.0.0.1";
+      this.Text = AppInfo.Title;
+      lbAppVersion.Text = AppInfo.Version;
+      linklbTwitter.Text = AppInfo.DevName;
 
       // Set the content strings for the correct app language
       lbPoweredBy.Text = Phrases.GlobalPoweredBy;
@@ -24,6 +27,8 @@ namespace StockManager.Forms {
       logoutToolStripMenuItem.Text = Phrases.GlobalExit;
       btnExit.Text = $" {Phrases.GlobalExit}";
       btnUsers.Text = $" {Phrases.GlobalUsers}";
+      btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";
+      btnInventoryProducts.Text = Phrases.GlobalProducts;
 
       // Get the logged In User, if any.
       User loggedInUser = Program.LoggedInUser;
@@ -144,7 +149,7 @@ namespace StockManager.Forms {
     private void btnInventoryLocations_Click(object sender, EventArgs e) {
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Inventory > Locations";
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > Locations";
       UserControl ucInventoryLocations = new InventoryLocationsUserControl();
       ucInventoryLocations.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryLocations);
@@ -156,7 +161,7 @@ namespace StockManager.Forms {
     private void btnInventoryProducts_Click(object sender, EventArgs e) {
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Inventory > Products";
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts}";
       UserControl ucInventoryProducts = new InventoryProductsUserControl();
       ucInventoryProducts.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProducts);
@@ -212,7 +217,7 @@ namespace StockManager.Forms {
     /// LinkLabel click
     /// </summary>
     private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-      System.Diagnostics.Process.Start("https://twitter.com/ricardotx86");
+      System.Diagnostics.Process.Start(AppInfo.TwitterUrl);
     }
 
     /// <summary>

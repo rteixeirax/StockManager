@@ -144,8 +144,8 @@
   <data name="GlobalDelete" xml:space="preserve">
     <value>Remover</value>
   </data>
-  <data name="GlobalDialogOperationErrorTitle" xml:space="preserve">
-    <value>Erro de operação</value>
+  <data name="GlobalDialogErrorTitle" xml:space="preserve">
+    <value>Erro</value>
   </data>
   <data name="GlobalDialogWarningTitle" xml:space="preserve">
     <value>Aviso</value>
@@ -215,5 +215,35 @@
   </data>
   <data name="GlobalPoweredBy" xml:space="preserve">
     <value>Distribuído por</value>
+  </data>
+  <data name="GlobalInventoryTitle" xml:space="preserve">
+    <value>Inventário</value>
+  </data>
+  <data name="GlobalProducts" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="GlobalReference" xml:space="preserve">
+    <value>Referência</value>
+  </data>
+  <data name="GlobalName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="GlobalStock" xml:space="preserve">
+    <value>Stock global</value>
+  </data>
+  <data name="ProductEdit" xml:space="preserve">
+    <value>Editar produto</value>
+  </data>
+  <data name="ProductCreateNewProduct" xml:space="preserve">
+    <value>Criar novo produto</value>
+  </data>
+  <data name="ProductInfo" xml:space="preserve">
+    <value>Informação do produto</value>
+  </data>
+  <data name="ProductDialogDeleteBody" xml:space="preserve">
+    <value>Remover {0} produto(s)?</value>
+  </data>
+  <data name="ProductErrorReference" xml:space="preserve">
+    <value>Já existe um produto com esta referência.</value>
   </data>
 </root>

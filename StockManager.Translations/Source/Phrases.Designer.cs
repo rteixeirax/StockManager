@@ -115,11 +115,11 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operation error.
+        ///   Looks up a localized string similar to Error.
         /// </summary>
-        public static string GlobalDialogOperationErrorTitle {
+        public static string GlobalDialogErrorTitle {
             get {
-                return ResourceManager.GetString("GlobalDialogOperationErrorTitle", resourceCulture);
+                return ResourceManager.GetString("GlobalDialogErrorTitle", resourceCulture);
             }
         }
         
@@ -160,6 +160,24 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inventory.
+        /// </summary>
+        public static string GlobalInventoryTitle {
+            get {
+                return ResourceManager.GetString("GlobalInventoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GlobalName {
+            get {
+                return ResourceManager.GetString("GlobalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string GlobalPassword {
@@ -178,6 +196,24 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Products.
+        /// </summary>
+        public static string GlobalProducts {
+            get {
+                return ResourceManager.GetString("GlobalProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference.
+        /// </summary>
+        public static string GlobalReference {
+            get {
+                return ResourceManager.GetString("GlobalReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This field is required..
         /// </summary>
         public static string GlobalRequiredField {
@@ -192,6 +228,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalSave {
             get {
                 return ResourceManager.GetString("GlobalSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Global stock.
+        /// </summary>
+        public static string GlobalStock {
+            get {
+                return ResourceManager.GetString("GlobalStock", resourceCulture);
             }
         }
         
@@ -237,6 +282,51 @@ namespace StockManager.Translations.Source {
         public static string LoginWelcome {
             get {
                 return ResourceManager.GetString("LoginWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new product.
+        /// </summary>
+        public static string ProductCreateNewProduct {
+            get {
+                return ResourceManager.GetString("ProductCreateNewProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete {0} product(s)?.
+        /// </summary>
+        public static string ProductDialogDeleteBody {
+            get {
+                return ResourceManager.GetString("ProductDialogDeleteBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit product.
+        /// </summary>
+        public static string ProductEdit {
+            get {
+                return ResourceManager.GetString("ProductEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A product with this reference already exist..
+        /// </summary>
+        public static string ProductErrorReference {
+            get {
+                return ResourceManager.GetString("ProductErrorReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product info.
+        /// </summary>
+        public static string ProductInfo {
+            get {
+                return ResourceManager.GetString("ProductInfo", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
 using StockManager.Utils;
@@ -15,6 +16,18 @@ namespace StockManager.Forms {
     public ProductForm(InventoryProductsUserControl inventoryProductsUserControl) {
       InitializeComponent();
       this.inventoryProductsUserControl = inventoryProductsUserControl;
+      this.SetTranslatedPhrases();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      lbTitle.Text = Phrases.ProductInfo;
+      lbReference.Text = Phrases.GlobalReference;
+      lbName.Text = Phrases.GlobalName;
+      btnCancel.Text = Phrases.GlobalCancel;
+      btnSave.Text = Phrases.GlobalSave;
     }
 
     /// <summary>
@@ -28,8 +41,8 @@ namespace StockManager.Forms {
 
       // Set the Form title
       this.Text = (this.productId != 0)
-        ? "Stock Manager | Edit product"
-        : "Stock Manager | Create new product";
+        ? AppInfo.GetViewTitle(Phrases.ProductEdit)
+        : AppInfo.GetViewTitle(Phrases.ProductCreateNewProduct);
 
       // hide the error labels
       lbErrorReference.Visible = false;
