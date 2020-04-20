@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services.Contracts;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,7 +115,7 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
-        Assert.AreEqual(ex.Errors[0].Error, "This username already exist.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorUsername);
       }
     }
 
@@ -135,9 +136,9 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
-        Assert.AreEqual(ex.Errors[0].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
         Assert.AreEqual(ex.Errors[1].Field, "Password");
-        Assert.AreEqual(ex.Errors[1].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[1].Error, Phrases.GlobalRequiredField);
       }
     }
 
@@ -202,7 +203,7 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
-        Assert.AreEqual(ex.Errors[0].Error, "This username already exist.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorUsername);
       }
     }
 
@@ -245,7 +246,7 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "LoggedInUserId");
-        Assert.AreEqual(ex.Errors[0].Error, "You can't delete yourself.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorDeleteYourself);
       }
     }
 
@@ -281,7 +282,7 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "CurrentPassword");
-        Assert.AreEqual(ex.Errors[0].Error, "Invalid password.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorInvalidPassword);
       }
     }
 
@@ -302,9 +303,9 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "CurrentPassword");
-        Assert.AreEqual(ex.Errors[0].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
         Assert.AreEqual(ex.Errors[1].Field, "NewPassword");
-        Assert.AreEqual(ex.Errors[1].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[1].Error, Phrases.GlobalRequiredField);
       }
     }
 
@@ -340,9 +341,9 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
-        Assert.AreEqual(ex.Errors[0].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
         Assert.AreEqual(ex.Errors[1].Field, "Password");
-        Assert.AreEqual(ex.Errors[1].Error, "This field is required.");
+        Assert.AreEqual(ex.Errors[1].Error, Phrases.GlobalRequiredField);
       }
     }
 
@@ -363,7 +364,7 @@ namespace StockManager.Tests.Services {
         // Assert 
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Generic");
-        Assert.AreEqual(ex.Errors[0].Error, "Invalid username and password combination.");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorLogin);
       }
     }
   }

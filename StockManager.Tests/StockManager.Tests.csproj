@@ -180,6 +180,10 @@
       <Project>{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}</Project>
       <Name>StockManager.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
+      <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
+      <Name>StockManager.Translations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj">
       <Project>{40D9ACBF-76A7-4F70-84CF-B82571830B53}</Project>
       <Name>StockManager.Types</Name>
