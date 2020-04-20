@@ -1,6 +1,7 @@
 ﻿using StockManager.Services.Contracts;
 using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using System;
 using System.Collections.Generic;
@@ -62,11 +63,11 @@ namespace StockManager.Services.Services {
 
       // Validate data
       if (string.IsNullOrEmpty(currentPassword)) {
-        errorsList.AddError("CurrentPassword", "This field is required.");
+        errorsList.AddError("CurrentPassword", Phrases.GlobalRequiredField);
       }
 
       if (string.IsNullOrEmpty(newPassword)) {
-        errorsList.AddError("NewPassword", "This field is required.");
+        errorsList.AddError("NewPassword", Phrases.GlobalRequiredField);
       }
 
       if (errorsList.HasErrors()) {
@@ -81,7 +82,7 @@ namespace StockManager.Services.Services {
         dbUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
         await this.userRepo.SaveDbChangesAsync();
       } else {
-        errorsList.AddError("CurrentPassword", "Invalid password.");
+        errorsList.AddError("CurrentPassword", Phrases.UserErrorInvalidPassword);
 
         throw new OperationErrorException(errorsList);
       }
@@ -95,11 +96,11 @@ namespace StockManager.Services.Services {
 
       // Validate data
       if (string.IsNullOrEmpty(username)) {
-        errorsList.AddError("Username", "This field is required.");
+        errorsList.AddError("Username", Phrases.GlobalRequiredField);
       }
 
       if (string.IsNullOrEmpty(password)) {
-        errorsList.AddError("Password", "This field is required.");
+        errorsList.AddError("Password", Phrases.GlobalRequiredField);
       }
 
       if (errorsList.HasErrors()) {
@@ -115,7 +116,7 @@ namespace StockManager.Services.Services {
         user.LastLogin = DateTime.UtcNow;
         await this.userRepo.SaveDbChangesAsync();
       } else {
-        errorsList.AddError("Generic", "Invalid username and password combination.");
+        errorsList.AddError("Generic", Phrases.UserErrorLogin);
 
         throw new OperationErrorException(errorsList);
       }
@@ -132,7 +133,7 @@ namespace StockManager.Services.Services {
       try {
         // You can't delete yourself
         if (userIds.Contains(loggedInUserId)) {
-          errorsList.AddError("LoggedInUserId", "You can't delete yourself.");
+          errorsList.AddError("LoggedInUserId", Phrases.UserErrorDeleteYourself);
 
           throw new OperationErrorException(errorsList);
         }
@@ -155,7 +156,7 @@ namespace StockManager.Services.Services {
 
         // catch other errors and send a Service Error Exception
       } catch {
-        errorsList.AddError("delete-user-db-error", "Oops.. something went wrong. Try it again!");
+        errorsList.AddError("delete-user-db-error", Phrases.GlobalErrorOperationDB);
 
         throw new ServiceErrorException(errorsList);
       }
@@ -182,11 +183,11 @@ namespace StockManager.Services.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       if (string.IsNullOrEmpty(user.Username)) {
-        errorsList.AddError("Username", "This field is required.");
+        errorsList.AddError("Username", Phrases.GlobalRequiredField);
       }
 
       if ((dbUser == null) && string.IsNullOrEmpty(user.Password)) {
-        errorsList.AddError("Password", "This field is required.");
+        errorsList.AddError("Password", Phrases.GlobalRequiredField);
       }
 
       // Validate the form values
@@ -202,7 +203,7 @@ namespace StockManager.Services.Services {
         : null;
 
       if (usernameCheck != null) {
-        errorsList.AddError("Username", "This username already exist.");
+        errorsList.AddError("Username", Phrases.UserErrorUsername);
 
         throw new OperationErrorException(errorsList);
       }

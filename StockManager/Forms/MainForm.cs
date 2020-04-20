@@ -1,5 +1,6 @@
 ﻿using StockManager.ColorTables;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.UserControls;
 using System;
 using System.Windows.Forms;
@@ -17,6 +18,13 @@ namespace StockManager.Forms {
     public void SetUi() {
       lbAppVersion.Text = "v.0.0.1";
 
+      // Set the content strings for the correct app language
+      lbPoweredBy.Text = Phrases.GlobalPoweredBy;
+      changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
+      logoutToolStripMenuItem.Text = Phrases.GlobalExit;
+      btnExit.Text = $" {Phrases.GlobalExit}";
+      btnUsers.Text = $" {Phrases.GlobalUsers}";
+
       // Get the logged In User, if any.
       User loggedInUser = Program.LoggedInUser;
 
@@ -25,7 +33,7 @@ namespace StockManager.Forms {
 
       // Set initial view
       if (loggedInUser == null) {
-        lbViewTitle.Text = "Welcome";
+        lbViewTitle.Text = Phrases.LoginWelcome;
         UserControl ucLogin = new LoginUserControl(this);
         ucLogin.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucLogin);
@@ -163,7 +171,7 @@ namespace StockManager.Forms {
 
       // Show the UsersUser view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = "Users";
+      lbViewTitle.Text = Phrases.GlobalUsers;
       UserControl ucUsers = new UsersUserControl();
       ucUsers.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucUsers);

@@ -1,5 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
@@ -14,7 +15,22 @@ namespace StockManager.UserControls {
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
+      
+      this.SetTranslatedPhrases();
       this.LoadUsersAsync().Wait();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      btnCreateUser.Text = Phrases.GlobalCreate;
+      btnEditUser.Text = Phrases.GlobalEdit;
+      btnDeleteUser.Text = Phrases.GlobalDelete;
+      dgvUsers.Columns[1].HeaderText = Phrases.GlobalUsername;
+      dgvUsers.Columns[2].HeaderText = Phrases.UserRole;
+      dgvUsers.Columns[3].HeaderText = Phrases.UserLastLogin;
+      dgvUsers.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
     }
 
     /// <summary>
@@ -71,8 +87,8 @@ namespace StockManager.UserControls {
       DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
 
       if ((selectedUsers.Count > 0) && MessageBox.Show(
-        $"Delete {selectedUsers.Count} user(s)?",
-        "Are you sure?",
+        string.Format(Phrases.UserDialogDeleteBody, selectedUsers.Count),
+        Phrases.GlobalDialogDeleteTitle,
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       ) {
         try {
@@ -94,7 +110,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Warning",
+            Phrases.GlobalDialogWarningTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning
           );
@@ -104,7 +120,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Operation error",
+            Phrases.GlobalDialogOperationErrorTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
           );

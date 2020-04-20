@@ -1,4 +1,5 @@
-﻿using StockManager.Types.Types;
+﻿using StockManager.Translations.Source;
+using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
 using System.Collections.Generic;
@@ -17,8 +18,21 @@ namespace StockManager.Forms {
       // hide the error labels
       lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
+      this.SetTranslatedPhrases();
 
       this.ShowDialog();
+    }
+
+    /// <summary>
+    /// Set the content string for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      this.Text = AppTitle.GetViewTitle(Phrases.UserChangePassword);
+      lbTitle.Text = Phrases.UserChangePassword;
+      lbCurrentPassword.Text = Phrases.UserCurrentPassword;
+      lbNewPassword.Text = Phrases.UserNewPassword;
+      btnCancel.Text = Phrases.GlobalCancel;
+      btnSave.Text = Phrases.GlobalSave;
     }
 
     /// <summary>

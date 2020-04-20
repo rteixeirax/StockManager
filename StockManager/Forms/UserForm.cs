@@ -1,4 +1,5 @@
 ﻿using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
 using StockManager.Utils;
@@ -16,6 +17,19 @@ namespace StockManager.Forms {
     public UserForm(UsersUserControl usersUserControl) {
       InitializeComponent();
       this.usersUserControl = usersUserControl;
+      this.SetTranslatedPhrases();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      lbTitle.Text = Phrases.UserInfo;
+      lbFirstName.Text = Phrases.GlobalUsername;
+      lbPassword.Text = Phrases.GlobalPassword;
+      lbRole.Text = Phrases.UserRole;
+      btnCancel.Text = Phrases.GlobalCancel;
+      btnSave.Text = Phrases.GlobalSave;
     }
 
     /// <summary>
@@ -29,8 +43,8 @@ namespace StockManager.Forms {
 
       // Set the Form title
       this.Text = (this.userId != 0)
-        ? "Stock Manager | Edit user"
-        : "Stock Manager | Create new user";
+        ? AppTitle.GetViewTitle(Phrases.UserEditUser)
+        : AppTitle.GetViewTitle(Phrases.UserCreateNewUser);
 
       // hide the error labels
       lbErrorUsername.Visible = false;

@@ -56,9 +56,9 @@
       this.pnlLoginForm.Controls.Add(this.lbPassword);
       this.pnlLoginForm.Controls.Add(this.tbUsername);
       this.pnlLoginForm.Controls.Add(this.lbFirstName);
-      this.pnlLoginForm.Location = new System.Drawing.Point(290, 62);
+      this.pnlLoginForm.Location = new System.Drawing.Point(264, 62);
       this.pnlLoginForm.Name = "pnlLoginForm";
-      this.pnlLoginForm.Size = new System.Drawing.Size(277, 275);
+      this.pnlLoginForm.Size = new System.Drawing.Size(337, 275);
       this.pnlLoginForm.TabIndex = 28;
       // 
       // lbErrorGeneric
@@ -66,7 +66,7 @@
       this.lbErrorGeneric.AutoSize = true;
       this.lbErrorGeneric.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorGeneric.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorGeneric.Location = new System.Drawing.Point(10, 43);
+      this.lbErrorGeneric.Location = new System.Drawing.Point(40, 43);
       this.lbErrorGeneric.Name = "lbErrorGeneric";
       this.lbErrorGeneric.Size = new System.Drawing.Size(120, 16);
       this.lbErrorGeneric.TabIndex = 37;
@@ -78,7 +78,7 @@
       this.lbLoginFormTitle.BackColor = System.Drawing.Color.Transparent;
       this.lbLoginFormTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
       this.lbLoginFormTitle.ForeColor = System.Drawing.Color.Black;
-      this.lbLoginFormTitle.Location = new System.Drawing.Point(9, 13);
+      this.lbLoginFormTitle.Location = new System.Drawing.Point(39, 13);
       this.lbLoginFormTitle.Name = "lbLoginFormTitle";
       this.lbLoginFormTitle.Size = new System.Drawing.Size(87, 22);
       this.lbLoginFormTitle.TabIndex = 36;
@@ -90,7 +90,7 @@
       this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnClean.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnClean.ForeColor = System.Drawing.Color.White;
-      this.btnClean.Location = new System.Drawing.Point(13, 223);
+      this.btnClean.Location = new System.Drawing.Point(43, 223);
       this.btnClean.Name = "btnClean";
       this.btnClean.Size = new System.Drawing.Size(120, 32);
       this.btnClean.TabIndex = 35;
@@ -103,7 +103,7 @@
       this.lbErrorPassword.AutoSize = true;
       this.lbErrorPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorPassword.Location = new System.Drawing.Point(16, 182);
+      this.lbErrorPassword.Location = new System.Drawing.Point(46, 182);
       this.lbErrorPassword.Name = "lbErrorPassword";
       this.lbErrorPassword.Size = new System.Drawing.Size(113, 16);
       this.lbErrorPassword.TabIndex = 34;
@@ -114,7 +114,7 @@
       this.lbErrorUsername.AutoSize = true;
       this.lbErrorUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorUsername.Location = new System.Drawing.Point(16, 115);
+      this.lbErrorUsername.Location = new System.Drawing.Point(46, 115);
       this.lbErrorUsername.Name = "lbErrorUsername";
       this.lbErrorUsername.Size = new System.Drawing.Size(113, 16);
       this.lbErrorUsername.TabIndex = 33;
@@ -126,7 +126,7 @@
       this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnLogin.ForeColor = System.Drawing.Color.White;
-      this.btnLogin.Location = new System.Drawing.Point(145, 223);
+      this.btnLogin.Location = new System.Drawing.Point(175, 223);
       this.btnLogin.Name = "btnLogin";
       this.btnLogin.Size = new System.Drawing.Size(120, 32);
       this.btnLogin.TabIndex = 31;
@@ -139,7 +139,7 @@
       this.tbPassword.BackColor = System.Drawing.Color.White;
       this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbPassword.Location = new System.Drawing.Point(13, 157);
+      this.tbPassword.Location = new System.Drawing.Point(43, 157);
       this.tbPassword.Name = "tbPassword";
       this.tbPassword.PasswordChar = '*';
       this.tbPassword.Size = new System.Drawing.Size(252, 20);
@@ -153,7 +153,7 @@
       this.lbPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbPassword.Location = new System.Drawing.Point(10, 138);
+      this.lbPassword.Location = new System.Drawing.Point(40, 138);
       this.lbPassword.Name = "lbPassword";
       this.lbPassword.Size = new System.Drawing.Size(72, 16);
       this.lbPassword.TabIndex = 32;
@@ -164,7 +164,7 @@
       this.tbUsername.BackColor = System.Drawing.Color.White;
       this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.tbUsername.ForeColor = System.Drawing.Color.Black;
-      this.tbUsername.Location = new System.Drawing.Point(13, 90);
+      this.tbUsername.Location = new System.Drawing.Point(43, 90);
       this.tbUsername.Name = "tbUsername";
       this.tbUsername.Size = new System.Drawing.Size(252, 20);
       this.tbUsername.TabIndex = 28;
@@ -175,7 +175,7 @@
       this.lbFirstName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbFirstName.Location = new System.Drawing.Point(10, 71);
+      this.lbFirstName.Location = new System.Drawing.Point(40, 71);
       this.lbFirstName.Name = "lbFirstName";
       this.lbFirstName.Size = new System.Drawing.Size(72, 16);
       this.lbFirstName.TabIndex = 30;

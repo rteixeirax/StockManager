@@ -191,6 +191,7 @@
     <Compile Include="Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\AppTitle.cs" />
     <Compile Include="Utils\Spinner.cs" />
     <Compile Include="UserControls\DashboardUserControl.cs">
       <SubType>UserControl</SubType>
@@ -303,6 +304,10 @@
     <ProjectReference Include="..\StockManager.Services\StockManager.Services.csproj">
       <Project>{06e6df51-756b-4d4c-bbbc-5fc389f681f3}</Project>
       <Name>StockManager.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
+      <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
+      <Name>StockManager.Translations</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj">
       <Project>{40d9acbf-76a7-4f70-84cf-b82571830b53}</Project>

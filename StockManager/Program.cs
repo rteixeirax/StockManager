@@ -7,6 +7,8 @@ using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using StockManager.Storage.Repositories;
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace StockManager {
@@ -55,6 +57,14 @@ namespace StockManager {
     static void Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
+
+      try {
+        // Set the user language.
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-PT");
+      } catch {
+        // Set default app default language (EN)
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+      }
 
       // Set the options builder for our storage context
       var builder = new DbContextOptionsBuilder<StorageContext>();

@@ -1,5 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
@@ -18,6 +19,18 @@ namespace StockManager.UserControls {
       lbErrorGeneric.Visible = false;
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
+      this.SetTranslatedPhrases();
+    }
+
+    /// <summary>
+    /// Set the content string for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      lbLoginFormTitle.Text = Phrases.LoginFormTitle;
+      lbFirstName.Text = Phrases.GlobalUsername;
+      lbPassword.Text = Phrases.GlobalPassword;
+      btnClean.Text = Phrases.GlobalClean;
+      btnLogin.Text = Phrases.LoginLogin;
     }
 
     /// <summary>
