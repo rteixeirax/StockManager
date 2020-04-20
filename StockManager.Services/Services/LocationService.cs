@@ -1,6 +1,7 @@
 ﻿using StockManager.Services.Contracts;
 using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace StockManager.Services.Services {
         if (locationIds.Length >= locationsCount) {
           errorsList.AddError(
             "LocationsCount",
-            "It is not possible delete all locations, you must have at least one location."
+             Phrases.LocationErrorCount
           );
 
           throw new OperationErrorException(errorsList);
@@ -75,7 +76,7 @@ namespace StockManager.Services.Services {
             if (location.ProductLocations.Count > 0) {
               errorsList.AddError(
                 "LocationWithProducts",
-                "You can't delete locations that have products. You need to move them first."
+                Phrases.LocationErrorWithProducts
              );
 
               throw new OperationErrorException(errorsList);
@@ -93,7 +94,7 @@ namespace StockManager.Services.Services {
 
         // catch other errors and send a Service Error Exception
       } catch {
-        errorsList.AddError("delete-location-db-error", "Oops.. something went wrong. Try it again!");
+        errorsList.AddError("delete-location-db-error", Phrases.GlobalErrorOperationDB);
 
         throw new ServiceErrorException(errorsList);
       }
@@ -120,7 +121,7 @@ namespace StockManager.Services.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       if (string.IsNullOrEmpty(location.Name)) {
-        errorsList.AddError("Name", "This field is required.");
+        errorsList.AddError("Name", Phrases.GlobalRequiredField);
       }
 
       if (errorsList.HasErrors()) {
@@ -135,7 +136,7 @@ namespace StockManager.Services.Services {
         : null;
 
       if (nameCheck != null) {
-        errorsList.AddError("Name", "A location with this name already exist.");
+        errorsList.AddError("Name", Phrases.LocationErrorName);
 
         throw new OperationErrorException(errorsList);
       }

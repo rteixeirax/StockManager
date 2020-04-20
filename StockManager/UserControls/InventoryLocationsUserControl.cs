@@ -1,5 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,20 @@ namespace StockManager.UserControls {
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
+      this.SetTranslatedPhrases();
       this.LoadLocationsAsync().Wait();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      btnCreate.Text = Phrases.GlobalCreate;
+      btnEdit.Text = Phrases.GlobalEdit;
+      btnDelete.Text = Phrases.GlobalDelete;
+      dgvLocations.Columns[1].HeaderText = Phrases.GlobalName;
+      dgvLocations.Columns[2].HeaderText = Phrases.GlobalProducts;
+      dgvLocations.Columns[3].HeaderText = Phrases.GlobalCreatedAt;
     }
 
     /// <summary>
@@ -79,8 +93,8 @@ namespace StockManager.UserControls {
       DataGridViewSelectedRowCollection selectedLocations = dgvLocations.SelectedRows;
 
       if ((selectedLocations.Count > 0) && MessageBox.Show(
-        $"Delete {selectedLocations.Count} location(s)?",
-        "Are you sure?",
+        string.Format(Phrases.LocationDialogDeleteBody, selectedLocations.Count),
+        Phrases.GlobalDialogDeleteTitle,
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       ) {
         try {
@@ -102,7 +116,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Warning",
+            Phrases.GlobalDialogWarningTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning
           );
@@ -112,7 +126,7 @@ namespace StockManager.UserControls {
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
-            "Error",
+            Phrases.GlobalDialogErrorTitle,
             MessageBoxButtons.OK,
             MessageBoxIcon.Error
           );

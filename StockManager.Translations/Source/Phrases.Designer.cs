@@ -169,6 +169,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locations.
+        /// </summary>
+        public static string GlobalLocations {
+            get {
+                return ResourceManager.GetString("GlobalLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string GlobalName {
@@ -255,6 +264,69 @@ namespace StockManager.Translations.Source {
         public static string GlobalUsers {
             get {
                 return ResourceManager.GetString("GlobalUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new location.
+        /// </summary>
+        public static string LocationCreate {
+            get {
+                return ResourceManager.GetString("LocationCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete {0} location(s)?.
+        /// </summary>
+        public static string LocationDialogDeleteBody {
+            get {
+                return ResourceManager.GetString("LocationDialogDeleteBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit location.
+        /// </summary>
+        public static string LocationEdit {
+            get {
+                return ResourceManager.GetString("LocationEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is not possible delete all locations, you must have at least one location..
+        /// </summary>
+        public static string LocationErrorCount {
+            get {
+                return ResourceManager.GetString("LocationErrorCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A location with this name already exist..
+        /// </summary>
+        public static string LocationErrorName {
+            get {
+                return ResourceManager.GetString("LocationErrorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t delete locations that have products. You need to move them first..
+        /// </summary>
+        public static string LocationErrorWithProducts {
+            get {
+                return ResourceManager.GetString("LocationErrorWithProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location info.
+        /// </summary>
+        public static string LocationInfo {
+            get {
+                return ResourceManager.GetString("LocationInfo", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using StockManager.Storage.Models;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
 using StockManager.Utils;
@@ -15,6 +16,17 @@ namespace StockManager.Forms {
     public LocationForm(InventoryLocationsUserControl inventoryLocationsUserControl) {
       InitializeComponent();
       this.inventoryLocationsUserControl = inventoryLocationsUserControl;
+      this.SetTranslatedPhrases();
+    }
+
+    /// <summary>
+    /// Set the content strings for the correct app language
+    /// </summary>
+    private void SetTranslatedPhrases() {
+      lbTitle.Text = Phrases.LocationInfo;
+      lbName.Text = Phrases.GlobalName;
+      btnCancel.Text = Phrases.GlobalCancel;
+      btnSave.Text = Phrases.GlobalSave;
     }
 
     /// <summary>
@@ -26,8 +38,8 @@ namespace StockManager.Forms {
 
       // Set the Form title
       this.Text = (this.locationId != 0)
-        ? "Stock Manager | Edit location"
-        : "Stock Manager | Create new location";
+        ? AppInfo.GetViewTitle(Phrases.LocationEdit)
+        : AppInfo.GetViewTitle(Phrases.LocationCreate);
 
       // hide the error labels
       lbErrorName.Visible = false;

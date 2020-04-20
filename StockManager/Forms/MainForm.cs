@@ -29,6 +29,7 @@ namespace StockManager.Forms {
       btnUsers.Text = $" {Phrases.GlobalUsers}";
       btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";
       btnInventoryProducts.Text = Phrases.GlobalProducts;
+      btnInventoryLocations.Text = Phrases.GlobalLocations;
 
       // Get the logged In User, if any.
       User loggedInUser = Program.LoggedInUser;
@@ -149,7 +150,7 @@ namespace StockManager.Forms {
     private void btnInventoryLocations_Click(object sender, EventArgs e) {
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > Locations";
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations}";
       UserControl ucInventoryLocations = new InventoryLocationsUserControl();
       ucInventoryLocations.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryLocations);
