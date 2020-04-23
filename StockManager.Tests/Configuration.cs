@@ -25,21 +25,10 @@ namespace StockManager.Tests {
       this.StorageContext = new StorageContext(builder.Options);
     }
 
-    /// <summary>
-    /// Set the user service
-    /// </summary>
-    /// <returns>IUserService</returns>
     public IUserService SetUserService() => new UserService(new UserRepository(this.StorageContext));
+    public IProductService SetProductService() => new ProductService(new ProductRepository(this.StorageContext));
 
-    /// <summary>
-    /// Get the test storage context
-    /// </summary>
-    /// <returns>StorageContext</returns>
     public StorageContext GetStorageContext() => this.StorageContext;
-
-    /// <summary>
-    ///  Close storage connection after each test
-    /// </summary>
     public void CloseConnection() => this.connection.Close();
   }
 }

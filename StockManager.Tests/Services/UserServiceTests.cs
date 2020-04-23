@@ -15,11 +15,17 @@ namespace StockManager.Tests.Services {
   public class UserServiceTests {
     private Configuration config;
     private IUserService userService;
+    private User mockUser;
 
     [TestInitialize]
     public void BeforeEach() {
       this.config = new Configuration();
       this.userService = this.config.SetUserService();
+      this.mockUser = new User() {
+        Username = "manel",
+        Password = "123",
+        RoleId = 1, // admin
+      };
     }
 
     [TestCleanup]
@@ -28,42 +34,15 @@ namespace StockManager.Tests.Services {
     }
 
     /// <summary>
-    /// Should create user
-    /// </summary>
-    [TestMethod]
-    public async Task ShouldCreateUser() {
-      // Arrange 
-      User newUser = new User() {
-        Username = "manel",
-        Password = "123",
-        RoleId = 1, // admin
-      };
-
-      // Act 
-      await this.userService.CreateUserAsync(newUser);
-
-      // Assert 
-      Assert.AreEqual(newUser.Username, "manel");
-      Assert.AreEqual(newUser.RoleId, 1);
-      Assert.IsTrue(BCrypt.Net.BCrypt.Verify("123", newUser.Password));
-      Assert.IsNotNull(newUser.CreatedAt);
-      Assert.IsNotNull(newUser.UpdatedAt);
-    }
-
-    /// <summary>
     /// Should get all users
     /// </summary>
     [TestMethod]
     public async Task ShouldGetAllUsers() {
       // Arrange 
-      User newUser = new User() {
-        Username = "manel",
-        Password = "123",
-        RoleId = 1, // admin
-      };
+      User newUser = this.mockUser;
+      await this.userService.CreateUserAsync(newUser);
 
       // Act 
-      await this.userService.CreateUserAsync(newUser);
       IEnumerable<User> users = await this.userService.GetUsersAsync();
 
       // Assert 
@@ -79,14 +58,10 @@ namespace StockManager.Tests.Services {
     public async Task ShouldSearchUserByUsername() {
       // Arrange 
       User adminUser = await this.userService.GetUserByIdAsync(1);
-      User newUser = new User() {
-        Username = "manel",
-        Password = "123",
-        RoleId = 1, // admin
-      };
+      User newUser = this.mockUser;
+      await this.userService.CreateUserAsync(newUser);
 
       // Act 
-      await this.userService.CreateUserAsync(newUser);
       IEnumerable<User> users = await this.userService.GetUsersAsync(adminUser.Username);
 
       // Assert 
@@ -95,19 +70,35 @@ namespace StockManager.Tests.Services {
     }
 
     /// <summary>
+    /// Should create user
+    /// </summary>
+    [TestMethod]
+    public async Task ShouldCreateUser() {
+      // Arrange 
+      User newUser = this.mockUser;
+
+      // Act 
+      await this.userService.CreateUserAsync(newUser);
+
+      // Assert 
+      Assert.AreEqual(newUser.Username, "manel");
+      Assert.AreEqual(newUser.RoleId, 1);
+      Assert.IsTrue(BCrypt.Net.BCrypt.Verify("123", newUser.Password));
+      Assert.IsNotNull(newUser.CreatedAt);
+      Assert.IsNotNull(newUser.UpdatedAt);
+    }
+
+    /// <summary>
     /// Should fail create user with a existing username
     /// </summary>
     [TestMethod]
     public async Task ShouldFailCreateUser_ExistingUsername() {
       // Arrange 
-      User newUser = new User() {
-        Username = "admin",
-        Password = "123",
-        RoleId = 1, // admin
-      };
+      User newUser = this.mockUser;
 
       try {
         // Act 
+        newUser.Username = "admin";
         await this.userService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
@@ -120,7 +111,7 @@ namespace StockManager.Tests.Services {
     }
 
     /// <summary>
-    /// Should faail create user - no usernmae and password sent
+    /// Should fail create user - no usernmae and password sent
     /// </summary>
     [TestMethod]
     public async Task ShoulFailCreateUser_NoUsernameAndPasswordSent() {
@@ -148,12 +139,8 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldEditUser() {
       // Arrange 
-      User mockUser = new User() {
-        Username = "manelito",
-        Password = "123",
-        RoleId = 2, // user
-      };
-
+      User mockUser = this.mockUser;
+      mockUser.RoleId = 2; // user
       await this.userService.CreateUserAsync(mockUser);
 
       // Act
@@ -180,12 +167,7 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailEditUser_ExistingUsername() {
       // Arrange 
-      User mockUser = new User() {
-        Username = "manelito",
-        Password = "123",
-        RoleId = 2, // user
-      };
-
+      User mockUser = this.mockUser;
       await this.userService.CreateUserAsync(mockUser);
 
       try {
@@ -213,11 +195,7 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldDeleteUser() {
       // Arrange 
-      User mockUser = new User() {
-        Username = "manelito",
-        Password = "123",
-        RoleId = 2, // user
-      };
+      User mockUser = this.mockUser;
       User loggedInUser = await this.userService.GetUserByIdAsync(1);
       await this.userService.CreateUserAsync(mockUser);
 
