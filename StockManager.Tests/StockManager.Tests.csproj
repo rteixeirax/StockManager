@@ -163,7 +163,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ProductServiceTests.cs" />
+    <Compile Include="Services\RoleServiceTests.cs" />
     <Compile Include="Services\UserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuration.cs" />

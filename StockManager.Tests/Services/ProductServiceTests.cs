@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,7 +12,7 @@ namespace StockManager.Tests.Services {
   /// Product service tests
   /// </summary>
   [TestClass]
-  public class ProductService {
+  public class ProductServiceTests {
     private Configuration config;
     private IProductService productService;
     private List<Product> mockProducts = new List<Product>();

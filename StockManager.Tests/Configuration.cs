@@ -27,6 +27,7 @@ namespace StockManager.Tests {
 
     public IUserService SetUserService() => new UserService(new UserRepository(this.StorageContext));
     public IProductService SetProductService() => new ProductService(new ProductRepository(this.StorageContext));
+    public IRoleService SetRoleService() => new RoleService(new RoleRepository(this.StorageContext));
 
     public StorageContext GetStorageContext() => this.StorageContext;
     public void CloseConnection() => this.connection.Close();
