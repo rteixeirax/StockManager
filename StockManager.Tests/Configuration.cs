@@ -25,12 +25,39 @@ namespace StockManager.Tests {
       this.StorageContext = new StorageContext(builder.Options);
     }
 
+    /// <summary> 
+    /// Set the user service 
+    /// </summary> 
+    /// <returns>IUserService</returns> 
     public IUserService SetUserService() => new UserService(new UserRepository(this.StorageContext));
+
+    /// <summary> 
+    /// Set the Product service 
+    /// </summary> 
+    /// <returns>IProductService</returns> 
     public IProductService SetProductService() => new ProductService(new ProductRepository(this.StorageContext));
+
+    /// <summary> 
+    /// Set the Role service 
+    /// </summary> 
+    /// <returns>IRoleService</returns> 
     public IRoleService SetRoleService() => new RoleService(new RoleRepository(this.StorageContext));
+
+    /// <summary> 
+    /// Set the Location service 
+    /// </summary> 
+    /// <returns>ILocationService</returns> 
     public ILocationService SetLocationService() => new LocationService(new LocationRepository(this.StorageContext));
 
+    /// <summary> 
+    /// Get the test storage context 
+    /// </summary> 
+    /// <returns>StorageContext</returns>
     public StorageContext GetStorageContext() => this.StorageContext;
+
+    /// <summary> 
+    ///  Close storage connection
+    /// </summary> 
     public void CloseConnection() => this.connection.Close();
   }
 }

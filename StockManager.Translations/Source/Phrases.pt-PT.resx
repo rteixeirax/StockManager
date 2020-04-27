@@ -253,7 +253,7 @@
     <value>Não é possível excluir todos os locais, deve ter pelo menos um local.</value>
   </data>
   <data name="LocationErrorWithProducts" xml:space="preserve">
-    <value>Você não pode remover locais que tenham produtos. É preciso movê-los primeiro.</value>
+    <value>Não pode remover locais que tenham produtos. É preciso movê-los primeiro.</value>
   </data>
   <data name="LocationErrorName" xml:space="preserve">
     <value>Já existe um local com este nome.</value>

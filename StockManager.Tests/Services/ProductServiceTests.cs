@@ -115,7 +115,7 @@ namespace StockManager.Tests.Services {
     }
 
     /// <summary>
-    /// Should fail product product with a existing reference
+    /// Should fail create product with a existing reference
     /// </summary>
     [TestMethod]
     public async Task ShouldFailCreateProduct_ExistingReference() {
