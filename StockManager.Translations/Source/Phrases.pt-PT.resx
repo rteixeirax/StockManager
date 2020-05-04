@@ -247,27 +247,27 @@
     <value>Já existe um produto com esta referência.</value>
   </data>
   <data name="GlobalLocations" xml:space="preserve">
-    <value>Locais</value>
+    <value>Localizações</value>
   </data>
   <data name="LocationErrorCount" xml:space="preserve">
-    <value>Não é possível excluir todos os locais, deve ter pelo menos um local.</value>
+    <value>Não é possível excluir todos as localizações, deve ter pelo menos uma.</value>
   </data>
   <data name="LocationErrorWithProducts" xml:space="preserve">
-    <value>Não pode remover locais que tenham produtos. É preciso movê-los primeiro.</value>
+    <value>Não pode remover localizações que tenham produtos. Mova-os antes de remover.</value>
   </data>
   <data name="LocationErrorName" xml:space="preserve">
-    <value>Já existe um local com este nome.</value>
+    <value>Já existe uma localização com este nome.</value>
   </data>
   <data name="LocationDialogDeleteBody" xml:space="preserve">
-    <value>Remover {0} locais?</value>
+    <value>Remover {0} localizações?</value>
   </data>
   <data name="LocationInfo" xml:space="preserve">
-    <value>Informação do local</value>
+    <value>Informação da localização</value>
   </data>
   <data name="LocationEdit" xml:space="preserve">
-    <value>Editar local</value>
+    <value>Editar localização</value>
   </data>
   <data name="LocationCreate" xml:space="preserve">
-    <value>Criar novo local</value>
+    <value>Criar nova localização</value>
   </data>
 </root>
