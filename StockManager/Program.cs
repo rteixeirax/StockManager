@@ -36,10 +36,10 @@ namespace StockManager {
     /// Application DB context and repositories
     /// </summary>
     private static StorageContext StorageContext { get; set; }
-    public static IUserRepository UserRepository { get; private set; }
-    public static IRoleRepository RoleRepository { get; private set; }
-    public static ILocationRepository LocationRepository { get; private set; }
-    public static IProductRepository ProductRepository { get; private set; }
+    private static IUserRepository UserRepository { get; set; }
+    private static IRoleRepository RoleRepository { get; set; }
+    private static ILocationRepository LocationRepository { get; set; }
+    private static IProductRepository ProductRepository { get; set; }
 
     /// <summary>
     /// Application services
@@ -51,21 +51,9 @@ namespace StockManager {
     public static IProductService ProductService { get; private set; }
 
     /// <summary>
-    /// The main entry point for the application.
+    /// Setup our db context and services
     /// </summary>
-    [STAThread]
-    static void Main() {
-      Application.EnableVisualStyles();
-      Application.SetCompatibleTextRenderingDefault(false);
-
-      try {
-        // Set the user language.
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-PT");
-      } catch {
-        // Set default app default language (EN)
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
-      }
-
+    private static void ConfigureServices() {
       // Set the options builder for our storage context
       var builder = new DbContextOptionsBuilder<StorageContext>();
       builder.UseSqlite(Constants.connectionString);
@@ -82,6 +70,31 @@ namespace StockManager {
       RoleService = new RoleService(RoleRepository);
       LocationService = new LocationService(LocationRepository);
       ProductService = new ProductService(ProductRepository);
+    }
+
+    /// <summary>
+    /// Set the application language
+    /// </summary>
+    private static void SetApplicationLanguage() {
+      try {
+        // Set the user language.
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-PT");
+      } catch {
+        // Set default app default language (EN)
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+      }
+    }
+
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main() {
+      Application.EnableVisualStyles();
+      Application.SetCompatibleTextRenderingDefault(false);
+
+      ConfigureServices();
+      SetApplicationLanguage();
 
       Application.Run(new MainForm());
     }
