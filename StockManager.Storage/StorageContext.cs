@@ -16,13 +16,6 @@ namespace StockManager.Storage {
     public StorageContext(DbContextOptions<StorageContext> options)
       : base(options) => this.Database.Migrate();
 
-    // Need to have this override to make "Add-Migration" work properly
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-      if (!optionsBuilder.IsConfigured) {
-        optionsBuilder.UseSqlite(Constants.connectionString);
-      }
-    }
-
     /// <summary>
     /// Add Database Tables Here..
     /// </summary>
