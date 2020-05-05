@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Storage.Models {
+namespace StockManager.Storage.Source.Models {
   public class StockMovement : BaseEntity {
     [Key]
     public int StockMovementId { get; set; }

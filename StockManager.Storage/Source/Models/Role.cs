@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Storage.Models {
+namespace StockManager.Storage.Source.Models {
   public class Role : BaseEntity {
     [Key]
     public int RoleId { get; set; }

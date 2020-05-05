@@ -3,12 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockManager.Storage;
 
-namespace StockManager.Storage.Migrations
-{
-    [DbContext(typeof(StorageContext))]
+namespace StockManager.Storage.Source.Migrations {
+  [DbContext(typeof(StorageContext))]
     [Migration("20200303203233_Add-tables-and-constraints")]
     partial class Addtablesandconstraints
     {

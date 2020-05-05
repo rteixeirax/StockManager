@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockManager.Storage.Contracts;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Contracts;
+using StockManager.Storage.Source.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage.Repositories {
+namespace StockManager.Storage.Source.Repositories {
   public class RoleRepository : IRoleRepository {
     private readonly StorageContext db;
 

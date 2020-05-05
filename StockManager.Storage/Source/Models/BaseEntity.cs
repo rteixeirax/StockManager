@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StockManager.Storage.Models {
+namespace StockManager.Storage.Source.Models {
   /*
    * Commom models fields
    *

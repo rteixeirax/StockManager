@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Storage.Models {
+namespace StockManager.Storage.Source.Models {
   public class Location : BaseEntity {
     [Key]
     public int LocationId { get; set; }

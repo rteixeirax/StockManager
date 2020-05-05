@@ -1,7 +1,7 @@
 ﻿using StockManager.Services.Contracts;
 using StockManager.Services.Services;
-using StockManager.Storage;
-using StockManager.Storage.Repositories;
+using StockManager.Storage.Source;
+using StockManager.Storage.Source.Repositories;
 
 namespace StockManager.Services {
   public static class AppServices {

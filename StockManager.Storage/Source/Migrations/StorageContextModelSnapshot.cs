@@ -3,9 +3,9 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockManager.Storage;
+using StockManager.Storage.Source;
 
-namespace StockManager.Storage.Migrations
+namespace StockManager.Storage.Source.Migrations
 {
     [DbContext(typeof(StorageContext))]
     partial class StorageContextModelSnapshot : ModelSnapshot

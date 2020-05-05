@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using StockManager.Forms;
 using StockManager.Services;
-using StockManager.Storage;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source;
+using StockManager.Storage.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
 using System;

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using StockManager.Services;
-using StockManager.Storage;
+using StockManager.Storage.Source;
 using StockManager.Utilities.Source;
 
 namespace StockManager.Tests.Source {
@@ -13,7 +13,7 @@ namespace StockManager.Tests.Source {
       // Set the Sqlite in memory database connection
       this.connection = new SqliteConnection(AppConstants.connectionStringTestDB);
 
-      // Open database connection 
+      // Open database connection
       this.connection.Open();
 
       // Set the options builder for our test storage context
@@ -27,15 +27,15 @@ namespace StockManager.Tests.Source {
       AppServices.ConfigureServices(StorageContext);
     }
 
-    /// <summary> 
-    /// Get the test storage context 
-    /// </summary> 
+    /// <summary>
+    /// Get the test storage context
+    /// </summary>
     /// <returns>StorageContext</returns>
     public StorageContext GetStorageContext() => this.StorageContext;
 
-    /// <summary> 
+    /// <summary>
     ///  Close storage connection
-    /// </summary> 
+    /// </summary>
     public void CloseConnection() => this.connection.Close();
   }
 }

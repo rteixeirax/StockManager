@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace StockManager.Storage.Migrations {
+namespace StockManager.Storage.Source.Migrations {
   public partial class Addtablesandconstraints : Migration {
     protected override void Up(MigrationBuilder migrationBuilder) {
       migrationBuilder.CreateTable(

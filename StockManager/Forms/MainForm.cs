@@ -1,5 +1,5 @@
 ﻿using StockManager.ColorTables;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.UserControls;
 using StockManager.Utilities.Source;

@@ -1,6 +1,6 @@
 ﻿using StockManager.Forms;
 using StockManager.Services;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,12 +28,12 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldGetAllRoles() {
-      // Arrange 
+      // Arrange
 
-      // Act 
+      // Act
       IEnumerable<Role> roles = await AppServices.RoleService.GetRolesAsync();
 
-      // Assert 
+      // Assert
       Assert.AreEqual(roles.Count(), 2);
       Assert.AreEqual(roles.ElementAt(0).Code, "Admin");
       Assert.AreEqual(roles.ElementAt(1).Code, "User");

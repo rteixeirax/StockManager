@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using StockManager.Utilities.Source;
 
-namespace StockManager.Storage {
+namespace StockManager.Storage.Source {
   class StorageContextFactory : IDesignTimeDbContextFactory<StorageContext> {
     /// <summary>
     /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1?view=efcore-3.1

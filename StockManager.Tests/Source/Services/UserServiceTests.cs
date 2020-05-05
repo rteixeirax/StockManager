@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Models;
 using StockManager.Tests.Source;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
@@ -38,14 +38,14 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldGetAllUsers() {
-      // Arrange 
+      // Arrange
       User newUser = _mockUser;
       await AppServices.UserService.CreateUserAsync(newUser);
 
-      // Act 
+      // Act
       IEnumerable<User> users = await AppServices.UserService.GetUsersAsync();
 
-      // Assert 
+      // Assert
       Assert.AreEqual(users.Count(), 2);
       Assert.AreEqual(users.ElementAt(0).Username, "Admin");
       Assert.AreEqual(users.ElementAt(1).Username, newUser.Username);
@@ -56,15 +56,15 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldSearchUserByUsername() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
       User newUser = _mockUser;
       await AppServices.UserService.CreateUserAsync(newUser);
 
-      // Act 
+      // Act
       IEnumerable<User> users = await AppServices.UserService.GetUsersAsync(adminUser.Username);
 
-      // Assert 
+      // Assert
       Assert.AreEqual(users.Count(), 1);
       Assert.AreEqual(users.ElementAt(0).Username, adminUser.Username);
     }
@@ -74,13 +74,13 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldCreateUser() {
-      // Arrange 
+      // Arrange
       User newUser = _mockUser;
 
-      // Act 
+      // Act
       await AppServices.UserService.CreateUserAsync(newUser);
 
-      // Assert 
+      // Assert
       Assert.AreEqual(newUser.Username, "manel");
       Assert.AreEqual(newUser.RoleId, 1);
       Assert.IsTrue(BCrypt.Net.BCrypt.Verify("123", newUser.Password));
@@ -93,17 +93,17 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailCreateUser_ExistingUsername() {
-      // Arrange 
+      // Arrange
       User newUser = _mockUser;
 
       try {
-        // Act 
+        // Act
         newUser.Username = "admin";
         await AppServices.UserService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorUsername);
@@ -115,16 +115,16 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShoulFailCreateUser_NoUsernameAndPasswordSent() {
-      // Arrange 
+      // Arrange
       User newUser = new User() { RoleId = 1 };
 
       try {
-        // Act 
+        // Act
         await AppServices.UserService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
@@ -138,7 +138,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldEditUser() {
-      // Arrange 
+      // Arrange
       User mockUser = _mockUser;
       mockUser.RoleId = 2; // user
       await AppServices.UserService.CreateUserAsync(mockUser);
@@ -166,7 +166,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailEditUser_ExistingUsername() {
-      // Arrange 
+      // Arrange
       User mockUser = _mockUser;
       await AppServices.UserService.CreateUserAsync(mockUser);
 
@@ -182,7 +182,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorUsername);
@@ -194,7 +194,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldDeleteUser() {
-      // Arrange 
+      // Arrange
       User mockUser = _mockUser;
       User loggedInUser = await AppServices.UserService.GetUserByIdAsync(1);
       await AppServices.UserService.CreateUserAsync(mockUser);
@@ -212,7 +212,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailDeleteUser_LoggedInUser() {
-      // Arrange 
+      // Arrange
       User loggedInUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
@@ -221,7 +221,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "LoggedInUserId");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorDeleteYourself);
@@ -233,13 +233,13 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldChangePassword() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
-      // Act 
+      // Act
       await AppServices.UserService.ChangePasswordAsync(adminUser.UserId, "admin", "newPassword");
 
-      // Assert 
+      // Assert
       Assert.IsTrue(BCrypt.Net.BCrypt.Verify("newPassword", adminUser.Password));
     }
 
@@ -248,7 +248,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailChangePassword_NoValidCurrentPasswordSent() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
@@ -257,7 +257,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "CurrentPassword");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorInvalidPassword);
@@ -269,7 +269,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailChangePassword_NoCurrentAndNewPasswordSent() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
@@ -278,7 +278,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "CurrentPassword");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
@@ -292,13 +292,13 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldAuthenticateUser() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
-      // Act 
+      // Act
       await AppServices.UserService.AuthenticateAsync(adminUser.Username, "admin");
 
-      // Assert 
+      // Assert
       Assert.IsNotNull(adminUser.LastLogin);
     }
 
@@ -307,7 +307,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailAuthenticateUser_NoUsernameAndPasswordSent() {
-      // Arrange 
+      // Arrange
       // nothing to arrange...
 
       try {
@@ -316,7 +316,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "Username");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
@@ -330,7 +330,7 @@ namespace StockManager.Tests.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailAuthenticateUser_BadUsernameAndPasswordCombination() {
-      // Arrange 
+      // Arrange
       User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
@@ -339,7 +339,7 @@ namespace StockManager.Tests.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Generic");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.UserErrorLogin);

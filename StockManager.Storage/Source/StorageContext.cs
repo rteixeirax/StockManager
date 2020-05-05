@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using StockManager.Storage.Models;
+using StockManager.Storage.Source.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StockManager.Storage {
+namespace StockManager.Storage.Source {
   public class StorageContext : DbContext {
     // Need to keep a contructor without parameters for "Add/Remove-Migration"
     public StorageContext() { }

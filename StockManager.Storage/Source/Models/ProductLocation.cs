@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Storage.Models {
+namespace StockManager.Storage.Source.Models {
   public class ProductLocation : BaseEntity {
     [Key]
     public int ProductLocationId { get; set; }
