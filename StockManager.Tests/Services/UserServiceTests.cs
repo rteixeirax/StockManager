@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services.Contracts;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
@@ -13,15 +13,14 @@ namespace StockManager.Tests.Services {
   /// </summary>
   [TestClass]
   public class UserServiceTests {
-    private Configuration config;
-    private IUserService userService;
-    private User mockUser;
+    private TestsConfig config;
+    private User _mockUser;
 
     [TestInitialize]
     public void BeforeEach() {
-      this.config = new Configuration();
-      this.userService = this.config.SetUserService();
-      this.mockUser = new User() {
+      this.config = new TestsConfig();
+
+      _mockUser = new User() {
         Username = "manel",
         Password = "123",
         RoleId = 1, // admin
@@ -39,11 +38,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldGetAllUsers() {
       // Arrange 
-      User newUser = this.mockUser;
-      await this.userService.CreateUserAsync(newUser);
+      User newUser = _mockUser;
+      await AppServices.UserService.CreateUserAsync(newUser);
 
       // Act 
-      IEnumerable<User> users = await this.userService.GetUsersAsync();
+      IEnumerable<User> users = await AppServices.UserService.GetUsersAsync();
 
       // Assert 
       Assert.AreEqual(users.Count(), 2);
@@ -57,12 +56,12 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldSearchUserByUsername() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
-      User newUser = this.mockUser;
-      await this.userService.CreateUserAsync(newUser);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
+      User newUser = _mockUser;
+      await AppServices.UserService.CreateUserAsync(newUser);
 
       // Act 
-      IEnumerable<User> users = await this.userService.GetUsersAsync(adminUser.Username);
+      IEnumerable<User> users = await AppServices.UserService.GetUsersAsync(adminUser.Username);
 
       // Assert 
       Assert.AreEqual(users.Count(), 1);
@@ -75,10 +74,10 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldCreateUser() {
       // Arrange 
-      User newUser = this.mockUser;
+      User newUser = _mockUser;
 
       // Act 
-      await this.userService.CreateUserAsync(newUser);
+      await AppServices.UserService.CreateUserAsync(newUser);
 
       // Assert 
       Assert.AreEqual(newUser.Username, "manel");
@@ -94,12 +93,12 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailCreateUser_ExistingUsername() {
       // Arrange 
-      User newUser = this.mockUser;
+      User newUser = _mockUser;
 
       try {
         // Act 
         newUser.Username = "admin";
-        await this.userService.CreateUserAsync(newUser);
+        await AppServices.UserService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -120,7 +119,7 @@ namespace StockManager.Tests.Services {
 
       try {
         // Act 
-        await this.userService.CreateUserAsync(newUser);
+        await AppServices.UserService.CreateUserAsync(newUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -139,9 +138,9 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldEditUser() {
       // Arrange 
-      User mockUser = this.mockUser;
+      User mockUser = _mockUser;
       mockUser.RoleId = 2; // user
-      await this.userService.CreateUserAsync(mockUser);
+      await AppServices.UserService.CreateUserAsync(mockUser);
 
       // Act
       User updatedUser = new User() {
@@ -151,8 +150,8 @@ namespace StockManager.Tests.Services {
         Password = "321",
       };
 
-      await this.userService.EditUserAsync(updatedUser);
-      User dbUser = await this.userService.GetUserByIdAsync(updatedUser.UserId);
+      await AppServices.UserService.EditUserAsync(updatedUser);
+      User dbUser = await AppServices.UserService.GetUserByIdAsync(updatedUser.UserId);
 
       // Assert
       Assert.AreEqual(dbUser.UserId, updatedUser.UserId);
@@ -167,8 +166,8 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailEditUser_ExistingUsername() {
       // Arrange 
-      User mockUser = this.mockUser;
-      await this.userService.CreateUserAsync(mockUser);
+      User mockUser = _mockUser;
+      await AppServices.UserService.CreateUserAsync(mockUser);
 
       try {
         // Act
@@ -178,7 +177,7 @@ namespace StockManager.Tests.Services {
           Username = "admin",
         };
 
-        await this.userService.EditUserAsync(updatedUser);
+        await AppServices.UserService.EditUserAsync(updatedUser);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -195,13 +194,13 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldDeleteUser() {
       // Arrange 
-      User mockUser = this.mockUser;
-      User loggedInUser = await this.userService.GetUserByIdAsync(1);
-      await this.userService.CreateUserAsync(mockUser);
+      User mockUser = _mockUser;
+      User loggedInUser = await AppServices.UserService.GetUserByIdAsync(1);
+      await AppServices.UserService.CreateUserAsync(mockUser);
 
       // Act
-      await this.userService.DeleteUserAsync(new int[] { mockUser.UserId }, loggedInUser.UserId);
-      User dbUser = await this.userService.GetUserByIdAsync(mockUser.UserId);
+      await AppServices.UserService.DeleteUserAsync(new int[] { mockUser.UserId }, loggedInUser.UserId);
+      User dbUser = await AppServices.UserService.GetUserByIdAsync(mockUser.UserId);
 
       // Assert
       Assert.IsNull(dbUser);
@@ -213,11 +212,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailDeleteUser_LoggedInUser() {
       // Arrange 
-      User loggedInUser = await this.userService.GetUserByIdAsync(1);
+      User loggedInUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
         // Act
-        await this.userService.DeleteUserAsync(new int[] { loggedInUser.UserId }, loggedInUser.UserId);
+        await AppServices.UserService.DeleteUserAsync(new int[] { loggedInUser.UserId }, loggedInUser.UserId);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -234,10 +233,10 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldChangePassword() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       // Act 
-      await this.userService.ChangePasswordAsync(adminUser.UserId, "admin", "newPassword");
+      await AppServices.UserService.ChangePasswordAsync(adminUser.UserId, "admin", "newPassword");
 
       // Assert 
       Assert.IsTrue(BCrypt.Net.BCrypt.Verify("newPassword", adminUser.Password));
@@ -249,11 +248,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailChangePassword_NoValidCurrentPasswordSent() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
         // Act
-        await this.userService.ChangePasswordAsync(adminUser.UserId, "invalidCurrentPass", "newPassword");
+        await AppServices.UserService.ChangePasswordAsync(adminUser.UserId, "invalidCurrentPass", "newPassword");
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -270,11 +269,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailChangePassword_NoCurrentAndNewPasswordSent() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
         // Act
-        await this.userService.ChangePasswordAsync(adminUser.UserId, "", "");
+        await AppServices.UserService.ChangePasswordAsync(adminUser.UserId, "", "");
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -293,10 +292,10 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldAuthenticateUser() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       // Act 
-      await this.userService.AuthenticateAsync(adminUser.Username, "admin");
+      await AppServices.UserService.AuthenticateAsync(adminUser.Username, "admin");
 
       // Assert 
       Assert.IsNotNull(adminUser.LastLogin);
@@ -312,7 +311,7 @@ namespace StockManager.Tests.Services {
 
       try {
         // Act
-        await this.userService.AuthenticateAsync("", "");
+        await AppServices.UserService.AuthenticateAsync("", "");
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
@@ -331,11 +330,11 @@ namespace StockManager.Tests.Services {
     [TestMethod]
     public async Task ShouldFailAuthenticateUser_BadUsernameAndPasswordCombination() {
       // Arrange 
-      User adminUser = await this.userService.GetUserByIdAsync(1);
+      User adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       try {
         // Act
-        await this.userService.AuthenticateAsync(adminUser.Username, "notMyPassword");
+        await AppServices.UserService.AuthenticateAsync(adminUser.Username, "notMyPassword");
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {

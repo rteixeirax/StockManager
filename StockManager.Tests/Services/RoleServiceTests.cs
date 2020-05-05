@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services.Contracts;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +11,16 @@ namespace StockManager.Tests.Services {
   /// </summary>
   [TestClass]
   public class RoleServiceTests {
-    private Configuration config;
-    private IRoleService roleService;
+    private TestsConfig _config;
 
     [TestInitialize]
     public void BeforeEach() {
-      this.config = new Configuration();
-      this.roleService = this.config.SetRoleService();
+      _config = new TestsConfig();
     }
 
     [TestCleanup]
     public void AfterEach() {
-      this.config.CloseConnection();
+      _config.CloseConnection();
     }
 
     /// <summary>
@@ -33,7 +31,7 @@ namespace StockManager.Tests.Services {
       // Arrange 
 
       // Act 
-      IEnumerable<Role> roles = await this.roleService.GetRolesAsync();
+      IEnumerable<Role> roles = await AppServices.RoleService.GetRolesAsync();
 
       // Assert 
       Assert.AreEqual(roles.Count(), 2);
