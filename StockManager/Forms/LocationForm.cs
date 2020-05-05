@@ -2,7 +2,7 @@
 using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
-using StockManager.Types.Types;
+using StockManager.Types.Source;
 using StockManager.UserControls;
 using StockManager.Utilities.Source;
 using System;

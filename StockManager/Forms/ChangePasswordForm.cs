@@ -1,7 +1,7 @@
 ﻿using StockManager.Components;
 using StockManager.Services;
 using StockManager.Translations.Source;
-using StockManager.Types.Types;
+using StockManager.Types.Source;
 using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;

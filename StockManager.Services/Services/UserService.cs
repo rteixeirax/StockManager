@@ -2,7 +2,7 @@
 using StockManager.Storage.Contracts;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
-using StockManager.Types.Types;
+using StockManager.Types.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
