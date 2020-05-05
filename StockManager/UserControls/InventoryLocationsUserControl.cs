@@ -1,4 +1,5 @@
 ﻿using StockManager.Forms;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
@@ -46,7 +47,7 @@ namespace StockManager.UserControls {
       this.InitSpinner();
       dgvLocations.Rows.Clear();
 
-      IEnumerable<Location> locations = await Program.LocationService
+      IEnumerable<Location> locations = await AppServices.LocationService
         .GetLocationsAsync(searchValue);
 
       foreach (Location location in locations) {
@@ -76,7 +77,7 @@ namespace StockManager.UserControls {
       if (dgvLocations.SelectedRows.Count > 0) {
         this.InitSpinner();
 
-        Location location = await Program.LocationService
+        Location location = await AppServices.LocationService
           .GetLocationByIdAsync(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
 
         this.StopSpinner();
@@ -106,7 +107,7 @@ namespace StockManager.UserControls {
             locationIds[i] = int.Parse(selectedLocations[i].Cells[0].Value.ToString());
           }
 
-          await Program.LocationService.DeleteLocationAsync(locationIds);
+          await AppServices.LocationService.DeleteLocationAsync(locationIds);
 
           this.StopSpinner();
           await this.LoadLocationsAsync();

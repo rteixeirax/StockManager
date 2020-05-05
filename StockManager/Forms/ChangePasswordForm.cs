@@ -1,4 +1,5 @@
-﻿using StockManager.Translations.Source;
+﻿using StockManager.Services;
+using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.Utils;
 using System;
@@ -62,7 +63,7 @@ namespace StockManager.Forms {
       try {
         Spinner.InitSpinner();
 
-        await Program.UserService.ChangePasswordAsync(
+        await AppServices.UserService.ChangePasswordAsync(
           Program.LoggedInUser.UserId,
           tbCurrentPassword.Text,
           tbNewPassword.Text

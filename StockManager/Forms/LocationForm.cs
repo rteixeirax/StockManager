@@ -1,4 +1,5 @@
-﻿using StockManager.Storage.Models;
+﻿using StockManager.Services;
+using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
@@ -79,9 +80,9 @@ namespace StockManager.Forms {
 
         if ((this.locationId != 0)) {
           location.LocationId = locationId;
-          await Program.LocationService.EditLocationAsync(location);
+          await AppServices.LocationService.EditLocationAsync(location);
         } else {
-          await Program.LocationService.CreateLocationAsync(location);
+          await AppServices.LocationService.CreateLocationAsync(location);
         }
 
         Spinner.StopSpinner();

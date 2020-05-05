@@ -1,4 +1,5 @@
 ﻿using StockManager.Forms;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
@@ -39,7 +40,7 @@ namespace StockManager.UserControls {
       Spinner.InitSpinner();
       dgvProducts.Rows.Clear();
 
-      IEnumerable<Product> products = await Program.ProductService
+      IEnumerable<Product> products = await AppServices.ProductService
         .GetProductsAsync(searchValue);
 
       foreach (Product product in products) {
@@ -70,7 +71,7 @@ namespace StockManager.UserControls {
       if (dgvProducts.SelectedRows.Count > 0) {
         Spinner.InitSpinner();
 
-        Product product = await Program.ProductService
+        Product product = await AppServices.ProductService
           .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
 
         Spinner.StopSpinner();
@@ -100,7 +101,7 @@ namespace StockManager.UserControls {
             productIds[i] = int.Parse(selectedProducts[i].Cells[0].Value.ToString());
           }
 
-          await Program.ProductService.DeleteProductAsync(productIds);
+          await AppServices.ProductService.DeleteProductAsync(productIds);
 
           Spinner.StopSpinner();
           await this.LoadProductsAsync();

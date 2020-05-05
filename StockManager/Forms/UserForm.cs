@@ -1,4 +1,5 @@
-﻿using StockManager.Storage.Models;
+﻿using StockManager.Services;
+using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
@@ -51,7 +52,7 @@ namespace StockManager.Forms {
       lbErrorPassword.Visible = false;
 
       // Populate the combo box
-      IEnumerable<Role> roles = await Program.RoleService.GetRolesAsync();
+      IEnumerable<Role> roles = await AppServices.RoleService.GetRolesAsync();
       cbRoles.DataSource = roles;
       cbRoles.ValueMember = "RoleId";
       cbRoles.DisplayMember = "Code";
@@ -102,9 +103,9 @@ namespace StockManager.Forms {
 
         if ((this.userId != 0)) {
           user.UserId = this.userId;
-          await Program.UserService.EditUserAsync(user);
+          await AppServices.UserService.EditUserAsync(user);
         } else {
-          await Program.UserService.CreateUserAsync(user);
+          await AppServices.UserService.CreateUserAsync(user);
         }
 
         Spinner.StopSpinner();

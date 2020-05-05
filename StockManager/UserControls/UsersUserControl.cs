@@ -1,4 +1,5 @@
 ﻿using StockManager.Forms;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
@@ -40,7 +41,7 @@ namespace StockManager.UserControls {
       Spinner.InitSpinner();
       dgvUsers.Rows.Clear();
 
-      IEnumerable<User> users = await Program.UserService.GetUsersAsync(searchValue);
+      IEnumerable<User> users = await AppServices.UserService.GetUsersAsync(searchValue);
 
       foreach (User user in users) {
         dgvUsers.Rows.Add(
@@ -70,7 +71,7 @@ namespace StockManager.UserControls {
       if (dgvUsers.SelectedRows.Count > 0) {
         Spinner.InitSpinner();
 
-        User user = await Program.UserService
+        User user = await AppServices.UserService
           .GetUserByIdAsync(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
 
         Spinner.StopSpinner();
@@ -100,7 +101,7 @@ namespace StockManager.UserControls {
             userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
           }
 
-          await Program.UserService.DeleteUserAsync(userIds, Program.LoggedInUser.UserId);
+          await AppServices.UserService.DeleteUserAsync(userIds, Program.LoggedInUser.UserId);
 
           Spinner.StopSpinner();
           await this.LoadUsersAsync();

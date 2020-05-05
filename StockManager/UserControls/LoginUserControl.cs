@@ -1,4 +1,5 @@
 ﻿using StockManager.Forms;
+using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
@@ -76,7 +77,7 @@ namespace StockManager.UserControls {
       try {
         Spinner.InitSpinner();
 
-        User user = await Program.UserService
+        User user = await AppServices.UserService
           .AuthenticateAsync(tbUsername.Text, tbPassword.Text);
 
         Spinner.StopSpinner();

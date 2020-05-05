@@ -1,4 +1,5 @@
-﻿using StockManager.Storage.Models;
+﻿using StockManager.Services;
+using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
 using StockManager.UserControls;
@@ -92,9 +93,9 @@ namespace StockManager.Forms {
 
         if ((this.productId != 0)) {
           product.ProductId = this.productId;
-          await Program.ProductService.EditProductAsync(product);
+          await AppServices.ProductService.EditProductAsync(product);
         } else {
-          await Program.ProductService.CreateProductAsync(product);
+          await AppServices.ProductService.CreateProductAsync(product);
         }
 
         Spinner.StopSpinner();
