@@ -2,11 +2,12 @@
 using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
+using StockManager.Types.Source;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Tests.Services {
+namespace StockManager.Tests.Source.Services {
   /// <summary>
   /// Location service tests
   /// </summary>

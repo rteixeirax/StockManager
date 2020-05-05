@@ -4,7 +4,7 @@ using StockManager.Services;
 using StockManager.Storage;
 using StockManager.Utilities.Source;
 
-namespace StockManager.Tests {
+namespace StockManager.Tests.Source {
   public class TestsConfig {
     private readonly SqliteConnection connection;
     private readonly StorageContext StorageContext;

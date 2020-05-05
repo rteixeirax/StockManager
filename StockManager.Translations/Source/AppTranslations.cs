@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Threading;
 
-namespace StockManager.Translations {
+namespace StockManager.Translations.Source {
   public static class AppTranslations {
     public static void ConfigureLanguage() {
       try {

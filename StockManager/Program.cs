@@ -3,7 +3,7 @@ using StockManager.Forms;
 using StockManager.Services;
 using StockManager.Storage;
 using StockManager.Storage.Models;
-using StockManager.Translations;
+using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
 using System;
 using System.Windows.Forms;

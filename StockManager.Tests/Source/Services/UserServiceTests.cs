@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services;
 using StockManager.Storage.Models;
+using StockManager.Tests.Source;
 using StockManager.Translations.Source;
+using StockManager.Types.Source;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

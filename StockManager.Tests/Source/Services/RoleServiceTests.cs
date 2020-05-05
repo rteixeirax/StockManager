@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Tests.Services {
+namespace StockManager.Tests.Source.Services {
   /// <summary>
   /// Role service tests
   /// </summary>
