@@ -166,89 +166,89 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorTables\MenuStripProfessionalColorTable.cs" />
-    <Compile Include="Forms\ChangePasswordForm.cs">
+    <Compile Include="Source\ColorTables\MenuStripProfessionalColorTable.cs" />
+    <Compile Include="Source\Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangePasswordForm.Designer.cs">
+    <Compile Include="Source\Forms\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LocationForm.cs">
+    <Compile Include="Source\Forms\LocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LocationForm.Designer.cs">
+    <Compile Include="Source\Forms\LocationForm.Designer.cs">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProductForm.cs">
+    <Compile Include="Source\Forms\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ProductForm.Designer.cs">
+    <Compile Include="Source\Forms\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserForm.cs">
+    <Compile Include="Source\Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserForm.Designer.cs">
+    <Compile Include="Source\Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\DashboardUserControl.cs">
+    <Compile Include="Source\UserControls\DashboardUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\DashboardUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\DashboardUserControl.Designer.cs">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\InventoryLocationsUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryLocationsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\InventoryLocationsUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\InventoryLocationsUserControl.Designer.cs">
       <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LoginUserControl.cs">
+    <Compile Include="Source\UserControls\LoginUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\LoginUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\LoginUserControl.Designer.cs">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SettingsUserControl.cs">
+    <Compile Include="Source\UserControls\SettingsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SettingsUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\SettingsUserControl.Designer.cs">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Source\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="Source\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\InventoryProductsUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryProductsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\InventoryProductsUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\InventoryProductsUserControl.Designer.cs">
       <DependentUpon>InventoryProductsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UsersUserControl.cs">
+    <Compile Include="Source\UserControls\UsersUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UsersUserControl.Designer.cs">
+    <Compile Include="Source\UserControls\UsersUserControl.Designer.cs">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\Spinner.cs" />
-    <EmbeddedResource Include="Forms\ChangePasswordForm.resx">
+    <Compile Include="Source\Components\Spinner.cs" />
+    <EmbeddedResource Include="Source\Forms\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LocationForm.resx">
+    <EmbeddedResource Include="Source\Forms\LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Source\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ProductForm.resx">
+    <EmbeddedResource Include="Source\Forms\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserForm.resx">
+    <EmbeddedResource Include="Source\Forms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -260,22 +260,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\DashboardUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\DashboardUserControl.resx">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InventoryLocationsUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\InventoryLocationsUserControl.resx">
       <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\LoginUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\LoginUserControl.resx">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SettingsUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\SettingsUserControl.resx">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\InventoryProductsUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\InventoryProductsUserControl.resx">
       <DependentUpon>InventoryProductsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UsersUserControl.resx">
+    <EmbeddedResource Include="Source\UserControls\UsersUserControl.resx">
       <DependentUpon>UsersUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.db.sqlite" Condition="Exists('.\App.db.sqlite')">

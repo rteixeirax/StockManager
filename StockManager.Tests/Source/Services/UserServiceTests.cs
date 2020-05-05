@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services;
+using StockManager.Services.Source;
 using StockManager.Storage.Source.Models;
 using StockManager.Tests.Source;
 using StockManager.Translations.Source;

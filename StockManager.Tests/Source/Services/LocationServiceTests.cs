@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services;
+using StockManager.Services.Source;
 using StockManager.Storage.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
@@ -32,14 +32,14 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldGetAllLocations() {
-      // Arrange 
+      // Arrange
       Location default1 = await AppServices.LocationService.GetLocationByIdAsync(1); // Warehouse
       Location default2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle #1
 
-      // Act 
+      // Act
       IEnumerable<Location> locations = await AppServices.LocationService.GetLocationsAsync();
 
-      // Assert 
+      // Assert
       Assert.AreEqual(locations.Count(), 2);
       Assert.AreEqual(locations.ElementAt(0).Name, default1.Name);
       Assert.AreEqual(locations.ElementAt(1).Name, default2.Name);
@@ -50,13 +50,13 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldSearchLocationByName() {
-      // Arrange 
+      // Arrange
       Location default1 = await AppServices.LocationService.GetLocationByIdAsync(1); // Warehouse
 
-      // Act 
+      // Act
       IEnumerable<Location> locations = await AppServices.LocationService.GetLocationsAsync(default1.Name);
 
-      // Assert 
+      // Assert
       Assert.AreEqual(locations.Count(), 1);
       Assert.AreEqual(locations.ElementAt(0).Name, default1.Name);
     }
@@ -66,13 +66,13 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldCreateLocation() {
-      // Arrange 
+      // Arrange
       Location location = _mockLocation;
 
-      // Act 
+      // Act
       await AppServices.LocationService.CreateLocationAsync(location);
 
-      // Assert 
+      // Assert
       Assert.AreEqual(location.Name, "new Location");
       Assert.IsNotNull(location.CreatedAt);
       Assert.IsNotNull(location.UpdatedAt);
@@ -83,17 +83,17 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailCreateLocation_ExistingName() {
-      // Arrange 
+      // Arrange
       Location location = _mockLocation;
 
       try {
-        // Act 
+        // Act
         location.Name = "Warehouse"; // default
         await AppServices.LocationService.CreateLocationAsync(location);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Name");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorName);
@@ -105,16 +105,16 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShoulFailCreateLocation_NoNameSent() {
-      // Arrange 
+      // Arrange
       Location newLocation = new Location() { Name = "" };
 
       try {
-        // Act 
+        // Act
         await AppServices.LocationService.CreateLocationAsync(newLocation);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Name");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
@@ -126,8 +126,8 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldEditLocation() {
-      // Arrange 
-      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse 
+      // Arrange
+      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
 
       // Act
       Location updatedLocation = new Location() {
@@ -148,8 +148,8 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailEditLocation_ExistingLocationName() {
-      // Arrange 
-      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse 
+      // Arrange
+      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
       Location defaultLocation2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle#1
 
       try {
@@ -163,7 +163,7 @@ namespace StockManager.Tests.Source.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Name");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorName);
@@ -175,7 +175,7 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldDeleteLocation() {
-      // Arrange 
+      // Arrange
       Location mockLocation = _mockLocation;
       await AppServices.LocationService.CreateLocationAsync(mockLocation);
 
@@ -192,8 +192,8 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailDeleteLocation_LastLocation() {
-      // Arrange 
-      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse 
+      // Arrange
+      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
       Location defaultLocation2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle#1
       await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation2.LocationId });
 
@@ -203,7 +203,7 @@ namespace StockManager.Tests.Source.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "LocationsCount");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorCount);
@@ -215,7 +215,7 @@ namespace StockManager.Tests.Source.Services {
     /// </summary>
     [TestMethod]
     public async Task ShouldFailDeleteLocation_LocationWithProducts() {
-      // Arrange 
+      // Arrange
       var db = _config.GetStorageContext();
 
       await AppServices.ProductService.CreateProductAsync(new Product() {
@@ -224,7 +224,7 @@ namespace StockManager.Tests.Source.Services {
       });
 
       Product product = await AppServices.ProductService.GetProductByIdAsync(1);
-      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse 
+      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
 
       await db.ProductLocations.AddAsync(new ProductLocation() {
         ProductId = product.ProductId,
@@ -237,7 +237,7 @@ namespace StockManager.Tests.Source.Services {
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       } catch (OperationErrorException ex) {
-        // Assert 
+        // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "LocationWithProducts");
         Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorWithProducts);

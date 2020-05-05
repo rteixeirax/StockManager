@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using StockManager.Services;
+using StockManager.Services.Source;
 using StockManager.Storage.Source;
 using StockManager.Utilities.Source;
 
