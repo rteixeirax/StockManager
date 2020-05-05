@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Storage {
   class StorageContextFactory : IDesignTimeDbContextFactory<StorageContext> {
@@ -10,7 +11,7 @@ namespace StockManager.Storage {
     /// </summary>
     public StorageContext CreateDbContext(string[] args) {
       var builder = new DbContextOptionsBuilder<StorageContext>();
-      builder.UseSqlite(Constants.connectionString);
+      builder.UseSqlite(AppConstants.connectionString);
 
       //Console.WriteLine(connectionString);
       return new StorageContext(builder.Options);

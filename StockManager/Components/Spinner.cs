@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace StockManager.Utils {
+namespace StockManager.Components {
   public static class Spinner {
     /// <summary>
     /// Init the loading spinner

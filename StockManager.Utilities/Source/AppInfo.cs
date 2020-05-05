@@ -1,4 +1,4 @@
-﻿namespace StockManager.Utils {
+﻿namespace StockManager.Utilities.Source {
   public static class AppInfo {
     public static string Title = "Stock Manager";
     public static string Version = "v.0.0.1";

@@ -1,9 +1,9 @@
-﻿using StockManager.Forms;
+﻿using StockManager.Components;
+using StockManager.Forms;
 using StockManager.Services;
 using StockManager.Storage.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Types;
-using StockManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

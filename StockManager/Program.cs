@@ -4,6 +4,7 @@ using StockManager.Services;
 using StockManager.Storage;
 using StockManager.Storage.Models;
 using StockManager.Translations;
+using StockManager.Utilities.Source;
 using System;
 using System.Windows.Forms;
 
@@ -38,7 +39,7 @@ namespace StockManager {
 
       // Set the options builder for our storage context
       var builder = new DbContextOptionsBuilder<StorageContext>();
-      builder.UseSqlite(Constants.connectionString);
+      builder.UseSqlite(AppConstants.connectionString);
 
       // Instantiate our storage
       StorageContext StorageContext = new StorageContext(builder.Options);

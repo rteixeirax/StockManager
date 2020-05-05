@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StockManager.Services;
 using StockManager.Storage;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Tests {
   public class TestsConfig {
@@ -10,7 +11,7 @@ namespace StockManager.Tests {
 
     public TestsConfig() {
       // Set the Sqlite in memory database connection
-      this.connection = new SqliteConnection(Constants.connectionStringTestDB);
+      this.connection = new SqliteConnection(AppConstants.connectionStringTestDB);
 
       // Open database connection 
       this.connection.Open();
