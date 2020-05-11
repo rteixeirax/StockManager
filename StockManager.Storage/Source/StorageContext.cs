@@ -19,6 +19,7 @@ namespace StockManager.Storage.Source {
     /// <summary>
     /// Add Database Tables Here..
     /// </summary>
+    public DbSet<Settings> Settings { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }
@@ -33,6 +34,7 @@ namespace StockManager.Storage.Source {
     /// https://code-maze.com/migrations-and-seed-data-efcore/
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
+      modelBuilder.ApplyConfiguration(new SettingsConfiguration());
       modelBuilder.ApplyConfiguration(new RoleConfiguration());
       modelBuilder.ApplyConfiguration(new UserConfiguration());
       modelBuilder.ApplyConfiguration(new LocationConfiguration());
@@ -51,10 +53,10 @@ namespace StockManager.Storage.Source {
             && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
       foreach (EntityEntry entityEntry in entries) {
-        ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
+        (( BaseEntity )entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
 
         if (entityEntry.State == EntityState.Added) {
-          ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.UtcNow;
+          (( BaseEntity )entityEntry.Entity).CreatedAt = DateTime.UtcNow;
         }
       }
 
