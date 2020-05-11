@@ -3,10 +3,11 @@ using System.Threading;
 
 namespace StockManager.Translations.Source {
   public static class AppTranslations {
-    public static void ConfigureLanguage() {
+    public static void ConfigureLanguage(string appLanguageCode) {
       try {
-        // Set the user language.
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-PT");
+        // Set the app language.
+        // If the language code is invalid the default language (EN) is set instead.
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(appLanguageCode);
       } catch {
         // Set default app default language (EN)
         Thread.CurrentThread.CurrentUICulture = new CultureInfo("");

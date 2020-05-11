@@ -7,6 +7,7 @@ using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
 using System;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace StockManager.Source {
   static class Program {
@@ -33,7 +34,7 @@ namespace StockManager.Source {
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main() {
+    static async Task Main() {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
@@ -48,7 +49,7 @@ namespace StockManager.Source {
       AppServices.ConfigureServices(StorageContext);
 
       // Set the application language
-      AppTranslations.ConfigureLanguage();
+      AppTranslations.ConfigureLanguage(await AppServices.SettingsService.GetAppLanguageAsync());
 
       Application.Run(new MainForm());
     }
