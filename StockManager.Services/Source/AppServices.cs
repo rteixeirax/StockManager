@@ -5,6 +5,7 @@ using StockManager.Storage.Source.Repositories;
 
 namespace StockManager.Services.Source {
   public static class AppServices {
+    public static ISettingsService SettingsService { get; private set; }
     public static IUserService UserService { get; private set; }
     public static IRoleService RoleService { get; private set; }
     public static ILocationService LocationService { get; private set; }
@@ -12,6 +13,7 @@ namespace StockManager.Services.Source {
 
     public static void ConfigureServices(StorageContext storageContext) {
       // Instantiate our services
+      SettingsService = new SettingsService(new SettingsRepository(storageContext));
       UserService = new UserService(new UserRepository(storageContext));
       RoleService = new RoleService(new RoleRepository(storageContext));
       LocationService = new LocationService(new LocationRepository(storageContext));
