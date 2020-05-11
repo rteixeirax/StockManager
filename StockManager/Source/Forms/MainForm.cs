@@ -23,8 +23,10 @@ namespace StockManager.Source.Forms {
 
       // Set the content strings for the correct app language
       lbPoweredBy.Text = Phrases.GlobalPoweredBy;
+
       changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
-      logoutToolStripMenuItem.Text = Phrases.GlobalExit;
+      logoutToolStripMenuItem.Text = Phrases.LoginLogout;
+      
       btnExit.Text = $" {Phrases.GlobalExit}";
       btnUsers.Text = $" {Phrases.GlobalUsers}";
       btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";

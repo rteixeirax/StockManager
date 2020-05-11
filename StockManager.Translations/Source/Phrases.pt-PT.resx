@@ -270,4 +270,7 @@
   <data name="LocationCreate" xml:space="preserve">
     <value>Criar nova localização</value>
   </data>
+  <data name="LoginLogout" xml:space="preserve">
+    <value>Terminar sessão</value>
+  </data>
 </root>

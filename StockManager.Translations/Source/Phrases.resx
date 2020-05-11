@@ -250,4 +250,7 @@
   <data name="LocationCreate" xml:space="preserve">
     <value>Create new location</value>
   </data>
+  <data name="LoginLogout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
 </root>
