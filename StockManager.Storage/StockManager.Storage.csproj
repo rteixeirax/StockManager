@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Source\Migrations\20200408090439_testing.cs" />
-    <Compile Remove="Source\Migrations\20200408090439_testing.Designer.cs" />
-    <Compile Remove="Source\Migrations\20200408092721_testing.cs" />
-    <Compile Remove="Source\Migrations\20200408092721_testing.Designer.cs" />
     <Compile Remove="Src\Migrations\20200112204823_WipSeed.cs" />
     <Compile Remove="Src\Migrations\20200112204823_WipSeed.Designer.cs" />
     <Compile Remove="Src\Migrations\20200112210149_AddDatabaseSeeds.cs" />

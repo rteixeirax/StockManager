@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Contracts
 {
-  public interface ISettingsRepository {
+  public interface IAppSettingsRepository {
     Task SaveDbChangesAsync();
 
-    Task<Settings> FindSettingsAsync();
+    Task<AppSettings> FindAppSettingsAsync();
   }
 }

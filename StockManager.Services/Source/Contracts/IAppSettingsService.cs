@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Contracts {
-  public interface ISettingsService {
-    Task<Settings> GetSettingsAsync();
+  public interface IAppSettingsService {
+    Task<AppSettings> GetAppSettingsAsync();
 
     Task<string> GetAppLanguageAsync();
   }

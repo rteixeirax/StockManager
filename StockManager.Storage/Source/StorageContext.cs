@@ -19,7 +19,7 @@ namespace StockManager.Storage.Source {
     /// <summary>
     /// Add Database Tables Here..
     /// </summary>
-    public DbSet<Settings> Settings { get; set; }
+    public DbSet<AppSettings> AppSettings { get; set; }
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Location> Locations { get; set; }

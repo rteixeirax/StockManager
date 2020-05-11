@@ -4,19 +4,19 @@ using StockManager.Storage.Source.Models;
 using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services {
-  public class SettingsService : ISettingsService {
-    private readonly ISettingsRepository _settingsRepo;
+  public class AppSettingsService : IAppSettingsService {
+    private readonly IAppSettingsRepository _settingsRepo;
 
-    public SettingsService(ISettingsRepository settingsRepo) {
+    public AppSettingsService(IAppSettingsRepository settingsRepo) {
       _settingsRepo = settingsRepo;
     }
 
-    public async Task<Settings> GetSettingsAsync() {
-      return await _settingsRepo.FindSettingsAsync();
+    public async Task<AppSettings> GetAppSettingsAsync() {
+      return await _settingsRepo.FindAppSettingsAsync();
     }
 
     public async Task<string> GetAppLanguageAsync() {
-      Settings appSettings = await _settingsRepo.FindSettingsAsync();
+      AppSettings appSettings = await _settingsRepo.FindAppSettingsAsync();
 
       return appSettings.Language;
     }

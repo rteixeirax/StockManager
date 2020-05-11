@@ -4,17 +4,17 @@ using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace StockManager.Storage.Source.Models {
-  public class Settings : BaseEntity {
+  public class AppSettings : BaseEntity {
     [Key]
-    public int SettingsId { get; set; }
+    public int AppSettingsId { get; set; }
     public string Language { get; set; }
   }
 
-  public class SettingsConfiguration : IEntityTypeConfiguration<Settings> {
-    public void Configure(EntityTypeBuilder<Settings> builder) {
+  public class SettingsConfiguration : IEntityTypeConfiguration<AppSettings> {
+    public void Configure(EntityTypeBuilder<AppSettings> builder) {
       builder.HasData(
-       new Settings {
-         SettingsId = 1,
+       new AppSettings {
+         AppSettingsId = 1,
          Language = "pt-PT",
          CreatedAt = DateTime.UtcNow,
          UpdatedAt = DateTime.UtcNow

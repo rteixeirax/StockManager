@@ -4,10 +4,10 @@ using StockManager.Storage.Source.Models;
 using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
-  public class SettingsRepository : ISettingsRepository {
+  public class AppSettingsRepository : IAppSettingsRepository {
     private readonly StorageContext _db;
 
-    public SettingsRepository (StorageContext db) {
+    public AppSettingsRepository (StorageContext db) {
       _db = db;
     }
 
@@ -21,8 +21,8 @@ namespace StockManager.Storage.Source.Repositories {
     /// <summary>
     /// Find and return all settings
     /// </summary>
-    public async Task<Settings> FindSettingsAsync() {
-      return await _db.Settings.FirstOrDefaultAsync();
+    public async Task<AppSettings> FindAppSettingsAsync() {
+      return await _db.AppSettings.FirstOrDefaultAsync();
     }   
   }
 }
