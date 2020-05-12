@@ -11,8 +11,13 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductsUserControl : UserControl {
-    public InventoryProductsUserControl() {
+    private readonly MainForm _mainForm;
+
+    public InventoryProductsUserControl(MainForm mainForm) {
       InitializeComponent();
+
+      // Pass the main form to this UC to handle with product location UC
+      _mainForm = mainForm;
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
@@ -152,11 +157,11 @@ namespace StockManager.Source.UserControls {
     /// Call search button click when pressed enter in the textbox
     /// </summary>
     private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e) {
-      if (e.KeyChar == (char)Keys.Enter) {
+      if (e.KeyChar == ( char )Keys.Enter) {
         this.pbSearchIcon_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      } else if (e.KeyChar == (char)Keys.Escape) {
+      } else if (e.KeyChar == ( char )Keys.Escape) {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
@@ -168,6 +173,23 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private void tbSeachText_TextChanged(object sender, EventArgs e) {
       btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
+    }
+
+    private void btnViewProducLocations_Click(object sender, EventArgs e) {
+      if (dgvProducts.SelectedRows.Count > 0) {
+        //Spinner.InitSpinner();
+
+        //Product product = await AppServices.ProductService
+        //  .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+
+        //Spinner.StopSpinner();
+
+        //ProductForm productForm = new ProductForm(this);
+        //productForm.ShowProductForm(product);
+
+        // TODO: Pass the product to the UC
+        _mainForm.InventoryProductsBtnViewProducLocationsClick();
+      }
     }
   }
 }

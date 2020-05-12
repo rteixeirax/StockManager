@@ -165,9 +165,21 @@ namespace StockManager.Source.Forms {
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts}";
-      UserControl ucInventoryProducts = new InventoryProductsUserControl();
+      UserControl ucInventoryProducts = new InventoryProductsUserControl(this); // Passing the MainForm to this UC
       ucInventoryProducts.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProducts);
+    }
+
+    /// <summary>
+    /// Inventory > Products button view locations click
+    /// </summary>
+    public void InventoryProductsBtnViewProducLocationsClick() {
+      // Show the InventoryProducts view
+      pnlViews.Controls.Clear(); // TODO: Add Phrases
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > Add to location";
+      UserControl ucInventoryProductAddToLocationUserControl = new InventoryProductAddToLocationUserControl();
+      ucInventoryProductAddToLocationUserControl.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryProductAddToLocationUserControl);
     }
 
     /// <summary>
