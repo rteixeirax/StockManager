@@ -176,7 +176,7 @@ namespace StockManager.Source.Forms {
     public void InventoryProductsBtnViewProducLocationsClick() {
       // Show the InventoryProducts view
       pnlViews.Controls.Clear(); // TODO: Add Phrases
-      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > Add to location";
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > locations";
       UserControl ucInventoryProductAddToLocationUserControl = new InventoryProductAddToLocationUserControl();
       ucInventoryProductAddToLocationUserControl.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProductAddToLocationUserControl);

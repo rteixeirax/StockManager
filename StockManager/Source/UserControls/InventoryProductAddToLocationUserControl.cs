@@ -25,10 +25,22 @@ namespace StockManager.Source.UserControls {
       lbLocation.Text = "Location";
       lbQty.Text = "Qty";
       lbMinStock.Text = "Min.Stock";
-      lbProductLocationsTitle.Text = "Locations";
+      lbFormTitle.Text = "Add to location";
       dgvProductLocations.Columns[1].HeaderText = "Location";
       dgvProductLocations.Columns[2].HeaderText = "Stock";
       dgvProductLocations.Columns[3].HeaderText = "Min.Stock";
+      
+      lbProductStockMovements.Text = "Stock movements";
+      dgvProductStockMovements.Columns[1].HeaderText = "Date";
+      dgvProductStockMovements.Columns[2].HeaderText = "From";
+      dgvProductStockMovements.Columns[3].HeaderText = "To";
+      dgvProductStockMovements.Columns[4].HeaderText = "Qty";
+      dgvProductStockMovements.Columns[5].HeaderText = "Stock Acc.";
+      dgvProductStockMovements.Columns[6].HeaderText = "User";
+
+      lbErrorLocation.Visible = false;
+      lbErrorMinStock.Visible = false;
+      lbErrorQty.Visible = false;
     }
   }
 }
