@@ -21,7 +21,7 @@ namespace StockManager.Source.UserControls {
     private void SetTranslatedPhrases() {
       btnback.Text = "Back";
       btnAddLocation.Text = "Add";
-      btnViewMovements.Text = "View Movements";
+      //btnViewMovements.Text = "View Movements";
       lbLocation.Text = "Location";
       lbQty.Text = "Qty";
       lbMinStock.Text = "Min.Stock";
