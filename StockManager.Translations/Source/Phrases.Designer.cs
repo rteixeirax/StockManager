@@ -61,6 +61,24 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string GlobalAdd {
+            get {
+                return ResourceManager.GetString("GlobalAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string GlobalBack {
+            get {
+                return ResourceManager.GetString("GlobalBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string GlobalCancel {
@@ -93,6 +111,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalCreatedAt {
             get {
                 return ResourceManager.GetString("GlobalCreatedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string GlobalDate {
+            get {
+                return ResourceManager.GetString("GlobalDate", resourceCulture);
             }
         }
         
@@ -165,6 +192,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalInventoryTitle {
             get {
                 return ResourceManager.GetString("GlobalInventoryTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string GlobalLocation {
+            get {
+                return ResourceManager.GetString("GlobalLocation", resourceCulture);
             }
         }
         
@@ -246,6 +282,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalStock {
             get {
                 return ResourceManager.GetString("GlobalStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string GlobalUser {
+            get {
+                return ResourceManager.GetString("GlobalUser", resourceCulture);
             }
         }
         
@@ -408,6 +453,96 @@ namespace StockManager.Translations.Source {
         public static string ProductInfo {
             get {
                 return ResourceManager.GetString("ProductInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add to location.
+        /// </summary>
+        public static string ProductLocationAddToLocation {
+            get {
+                return ResourceManager.GetString("ProductLocationAddToLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string ProductLocationTableHeader {
+            get {
+                return ResourceManager.GetString("ProductLocationTableHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From.
+        /// </summary>
+        public static string StockMovementFrom {
+            get {
+                return ResourceManager.GetString("StockMovementFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min.Stock.
+        /// </summary>
+        public static string StockMovementMinStock {
+            get {
+                return ResourceManager.GetString("StockMovementMinStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qty.
+        /// </summary>
+        public static string StockMovementQty {
+            get {
+                return ResourceManager.GetString("StockMovementQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock movements.
+        /// </summary>
+        public static string StockMovementsLabel {
+            get {
+                return ResourceManager.GetString("StockMovementsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock.
+        /// </summary>
+        public static string StockMovementsStock {
+            get {
+                return ResourceManager.GetString("StockMovementsStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock Acc..
+        /// </summary>
+        public static string StockMovementStockAcc {
+            get {
+                return ResourceManager.GetString("StockMovementStockAcc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        public static string StockMovementTo {
+            get {
+                return ResourceManager.GetString("StockMovementTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure?.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
         

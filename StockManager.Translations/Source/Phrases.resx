@@ -97,7 +97,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GlobalDialogDeleteTitle" xml:space="preserve">
+  <data name="User" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
   <data name="UserDialogDeleteBody" xml:space="preserve">
@@ -252,5 +252,50 @@
   </data>
   <data name="LoginLogout" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="GlobalAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="StockMovementQty" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="StockMovementMinStock" xml:space="preserve">
+    <value>Min.Stock</value>
+  </data>
+  <data name="ProductLocationAddToLocation" xml:space="preserve">
+    <value>Add to location</value>
+  </data>
+  <data name="ProductLocationTableHeader" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="StockMovementsStock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="StockMovementsLabel" xml:space="preserve">
+    <value>Stock movements</value>
+  </data>
+  <data name="GlobalDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="StockMovementFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="StockMovementTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="StockMovementStockAcc" xml:space="preserve">
+    <value>Stock Acc.</value>
+  </data>
+  <data name="GlobalUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="GlobalBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="GlobalDialogDeleteTitle" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="GlobalLocation" xml:space="preserve">
+    <value>Location</value>
   </data>
 </root>
