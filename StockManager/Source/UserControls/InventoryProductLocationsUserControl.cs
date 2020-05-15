@@ -60,6 +60,10 @@ namespace StockManager.Source.UserControls {
       dgvProductStockMovements.Columns[6].HeaderText = Phrases.GlobalUser;
     }
 
+
+    /// <summary>
+    /// Fill the UC content
+    /// </summary>
     private async Task LoadProductLocationsAsync() {
       Spinner.InitSpinner();
 
