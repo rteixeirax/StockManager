@@ -55,6 +55,7 @@ namespace StockManager.Storage.Source.Repositories {
     public async Task<Product> FindProductByIdAsync(int productId) {
       return await this.db.Products
         .Include(x => x.ProductLocations)
+        .Include(x => x.StockMovements)
         .Where(product => product.ProductId == productId)
         .FirstOrDefaultAsync();
     }

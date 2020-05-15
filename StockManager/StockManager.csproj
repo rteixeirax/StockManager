@@ -209,11 +209,11 @@
     <Compile Include="Source\UserControls\LoginUserControl.Designer.cs">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductAddToLocationUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryProductLocationsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductAddToLocationUserControl.Designer.cs">
-      <DependentUpon>InventoryProductAddToLocationUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\InventoryProductLocationsUserControl.Designer.cs">
+      <DependentUpon>InventoryProductLocationsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\UserControls\SettingsUserControl.cs">
       <SubType>UserControl</SubType>
@@ -272,8 +272,8 @@
     <EmbeddedResource Include="Source\UserControls\InventoryLocationsUserControl.resx">
       <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryProductAddToLocationUserControl.resx">
-      <DependentUpon>InventoryProductAddToLocationUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\InventoryProductLocationsUserControl.resx">
+      <DependentUpon>InventoryProductLocationsUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\LoginUserControl.resx">
       <DependentUpon>LoginUserControl.cs</DependentUpon>
