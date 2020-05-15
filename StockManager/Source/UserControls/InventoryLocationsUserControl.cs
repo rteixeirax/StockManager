@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockManager.Source.Components;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryLocationsUserControl : UserControl {
@@ -32,19 +33,10 @@ namespace StockManager.Source.UserControls {
     }
 
     /// <summary>
-    /// Init the loading spinner
-    /// </summary>
-    private void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
-    /// <summary>
-    /// Stop the loading spinner
-    /// </summary>
-    private void StopSpinner() { Cursor.Current = Cursors.Default; }
-
-    /// <summary>
     /// Fill the Data Grid View
     /// </summary>
     public async Task LoadLocationsAsync(string searchValue = null) {
-      this.InitSpinner();
+      Spinner.InitSpinner(); ;
       dgvLocations.Rows.Clear();
 
       IEnumerable<Location> locations = await AppServices.LocationService
@@ -59,7 +51,7 @@ namespace StockManager.Source.UserControls {
         );
       }
 
-      this.StopSpinner();
+      Spinner.StopSpinner();
     }
 
     /// <summary>
@@ -75,12 +67,12 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private async void btnEdit_Click(object sender, EventArgs e) {
       if (dgvLocations.SelectedRows.Count > 0) {
-        this.InitSpinner();
+        Spinner.InitSpinner();
 
         Location location = await AppServices.LocationService
           .GetLocationByIdAsync(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
 
-        this.StopSpinner();
+        Spinner.StopSpinner();
 
         LocationForm locationForm = new LocationForm(this);
         locationForm.ShowLocationForm(location);
@@ -99,7 +91,7 @@ namespace StockManager.Source.UserControls {
         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
       ) {
         try {
-          this.InitSpinner();
+          Spinner.InitSpinner();
 
           int[] locationIds = new int[selectedLocations.Count];
 
@@ -109,11 +101,11 @@ namespace StockManager.Source.UserControls {
 
           await AppServices.LocationService.DeleteLocationAsync(locationIds);
 
-          this.StopSpinner();
+          Spinner.StopSpinner();
           await this.LoadLocationsAsync();
 
         } catch (OperationErrorException ex) {
-          this.StopSpinner();
+          Spinner.StopSpinner();
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
@@ -123,7 +115,7 @@ namespace StockManager.Source.UserControls {
           );
 
         } catch (ServiceErrorException ex) {
-          this.StopSpinner();
+          Spinner.StopSpinner();
 
           MessageBox.Show(
             $"{ex.Errors[0].Error}",
