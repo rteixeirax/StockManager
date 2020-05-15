@@ -40,22 +40,22 @@
       this.btnEdit = new System.Windows.Forms.Button();
       this.btnCreate = new System.Windows.Forms.Button();
       this.dgvLocations = new System.Windows.Forms.DataGridView();
-      this.tbSeachText = new System.Windows.Forms.TextBox();
-      this.pnbSearchBox = new System.Windows.Forms.Panel();
-      this.btnClearSearchValue = new System.Windows.Forms.Button();
       this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.tbSeachText = new System.Windows.Forms.TextBox();
+      this.pnbSearchBox = new System.Windows.Forms.Panel();
+      this.btnClearSearchValue = new System.Windows.Forms.Button();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
       this.pnlActions.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).BeginInit();
       this.pnbSearchBox.SuspendLayout();
       this.SuspendLayout();
-      //
+      // 
       // pbSearchIcon
-      //
+      // 
       pbSearchIcon.BackColor = System.Drawing.Color.LightGray;
       pbSearchIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       pbSearchIcon.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -66,36 +66,36 @@
       pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       pbSearchIcon.TabIndex = 5;
       pbSearchIcon.TabStop = false;
-      //
+      // 
       // pnlActions
-      //
+      // 
       this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlActions.Controls.Add(this.btnDelete);
       this.pnlActions.Controls.Add(this.btnEdit);
       this.pnlActions.Controls.Add(this.btnCreate);
-      this.pnlActions.Location = new System.Drawing.Point(557, 5);
+      this.pnlActions.Location = new System.Drawing.Point(557, 6);
       this.pnlActions.Name = "pnlActions";
       this.pnlActions.Size = new System.Drawing.Size(300, 34);
       this.pnlActions.TabIndex = 11;
-      //
+      // 
       // btnDelete
-      //
+      // 
       this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
       this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnDelete.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnDelete.ForeColor = System.Drawing.Color.White;
       this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDelete.Location = new System.Drawing.Point(203, 4);
+      this.btnDelete.Location = new System.Drawing.Point(203, 3);
       this.btnDelete.Name = "btnDelete";
       this.btnDelete.Size = new System.Drawing.Size(93, 27);
       this.btnDelete.TabIndex = 9;
       this.btnDelete.Text = "Delete";
       this.btnDelete.UseVisualStyleBackColor = false;
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-      //
+      // 
       // btnEdit
-      //
+      // 
       this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
       this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -109,9 +109,9 @@
       this.btnEdit.Text = "Edit";
       this.btnEdit.UseVisualStyleBackColor = false;
       this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-      //
+      // 
       // btnCreate
-      //
+      // 
       this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
       this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -125,9 +125,9 @@
       this.btnCreate.Text = "Add new";
       this.btnCreate.UseVisualStyleBackColor = false;
       this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-      //
+      // 
       // dgvLocations
-      //
+      // 
       this.dgvLocations.AllowUserToAddRows = false;
       this.dgvLocations.AllowUserToDeleteRows = false;
       this.dgvLocations.AllowUserToOrderColumns = true;
@@ -137,8 +137,8 @@
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
       this.dgvLocations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-      this.dgvLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+      this.dgvLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dgvLocations.BackgroundColor = System.Drawing.SystemColors.Control;
       this.dgvLocations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -185,11 +185,40 @@
       dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
       this.dgvLocations.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvLocations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvLocations.Size = new System.Drawing.Size(845, 371);
+      this.dgvLocations.Size = new System.Drawing.Size(845, 365);
       this.dgvLocations.TabIndex = 10;
-      //
+      // 
+      // columnLocationId
+      // 
+      this.columnLocationId.HeaderText = "LocationId";
+      this.columnLocationId.Name = "columnLocationId";
+      this.columnLocationId.ReadOnly = true;
+      this.columnLocationId.Visible = false;
+      // 
+      // columnName
+      // 
+      this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnName.HeaderText = "Name";
+      this.columnName.Name = "columnName";
+      this.columnName.ReadOnly = true;
+      this.columnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      // 
+      // columnProducts
+      // 
+      this.columnProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnProducts.HeaderText = "Products";
+      this.columnProducts.Name = "columnProducts";
+      this.columnProducts.ReadOnly = true;
+      // 
+      // ColumnCreatedAt
+      // 
+      this.ColumnCreatedAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.ColumnCreatedAt.HeaderText = "Created at";
+      this.ColumnCreatedAt.Name = "ColumnCreatedAt";
+      this.ColumnCreatedAt.ReadOnly = true;
+      // 
       // tbSeachText
-      //
+      // 
       this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.tbSeachText.BackColor = System.Drawing.Color.White;
       this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -200,19 +229,19 @@
       this.tbSeachText.TabIndex = 4;
       this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
       this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
-      //
+      // 
       // pnbSearchBox
-      //
+      // 
       this.pnbSearchBox.Controls.Add(pbSearchIcon);
       this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
       this.pnbSearchBox.Controls.Add(this.tbSeachText);
-      this.pnbSearchBox.Location = new System.Drawing.Point(3, 6);
+      this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
       this.pnbSearchBox.Name = "pnbSearchBox";
       this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
       this.pnbSearchBox.TabIndex = 12;
-      //
+      // 
       // btnClearSearchValue
-      //
+      // 
       this.btnClearSearchValue.Anchor = System.Windows.Forms.AnchorStyles.None;
       this.btnClearSearchValue.BackColor = System.Drawing.Color.White;
       this.btnClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -226,38 +255,9 @@
       this.btnClearSearchValue.TabIndex = 11;
       this.btnClearSearchValue.UseVisualStyleBackColor = false;
       this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
-      //
-      // columnLocationId
-      //
-      this.columnLocationId.HeaderText = "LocationId";
-      this.columnLocationId.Name = "columnLocationId";
-      this.columnLocationId.ReadOnly = true;
-      this.columnLocationId.Visible = false;
-      //
-      // columnName
-      //
-      this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnName.HeaderText = "Name";
-      this.columnName.Name = "columnName";
-      this.columnName.ReadOnly = true;
-      this.columnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      //
-      // columnProducts
-      //
-      this.columnProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnProducts.HeaderText = "Products";
-      this.columnProducts.Name = "columnProducts";
-      this.columnProducts.ReadOnly = true;
-      //
-      // ColumnCreatedAt
-      //
-      this.ColumnCreatedAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.ColumnCreatedAt.HeaderText = "Created at";
-      this.ColumnCreatedAt.Name = "ColumnCreatedAt";
-      this.ColumnCreatedAt.ReadOnly = true;
-      //
+      // 
       // InventoryLocationsUserControl
-      //
+      // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.Control;
