@@ -77,9 +77,9 @@
       this.pnlActions.Controls.Add(this.btnDelete);
       this.pnlActions.Controls.Add(this.btnEdit);
       this.pnlActions.Controls.Add(this.btnCreate);
-      this.pnlActions.Location = new System.Drawing.Point(457, 6);
+      this.pnlActions.Location = new System.Drawing.Point(436, 6);
       this.pnlActions.Name = "pnlActions";
-      this.pnlActions.Size = new System.Drawing.Size(398, 34);
+      this.pnlActions.Size = new System.Drawing.Size(419, 34);
       this.pnlActions.TabIndex = 14;
       // 
       // btnViewProducLocations
@@ -90,9 +90,9 @@
       this.btnViewProducLocations.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnViewProducLocations.ForeColor = System.Drawing.Color.White;
       this.btnViewProducLocations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnViewProducLocations.Location = new System.Drawing.Point(3, 3);
+      this.btnViewProducLocations.Location = new System.Drawing.Point(4, 3);
       this.btnViewProducLocations.Name = "btnViewProducLocations";
-      this.btnViewProducLocations.Size = new System.Drawing.Size(96, 27);
+      this.btnViewProducLocations.Size = new System.Drawing.Size(115, 27);
       this.btnViewProducLocations.TabIndex = 10;
       this.btnViewProducLocations.Text = "btnViewProducLocations";
       this.btnViewProducLocations.UseVisualStyleBackColor = false;
@@ -106,7 +106,7 @@
       this.btnDelete.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnDelete.ForeColor = System.Drawing.Color.White;
       this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDelete.Location = new System.Drawing.Point(303, 3);
+      this.btnDelete.Location = new System.Drawing.Point(323, 3);
       this.btnDelete.Name = "btnDelete";
       this.btnDelete.Size = new System.Drawing.Size(93, 27);
       this.btnDelete.TabIndex = 9;
@@ -122,7 +122,7 @@
       this.btnEdit.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnEdit.ForeColor = System.Drawing.Color.White;
       this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnEdit.Location = new System.Drawing.Point(204, 3);
+      this.btnEdit.Location = new System.Drawing.Point(224, 3);
       this.btnEdit.Name = "btnEdit";
       this.btnEdit.Size = new System.Drawing.Size(93, 27);
       this.btnEdit.TabIndex = 8;
@@ -138,7 +138,7 @@
       this.btnCreate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCreate.ForeColor = System.Drawing.Color.White;
       this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnCreate.Location = new System.Drawing.Point(105, 3);
+      this.btnCreate.Location = new System.Drawing.Point(125, 3);
       this.btnCreate.Name = "btnCreate";
       this.btnCreate.Size = new System.Drawing.Size(93, 27);
       this.btnCreate.TabIndex = 7;

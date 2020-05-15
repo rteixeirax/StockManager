@@ -29,6 +29,7 @@ namespace StockManager.Source.UserControls {
     /// Set the content strings for the correct app language
     /// </summary>
     private void SetTranslatedPhrases() {
+      btnViewProducLocations.Text = Phrases.GlobalLocations;
       btnCreate.Text = Phrases.GlobalCreate;
       btnEdit.Text = Phrases.GlobalEdit;
       btnDelete.Text = Phrases.GlobalDelete;
@@ -175,20 +176,19 @@ namespace StockManager.Source.UserControls {
       btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
     }
 
-    private void btnViewProducLocations_Click(object sender, EventArgs e) {
+    /// <summary>
+    /// Show the product locations UC
+    /// </summary>
+    private async void btnViewProducLocations_Click(object sender, EventArgs e) {
       if (dgvProducts.SelectedRows.Count > 0) {
-        //Spinner.InitSpinner();
+        Spinner.InitSpinner();
 
-        //Product product = await AppServices.ProductService
-        //  .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+        Product product = await AppServices.ProductService
+          .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
 
-        //Spinner.StopSpinner();
+        Spinner.StopSpinner();
 
-        //ProductForm productForm = new ProductForm(this);
-        //productForm.ShowProductForm(product);
-
-        // TODO: Pass the product to the UC
-        _mainForm.InventoryProductsBtnViewProducLocationsClick();
+        _mainForm.InventoryProductsBtnViewProducLocationsClick(product);
       }
     }
   }

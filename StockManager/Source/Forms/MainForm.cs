@@ -26,7 +26,7 @@ namespace StockManager.Source.Forms {
 
       changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
       logoutToolStripMenuItem.Text = Phrases.LoginLogout;
-      
+
       btnExit.Text = $" {Phrases.GlobalExit}";
       btnUsers.Text = $" {Phrases.GlobalUsers}";
       btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";
@@ -161,7 +161,7 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Inventory > Products button click
     /// </summary>
-    private void btnInventoryProducts_Click(object sender, EventArgs e) {
+    public void btnInventoryProducts_Click(object sender, EventArgs e) {
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts}";
@@ -173,13 +173,13 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Inventory > Products button view locations click
     /// </summary>
-    public void InventoryProductsBtnViewProducLocationsClick() {
+    public void InventoryProductsBtnViewProducLocationsClick(Product product) {
       // Show the InventoryProducts view
-      pnlViews.Controls.Clear(); // TODO: Add Phrases
-      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > locations";
-      UserControl ucInventoryProductAddToLocationUserControl = new InventoryProductAddToLocationUserControl();
-      ucInventoryProductAddToLocationUserControl.Dock = DockStyle.Fill;
-      pnlViews.Controls.Add(ucInventoryProductAddToLocationUserControl);
+      pnlViews.Controls.Clear();
+      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
+      UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUserControl(this, product);
+      ucInventoryProductLocationsUserControl.Dock = DockStyle.Fill;
+      pnlViews.Controls.Add(ucInventoryProductLocationsUserControl);
     }
 
     /// <summary>
