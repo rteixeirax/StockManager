@@ -1,10 +1,11 @@
-﻿using System.Drawing;
+﻿using StockManager.Utilities.Source;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace StockManager.Source.ColorTables {
   class MenuStripProfessionalColorTable : ProfessionalColorTable {
     public override Color MenuItemSelected {
-      get { return Color.FromArgb(5, 118, 185); }
+      get { return AppConstants.ColorBlue; }
     }
 
     public override Color MenuItemSelectedGradientBegin {
