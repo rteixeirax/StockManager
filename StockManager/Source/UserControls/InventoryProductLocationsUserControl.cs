@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Storage.Source.Models;
@@ -13,6 +10,7 @@ using StockManager.Translations.Source;
 using StockManager.Source.Components;
 using StockManager.Services.Source;
 using StockManager.Utilities.Source;
+using System.Drawing;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductLocationsUserControl : UserControl {
@@ -51,6 +49,7 @@ namespace StockManager.Source.UserControls {
       dgvProductLocations.Columns[1].HeaderText = Phrases.ProductLocationTableHeader;
       dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementQty;
       dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
+      dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalDelete;
 
       lbProductStockMovements.Text = Phrases.StockMovementsLabel;
       dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
@@ -109,6 +108,22 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private void btnback_Click(object sender, EventArgs e) {
       _mainForm.btnInventoryProducts_Click(sender, e);
+    }
+
+    /// <summary>
+    /// Remove product location button click
+    /// </summary>
+    private void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+      if (e.ColumnIndex == 4) {
+        //Write here your code...
+        int productLocationId = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+        // TODO: Write the code
+        // - Show dialog
+        // - If yes, delete the location
+        // Same a the normal delete
+        MessageBox.Show("You will delete the product location ID: " + productLocationId);
+      }
     }
   }
 }

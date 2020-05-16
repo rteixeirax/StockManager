@@ -38,6 +38,10 @@ namespace StockManager.Source.UserControls {
       dgvProducts.Columns[2].HeaderText = Phrases.GlobalName;
       dgvProducts.Columns[3].HeaderText = Phrases.GlobalStock;
       dgvProducts.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
+      dgvProducts.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
+      dgvProducts.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalLocations; // Action details
+      dgvProducts.Columns[7].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
+
     }
 
     /// <summary>
