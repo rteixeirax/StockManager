@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class UsersUserControl : UserControl {
@@ -48,8 +49,8 @@ namespace StockManager.Source.UserControls {
           user.UserId,
           user.Username,
           user.Role.Code,
-          user.LastLogin?.ToString("MM/dd/yyyy HH:mm:ss"),
-          user.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
+          Format.DateTimeFormat(user.LastLogin),
+          Format.DateTimeFormat(user.CreatedAt)
         );
       }
 
@@ -152,11 +153,11 @@ namespace StockManager.Source.UserControls {
     /// Call search button click when pressed enter in the textbox
     /// </summary>
     private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e) {
-      if (e.KeyChar == (char)Keys.Enter) {
+      if (e.KeyChar == ( char )Keys.Enter) {
         this.pbSearchIcon_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      } else if (e.KeyChar == (char)Keys.Escape) {
+      } else if (e.KeyChar == ( char )Keys.Escape) {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductsUserControl : UserControl {
@@ -55,7 +56,7 @@ namespace StockManager.Source.UserControls {
           product.Reference,
           product.Name,
           product.Stock,
-          product.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
+          Format.DateTimeFormat(product.CreatedAt)
         );
       }
 

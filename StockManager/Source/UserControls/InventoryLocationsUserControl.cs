@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Source.Components;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryLocationsUserControl : UserControl {
@@ -47,7 +48,7 @@ namespace StockManager.Source.UserControls {
           location.LocationId,
           location.Name,
           location.ProductLocations.Count,
-          location.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss")
+          Format.DateTimeFormat(location.CreatedAt)
         );
       }
 

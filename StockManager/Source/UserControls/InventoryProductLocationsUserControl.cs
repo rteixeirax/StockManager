@@ -12,6 +12,7 @@ using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Source.Components;
 using StockManager.Services.Source;
+using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductLocationsUserControl : UserControl {
@@ -91,7 +92,7 @@ namespace StockManager.Source.UserControls {
         .ToList().ForEach((stockMovement) => {
           dgvProductStockMovements.Rows.Add(
            stockMovement.StockMovementId,
-           stockMovement.CreatedAt?.ToString("MM/dd/yyyy HH:mm:ss"),
+           Format.DateTimeFormat(stockMovement.CreatedAt),
            stockMovement.FromLocation?.Name,
            stockMovement.ToLocation?.Name,
            stockMovement.Qty,
