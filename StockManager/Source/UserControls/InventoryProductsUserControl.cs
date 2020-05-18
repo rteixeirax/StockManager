@@ -9,10 +9,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Utilities.Source;
+using System.Drawing;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductsUserControl : UserControl {
     private readonly MainForm _mainForm;
+    private bool _hasBeenSearching = false; // Flags if the user has been searching
 
     public InventoryProductsUserControl(MainForm mainForm) {
       InitializeComponent();
@@ -30,18 +32,19 @@ namespace StockManager.Source.UserControls {
     /// Set the content strings for the correct app language
     /// </summary>
     private void SetTranslatedPhrases() {
-      btnViewProducLocations.Text = Phrases.GlobalLocations;
       btnCreate.Text = Phrases.GlobalCreate;
-      btnEdit.Text = Phrases.GlobalEdit;
       btnDelete.Text = Phrases.GlobalDelete;
       dgvProducts.Columns[1].HeaderText = Phrases.GlobalReference;
       dgvProducts.Columns[2].HeaderText = Phrases.GlobalName;
       dgvProducts.Columns[3].HeaderText = Phrases.GlobalStock;
       dgvProducts.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
+      // Actions
       dgvProducts.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
+      dgvProducts.Columns[5].CellTemplate.Style.SelectionBackColor = Color.Transparent;
       dgvProducts.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalLocations; // Action details
+      dgvProducts.Columns[6].CellTemplate.Style.SelectionBackColor = Color.Transparent;
       dgvProducts.Columns[7].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
-
+      dgvProducts.Columns[7].CellTemplate.Style.SelectionBackColor = Color.Transparent;
     }
 
     /// <summary>
@@ -76,45 +79,79 @@ namespace StockManager.Source.UserControls {
     }
 
     /// <summary>
-    /// Edit product button click
-    /// </summary>
-    private async void btnEdit_Click(object sender, EventArgs e) {
-      if (dgvProducts.SelectedRows.Count > 0) {
-        Spinner.InitSpinner();
-
-        Product product = await AppServices.ProductService
-          .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
-
-        Spinner.StopSpinner();
-
-        ProductForm productForm = new ProductForm(this);
-        productForm.ShowProductForm(product);
-      }
-    }
-
-    /// <summary>
-    /// Delete product button click
+    /// Delete multiple products button click
     /// </summary>
     private async void btnDelete_Click(object sender, EventArgs e) {
       DataGridViewSelectedRowCollection selectedProducts = dgvProducts.SelectedRows;
 
-      if ((selectedProducts.Count > 0) && MessageBox.Show(
-        string.Format(Phrases.ProductDialogDeleteBody, selectedProducts.Count),
-        Phrases.GlobalDialogDeleteTitle,
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-      ) {
+      if (selectedProducts.Count > 0) {
+        int[] productIds = new int[selectedProducts.Count];
+
+        for (int i = 0; i < selectedProducts.Count; i++) {
+          productIds[i] = int.Parse(selectedProducts[i].Cells[0].Value.ToString());
+        }
+
+        await this.ActionDeleteClickAsync(productIds);
+      }
+    }
+
+    /// <summary>
+    /// Handle with table actions click
+    /// </summary>
+    private async void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+      if ((dgvProducts.SelectedRows.Count > 0) && (e.RowIndex >= 0)) {
+        int productId = int.Parse(dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+        switch (e.ColumnIndex) {
+          case 5:
+            await this.ActionEditClickAsync(productId);
+            break;
+          case 6:
+            await this.ActionDetailsClickAsync(productId);
+            break;
+          case 7:
+            await this.ActionDeleteClickAsync(new int[] { productId });
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
+    /// <summary>
+    /// Edit product button click
+    /// </summary>
+    private async Task ActionEditClickAsync(int productId) {
+      Spinner.InitSpinner();
+      Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
+      Spinner.StopSpinner();
+
+      ProductForm productForm = new ProductForm(this);
+      productForm.ShowProductForm(product);
+    }
+
+    /// <summary>
+    /// Show the product locations UC
+    /// </summary>
+    private async Task ActionDetailsClickAsync(int productId) {
+      Spinner.InitSpinner();
+      Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
+      Spinner.StopSpinner();
+
+      _mainForm.InventoryProductsBtnViewProducLocationsClick(product);
+    }
+
+    private async Task ActionDeleteClickAsync(int[] selectedIds) {
+      if ((selectedIds.Length > 0) && MessageBox.Show(
+      string.Format(Phrases.ProductDialogDeleteBody, selectedIds.Length),
+      Phrases.GlobalDialogDeleteTitle,
+      MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+    ) {
         try {
           Spinner.InitSpinner();
-
-          int[] productIds = new int[selectedProducts.Count];
-
-          for (int i = 0; i < selectedProducts.Count; i++) {
-            productIds[i] = int.Parse(selectedProducts[i].Cells[0].Value.ToString());
-          }
-
-          await AppServices.ProductService.DeleteProductAsync(productIds);
-
+          await AppServices.ProductService.DeleteProductAsync(selectedIds);
           Spinner.StopSpinner();
+
           await this.LoadProductsAsync();
 
         } catch (OperationErrorException ex) {
@@ -147,6 +184,9 @@ namespace StockManager.Source.UserControls {
       string searchValue = tbSeachText.Text;
 
       if (!string.IsNullOrEmpty(searchValue)) {
+        // sets the flag has been searching
+        _hasBeenSearching = true;
+
         await this.LoadProductsAsync(searchValue);
       }
     }
@@ -177,23 +217,16 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Show/Hide the X button on the search textbox
     /// </summary>
-    private void tbSeachText_TextChanged(object sender, EventArgs e) {
-      btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
-    }
+    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
+      if (tbSeachText.Text.Length > 0) {
+        btnClearSearchValue.Visible = true;
 
-    /// <summary>
-    /// Show the product locations UC
-    /// </summary>
-    private async void btnViewProducLocations_Click(object sender, EventArgs e) {
-      if (dgvProducts.SelectedRows.Count > 0) {
-        Spinner.InitSpinner();
-
-        Product product = await AppServices.ProductService
-          .GetProductByIdAsync(int.Parse(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
-
-        Spinner.StopSpinner();
-
-        _mainForm.InventoryProductsBtnViewProducLocationsClick(product);
+        // If the user clear all the search box text after doing some search, 
+        // i need to query the DB without any search param to show all table data.
+      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
+        _hasBeenSearching = false;
+        btnClearSearchValue.Visible = false;
+        await this.LoadProductsAsync();
       }
     }
   }

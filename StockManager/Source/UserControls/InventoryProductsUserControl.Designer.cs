@@ -36,9 +36,7 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.pnlActions = new System.Windows.Forms.Panel();
-      this.btnViewProducLocations = new System.Windows.Forms.Button();
       this.btnDelete = new System.Windows.Forms.Button();
-      this.btnEdit = new System.Windows.Forms.Button();
       this.btnCreate = new System.Windows.Forms.Button();
       this.dgvProducts = new System.Windows.Forms.DataGridView();
       this.tbSeachText = new System.Windows.Forms.TextBox();
@@ -76,30 +74,12 @@
       // pnlActions
       // 
       this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlActions.Controls.Add(this.btnViewProducLocations);
       this.pnlActions.Controls.Add(this.btnDelete);
-      this.pnlActions.Controls.Add(this.btnEdit);
       this.pnlActions.Controls.Add(this.btnCreate);
-      this.pnlActions.Location = new System.Drawing.Point(436, 6);
+      this.pnlActions.Location = new System.Drawing.Point(653, 6);
       this.pnlActions.Name = "pnlActions";
-      this.pnlActions.Size = new System.Drawing.Size(419, 34);
+      this.pnlActions.Size = new System.Drawing.Size(203, 34);
       this.pnlActions.TabIndex = 14;
-      // 
-      // btnViewProducLocations
-      // 
-      this.btnViewProducLocations.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnViewProducLocations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.btnViewProducLocations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnViewProducLocations.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnViewProducLocations.ForeColor = System.Drawing.Color.White;
-      this.btnViewProducLocations.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnViewProducLocations.Location = new System.Drawing.Point(4, 3);
-      this.btnViewProducLocations.Name = "btnViewProducLocations";
-      this.btnViewProducLocations.Size = new System.Drawing.Size(115, 27);
-      this.btnViewProducLocations.TabIndex = 10;
-      this.btnViewProducLocations.Text = "btnViewProducLocations";
-      this.btnViewProducLocations.UseVisualStyleBackColor = false;
-      this.btnViewProducLocations.Click += new System.EventHandler(this.btnViewProducLocations_Click);
       // 
       // btnDelete
       // 
@@ -109,29 +89,13 @@
       this.btnDelete.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnDelete.ForeColor = System.Drawing.Color.White;
       this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDelete.Location = new System.Drawing.Point(323, 3);
+      this.btnDelete.Location = new System.Drawing.Point(107, 3);
       this.btnDelete.Name = "btnDelete";
       this.btnDelete.Size = new System.Drawing.Size(93, 27);
       this.btnDelete.TabIndex = 9;
       this.btnDelete.Text = "Delete";
       this.btnDelete.UseVisualStyleBackColor = false;
       this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-      // 
-      // btnEdit
-      // 
-      this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
-      this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnEdit.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnEdit.ForeColor = System.Drawing.Color.White;
-      this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnEdit.Location = new System.Drawing.Point(224, 3);
-      this.btnEdit.Name = "btnEdit";
-      this.btnEdit.Size = new System.Drawing.Size(93, 27);
-      this.btnEdit.TabIndex = 8;
-      this.btnEdit.Text = "Edit";
-      this.btnEdit.UseVisualStyleBackColor = false;
-      this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
       // 
       // btnCreate
       // 
@@ -141,7 +105,7 @@
       this.btnCreate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCreate.ForeColor = System.Drawing.Color.White;
       this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnCreate.Location = new System.Drawing.Point(125, 3);
+      this.btnCreate.Location = new System.Drawing.Point(8, 3);
       this.btnCreate.Name = "btnCreate";
       this.btnCreate.Size = new System.Drawing.Size(93, 27);
       this.btnCreate.TabIndex = 7;
@@ -214,6 +178,7 @@
       this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvProducts.Size = new System.Drawing.Size(845, 365);
       this.dgvProducts.TabIndex = 13;
+      this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
       // 
       // tbSeachText
       // 
@@ -293,7 +258,7 @@
       // columnActionEdit
       // 
       this.columnActionEdit.HeaderText = "";
-      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_edit_24px;
+      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_edit_file_24px;
       this.columnActionEdit.MinimumWidth = 24;
       this.columnActionEdit.Name = "columnActionEdit";
       this.columnActionEdit.ReadOnly = true;
@@ -343,20 +308,18 @@
 
         private System.Windows.Forms.Panel pnlActions;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.TextBox tbSeachText;
         private System.Windows.Forms.Panel pnbSearchBox;
         private System.Windows.Forms.Button btnClearSearchValue;
-        private System.Windows.Forms.Button btnViewProducLocations;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
-        private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
-        private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
-        private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
-    }
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
+  }
 }
