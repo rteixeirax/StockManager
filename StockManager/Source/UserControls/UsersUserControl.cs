@@ -12,6 +12,8 @@ using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class UsersUserControl : UserControl {
+    private bool _hasBeenSearching = false; // Flags if the user has been searching
+
     public UsersUserControl() {
       InitializeComponent();
 
@@ -27,12 +29,14 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private void SetTranslatedPhrases() {
       btnCreateUser.Text = Phrases.GlobalCreate;
-      btnEditUser.Text = Phrases.GlobalEdit;
       btnDeleteUser.Text = Phrases.GlobalDelete;
       dgvUsers.Columns[1].HeaderText = Phrases.GlobalUsername;
       dgvUsers.Columns[2].HeaderText = Phrases.UserRole;
       dgvUsers.Columns[3].HeaderText = Phrases.UserLastLogin;
       dgvUsers.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
+      // Actions
+      dgvUsers.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
+      dgvUsers.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
     }
 
     /// <summary>
@@ -66,47 +70,69 @@ namespace StockManager.Source.UserControls {
     }
 
     /// <summary>
-    /// Edit user button click
+    /// Delete multiple products button click
     /// </summary>
-    private async void btnEditUser_Click(object sender, EventArgs e) {
-      if (dgvUsers.SelectedRows.Count > 0) {
-        Spinner.InitSpinner();
+    private async void btnDeleteUser_Click(object sender, EventArgs e) {
+      DataGridViewSelectedRowCollection selectedItems = dgvUsers.SelectedRows;
 
-        User user = await AppServices.UserService
-          .GetUserByIdAsync(int.Parse(dgvUsers.SelectedRows[0].Cells[0].Value.ToString()));
+      if (selectedItems.Count > 0) {
+        int[] arrayOfIds = new int[selectedItems.Count];
 
-        Spinner.StopSpinner();
+        for (int i = 0; i < selectedItems.Count; i++) {
+          arrayOfIds[i] = int.Parse(selectedItems[i].Cells[0].Value.ToString());
+        }
 
-        UserForm userForm = new UserForm(this);
-        await userForm.ShowUserFormAsync(user);
+        await this.ActionDeleteClickAsync(arrayOfIds);
       }
     }
 
     /// <summary>
-    /// Delete user button click
+    /// Handle with table actions click
     /// </summary>
-    private async void btnDeleteUser_Click(object sender, EventArgs e) {
-      DataGridViewSelectedRowCollection selectedUsers = dgvUsers.SelectedRows;
+    private async void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+      if ((dgvUsers.SelectedRows.Count > 0) && (e.RowIndex >= 0)) {
+        int userId = int.Parse(dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-      if ((selectedUsers.Count > 0) && MessageBox.Show(
-        string.Format(Phrases.UserDialogDeleteBody, selectedUsers.Count),
-        Phrases.GlobalDialogDeleteTitle,
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-      ) {
+        switch (e.ColumnIndex) {
+          case 5:
+            await this.ActionEditClickAsync(userId);
+            break;
+          case 6:
+            await this.ActionDeleteClickAsync(new int[] { userId });
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
+    /// <summary>
+    /// Edit product button click
+    /// </summary>
+    private async Task ActionEditClickAsync(int userId) {
+      Spinner.InitSpinner();
+      User user = await AppServices.UserService.GetUserByIdAsync(userId);
+      Spinner.StopSpinner();
+
+      UserForm userForm = new UserForm(this);
+      await userForm.ShowUserFormAsync(user);
+    }
+
+    /// <summary>
+    /// Delete button click
+    /// </summary>
+    private async Task ActionDeleteClickAsync(int[] selectedIds) {
+      if ((selectedIds.Length > 0) && MessageBox.Show(
+      string.Format(Phrases.UserDialogDeleteBody, selectedIds.Length),
+      Phrases.GlobalDialogDeleteTitle,
+      MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+    ) {
         try {
           Spinner.InitSpinner();
-
-          int[] userIds = new int[selectedUsers.Count];
-
-          for (int i = 0; i < selectedUsers.Count; i++) {
-            userIds[i] = int.Parse(selectedUsers[i].Cells[0].Value.ToString());
-          }
-
-          await AppServices.UserService.DeleteUserAsync(userIds, Program.LoggedInUser.UserId);
-
+          await AppServices.UserService.DeleteUserAsync(selectedIds, Program.LoggedInUser.UserId);
           Spinner.StopSpinner();
-          await this.LoadUsersAsync();
 
+          await this.LoadUsersAsync();
         } catch (OperationErrorException ex) {
           Spinner.StopSpinner();
 
@@ -137,6 +163,8 @@ namespace StockManager.Source.UserControls {
       string searchValue = tbSeachText.Text;
 
       if (!string.IsNullOrEmpty(searchValue)) {
+        // sets the flag has been searching
+        _hasBeenSearching = true;
         await this.LoadUsersAsync(searchValue);
       }
     }
@@ -146,7 +174,26 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private async void btnClearSearchValue_Click(object sender, EventArgs e) {
       tbSeachText.Text = "";
+      _hasBeenSearching = false;
       await this.LoadUsersAsync();
+    }
+
+    /// <summary>
+    /// Show/Hide the X button on the search textbox
+    /// </summary>
+    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
+      btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
+
+      if (tbSeachText.Text.Length > 0) {
+        btnClearSearchValue.Visible = true;
+
+        // If the user clear all the search box text after doing some search, 
+        // i need to query the DB without any search param to show all table data.
+      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
+        _hasBeenSearching = false;
+        btnClearSearchValue.Visible = false;
+        await this.LoadUsersAsync();
+      }
     }
 
     /// <summary>
@@ -162,13 +209,6 @@ namespace StockManager.Source.UserControls {
         // Remove the annoying beep
         e.Handled = true;
       }
-    }
-
-    /// <summary>
-    /// Show/Hide the X button on the search textbox
-    /// </summary>
-    private void tbSeachText_TextChanged(object sender, EventArgs e) {
-      btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
     }
   }
 }
