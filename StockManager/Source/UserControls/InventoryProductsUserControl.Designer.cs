@@ -45,14 +45,14 @@
       this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
       this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
       this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-      this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
-      this.columnActionDetails = new System.Windows.Forms.DataGridViewImageColumn();
       this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
+      this.columnActionDetails = new System.Windows.Forms.DataGridViewImageColumn();
+      this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
+      this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
       this.pnlActions.SuspendLayout();
@@ -249,51 +249,14 @@
       this.dataGridViewImageColumn3.ReadOnly = true;
       this.dataGridViewImageColumn3.Width = 24;
       // 
-      // columnProductId
+      // columnActionDelete
       // 
-      this.columnProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnProductId.HeaderText = "ProductId";
-      this.columnProductId.Name = "columnProductId";
-      this.columnProductId.ReadOnly = true;
-      this.columnProductId.Visible = false;
-      // 
-      // columnReference
-      // 
-      this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnReference.HeaderText = "Reference";
-      this.columnReference.Name = "columnReference";
-      this.columnReference.ReadOnly = true;
-      this.columnReference.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      // 
-      // columnName
-      // 
-      this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnName.HeaderText = "Name";
-      this.columnName.Name = "columnName";
-      this.columnName.ReadOnly = true;
-      // 
-      // ColumnStock
-      // 
-      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.ColumnStock.HeaderText = "Stock";
-      this.ColumnStock.Name = "ColumnStock";
-      this.ColumnStock.ReadOnly = true;
-      // 
-      // ColumnCreatedAt
-      // 
-      this.ColumnCreatedAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.ColumnCreatedAt.HeaderText = "Created at";
-      this.ColumnCreatedAt.Name = "ColumnCreatedAt";
-      this.ColumnCreatedAt.ReadOnly = true;
-      // 
-      // columnActionEdit
-      // 
-      this.columnActionEdit.HeaderText = "";
-      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_pencil_drawing_24px;
-      this.columnActionEdit.MinimumWidth = 30;
-      this.columnActionEdit.Name = "columnActionEdit";
-      this.columnActionEdit.ReadOnly = true;
-      this.columnActionEdit.Width = 30;
+      this.columnActionDelete.HeaderText = "";
+      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
+      this.columnActionDelete.MinimumWidth = 30;
+      this.columnActionDelete.Name = "columnActionDelete";
+      this.columnActionDelete.ReadOnly = true;
+      this.columnActionDelete.Width = 30;
       // 
       // columnActionDetails
       // 
@@ -304,14 +267,51 @@
       this.columnActionDetails.ReadOnly = true;
       this.columnActionDetails.Width = 30;
       // 
-      // columnActionDelete
+      // columnActionEdit
       // 
-      this.columnActionDelete.HeaderText = "";
-      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
-      this.columnActionDelete.MinimumWidth = 30;
-      this.columnActionDelete.Name = "columnActionDelete";
-      this.columnActionDelete.ReadOnly = true;
-      this.columnActionDelete.Width = 30;
+      this.columnActionEdit.HeaderText = "";
+      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_pencil_drawing_24px;
+      this.columnActionEdit.MinimumWidth = 30;
+      this.columnActionEdit.Name = "columnActionEdit";
+      this.columnActionEdit.ReadOnly = true;
+      this.columnActionEdit.Width = 30;
+      // 
+      // ColumnCreatedAt
+      // 
+      this.ColumnCreatedAt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.ColumnCreatedAt.HeaderText = "Created at";
+      this.ColumnCreatedAt.Name = "ColumnCreatedAt";
+      this.ColumnCreatedAt.ReadOnly = true;
+      // 
+      // ColumnStock
+      // 
+      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.ColumnStock.HeaderText = "Stock";
+      this.ColumnStock.Name = "ColumnStock";
+      this.ColumnStock.ReadOnly = true;
+      // 
+      // columnName
+      // 
+      this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnName.HeaderText = "Name";
+      this.columnName.Name = "columnName";
+      this.columnName.ReadOnly = true;
+      // 
+      // columnReference
+      // 
+      this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnReference.HeaderText = "Reference";
+      this.columnReference.Name = "columnReference";
+      this.columnReference.ReadOnly = true;
+      this.columnReference.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      // 
+      // columnProductId
+      // 
+      this.columnProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnProductId.HeaderText = "ProductId";
+      this.columnProductId.Name = "columnProductId";
+      this.columnProductId.ReadOnly = true;
+      this.columnProductId.Visible = false;
       // 
       // InventoryProductsUserControl
       // 
@@ -347,13 +347,13 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
-    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
-    private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
-    private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
-    private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
-  }
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
+        private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
+        private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
+        private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
+    }
 }
