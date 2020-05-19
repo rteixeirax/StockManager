@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.Forms {
   public partial class ProductForm : Form {
-    private int productId = 0;
-    private readonly InventoryProductsUserControl inventoryProductsUserControl;
+    private int _productId = 0;
+    private readonly InventoryProductsUserControl _inventoryProductsUserControl;
 
     public ProductForm(InventoryProductsUserControl inventoryProductsUserControl) {
       InitializeComponent();
-      this.inventoryProductsUserControl = inventoryProductsUserControl;
+      _inventoryProductsUserControl = inventoryProductsUserControl;
       this.SetTranslatedPhrases();
     }
 
@@ -39,10 +39,10 @@ namespace StockManager.Source.Forms {
       Spinner.InitSpinner();
 
       // Set the productId. Means that is a edit
-      this.productId = (product != null) ? product.ProductId : 0;
+      _productId = (product != null) ? product.ProductId : 0;
 
       // Set the Form title
-      this.Text = (this.productId != 0)
+      this.Text = (_productId != 0)
         ? AppInfo.GetViewTitle(Phrases.ProductEdit)
         : AppInfo.GetViewTitle(Phrases.ProductCreateNewProduct);
 
@@ -92,15 +92,15 @@ namespace StockManager.Source.Forms {
 
         Spinner.InitSpinner();
 
-        if ((this.productId != 0)) {
-          product.ProductId = this.productId;
+        if ((_productId != 0)) {
+          product.ProductId = _productId;
           await AppServices.ProductService.EditProductAsync(product);
         } else {
           await AppServices.ProductService.CreateProductAsync(product);
         }
 
         Spinner.StopSpinner();
-        await this.inventoryProductsUserControl.LoadProductsAsync();
+        await _inventoryProductsUserControl.LoadProductsAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {

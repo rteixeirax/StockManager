@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.Forms {
   public partial class LocationForm : Form {
-    private int locationId = 0;
-    private readonly InventoryLocationsUserControl inventoryLocationsUserControl;
+    private int _locationId = 0;
+    private readonly InventoryLocationsUserControl _inventoryLocationsUserControl;
 
     public LocationForm(InventoryLocationsUserControl inventoryLocationsUserControl) {
       InitializeComponent();
-      this.inventoryLocationsUserControl = inventoryLocationsUserControl;
+      _inventoryLocationsUserControl = inventoryLocationsUserControl;
       this.SetTranslatedPhrases();
     }
 
@@ -36,10 +36,10 @@ namespace StockManager.Source.Forms {
     /// </summary>
     public void ShowLocationForm(Location location = null) {
       // Set the locationId. Means that is a edit
-      this.locationId = (location != null) ? location.LocationId : 0;
+      _locationId = (location != null) ? location.LocationId : 0;
 
       // Set the Form title
-      this.Text = (this.locationId != 0)
+      this.Text = (_locationId != 0)
         ? AppInfo.GetViewTitle(Phrases.LocationEdit)
         : AppInfo.GetViewTitle(Phrases.LocationCreate);
 
@@ -79,8 +79,8 @@ namespace StockManager.Source.Forms {
 
         Spinner.InitSpinner();
 
-        if ((this.locationId != 0)) {
-          location.LocationId = locationId;
+        if ((_locationId != 0)) {
+          location.LocationId = _locationId;
           await AppServices.LocationService.EditLocationAsync(location);
         } else {
           await AppServices.LocationService.CreateLocationAsync(location);
@@ -88,7 +88,7 @@ namespace StockManager.Source.Forms {
 
         Spinner.StopSpinner();
 
-        await this.inventoryLocationsUserControl.LoadLocationsAsync();
+        await _inventoryLocationsUserControl.LoadLocationsAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {

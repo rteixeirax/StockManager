@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.Forms {
   public partial class UserForm : Form {
-    private int userId = 0;
-    private readonly UsersUserControl usersUserControl;
+    private int _userId = 0;
+    private readonly UsersUserControl _usersUserControl;
 
     public UserForm(UsersUserControl usersUserControl) {
       InitializeComponent();
-      this.usersUserControl = usersUserControl;
+      _usersUserControl = usersUserControl;
       this.SetTranslatedPhrases();
     }
 
@@ -41,10 +41,10 @@ namespace StockManager.Source.Forms {
       Spinner.InitSpinner();
 
       // Set the userId. Means that is a edit
-      this.userId = (user != null) ? user.UserId : 0;
+      _userId = (user != null) ? user.UserId : 0;
 
       // Set the Form title
-      this.Text = (this.userId != 0)
+      this.Text = (_userId != 0)
         ? AppInfo.GetViewTitle(Phrases.UserEditUser)
         : AppInfo.GetViewTitle(Phrases.UserCreateNewUser);
 
@@ -102,8 +102,8 @@ namespace StockManager.Source.Forms {
 
         Spinner.InitSpinner();
 
-        if ((this.userId != 0)) {
-          user.UserId = this.userId;
+        if ((_userId != 0)) {
+          user.UserId = _userId;
           await AppServices.UserService.EditUserAsync(user);
         } else {
           await AppServices.UserService.CreateUserAsync(user);
@@ -111,7 +111,7 @@ namespace StockManager.Source.Forms {
 
         Spinner.StopSpinner();
 
-        await this.usersUserControl.LoadUsersAsync();
+        await _usersUserControl.LoadUsersAsync();
 
         this.Close();
       } catch (OperationErrorException ex) {
