@@ -73,9 +73,9 @@ namespace StockManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_edit_file_24px {
+        public static System.Drawing.Bitmap icon_pencil_drawing_24px {
             get {
-                object obj = ResourceManager.GetObject("icon_edit_file_24px", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_pencil_drawing_24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -121,8 +121,8 @@
   <data name="icon_delete_bin_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-delete-bin-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icon_edit_file_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon-edit-file-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_pencil_drawing_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon-pencil-drawing-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon_view_details_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon-view-details-24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

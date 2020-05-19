@@ -42,6 +42,9 @@
       this.tbSeachText = new System.Windows.Forms.TextBox();
       this.pnbSearchBox = new System.Windows.Forms.Panel();
       this.btnClearSearchValue = new System.Windows.Forms.Button();
+      this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+      this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+      this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
       this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -219,8 +222,36 @@
       this.btnClearSearchValue.UseVisualStyleBackColor = false;
       this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
       // 
+      // dataGridViewImageColumn1
+      // 
+      this.dataGridViewImageColumn1.HeaderText = "";
+      this.dataGridViewImageColumn1.Image = global::StockManager.Properties.Resources.icon_pencil_drawing_24px;
+      this.dataGridViewImageColumn1.MinimumWidth = 24;
+      this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+      this.dataGridViewImageColumn1.ReadOnly = true;
+      this.dataGridViewImageColumn1.Width = 24;
+      // 
+      // dataGridViewImageColumn2
+      // 
+      this.dataGridViewImageColumn2.HeaderText = "";
+      this.dataGridViewImageColumn2.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn2.Image")));
+      this.dataGridViewImageColumn2.MinimumWidth = 24;
+      this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+      this.dataGridViewImageColumn2.ReadOnly = true;
+      this.dataGridViewImageColumn2.Width = 24;
+      // 
+      // dataGridViewImageColumn3
+      // 
+      this.dataGridViewImageColumn3.HeaderText = "";
+      this.dataGridViewImageColumn3.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
+      this.dataGridViewImageColumn3.MinimumWidth = 24;
+      this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+      this.dataGridViewImageColumn3.ReadOnly = true;
+      this.dataGridViewImageColumn3.Width = 24;
+      // 
       // columnProductId
       // 
+      this.columnProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
       this.columnProductId.HeaderText = "ProductId";
       this.columnProductId.Name = "columnProductId";
       this.columnProductId.ReadOnly = true;
@@ -258,29 +289,29 @@
       // columnActionEdit
       // 
       this.columnActionEdit.HeaderText = "";
-      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_edit_file_24px;
-      this.columnActionEdit.MinimumWidth = 24;
+      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_pencil_drawing_24px;
+      this.columnActionEdit.MinimumWidth = 30;
       this.columnActionEdit.Name = "columnActionEdit";
       this.columnActionEdit.ReadOnly = true;
-      this.columnActionEdit.Width = 24;
+      this.columnActionEdit.Width = 30;
       // 
       // columnActionDetails
       // 
       this.columnActionDetails.HeaderText = "";
-      this.columnActionDetails.Image = global::StockManager.Properties.Resources.icon_view_details_24px;
-      this.columnActionDetails.MinimumWidth = 24;
+      this.columnActionDetails.Image = ((System.Drawing.Image)(resources.GetObject("columnActionDetails.Image")));
+      this.columnActionDetails.MinimumWidth = 30;
       this.columnActionDetails.Name = "columnActionDetails";
       this.columnActionDetails.ReadOnly = true;
-      this.columnActionDetails.Width = 24;
+      this.columnActionDetails.Width = 30;
       // 
       // columnActionDelete
       // 
       this.columnActionDelete.HeaderText = "";
       this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
-      this.columnActionDelete.MinimumWidth = 24;
+      this.columnActionDelete.MinimumWidth = 30;
       this.columnActionDelete.Name = "columnActionDelete";
       this.columnActionDelete.ReadOnly = true;
-      this.columnActionDelete.Width = 24;
+      this.columnActionDelete.Width = 30;
       // 
       // InventoryProductsUserControl
       // 
@@ -313,6 +344,9 @@
         private System.Windows.Forms.Panel pnbSearchBox;
         private System.Windows.Forms.Button btnClearSearchValue;
         private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnName;

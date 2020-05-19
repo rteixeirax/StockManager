@@ -152,6 +152,15 @@
   <metadata name="columnActionDetails.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="columnActionDetails.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKlJREFUSEtj
+        GFnAYb8DCwhDudQFcdvj9GJ2xJwDYRAbKkw6AGq2ARpSjoxjd8T2A+mfQPwSin9CxVDUgfRCjcENYrbH
+        NAAV/8eCVyZuSxQFYRAbTQ6CgXqhxuAGMAugXKLBCLUAGxsDQw1FZuMFyIbG7YhzAbI7kNnoGCQOkgey
+        R4NoNIigANnQoR1EIJeRgkm2gCxMjAVRe6KUsLmQGAzSCzVmFBALGBgAOKaFXdmeHpcAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <metadata name="columnActionDelete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -160,6 +169,15 @@
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAFNJREFUKFNj
         oDtghNLIAJsYGIAkdgOxDZgHAeZAvA+IcWqyAuJnQOwIxMZA/ATKxgssgRikCYTtQAKEAEka0J30GIid
         gBgrIMvT2CRwKqYFYGAAANP9DdmuEvOZAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="dataGridViewImageColumn2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKlJREFUSEtj
+        GFnAYb8DCwhDudQFcdvj9GJ2xJwDYRAbKkw6AGq2ARpSjoxjd8T2A+mfQPwSin9CxVDUgfRCjcENYrbH
+        NAAV/8eCVyZuSxQFYRAbTQ6CgXqhxuAGMAugXKLBCLUAGxsDQw1FZuMFyIbG7YhzAbI7kNnoGCQOkgey
+        R4NoNIigANnQoR1EIJeRgkm2gCxMjAVRe6KUsLmQGAzSCzVmFBALGBgAOKaFXdmeHpcAAAAASUVORK5C
+        YII=
 </value>
   </data>
 </root>
