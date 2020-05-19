@@ -35,7 +35,7 @@ namespace StockManager.Services.Source.Services {
     public async Task EditProductAsync(Product product) {
       try {
         Product dbProduct = await _productRepo
-          .FindProductByIdAsync(product.ProductId);
+          .FindProductByIdAsync(product.ProductId, false);
 
         await this.ValidateProductFormData(product, dbProduct);
 
@@ -58,8 +58,7 @@ namespace StockManager.Services.Source.Services {
         for (int i = 0; i < productIds.Length; i += 1) {
           int productId = productIds[i];
 
-          Product product = await _productRepo
-            .FindProductByIdAsync(productId);
+          Product product = await _productRepo.FindProductByIdAsync(productId, false);
 
           if (product != null) {
             _productRepo.RemoveProduct(product);

@@ -11,8 +11,8 @@ namespace StockManager.Storage.Source.Contracts {
     void RemoveProduct(Product product);
 
     Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue = null);
-
-    Task<Product> FindProductByIdAsync(int productId);
+ 
+    Task<Product> FindProductByIdAsync(int productId, bool includeRelations = true);
 
     Task<Product> FindProductByReferenceAsync(string reference);
   }

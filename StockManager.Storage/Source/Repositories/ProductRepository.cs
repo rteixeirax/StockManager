@@ -52,11 +52,17 @@ namespace StockManager.Storage.Source.Repositories {
     /// <summary>
     /// Find product by id async
     /// </summary>
-    public async Task<Product> FindProductByIdAsync(int productId) {
+    public async Task<Product> FindProductByIdAsync(int productId, bool includeRelations = true) {
+      if (includeRelations) {
+        return await _db.Products
+          .Include(x => x.ProductLocations)
+          .Include(x => x.StockMovements)
+          .Where(product => product.ProductId == productId)
+          .FirstOrDefaultAsync();
+      }
+
       return await _db.Products
-        .Include(x => x.ProductLocations)
-        .Include(x => x.StockMovements)
-        .Where(product => product.ProductId == productId)
+        .Where(p => p.ProductId == productId)
         .FirstOrDefaultAsync();
     }
 
