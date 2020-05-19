@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services {
   public class LocationService : ILocationService {
-    private readonly ILocationRepository locationRepo;
+    private readonly ILocationRepository _locationRepo;
 
     public LocationService(ILocationRepository locationRepo) {
-      this.locationRepo = locationRepo;
+      _locationRepo = locationRepo;
     }
 
     /// <summary>
@@ -21,8 +21,8 @@ namespace StockManager.Services.Source.Services {
       try {
         await this.ValidateLocationFormData(location);
 
-        await this.locationRepo.AddLocationAsync(location);
-        await this.locationRepo.SaveDbChangesAsync();
+        await _locationRepo.AddLocationAsync(location);
+        await _locationRepo.SaveDbChangesAsync();
       } catch (OperationErrorException operationErrorException) {
         throw operationErrorException;
       }
@@ -33,14 +33,14 @@ namespace StockManager.Services.Source.Services {
     /// </summary>
     public async Task EditLocationAsync(Location location) {
       try {
-        Location dbLocation = await this.locationRepo
+        Location dbLocation = await _locationRepo
           .FindLocationByIdAsync(location.LocationId);
 
         await this.ValidateLocationFormData(location, dbLocation);
 
         dbLocation.Name = location.Name;
 
-        await this.locationRepo.SaveDbChangesAsync();
+        await _locationRepo.SaveDbChangesAsync();
       } catch (OperationErrorException operationErrorException) {
         throw operationErrorException;
       }
@@ -53,7 +53,7 @@ namespace StockManager.Services.Source.Services {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       try {
-        int locationsCount = await this.locationRepo.CountLocationsAsync();
+        int locationsCount = await _locationRepo.CountLocationsAsync();
 
         // Must have at least one location, can't delete all
         if (locationIds.Length >= locationsCount) {
@@ -68,7 +68,7 @@ namespace StockManager.Services.Source.Services {
         for (int i = 0; i < locationIds.Length; i += 1) {
           int locationId = locationIds[i];
 
-          Location location = await this.locationRepo
+          Location location = await _locationRepo
             .FindLocationByIdAsync(locationId);
 
           if (location != null) {
@@ -82,11 +82,11 @@ namespace StockManager.Services.Source.Services {
               throw new OperationErrorException(errorsList);
             }
 
-            this.locationRepo.RemoveLocation(location);
+            _locationRepo.RemoveLocation(location);
           }
         }
 
-        await this.locationRepo.SaveDbChangesAsync();
+        await _locationRepo.SaveDbChangesAsync();
 
         // Catch operation errors
       } catch (OperationErrorException operationErrorException) {
@@ -104,14 +104,14 @@ namespace StockManager.Services.Source.Services {
     /// Get all locations async
     /// </summary>
     public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null) {
-      return await this.locationRepo.FindAllLocationsAsync(searchValue);
+      return await _locationRepo.FindAllLocationsAsync(searchValue);
     }
 
     /// <summary>
     /// Get location by id async
     /// </summary>
     public async Task<Location> GetLocationByIdAsync(int locationId) {
-      return await this.locationRepo.FindLocationByIdAsync(locationId);
+      return await _locationRepo.FindLocationByIdAsync(locationId);
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ namespace StockManager.Services.Source.Services {
       // This validation only occurs when all form fields have no errors
       // And only if is a create or an update and the name has changed
       Location nameCheck = ((dbLocation == null) || (dbLocation.Name != location.Name))
-        ? await this.locationRepo.FindLocationByNameAsync(location.Name)
+        ? await _locationRepo.FindLocationByNameAsync(location.Name)
         : null;
 
       if (nameCheck != null) {
