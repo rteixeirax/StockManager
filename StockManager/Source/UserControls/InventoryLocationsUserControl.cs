@@ -12,6 +12,8 @@ using StockManager.Utilities.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryLocationsUserControl : UserControl {
+    private bool _hasBeenSearching = false; // Flags if the user has been searching
+
     public InventoryLocationsUserControl() {
       InitializeComponent();
 
@@ -26,11 +28,13 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private void SetTranslatedPhrases() {
       btnCreate.Text = Phrases.GlobalCreate;
-      btnEdit.Text = Phrases.GlobalEdit;
       btnDelete.Text = Phrases.GlobalDelete;
       dgvLocations.Columns[1].HeaderText = Phrases.GlobalName;
       dgvLocations.Columns[2].HeaderText = Phrases.GlobalProducts;
       dgvLocations.Columns[3].HeaderText = Phrases.GlobalCreatedAt;
+      // Actions
+      dgvLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
+      dgvLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
     }
 
     /// <summary>
@@ -64,47 +68,69 @@ namespace StockManager.Source.UserControls {
     }
 
     /// <summary>
-    /// Edit location button click
+    /// Delete multiple button click
     /// </summary>
-    private async void btnEdit_Click(object sender, EventArgs e) {
-      if (dgvLocations.SelectedRows.Count > 0) {
-        Spinner.InitSpinner();
+    private async void btnDelete_Click(object sender, EventArgs e) {
+      DataGridViewSelectedRowCollection selectedItems = dgvLocations.SelectedRows;
 
-        Location location = await AppServices.LocationService
-          .GetLocationByIdAsync(int.Parse(dgvLocations.SelectedRows[0].Cells[0].Value.ToString()));
+      if (selectedItems.Count > 0) {
+        int[] arrayOfIds = new int[selectedItems.Count];
 
-        Spinner.StopSpinner();
+        for (int i = 0; i < selectedItems.Count; i++) {
+          arrayOfIds[i] = int.Parse(selectedItems[i].Cells[0].Value.ToString());
+        }
 
-        LocationForm locationForm = new LocationForm(this);
-        locationForm.ShowLocationForm(location);
+        await this.ActionDeleteClickAsync(arrayOfIds);
       }
     }
 
     /// <summary>
-    /// Delete location button click
+    /// Handle with table actions click
     /// </summary>
-    private async void btnDelete_Click(object sender, EventArgs e) {
-      DataGridViewSelectedRowCollection selectedLocations = dgvLocations.SelectedRows;
+    private async void dgvLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+      if ((dgvLocations.SelectedRows.Count > 0) && (e.RowIndex >= 0)) {
+        int locationId = int.Parse(dgvLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-      if ((selectedLocations.Count > 0) && MessageBox.Show(
-        string.Format(Phrases.LocationDialogDeleteBody, selectedLocations.Count),
-        Phrases.GlobalDialogDeleteTitle,
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-      ) {
+        switch (e.ColumnIndex) {
+          case 4:
+            await this.ActionEditClickAsync(locationId);
+            break;
+          case 5:
+            await this.ActionDeleteClickAsync(new int[] { locationId });
+            break;
+          default:
+            break;
+        }
+      }
+    }
+
+    /// <summary>
+    /// Edit product button click
+    /// </summary>
+    private async Task ActionEditClickAsync(int locationId) {
+      Spinner.InitSpinner();
+      Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
+      Spinner.StopSpinner();
+
+      LocationForm locationForm = new LocationForm(this);
+      locationForm.ShowLocationForm(location);
+    }
+
+    /// <summary>
+    /// Delete button click
+    /// </summary>
+    private async Task ActionDeleteClickAsync(int[] selectedIds) {
+      if ((selectedIds.Length > 0) && MessageBox.Show(
+      string.Format(Phrases.LocationDialogDeleteBody, selectedIds.Length),
+      Phrases.GlobalDialogDeleteTitle,
+      MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+    ) {
         try {
           Spinner.InitSpinner();
-
-          int[] locationIds = new int[selectedLocations.Count];
-
-          for (int i = 0; i < selectedLocations.Count; i++) {
-            locationIds[i] = int.Parse(selectedLocations[i].Cells[0].Value.ToString());
-          }
-
-          await AppServices.LocationService.DeleteLocationAsync(locationIds);
-
+          await AppServices.LocationService.DeleteLocationAsync(selectedIds);
           Spinner.StopSpinner();
-          await this.LoadLocationsAsync();
 
+          await this.LoadLocationsAsync();
         } catch (OperationErrorException ex) {
           Spinner.StopSpinner();
 
@@ -135,38 +161,51 @@ namespace StockManager.Source.UserControls {
       string searchValue = tbSeachText.Text;
 
       if (!string.IsNullOrEmpty(searchValue)) {
+        // sets the flag has been searching
+        _hasBeenSearching = true;
+
         await this.LoadLocationsAsync(searchValue);
       }
     }
 
     /// <summary>
-    /// Clear search value picture box click
+    /// Clear search value on picture box click
     /// </summary>
     private async void btnClearSearchValue_Click(object sender, EventArgs e) {
       tbSeachText.Text = "";
+      _hasBeenSearching = false;
       await this.LoadLocationsAsync();
+    }
+
+    /// <summary>
+    /// Show/Hide the X button on the search textbox
+    /// </summary>
+    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
+      if (tbSeachText.Text.Length > 0) {
+        btnClearSearchValue.Visible = true;
+
+        // If the user clear all the search box text after doing some search, 
+        // i need to query the DB without any search param to show all table data.
+      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
+        _hasBeenSearching = false;
+        btnClearSearchValue.Visible = false;
+        await this.LoadLocationsAsync();
+      }
     }
 
     /// <summary>
     /// Call search button click when pressed enter in the textbox
     /// </summary>
     private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e) {
-      if (e.KeyChar == (char)Keys.Enter) {
+      if (e.KeyChar == ( char )Keys.Enter) {
         this.pbSearchIcon_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      } else if (e.KeyChar == (char)Keys.Escape) {
+      } else if (e.KeyChar == ( char )Keys.Escape) {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
       }
-    }
-
-    /// <summary>
-    /// Show/Hide the X button on the search textbox
-    /// </summary>
-    private void tbSeachText_TextChanged(object sender, EventArgs e) {
-      btnClearSearchValue.Visible = (tbSeachText.Text.Length > 0);
     }
   }
 }

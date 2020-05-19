@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockManager.Utilities.Source;
-using System.Drawing;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductsUserControl : UserControl {
@@ -79,16 +78,16 @@ namespace StockManager.Source.UserControls {
     /// Delete multiple products button click
     /// </summary>
     private async void btnDelete_Click(object sender, EventArgs e) {
-      DataGridViewSelectedRowCollection selectedProducts = dgvProducts.SelectedRows;
+      DataGridViewSelectedRowCollection selectedItems = dgvProducts.SelectedRows;
 
-      if (selectedProducts.Count > 0) {
-        int[] productIds = new int[selectedProducts.Count];
+      if (selectedItems.Count > 0) {
+        int[] arrayOfIds = new int[selectedItems.Count];
 
-        for (int i = 0; i < selectedProducts.Count; i++) {
-          productIds[i] = int.Parse(selectedProducts[i].Cells[0].Value.ToString());
+        for (int i = 0; i < selectedItems.Count; i++) {
+          arrayOfIds[i] = int.Parse(selectedItems[i].Cells[0].Value.ToString());
         }
 
-        await this.ActionDeleteClickAsync(productIds);
+        await this.ActionDeleteClickAsync(arrayOfIds);
       }
     }
 
@@ -138,6 +137,9 @@ namespace StockManager.Source.UserControls {
       _mainForm.InventoryProductsBtnViewProducLocationsClick(product);
     }
 
+    /// <summary>
+    /// Delete button click
+    /// </summary>
     private async Task ActionDeleteClickAsync(int[] selectedIds) {
       if ((selectedIds.Length > 0) && MessageBox.Show(
       string.Format(Phrases.ProductDialogDeleteBody, selectedIds.Length),
@@ -189,11 +191,28 @@ namespace StockManager.Source.UserControls {
     }
 
     /// <summary>
-    /// Clear search value picture box click
+    /// Clear search value on picture box click
     /// </summary>
     private async void btnClearSearchValue_Click(object sender, EventArgs e) {
       tbSeachText.Text = "";
+      _hasBeenSearching = false;
       await this.LoadProductsAsync();
+    }
+    
+    /// <summary>
+    /// Show/Hide the X button on the search textbox
+    /// </summary>
+    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
+      if (tbSeachText.Text.Length > 0) {
+        btnClearSearchValue.Visible = true;
+
+        // If the user clear all the search box text after doing some search, 
+        // i need to query the DB without any search param to show all table data.
+      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
+        _hasBeenSearching = false;
+        btnClearSearchValue.Visible = false;
+        await this.LoadProductsAsync();
+      }
     }
 
     /// <summary>
@@ -208,22 +227,6 @@ namespace StockManager.Source.UserControls {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      }
-    }
-
-    /// <summary>
-    /// Show/Hide the X button on the search textbox
-    /// </summary>
-    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
-      if (tbSeachText.Text.Length > 0) {
-        btnClearSearchValue.Visible = true;
-
-        // If the user clear all the search box text after doing some search, 
-        // i need to query the DB without any search param to show all table data.
-      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
-        _hasBeenSearching = false;
-        btnClearSearchValue.Visible = false;
-        await this.LoadProductsAsync();
       }
     }
   }
