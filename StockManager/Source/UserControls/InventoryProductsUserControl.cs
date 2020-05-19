@@ -40,11 +40,8 @@ namespace StockManager.Source.UserControls {
       dgvProducts.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
       // Actions
       dgvProducts.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
-      dgvProducts.Columns[5].CellTemplate.Style.SelectionBackColor = Color.Transparent;
       dgvProducts.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalLocations; // Action details
-      dgvProducts.Columns[6].CellTemplate.Style.SelectionBackColor = Color.Transparent;
       dgvProducts.Columns[7].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
-      dgvProducts.Columns[7].CellTemplate.Style.SelectionBackColor = Color.Transparent;
     }
 
     /// <summary>
