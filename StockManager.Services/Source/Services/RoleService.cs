@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services {
   public class RoleService : IRoleService {
-    private readonly IRoleRepository roleRepo;
+    private readonly IRoleRepository _roleRepo;
 
     public RoleService(IRoleRepository roleRepo) {
-      this.roleRepo = roleRepo;
+      _roleRepo = roleRepo;
     }
 
     /// <summary>
     /// Get all roles async
     /// </summary>
     public async Task<IEnumerable<Role>> GetRolesAsync() {
-      return await this.roleRepo.FindAllRolesAsync();
+      return await _roleRepo.FindAllRolesAsync();
     }
   }
 }
