@@ -10,6 +10,8 @@ namespace StockManager.Services.Source {
     public static IRoleService RoleService { get; private set; }
     public static ILocationService LocationService { get; private set; }
     public static IProductService ProductService { get; private set; }
+    public static IProductLocationService ProductLocationService { get; private set; }
+    public static IStockMovementService StockMovementService { get; private set; }
 
     public static void ConfigureServices(StorageContext storageContext) {
       // Instantiate our services
@@ -18,6 +20,8 @@ namespace StockManager.Services.Source {
       RoleService = new RoleService(new RoleRepository(storageContext));
       LocationService = new LocationService(new LocationRepository(storageContext));
       ProductService = new ProductService(new ProductRepository(storageContext));
+      ProductLocationService = new ProductLocationService(new ProductLocationRepository(storageContext));
+      StockMovementService = new StockMovementService(new StockMovementRepository(storageContext));
     }
   }
 }
