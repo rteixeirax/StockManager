@@ -10,7 +10,7 @@ using StockManager.Translations.Source;
 using StockManager.Source.Components;
 using StockManager.Services.Source;
 using StockManager.Utilities.Source;
-using System.Drawing;
+using StockManager.Types.Source;
 
 namespace StockManager.Source.UserControls {
   public partial class InventoryProductLocationsUserControl : UserControl {
@@ -28,8 +28,8 @@ namespace StockManager.Source.UserControls {
 
       // Set initial state
       lbErrorLocation.Visible = false;
-      lbErrorMinStock.Visible = false;
       lbErrorQty.Visible = false;
+      lbErrorMinStock.Visible = false;
 
       this.SetTranslatedPhrases();
       this.LoadProductLocationsAsync().Wait();
@@ -108,6 +108,56 @@ namespace StockManager.Source.UserControls {
     /// </summary>
     private void btnback_Click(object sender, EventArgs e) {
       _mainForm.btnInventoryProducts_Click(sender, e);
+    }
+
+    private void ShowFormErrors(List<ErrorType> errors) {
+      lbErrorLocation.Visible = false;
+      lbErrorQty.Visible = false;
+      lbErrorMinStock.Visible = false;
+
+      errors.ForEach((err) => {
+        if (err.Field == "LocationId") {
+          lbErrorLocation.Text = err.Error;
+          lbErrorLocation.Visible = true;
+        }
+
+        if (err.Field == "Stock") {
+          lbErrorQty.Text = err.Error;
+          lbErrorQty.Visible = true;
+        }
+
+        if (err.Field == "MinStock") {
+          lbErrorMinStock.Text = err.Error;
+          lbErrorMinStock.Visible = true;
+        }
+      });
+    }
+
+    private async void btnAddLocation_Click(object sender, EventArgs e) {
+      try {
+        Spinner.InitSpinner();
+
+        ProductLocation productLocation = new ProductLocation() {
+          ProductId = _product.ProductId,
+          LocationId = int.Parse(cbLocations.SelectedValue.ToString()),
+          Stock = float.Parse(numQty.Value.ToString()),
+          MinStock = float.Parse(numMinStock.Value.ToString())
+        };
+
+        await AppServices.ProductLocationService
+          .AddProductLocationAsync(productLocation, Program.LoggedInUser.UserId);
+
+        Spinner.StopSpinner();
+
+        // Reload Ui
+        await this.LoadProductLocationsAsync();
+      } catch (OperationErrorException ex) {
+        Spinner.StopSpinner();
+
+        if (ex.Errors.Count() > 0) {
+          this.ShowFormErrors(ex.Errors);
+        }
+      }
     }
 
     /// <summary>
