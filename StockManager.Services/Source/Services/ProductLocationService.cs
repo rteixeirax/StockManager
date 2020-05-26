@@ -18,7 +18,6 @@ namespace StockManager.Services.Source.Services {
         await this.ValidateProductLocationDataAsync(data);
         await _productLocationRepo.InsertProductLocationAsync(data);
 
-        // TODO: decide if make this logic here or sent the data to the StockMovement service and let it deal with it
         StockMovement stockMovement = new StockMovement() {
           UserId = userId,
           ProductId = data.ProductId,
@@ -28,8 +27,14 @@ namespace StockManager.Services.Source.Services {
 
         await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
         await _productLocationRepo.SaveDbChangesAsync();
+
+        // catch operations errors
       } catch (OperationErrorException operationErrorException) {
         throw operationErrorException;
+
+        // catch service errors
+      } catch (ServiceErrorException serviceErrorException) {
+        throw serviceErrorException;
       }
     }
 

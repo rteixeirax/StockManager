@@ -1,5 +1,7 @@
-﻿using StockManager.Storage.Source.Contracts;
+﻿using Microsoft.EntityFrameworkCore;
+using StockManager.Storage.Source.Contracts;
 using StockManager.Storage.Source.Models;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
@@ -16,6 +18,10 @@ namespace StockManager.Storage.Source.Repositories {
 
     public async Task InsertStockMovementAsync(StockMovement data) {
       await _db.StockMovements.AddAsync(data);
+    }
+
+    public async Task<StockMovement> FindLastStockMovementAsync() {
+      return await _db.StockMovements.OrderByDescending(x => x.CreatedAt).FirstOrDefaultAsync();
     }
   }
 }

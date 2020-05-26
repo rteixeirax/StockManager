@@ -157,6 +157,15 @@ namespace StockManager.Source.UserControls {
         if (ex.Errors.Count() > 0) {
           this.ShowFormErrors(ex.Errors);
         }
+      } catch (ServiceErrorException ex) {
+        Spinner.StopSpinner();
+
+        MessageBox.Show(
+          $"{ex.Errors[0].Error}",
+          Phrases.GlobalDialogErrorTitle,
+          MessageBoxButtons.OK,
+          MessageBoxIcon.Error
+        );
       }
     }
 

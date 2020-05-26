@@ -1,7 +1,8 @@
 ﻿using StockManager.Services.Source.Contracts;
 using StockManager.Storage.Source.Contracts;
 using StockManager.Storage.Source.Models;
-using System;
+using StockManager.Translations.Source;
+using StockManager.Types.Source;
 using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services {
@@ -14,13 +15,23 @@ namespace StockManager.Services.Source.Services {
 
     public async Task AddStockMovementAsync(StockMovement data) {
       try {
-        // TODO: Validate the given data
-        // TODO: Get the last stock movement to get the stock acc
-        // Do the maths to calculate the newer acc
+        StockMovement lastStockMovement = await _stockMovementRepo.FindLastStockMovementAsync();
+
+        // Calculate the new accumulated stock
+        if (lastStockMovement != null) {
+          data.Stock = (data.Qty + lastStockMovement.Stock);
+
+          // Set the accumulated if it is the first movement
+        } else {
+          data.Stock = data.Qty;
+        }
 
         await _stockMovementRepo.InsertStockMovementAsync(data);
-      } catch (Exception) {
-        throw;
+      } catch {
+        OperationErrorsList errorsList = new OperationErrorsList();
+        errorsList.AddError("add-stock-movement-db-error", Phrases.GlobalErrorOperationDB);
+
+        throw new ServiceErrorException(errorsList);
       }
     }
   }
