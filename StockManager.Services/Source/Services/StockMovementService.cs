@@ -19,7 +19,15 @@ namespace StockManager.Services.Source.Services {
 
         // Calculate the new accumulated stock
         if (lastStockMovement != null) {
-          data.Stock = (data.Qty + lastStockMovement.Stock);
+
+          // if positive qty it's a IN movement
+          if (data.Qty > 0) {
+            data.Stock = (data.Qty + lastStockMovement.Stock);
+
+            // negative qty it's a OUT movement
+          } else {
+            data.Stock = (lastStockMovement.Stock - ((-1) * data.Qty));
+          }
 
           // Set the accumulated if it is the first movement
         } else {

@@ -38,6 +38,32 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
+    public async Task DeleteProductLocationAsyn(int productLocationId, int userId) {
+      try {
+        ProductLocation productLocation = await _productLocationRepo
+          .FindProductLocationByIdAsync(productLocationId);
+
+        if (productLocation != null) {
+          _productLocationRepo.RemoveProductLocation(productLocation);
+
+          StockMovement stockMovement = new StockMovement() {
+            UserId = userId,
+            ProductId = productLocation.ProductId,
+            FromLocationId = productLocation.LocationId,
+            Qty = (productLocation.Stock * (-1)), // To remove stock
+          };
+
+          await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+          await _productLocationRepo.SaveDbChangesAsync();
+        }
+      } catch {
+        OperationErrorsList errorsList = new OperationErrorsList();
+        errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
+
+        throw new ServiceErrorException(errorsList);
+      }
+    }
+
     private async Task ValidateProductLocationDataAsync(ProductLocation data) {
       OperationErrorsList errorsList = new OperationErrorsList();
 

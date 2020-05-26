@@ -8,5 +8,9 @@ namespace StockManager.Storage.Source.Contracts {
     Task InsertProductLocationAsync(ProductLocation data);
 
     Task<ProductLocation> FindProductLocationAsync(int productId, int locationId);
+
+    Task<ProductLocation> FindProductLocationByIdAsync(int productLocationId);
+
+    void RemoveProductLocation(ProductLocation productLocation);
   }
 }

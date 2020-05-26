@@ -26,11 +26,6 @@ namespace StockManager.Source.UserControls {
       // Set the selected product
       _product = product;
 
-      // Set initial state
-      lbErrorLocation.Visible = false;
-      lbErrorQty.Visible = false;
-      lbErrorMinStock.Visible = false;
-
       this.SetTranslatedPhrases();
       this.LoadProductLocationsAsync().Wait();
     }
@@ -67,6 +62,11 @@ namespace StockManager.Source.UserControls {
     private async Task LoadProductLocationsAsync() {
       Spinner.InitSpinner();
 
+      // Set initial state
+      lbErrorLocation.Visible = false;
+      lbErrorQty.Visible = false;
+      lbErrorMinStock.Visible = false;
+      
       dgvProductLocations.Rows.Clear();
       dgvProductStockMovements.Rows.Clear();
 
@@ -172,16 +172,40 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Remove product location button click
     /// </summary>
-    private void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-      if (e.ColumnIndex == 4) {
-        //Write here your code...
+    private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+      if ((e.ColumnIndex == 4) && (e.RowIndex >= 0)) {
         int productLocationId = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-        // TODO: Write the code
-        // - Show dialog
-        // - If yes, delete the location
-        // Same a the normal delete
-        MessageBox.Show("You will delete the product location ID: " + productLocationId);
+        await this.ActionDeleteClickAsync(productLocationId);
+      }
+    }
+
+    private async Task ActionDeleteClickAsync(int productLocationId) {
+      if ((productLocationId > 0) && MessageBox.Show(
+       "Remove location", // TODO: Add better phrase and add it to the translations
+       Phrases.GlobalDialogDeleteTitle,
+         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+       ) {
+        try {
+          Spinner.InitSpinner();
+
+          await AppServices.ProductLocationService
+            .DeleteProductLocationAsyn(productLocationId, Program.LoggedInUser.UserId);
+
+          // Reload Ui
+          await this.LoadProductLocationsAsync();
+          Spinner.StopSpinner();
+
+        } catch (ServiceErrorException ex) {
+          Spinner.StopSpinner();
+
+          MessageBox.Show(
+            $"{ex.Errors[0].Error}",
+            Phrases.GlobalDialogErrorTitle,
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error
+          );
+        }
       }
     }
   }

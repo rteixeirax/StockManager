@@ -25,5 +25,15 @@ namespace StockManager.Storage.Source.Repositories {
         .Where(pl => pl.ProductId == productId && pl.LocationId == locationId)
         .FirstOrDefaultAsync();
     }
+
+    public async Task<ProductLocation> FindProductLocationByIdAsync(int productLocationId) {
+      return await _db.ProductLocations
+        .Where(x => x.ProductLocationId == productLocationId)
+        .FirstOrDefaultAsync();
+    }
+
+    public void RemoveProductLocation(ProductLocation productLocation) {
+      _db.ProductLocations.Remove(productLocation);
+    }
   }
 }
