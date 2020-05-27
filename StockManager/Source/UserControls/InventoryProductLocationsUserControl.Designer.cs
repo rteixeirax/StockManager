@@ -39,22 +39,23 @@
       this.lbFormTitle = new System.Windows.Forms.Label();
       this.btnAddLocation = new System.Windows.Forms.Button();
       this.lbErrorMinStock = new System.Windows.Forms.Label();
-      this.lbErrorQty = new System.Windows.Forms.Label();
+      this.lbErrorStock = new System.Windows.Forms.Label();
       this.lbErrorLocation = new System.Windows.Forms.Label();
       this.lbMinStock = new System.Windows.Forms.Label();
       this.numMinStock = new System.Windows.Forms.NumericUpDown();
-      this.lbQty = new System.Windows.Forms.Label();
-      this.numQty = new System.Windows.Forms.NumericUpDown();
+      this.lbStock = new System.Windows.Forms.Label();
+      this.numStock = new System.Windows.Forms.NumericUpDown();
       this.lbLocation = new System.Windows.Forms.Label();
       this.dgvProductLocations = new System.Windows.Forms.DataGridView();
+      this.btnback = new System.Windows.Forms.Button();
+      this.pnlTop = new System.Windows.Forms.Panel();
+      this.dgvProductStockMovements = new System.Windows.Forms.DataGridView();
+      this.lbProductStockMovements = new System.Windows.Forms.Label();
       this.columnProductLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnMinStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
-      this.btnback = new System.Windows.Forms.Button();
-      this.pnlTop = new System.Windows.Forms.Panel();
-      this.dgvProductStockMovements = new System.Windows.Forms.DataGridView();
       this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +63,10 @@
       this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.lbProductStockMovements = new System.Windows.Forms.Label();
       this.pnlForm.SuspendLayout();
       this.panel1.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numMinStock)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).BeginInit();
       this.pnlTop.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).BeginInit();
@@ -90,12 +90,12 @@
       this.pnlForm.Controls.Add(this.panel1);
       this.pnlForm.Controls.Add(this.btnAddLocation);
       this.pnlForm.Controls.Add(this.lbErrorMinStock);
-      this.pnlForm.Controls.Add(this.lbErrorQty);
+      this.pnlForm.Controls.Add(this.lbErrorStock);
       this.pnlForm.Controls.Add(this.lbErrorLocation);
       this.pnlForm.Controls.Add(this.lbMinStock);
       this.pnlForm.Controls.Add(this.numMinStock);
-      this.pnlForm.Controls.Add(this.lbQty);
-      this.pnlForm.Controls.Add(this.numQty);
+      this.pnlForm.Controls.Add(this.lbStock);
+      this.pnlForm.Controls.Add(this.numStock);
       this.pnlForm.Controls.Add(this.cbLocations);
       this.pnlForm.Controls.Add(this.lbLocation);
       this.pnlForm.ForeColor = System.Drawing.Color.Transparent;
@@ -135,7 +135,7 @@
       this.btnAddLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnAddLocation.ForeColor = System.Drawing.Color.White;
       this.btnAddLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnAddLocation.Location = new System.Drawing.Point(87, 242);
+      this.btnAddLocation.Location = new System.Drawing.Point(87, 240);
       this.btnAddLocation.Name = "btnAddLocation";
       this.btnAddLocation.Size = new System.Drawing.Size(93, 27);
       this.btnAddLocation.TabIndex = 3;
@@ -154,16 +154,16 @@
       this.lbErrorMinStock.TabIndex = 17;
       this.lbErrorMinStock.Text = "lbErrorMinStock";
       // 
-      // lbErrorQty
+      // lbErrorStock
       // 
-      this.lbErrorQty.AutoSize = true;
-      this.lbErrorQty.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorQty.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorQty.Location = new System.Drawing.Point(50, 144);
-      this.lbErrorQty.Name = "lbErrorQty";
-      this.lbErrorQty.Size = new System.Drawing.Size(78, 16);
-      this.lbErrorQty.TabIndex = 16;
-      this.lbErrorQty.Text = "lbErrorQty";
+      this.lbErrorStock.AutoSize = true;
+      this.lbErrorStock.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbErrorStock.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorStock.Location = new System.Drawing.Point(50, 144);
+      this.lbErrorStock.Name = "lbErrorStock";
+      this.lbErrorStock.Size = new System.Drawing.Size(78, 16);
+      this.lbErrorStock.TabIndex = 16;
+      this.lbErrorStock.Text = "lbErrorQty";
       // 
       // lbErrorLocation
       // 
@@ -205,40 +205,40 @@
       this.numMinStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
       this.numMinStock.ThousandsSeparator = true;
       // 
-      // lbQty
+      // lbStock
       // 
-      this.lbQty.AutoSize = true;
-      this.lbQty.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbQty.Location = new System.Drawing.Point(50, 99);
-      this.lbQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      this.lbQty.Name = "lbQty";
-      this.lbQty.Size = new System.Drawing.Size(48, 16);
-      this.lbQty.TabIndex = 3;
-      this.lbQty.Text = "lbQty";
+      this.lbStock.AutoSize = true;
+      this.lbStock.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+      this.lbStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      this.lbStock.Location = new System.Drawing.Point(50, 99);
+      this.lbStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+      this.lbStock.Name = "lbStock";
+      this.lbStock.Size = new System.Drawing.Size(48, 16);
+      this.lbStock.TabIndex = 3;
+      this.lbStock.Text = "lbQty";
       // 
-      // numQty
+      // numStock
       // 
-      this.numQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.numQty.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numQty.ForeColor = System.Drawing.Color.Black;
-      this.numQty.Location = new System.Drawing.Point(53, 117);
-      this.numQty.Maximum = new decimal(new int[] {
+      this.numStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.numStock.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.numStock.ForeColor = System.Drawing.Color.Black;
+      this.numStock.Location = new System.Drawing.Point(53, 117);
+      this.numStock.Maximum = new decimal(new int[] {
             1215752192,
             23,
             0,
             0});
-      this.numQty.Minimum = new decimal(new int[] {
+      this.numStock.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-      this.numQty.Name = "numQty";
-      this.numQty.Size = new System.Drawing.Size(167, 24);
-      this.numQty.TabIndex = 1;
-      this.numQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.numQty.ThousandsSeparator = true;
-      this.numQty.Value = new decimal(new int[] {
+      this.numStock.Name = "numStock";
+      this.numStock.Size = new System.Drawing.Size(167, 24);
+      this.numStock.TabIndex = 1;
+      this.numStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+      this.numStock.ThousandsSeparator = true;
+      this.numStock.Value = new decimal(new int[] {
             1,
             0,
             0,
@@ -308,6 +308,7 @@
       dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgvProductLocations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      this.dgvProductLocations.RowHeadersVisible = false;
       this.dgvProductLocations.RowHeadersWidth = 25;
       dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -323,44 +324,6 @@
       this.dgvProductLocations.Size = new System.Drawing.Size(558, 281);
       this.dgvProductLocations.TabIndex = 4;
       this.dgvProductLocations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductLocations_CellContentClick);
-      // 
-      // columnProductLocationId
-      // 
-      this.columnProductLocationId.HeaderText = "columnProductLocationId";
-      this.columnProductLocationId.Name = "columnProductLocationId";
-      this.columnProductLocationId.ReadOnly = true;
-      this.columnProductLocationId.Visible = false;
-      // 
-      // columnLocation
-      // 
-      this.columnLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnLocation.HeaderText = "columnLocation";
-      this.columnLocation.Name = "columnLocation";
-      this.columnLocation.ReadOnly = true;
-      this.columnLocation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      // 
-      // ColumnStock
-      // 
-      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.ColumnStock.HeaderText = "ColumnStock";
-      this.ColumnStock.Name = "ColumnStock";
-      this.ColumnStock.ReadOnly = true;
-      // 
-      // columnMinStock
-      // 
-      this.columnMinStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnMinStock.HeaderText = "columnMinStock";
-      this.columnMinStock.Name = "columnMinStock";
-      this.columnMinStock.ReadOnly = true;
-      // 
-      // columnActionDelete
-      // 
-      this.columnActionDelete.HeaderText = "";
-      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
-      this.columnActionDelete.MinimumWidth = 24;
-      this.columnActionDelete.Name = "columnActionDelete";
-      this.columnActionDelete.ReadOnly = true;
-      this.columnActionDelete.Width = 24;
       // 
       // btnback
       // 
@@ -442,6 +405,7 @@
       dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgvProductStockMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+      this.dgvProductStockMovements.RowHeadersVisible = false;
       this.dgvProductStockMovements.RowHeadersWidth = 25;
       dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -456,6 +420,56 @@
       this.dgvProductStockMovements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvProductStockMovements.Size = new System.Drawing.Size(845, 260);
       this.dgvProductStockMovements.TabIndex = 5;
+      // 
+      // lbProductStockMovements
+      // 
+      this.lbProductStockMovements.AutoSize = true;
+      this.lbProductStockMovements.BackColor = System.Drawing.Color.Transparent;
+      this.lbProductStockMovements.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbProductStockMovements.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.lbProductStockMovements.Location = new System.Drawing.Point(5, 348);
+      this.lbProductStockMovements.Name = "lbProductStockMovements";
+      this.lbProductStockMovements.Size = new System.Drawing.Size(263, 22);
+      this.lbProductStockMovements.TabIndex = 21;
+      this.lbProductStockMovements.Text = "lbProductStockMovements";
+      // 
+      // columnProductLocationId
+      // 
+      this.columnProductLocationId.HeaderText = "columnProductLocationId";
+      this.columnProductLocationId.Name = "columnProductLocationId";
+      this.columnProductLocationId.ReadOnly = true;
+      this.columnProductLocationId.Visible = false;
+      // 
+      // columnLocation
+      // 
+      this.columnLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnLocation.HeaderText = "columnLocation";
+      this.columnLocation.Name = "columnLocation";
+      this.columnLocation.ReadOnly = true;
+      this.columnLocation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      // 
+      // ColumnStock
+      // 
+      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.ColumnStock.HeaderText = "ColumnStock";
+      this.ColumnStock.Name = "ColumnStock";
+      this.ColumnStock.ReadOnly = true;
+      // 
+      // columnMinStock
+      // 
+      this.columnMinStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnMinStock.HeaderText = "columnMinStock";
+      this.columnMinStock.Name = "columnMinStock";
+      this.columnMinStock.ReadOnly = true;
+      // 
+      // columnActionDelete
+      // 
+      this.columnActionDelete.HeaderText = "";
+      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
+      this.columnActionDelete.MinimumWidth = 24;
+      this.columnActionDelete.Name = "columnActionDelete";
+      this.columnActionDelete.ReadOnly = true;
+      this.columnActionDelete.Width = 24;
       // 
       // dataGridViewTextBoxColumn1
       // 
@@ -507,18 +521,6 @@
       this.columnUser.Name = "columnUser";
       this.columnUser.ReadOnly = true;
       // 
-      // lbProductStockMovements
-      // 
-      this.lbProductStockMovements.AutoSize = true;
-      this.lbProductStockMovements.BackColor = System.Drawing.Color.Transparent;
-      this.lbProductStockMovements.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbProductStockMovements.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.lbProductStockMovements.Location = new System.Drawing.Point(5, 348);
-      this.lbProductStockMovements.Name = "lbProductStockMovements";
-      this.lbProductStockMovements.Size = new System.Drawing.Size(263, 22);
-      this.lbProductStockMovements.TabIndex = 21;
-      this.lbProductStockMovements.Text = "lbProductStockMovements";
-      // 
       // InventoryProductLocationsUserControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -537,7 +539,7 @@
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numMinStock)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numQty)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).EndInit();
       this.pnlTop.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).EndInit();
@@ -551,12 +553,12 @@
         private System.Windows.Forms.ComboBox cbLocations;
         private System.Windows.Forms.Panel pnlForm;
         private System.Windows.Forms.Label lbLocation;
-        private System.Windows.Forms.NumericUpDown numQty;
+        private System.Windows.Forms.NumericUpDown numStock;
         private System.Windows.Forms.Label lbMinStock;
         private System.Windows.Forms.NumericUpDown numMinStock;
-        private System.Windows.Forms.Label lbQty;
+        private System.Windows.Forms.Label lbStock;
         private System.Windows.Forms.Label lbErrorMinStock;
-        private System.Windows.Forms.Label lbErrorQty;
+        private System.Windows.Forms.Label lbErrorStock;
         private System.Windows.Forms.Label lbErrorLocation;
         private System.Windows.Forms.Label lbFormTitle;
         private System.Windows.Forms.DataGridView dgvProductLocations;
@@ -566,17 +568,17 @@
     private System.Windows.Forms.DataGridView dgvProductStockMovements;
     private System.Windows.Forms.Label lbProductStockMovements;
     private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnLocation;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnMinStock;
     private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+    private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
   }
 }

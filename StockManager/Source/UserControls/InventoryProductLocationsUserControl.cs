@@ -38,11 +38,11 @@ namespace StockManager.Source.UserControls {
       btnAddLocation.Text = Phrases.GlobalAdd;
 
       lbLocation.Text = Phrases.GlobalLocation;
-      lbQty.Text = Phrases.StockMovementQty;
+      lbStock.Text = Phrases.StockMovementsStock;
       lbMinStock.Text = Phrases.StockMovementMinStock;
       lbFormTitle.Text = Phrases.ProductLocationAddToLocation;
       dgvProductLocations.Columns[1].HeaderText = Phrases.ProductLocationTableHeader;
-      dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementQty;
+      dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
       dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
       dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalDelete;
 
@@ -64,7 +64,7 @@ namespace StockManager.Source.UserControls {
 
       // Set initial state
       lbErrorLocation.Visible = false;
-      lbErrorQty.Visible = false;
+      lbErrorStock.Visible = false;
       lbErrorMinStock.Visible = false;
       
       dgvProductLocations.Rows.Clear();
@@ -112,7 +112,7 @@ namespace StockManager.Source.UserControls {
 
     private void ShowFormErrors(List<ErrorType> errors) {
       lbErrorLocation.Visible = false;
-      lbErrorQty.Visible = false;
+      lbErrorStock.Visible = false;
       lbErrorMinStock.Visible = false;
 
       errors.ForEach((err) => {
@@ -122,8 +122,8 @@ namespace StockManager.Source.UserControls {
         }
 
         if (err.Field == "Stock") {
-          lbErrorQty.Text = err.Error;
-          lbErrorQty.Visible = true;
+          lbErrorStock.Text = err.Error;
+          lbErrorStock.Visible = true;
         }
 
         if (err.Field == "MinStock") {
@@ -140,7 +140,7 @@ namespace StockManager.Source.UserControls {
         ProductLocation productLocation = new ProductLocation() {
           ProductId = _product.ProductId,
           LocationId = int.Parse(cbLocations.SelectedValue.ToString()),
-          Stock = float.Parse(numQty.Value.ToString()),
+          Stock = float.Parse(numStock.Value.ToString()),
           MinStock = float.Parse(numMinStock.Value.ToString())
         };
 

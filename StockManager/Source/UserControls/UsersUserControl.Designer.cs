@@ -39,9 +39,6 @@
       this.btnDeleteUser = new System.Windows.Forms.Button();
       this.btnCreateUser = new System.Windows.Forms.Button();
       this.dgvUsers = new System.Windows.Forms.DataGridView();
-      this.tbSeachText = new System.Windows.Forms.TextBox();
-      this.pnbSearchBox = new System.Windows.Forms.Panel();
-      this.btnClearSearchValue = new System.Windows.Forms.Button();
       this.columnUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
       this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
+      this.tbSeachText = new System.Windows.Forms.TextBox();
+      this.pnbSearchBox = new System.Windows.Forms.Panel();
+      this.btnClearSearchValue = new System.Windows.Forms.Button();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
       this.pnlActions.SuspendLayout();
@@ -120,8 +120,8 @@
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
       this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -166,56 +166,18 @@
       dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      this.dgvUsers.RowHeadersVisible = false;
       this.dgvUsers.RowHeadersWidth = 25;
       dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
       this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvUsers.Size = new System.Drawing.Size(845, 365);
       this.dgvUsers.TabIndex = 0;
       this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
-      // 
-      // tbSeachText
-      // 
-      this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.tbSeachText.BackColor = System.Drawing.Color.White;
-      this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
-      this.tbSeachText.Name = "tbSeachText";
-      this.tbSeachText.Size = new System.Drawing.Size(274, 22);
-      this.tbSeachText.TabIndex = 4;
-      this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
-      this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
-      // 
-      // pnbSearchBox
-      // 
-      this.pnbSearchBox.Controls.Add(pbSearchIcon);
-      this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
-      this.pnbSearchBox.Controls.Add(this.tbSeachText);
-      this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
-      this.pnbSearchBox.Name = "pnbSearchBox";
-      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
-      this.pnbSearchBox.TabIndex = 9;
-      // 
-      // btnClearSearchValue
-      // 
-      this.btnClearSearchValue.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnClearSearchValue.BackColor = System.Drawing.Color.White;
-      this.btnClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
-      this.btnClearSearchValue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnClearSearchValue.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnClearSearchValue.ForeColor = System.Drawing.Color.White;
-      this.btnClearSearchValue.Image = ((System.Drawing.Image)(resources.GetObject("btnClearSearchValue.Image")));
-      this.btnClearSearchValue.Location = new System.Drawing.Point(285, 7);
-      this.btnClearSearchValue.Name = "btnClearSearchValue";
-      this.btnClearSearchValue.Size = new System.Drawing.Size(17, 20);
-      this.btnClearSearchValue.TabIndex = 11;
-      this.btnClearSearchValue.UseVisualStyleBackColor = false;
-      this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
       // 
       // columnUserId
       // 
@@ -270,6 +232,45 @@
       this.columnActionDelete.Name = "columnActionDelete";
       this.columnActionDelete.ReadOnly = true;
       this.columnActionDelete.Width = 30;
+      // 
+      // tbSeachText
+      // 
+      this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.tbSeachText.BackColor = System.Drawing.Color.White;
+      this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+      this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.tbSeachText.Location = new System.Drawing.Point(30, 6);
+      this.tbSeachText.Name = "tbSeachText";
+      this.tbSeachText.Size = new System.Drawing.Size(274, 22);
+      this.tbSeachText.TabIndex = 4;
+      this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
+      this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
+      // 
+      // pnbSearchBox
+      // 
+      this.pnbSearchBox.Controls.Add(pbSearchIcon);
+      this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
+      this.pnbSearchBox.Controls.Add(this.tbSeachText);
+      this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
+      this.pnbSearchBox.Name = "pnbSearchBox";
+      this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
+      this.pnbSearchBox.TabIndex = 9;
+      // 
+      // btnClearSearchValue
+      // 
+      this.btnClearSearchValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnClearSearchValue.BackColor = System.Drawing.Color.White;
+      this.btnClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
+      this.btnClearSearchValue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnClearSearchValue.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnClearSearchValue.ForeColor = System.Drawing.Color.White;
+      this.btnClearSearchValue.Image = ((System.Drawing.Image)(resources.GetObject("btnClearSearchValue.Image")));
+      this.btnClearSearchValue.Location = new System.Drawing.Point(285, 7);
+      this.btnClearSearchValue.Name = "btnClearSearchValue";
+      this.btnClearSearchValue.Size = new System.Drawing.Size(17, 20);
+      this.btnClearSearchValue.TabIndex = 11;
+      this.btnClearSearchValue.UseVisualStyleBackColor = false;
+      this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
       // 
       // UsersUserControl
       // 

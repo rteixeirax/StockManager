@@ -118,8 +118,8 @@
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
       this.dgvLocations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
       this.dgvLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -163,12 +163,13 @@
       dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
       this.dgvLocations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      this.dgvLocations.RowHeadersVisible = false;
       this.dgvLocations.RowHeadersWidth = 25;
       dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
       this.dgvLocations.RowsDefaultCellStyle = dataGridViewCellStyle5;
       this.dgvLocations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
       this.dgvLocations.Size = new System.Drawing.Size(845, 365);
