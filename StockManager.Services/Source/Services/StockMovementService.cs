@@ -15,19 +15,12 @@ namespace StockManager.Services.Source.Services {
 
     public async Task AddStockMovementAsync(StockMovement data) {
       try {
-        StockMovement lastStockMovement = await _stockMovementRepo.FindLastStockMovementAsync();
+        StockMovement lastStockMovement = await _stockMovementRepo
+          .FindProductLastStockMovementAsync(data.ProductId);
 
         // Calculate the new accumulated stock
         if (lastStockMovement != null) {
-
-          // if positive qty it's a IN movement
-          if (data.Qty > 0) {
-            data.Stock = (data.Qty + lastStockMovement.Stock);
-
-            // negative qty it's a OUT movement
-          } else {
-            data.Stock = (lastStockMovement.Stock - ((-1) * data.Qty));
-          }
+          data.Stock = (lastStockMovement.Stock + data.Qty);
 
           // Set the accumulated if it is the first movement
         } else {

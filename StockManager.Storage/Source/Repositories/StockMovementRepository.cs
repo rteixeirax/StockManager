@@ -20,8 +20,10 @@ namespace StockManager.Storage.Source.Repositories {
       await _db.StockMovements.AddAsync(data);
     }
 
-    public async Task<StockMovement> FindLastStockMovementAsync() {
-      return await _db.StockMovements.OrderByDescending(x => x.CreatedAt).FirstOrDefaultAsync();
+    public async Task<StockMovement> FindProductLastStockMovementAsync(int productId) {
+      return await _db.StockMovements
+        .Where(x => x.ProductId == productId)
+        .OrderByDescending(x => x.CreatedAt).FirstOrDefaultAsync();
     }
   }
 }

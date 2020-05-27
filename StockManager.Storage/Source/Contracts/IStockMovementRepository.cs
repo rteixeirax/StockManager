@@ -7,6 +7,6 @@ namespace StockManager.Storage.Source.Contracts {
 
     Task InsertStockMovementAsync(StockMovement data);
 
-    Task<StockMovement> FindLastStockMovementAsync();
+    Task<StockMovement> FindProductLastStockMovementAsync(int productId);
   }
 }
