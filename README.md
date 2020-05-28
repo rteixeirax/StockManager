@@ -32,7 +32,7 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
 * **Create a migration in a specific folder:** <br/>
   `Add-Migration MIGRATION_NAME -OutputDir Source/Migrations`
 
-   👉 * You don't need to specify the output directory for subsequent migrations since they are created as siblings to the last one.*
+   👉 *You don't need to specify the output directory for subsequent migrations since they are created as siblings to the last one.*
 
 * **Update the DB with the last changes:** <br/>
   `Update-Database`
