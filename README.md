@@ -29,11 +29,19 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
 * **Create a migration:** <br/>
   `Add-Migration MIGRATION_NAME`
 
+* **Create a migration in a specific folder:** <br/>
+  `Add-Migration MIGRATION_NAME -OutputDir Source/Migrations`
+
+   👉 * You don't need to specify the output directory for subsequent migrations since they are created as siblings to the last one.*
+
 * **Update the DB with the last changes:** <br/>
   `Update-Database`
 
 * **Undo the last migration:** <br/>
   `Remove-Migration`
+
+* **Forcing the undo the last migration:** <br/>
+  `Remove-Migration -Force`
 
 ## Nuget packages
 * [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)
