@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockManager.Database.Source;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Database.Source.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200511195708_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20200528192212_CreateTable")]
+    partial class CreateTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,9 +41,9 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             AppSettingsId = 1,
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 692, DateTimeKind.Utc).AddTicks(8549),
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 15, DateTimeKind.Utc).AddTicks(1085),
                             Language = "pt-PT",
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 692, DateTimeKind.Utc).AddTicks(8549)
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 16, DateTimeKind.Utc).AddTicks(848)
                         });
                 });
 
@@ -75,16 +75,16 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             LocationId = 1,
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886),
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497),
                             Name = "Warehouse",
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886)
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497)
                         },
                         new
                         {
                             LocationId = 2,
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886),
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497),
                             Name = "Vehicle #1",
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886)
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497)
                         });
                 });
 
@@ -185,15 +185,15 @@ namespace StockManager.Database.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112),
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112)
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393),
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112),
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112)
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393),
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393)
                         });
                 });
 
@@ -280,10 +280,10 @@ namespace StockManager.Database.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 822, DateTimeKind.Utc).AddTicks(7100),
-                            Password = "$2b$10$d6Cx5ONpi0o08El8P3Nefukv/pMjPB6VhNoGwz.TTbWfXzn69uNLO",
+                            CreatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280),
+                            Password = "$2b$10$FU0sSJy/GT32lnoisqX4BueFInBfAjmjHn1kN7AZI.q7c8xA6iKvq",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 5, 11, 19, 57, 7, 822, DateTimeKind.Utc).AddTicks(7100),
+                            UpdatedAt = new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280),
                             Username = "Admin"
                         });
                 });

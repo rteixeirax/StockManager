@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace StockManager.Database.Migrations
+namespace StockManager.Database.Source.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class CreateTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,9 +13,9 @@ namespace StockManager.Database.Migrations
                 {
                     AppSettingsId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Language = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    Language = table.Column<string>(nullable: true)
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -28,9 +28,9 @@ namespace StockManager.Database.Migrations
                 {
                     LocationId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,10 +43,10 @@ namespace StockManager.Database.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
                     Reference = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,9 +59,9 @@ namespace StockManager.Database.Migrations
                 {
                     RoleId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Code = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
-                    Code = table.Column<string>(nullable: false)
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -74,12 +74,12 @@ namespace StockManager.Database.Migrations
                 {
                     ProductLocationId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
                     Stock = table.Column<float>(nullable: false, defaultValue: 0f),
                     MinStock = table.Column<float>(nullable: false, defaultValue: 0f),
                     ProductId = table.Column<int>(nullable: false),
-                    LocationId = table.Column<int>(nullable: false)
+                    LocationId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,12 +104,12 @@ namespace StockManager.Database.Migrations
                 {
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
                     Username = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     LastLogin = table.Column<DateTime>(nullable: true),
-                    RoleId = table.Column<int>(nullable: false)
+                    RoleId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,14 +128,14 @@ namespace StockManager.Database.Migrations
                 {
                     StockMovementId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true),
                     Qty = table.Column<float>(nullable: false),
                     Stock = table.Column<float>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
                     FromLocationId = table.Column<int>(nullable: true),
                     ToLocationId = table.Column<int>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
+                    UserId = table.Column<int>(nullable: true),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -169,32 +169,32 @@ namespace StockManager.Database.Migrations
             migrationBuilder.InsertData(
                 table: "AppSettings",
                 columns: new[] { "AppSettingsId", "CreatedAt", "Language", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 5, 11, 19, 57, 7, 692, DateTimeKind.Utc).AddTicks(8549), "pt-PT", new DateTime(2020, 5, 11, 19, 57, 7, 692, DateTimeKind.Utc).AddTicks(8549) });
+                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 15, DateTimeKind.Utc).AddTicks(1085), "pt-PT", new DateTime(2020, 5, 28, 19, 22, 12, 16, DateTimeKind.Utc).AddTicks(848) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886), "Warehouse", new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886) });
+                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497), "Warehouse", new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 2, new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886), "Vehicle #1", new DateTime(2020, 5, 11, 19, 57, 7, 837, DateTimeKind.Utc).AddTicks(3886) });
+                values: new object[] { 2, new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497), "Vehicle #1", new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1, "Admin", new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112), new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112) });
+                values: new object[] { 1, "Admin", new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393), new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 2, "User", new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112), new DateTime(2020, 5, 11, 19, 57, 7, 719, DateTimeKind.Utc).AddTicks(2112) });
+                values: new object[] { 2, "User", new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393), new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393) });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "LastLogin", "Password", "RoleId", "UpdatedAt", "Username" },
-                values: new object[] { 1, new DateTime(2020, 5, 11, 19, 57, 7, 822, DateTimeKind.Utc).AddTicks(7100), null, "$2b$10$d6Cx5ONpi0o08El8P3Nefukv/pMjPB6VhNoGwz.TTbWfXzn69uNLO", 1, new DateTime(2020, 5, 11, 19, 57, 7, 822, DateTimeKind.Utc).AddTicks(7100), "Admin" });
+                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280), null, "$2b$10$FU0sSJy/GT32lnoisqX4BueFInBfAjmjHn1kN7AZI.q7c8xA6iKvq", 1, new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280), "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "UniqueName",

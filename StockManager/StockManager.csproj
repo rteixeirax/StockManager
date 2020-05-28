@@ -307,7 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StockManager.Database\StockManager.Database.csproj">
-      <Project>{c3c9810d-b92c-4dbf-b68e-0272114cbab9}</Project>
+      <Project>{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}</Project>
       <Name>StockManager.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockManager.Services\StockManager.Services.csproj">

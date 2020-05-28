@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Source\Migrations\20200528195652_VAI_AgoraX.cs" />
+    <Compile Remove="Source\Migrations\20200528195652_VAI_AgoraX.Designer.cs" />
     <Compile Remove="Src\Migrations\20200112204823_WipSeed.cs" />
     <Compile Remove="Src\Migrations\20200112204823_WipSeed.Designer.cs" />
     <Compile Remove="Src\Migrations\20200112210149_AddDatabaseSeeds.cs" />
