@@ -4,7 +4,7 @@
 
 ### After download or clone the project:
 1) Run `rebuild solution` to install all dependencies.
-2) In the **Package Manager Console**, select the **StockManager.Storage** as the Default project and run `Update-Database` to create the `App.db.sqlite` file in `/StockManager` folder.
+2) In the **Package Manager Console**, select the **StockManager.Database** as the Default project and run `Update-Database` to create the `App.db.sqlite` file in `/StockManager` folder.
 
 👉 *The database will have a default user with the credentials, **username:** `Admin` and **password:** `admin`.*
 

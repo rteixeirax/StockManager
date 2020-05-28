@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Models;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Source.Components;
@@ -66,7 +66,7 @@ namespace StockManager.Source.UserControls {
       lbErrorLocation.Visible = false;
       lbErrorStock.Visible = false;
       lbErrorMinStock.Visible = false;
-      
+
       dgvProductLocations.Rows.Clear();
       dgvProductStockMovements.Rows.Clear();
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services.Source;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Models;
 using StockManager.Tests.Source;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;

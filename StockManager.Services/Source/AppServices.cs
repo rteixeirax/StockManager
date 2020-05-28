@@ -1,7 +1,7 @@
 ﻿using StockManager.Services.Source.Contracts;
 using StockManager.Services.Source.Services;
-using StockManager.Storage.Source;
-using StockManager.Storage.Source.Repositories;
+using StockManager.Database.Source;
+using StockManager.Database.Source.Repositories;
 
 namespace StockManager.Services.Source {
   public static class AppServices {
@@ -13,15 +13,15 @@ namespace StockManager.Services.Source {
     public static IProductLocationService ProductLocationService { get; private set; }
     public static IStockMovementService StockMovementService { get; private set; }
 
-    public static void ConfigureServices(DatabaseContext storageContext) {
+    public static void ConfigureServices(DatabaseContext databaseContext) {
       // Instantiate our services
-      SettingsService = new AppSettingsService(new AppSettingsRepository(storageContext));
-      UserService = new UserService(new UserRepository(storageContext));
-      RoleService = new RoleService(new RoleRepository(storageContext));
-      LocationService = new LocationService(new LocationRepository(storageContext));
-      ProductService = new ProductService(new ProductRepository(storageContext));
-      ProductLocationService = new ProductLocationService(new ProductLocationRepository(storageContext));
-      StockMovementService = new StockMovementService(new StockMovementRepository(storageContext));
+      SettingsService = new AppSettingsService(new AppSettingsRepository(databaseContext));
+      UserService = new UserService(new UserRepository(databaseContext));
+      RoleService = new RoleService(new RoleRepository(databaseContext));
+      LocationService = new LocationService(new LocationRepository(databaseContext));
+      ProductService = new ProductService(new ProductRepository(databaseContext));
+      ProductLocationService = new ProductLocationService(new ProductLocationRepository(databaseContext));
+      StockMovementService = new StockMovementService(new StockMovementRepository(databaseContext));
     }
   }
 }

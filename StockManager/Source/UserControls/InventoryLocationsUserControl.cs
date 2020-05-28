@@ -1,6 +1,6 @@
 ﻿using StockManager.Source.Forms;
 using StockManager.Services.Source;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System;
@@ -184,7 +184,7 @@ namespace StockManager.Source.UserControls {
       if (tbSeachText.Text.Length > 0) {
         btnClearSearchValue.Visible = true;
 
-        // If the user clear all the search box text after doing some search, 
+        // If the user clear all the search box text after doing some search,
         // i need to query the DB without any search param to show all table data.
       } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
         _hasBeenSearching = false;

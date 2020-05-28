@@ -1,6 +1,6 @@
 ﻿using StockManager.Services.Source.Contracts;
-using StockManager.Storage.Source.Contracts;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Contracts;
+using StockManager.Database.Source.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

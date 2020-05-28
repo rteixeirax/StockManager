@@ -1,4 +1,4 @@
-﻿using StockManager.Storage.Source.Models;
+﻿using StockManager.Database.Source.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

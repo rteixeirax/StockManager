@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using StockManager.Source.Forms;
 using StockManager.Services.Source;
-using StockManager.Storage.Source;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source;
+using StockManager.Database.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
 using System;
@@ -38,15 +38,15 @@ namespace StockManager.Source {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 
-      // Set the options builder for our storage context
+      // Set the options builder for our database context
       var builder = new DbContextOptionsBuilder<DatabaseContext>();
       builder.UseSqlite(AppConstants.connectionString);
 
-      // Instantiate our storage
-      DatabaseContext StorageContext = new DatabaseContext(builder.Options);
+      // Instantiate our database
+      DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
 
       // Instantiate our services
-      AppServices.ConfigureServices(StorageContext);
+      AppServices.ConfigureServices(DatabaseContext);
 
       // Set the application language
       AppTranslations.ConfigureLanguage(await AppServices.SettingsService.GetAppLanguageAsync());

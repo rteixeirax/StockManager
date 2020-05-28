@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Services.Source;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System.Collections.Generic;
@@ -216,7 +216,7 @@ namespace StockManager.Tests.Source.Services {
     [TestMethod]
     public async Task ShouldFailDeleteLocation_LocationWithProducts() {
       // Arrange
-      var db = _config.GetStorageContext();
+      var db = _config.GetDatabaseContext();
 
       await AppServices.ProductService.CreateProductAsync(new Product() {
         Name = "mock product",

@@ -1,7 +1,7 @@
 ﻿using StockManager.Source.Components;
 using StockManager.Source.Forms;
 using StockManager.Services.Source;
-using StockManager.Storage.Source.Models;
+using StockManager.Database.Source.Models;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System;

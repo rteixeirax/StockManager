@@ -180,9 +180,9 @@
       <Project>{06E6DF51-756B-4D4C-BBBC-5FC389F681F3}</Project>
       <Name>StockManager.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StockManager.Storage\StockManager.Storage.csproj">
+    <ProjectReference Include="..\StockManager.Database\StockManager.Database.csproj">
       <Project>{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}</Project>
-      <Name>StockManager.Storage</Name>
+      <Name>StockManager.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
       <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
