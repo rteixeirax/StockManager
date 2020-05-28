@@ -133,6 +133,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove &quot;{0}&quot;?.
+        /// </summary>
+        public static string GlobalDialogDeleteBodyWithParam {
+            get {
+                return ResourceManager.GetString("GlobalDialogDeleteBodyWithParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         public static string GlobalDialogDeleteTitle {
@@ -462,6 +471,15 @@ namespace StockManager.Translations.Source {
         public static string ProductLocationAddToLocation {
             get {
                 return ResourceManager.GetString("ProductLocationAddToLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already associated.
+        /// </summary>
+        public static string ProductLocationErrorAlreadyAssociated {
+            get {
+                return ResourceManager.GetString("ProductLocationErrorAlreadyAssociated", resourceCulture);
             }
         }
         

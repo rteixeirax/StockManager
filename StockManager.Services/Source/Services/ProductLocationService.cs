@@ -88,7 +88,7 @@ namespace StockManager.Services.Source.Services {
         .FindProductLocationAsync(data.ProductId, data.LocationId);
 
       if (pLocationCheck != null) {
-        errorsList.AddError("LocationId", "Already associated"); // TODO: Add better phrase and create the translation
+        errorsList.AddError("LocationId", Phrases.ProductLocationErrorAlreadyAssociated);
       }
 
       if (errorsList.HasErrors()) {

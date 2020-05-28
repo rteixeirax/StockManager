@@ -175,14 +175,15 @@ namespace StockManager.Source.UserControls {
     private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
       if ((e.ColumnIndex == 4) && (e.RowIndex >= 0)) {
         int productLocationId = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
+        string locationName = dgvProductLocations.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-        await this.ActionDeleteClickAsync(productLocationId);
+        await this.ActionDeleteClickAsync(productLocationId, locationName);
       }
     }
 
-    private async Task ActionDeleteClickAsync(int productLocationId) {
+    private async Task ActionDeleteClickAsync(int productLocationId, string locationName) {
       if ((productLocationId > 0) && MessageBox.Show(
-       "Remove location", // TODO: Add better phrase and add it to the translations
+       string.Format(Phrases.GlobalDialogDeleteBodyWithParam, locationName),
        Phrases.GlobalDialogDeleteTitle,
          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
        ) {

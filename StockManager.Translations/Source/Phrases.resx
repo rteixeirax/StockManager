@@ -298,4 +298,10 @@
   <data name="GlobalLocation" xml:space="preserve">
     <value>Location</value>
   </data>
+  <data name="ProductLocationErrorAlreadyAssociated" xml:space="preserve">
+    <value>Already associated</value>
+  </data>
+  <data name="GlobalDialogDeleteBodyWithParam" xml:space="preserve">
+    <value>Remove "{0}"?</value>
+  </data>
 </root>
