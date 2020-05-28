@@ -7,7 +7,7 @@ using StockManager.Utilities.Source;
 namespace StockManager.Tests.Source {
   public class TestsConfig {
     private readonly SqliteConnection _connection;
-    private readonly StorageContext _storageContext;
+    private readonly DatabaseContext _storageContext;
 
     public TestsConfig() {
       // Set the Sqlite in memory database connection
@@ -17,11 +17,11 @@ namespace StockManager.Tests.Source {
       _connection.Open();
 
       // Set the options builder for our test storage context
-      var builder = new DbContextOptionsBuilder<StorageContext>();
+      var builder = new DbContextOptionsBuilder<DatabaseContext>();
       builder.UseSqlite(_connection);
 
       // Instantiate our test storage context
-      _storageContext = new StorageContext(builder.Options);
+      _storageContext = new DatabaseContext(builder.Options);
 
       // Instantiate our services
       AppServices.ConfigureServices(_storageContext);
@@ -31,7 +31,7 @@ namespace StockManager.Tests.Source {
     /// Get the test storage context
     /// </summary>
     /// <returns>StorageContext</returns>
-    public StorageContext GetStorageContext() => _storageContext;
+    public DatabaseContext GetStorageContext() => _storageContext;
 
     /// <summary>
     ///  Close storage connection

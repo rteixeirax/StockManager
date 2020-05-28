@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
   public class ProductLocationRepository : IProductLocationRepository {
-    private readonly StorageContext _db;
+    private readonly DatabaseContext _db;
 
-    public ProductLocationRepository(StorageContext db) {
+    public ProductLocationRepository(DatabaseContext db) {
       _db = db;
     }
 

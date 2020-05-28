@@ -13,7 +13,7 @@ namespace StockManager.Services.Source {
     public static IProductLocationService ProductLocationService { get; private set; }
     public static IStockMovementService StockMovementService { get; private set; }
 
-    public static void ConfigureServices(StorageContext storageContext) {
+    public static void ConfigureServices(DatabaseContext storageContext) {
       // Instantiate our services
       SettingsService = new AppSettingsService(new AppSettingsRepository(storageContext));
       UserService = new UserService(new UserRepository(storageContext));

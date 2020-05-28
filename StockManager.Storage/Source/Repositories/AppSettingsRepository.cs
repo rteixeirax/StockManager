@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
   public class AppSettingsRepository : IAppSettingsRepository {
-    private readonly StorageContext _db;
+    private readonly DatabaseContext _db;
 
-    public AppSettingsRepository (StorageContext db) {
+    public AppSettingsRepository (DatabaseContext db) {
       _db = db;
     }
 

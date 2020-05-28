@@ -8,12 +8,12 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source {
-  public class StorageContext : DbContext {
+  public class DatabaseContext : DbContext {
     // Need to keep a contructor without parameters for "Add/Remove-Migration"
-    public StorageContext() { }
+    public DatabaseContext() { }
 
     // Run the migrations when the DB is instantiated
-    public StorageContext(DbContextOptions<StorageContext> options)
+    public DatabaseContext(DbContextOptions<DatabaseContext> options)
       : base(options) => this.Database.Migrate();
 
     /// <summary>

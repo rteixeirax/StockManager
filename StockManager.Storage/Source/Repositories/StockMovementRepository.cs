@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
   public class StockMovementRepository : IStockMovementRepository {
-    private readonly StorageContext _db;
+    private readonly DatabaseContext _db;
 
-    public StockMovementRepository(StorageContext db) {
+    public StockMovementRepository(DatabaseContext db) {
       _db = db;
     }
 

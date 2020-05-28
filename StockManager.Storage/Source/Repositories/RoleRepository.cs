@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
   public class RoleRepository : IRoleRepository {
-    private readonly StorageContext _db;
+    private readonly DatabaseContext _db;
 
-    public RoleRepository(StorageContext db) {
+    public RoleRepository(DatabaseContext db) {
       _db = db;
     }
 

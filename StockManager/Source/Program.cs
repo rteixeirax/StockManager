@@ -39,11 +39,11 @@ namespace StockManager.Source {
       Application.SetCompatibleTextRenderingDefault(false);
 
       // Set the options builder for our storage context
-      var builder = new DbContextOptionsBuilder<StorageContext>();
+      var builder = new DbContextOptionsBuilder<DatabaseContext>();
       builder.UseSqlite(AppConstants.connectionString);
 
       // Instantiate our storage
-      StorageContext StorageContext = new StorageContext(builder.Options);
+      DatabaseContext StorageContext = new DatabaseContext(builder.Options);
 
       // Instantiate our services
       AppServices.ConfigureServices(StorageContext);

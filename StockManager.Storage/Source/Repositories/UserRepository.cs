@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace StockManager.Storage.Source.Repositories {
   public class UserRepository : IUserRepository {
-    private readonly StorageContext _db;
+    private readonly DatabaseContext _db;
 
-    public UserRepository(StorageContext db) {
+    public UserRepository(DatabaseContext db) {
       _db = db;
     }
 

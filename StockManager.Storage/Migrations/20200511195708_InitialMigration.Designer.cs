@@ -8,7 +8,7 @@ using StockManager.Storage.Source;
 
 namespace StockManager.Storage.Migrations
 {
-    [DbContext(typeof(StorageContext))]
+    [DbContext(typeof(DatabaseContext))]
     [Migration("20200511195708_InitialMigration")]
     partial class InitialMigration
     {
