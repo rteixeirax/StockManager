@@ -12,8 +12,8 @@ namespace StockManager.Services.Source.Services {
     public StockMovementService(IStockMovementRepository stockMovementRepo) {
       _stockMovementRepo = stockMovementRepo;
     }
-
-    public async Task AddStockMovementAsync(StockMovement data) {
+    
+    public async Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false) {
       try {
         StockMovement lastStockMovement = await _stockMovementRepo
           .FindProductLastStockMovementAsync(data.ProductId);
@@ -28,6 +28,17 @@ namespace StockManager.Services.Source.Services {
         }
 
         await _stockMovementRepo.InsertStockMovementAsync(data);
+
+        // Normally this service is called inside other services 
+        // and the call of the SaveChangesAsync method it will be
+        // the responsibility of the other service.
+        // In some circumstances we want the apply the 
+        // db changes after create the stock movement, 
+        // for that we need to sent the applyDbChanges setted to true.
+        if (applyDbChanges) {
+          await _stockMovementRepo.SaveDbChangesAsync();
+        }
+
       } catch {
         OperationErrorsList errorsList = new OperationErrorsList();
         errorsList.AddError("add-stock-movement-db-error", Phrases.GlobalErrorOperationDB);
