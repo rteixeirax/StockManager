@@ -11,10 +11,7 @@ namespace StockManager.Database.Source.Repositories {
     public RoleRepository(DatabaseContext db) {
       _db = db;
     }
-
-    /// <summary>
-    /// Find all roles async
-    /// </summary>
+        
     public async Task<IEnumerable<Role>> FindAllRolesAsync() {
       return await _db.Roles.ToListAsync();
     }

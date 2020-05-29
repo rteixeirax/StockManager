@@ -13,10 +13,7 @@ namespace StockManager.Services.Source.Services {
     public LocationService(ILocationRepository locationRepo) {
       _locationRepo = locationRepo;
     }
-
-    /// <summary>
-    /// Create new location async
-    /// </summary>
+     
     public async Task CreateLocationAsync(Location location) {
       try {
         await this.ValidateLocationFormData(location);
@@ -27,10 +24,7 @@ namespace StockManager.Services.Source.Services {
         throw operationErrorException;
       }
     }
-
-    /// <summary>
-    /// Edit location async
-    /// </summary>
+      
     public async Task EditLocationAsync(Location location) {
       try {
         Location dbLocation = await _locationRepo
@@ -46,9 +40,7 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Delete locations async
-    /// </summary>
+  
     public async Task DeleteLocationAsync(int[] locationIds) {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -100,16 +92,10 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Get all locations async
-    /// </summary>
     public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null) {
       return await _locationRepo.FindAllLocationsAsync(searchValue);
     }
 
-    /// <summary>
-    /// Get location by id async
-    /// </summary>
     public async Task<Location> GetLocationByIdAsync(int locationId) {
       return await _locationRepo.FindLocationByIdAsync(locationId);
     }

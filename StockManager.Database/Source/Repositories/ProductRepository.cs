@@ -12,31 +12,19 @@ namespace StockManager.Database.Source.Repositories {
     public ProductRepository(DatabaseContext db) {
       _db = db;
     }
-
-    /// <summary>
-    /// Save DB changes async
-    /// </summary>
+   
     public async Task SaveDbChangesAsync() {
       await _db.SaveChangesAsync();
     }
 
-    /// <summary>
-    /// Add new product async
-    /// </summary>
     public async Task AddProductAsync(Product product) {
       await _db.Products.AddAsync(product);
     }
-
-    /// <summary>
-    /// Remove product async
-    /// </summary>
+      
     public void RemoveProduct(Product product) {
       _db.Products.Remove(product);
     }
 
-    /// <summary>
-    /// Find all products async
-    /// </summary>
     public async Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue) {
       if (!string.IsNullOrEmpty(searchValue)) {
         return await _db.Products
@@ -49,9 +37,6 @@ namespace StockManager.Database.Source.Repositories {
       return await _db.Products.Include(x => x.ProductLocations).ToListAsync();
     }
 
-    /// <summary>
-    /// Find product by id async
-    /// </summary>
     public async Task<Product> FindProductByIdAsync(int productId, bool includeRelations = true) {
       if (includeRelations) {
         return await _db.Products
@@ -65,10 +50,7 @@ namespace StockManager.Database.Source.Repositories {
         .Where(p => p.ProductId == productId)
         .FirstOrDefaultAsync();
     }
-
-    /// <summary>
-    /// Find user by reference async
-    /// </summary>
+        
     public async Task<Product> FindProductByReferenceAsync(string reference) {
       return await _db.Products
         .Where(product => product.Reference.ToLower() == reference.ToLower())

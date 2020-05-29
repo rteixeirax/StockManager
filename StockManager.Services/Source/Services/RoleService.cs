@@ -11,10 +11,7 @@ namespace StockManager.Services.Source.Services {
     public RoleService(IRoleRepository roleRepo) {
       _roleRepo = roleRepo;
     }
-
-    /// <summary>
-    /// Get all roles async
-    /// </summary>
+        
     public async Task<IEnumerable<Role>> GetRolesAsync() {
       return await _roleRepo.FindAllRolesAsync();
     }

@@ -11,16 +11,10 @@ namespace StockManager.Database.Source.Repositories {
       _db = db;
     }
 
-    /// <summary>
-    /// Save DB changes async
-    /// </summary>
     public async Task SaveDbChangesAsync() {
       await _db.SaveChangesAsync();
     }
 
-    /// <summary>
-    /// Find and return all settings
-    /// </summary>
     public async Task<AppSettings> FindAppSettingsAsync() {
       return await _db.AppSettings.FirstOrDefaultAsync();
     }

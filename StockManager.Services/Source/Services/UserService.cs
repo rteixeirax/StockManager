@@ -16,9 +16,6 @@ namespace StockManager.Services.Source.Services {
       _userRepo = userRepo;
     }
 
-    /// <summary>
-    /// Create new user async
-    /// </summary>
     public async Task CreateUserAsync(User user) {
       try {
         await this.ValidateUserFormDataAsync(user);
@@ -32,10 +29,7 @@ namespace StockManager.Services.Source.Services {
         throw operationErrorException;
       }
     }
-
-    /// <summary>
-    /// Edit user async
-    /// </summary>
+      
     public async Task EditUserAsync(User user) {
       try {
         User dbUser = await _userRepo.FindUserByIdAsync(user.UserId);
@@ -54,10 +48,7 @@ namespace StockManager.Services.Source.Services {
         throw operationErrorException;
       }
     }
-
-    /// <summary>
-    /// Change Password
-    /// </summary>
+        
     public async Task ChangePasswordAsync(int userId, string currentPassword, string newPassword) {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -88,9 +79,6 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Authentication the user
-    /// </summary>
     public async Task<User> AuthenticateAsync(string username, string password) {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -124,9 +112,6 @@ namespace StockManager.Services.Source.Services {
       return user;
     }
 
-    /// <summary>
-    /// Delete users async
-    /// </summary>
     public async Task DeleteUserAsync(int[] userIds, int loggedInUserId) {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -162,16 +147,10 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Get all users async
-    /// </summary>
     public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null) {
       return await _userRepo.FindAllUsersAsync(searchValue);
     }
 
-    /// <summary>
-    /// Get user by id async
-    /// </summary>
     public async Task<User> GetUserByIdAsync(int userId) {
       return await _userRepo.FindUserByIdAsync(userId);
     }

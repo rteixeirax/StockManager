@@ -15,9 +15,6 @@ namespace StockManager.Services.Source.Services {
       _productRepo = productRepo;
     }
 
-    /// <summary>
-    /// Create new product async
-    /// </summary>
     public async Task CreateProductAsync(Product product) {
       try {
         await this.ValidateProductFormData(product);
@@ -29,9 +26,6 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Edit product async
-    /// </summary>
     public async Task EditProductAsync(Product product) {
       try {
         Product dbProduct = await _productRepo
@@ -48,9 +42,6 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Delete products async
-    /// </summary>
     public async Task DeleteProductAsync(int[] productIds) {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -73,9 +64,6 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    /// <summary>
-    /// Get all products async
-    /// </summary>
     public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null) {
       IEnumerable<Product> products = await _productRepo.FindAllProductsAsync(searchValue);
 
@@ -87,9 +75,6 @@ namespace StockManager.Services.Source.Services {
       return products;
     }
 
-    /// <summary>
-    /// Get product by id async
-    /// </summary>
     public async Task<Product> GetProductByIdAsync(int productId) {
       return await _productRepo.FindProductByIdAsync(productId);
     }
