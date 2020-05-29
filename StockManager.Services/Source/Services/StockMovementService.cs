@@ -1,29 +1,36 @@
-﻿using StockManager.Services.Source.Contracts;
-using StockManager.Database.Source.Contracts;
+﻿using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Services {
-  public class StockMovementService : IStockMovementService {
+namespace StockManager.Services.Source.Services
+{
+  public class StockMovementService : IStockMovementService
+  {
     private readonly IStockMovementRepository _stockMovementRepo;
 
-    public StockMovementService(IStockMovementRepository stockMovementRepo) {
+    public StockMovementService(IStockMovementRepository stockMovementRepo)
+    {
       _stockMovementRepo = stockMovementRepo;
     }
-    
-    public async Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false) {
-      try {
+
+    public async Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false)
+    {
+      try
+      {
         StockMovement lastStockMovement = await _stockMovementRepo
           .FindProductLastStockMovementAsync(data.ProductId);
 
         // Calculate the new accumulated stock
-        if (lastStockMovement != null) {
+        if (lastStockMovement != null)
+        {
           data.Stock = (lastStockMovement.Stock + data.Qty);
-
+        }
+        else
+        {
           // Set the accumulated if it is the first movement
-        } else {
           data.Stock = data.Qty;
         }
 
@@ -35,11 +42,14 @@ namespace StockManager.Services.Source.Services {
         // In some circumstances we want the apply the 
         // db changes after create the stock movement, 
         // for that we need to sent the applyDbChanges setted to true.
-        if (applyDbChanges) {
+        if (applyDbChanges)
+        {
           await _stockMovementRepo.SaveDbChangesAsync();
         }
 
-      } catch {
+      }
+      catch
+      {
         OperationErrorsList errorsList = new OperationErrorsList();
         errorsList.AddError("add-stock-movement-db-error", Phrases.GlobalErrorOperationDB);
 

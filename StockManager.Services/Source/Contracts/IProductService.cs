@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Contracts {
-  public interface IProductService {
+namespace StockManager.Services.Source.Contracts
+{
+  public interface IProductService
+  {
     /// <summary>
     /// Create new product
     /// </summary>

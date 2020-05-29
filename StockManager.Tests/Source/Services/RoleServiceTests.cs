@@ -1,25 +1,29 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services.Source;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Tests.Source.Services {
+namespace StockManager.Tests.Source.Services
+{
   /// <summary>
   /// Role service tests
   /// </summary>
   [TestClass]
-  public class RoleServiceTests {
+  public class RoleServiceTests
+  {
     private TestsConfig _config;
 
     [TestInitialize]
-    public void BeforeEach() {
+    public void BeforeEach()
+    {
       _config = new TestsConfig();
     }
 
     [TestCleanup]
-    public void AfterEach() {
+    public void AfterEach()
+    {
       _config.CloseConnection();
     }
 
@@ -27,7 +31,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should get all roles
     /// </summary>
     [TestMethod]
-    public async Task ShouldGetAllRoles() {
+    public async Task ShouldGetAllRoles()
+    {
       // Arrange
 
       // Act

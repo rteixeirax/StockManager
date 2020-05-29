@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database.Source.Contracts
 {
-  public interface IAppSettingsRepository {
+  public interface IAppSettingsRepository
+  {
     /// <summary>
     /// Save DB changes
     /// </summary>

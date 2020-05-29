@@ -1,21 +1,24 @@
-﻿using StockManager.Source.Components;
-using StockManager.Source.Forms;
+﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
-using StockManager.Database.Source.Models;
+using StockManager.Source.Components;
+using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
+using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Utilities.Source;
 
-namespace StockManager.Source.UserControls {
-  public partial class InventoryProductsUserControl : UserControl {
+namespace StockManager.Source.UserControls
+{
+  public partial class InventoryProductsUserControl : UserControl
+  {
     private readonly MainForm _mainForm;
     private bool _hasBeenSearching = false; // Flags if the user has been searching
 
-    public InventoryProductsUserControl(MainForm mainForm) {
+    public InventoryProductsUserControl(MainForm mainForm)
+    {
       InitializeComponent();
 
       // Pass the main form to this UC to handle with product location UC
@@ -30,7 +33,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Set the content strings for the correct app language
     /// </summary>
-    private void SetTranslatedPhrases() {
+    private void SetTranslatedPhrases()
+    {
       btnCreate.Text = Phrases.GlobalCreate;
       btnDelete.Text = Phrases.GlobalDelete;
       dgvProducts.Columns[1].HeaderText = Phrases.GlobalReference;
@@ -46,14 +50,16 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Fill the Data Grid View
     /// </summary>
-    public async Task LoadProductsAsync(string searchValue = null) {
+    public async Task LoadProductsAsync(string searchValue = null)
+    {
       Spinner.InitSpinner();
       dgvProducts.Rows.Clear();
 
       IEnumerable<Product> products = await AppServices.ProductService
         .GetProductsAsync(searchValue);
 
-      foreach (Product product in products) {
+      foreach (Product product in products)
+      {
         dgvProducts.Rows.Add(
           product.ProductId,
           product.Reference,
@@ -69,7 +75,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Create product button click
     /// </summary>
-    private void btnCreate_Click(object sender, EventArgs e) {
+    private void btnCreate_Click(object sender, EventArgs e)
+    {
       ProductForm productForm = new ProductForm(this);
       productForm.ShowProductForm();
     }
@@ -77,13 +84,16 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Delete multiple products button click
     /// </summary>
-    private async void btnDelete_Click(object sender, EventArgs e) {
+    private async void btnDelete_Click(object sender, EventArgs e)
+    {
       DataGridViewSelectedRowCollection selectedItems = dgvProducts.SelectedRows;
 
-      if (selectedItems.Count > 0) {
+      if (selectedItems.Count > 0)
+      {
         int[] arrayOfIds = new int[selectedItems.Count];
 
-        for (int i = 0; i < selectedItems.Count; i++) {
+        for (int i = 0; i < selectedItems.Count; i++)
+        {
           arrayOfIds[i] = int.Parse(selectedItems[i].Cells[0].Value.ToString());
         }
 
@@ -94,11 +104,14 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Handle with table actions click
     /// </summary>
-    private async void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-      if ((dgvProducts.SelectedRows.Count > 0) && (e.RowIndex >= 0)) {
+    private async void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+      if ((dgvProducts.SelectedRows.Count > 0) && (e.RowIndex >= 0))
+      {
         int productId = int.Parse(dgvProducts.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-        switch (e.ColumnIndex) {
+        switch (e.ColumnIndex)
+        {
           case 5:
             await this.ActionEditClickAsync(productId);
             break;
@@ -117,7 +130,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Edit product button click
     /// </summary>
-    private async Task ActionEditClickAsync(int productId) {
+    private async Task ActionEditClickAsync(int productId)
+    {
       Spinner.InitSpinner();
       Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
       Spinner.StopSpinner();
@@ -129,7 +143,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Show the product locations UC
     /// </summary>
-    private async Task ActionDetailsClickAsync(int productId) {
+    private async Task ActionDetailsClickAsync(int productId)
+    {
       Spinner.InitSpinner();
       Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
       Spinner.StopSpinner();
@@ -140,20 +155,25 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Delete button click
     /// </summary>
-    private async Task ActionDeleteClickAsync(int[] selectedIds) {
+    private async Task ActionDeleteClickAsync(int[] selectedIds)
+    {
       if ((selectedIds.Length > 0) && MessageBox.Show(
       string.Format(Phrases.ProductDialogDeleteBody, selectedIds.Length),
       Phrases.GlobalDialogDeleteTitle,
       MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-    ) {
-        try {
+    )
+      {
+        try
+        {
           Spinner.InitSpinner();
           await AppServices.ProductService.DeleteProductAsync(selectedIds);
           Spinner.StopSpinner();
 
           await this.LoadProductsAsync();
 
-        } catch (OperationErrorException ex) {
+        }
+        catch (OperationErrorException ex)
+        {
           Spinner.StopSpinner();
 
           MessageBox.Show(
@@ -163,7 +183,9 @@ namespace StockManager.Source.UserControls {
             MessageBoxIcon.Warning
           );
 
-        } catch (ServiceErrorException ex) {
+        }
+        catch (ServiceErrorException ex)
+        {
           Spinner.StopSpinner();
 
           MessageBox.Show(
@@ -179,10 +201,12 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Search button click
     /// </summary>
-    private async void pbSearchIcon_Click(object sender, EventArgs e) {
+    private async void pbSearchIcon_Click(object sender, EventArgs e)
+    {
       string searchValue = tbSeachText.Text;
 
-      if (!string.IsNullOrEmpty(searchValue)) {
+      if (!string.IsNullOrEmpty(searchValue))
+      {
         // sets the flag has been searching
         _hasBeenSearching = true;
 
@@ -193,7 +217,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Clear search value on picture box click
     /// </summary>
-    private async void btnClearSearchValue_Click(object sender, EventArgs e) {
+    private async void btnClearSearchValue_Click(object sender, EventArgs e)
+    {
       tbSeachText.Text = "";
       _hasBeenSearching = false;
       await this.LoadProductsAsync();
@@ -202,13 +227,17 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Show/Hide the X button on the search textbox
     /// </summary>
-    private async void tbSeachText_TextChanged(object sender, EventArgs e) {
-      if (tbSeachText.Text.Length > 0) {
+    private async void tbSeachText_TextChanged(object sender, EventArgs e)
+    {
+      if (tbSeachText.Text.Length > 0)
+      {
         btnClearSearchValue.Visible = true;
 
         // If the user clear all the search box text after doing some search,
         // i need to query the DB without any search param to show all table data.
-      } else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching) {
+      }
+      else if ((tbSeachText.Text.Length == 0) && _hasBeenSearching)
+      {
         _hasBeenSearching = false;
         btnClearSearchValue.Visible = false;
         await this.LoadProductsAsync();
@@ -218,12 +247,16 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Call search button click when pressed enter in the textbox
     /// </summary>
-    private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e) {
-      if (e.KeyChar == ( char )Keys.Enter) {
+    private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
+    {
+      if (e.KeyChar == ( char )Keys.Enter)
+      {
         this.pbSearchIcon_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;
-      } else if (e.KeyChar == ( char )Keys.Escape) {
+      }
+      else if (e.KeyChar == ( char )Keys.Escape)
+      {
         this.btnClearSearchValue_Click(sender, e);
         // Remove the annoying beep
         e.Handled = true;

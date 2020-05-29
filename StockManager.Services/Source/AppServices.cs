@@ -1,10 +1,12 @@
-﻿using StockManager.Services.Source.Contracts;
-using StockManager.Services.Source.Services;
-using StockManager.Database.Source;
+﻿using StockManager.Database.Source;
 using StockManager.Database.Source.Repositories;
+using StockManager.Services.Source.Contracts;
+using StockManager.Services.Source.Services;
 
-namespace StockManager.Services.Source {
-  public static class AppServices {
+namespace StockManager.Services.Source
+{
+  public static class AppServices
+  {
     public static IAppSettingsService SettingsService { get; private set; }
     public static IUserService UserService { get; private set; }
     public static IRoleService RoleService { get; private set; }
@@ -13,7 +15,8 @@ namespace StockManager.Services.Source {
     public static IProductLocationService ProductLocationService { get; private set; }
     public static IStockMovementService StockMovementService { get; private set; }
 
-    public static void ConfigureServices(DatabaseContext databaseContext) {
+    public static void ConfigureServices(DatabaseContext databaseContext)
+    {
       // Instantiate our services
       SettingsService = new AppSettingsService(new AppSettingsRepository(databaseContext));
       UserService = new UserService(new UserRepository(databaseContext));

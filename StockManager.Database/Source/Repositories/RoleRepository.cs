@@ -4,15 +4,19 @@ using StockManager.Database.Source.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Source.Repositories {
-  public class RoleRepository : IRoleRepository {
+namespace StockManager.Database.Source.Repositories
+{
+  public class RoleRepository : IRoleRepository
+  {
     private readonly DatabaseContext _db;
 
-    public RoleRepository(DatabaseContext db) {
+    public RoleRepository(DatabaseContext db)
+    {
       _db = db;
     }
-        
-    public async Task<IEnumerable<Role>> FindAllRolesAsync() {
+
+    public async Task<IEnumerable<Role>> FindAllRolesAsync()
+    {
       return await _db.Roles.ToListAsync();
     }
   }

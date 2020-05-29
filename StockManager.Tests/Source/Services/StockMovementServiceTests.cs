@@ -1,21 +1,24 @@
-﻿using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
+using System.Threading.Tasks;
 
-namespace StockManager.Tests.Source.Services {
+namespace StockManager.Tests.Source.Services
+{
   /// <summary>
   /// Stock movement service tests
   /// </summary>
   [TestClass]
-  public class StockMovementServiceTests {
+  public class StockMovementServiceTests
+  {
     private TestsConfig _config;
     private Product _mockProduct;
     private Location _mockLocation;
     private User _mockUser;
 
     [TestInitialize]
-    public async Task BeforeEach() {
+    public async Task BeforeEach()
+    {
       _config = new TestsConfig();
 
       _mockProduct = new Product() {
@@ -39,12 +42,14 @@ namespace StockManager.Tests.Source.Services {
     }
 
     [TestCleanup]
-    public void AfterEach() {
+    public void AfterEach()
+    {
       _config.CloseConnection();
     }
 
     [TestMethod]
-    public async Task ShouldInsertStockMovement_Entry() {
+    public async Task ShouldInsertStockMovement_Entry()
+    {
       // Arrange
       StockMovement stockMovement = new StockMovement() {
         UserId = _mockUser.UserId,
@@ -68,7 +73,8 @@ namespace StockManager.Tests.Source.Services {
     }
 
     [TestMethod]
-    public async Task ShouldInsertStockMovement_Exit() {
+    public async Task ShouldInsertStockMovement_Exit()
+    {
       // Arrange
       StockMovement stockMovement = new StockMovement() {
         UserId = _mockUser.UserId,

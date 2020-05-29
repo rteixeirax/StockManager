@@ -1,9 +1,9 @@
-﻿using StockManager.Source.Components;
+﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
-using StockManager.Database.Source.Models;
+using StockManager.Source.Components;
+using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using StockManager.Source.UserControls;
 using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StockManager.Source.Forms {
-  public partial class UserForm : Form {
+namespace StockManager.Source.Forms
+{
+  public partial class UserForm : Form
+  {
     private int _userId = 0;
     private readonly UsersUserControl _usersUserControl;
 
-    public UserForm(UsersUserControl usersUserControl) {
+    public UserForm(UsersUserControl usersUserControl)
+    {
       InitializeComponent();
       _usersUserControl = usersUserControl;
       this.SetTranslatedPhrases();
@@ -25,7 +28,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Set the content strings for the correct app language
     /// </summary>
-    private void SetTranslatedPhrases() {
+    private void SetTranslatedPhrases()
+    {
       lbTitle.Text = Phrases.UserInfo;
       lbFirstName.Text = Phrases.GlobalUsername;
       lbPassword.Text = Phrases.GlobalPassword;
@@ -37,7 +41,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Show User Form and set the initial values
     /// </summary>
-    public async Task ShowUserFormAsync(User user = null) {
+    public async Task ShowUserFormAsync(User user = null)
+    {
       Spinner.InitSpinner();
 
       // Set the userId. Means that is a edit
@@ -59,7 +64,8 @@ namespace StockManager.Source.Forms {
       cbRoles.DisplayMember = "Code";
 
       // Edit
-      if (user != null) {
+      if (user != null)
+      {
         tbUsername.Text = user.Username;
         cbRoles.SelectedItem = roles.First(x => x.RoleId == user.RoleId);
         cbRoles.Enabled = (user.UserId == Program.LoggedInUser.UserId) ? false : true;
@@ -72,17 +78,21 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Show the form errors, if any.
     /// </summary>
-    private void ShowFormErrors(List<ErrorType> errors) {
+    private void ShowFormErrors(List<ErrorType> errors)
+    {
       lbErrorUsername.Visible = false;
       lbErrorPassword.Visible = false;
 
-      foreach (ErrorType err in errors) {
-        if (err.Field == "Username") {
+      foreach (ErrorType err in errors)
+      {
+        if (err.Field == "Username")
+        {
           lbErrorUsername.Text = err.Error;
           lbErrorUsername.Visible = true;
         }
 
-        if (err.Field == "Password") {
+        if (err.Field == "Password")
+        {
           lbErrorPassword.Text = err.Error;
           lbErrorPassword.Visible = true;
         }
@@ -92,8 +102,10 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Create/Update button click
     /// </summary>
-    private async void btnSave_Click(object sender, EventArgs e) {
-      try {
+    private async void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
         User user = new User {
           Username = tbUsername.Text,
           Password = tbPassword.Text,
@@ -102,10 +114,13 @@ namespace StockManager.Source.Forms {
 
         Spinner.InitSpinner();
 
-        if ((_userId != 0)) {
+        if ((_userId != 0))
+        {
           user.UserId = _userId;
           await AppServices.UserService.EditUserAsync(user);
-        } else {
+        }
+        else
+        {
           await AppServices.UserService.CreateUserAsync(user);
         }
 
@@ -114,10 +129,13 @@ namespace StockManager.Source.Forms {
         await _usersUserControl.LoadUsersAsync();
 
         this.Close();
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         Spinner.StopSpinner();
 
-        if (ex.Errors.Count() > 0) {
+        if (ex.Errors.Count() > 0)
+        {
           this.ShowFormErrors(ex.Errors);
         }
       }
@@ -126,7 +144,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Close button click
     /// </summary>
-    private void btnCancel_Click(object sender, EventArgs e) {
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
       this.Close();
     }
   }

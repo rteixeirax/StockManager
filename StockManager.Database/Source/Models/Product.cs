@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Database.Source.Models {
-  public class Product : BaseEntity {
+namespace StockManager.Database.Source.Models
+{
+  public class Product : BaseEntity
+  {
     [Key]
     public int ProductId { get; set; }
 
@@ -27,8 +29,10 @@ namespace StockManager.Database.Source.Models {
     public float? Stock { get; set; }
   }
 
-  public class ProductConfiguration : IEntityTypeConfiguration<Product> {
-    public void Configure(EntityTypeBuilder<Product> builder) {
+  public class ProductConfiguration : IEntityTypeConfiguration<Product>
+  {
+    public void Configure(EntityTypeBuilder<Product> builder)
+    {
       builder
         .HasIndex(x => x.Reference)
         .IsUnique()

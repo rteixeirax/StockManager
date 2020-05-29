@@ -1,8 +1,10 @@
 ﻿using StockManager.Database.Source.Models;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Contracts {
-  public interface IStockMovementService {
+namespace StockManager.Services.Source.Contracts
+{
+  public interface IStockMovementService
+  {
     /// <summary>
     ///  Add a product stock movement
     /// </summary>

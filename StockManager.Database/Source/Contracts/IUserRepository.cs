@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Source.Contracts {
-  public interface IUserRepository {
+namespace StockManager.Database.Source.Contracts
+{
+  public interface IUserRepository
+  {
     /// <summary>
     /// Save DB changes
     /// </summary>

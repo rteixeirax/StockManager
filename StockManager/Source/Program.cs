@@ -1,16 +1,18 @@
 using Microsoft.EntityFrameworkCore;
-using StockManager.Source.Forms;
-using StockManager.Services.Source;
 using StockManager.Database.Source;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
+using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
 using System;
-using System.Windows.Forms;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace StockManager.Source {
-  static class Program {
+namespace StockManager.Source
+{
+  static class Program
+  {
     /// <summary>
     /// Logged in user
     /// </summary>
@@ -19,14 +21,16 @@ namespace StockManager.Source {
     /// <summary>
     /// Set the user after authentication
     /// </summary>
-    public static void SetLoggedInUser(User user) {
+    public static void SetLoggedInUser(User user)
+    {
       LoggedInUser = user;
     }
 
     /// <summary>
     /// Kill the "Session"
     /// </summary>
-    public static void Logout() {
+    public static void Logout()
+    {
       LoggedInUser = null;
     }
 
@@ -34,7 +38,8 @@ namespace StockManager.Source {
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static async Task Main() {
+    static async Task Main()
+    {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
 

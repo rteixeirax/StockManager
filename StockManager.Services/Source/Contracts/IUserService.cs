@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Contracts {
-  public interface IUserService {
+namespace StockManager.Services.Source.Contracts
+{
+  public interface IUserService
+  {
     /// <summary>
     /// Create new user async
     /// </summary>

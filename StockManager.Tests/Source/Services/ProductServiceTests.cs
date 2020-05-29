@@ -1,23 +1,26 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services.Source;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Tests.Source.Services {
+namespace StockManager.Tests.Source.Services
+{
   /// <summary>
   /// Product service tests
   /// </summary>
   [TestClass]
-  public class ProductServiceTests {
+  public class ProductServiceTests
+  {
     private TestsConfig _config;
     private List<Product> _mockProducts = new List<Product>();
 
     [TestInitialize]
-    public void BeforeEach() {
+    public void BeforeEach()
+    {
       _config = new TestsConfig();
 
       _mockProducts.AddRange(new Product[] {
@@ -33,7 +36,8 @@ namespace StockManager.Tests.Source.Services {
     }
 
     [TestCleanup]
-    public void AfterEach() {
+    public void AfterEach()
+    {
       _config.CloseConnection();
     }
 
@@ -41,7 +45,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should get all products
     /// </summary>
     [TestMethod]
-    public async Task ShouldGetAllProducts() {
+    public async Task ShouldGetAllProducts()
+    {
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
@@ -61,7 +66,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should search products by reference
     /// </summary>
     [TestMethod]
-    public async Task ShouldSearchProductByReference() {
+    public async Task ShouldSearchProductByReference()
+    {
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
@@ -80,7 +86,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should search products by name
     /// </summary>
     [TestMethod]
-    public async Task ShouldSearchProductByName() {
+    public async Task ShouldSearchProductByName()
+    {
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
@@ -99,7 +106,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should create product
     /// </summary>
     [TestMethod]
-    public async Task ShouldCreateProduct() {
+    public async Task ShouldCreateProduct()
+    {
       // Arrange
       Product product = _mockProducts[0];
 
@@ -117,18 +125,22 @@ namespace StockManager.Tests.Source.Services {
     /// Should fail create product with a existing reference
     /// </summary>
     [TestMethod]
-    public async Task ShouldFailCreateProduct_ExistingReference() {
+    public async Task ShouldFailCreateProduct_ExistingReference()
+    {
       // Arrange
       Product product = _mockProducts[0];
       await AppServices.ProductService.CreateProductAsync(product);
 
-      try {
+      try
+      {
         // Act
         Product newProduct = _mockProducts[0];
         await AppServices.ProductService.CreateProductAsync(newProduct);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Reference");
@@ -140,16 +152,20 @@ namespace StockManager.Tests.Source.Services {
     /// Should fail create product - no reference and name sent
     /// </summary>
     [TestMethod]
-    public async Task ShoulFailCreateProduct_NoReferenceAndNameSent() {
+    public async Task ShoulFailCreateProduct_NoReferenceAndNameSent()
+    {
       // Arrange
       Product newProduct = new Product() { Reference = "", Name = "" };
 
-      try {
+      try
+      {
         // Act
         await AppServices.ProductService.CreateProductAsync(newProduct);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         // Assert
         Assert.AreEqual(ex.Errors.Count, 2);
         Assert.AreEqual(ex.Errors[0].Field, "Name");
@@ -163,7 +179,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should edit product
     /// </summary>
     [TestMethod]
-    public async Task ShouldEditProduct() {
+    public async Task ShouldEditProduct()
+    {
       // Arrange
       Product mockProduct = _mockProducts[0];
       await AppServices.ProductService.CreateProductAsync(mockProduct);
@@ -187,14 +204,16 @@ namespace StockManager.Tests.Source.Services {
     /// Should fail edit product - existing reference
     /// </summary>
     [TestMethod]
-    public async Task ShouldFailEditProduct_ExistingProductReference() {
+    public async Task ShouldFailEditProduct_ExistingProductReference()
+    {
       // Arrange
       Product mockProduct = _mockProducts[0];
       Product mockProduct2 = _mockProducts[1];
       await AppServices.ProductService.CreateProductAsync(mockProduct);
       await AppServices.ProductService.CreateProductAsync(mockProduct2);
 
-      try {
+      try
+      {
         // Act
         Product updatedProduct = new Product() {
           ProductId = mockProduct.ProductId,
@@ -205,7 +224,9 @@ namespace StockManager.Tests.Source.Services {
         await AppServices.ProductService.EditProductAsync(updatedProduct);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
         Assert.AreEqual(ex.Errors[0].Field, "Reference");
@@ -217,7 +238,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should delete product
     /// </summary>
     [TestMethod]
-    public async Task ShouldDeleteProduct() {
+    public async Task ShouldDeleteProduct()
+    {
       // Arrange
       Product mockProduct = _mockProducts[0];
       await AppServices.ProductService.CreateProductAsync(mockProduct);

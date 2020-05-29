@@ -7,8 +7,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Source {
-  public class DatabaseContext : DbContext {
+namespace StockManager.Database.Source
+{
+  public class DatabaseContext : DbContext
+  {
     // Need to keep a contructor without parameters for "Add/Remove-Migration"
     public DatabaseContext() { }
 
@@ -33,7 +35,8 @@ namespace StockManager.Database.Source {
     /// https://code-maze.com/efcore-relationships/
     /// https://code-maze.com/migrations-and-seed-data-efcore/
     /// </summary>
-    protected override void OnModelCreating(ModelBuilder modelBuilder) {
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
       modelBuilder.ApplyConfiguration(new SettingsConfiguration());
       modelBuilder.ApplyConfiguration(new RoleConfiguration());
       modelBuilder.ApplyConfiguration(new UserConfiguration());
@@ -46,16 +49,19 @@ namespace StockManager.Database.Source {
     /// Auto fill the CreatedAt and the UpdatedAt model fields
     /// https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
     /// </summary>
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) {
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
       IEnumerable<EntityEntry> entries = ChangeTracker
           .Entries()
           .Where(x => x.Entity is BaseEntity
             && (x.State == EntityState.Added || x.State == EntityState.Modified));
 
-      foreach (EntityEntry entityEntry in entries) {
+      foreach (EntityEntry entityEntry in entries)
+      {
         (( BaseEntity )entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
 
-        if (entityEntry.State == EntityState.Added) {
+        if (entityEntry.State == EntityState.Added)
+        {
           (( BaseEntity )entityEntry.Entity).CreatedAt = DateTime.UtcNow;
         }
       }

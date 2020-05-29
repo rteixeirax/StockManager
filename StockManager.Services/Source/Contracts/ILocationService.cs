@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Contracts {
-  public interface ILocationService {
+namespace StockManager.Services.Source.Contracts
+{
+  public interface ILocationService
+  {
     /// <summary>
     /// Create new location
     /// </summary>

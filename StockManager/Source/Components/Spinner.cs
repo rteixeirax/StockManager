@@ -1,7 +1,9 @@
 ﻿using System.Windows.Forms;
 
-namespace StockManager.Source.Components {
-  public static class Spinner {
+namespace StockManager.Source.Components
+{
+  public static class Spinner
+  {
     /// <summary>
     /// Init the loading spinner
     /// </summary>

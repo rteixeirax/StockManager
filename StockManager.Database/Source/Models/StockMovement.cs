@@ -1,8 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Database.Source.Models {
-  public class StockMovement : BaseEntity {
+namespace StockManager.Database.Source.Models
+{
+  public class StockMovement : BaseEntity
+  {
     [Key]
     public int StockMovementId { get; set; }
 

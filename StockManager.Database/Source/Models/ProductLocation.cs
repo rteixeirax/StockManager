@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockManager.Database.Source.Models {
-  public class ProductLocation : BaseEntity {
+namespace StockManager.Database.Source.Models
+{
+  public class ProductLocation : BaseEntity
+  {
     [Key]
     public int ProductLocationId { get; set; }
 
@@ -23,8 +25,10 @@ namespace StockManager.Database.Source.Models {
     public Location Location { get; set; }
   }
 
-  public class ProductLocationConfiguration : IEntityTypeConfiguration<ProductLocation> {
-    public void Configure(EntityTypeBuilder<ProductLocation> builder) {
+  public class ProductLocationConfiguration : IEntityTypeConfiguration<ProductLocation>
+  {
+    public void Configure(EntityTypeBuilder<ProductLocation> builder)
+    {
       builder
         .Property(x => x.Stock)
         .HasDefaultValue(0);

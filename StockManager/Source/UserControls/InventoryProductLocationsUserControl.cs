@@ -1,23 +1,26 @@
-﻿using System;
+﻿using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
+using StockManager.Source.Components;
+using StockManager.Source.Forms;
+using StockManager.Translations.Source;
+using StockManager.Types.Source;
+using StockManager.Utilities.Source;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockManager.Database.Source.Models;
-using StockManager.Source.Forms;
-using StockManager.Translations.Source;
-using StockManager.Source.Components;
-using StockManager.Services.Source;
-using StockManager.Utilities.Source;
-using StockManager.Types.Source;
 
-namespace StockManager.Source.UserControls {
-  public partial class InventoryProductLocationsUserControl : UserControl {
+namespace StockManager.Source.UserControls
+{
+  public partial class InventoryProductLocationsUserControl : UserControl
+  {
     private readonly MainForm _mainForm;
     private readonly Product _product;
 
-    public InventoryProductLocationsUserControl(MainForm mainForm, Product product) {
+    public InventoryProductLocationsUserControl(MainForm mainForm, Product product)
+    {
       InitializeComponent();
 
       // Set the MainForm pointer
@@ -33,7 +36,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Set the content strings for the correct app language
     /// </summary>
-    private void SetTranslatedPhrases() {
+    private void SetTranslatedPhrases()
+    {
       btnback.Text = Phrases.GlobalBack;
       btnAddLocation.Text = Phrases.GlobalAdd;
 
@@ -59,7 +63,8 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Fill the UC content
     /// </summary>
-    private async Task LoadProductLocationsAsync() {
+    private async Task LoadProductLocationsAsync()
+    {
       Spinner.InitSpinner();
 
       // Set initial state
@@ -106,35 +111,42 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Go back to products list
     /// </summary>
-    private void btnback_Click(object sender, EventArgs e) {
+    private void btnback_Click(object sender, EventArgs e)
+    {
       _mainForm.btnInventoryProducts_Click(sender, e);
     }
 
-    private void ShowFormErrors(List<ErrorType> errors) {
+    private void ShowFormErrors(List<ErrorType> errors)
+    {
       lbErrorLocation.Visible = false;
       lbErrorStock.Visible = false;
       lbErrorMinStock.Visible = false;
 
       errors.ForEach((err) => {
-        if (err.Field == "LocationId") {
+        if (err.Field == "LocationId")
+        {
           lbErrorLocation.Text = err.Error;
           lbErrorLocation.Visible = true;
         }
 
-        if (err.Field == "Stock") {
+        if (err.Field == "Stock")
+        {
           lbErrorStock.Text = err.Error;
           lbErrorStock.Visible = true;
         }
 
-        if (err.Field == "MinStock") {
+        if (err.Field == "MinStock")
+        {
           lbErrorMinStock.Text = err.Error;
           lbErrorMinStock.Visible = true;
         }
       });
     }
 
-    private async void btnAddLocation_Click(object sender, EventArgs e) {
-      try {
+    private async void btnAddLocation_Click(object sender, EventArgs e)
+    {
+      try
+      {
         Spinner.InitSpinner();
 
         ProductLocation productLocation = new ProductLocation() {
@@ -151,13 +163,18 @@ namespace StockManager.Source.UserControls {
 
         // Reload Ui
         await this.LoadProductLocationsAsync();
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         Spinner.StopSpinner();
 
-        if (ex.Errors.Count() > 0) {
+        if (ex.Errors.Count() > 0)
+        {
           this.ShowFormErrors(ex.Errors);
         }
-      } catch (ServiceErrorException ex) {
+      }
+      catch (ServiceErrorException ex)
+      {
         Spinner.StopSpinner();
 
         MessageBox.Show(
@@ -172,8 +189,10 @@ namespace StockManager.Source.UserControls {
     /// <summary>
     /// Remove product location button click
     /// </summary>
-    private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-      if ((e.ColumnIndex == 4) && (e.RowIndex >= 0)) {
+    private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+      if ((e.ColumnIndex == 4) && (e.RowIndex >= 0))
+      {
         int productLocationId = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
         string locationName = dgvProductLocations.Rows[e.RowIndex].Cells[1].Value.ToString();
 
@@ -181,13 +200,16 @@ namespace StockManager.Source.UserControls {
       }
     }
 
-    private async Task ActionDeleteClickAsync(int productLocationId, string locationName) {
+    private async Task ActionDeleteClickAsync(int productLocationId, string locationName)
+    {
       if ((productLocationId > 0) && MessageBox.Show(
        string.Format(Phrases.GlobalDialogDeleteBodyWithParam, locationName),
        Phrases.GlobalDialogDeleteTitle,
          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-       ) {
-        try {
+       )
+      {
+        try
+        {
           Spinner.InitSpinner();
 
           await AppServices.ProductLocationService
@@ -197,7 +219,9 @@ namespace StockManager.Source.UserControls {
           await this.LoadProductLocationsAsync();
           Spinner.StopSpinner();
 
-        } catch (ServiceErrorException ex) {
+        }
+        catch (ServiceErrorException ex)
+        {
           Spinner.StopSpinner();
 
           MessageBox.Show(

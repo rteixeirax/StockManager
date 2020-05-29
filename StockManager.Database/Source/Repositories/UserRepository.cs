@@ -5,28 +5,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Source.Repositories {
-  public class UserRepository : IUserRepository {
+namespace StockManager.Database.Source.Repositories
+{
+  public class UserRepository : IUserRepository
+  {
     private readonly DatabaseContext _db;
 
-    public UserRepository(DatabaseContext db) {
+    public UserRepository(DatabaseContext db)
+    {
       _db = db;
     }
-        
-    public async Task SaveDbChangesAsync() {
+
+    public async Task SaveDbChangesAsync()
+    {
       await _db.SaveChangesAsync();
     }
-    
-    public async Task AddUserAsync(User user) {
+
+    public async Task AddUserAsync(User user)
+    {
       await _db.Users.AddAsync(user);
     }
 
-    public void RemoveUser(User user) {
+    public void RemoveUser(User user)
+    {
       _db.Users.Remove(user);
     }
-      
-    public async Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null) {
-      if (!string.IsNullOrEmpty(searchValue)) {
+
+    public async Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null)
+    {
+      if (!string.IsNullOrEmpty(searchValue))
+      {
         return await _db.Users
           .Include(x => x.Role)
           .Where(user => user.Username.ToLower().Contains(searchValue.ToLower()))
@@ -35,15 +43,17 @@ namespace StockManager.Database.Source.Repositories {
 
       return await _db.Users.Include(x => x.Role).ToListAsync();
     }
-   
-    public async Task<User> FindUserByIdAsync(int userId) {
+
+    public async Task<User> FindUserByIdAsync(int userId)
+    {
       return await _db.Users
         .Include(x => x.Role)
         .Where(user => user.UserId == userId)
         .FirstOrDefaultAsync();
     }
 
-    public async Task<User> FindUserByUsernameAsync(string username) {
+    public async Task<User> FindUserByUsernameAsync(string username)
+    {
       return await _db.Users
         .Include(x => x.Role)
         .Where(user => user.Username.ToLower() == username.ToLower())

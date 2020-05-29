@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Database.Source.Models {
-  public class Role : BaseEntity {
+namespace StockManager.Database.Source.Models
+{
+  public class Role : BaseEntity
+  {
     [Key]
     public int RoleId { get; set; }
 
@@ -15,8 +17,10 @@ namespace StockManager.Database.Source.Models {
     public ICollection<User> Users { get; set; }
   }
 
-  public class RoleConfiguration : IEntityTypeConfiguration<Role> {
-    public void Configure(EntityTypeBuilder<Role> builder) {
+  public class RoleConfiguration : IEntityTypeConfiguration<Role>
+  {
+    public void Configure(EntityTypeBuilder<Role> builder)
+    {
       builder
         .HasIndex(x => x.Code)
         .IsUnique()

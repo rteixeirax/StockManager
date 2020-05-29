@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StockManager.Database.Source.Models {
-  public class Location : BaseEntity {
+namespace StockManager.Database.Source.Models
+{
+  public class Location : BaseEntity
+  {
     [Key]
     public int LocationId { get; set; }
 
@@ -20,8 +22,10 @@ namespace StockManager.Database.Source.Models {
 
   }
 
-  public class LocationConfiguration : IEntityTypeConfiguration<Location> {
-    public void Configure(EntityTypeBuilder<Location> builder) {
+  public class LocationConfiguration : IEntityTypeConfiguration<Location>
+  {
+    public void Configure(EntityTypeBuilder<Location> builder)
+    {
       builder
         .HasIndex(x => x.Name)
         .IsUnique()

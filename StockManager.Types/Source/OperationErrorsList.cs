@@ -1,22 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace StockManager.Types.Source {
-  public class OperationErrorsList {
+namespace StockManager.Types.Source
+{
+  public class OperationErrorsList
+  {
     public List<ErrorType> ErrorsList { get; private set; }
 
-    public OperationErrorsList() {
+    public OperationErrorsList()
+    {
       this.ErrorsList = new List<ErrorType>();
     }
 
-    public void AddError(string field, string errorMessage) {
+    public void AddError(string field, string errorMessage)
+    {
       this.ErrorsList.Add(new ErrorType {
         Field = field,
         Error = errorMessage,
       });
     }
 
-    public bool HasErrors() {
+    public bool HasErrors()
+    {
       return (this.ErrorsList.Count() > 0);
     }
   }

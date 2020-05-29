@@ -1,8 +1,10 @@
 ﻿using StockManager.Database.Source.Models;
 using System.Threading.Tasks;
 
-namespace StockManager.Database.Source.Contracts {
-  public interface IProductLocationRepository {
+namespace StockManager.Database.Source.Contracts
+{
+  public interface IProductLocationRepository
+  {
     /// <summary>
     /// Save DB changes
     /// </summary>

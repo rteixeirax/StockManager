@@ -1,21 +1,24 @@
-﻿using StockManager.Source.Components;
+﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
-using StockManager.Database.Source.Models;
+using StockManager.Source.Components;
+using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using StockManager.Source.UserControls;
 using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace StockManager.Source.Forms {
-  public partial class LocationForm : Form {
+namespace StockManager.Source.Forms
+{
+  public partial class LocationForm : Form
+  {
     private int _locationId = 0;
     private readonly InventoryLocationsUserControl _inventoryLocationsUserControl;
 
-    public LocationForm(InventoryLocationsUserControl inventoryLocationsUserControl) {
+    public LocationForm(InventoryLocationsUserControl inventoryLocationsUserControl)
+    {
       InitializeComponent();
       _inventoryLocationsUserControl = inventoryLocationsUserControl;
       this.SetTranslatedPhrases();
@@ -24,7 +27,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Set the content strings for the correct app language
     /// </summary>
-    private void SetTranslatedPhrases() {
+    private void SetTranslatedPhrases()
+    {
       lbTitle.Text = Phrases.LocationInfo;
       lbName.Text = Phrases.GlobalName;
       btnCancel.Text = Phrases.GlobalCancel;
@@ -34,7 +38,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Show Location Form and set the initial values
     /// </summary>
-    public void ShowLocationForm(Location location = null) {
+    public void ShowLocationForm(Location location = null)
+    {
       // Set the locationId. Means that is a edit
       _locationId = (location != null) ? location.LocationId : 0;
 
@@ -47,7 +52,8 @@ namespace StockManager.Source.Forms {
       lbErrorName.Visible = false;
 
       // Edit
-      if (location != null) {
+      if (location != null)
+      {
         tbName.Text = location.Name;
       }
 
@@ -57,11 +63,14 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Show the form errors, if any.
     /// </summary>
-    private void ShowFormErrors(List<ErrorType> errors) {
+    private void ShowFormErrors(List<ErrorType> errors)
+    {
       lbErrorName.Visible = false;
 
-      foreach (ErrorType err in errors) {
-        if (err.Field == "Name") {
+      foreach (ErrorType err in errors)
+      {
+        if (err.Field == "Name")
+        {
           lbErrorName.Text = err.Error;
           lbErrorName.Visible = true;
         }
@@ -71,18 +80,23 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Create/Update button click
     /// </summary>
-    private async void btnSave_Click(object sender, EventArgs e) {
-      try {
+    private async void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
         Location location = new Location {
           Name = tbName.Text
         };
 
         Spinner.InitSpinner();
 
-        if ((_locationId != 0)) {
+        if ((_locationId != 0))
+        {
           location.LocationId = _locationId;
           await AppServices.LocationService.EditLocationAsync(location);
-        } else {
+        }
+        else
+        {
           await AppServices.LocationService.CreateLocationAsync(location);
         }
 
@@ -91,10 +105,13 @@ namespace StockManager.Source.Forms {
         await _inventoryLocationsUserControl.LoadLocationsAsync();
 
         this.Close();
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         Spinner.StopSpinner();
 
-        if (ex.Errors.Count() > 0) {
+        if (ex.Errors.Count() > 0)
+        {
           this.ShowFormErrors(ex.Errors);
         }
       }
@@ -103,7 +120,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Close button click
     /// </summary>
-    private void btnCancel_Click(object sender, EventArgs e) {
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
       this.Close();
     }
   }

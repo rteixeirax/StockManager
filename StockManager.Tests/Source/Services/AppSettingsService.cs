@@ -1,23 +1,27 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Services.Source;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
 using System.Threading.Tasks;
 
-namespace StockManager.Tests.Source.Services {
+namespace StockManager.Tests.Source.Services
+{
   /// <summary>
   /// App settings service tests
   /// </summary>
   [TestClass]
-  public class SettingsServiceTests {
+  public class SettingsServiceTests
+  {
     private TestsConfig _config;
 
     [TestInitialize]
-    public void BeforeEach() {
+    public void BeforeEach()
+    {
       _config = new TestsConfig();
     }
 
     [TestCleanup]
-    public void AfterEach() {
+    public void AfterEach()
+    {
       _config.CloseConnection();
     }
 
@@ -25,7 +29,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should get app settings
     /// </summary>
     [TestMethod]
-    public async Task ShouldGetAppSettingsAsync() {
+    public async Task ShouldGetAppSettingsAsync()
+    {
       // Arrange
 
       // Act
@@ -39,7 +44,8 @@ namespace StockManager.Tests.Source.Services {
     /// Should get app language
     /// </summary>
     [TestMethod]
-    public async Task ShouldGetSettingsAsync() {
+    public async Task ShouldGetSettingsAsync()
+    {
       // Arrange
 
       // Act

@@ -1,20 +1,25 @@
-﻿using StockManager.Services.Source.Contracts;
-using StockManager.Database.Source.Contracts;
+﻿using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
+using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System.Threading.Tasks;
 
-namespace StockManager.Services.Source.Services {
-  public class ProductLocationService : IProductLocationService {
+namespace StockManager.Services.Source.Services
+{
+  public class ProductLocationService : IProductLocationService
+  {
     private readonly IProductLocationRepository _productLocationRepo;
 
-    public ProductLocationService(IProductLocationRepository productLocationRepo) {
+    public ProductLocationService(IProductLocationRepository productLocationRepo)
+    {
       _productLocationRepo = productLocationRepo;
     }
 
-    public async Task AddProductLocationAsync(ProductLocation data, int userId) {
-      try {
+    public async Task AddProductLocationAsync(ProductLocation data, int userId)
+    {
+      try
+      {
         await this.ValidateProductLocationDataAsync(data);
         await _productLocationRepo.InsertProductLocationAsync(data);
 
@@ -29,21 +34,28 @@ namespace StockManager.Services.Source.Services {
         await _productLocationRepo.SaveDbChangesAsync();
 
         // catch operations errors
-      } catch (OperationErrorException operationErrorException) {
+      }
+      catch (OperationErrorException operationErrorException)
+      {
         throw operationErrorException;
 
         // catch service errors
-      } catch (ServiceErrorException serviceErrorException) {
+      }
+      catch (ServiceErrorException serviceErrorException)
+      {
         throw serviceErrorException;
       }
     }
 
-    public async Task DeleteProductLocationAsyn(int productLocationId, int userId) {
-      try {
+    public async Task DeleteProductLocationAsyn(int productLocationId, int userId)
+    {
+      try
+      {
         ProductLocation productLocation = await _productLocationRepo
           .FindProductLocationByIdAsync(productLocationId);
 
-        if (productLocation != null) {
+        if (productLocation != null)
+        {
           _productLocationRepo.RemoveProductLocation(productLocation);
 
           StockMovement stockMovement = new StockMovement() {
@@ -56,7 +68,9 @@ namespace StockManager.Services.Source.Services {
           await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
           await _productLocationRepo.SaveDbChangesAsync();
         }
-      } catch {
+      }
+      catch
+      {
         OperationErrorsList errorsList = new OperationErrorsList();
         errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
 
@@ -64,22 +78,27 @@ namespace StockManager.Services.Source.Services {
       }
     }
 
-    private async Task ValidateProductLocationDataAsync(ProductLocation data) {
+    private async Task ValidateProductLocationDataAsync(ProductLocation data)
+    {
       OperationErrorsList errorsList = new OperationErrorsList();
 
-      if (string.IsNullOrEmpty(data.LocationId.ToString())) {
+      if (string.IsNullOrEmpty(data.LocationId.ToString()))
+      {
         errorsList.AddError("LocationId", Phrases.GlobalRequiredField);
       }
 
-      if (string.IsNullOrEmpty(data.Stock.ToString())) {
+      if (string.IsNullOrEmpty(data.Stock.ToString()))
+      {
         errorsList.AddError("Stock", Phrases.GlobalRequiredField);
       }
 
-      if (string.IsNullOrEmpty(data.MinStock.ToString())) {
+      if (string.IsNullOrEmpty(data.MinStock.ToString()))
+      {
         errorsList.AddError("MinStock", Phrases.GlobalRequiredField);
       }
 
-      if (errorsList.HasErrors()) {
+      if (errorsList.HasErrors())
+      {
         throw new OperationErrorException(errorsList);
       }
 
@@ -87,11 +106,13 @@ namespace StockManager.Services.Source.Services {
       ProductLocation pLocationCheck = await _productLocationRepo
         .FindProductLocationAsync(data.ProductId, data.LocationId);
 
-      if (pLocationCheck != null) {
+      if (pLocationCheck != null)
+      {
         errorsList.AddError("LocationId", Phrases.ProductLocationErrorAlreadyAssociated);
       }
 
-      if (errorsList.HasErrors()) {
+      if (errorsList.HasErrors())
+      {
         throw new OperationErrorException(errorsList);
       }
     }

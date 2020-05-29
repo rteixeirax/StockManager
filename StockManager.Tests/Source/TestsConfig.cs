@@ -1,15 +1,18 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using StockManager.Services.Source;
 using StockManager.Database.Source;
+using StockManager.Services.Source;
 using StockManager.Utilities.Source;
 
-namespace StockManager.Tests.Source {
-  public class TestsConfig {
+namespace StockManager.Tests.Source
+{
+  public class TestsConfig
+  {
     private readonly SqliteConnection _connection;
     private readonly DatabaseContext _databaseContext;
 
-    public TestsConfig() {
+    public TestsConfig()
+    {
       // Set the Sqlite in memory database connection
       _connection = new SqliteConnection(AppConstants.connectionStringTestDB);
 

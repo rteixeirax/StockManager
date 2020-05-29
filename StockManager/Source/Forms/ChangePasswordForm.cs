@@ -1,5 +1,5 @@
-﻿using StockManager.Source.Components;
-using StockManager.Services.Source;
+﻿using StockManager.Services.Source;
+using StockManager.Source.Components;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using StockManager.Utilities.Source;
@@ -7,16 +7,20 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace StockManager.Source.Forms {
-  public partial class ChangePasswordForm : Form {
-    public ChangePasswordForm() {
+namespace StockManager.Source.Forms
+{
+  public partial class ChangePasswordForm : Form
+  {
+    public ChangePasswordForm()
+    {
       InitializeComponent();
     }
 
     /// <summary>
     /// Show the Change Password Form and set the initial values
     /// </summary>
-    public void ShowChangePasswordForm() {
+    public void ShowChangePasswordForm()
+    {
       // hide the error labels
       lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
@@ -28,7 +32,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Set the content string for the correct app language
     /// </summary>
-    private void SetTranslatedPhrases() {
+    private void SetTranslatedPhrases()
+    {
       this.Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
       lbTitle.Text = Phrases.UserChangePassword;
       lbCurrentPassword.Text = Phrases.UserCurrentPassword;
@@ -40,17 +45,21 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Show form errors
     /// </summary>
-    private void SetFormErrors(List<ErrorType> errors) {
+    private void SetFormErrors(List<ErrorType> errors)
+    {
       lbErrorCurrentPassword.Visible = false;
       lbErrorNewPassword.Visible = false;
 
-      foreach (var err in errors) {
-        if (err.Field == "CurrentPassword") {
+      foreach (var err in errors)
+      {
+        if (err.Field == "CurrentPassword")
+        {
           lbErrorCurrentPassword.Text = err.Error;
           lbErrorCurrentPassword.Visible = true;
         }
 
-        if (err.Field == "NewPassword") {
+        if (err.Field == "NewPassword")
+        {
           lbErrorNewPassword.Text = err.Error;
           lbErrorNewPassword.Visible = true;
         }
@@ -60,8 +69,10 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Update button click
     /// </summary>
-    private async void btnSave_Click(object sender, EventArgs e) {
-      try {
+    private async void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
         Spinner.InitSpinner();
 
         await AppServices.UserService.ChangePasswordAsync(
@@ -72,7 +83,9 @@ namespace StockManager.Source.Forms {
 
         Spinner.StopSpinner();
         this.btnCancel_Click(sender, e);
-      } catch (OperationErrorException ex) {
+      }
+      catch (OperationErrorException ex)
+      {
         Spinner.StopSpinner();
         this.SetFormErrors(ex.Errors);
       }
@@ -81,7 +94,8 @@ namespace StockManager.Source.Forms {
     /// <summary>
     /// Close button click
     /// </summary>
-    private void btnCancel_Click(object sender, EventArgs e) {
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
       this.Close();
     }
   }
