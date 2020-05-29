@@ -40,7 +40,7 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
 * **Undo the last migration:** <br/>
   `Remove-Migration`
 
-* **Forcing the undo the last migration:** <br/>
+* **Forcing undo the last migration:** <br/>
   `Remove-Migration -Force`
 
 ## Nuget packages
