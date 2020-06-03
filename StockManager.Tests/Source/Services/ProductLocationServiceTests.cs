@@ -1,4 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
+using StockManager.Translations.Source;
+using StockManager.Types.Source;
+using System.Threading.Tasks;
 
 namespace StockManager.Tests.Source.Services
 {
@@ -9,11 +14,24 @@ namespace StockManager.Tests.Source.Services
   public class ProductLocationServiceTests
   {
     private TestsConfig _config;
+    private Product _mockProduct;
+    private Location _mockLocation;
+    private User _mockUser;
 
     [TestInitialize]
-    public void BeforeEach()
+    public async Task BeforeEach()
     {
       _config = new TestsConfig();
+
+      _mockProduct = new Product() {
+        Reference = "mockProduct",
+        Name = "Mock product"
+      };
+
+      _mockLocation = await AppServices.LocationService.GetLocationByIdAsync(1);
+      _mockUser = await AppServices.UserService.GetUserByIdAsync(1);
+
+      await AppServices.ProductService.CreateProductAsync(_mockProduct);
     }
 
     [TestCleanup]
@@ -23,39 +41,117 @@ namespace StockManager.Tests.Source.Services
     }
 
     [TestMethod]
-    public void ShouldCreateProductLocation()
+    public async Task ShouldCreateProductLocation()
     {
-      // TODO: write the test
+      // Arrange
+      ProductLocation newProductLocation = new ProductLocation() {
+        ProductId = _mockProduct.ProductId,
+        LocationId = _mockLocation.LocationId,
+        Stock = 10,
+        MinStock = 0
+      };
+
+      // Act
+      await AppServices.ProductLocationService
+        .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+
+      // Assert
+
+      // TODO: Call the StockMovementService to assert the stock movement
+      // Create the GetLastProductStockMovement method in the StockMovement service
+
+      Assert.IsNotNull(newProductLocation.ProductLocationId);
+      Assert.IsNotNull(newProductLocation.CreatedAt);
+      Assert.IsNotNull(newProductLocation.UpdatedAt);
     }
 
     [TestMethod]
-    public void ShouldDeleteProductLocation()
+    public async Task ShouldDeleteProductLocation()
     {
-      // TODO: write the test
+      // Arrange
+      ProductLocation newProductLocation = new ProductLocation() {
+        ProductId = _mockProduct.ProductId,
+        LocationId = _mockLocation.LocationId,
+        Stock = 10,
+        MinStock = 0
+      };
+
+      await AppServices.ProductLocationService
+        .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+
+      // Act
+      await AppServices.ProductLocationService
+        .DeleteProductLocationAsyn(newProductLocation.ProductLocationId, _mockUser.UserId);
+
+      // Assert
+
+      // TODO: Call the StockMovementService to assert the stock movement
+      // Create the GetLastProductStockMovement method in the StockMovement service
     }
 
     [TestMethod]
-    public void ShouldFailCreateProductLocation_NoLocationId()
+    public async Task ShouldFailCreateProductLocation_NoLocationId()
     {
-      // TODO: write the test
-    }
+      // Arrange
+      ProductLocation newProductLocation = new ProductLocation() {
+        ProductId = _mockProduct.ProductId,
+        Stock = 10,
+        MinStock = 5
+      };
 
-    [TestMethod]
-    public void ShouldFailCreateProductLocation_NoStock()
-    {
-      // TODO: write the test
-    }
+      try
+      {
+        // Act
+        await AppServices.ProductLocationService
+          .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
 
-    [TestMethod]
-    public void ShouldFailCreateProductLocation_NoMinStock()
-    {
-      // TODO: write the test
+        Assert.Fail("It should have thrown an OperationErrorExeption");
+      }
+      catch (OperationErrorException ex)
+      {
+        // Assert
+        Assert.AreEqual(ex.Errors.Count, 1);
+        Assert.AreEqual(ex.Errors[0].Field, "LocationId");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
+      }
     }
-
+ 
     [TestMethod]
-    public void ShouldFailCreateProductLocation_AlreadyAssociated()
+    public async Task ShouldFailCreateProductLocation_AlreadyAssociated()
     {
-      // TODO: write the test
+      // Arrange
+      ProductLocation newProductLocation = new ProductLocation() {
+        ProductId = _mockProduct.ProductId,
+        LocationId = _mockLocation.LocationId,
+        Stock = 10,
+        MinStock = 0
+      };
+
+      ProductLocation newProductLocation2 = new ProductLocation() {
+        ProductId = _mockProduct.ProductId,
+        LocationId = _mockLocation.LocationId,
+        Stock = 20,
+        MinStock = 10
+      };
+
+      try
+      {
+        // Act
+        await AppServices.ProductLocationService
+          .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+
+        await AppServices.ProductLocationService
+          .AddProductLocationAsync(newProductLocation2, _mockUser.UserId);
+
+        Assert.Fail("It should have thrown an OperationErrorExeption");
+      }
+      catch (OperationErrorException ex)
+      {
+        // Assert
+        Assert.AreEqual(ex.Errors.Count, 1);
+        Assert.AreEqual(ex.Errors[0].Field, "LocationId");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.ProductLocationErrorAlreadyAssociated);
+      }
     }
   }
 }

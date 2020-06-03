@@ -82,17 +82,17 @@ namespace StockManager.Services.Source.Services
     {
       OperationErrorsList errorsList = new OperationErrorsList();
 
-      if (string.IsNullOrEmpty(data.LocationId.ToString()))
+      if (data.LocationId <= 0)
       {
         errorsList.AddError("LocationId", Phrases.GlobalRequiredField);
       }
 
-      if (string.IsNullOrEmpty(data.Stock.ToString()))
+      if (data?.Stock == null)
       {
         errorsList.AddError("Stock", Phrases.GlobalRequiredField);
       }
 
-      if (string.IsNullOrEmpty(data.MinStock.ToString()))
+      if (data?.MinStock == null)
       {
         errorsList.AddError("MinStock", Phrases.GlobalRequiredField);
       }
