@@ -56,13 +56,18 @@ namespace StockManager.Tests.Source.Services
         .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
 
       // Assert
-
-      // TODO: Call the StockMovementService to assert the stock movement
-      // Create the GetLastProductStockMovement method in the StockMovement service
+      StockMovement stockMovement = await AppServices.StockMovementService
+       .GetProductLastStockMovementAsync(newProductLocation.ProductId);
 
       Assert.IsNotNull(newProductLocation.ProductLocationId);
       Assert.IsNotNull(newProductLocation.CreatedAt);
       Assert.IsNotNull(newProductLocation.UpdatedAt);
+
+      Assert.AreEqual(stockMovement.ToLocationId, newProductLocation.LocationId);
+      Assert.IsNull(stockMovement.FromLocationId);
+      Assert.AreEqual(stockMovement.UserId, _mockUser.UserId);
+      Assert.AreEqual(stockMovement.Qty, newProductLocation.Stock);
+      Assert.AreEqual(stockMovement.Stock, newProductLocation.Stock);
     }
 
     [TestMethod]
@@ -84,9 +89,14 @@ namespace StockManager.Tests.Source.Services
         .DeleteProductLocationAsyn(newProductLocation.ProductLocationId, _mockUser.UserId);
 
       // Assert
+      StockMovement stockMovement = await AppServices.StockMovementService
+        .GetProductLastStockMovementAsync(newProductLocation.ProductId);
 
-      // TODO: Call the StockMovementService to assert the stock movement
-      // Create the GetLastProductStockMovement method in the StockMovement service
+      Assert.AreEqual(stockMovement.FromLocationId, newProductLocation.LocationId);
+      Assert.IsNull(stockMovement.ToLocationId);
+      Assert.AreEqual(stockMovement.UserId, _mockUser.UserId);
+      Assert.AreEqual(stockMovement.Qty, newProductLocation.Stock * (-1));
+      Assert.AreEqual(stockMovement.Stock, 0);
     }
 
     [TestMethod]
@@ -115,7 +125,7 @@ namespace StockManager.Tests.Source.Services
         Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
       }
     }
- 
+
     [TestMethod]
     public async Task ShouldFailCreateProductLocation_AlreadyAssociated()
     {

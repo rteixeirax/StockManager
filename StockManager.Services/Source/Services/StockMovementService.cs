@@ -20,8 +20,7 @@ namespace StockManager.Services.Source.Services
     {
       try
       {
-        StockMovement lastStockMovement = await _stockMovementRepo
-          .FindProductLastStockMovementAsync(data.ProductId);
+        StockMovement lastStockMovement = await this.GetProductLastStockMovementAsync(data.ProductId);
 
         // Calculate the new accumulated stock
         if (lastStockMovement != null)
@@ -55,6 +54,12 @@ namespace StockManager.Services.Source.Services
 
         throw new ServiceErrorException(errorsList);
       }
+    }
+
+    public async Task<StockMovement> GetProductLastStockMovementAsync(int productId)
+    {
+      return await _stockMovementRepo
+        .FindProductLastStockMovementAsync(productId);
     }
   }
 }
