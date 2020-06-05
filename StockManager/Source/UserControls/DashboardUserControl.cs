@@ -8,5 +8,7 @@ namespace StockManager.Source.UserControls
     {
       InitializeComponent();
     }
+
+    // TODO: Add content
   }
 }
