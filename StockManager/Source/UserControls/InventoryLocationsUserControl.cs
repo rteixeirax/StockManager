@@ -14,11 +14,15 @@ namespace StockManager.Source.UserControls
 {
   public partial class InventoryLocationsUserControl : UserControl
   {
+    private readonly MainForm _mainForm;
     private bool _hasBeenSearching = false; // Flags if the user has been searching
 
-    public InventoryLocationsUserControl()
+    public InventoryLocationsUserControl(MainForm mainForm)
     {
       InitializeComponent();
+
+      // Pass the main form to this UC to handle with location products UC
+      _mainForm = mainForm;
 
       // Hide the X button on the search textbox
       btnClearSearchValue.Visible = false;
@@ -38,7 +42,8 @@ namespace StockManager.Source.UserControls
       dgvLocations.Columns[3].HeaderText = Phrases.GlobalCreatedAt;
       // Actions
       dgvLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
-      dgvLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
+      dgvLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalProducts; // Action details
+      dgvLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
     }
 
     /// <summary>
@@ -109,6 +114,9 @@ namespace StockManager.Source.UserControls
             await this.ActionEditClickAsync(locationId);
             break;
           case 5:
+            await this.ActionDetailsClickAsync(locationId);
+            break;
+          case 6:
             await this.ActionDeleteClickAsync(new int[] { locationId });
             break;
           default:
@@ -128,6 +136,21 @@ namespace StockManager.Source.UserControls
 
       LocationForm locationForm = new LocationForm(this);
       locationForm.ShowLocationForm(location);
+    }
+
+    /// <summary>
+    /// Show the location products UC
+    /// </summary>
+    private async Task ActionDetailsClickAsync(int locationId)
+    {
+      Spinner.InitSpinner();
+      Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
+      Spinner.StopSpinner();
+
+      // TODO: Crete the method in the MainForm the show the LocationProductUC (need to create that as well)
+      Console.WriteLine(location.Name);
+
+      //_mainForm.InventoryProductsBtnViewProducLocationsClick(location);
     }
 
     /// <summary>

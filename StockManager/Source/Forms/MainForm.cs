@@ -169,7 +169,7 @@ namespace StockManager.Source.Forms
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations}";
-      UserControl ucInventoryLocations = new InventoryLocationsUserControl();
+      UserControl ucInventoryLocations = new InventoryLocationsUserControl(this); // Passing the MainForm to this UC
       ucInventoryLocations.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryLocations);
     }
