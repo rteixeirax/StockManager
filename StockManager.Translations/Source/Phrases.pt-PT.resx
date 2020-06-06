@@ -324,4 +324,7 @@
   <data name="GlobalDialogDeleteBodyWithParam" xml:space="preserve">
     <value>Remover "{0}"?</value>
   </data>
+  <data name="GlobalMain" xml:space="preserve">
+    <value>Principal</value>
+  </data>
 </root>

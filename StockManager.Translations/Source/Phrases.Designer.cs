@@ -223,6 +223,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        public static string GlobalMain {
+            get {
+                return ResourceManager.GetString("GlobalMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string GlobalName {
