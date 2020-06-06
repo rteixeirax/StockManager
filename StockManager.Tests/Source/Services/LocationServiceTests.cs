@@ -220,7 +220,7 @@ namespace StockManager.Tests.Source.Services
       await AppServices.LocationService.CreateLocationAsync(mockLocation);
 
       // Act
-      await AppServices.LocationService.SetMainLocation(_mockLocation.LocationId);
+      await AppServices.LocationService.SetMainLocationAsync(_mockLocation.LocationId);
 
       // Assert
       Assert.AreEqual(mockLocation.IsMain, true);

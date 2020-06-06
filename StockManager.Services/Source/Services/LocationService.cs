@@ -113,7 +113,7 @@ namespace StockManager.Services.Source.Services
       }
     }
 
-    public async Task SetMainLocation(int newMainlocationId)
+    public async Task SetMainLocationAsync(int newMainlocationId)
     {
       Location location = await this.GetLocationByIdAsync(newMainlocationId);
 
@@ -123,7 +123,7 @@ namespace StockManager.Services.Source.Services
         location.IsMain = true;
 
         // Unset the previous main location
-        await _locationRepo.UnsetMainLocation(newMainlocationId);
+        await _locationRepo.UnsetMainLocationAsync(newMainlocationId);
         await _locationRepo.SaveDbChangesAsync();
       }
     }

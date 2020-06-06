@@ -118,7 +118,7 @@ namespace StockManager.Source.UserControls
 
               if (!isMain)
               {
-                await AppServices.LocationService.SetMainLocation(locationId);
+                await AppServices.LocationService.SetMainLocationAsync(locationId);
                 await this.LoadLocationsAsync();
               }
 

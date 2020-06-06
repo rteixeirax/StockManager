@@ -24,7 +24,7 @@ namespace StockManager.Services.Source.Contracts
     /// <summary>
     /// Set the new Main location
     /// </summary>
-    Task SetMainLocation(int newMainlocationId);
+    Task SetMainLocationAsync(int newMainlocationId);
 
     /// <summary>
     /// Get all locations
