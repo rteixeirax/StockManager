@@ -209,6 +209,25 @@ namespace StockManager.Tests.Source.Services
     }
 
     /// <summary>
+    /// Should set the new main location
+    /// </summary>
+    [TestMethod]
+    public async Task ShouldSetTheNewMainLocation()
+    {
+      // Arrange
+      Location mockLocation = _mockLocation;
+      Location previousMainLocation = await AppServices.LocationService.GetLocationByIdAsync(1);
+      await AppServices.LocationService.CreateLocationAsync(mockLocation);
+
+      // Act
+      await AppServices.LocationService.SetMainLocation(_mockLocation.LocationId);
+
+      // Assert
+      Assert.AreEqual(mockLocation.IsMain, true);
+      Assert.AreEqual(previousMainLocation.IsMain, false);
+    }
+
+    /// <summary>
     /// Should fail delete location - must have al least one location
     /// </summary>
     [TestMethod]
