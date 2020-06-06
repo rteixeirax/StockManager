@@ -252,8 +252,8 @@
   <data name="LocationErrorCount" xml:space="preserve">
     <value>Não é possível excluir todos as localizações, deve ter pelo menos uma.</value>
   </data>
-  <data name="LocationErrorWithProducts" xml:space="preserve">
-    <value>Não pode remover localizações que tenham produtos. Mova-os antes de remover.</value>
+  <data name="LocationErrorMainLocation" xml:space="preserve">
+    <value>Não pode remover a localização principal.</value>
   </data>
   <data name="LocationErrorName" xml:space="preserve">
     <value>Já existe uma localização com este nome.</value>

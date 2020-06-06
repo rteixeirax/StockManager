@@ -80,12 +80,12 @@ namespace StockManager.Services.Source.Services
 
           if (location != null)
           {
-            // If have Products, it can't be deleted.
-            if (location.ProductLocations.Count > 0)
+            // If it is the main location cannot be deleted
+            if (location.IsMain)
             {
               errorsList.AddError(
-                "LocationWithProducts",
-                Phrases.LocationErrorWithProducts
+                "MainLocation",
+                Phrases.LocationErrorMainLocation
              );
 
               throw new OperationErrorException(errorsList);

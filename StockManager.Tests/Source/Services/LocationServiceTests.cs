@@ -255,26 +255,13 @@ namespace StockManager.Tests.Source.Services
     }
 
     /// <summary>
-    /// Should fail delete location - location with products
+    /// Should fail delete location - Main location
     /// </summary>
     [TestMethod]
-    public async Task ShouldFailDeleteLocation_LocationWithProducts()
+    public async Task ShouldFailDeleteLocation_MainLocation()
     {
       // Arrange
-      var db = _config.GetDatabaseContext();
-
-      await AppServices.ProductService.CreateProductAsync(new Product() {
-        Name = "mock product",
-        Reference = "mockref",
-      });
-
-      Product product = await AppServices.ProductService.GetProductByIdAsync(1);
       Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
-
-      await db.ProductLocations.AddAsync(new ProductLocation() {
-        ProductId = product.ProductId,
-        LocationId = defaultLocation.LocationId,
-      });
 
       try
       {
@@ -287,8 +274,8 @@ namespace StockManager.Tests.Source.Services
       {
         // Assert
         Assert.AreEqual(ex.Errors.Count, 1);
-        Assert.AreEqual(ex.Errors[0].Field, "LocationWithProducts");
-        Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorWithProducts);
+        Assert.AreEqual(ex.Errors[0].Field, "MainLocation");
+        Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorMainLocation);
       }
     }
   }

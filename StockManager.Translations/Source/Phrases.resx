@@ -232,8 +232,8 @@
   <data name="LocationErrorCount" xml:space="preserve">
     <value>It is not possible delete all locations, you must have at least one location.</value>
   </data>
-  <data name="LocationErrorWithProducts" xml:space="preserve">
-    <value>You can't delete locations that have products. You need to move them first.</value>
+  <data name="LocationErrorMainLocation" xml:space="preserve">
+    <value>You can't delete the main location.</value>
   </data>
   <data name="LocationErrorName" xml:space="preserve">
     <value>A location with this name already exist.</value>

@@ -367,20 +367,20 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can&apos;t delete the main location..
+        /// </summary>
+        public static string LocationErrorMainLocation {
+            get {
+                return ResourceManager.GetString("LocationErrorMainLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A location with this name already exist..
         /// </summary>
         public static string LocationErrorName {
             get {
                 return ResourceManager.GetString("LocationErrorName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can&apos;t delete locations that have products. You need to move them first..
-        /// </summary>
-        public static string LocationErrorWithProducts {
-            get {
-                return ResourceManager.GetString("LocationErrorWithProducts", resourceCulture);
             }
         }
         
