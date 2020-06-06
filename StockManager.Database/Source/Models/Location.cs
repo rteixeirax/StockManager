@@ -14,6 +14,8 @@ namespace StockManager.Database.Source.Models
     [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
 
+    public bool IsMain { get; set; }
+
     public ICollection<ProductLocation> ProductLocations { get; set; }
 
     public ICollection<StockMovement> StockMovementsFrom { get; set; }
@@ -30,6 +32,10 @@ namespace StockManager.Database.Source.Models
         .HasIndex(x => x.Name)
         .IsUnique()
         .HasName("UniqueName");
+
+      builder
+         .Property(x => x.IsMain)
+         .HasDefaultValue(false);
 
       builder
        .HasMany(x => x.ProductLocations)
@@ -53,6 +59,7 @@ namespace StockManager.Database.Source.Models
        new Location {
          LocationId = 1,
          Name = "Warehouse",
+         IsMain = true,
          CreatedAt = DateTime.UtcNow,
          UpdatedAt = DateTime.UtcNow
        },
