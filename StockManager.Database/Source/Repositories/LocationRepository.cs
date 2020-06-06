@@ -59,6 +59,15 @@ namespace StockManager.Database.Source.Repositories
         .FirstOrDefaultAsync();
     }
 
+    public async Task UnsetMainLocation(int newMainlocationId)
+    {
+      Location previousMain = await _db.Locations
+        .Where(location => (location.LocationId != newMainlocationId) && (location.IsMain == true))
+        .FirstOrDefaultAsync();
+
+      previousMain.IsMain = false;
+    }
+
     public async Task<int> CountLocationsAsync()
     {
       return await _db.Locations.CountAsync();

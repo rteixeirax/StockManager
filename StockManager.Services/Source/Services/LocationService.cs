@@ -113,6 +113,21 @@ namespace StockManager.Services.Source.Services
       }
     }
 
+    public async Task SetMainLocation(int newMainlocationId)
+    {
+      Location location = await this.GetLocationByIdAsync(newMainlocationId);
+
+      if (location != null)
+      {
+        // Set as main location
+        location.IsMain = true;
+
+        // Unset the previous main location
+        await _locationRepo.UnsetMainLocation(newMainlocationId);
+        await _locationRepo.SaveDbChangesAsync();
+      }
+    }
+
     public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null)
     {
       return await _locationRepo.FindAllLocationsAsync(searchValue);

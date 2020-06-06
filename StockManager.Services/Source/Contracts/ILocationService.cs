@@ -22,6 +22,11 @@ namespace StockManager.Services.Source.Contracts
     Task DeleteLocationAsync(int[] locationIds);
 
     /// <summary>
+    /// Set the new Main location
+    /// </summary>
+    Task SetMainLocation(int newMainlocationId);
+
+    /// <summary>
     /// Get all locations
     /// </summary>
     Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null);

@@ -44,6 +44,7 @@
       this.btnClearSearchValue = new System.Windows.Forms.Button();
       this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnIsMain = new System.Windows.Forms.DataGridViewCheckBoxColumn();
       this.columnProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
@@ -139,6 +140,7 @@
       this.dgvLocations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnLocationId,
             this.columnName,
+            this.columnIsMain,
             this.columnProducts,
             this.ColumnCreatedAt,
             this.columnActionEdit,
@@ -232,6 +234,15 @@
       this.columnName.ReadOnly = true;
       this.columnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       // 
+      // columnIsMain
+      // 
+      this.columnIsMain.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+      this.columnIsMain.HeaderText = "columnIsMain";
+      this.columnIsMain.Name = "columnIsMain";
+      this.columnIsMain.ReadOnly = true;
+      this.columnIsMain.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.columnIsMain.Width = 109;
+      // 
       // columnProducts
       // 
       this.columnProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -306,6 +317,7 @@
         private System.Windows.Forms.Button btnClearSearchValue;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnLocationId;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn columnIsMain;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnProducts;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
     private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
