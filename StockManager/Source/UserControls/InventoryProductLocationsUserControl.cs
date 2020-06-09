@@ -59,7 +59,6 @@ namespace StockManager.Source.UserControls
       dgvProductStockMovements.Columns[6].HeaderText = Phrases.GlobalUser;
     }
 
-
     /// <summary>
     /// Fill the UC content
     /// </summary>
@@ -69,8 +68,6 @@ namespace StockManager.Source.UserControls
 
       // Set initial state
       lbErrorLocation.Visible = false;
-      lbErrorStock.Visible = false;
-      lbErrorMinStock.Visible = false;
 
       dgvProductLocations.Rows.Clear();
       dgvProductStockMovements.Rows.Clear();
@@ -94,14 +91,22 @@ namespace StockManager.Source.UserControls
       // populate the stock movments table
       _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
         .ToList().ForEach((stockMovement) => {
+          string fromLocation = (stockMovement.FromLocation != null)
+            ? stockMovement.FromLocation.Name
+            : stockMovement.FromLocationName;
+
+          string toLocation = (stockMovement.ToLocation != null)
+            ? stockMovement.ToLocation.Name
+            : stockMovement.ToLocationName;
+
           dgvProductStockMovements.Rows.Add(
            stockMovement.StockMovementId,
            Format.DateTimeFormat(stockMovement.CreatedAt),
-           stockMovement.FromLocation?.Name,
-           stockMovement.ToLocation?.Name,
+           ((stockMovement.User == null) && (fromLocation != null)) ? $"*{fromLocation}" : fromLocation,
+           ((stockMovement.User == null) && (toLocation != null)) ? $"*{toLocation}" : toLocation,
            stockMovement.Qty,
            stockMovement.Stock,
-           stockMovement.User.Username
+           stockMovement.User?.Username
          );
         });
 
@@ -119,26 +124,12 @@ namespace StockManager.Source.UserControls
     private void ShowFormErrors(List<ErrorType> errors)
     {
       lbErrorLocation.Visible = false;
-      lbErrorStock.Visible = false;
-      lbErrorMinStock.Visible = false;
 
       errors.ForEach((err) => {
         if (err.Field == "LocationId")
         {
           lbErrorLocation.Text = err.Error;
           lbErrorLocation.Visible = true;
-        }
-
-        if (err.Field == "Stock")
-        {
-          lbErrorStock.Text = err.Error;
-          lbErrorStock.Visible = true;
-        }
-
-        if (err.Field == "MinStock")
-        {
-          lbErrorMinStock.Text = err.Error;
-          lbErrorMinStock.Visible = true;
         }
       });
     }
