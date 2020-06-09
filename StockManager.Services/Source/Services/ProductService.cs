@@ -3,6 +3,7 @@ using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,13 +19,30 @@ namespace StockManager.Services.Source.Services
       _productRepo = productRepo;
     }
 
-    public async Task CreateProductAsync(Product product)
+    public async Task CreateProductAsync(Product product, int userId)
     {
       try
       {
         await this.ValidateProductFormData(product);
 
         await _productRepo.AddProductAsync(product);
+        await _productRepo.SaveDbChangesAsync();
+
+        // Get the main location
+        Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+
+        // Associate the product to the main location
+        await AppServices.ProductLocationService
+          .AddProductLocationAsync(new ProductLocation() {
+            LocationId = mainLocation.LocationId,
+            ProductId = product.ProductId,
+            Stock = 0,
+            MinStock = 0,
+          },
+          userId
+        );
+
+        // Save changes to save the association
         await _productRepo.SaveDbChangesAsync();
       }
       catch (OperationErrorException operationErrorException)

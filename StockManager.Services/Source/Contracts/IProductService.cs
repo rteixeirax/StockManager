@@ -9,7 +9,7 @@ namespace StockManager.Services.Source.Contracts
     /// <summary>
     /// Create new product
     /// </summary>
-    Task CreateProductAsync(Product product);
+    Task CreateProductAsync(Product product, int userId);
 
     /// <summary>
     /// Edit product

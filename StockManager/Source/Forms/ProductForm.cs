@@ -111,7 +111,8 @@ namespace StockManager.Source.Forms
         }
         else
         {
-          await AppServices.ProductService.CreateProductAsync(product);
+          await AppServices.ProductService
+            .CreateProductAsync(product, Program.LoggedInUser.UserId);
         }
 
         Spinner.StopSpinner();
