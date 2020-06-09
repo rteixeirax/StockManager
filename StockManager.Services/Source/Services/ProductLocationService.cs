@@ -1,4 +1,4 @@
-﻿using StockManager.Database.Source.Contracts;
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
@@ -27,6 +27,7 @@ namespace StockManager.Services.Source.Services
           UserId = userId,
           ProductId = data.ProductId,
           ToLocationId = data.LocationId,
+          ToLocationName = data.Location.Name,
           Qty = data.Stock,
         };
 
@@ -56,16 +57,16 @@ namespace StockManager.Services.Source.Services
 
         if (productLocation != null)
         {
-          _productLocationRepo.RemoveProductLocation(productLocation);
-
           StockMovement stockMovement = new StockMovement() {
             UserId = userId,
             ProductId = productLocation.ProductId,
             FromLocationId = productLocation.LocationId,
+            FromLocationName = productLocation.Location.Name,
             Qty = (productLocation.Stock * (-1)), // To remove stock
           };
 
           await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+          _productLocationRepo.RemoveProductLocation(productLocation);
           await _productLocationRepo.SaveDbChangesAsync();
         }
       }
@@ -85,16 +86,6 @@ namespace StockManager.Services.Source.Services
       if (data.LocationId <= 0)
       {
         errorsList.AddError("LocationId", Phrases.GlobalRequiredField);
-      }
-
-      if (data?.Stock == null)
-      {
-        errorsList.AddError("Stock", Phrases.GlobalRequiredField);
-      }
-
-      if (data?.MinStock == null)
-      {
-        errorsList.AddError("MinStock", Phrases.GlobalRequiredField);
       }
 
       if (errorsList.HasErrors())
