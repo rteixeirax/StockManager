@@ -20,7 +20,12 @@ namespace StockManager.Services.Source.Services
     {
       try
       {
-        StockMovement lastStockMovement = await this.GetProductLastStockMovementAsync(data.ProductId);
+        int locationId = ( int )((data.ToLocationId != null)
+          ? data.ToLocationId
+          : data.FromLocationId);
+
+        StockMovement lastStockMovement = await _stockMovementRepo
+          .FindProductLocationLastStockMovementAsync(data.ProductId, locationId);
 
         // Calculate the new accumulated stock
         if (lastStockMovement != null)

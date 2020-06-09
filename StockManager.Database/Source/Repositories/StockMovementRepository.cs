@@ -31,5 +31,12 @@ namespace StockManager.Database.Source.Repositories
         .Where(x => x.ProductId == productId)
         .OrderByDescending(x => x.CreatedAt).FirstOrDefaultAsync();
     }
+
+    public async Task<StockMovement> FindProductLocationLastStockMovementAsync(int productId, int locationId)
+    {
+      return await _db.StockMovements
+        .Where(x => (x.ProductId == productId) && (x.ToLocationId == locationId || x.FromLocationId == locationId))
+        .OrderByDescending(x => x.CreatedAt).FirstOrDefaultAsync();
+    }
   }
 }

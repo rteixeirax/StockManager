@@ -19,5 +19,10 @@ namespace StockManager.Database.Source.Contracts
     /// Find the product last stock movement
     /// </summary>
     Task<StockMovement> FindProductLastStockMovementAsync(int productId);
+
+    /// <summary>
+    /// Find the product last stock movement for the given location
+    /// </summary>
+    Task<StockMovement> FindProductLocationLastStockMovementAsync(int productId, int locationId);
   }
 }
