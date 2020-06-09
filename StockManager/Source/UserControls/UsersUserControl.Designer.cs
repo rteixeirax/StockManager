@@ -116,7 +116,8 @@
       // 
       this.dgvUsers.AllowUserToAddRows = false;
       this.dgvUsers.AllowUserToDeleteRows = false;
-      this.dgvUsers.AllowUserToOrderColumns = true;
+      this.dgvUsers.AllowUserToResizeColumns = false;
+      this.dgvUsers.AllowUserToResizeRows = false;
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
