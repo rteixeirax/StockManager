@@ -29,7 +29,7 @@ namespace StockManager.Tests.Source.Services
       _mockLocation = await AppServices.LocationService.GetLocationByIdAsync(1);
       _mockUser = await AppServices.UserService.GetUserByIdAsync(1);
 
-      await AppServices.ProductService.CreateProductAsync(_mockProduct);
+      await AppServices.ProductService.CreateProductAsync(_mockProduct, _mockUser.UserId);
       await AppServices.ProductLocationService
         .AddProductLocationAsync(new ProductLocation() {
           ProductId = _mockProduct.ProductId,

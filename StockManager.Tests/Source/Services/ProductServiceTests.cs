@@ -16,12 +16,15 @@ namespace StockManager.Tests.Source.Services
   public class ProductServiceTests
   {
     private TestsConfig _config;
+    private User _adminUser;
     private List<Product> _mockProducts = new List<Product>();
 
     [TestInitialize]
-    public void BeforeEach()
+    public async Task BeforeEach()
     {
       _config = new TestsConfig();
+
+      _adminUser = await AppServices.UserService.GetUserByIdAsync(1);
 
       _mockProducts.AddRange(new Product[] {
        new Product() {
@@ -50,8 +53,8 @@ namespace StockManager.Tests.Source.Services
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
-      await AppServices.ProductService.CreateProductAsync(product);
-      await AppServices.ProductService.CreateProductAsync(otherProduct);
+      await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
+      await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
 
       // Act
       IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync();
@@ -71,8 +74,8 @@ namespace StockManager.Tests.Source.Services
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
-      await AppServices.ProductService.CreateProductAsync(product);
-      await AppServices.ProductService.CreateProductAsync(otherProduct);
+      await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
+      await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
 
       // Act
       IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync(product.Reference);
@@ -91,8 +94,8 @@ namespace StockManager.Tests.Source.Services
       // Arrange
       Product product = _mockProducts[0];
       Product otherProduct = _mockProducts[1];
-      await AppServices.ProductService.CreateProductAsync(product);
-      await AppServices.ProductService.CreateProductAsync(otherProduct);
+      await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
+      await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
 
       // Act
       IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync(product.Name);
@@ -112,7 +115,7 @@ namespace StockManager.Tests.Source.Services
       Product product = _mockProducts[0];
 
       // Act
-      await AppServices.ProductService.CreateProductAsync(product);
+      await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
 
       // Assert
       Assert.AreEqual(product.Reference, "mockRef1");
@@ -129,13 +132,13 @@ namespace StockManager.Tests.Source.Services
     {
       // Arrange
       Product product = _mockProducts[0];
-      await AppServices.ProductService.CreateProductAsync(product);
+      await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
 
       try
       {
         // Act
         Product newProduct = _mockProducts[0];
-        await AppServices.ProductService.CreateProductAsync(newProduct);
+        await AppServices.ProductService.CreateProductAsync(newProduct, _adminUser.UserId);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       }
@@ -160,7 +163,7 @@ namespace StockManager.Tests.Source.Services
       try
       {
         // Act
-        await AppServices.ProductService.CreateProductAsync(newProduct);
+        await AppServices.ProductService.CreateProductAsync(newProduct, _adminUser.UserId);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       }
@@ -183,7 +186,7 @@ namespace StockManager.Tests.Source.Services
     {
       // Arrange
       Product mockProduct = _mockProducts[0];
-      await AppServices.ProductService.CreateProductAsync(mockProduct);
+      await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
 
       // Act
       Product updatedProduct = new Product() {
@@ -209,8 +212,8 @@ namespace StockManager.Tests.Source.Services
       // Arrange
       Product mockProduct = _mockProducts[0];
       Product mockProduct2 = _mockProducts[1];
-      await AppServices.ProductService.CreateProductAsync(mockProduct);
-      await AppServices.ProductService.CreateProductAsync(mockProduct2);
+      await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
+      await AppServices.ProductService.CreateProductAsync(mockProduct2, _adminUser.UserId);
 
       try
       {
@@ -242,7 +245,7 @@ namespace StockManager.Tests.Source.Services
     {
       // Arrange
       Product mockProduct = _mockProducts[0];
-      await AppServices.ProductService.CreateProductAsync(mockProduct);
+      await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
 
       // Act
       await AppServices.ProductService.DeleteProductAsync(new int[] { mockProduct.ProductId });
