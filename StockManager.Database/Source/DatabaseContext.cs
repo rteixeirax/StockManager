@@ -43,6 +43,7 @@ namespace StockManager.Database.Source
       modelBuilder.ApplyConfiguration(new LocationConfiguration());
       modelBuilder.ApplyConfiguration(new ProductConfiguration());
       modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
+      modelBuilder.ApplyConfiguration(new StockMovementConfiguration());
     }
 
     /// <summary>

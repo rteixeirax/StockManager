@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockManager.Database.Source.Models
@@ -7,6 +9,9 @@ namespace StockManager.Database.Source.Models
   {
     [Key]
     public int StockMovementId { get; set; }
+
+    public string FromLocationName { get; set; }
+    public string ToLocationName { get; set; }
 
     [Required(ErrorMessage = "Qty is required")]
     public float Qty { get; set; }
@@ -30,5 +35,19 @@ namespace StockManager.Database.Source.Models
     [ForeignKey("User")]
     public int? UserId { get; set; }
     public User User { get; set; }
+  }
+
+  public class StockMovementConfiguration : IEntityTypeConfiguration<StockMovement>
+  {
+    public void Configure(EntityTypeBuilder<StockMovement> builder)
+    {
+      builder
+         .Property(x => x.FromLocationName)
+         .HasDefaultValue(null);
+
+      builder
+         .Property(x => x.ToLocationName)
+         .HasDefaultValue(null);
+    }
   }
 }
