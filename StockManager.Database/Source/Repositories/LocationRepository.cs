@@ -68,6 +68,13 @@ namespace StockManager.Database.Source.Repositories
       previousMain.IsMain = false;
     }
 
+    public async Task<Location> FindMainLocationAsync()
+    {
+      return await _db.Locations
+        .Where(location => location.IsMain == true)
+        .FirstOrDefaultAsync();
+    }
+
     public async Task<int> CountLocationsAsync()
     {
       return await _db.Locations.CountAsync();

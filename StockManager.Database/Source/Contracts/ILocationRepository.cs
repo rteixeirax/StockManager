@@ -42,6 +42,11 @@ namespace StockManager.Database.Source.Contracts
     Task UnsetMainLocationAsync(int newMainlocationId);
 
     /// <summary>
+    /// Unset the main location
+    /// </summary>
+    Task<Location> FindMainLocationAsync();
+
+    /// <summary>
     /// Count async all the locations in the DB
     /// </summary>
     Task<int> CountLocationsAsync();
