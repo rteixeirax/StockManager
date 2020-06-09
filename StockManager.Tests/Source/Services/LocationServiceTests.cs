@@ -17,12 +17,14 @@ namespace StockManager.Tests.Source.Services
   {
     private TestsConfig _config;
     private Location _mockLocation;
+    private User _userAdmin;
 
     [TestInitialize]
-    public void BeforeEach()
+    public async Task BeforeEachAsync()
     {
       _config = new TestsConfig();
       _mockLocation = new Location() { Name = "new Location" };
+      _userAdmin = await AppServices.UserService.GetUserByIdAsync(1);
     }
 
     [TestCleanup]
@@ -201,8 +203,11 @@ namespace StockManager.Tests.Source.Services
       await AppServices.LocationService.CreateLocationAsync(mockLocation);
 
       // Act
-      await AppServices.LocationService.DeleteLocationAsync(new int[] { mockLocation.LocationId });
-      Location dbLocation = await AppServices.LocationService.GetLocationByIdAsync(mockLocation.LocationId);
+      await AppServices.LocationService
+        .DeleteLocationAsync(new int[] { mockLocation.LocationId }, _userAdmin.UserId);
+
+      Location dbLocation = await AppServices.LocationService
+        .GetLocationByIdAsync(mockLocation.LocationId);
 
       // Assert
       Assert.IsNull(dbLocation);
@@ -228,33 +233,6 @@ namespace StockManager.Tests.Source.Services
     }
 
     /// <summary>
-    /// Should fail delete location - must have al least one location
-    /// </summary>
-    [TestMethod]
-    public async Task ShouldFailDeleteLocation_LastLocation()
-    {
-      // Arrange
-      Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
-      Location defaultLocation2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle#1
-      await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation2.LocationId });
-
-      try
-      {
-        // Act
-        await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId });
-
-        Assert.Fail("It should have thrown an OperationErrorExeption");
-      }
-      catch (OperationErrorException ex)
-      {
-        // Assert
-        Assert.AreEqual(ex.Errors.Count, 1);
-        Assert.AreEqual(ex.Errors[0].Field, "LocationsCount");
-        Assert.AreEqual(ex.Errors[0].Error, Phrases.LocationErrorCount);
-      }
-    }
-
-    /// <summary>
     /// Should fail delete location - Main location
     /// </summary>
     [TestMethod]
@@ -266,7 +244,8 @@ namespace StockManager.Tests.Source.Services
       try
       {
         // Act
-        await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId });
+        await AppServices.LocationService
+          .DeleteLocationAsync(new int[] { defaultLocation.LocationId }, _userAdmin.UserId);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       }
