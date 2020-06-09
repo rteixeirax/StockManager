@@ -229,9 +229,6 @@
   <data name="GlobalLocations" xml:space="preserve">
     <value>Locations</value>
   </data>
-  <data name="LocationErrorCount" xml:space="preserve">
-    <value>It is not possible delete all locations, you must have at least one location.</value>
-  </data>
   <data name="LocationErrorMainLocation" xml:space="preserve">
     <value>You can't delete the main location.</value>
   </data>
@@ -306,5 +303,8 @@
   </data>
   <data name="GlobalMain" xml:space="preserve">
     <value>Main</value>
+  </data>
+  <data name="StockMovementLocationDeleted" xml:space="preserve">
+    <value>Deleted</value>
   </data>
 </root>

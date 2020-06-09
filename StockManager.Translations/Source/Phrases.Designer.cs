@@ -358,15 +358,6 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to It is not possible delete all locations, you must have at least one location..
-        /// </summary>
-        public static string LocationErrorCount {
-            get {
-                return ResourceManager.GetString("LocationErrorCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You can&apos;t delete the main location..
         /// </summary>
         public static string LocationErrorMainLocation {
@@ -507,6 +498,15 @@ namespace StockManager.Translations.Source {
         public static string StockMovementFrom {
             get {
                 return ResourceManager.GetString("StockMovementFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted.
+        /// </summary>
+        public static string StockMovementLocationDeleted {
+            get {
+                return ResourceManager.GetString("StockMovementLocationDeleted", resourceCulture);
             }
         }
         

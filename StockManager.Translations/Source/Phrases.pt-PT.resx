@@ -249,9 +249,6 @@
   <data name="GlobalLocations" xml:space="preserve">
     <value>Localizações</value>
   </data>
-  <data name="LocationErrorCount" xml:space="preserve">
-    <value>Não é possível excluir todos as localizações, deve ter pelo menos uma.</value>
-  </data>
   <data name="LocationErrorMainLocation" xml:space="preserve">
     <value>Não pode remover a localização principal.</value>
   </data>
@@ -326,5 +323,8 @@
   </data>
   <data name="GlobalMain" xml:space="preserve">
     <value>Principal</value>
+  </data>
+  <data name="StockMovementLocationDeleted" xml:space="preserve">
+    <value>Eliminado</value>
   </data>
 </root>
