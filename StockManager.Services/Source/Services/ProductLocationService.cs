@@ -3,6 +3,7 @@ using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
+using System;
 using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
@@ -34,22 +35,23 @@ namespace StockManager.Services.Source.Services
         await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
         await _productLocationRepo.SaveDbChangesAsync();
 
-        // catch operations errors
       }
       catch (OperationErrorException operationErrorException)
       {
+        // catch operations errors
         throw operationErrorException;
-
-        // catch service errors
       }
       catch (ServiceErrorException serviceErrorException)
       {
+        // catch service errors
         throw serviceErrorException;
       }
     }
 
     public async Task DeleteProductLocationAsyn(int productLocationId, int userId)
     {
+      OperationErrorsList errorsList = new OperationErrorsList();
+
       try
       {
         ProductLocation productLocation = await _productLocationRepo
@@ -57,26 +59,64 @@ namespace StockManager.Services.Source.Services
 
         if (productLocation != null)
         {
-          StockMovement stockMovement = new StockMovement() {
-            UserId = userId,
-            ProductId = productLocation.ProductId,
-            FromLocationId = productLocation.LocationId,
-            FromLocationName = productLocation.Location.Name,
-            Qty = (productLocation.Stock * (-1)), // To remove stock
-          };
+          if (productLocation.Stock > 0)
+          {
+            /* 
+            * When the remove the product from a location
+            * the product stock should be moved to the main location 
+            */
 
-          await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+            // Get the main location
+            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+
+            // Cannot remove the association with the main location
+            if (productLocation.LocationId == mainLocation.LocationId)
+            {
+              errorsList.AddError("LocationId", Phrases.ProductLocationDeleteErrorMainLocation);
+              throw new OperationErrorException(errorsList);
+            }
+
+            // Create a stock movement between locations
+            StockMovement stockMovement = new StockMovement() {
+              UserId = userId,
+              ProductId = productLocation.ProductId,
+              FromLocationId = productLocation.LocationId,
+              FromLocationName = productLocation.Location.Name,
+              ToLocationId = mainLocation.LocationId,
+              ToLocationName = mainLocation.Name,
+              Qty = productLocation.Stock,
+            };
+
+            await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+
+            // Get the relatation between the product and the main location to be updated
+            ProductLocation mainLocationRelation = await _productLocationRepo
+              .FindProductLocationAsync(productLocation.ProductId, mainLocation.LocationId);
+
+            // Update the relation stock
+            mainLocationRelation.Stock += productLocation.Stock;
+          }
+
           _productLocationRepo.RemoveProductLocation(productLocation);
           await _productLocationRepo.SaveDbChangesAsync();
         }
       }
+      catch (OperationErrorException operationErrorException)
+      {
+        // catch operations errors
+        throw operationErrorException;
+      }
       catch
       {
-        OperationErrorsList errorsList = new OperationErrorsList();
+        // catch service errors
         errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
-
         throw new ServiceErrorException(errorsList);
       }
+    }
+
+    public async Task<ProductLocation> GetProductLocationAsync(int productId, int locationId)
+    {
+      return await _productLocationRepo.FindProductLocationAsync(productId, locationId);
     }
 
     private async Task ValidateProductLocationDataAsync(ProductLocation data)

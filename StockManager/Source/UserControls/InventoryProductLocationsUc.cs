@@ -211,6 +211,17 @@ namespace StockManager.Source.UserControls
           Spinner.StopSpinner();
 
         }
+        catch (OperationErrorException ex)
+        {
+          Spinner.StopSpinner();
+
+          MessageBox.Show(
+            $"{ex.Errors[0].Error}",
+            Phrases.GlobalDialogWarningTitle,
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Warning
+          );
+        }
         catch (ServiceErrorException ex)
         {
           Spinner.StopSpinner();

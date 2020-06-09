@@ -14,5 +14,10 @@ namespace StockManager.Services.Source.Contracts
     /// Remove the association product-location
     /// </summary>
     Task DeleteProductLocationAsyn(int productLocationId, int userId);
+
+    /// <summary>
+    /// Get the ProductLocation relation for the given productId and locationId
+    /// </summary>
+    Task<ProductLocation> GetProductLocationAsync(int productId, int locationId);
   }
 }

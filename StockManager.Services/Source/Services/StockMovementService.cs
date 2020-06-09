@@ -24,13 +24,13 @@ namespace StockManager.Services.Source.Services
           ? data.ToLocationId
           : data.FromLocationId);
 
-        StockMovement lastStockMovement = await _stockMovementRepo
-          .FindProductLocationLastStockMovementAsync(data.ProductId, locationId);
+        ProductLocation productLocation = await AppServices.ProductLocationService
+          .GetProductLocationAsync(data.ProductId, locationId);
 
         // Calculate the new accumulated stock
-        if (lastStockMovement != null)
+        if (productLocation != null)
         {
-          data.Stock = (lastStockMovement.Stock + data.Qty);
+          data.Stock = (productLocation.Stock + data.Qty);
         }
         else
         {
