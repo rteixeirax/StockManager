@@ -327,4 +327,7 @@
   <data name="StockMovementLocationDeleted" xml:space="preserve">
     <value>Eliminado</value>
   </data>
+  <data name="ProductLocationDeleteErrorMainLocation" xml:space="preserve">
+    <value>Não é possível remover produtos da localização principal</value>
+  </data>
 </root>

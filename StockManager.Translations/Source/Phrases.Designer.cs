@@ -475,6 +475,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It&apos;s not possible remove products from the main location.
+        /// </summary>
+        public static string ProductLocationDeleteErrorMainLocation {
+            get {
+                return ResourceManager.GetString("ProductLocationDeleteErrorMainLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Already associated.
         /// </summary>
         public static string ProductLocationErrorAlreadyAssociated {
