@@ -4,6 +4,7 @@ using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
@@ -51,26 +52,12 @@ namespace StockManager.Services.Source.Services
       }
     }
 
-
     public async Task DeleteLocationAsync(int[] locationIds)
     {
       OperationErrorsList errorsList = new OperationErrorsList();
 
       try
       {
-        int locationsCount = await _locationRepo.CountLocationsAsync();
-
-        // Must have at least one location, can't delete all
-        if (locationIds.Length >= locationsCount)
-        {
-          errorsList.AddError(
-            "LocationsCount",
-             Phrases.LocationErrorCount
-          );
-
-          throw new OperationErrorException(errorsList);
-        }
-
         for (int i = 0; i < locationIds.Length; i += 1)
         {
           int locationId = locationIds[i];
@@ -126,6 +113,11 @@ namespace StockManager.Services.Source.Services
         await _locationRepo.UnsetMainLocationAsync(newMainlocationId);
         await _locationRepo.SaveDbChangesAsync();
       }
+    }
+
+    public async Task<Location> GetMainLocationAsync()
+    {
+      return await _locationRepo.FindMainLocationAsync();
     }
 
     public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null)

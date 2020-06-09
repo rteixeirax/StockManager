@@ -17,14 +17,12 @@ namespace StockManager.Tests.Source.Services
   {
     private TestsConfig _config;
     private Location _mockLocation;
-    private User _userAdmin;
 
     [TestInitialize]
-    public async Task BeforeEachAsync()
+    public void BeforeEachAsync()
     {
       _config = new TestsConfig();
       _mockLocation = new Location() { Name = "new Location" };
-      _userAdmin = await AppServices.UserService.GetUserByIdAsync(1);
     }
 
     [TestCleanup]
@@ -203,8 +201,7 @@ namespace StockManager.Tests.Source.Services
       await AppServices.LocationService.CreateLocationAsync(mockLocation);
 
       // Act
-      await AppServices.LocationService
-        .DeleteLocationAsync(new int[] { mockLocation.LocationId }, _userAdmin.UserId);
+      await AppServices.LocationService.DeleteLocationAsync(new int[] { mockLocation.LocationId });
 
       Location dbLocation = await AppServices.LocationService
         .GetLocationByIdAsync(mockLocation.LocationId);
@@ -244,8 +241,7 @@ namespace StockManager.Tests.Source.Services
       try
       {
         // Act
-        await AppServices.LocationService
-          .DeleteLocationAsync(new int[] { defaultLocation.LocationId }, _userAdmin.UserId);
+        await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId });
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       }
