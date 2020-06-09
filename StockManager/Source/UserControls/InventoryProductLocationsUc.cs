@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
-  public partial class InventoryProductLocationsUserControl : UserControl
+  public partial class InventoryProductLocationsUc : UserControl
   {
     private readonly MainForm _mainForm;
     private readonly Product _product;
 
-    public InventoryProductLocationsUserControl(MainForm mainForm, Product product)
+    public InventoryProductLocationsUc(MainForm mainForm, Product product)
     {
       InitializeComponent();
 

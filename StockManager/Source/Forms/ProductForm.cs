@@ -15,9 +15,9 @@ namespace StockManager.Source.Forms
   public partial class ProductForm : Form
   {
     private int _productId = 0;
-    private readonly InventoryProductsUserControl _inventoryProductsUserControl;
+    private readonly InventoryProductsUc _inventoryProductsUserControl;
 
-    public ProductForm(InventoryProductsUserControl inventoryProductsUserControl)
+    public ProductForm(InventoryProductsUc inventoryProductsUserControl)
     {
       InitializeComponent();
       _inventoryProductsUserControl = inventoryProductsUserControl;

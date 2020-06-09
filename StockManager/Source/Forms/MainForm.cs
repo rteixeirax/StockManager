@@ -47,14 +47,14 @@ namespace StockManager.Source.Forms
       if (loggedInUser == null)
       {
         lbViewTitle.Text = Phrases.LoginWelcome;
-        UserControl ucLogin = new LoginUserControl(this);
+        UserControl ucLogin = new LoginUc(this);
         ucLogin.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucLogin);
       }
       else
       {
         lbViewTitle.Text = "Dashboard";
-        UserControl ucDashboard = new DashboardUserControl();
+        UserControl ucDashboard = new DashboardUc();
         ucDashboard.Dock = DockStyle.Fill;
         pnlViews.Controls.Add(ucDashboard);
 
@@ -147,7 +147,7 @@ namespace StockManager.Source.Forms
       // Show the Dashboard view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Dashboard";
-      UserControl ucDashboard = new DashboardUserControl();
+      UserControl ucDashboard = new DashboardUc();
       ucDashboard.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucDashboard);
     }
@@ -169,7 +169,7 @@ namespace StockManager.Source.Forms
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations}";
-      UserControl ucInventoryLocations = new InventoryLocationsUserControl(this); // Passing the MainForm to this UC
+      UserControl ucInventoryLocations = new InventoryLocationsUc(this); // Passing the MainForm to this UC
       ucInventoryLocations.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryLocations);
     }
@@ -182,7 +182,7 @@ namespace StockManager.Source.Forms
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts}";
-      UserControl ucInventoryProducts = new InventoryProductsUserControl(this); // Passing the MainForm to this UC
+      UserControl ucInventoryProducts = new InventoryProductsUc(this); // Passing the MainForm to this UC
       ucInventoryProducts.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProducts);
     }
@@ -195,7 +195,7 @@ namespace StockManager.Source.Forms
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
-      UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUserControl(this, product);
+      UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUc(this, product);
       ucInventoryProductLocationsUserControl.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProductLocationsUserControl);
     }
@@ -211,7 +211,7 @@ namespace StockManager.Source.Forms
       // Show the UsersUser view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = Phrases.GlobalUsers;
-      UserControl ucUsers = new UsersUserControl();
+      UserControl ucUsers = new UsersUc();
       ucUsers.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucUsers);
     }
@@ -227,7 +227,7 @@ namespace StockManager.Source.Forms
       // Show the Settings view
       pnlViews.Controls.Clear();
       lbViewTitle.Text = "Settings";
-      UserControl ucSettings = new SettingsUserControl();
+      UserControl ucSettings = new SettingsUc();
       ucSettings.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucSettings);
     }

@@ -196,35 +196,35 @@
     <Compile Include="Source\Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\DashboardUserControl.cs">
+    <Compile Include="Source\UserControls\DashboardUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\DashboardUserControl.Designer.cs">
-      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\DashboardUc.Designer.cs">
+      <DependentUpon>DashboardUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryLocationsUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryLocationsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryLocationsUserControl.Designer.cs">
-      <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\InventoryLocationsUc.Designer.cs">
+      <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\LoginUserControl.cs">
+    <Compile Include="Source\UserControls\LoginUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\LoginUserControl.Designer.cs">
-      <DependentUpon>LoginUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\LoginUc.Designer.cs">
+      <DependentUpon>LoginUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductLocationsUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryProductLocationsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductLocationsUserControl.Designer.cs">
-      <DependentUpon>InventoryProductLocationsUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\InventoryProductLocationsUc.Designer.cs">
+      <DependentUpon>InventoryProductLocationsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\SettingsUserControl.cs">
+    <Compile Include="Source\UserControls\SettingsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\SettingsUserControl.Designer.cs">
-      <DependentUpon>SettingsUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\SettingsUc.Designer.cs">
+      <DependentUpon>SettingsUc.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -234,17 +234,17 @@
     </Compile>
     <Compile Include="Source\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\UserControls\InventoryProductsUserControl.cs">
+    <Compile Include="Source\UserControls\InventoryProductsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductsUserControl.Designer.cs">
-      <DependentUpon>InventoryProductsUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\InventoryProductsUc.Designer.cs">
+      <DependentUpon>InventoryProductsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\UsersUserControl.cs">
+    <Compile Include="Source\UserControls\UsersUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\UsersUserControl.Designer.cs">
-      <DependentUpon>UsersUserControl.cs</DependentUpon>
+    <Compile Include="Source\UserControls\UsersUc.Designer.cs">
+      <DependentUpon>UsersUc.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Components\Spinner.cs" />
     <EmbeddedResource Include="Source\Forms\ChangePasswordForm.resx">
@@ -267,26 +267,26 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\DashboardUserControl.resx">
-      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\DashboardUc.resx">
+      <DependentUpon>DashboardUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryLocationsUserControl.resx">
-      <DependentUpon>InventoryLocationsUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\InventoryLocationsUc.resx">
+      <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryProductLocationsUserControl.resx">
-      <DependentUpon>InventoryProductLocationsUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\InventoryProductLocationsUc.resx">
+      <DependentUpon>InventoryProductLocationsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\LoginUserControl.resx">
-      <DependentUpon>LoginUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\LoginUc.resx">
+      <DependentUpon>LoginUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\SettingsUserControl.resx">
-      <DependentUpon>SettingsUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\SettingsUc.resx">
+      <DependentUpon>SettingsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryProductsUserControl.resx">
-      <DependentUpon>InventoryProductsUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\InventoryProductsUc.resx">
+      <DependentUpon>InventoryProductsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\UsersUserControl.resx">
-      <DependentUpon>UsersUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="Source\UserControls\UsersUc.resx">
+      <DependentUpon>UsersUc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.db.sqlite" Condition="Exists('.\App.db.sqlite')">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

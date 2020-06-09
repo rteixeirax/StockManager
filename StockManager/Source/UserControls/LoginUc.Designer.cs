@@ -1,6 +1,6 @@
 ﻿namespace StockManager.Source.UserControls
 {
-  partial class LoginUserControl
+  partial class LoginUc
   {
     /// <summary>
     /// Required designer variable.

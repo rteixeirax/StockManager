@@ -16,9 +16,9 @@ namespace StockManager.Source.Forms
   public partial class UserForm : Form
   {
     private int _userId = 0;
-    private readonly UsersUserControl _usersUserControl;
+    private readonly UsersUc _usersUserControl;
 
-    public UserForm(UsersUserControl usersUserControl)
+    public UserForm(UsersUc usersUserControl)
     {
       InitializeComponent();
       _usersUserControl = usersUserControl;

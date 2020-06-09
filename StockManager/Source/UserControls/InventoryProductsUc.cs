@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
-  public partial class InventoryProductsUserControl : UserControl
+  public partial class InventoryProductsUc : UserControl
   {
     private readonly MainForm _mainForm;
     private bool _hasBeenSearching = false; // Flags if the user has been searching
 
-    public InventoryProductsUserControl(MainForm mainForm)
+    public InventoryProductsUc(MainForm mainForm)
     {
       InitializeComponent();
 

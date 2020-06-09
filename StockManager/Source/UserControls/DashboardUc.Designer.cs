@@ -1,6 +1,6 @@
 ﻿namespace StockManager.Source.UserControls
 {
-  partial class DashboardUserControl
+  partial class DashboardUc
   {
     /// <summary>
     /// Required designer variable.

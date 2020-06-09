@@ -1,6 +1,6 @@
 ﻿namespace StockManager.Source.UserControls
 {
-  partial class UsersUserControl
+  partial class InventoryLocationsUc
   {
     /// <summary>
     /// Required designer variable.
@@ -29,22 +29,23 @@
     private void InitializeComponent()
     {
       System.Windows.Forms.PictureBox pbSearchIcon;
-      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersUserControl));
+      System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryLocationsUc));
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
       this.pnlActions = new System.Windows.Forms.Panel();
-      this.btnDeleteUser = new System.Windows.Forms.Button();
-      this.btnCreateUser = new System.Windows.Forms.Button();
-      this.dgvUsers = new System.Windows.Forms.DataGridView();
-      this.columnUserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnLastLogIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.btnDelete = new System.Windows.Forms.Button();
+      this.btnCreate = new System.Windows.Forms.Button();
+      this.dgvLocations = new System.Windows.Forms.DataGridView();
+      this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnIsMain = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+      this.columnProducts = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.ColumnCreatedAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
+      this.columnActionDetails = new System.Windows.Forms.DataGridViewImageColumn();
       this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
       this.tbSeachText = new System.Windows.Forms.TextBox();
       this.pnbSearchBox = new System.Windows.Forms.Panel();
@@ -52,7 +53,7 @@
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
       this.pnlActions.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).BeginInit();
       this.pnbSearchBox.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -68,67 +69,66 @@
       pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
       pbSearchIcon.TabIndex = 5;
       pbSearchIcon.TabStop = false;
-      pbSearchIcon.Click += new System.EventHandler(this.pbSearchIcon_Click);
       // 
       // pnlActions
       // 
       this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlActions.Controls.Add(this.btnDeleteUser);
-      this.pnlActions.Controls.Add(this.btnCreateUser);
-      this.pnlActions.Location = new System.Drawing.Point(658, 6);
+      this.pnlActions.Controls.Add(this.btnDelete);
+      this.pnlActions.Controls.Add(this.btnCreate);
+      this.pnlActions.Location = new System.Drawing.Point(657, 6);
       this.pnlActions.Name = "pnlActions";
-      this.pnlActions.Size = new System.Drawing.Size(199, 34);
-      this.pnlActions.TabIndex = 3;
+      this.pnlActions.Size = new System.Drawing.Size(200, 34);
+      this.pnlActions.TabIndex = 11;
       // 
-      // btnDeleteUser
+      // btnDelete
       // 
-      this.btnDeleteUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnDeleteUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
-      this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnDeleteUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnDeleteUser.ForeColor = System.Drawing.Color.White;
-      this.btnDeleteUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnDeleteUser.Location = new System.Drawing.Point(102, 3);
-      this.btnDeleteUser.Name = "btnDeleteUser";
-      this.btnDeleteUser.Size = new System.Drawing.Size(93, 27);
-      this.btnDeleteUser.TabIndex = 9;
-      this.btnDeleteUser.Text = "Delete";
-      this.btnDeleteUser.UseVisualStyleBackColor = false;
-      this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+      this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
+      this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnDelete.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnDelete.ForeColor = System.Drawing.Color.White;
+      this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnDelete.Location = new System.Drawing.Point(103, 3);
+      this.btnDelete.Name = "btnDelete";
+      this.btnDelete.Size = new System.Drawing.Size(93, 27);
+      this.btnDelete.TabIndex = 9;
+      this.btnDelete.Text = "Delete";
+      this.btnDelete.UseVisualStyleBackColor = false;
+      this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
       // 
-      // btnCreateUser
+      // btnCreate
       // 
-      this.btnCreateUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnCreateUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-      this.btnCreateUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnCreateUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnCreateUser.ForeColor = System.Drawing.Color.White;
-      this.btnCreateUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnCreateUser.Location = new System.Drawing.Point(5, 3);
-      this.btnCreateUser.Name = "btnCreateUser";
-      this.btnCreateUser.Size = new System.Drawing.Size(93, 27);
-      this.btnCreateUser.TabIndex = 7;
-      this.btnCreateUser.Text = "Add new";
-      this.btnCreateUser.UseVisualStyleBackColor = false;
-      this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
+      this.btnCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+      this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnCreate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnCreate.ForeColor = System.Drawing.Color.White;
+      this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnCreate.Location = new System.Drawing.Point(6, 3);
+      this.btnCreate.Name = "btnCreate";
+      this.btnCreate.Size = new System.Drawing.Size(93, 27);
+      this.btnCreate.TabIndex = 7;
+      this.btnCreate.Text = "Add new";
+      this.btnCreate.UseVisualStyleBackColor = false;
+      this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
       // 
-      // dgvUsers
+      // dgvLocations
       // 
-      this.dgvUsers.AllowUserToAddRows = false;
-      this.dgvUsers.AllowUserToDeleteRows = false;
-      this.dgvUsers.AllowUserToResizeColumns = false;
-      this.dgvUsers.AllowUserToResizeRows = false;
+      this.dgvLocations.AllowUserToAddRows = false;
+      this.dgvLocations.AllowUserToDeleteRows = false;
+      this.dgvLocations.AllowUserToResizeColumns = false;
+      this.dgvLocations.AllowUserToResizeRows = false;
       dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
       dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
       dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-      this.dgvUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-      this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+      this.dgvLocations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+      this.dgvLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.dgvUsers.BackgroundColor = System.Drawing.SystemColors.Control;
-      this.dgvUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+      this.dgvLocations.BackgroundColor = System.Drawing.SystemColors.Control;
+      this.dgvLocations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
       dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
       dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -136,15 +136,16 @@
       dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
       dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
       dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-      this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnUserId,
-            this.columnUsername,
-            this.columnRole,
-            this.columnLastLogIn,
+      this.dgvLocations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      this.dgvLocations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+      this.dgvLocations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.columnLocationId,
+            this.columnName,
+            this.columnIsMain,
+            this.columnProducts,
             this.ColumnCreatedAt,
             this.columnActionEdit,
+            this.columnActionDetails,
             this.columnActionDelete});
       dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -153,12 +154,12 @@
       dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-      this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
-      this.dgvUsers.EnableHeadersVisualStyles = false;
-      this.dgvUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.dgvUsers.Location = new System.Drawing.Point(8, 45);
-      this.dgvUsers.Name = "dgvUsers";
-      this.dgvUsers.ReadOnly = true;
+      this.dgvLocations.DefaultCellStyle = dataGridViewCellStyle3;
+      this.dgvLocations.EnableHeadersVisualStyles = false;
+      this.dgvLocations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      this.dgvLocations.Location = new System.Drawing.Point(8, 45);
+      this.dgvLocations.Name = "dgvLocations";
+      this.dgvLocations.ReadOnly = true;
       dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,48 +167,50 @@
       dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-      this.dgvUsers.RowHeadersVisible = false;
-      this.dgvUsers.RowHeadersWidth = 25;
+      this.dgvLocations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      this.dgvLocations.RowHeadersVisible = false;
+      this.dgvLocations.RowHeadersWidth = 25;
       dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
       dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
       dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
       dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-      this.dgvUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
-      this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvUsers.Size = new System.Drawing.Size(845, 365);
-      this.dgvUsers.TabIndex = 0;
-      this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
+      this.dgvLocations.RowsDefaultCellStyle = dataGridViewCellStyle5;
+      this.dgvLocations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+      this.dgvLocations.Size = new System.Drawing.Size(845, 365);
+      this.dgvLocations.TabIndex = 10;
+      this.dgvLocations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLocations_CellContentClick);
       // 
-      // columnUserId
+      // columnLocationId
       // 
-      this.columnUserId.HeaderText = "UserId";
-      this.columnUserId.Name = "columnUserId";
-      this.columnUserId.ReadOnly = true;
-      this.columnUserId.Visible = false;
+      this.columnLocationId.HeaderText = "LocationId";
+      this.columnLocationId.Name = "columnLocationId";
+      this.columnLocationId.ReadOnly = true;
+      this.columnLocationId.Visible = false;
       // 
-      // columnUsername
+      // columnName
       // 
-      this.columnUsername.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnUsername.HeaderText = "Username";
-      this.columnUsername.Name = "columnUsername";
-      this.columnUsername.ReadOnly = true;
-      this.columnUsername.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.columnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnName.HeaderText = "Name";
+      this.columnName.Name = "columnName";
+      this.columnName.ReadOnly = true;
+      this.columnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
       // 
-      // columnRole
+      // columnIsMain
       // 
-      this.columnRole.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnRole.HeaderText = "Role";
-      this.columnRole.Name = "columnRole";
-      this.columnRole.ReadOnly = true;
+      this.columnIsMain.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+      this.columnIsMain.HeaderText = "columnIsMain";
+      this.columnIsMain.Name = "columnIsMain";
+      this.columnIsMain.ReadOnly = true;
+      this.columnIsMain.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      this.columnIsMain.Width = 109;
       // 
-      // columnLastLogIn
+      // columnProducts
       // 
-      this.columnLastLogIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnLastLogIn.HeaderText = "Last login";
-      this.columnLastLogIn.Name = "columnLastLogIn";
-      this.columnLastLogIn.ReadOnly = true;
+      this.columnProducts.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnProducts.HeaderText = "Products";
+      this.columnProducts.Name = "columnProducts";
+      this.columnProducts.ReadOnly = true;
       // 
       // ColumnCreatedAt
       // 
@@ -224,6 +227,15 @@
       this.columnActionEdit.Name = "columnActionEdit";
       this.columnActionEdit.ReadOnly = true;
       this.columnActionEdit.Width = 30;
+      // 
+      // columnActionDetails
+      // 
+      this.columnActionDetails.HeaderText = "";
+      this.columnActionDetails.Image = global::StockManager.Properties.Resources.icon_view_details_24px;
+      this.columnActionDetails.MinimumWidth = 30;
+      this.columnActionDetails.Name = "columnActionDetails";
+      this.columnActionDetails.ReadOnly = true;
+      this.columnActionDetails.Width = 30;
       // 
       // columnActionDelete
       // 
@@ -255,7 +267,7 @@
       this.pnbSearchBox.Location = new System.Drawing.Point(3, 7);
       this.pnbSearchBox.Name = "pnbSearchBox";
       this.pnbSearchBox.Size = new System.Drawing.Size(324, 33);
-      this.pnbSearchBox.TabIndex = 9;
+      this.pnbSearchBox.TabIndex = 12;
       // 
       // btnClearSearchValue
       // 
@@ -273,21 +285,22 @@
       this.btnClearSearchValue.UseVisualStyleBackColor = false;
       this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
       // 
-      // UsersUserControl
+      // InventoryLocationsUserControl
       // 
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+      this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.Control;
-      this.Controls.Add(this.pnbSearchBox);
       this.Controls.Add(this.pnlActions);
-      this.Controls.Add(this.dgvUsers);
+      this.Controls.Add(this.dgvLocations);
+      this.Controls.Add(this.pnbSearchBox);
       this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.ForeColor = System.Drawing.Color.White;
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "UsersUserControl";
+      this.Name = "InventoryLocationsUserControl";
       this.Size = new System.Drawing.Size(860, 420);
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).EndInit();
       this.pnlActions.ResumeLayout(false);
-      ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+      ((System.ComponentModel.ISupportInitialize)(this.dgvLocations)).EndInit();
       this.pnbSearchBox.ResumeLayout(false);
       this.pnbSearchBox.PerformLayout();
       this.ResumeLayout(false);
@@ -295,19 +308,21 @@
     }
 
         #endregion
+
         private System.Windows.Forms.Panel pnlActions;
-        private System.Windows.Forms.Button btnCreateUser;
-    private System.Windows.Forms.DataGridView dgvUsers;
-    private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.DataGridView dgvLocations;
         private System.Windows.Forms.TextBox tbSeachText;
         private System.Windows.Forms.Panel pnbSearchBox;
         private System.Windows.Forms.Button btnClearSearchValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnUserId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnUsername;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnRole;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLastLogIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
-        private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
-        private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
-    }
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnLocationId;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+    private System.Windows.Forms.DataGridViewCheckBoxColumn columnIsMain;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnProducts;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreatedAt;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
+  }
 }

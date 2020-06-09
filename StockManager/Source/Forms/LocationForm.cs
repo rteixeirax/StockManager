@@ -15,9 +15,9 @@ namespace StockManager.Source.Forms
   public partial class LocationForm : Form
   {
     private int _locationId = 0;
-    private readonly InventoryLocationsUserControl _inventoryLocationsUserControl;
+    private readonly InventoryLocationsUc _inventoryLocationsUserControl;
 
-    public LocationForm(InventoryLocationsUserControl inventoryLocationsUserControl)
+    public LocationForm(InventoryLocationsUc inventoryLocationsUserControl)
     {
       InitializeComponent();
       _inventoryLocationsUserControl = inventoryLocationsUserControl;

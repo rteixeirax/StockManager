@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
-  public partial class LoginUserControl : UserControl
+  public partial class LoginUc : UserControl
   {
     private readonly MainForm _mainForm;
 
-    public LoginUserControl(MainForm mainForm)
+    public LoginUc(MainForm mainForm)
     {
       InitializeComponent();
       _mainForm = mainForm;

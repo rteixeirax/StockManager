@@ -1,5 +1,5 @@
 ﻿namespace StockManager.Source.UserControls {
-  partial class InventoryProductLocationsUserControl {
+  partial class InventoryProductLocationsUc {
     /// <summary> 
     /// Required designer variable.
     /// </summary>

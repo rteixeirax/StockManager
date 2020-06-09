@@ -2,9 +2,9 @@
 
 namespace StockManager.Source.UserControls
 {
-  public partial class SettingsUserControl : UserControl
+  public partial class SettingsUc : UserControl
   {
-    public SettingsUserControl()
+    public SettingsUc()
     {
       InitializeComponent();
     }

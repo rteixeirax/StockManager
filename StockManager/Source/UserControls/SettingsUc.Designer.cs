@@ -1,6 +1,6 @@
 ﻿namespace StockManager.Source.UserControls
 {
-    partial class SettingsUserControl
+    partial class SettingsUc
     {
         /// <summary>
         /// Required designer variable.
