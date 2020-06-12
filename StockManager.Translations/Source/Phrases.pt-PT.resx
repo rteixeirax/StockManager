@@ -318,8 +318,8 @@
   <data name="ProductLocationErrorAlreadyAssociated" xml:space="preserve">
     <value>Já associado</value>
   </data>
-  <data name="GlobalDialogDeleteBodyWithParam" xml:space="preserve">
-    <value>Remover "{0}"?</value>
+  <data name="GlobalDialogDeleteProductLocationBody" xml:space="preserve">
+    <value>Remover o produto de "{0}"? O stock do produto, se houver, será movido para a localização principal.</value>
   </data>
   <data name="GlobalMain" xml:space="preserve">
     <value>Principal</value>

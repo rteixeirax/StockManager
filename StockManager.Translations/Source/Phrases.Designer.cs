@@ -133,11 +133,11 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove &quot;{0}&quot;?.
+        ///   Looks up a localized string similar to Remove the product from &quot;{0}&quot;? The product stock, if any, it will be moved to the main location..
         /// </summary>
-        public static string GlobalDialogDeleteBodyWithParam {
+        public static string GlobalDialogDeleteProductLocationBody {
             get {
-                return ResourceManager.GetString("GlobalDialogDeleteBodyWithParam", resourceCulture);
+                return ResourceManager.GetString("GlobalDialogDeleteProductLocationBody", resourceCulture);
             }
         }
         

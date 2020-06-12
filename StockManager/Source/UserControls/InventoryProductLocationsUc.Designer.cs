@@ -33,17 +33,6 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-      this.cbLocations = new System.Windows.Forms.ComboBox();
-      this.pnlForm = new System.Windows.Forms.Panel();
-      this.panel1 = new System.Windows.Forms.Panel();
-      this.lbFormTitle = new System.Windows.Forms.Label();
-      this.btnAddLocation = new System.Windows.Forms.Button();
-      this.lbErrorLocation = new System.Windows.Forms.Label();
-      this.lbMinStock = new System.Windows.Forms.Label();
-      this.numMinStock = new System.Windows.Forms.NumericUpDown();
-      this.lbStock = new System.Windows.Forms.Label();
-      this.numStock = new System.Windows.Forms.NumericUpDown();
-      this.lbLocation = new System.Windows.Forms.Label();
       this.dgvProductLocations = new System.Windows.Forms.DataGridView();
       this.columnProductLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,174 +50,10 @@
       this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.lbProductStockMovements = new System.Windows.Forms.Label();
-      this.pnlForm.SuspendLayout();
-      this.panel1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numMinStock)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numStock)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).BeginInit();
       this.pnlTop.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).BeginInit();
       this.SuspendLayout();
-      // 
-      // cbLocations
-      // 
-      this.cbLocations.FormattingEnabled = true;
-      this.cbLocations.Location = new System.Drawing.Point(53, 48);
-      this.cbLocations.Margin = new System.Windows.Forms.Padding(4);
-      this.cbLocations.Name = "cbLocations";
-      this.cbLocations.Size = new System.Drawing.Size(167, 24);
-      this.cbLocations.TabIndex = 0;
-      // 
-      // pnlForm
-      // 
-      this.pnlForm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-      this.pnlForm.BackColor = System.Drawing.Color.Transparent;
-      this.pnlForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.pnlForm.Controls.Add(this.panel1);
-      this.pnlForm.Controls.Add(this.btnAddLocation);
-      this.pnlForm.Controls.Add(this.lbErrorLocation);
-      this.pnlForm.Controls.Add(this.lbMinStock);
-      this.pnlForm.Controls.Add(this.numMinStock);
-      this.pnlForm.Controls.Add(this.lbStock);
-      this.pnlForm.Controls.Add(this.numStock);
-      this.pnlForm.Controls.Add(this.cbLocations);
-      this.pnlForm.Controls.Add(this.lbLocation);
-      this.pnlForm.ForeColor = System.Drawing.Color.Transparent;
-      this.pnlForm.Location = new System.Drawing.Point(4, 4);
-      this.pnlForm.Margin = new System.Windows.Forms.Padding(4);
-      this.pnlForm.Name = "pnlForm";
-      this.pnlForm.Size = new System.Drawing.Size(280, 281);
-      this.pnlForm.TabIndex = 1;
-      // 
-      // panel1
-      // 
-      this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.panel1.Controls.Add(this.lbFormTitle);
-      this.panel1.Location = new System.Drawing.Point(-1, -1);
-      this.panel1.Name = "panel1";
-      this.panel1.Size = new System.Drawing.Size(280, 23);
-      this.panel1.TabIndex = 22;
-      // 
-      // lbFormTitle
-      // 
-      this.lbFormTitle.AutoSize = true;
-      this.lbFormTitle.BackColor = System.Drawing.Color.Transparent;
-      this.lbFormTitle.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbFormTitle.ForeColor = System.Drawing.Color.White;
-      this.lbFormTitle.Location = new System.Drawing.Point(4, 3);
-      this.lbFormTitle.Name = "lbFormTitle";
-      this.lbFormTitle.Size = new System.Drawing.Size(96, 16);
-      this.lbFormTitle.TabIndex = 1;
-      this.lbFormTitle.Text = "lbFormTitle";
-      // 
-      // btnAddLocation
-      // 
-      this.btnAddLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.btnAddLocation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-      this.btnAddLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnAddLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnAddLocation.ForeColor = System.Drawing.Color.White;
-      this.btnAddLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-      this.btnAddLocation.Location = new System.Drawing.Point(87, 240);
-      this.btnAddLocation.Name = "btnAddLocation";
-      this.btnAddLocation.Size = new System.Drawing.Size(93, 27);
-      this.btnAddLocation.TabIndex = 3;
-      this.btnAddLocation.Text = "btnAddLocation";
-      this.btnAddLocation.UseVisualStyleBackColor = false;
-      this.btnAddLocation.Click += new System.EventHandler(this.btnAddLocation_Click);
-      // 
-      // lbErrorLocation
-      // 
-      this.lbErrorLocation.AutoSize = true;
-      this.lbErrorLocation.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorLocation.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorLocation.Location = new System.Drawing.Point(50, 76);
-      this.lbErrorLocation.Name = "lbErrorLocation";
-      this.lbErrorLocation.Size = new System.Drawing.Size(113, 16);
-      this.lbErrorLocation.TabIndex = 15;
-      this.lbErrorLocation.Text = "lbErrorLocation";
-      // 
-      // lbMinStock
-      // 
-      this.lbMinStock.AutoSize = true;
-      this.lbMinStock.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbMinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbMinStock.Location = new System.Drawing.Point(50, 171);
-      this.lbMinStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      this.lbMinStock.Name = "lbMinStock";
-      this.lbMinStock.Size = new System.Drawing.Size(88, 16);
-      this.lbMinStock.TabIndex = 5;
-      this.lbMinStock.Text = "lbMinStock";
-      // 
-      // numMinStock
-      // 
-      this.numMinStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.numMinStock.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numMinStock.ForeColor = System.Drawing.Color.Black;
-      this.numMinStock.Location = new System.Drawing.Point(53, 190);
-      this.numMinStock.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-      this.numMinStock.Name = "numMinStock";
-      this.numMinStock.Size = new System.Drawing.Size(167, 24);
-      this.numMinStock.TabIndex = 2;
-      this.numMinStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.numMinStock.ThousandsSeparator = true;
-      // 
-      // lbStock
-      // 
-      this.lbStock.AutoSize = true;
-      this.lbStock.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbStock.Location = new System.Drawing.Point(50, 99);
-      this.lbStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      this.lbStock.Name = "lbStock";
-      this.lbStock.Size = new System.Drawing.Size(48, 16);
-      this.lbStock.TabIndex = 3;
-      this.lbStock.Text = "lbQty";
-      // 
-      // numStock
-      // 
-      this.numStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.numStock.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.numStock.ForeColor = System.Drawing.Color.Black;
-      this.numStock.Location = new System.Drawing.Point(53, 117);
-      this.numStock.Maximum = new decimal(new int[] {
-            1215752192,
-            23,
-            0,
-            0});
-      this.numStock.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      this.numStock.Name = "numStock";
-      this.numStock.Size = new System.Drawing.Size(167, 24);
-      this.numStock.TabIndex = 1;
-      this.numStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-      this.numStock.ThousandsSeparator = true;
-      this.numStock.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
-      // lbLocation
-      // 
-      this.lbLocation.AutoSize = true;
-      this.lbLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-      this.lbLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbLocation.Location = new System.Drawing.Point(50, 29);
-      this.lbLocation.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-      this.lbLocation.Name = "lbLocation";
-      this.lbLocation.Size = new System.Drawing.Size(88, 16);
-      this.lbLocation.TabIndex = 2;
-      this.lbLocation.Text = "lbLocation";
       // 
       // dgvProductLocations
       // 
@@ -271,7 +96,7 @@
       this.dgvProductLocations.DefaultCellStyle = dataGridViewCellStyle3;
       this.dgvProductLocations.EnableHeadersVisualStyles = false;
       this.dgvProductLocations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      this.dgvProductLocations.Location = new System.Drawing.Point(291, 4);
+      this.dgvProductLocations.Location = new System.Drawing.Point(4, 4);
       this.dgvProductLocations.MultiSelect = false;
       this.dgvProductLocations.Name = "dgvProductLocations";
       this.dgvProductLocations.ReadOnly = true;
@@ -296,7 +121,7 @@
       this.dgvProductLocations.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
       this.dgvProductLocations.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
       this.dgvProductLocations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-      this.dgvProductLocations.Size = new System.Drawing.Size(558, 281);
+      this.dgvProductLocations.Size = new System.Drawing.Size(845, 281);
       this.dgvProductLocations.TabIndex = 4;
       this.dgvProductLocations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductLocations_CellContentClick);
       // 
@@ -358,7 +183,6 @@
       this.pnlTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlTop.Controls.Add(this.dgvProductLocations);
-      this.pnlTop.Controls.Add(this.pnlForm);
       this.pnlTop.Location = new System.Drawing.Point(4, 44);
       this.pnlTop.Name = "pnlTop";
       this.pnlTop.Size = new System.Drawing.Size(849, 289);
@@ -497,7 +321,7 @@
       this.lbProductStockMovements.TabIndex = 21;
       this.lbProductStockMovements.Text = "lbProductStockMovements";
       // 
-      // InventoryProductLocationsUserControl
+      // InventoryProductLocationsUc
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,14 +332,8 @@
       this.Font = new System.Drawing.Font("Courier New", 9.75F);
       this.ForeColor = System.Drawing.Color.White;
       this.Margin = new System.Windows.Forms.Padding(4);
-      this.Name = "InventoryProductLocationsUserControl";
+      this.Name = "InventoryProductLocationsUc";
       this.Size = new System.Drawing.Size(860, 643);
-      this.pnlForm.ResumeLayout(false);
-      this.pnlForm.PerformLayout();
-      this.panel1.ResumeLayout(false);
-      this.panel1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.numMinStock)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).EndInit();
       this.pnlTop.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).EndInit();
@@ -525,23 +343,11 @@
     }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox cbLocations;
-        private System.Windows.Forms.Panel pnlForm;
-        private System.Windows.Forms.Label lbLocation;
-        private System.Windows.Forms.NumericUpDown numStock;
-        private System.Windows.Forms.Label lbMinStock;
-        private System.Windows.Forms.NumericUpDown numMinStock;
-        private System.Windows.Forms.Label lbStock;
-        private System.Windows.Forms.Label lbErrorLocation;
-        private System.Windows.Forms.Label lbFormTitle;
         private System.Windows.Forms.DataGridView dgvProductLocations;
-        private System.Windows.Forms.Button btnAddLocation;
         private System.Windows.Forms.Button btnback;
         private System.Windows.Forms.Panel pnlTop;
     private System.Windows.Forms.DataGridView dgvProductStockMovements;
     private System.Windows.Forms.Label lbProductStockMovements;
-    private System.Windows.Forms.Panel panel1;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnLocation;
     private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;

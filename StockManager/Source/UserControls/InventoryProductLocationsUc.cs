@@ -30,7 +30,7 @@ namespace StockManager.Source.UserControls
       _product = product;
 
       this.SetTranslatedPhrases();
-      this.LoadProductLocationsAsync().Wait();
+      this.LoadProductLocations();
     }
 
     /// <summary>
@@ -39,12 +39,7 @@ namespace StockManager.Source.UserControls
     private void SetTranslatedPhrases()
     {
       btnback.Text = Phrases.GlobalBack;
-      btnAddLocation.Text = Phrases.GlobalAdd;
-
-      lbLocation.Text = Phrases.GlobalLocation;
-      lbStock.Text = Phrases.StockMovementsStock;
-      lbMinStock.Text = Phrases.StockMovementMinStock;
-      lbFormTitle.Text = Phrases.ProductLocationAddToLocation;
+     
       dgvProductLocations.Columns[1].HeaderText = Phrases.ProductLocationTableHeader;
       dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
       dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
@@ -62,21 +57,12 @@ namespace StockManager.Source.UserControls
     /// <summary>
     /// Fill the UC content
     /// </summary>
-    private async Task LoadProductLocationsAsync()
+    private void LoadProductLocations()
     {
       Spinner.InitSpinner();
 
-      // Set initial state
-      lbErrorLocation.Visible = false;
-
       dgvProductLocations.Rows.Clear();
       dgvProductStockMovements.Rows.Clear();
-
-      // Get locations for the dropdown
-      IEnumerable<Location> locations = await AppServices.LocationService.GetLocationsAsync();
-      cbLocations.DataSource = locations;
-      cbLocations.ValueMember = "LocationId";
-      cbLocations.DisplayMember = "Name";
 
       // fill the ProductLocations table
       _product.ProductLocations?.ToList().ForEach((productLocation) => {
@@ -121,62 +107,6 @@ namespace StockManager.Source.UserControls
       _mainForm.btnInventoryProducts_Click(sender, e);
     }
 
-    private void ShowFormErrors(List<ErrorType> errors)
-    {
-      lbErrorLocation.Visible = false;
-
-      errors.ForEach((err) => {
-        if (err.Field == "LocationId")
-        {
-          lbErrorLocation.Text = err.Error;
-          lbErrorLocation.Visible = true;
-        }
-      });
-    }
-
-    private async void btnAddLocation_Click(object sender, EventArgs e)
-    {
-      try
-      {
-        Spinner.InitSpinner();
-
-        ProductLocation productLocation = new ProductLocation() {
-          ProductId = _product.ProductId,
-          LocationId = int.Parse(cbLocations.SelectedValue.ToString()),
-          Stock = float.Parse(numStock.Value.ToString()),
-          MinStock = float.Parse(numMinStock.Value.ToString())
-        };
-
-        await AppServices.ProductLocationService
-          .AddProductLocationAsync(productLocation, Program.LoggedInUser.UserId);
-
-        Spinner.StopSpinner();
-
-        // Reload Ui
-        await this.LoadProductLocationsAsync();
-      }
-      catch (OperationErrorException ex)
-      {
-        Spinner.StopSpinner();
-
-        if (ex.Errors.Count() > 0)
-        {
-          this.ShowFormErrors(ex.Errors);
-        }
-      }
-      catch (ServiceErrorException ex)
-      {
-        Spinner.StopSpinner();
-
-        MessageBox.Show(
-          $"{ex.Errors[0].Error}",
-          Phrases.GlobalDialogErrorTitle,
-          MessageBoxButtons.OK,
-          MessageBoxIcon.Error
-        );
-      }
-    }
-
     /// <summary>
     /// Remove product location button click
     /// </summary>
@@ -194,7 +124,7 @@ namespace StockManager.Source.UserControls
     private async Task ActionDeleteClickAsync(int productLocationId, string locationName)
     {
       if ((productLocationId > 0) && MessageBox.Show(
-       string.Format(Phrases.GlobalDialogDeleteBodyWithParam, locationName),
+       string.Format(Phrases.GlobalDialogDeleteProductLocationBody, locationName),
        Phrases.GlobalDialogDeleteTitle,
          MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
        )
@@ -207,7 +137,7 @@ namespace StockManager.Source.UserControls
             .DeleteProductLocationAsyn(productLocationId, Program.LoggedInUser.UserId);
 
           // Reload Ui
-          await this.LoadProductLocationsAsync();
+          this.LoadProductLocations();
           Spinner.StopSpinner();
 
         }
