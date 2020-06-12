@@ -59,44 +59,17 @@ namespace StockManager.Services.Source.Services
 
         if (productLocation != null)
         {
-          if (productLocation.Stock > 0)
+          // Cannot remove the association with the main location
+          if (productLocation.Location.IsMain)
           {
-            /* 
-            * When the remove the product from a location
-            * the product stock should be moved to the main location 
-            */
-
-            // Get the main location
-            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
-
-            // Cannot remove the association with the main location
-            if (productLocation.LocationId == mainLocation.LocationId)
-            {
-              errorsList.AddError("LocationId", Phrases.ProductLocationDeleteErrorMainLocation);
-              throw new OperationErrorException(errorsList);
-            }
-
-            // Create a stock movement between locations
-            StockMovement stockMovement = new StockMovement() {
-              UserId = userId,
-              ProductId = productLocation.ProductId,
-              FromLocationId = productLocation.LocationId,
-              FromLocationName = productLocation.Location.Name,
-              ToLocationId = mainLocation.LocationId,
-              ToLocationName = mainLocation.Name,
-              Qty = productLocation.Stock,
-            };
-
-            await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
-
-            // Get the relatation between the product and the main location to be updated
-            ProductLocation mainLocationRelation = await _productLocationRepo
-              .FindProductLocationAsync(productLocation.ProductId, mainLocation.LocationId);
-
-            // Update the relation stock
-            mainLocationRelation.Stock += productLocation.Stock;
+            errorsList.AddError("LocationId", Phrases.ProductLocationDeleteErrorMainLocation);
+            throw new OperationErrorException(errorsList);
           }
 
+          // Move the stock back to the main location, if any.
+          await AppServices.StockMovementService.MoveStockToMainLocationAsync(productLocation, userId);
+
+          // Remove the location
           _productLocationRepo.RemoveProductLocation(productLocation);
           await _productLocationRepo.SaveDbChangesAsync();
         }

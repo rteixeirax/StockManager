@@ -61,6 +61,41 @@ namespace StockManager.Services.Source.Services
       }
     }
 
+    public async Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false)
+    {
+      // Get the main location
+      Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+
+      // Only create the stock movement if it has stock and the fromLocation is not the main location.
+      if ((data.Stock > 0) && (mainLocation.LocationId != data.LocationId))
+      {
+        // Create a stock movement between locations
+        StockMovement stockMovement = new StockMovement() {
+          UserId = userId,
+          ProductId = data.ProductId,
+          FromLocationId = data.LocationId,
+          FromLocationName = data.Location.Name,
+          ToLocationId = mainLocation.LocationId,
+          ToLocationName = mainLocation.Name,
+          Qty = data.Stock,
+        };
+
+        await this.AddStockMovementAsync(stockMovement);
+
+        // Get the relation between the product and the main location to be updated
+        ProductLocation mainLocationRelation = await AppServices.ProductLocationService
+          .GetProductLocationAsync(data.ProductId, mainLocation.LocationId);
+
+        // Update the relation stock
+        mainLocationRelation.Stock += data.Stock;
+
+        if (applyDbChanges)
+        {
+          await _stockMovementRepo.SaveDbChangesAsync();
+        }
+      }
+    }
+
     public async Task<StockMovement> GetProductLastStockMovementAsync(int productId)
     {
       return await _stockMovementRepo
