@@ -43,7 +43,8 @@ namespace StockManager.Source.UserControls
       dgvProductLocations.Columns[1].HeaderText = Phrases.ProductLocationTableHeader;
       dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
       dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
-      dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalDelete;
+      dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit;
+      dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete;
 
       lbProductStockMovements.Text = Phrases.StockMovementsLabel;
       dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
@@ -57,7 +58,7 @@ namespace StockManager.Source.UserControls
     /// <summary>
     /// Fill the UC content
     /// </summary>
-    private void LoadProductLocations()
+    public void LoadProductLocations()
     {
       Spinner.InitSpinner();
 
@@ -108,17 +109,37 @@ namespace StockManager.Source.UserControls
     }
 
     /// <summary>
-    /// Remove product location button click
+    /// Handle with table actions click
     /// </summary>
     private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-      if ((e.ColumnIndex == 4) && (e.RowIndex >= 0))
+      if ((dgvProductLocations.SelectedRows.Count > 0) && (e.RowIndex >= 0))
       {
         int productLocationId = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
         string locationName = dgvProductLocations.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-        await this.ActionDeleteClickAsync(productLocationId, locationName);
+        switch (e.ColumnIndex)
+        {
+          case 4:
+            await this.ActionEditClickAsync(productLocationId);
+            break;
+          case 5:
+            await this.ActionDeleteClickAsync(productLocationId, locationName);
+            break;
+          default:
+            break;
+        }
       }
+    }
+
+    private async Task ActionEditClickAsync(int productLocationId)
+    {
+      Spinner.InitSpinner();
+      ProductLocation productLocation = await AppServices.ProductLocationService.GetProductLocationByIdAsync(productLocationId);
+      Spinner.StopSpinner();
+
+      ProductLocationForm productLocationForm = new ProductLocationForm(this);
+      productLocationForm.ShowLocationForm(productLocation);
     }
 
     private async Task ActionDeleteClickAsync(int productLocationId, string locationName)

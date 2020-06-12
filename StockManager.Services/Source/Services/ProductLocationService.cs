@@ -48,6 +48,26 @@ namespace StockManager.Services.Source.Services
       }
     }
 
+    public async Task UpdateProductLocationMinStock(int productLocation, float minStock)
+    {
+      try
+      {
+        ProductLocation dbProductLocation = await _productLocationRepo
+          .FindProductLocationByIdAsync(productLocation);
+
+        dbProductLocation.MinStock = minStock;
+
+        await _productLocationRepo.SaveDbChangesAsync();
+      }
+      catch
+      {
+        // catch service errors
+        OperationErrorsList errorsList = new OperationErrorsList();
+        errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
+        throw new ServiceErrorException(errorsList);
+      }
+    }
+
     public async Task DeleteProductLocationAsyn(int productLocationId, int userId)
     {
       OperationErrorsList errorsList = new OperationErrorsList();
@@ -85,6 +105,11 @@ namespace StockManager.Services.Source.Services
         errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
         throw new ServiceErrorException(errorsList);
       }
+    }
+
+    public async Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId)
+    {
+      return await _productLocationRepo.FindProductLocationByIdAsync(productLocationId);
     }
 
     public async Task<ProductLocation> GetProductLocationAsync(int productId, int locationId)

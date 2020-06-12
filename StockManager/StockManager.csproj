@@ -178,6 +178,12 @@
     <Compile Include="Source\Forms\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Forms\ProductLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\ProductLocationForm.Designer.cs">
+      <DependentUpon>ProductLocationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\LocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     <Compile Include="Source\Components\Spinner.cs" />
     <EmbeddedResource Include="Source\Forms\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\ProductLocationForm.resx">
+      <DependentUpon>ProductLocationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>

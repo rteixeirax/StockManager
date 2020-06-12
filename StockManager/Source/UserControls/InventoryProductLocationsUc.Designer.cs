@@ -34,11 +34,6 @@
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
       this.dgvProductLocations = new System.Windows.Forms.DataGridView();
-      this.columnProductLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnMinStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-      this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
       this.btnback = new System.Windows.Forms.Button();
       this.pnlTop = new System.Windows.Forms.Panel();
       this.dgvProductStockMovements = new System.Windows.Forms.DataGridView();
@@ -50,6 +45,12 @@
       this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.lbProductStockMovements = new System.Windows.Forms.Label();
+      this.columnProductLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnMinStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.columnActionEdit = new System.Windows.Forms.DataGridViewImageColumn();
+      this.columnActionDelete = new System.Windows.Forms.DataGridViewImageColumn();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).BeginInit();
       this.pnlTop.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).BeginInit();
@@ -85,6 +86,7 @@
             this.columnLocation,
             this.ColumnStock,
             this.columnMinStock,
+            this.columnActionEdit,
             this.columnActionDelete});
       dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
       dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -124,44 +126,6 @@
       this.dgvProductLocations.Size = new System.Drawing.Size(845, 281);
       this.dgvProductLocations.TabIndex = 4;
       this.dgvProductLocations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductLocations_CellContentClick);
-      // 
-      // columnProductLocationId
-      // 
-      this.columnProductLocationId.HeaderText = "columnProductLocationId";
-      this.columnProductLocationId.Name = "columnProductLocationId";
-      this.columnProductLocationId.ReadOnly = true;
-      this.columnProductLocationId.Visible = false;
-      // 
-      // columnLocation
-      // 
-      this.columnLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnLocation.HeaderText = "columnLocation";
-      this.columnLocation.Name = "columnLocation";
-      this.columnLocation.ReadOnly = true;
-      this.columnLocation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-      // 
-      // ColumnStock
-      // 
-      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.ColumnStock.HeaderText = "ColumnStock";
-      this.ColumnStock.Name = "ColumnStock";
-      this.ColumnStock.ReadOnly = true;
-      // 
-      // columnMinStock
-      // 
-      this.columnMinStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-      this.columnMinStock.HeaderText = "columnMinStock";
-      this.columnMinStock.Name = "columnMinStock";
-      this.columnMinStock.ReadOnly = true;
-      // 
-      // columnActionDelete
-      // 
-      this.columnActionDelete.HeaderText = "";
-      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
-      this.columnActionDelete.MinimumWidth = 24;
-      this.columnActionDelete.Name = "columnActionDelete";
-      this.columnActionDelete.ReadOnly = true;
-      this.columnActionDelete.Width = 24;
       // 
       // btnback
       // 
@@ -321,6 +285,53 @@
       this.lbProductStockMovements.TabIndex = 21;
       this.lbProductStockMovements.Text = "lbProductStockMovements";
       // 
+      // columnProductLocationId
+      // 
+      this.columnProductLocationId.HeaderText = "columnProductLocationId";
+      this.columnProductLocationId.Name = "columnProductLocationId";
+      this.columnProductLocationId.ReadOnly = true;
+      this.columnProductLocationId.Visible = false;
+      // 
+      // columnLocation
+      // 
+      this.columnLocation.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnLocation.HeaderText = "columnLocation";
+      this.columnLocation.Name = "columnLocation";
+      this.columnLocation.ReadOnly = true;
+      this.columnLocation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+      // 
+      // ColumnStock
+      // 
+      this.ColumnStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.ColumnStock.HeaderText = "ColumnStock";
+      this.ColumnStock.Name = "ColumnStock";
+      this.ColumnStock.ReadOnly = true;
+      // 
+      // columnMinStock
+      // 
+      this.columnMinStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+      this.columnMinStock.HeaderText = "columnMinStock";
+      this.columnMinStock.Name = "columnMinStock";
+      this.columnMinStock.ReadOnly = true;
+      // 
+      // columnActionEdit
+      // 
+      this.columnActionEdit.HeaderText = "";
+      this.columnActionEdit.Image = global::StockManager.Properties.Resources.icon_pencil_drawing_24px;
+      this.columnActionEdit.MinimumWidth = 24;
+      this.columnActionEdit.Name = "columnActionEdit";
+      this.columnActionEdit.ReadOnly = true;
+      this.columnActionEdit.Width = 24;
+      // 
+      // columnActionDelete
+      // 
+      this.columnActionDelete.HeaderText = "";
+      this.columnActionDelete.Image = global::StockManager.Properties.Resources.icon_delete_bin_24px;
+      this.columnActionDelete.MinimumWidth = 24;
+      this.columnActionDelete.Name = "columnActionDelete";
+      this.columnActionDelete.ReadOnly = true;
+      this.columnActionDelete.Width = 24;
+      // 
       // InventoryProductLocationsUc
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -348,11 +359,6 @@
         private System.Windows.Forms.Panel pnlTop;
     private System.Windows.Forms.DataGridView dgvProductStockMovements;
     private System.Windows.Forms.Label lbProductStockMovements;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnLocation;
-    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
-    private System.Windows.Forms.DataGridViewTextBoxColumn columnMinStock;
-    private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -360,5 +366,11 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnLocation;
+    private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
+    private System.Windows.Forms.DataGridViewTextBoxColumn columnMinStock;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
+    private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
   }
 }

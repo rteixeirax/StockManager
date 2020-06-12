@@ -493,6 +493,24 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Min.Stock.
+        /// </summary>
+        public static string ProductLocationMinStockEdit {
+            get {
+                return ResourceManager.GetString("ProductLocationMinStockEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product &quot;{0}&quot;..
+        /// </summary>
+        public static string ProductLocationMinStockInfo {
+            get {
+                return ResourceManager.GetString("ProductLocationMinStockInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location.
         /// </summary>
         public static string ProductLocationTableHeader {

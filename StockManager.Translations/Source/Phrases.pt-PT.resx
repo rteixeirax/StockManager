@@ -277,7 +277,7 @@
     <value>Qtd</value>
   </data>
   <data name="StockMovementMinStock" xml:space="preserve">
-    <value>Stock Min</value>
+    <value>Stock mínimo</value>
   </data>
   <data name="ProductLocationAddToLocation" xml:space="preserve">
     <value>Adicionar à localização</value>
@@ -329,5 +329,11 @@
   </data>
   <data name="ProductLocationDeleteErrorMainLocation" xml:space="preserve">
     <value>Não é possível remover produtos da localização principal</value>
+  </data>
+  <data name="ProductLocationMinStockEdit" xml:space="preserve">
+    <value>Alterar stock mínimo</value>
+  </data>
+  <data name="ProductLocationMinStockInfo" xml:space="preserve">
+    <value>Produto "{0}"</value>
   </data>
 </root>
