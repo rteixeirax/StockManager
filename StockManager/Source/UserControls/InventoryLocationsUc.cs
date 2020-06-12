@@ -38,13 +38,12 @@ namespace StockManager.Source.UserControls
       btnCreate.Text = Phrases.GlobalCreate;
       btnDelete.Text = Phrases.GlobalDelete;
       dgvLocations.Columns[1].HeaderText = Phrases.GlobalName;
-      dgvLocations.Columns[2].HeaderText = Phrases.GlobalMain;
-      dgvLocations.Columns[3].HeaderText = Phrases.GlobalProducts;
-      dgvLocations.Columns[4].HeaderText = Phrases.GlobalCreatedAt;
+      dgvLocations.Columns[2].HeaderText = Phrases.GlobalProducts;
+      dgvLocations.Columns[3].HeaderText = Phrases.GlobalCreatedAt;
       // Actions
-      dgvLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
-      dgvLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalProducts; // Action details
-      dgvLocations.Columns[7].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
+      dgvLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
+      dgvLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalProducts; // Action details
+      dgvLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete; // Action delete
     }
 
     /// <summary>
@@ -63,7 +62,6 @@ namespace StockManager.Source.UserControls
         dgvLocations.Rows.Add(
           location.LocationId,
           location.Name,
-          location.IsMain,
           location.ProductLocations.Count,
           Format.DateTimeFormat(location.CreatedAt)
         );
@@ -112,25 +110,13 @@ namespace StockManager.Source.UserControls
 
         switch (e.ColumnIndex)
         {
-          case 2:
-            {
-              bool isMain = bool.Parse(dgvLocations.Rows[e.RowIndex].Cells[2].Value.ToString());
-
-              if (!isMain)
-              {
-                await AppServices.LocationService.SetMainLocationAsync(locationId);
-                await this.LoadLocationsAsync();
-              }
-
-              break;
-            }
-          case 5:
+          case 4:
             await this.ActionEditClickAsync(locationId);
             break;
-          case 6:
+          case 5:
             await this.ActionDetailsClickAsync(locationId);
             break;
-          case 7:
+          case 6:
             await this.ActionDeleteClickAsync(new int[] { locationId });
             break;
           default:
