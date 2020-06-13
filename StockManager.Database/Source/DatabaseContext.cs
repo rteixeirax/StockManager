@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using StockManager.Database.Source.Configurations;
 using StockManager.Database.Source.Models;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,7 @@ namespace StockManager.Database.Source
     /// </summary>
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.ApplyConfiguration(new SettingsConfiguration());
+      modelBuilder.ApplyConfiguration(new AppSettingsConfiguration());
       modelBuilder.ApplyConfiguration(new RoleConfiguration());
       modelBuilder.ApplyConfiguration(new UserConfiguration());
       modelBuilder.ApplyConfiguration(new LocationConfiguration());

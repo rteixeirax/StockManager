@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,28 +25,5 @@ namespace StockManager.Database.Source.Models
     // The product stock is the sum of the stocks in the ProductLocation associations.
     [NotMapped]
     public float? Stock { get; set; }
-  }
-
-  public class ProductConfiguration : IEntityTypeConfiguration<Product>
-  {
-    public void Configure(EntityTypeBuilder<Product> builder)
-    {
-      builder
-        .HasIndex(x => x.Reference)
-        .IsUnique()
-        .HasName("UniqueReference");
-
-      builder
-        .HasMany(x => x.ProductLocations)
-        .WithOne(x => x.Product)
-        .HasForeignKey(x => x.ProductId)
-        .OnDelete(DeleteBehavior.Cascade);
-
-      builder
-        .HasMany(x => x.StockMovements)
-        .WithOne(x => x.Product)
-        .HasForeignKey(x => x.ProductId)
-        .OnDelete(DeleteBehavior.Cascade);
-    }
   }
 }

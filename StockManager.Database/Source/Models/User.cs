@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,33 +24,5 @@ namespace StockManager.Database.Source.Models
     public Role Role { get; set; }
 
     public ICollection<StockMovement> StockMovements { get; set; }
-  }
-
-  public class UserConfiguration : IEntityTypeConfiguration<User>
-  {
-    public void Configure(EntityTypeBuilder<User> builder)
-    {
-      builder
-        .HasIndex(x => x.Username)
-        .IsUnique()
-        .HasName("UniqueUsername");
-
-      builder
-       .HasMany(x => x.StockMovements)
-       .WithOne(x => x.User)
-       .HasForeignKey(x => x.UserId)
-       .OnDelete(DeleteBehavior.SetNull);
-
-      builder.HasData(
-        new User {
-          UserId = 1,
-          Username = "Admin",
-          Password = BCrypt.Net.BCrypt.HashPassword("admin"),
-          RoleId = 1,
-          CreatedAt = DateTime.UtcNow,
-          UpdatedAt = DateTime.UtcNow
-        }
-      );
-    }
   }
 }
