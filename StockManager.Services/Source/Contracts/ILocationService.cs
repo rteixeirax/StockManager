@@ -19,7 +19,7 @@ namespace StockManager.Services.Source.Contracts
     /// <summary>
     /// Delete locations
     /// </summary>
-    Task DeleteLocationAsync(int[] locationIds);
+    Task DeleteLocationAsync(int[] locationIds, int userId);
 
     /// <summary>
     /// Get the main location

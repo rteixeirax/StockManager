@@ -164,8 +164,9 @@ namespace StockManager.Source.UserControls
         try
         {
           Spinner.InitSpinner();
-          
-          await AppServices.LocationService.DeleteLocationAsync(selectedIds);
+
+          await AppServices.LocationService
+            .DeleteLocationAsync(selectedIds, Program.LoggedInUser.UserId);
 
           Spinner.StopSpinner();
 

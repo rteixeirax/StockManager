@@ -1,8 +1,10 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using Microsoft.EntityFrameworkCore.Internal;
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,7 +54,7 @@ namespace StockManager.Services.Source.Services
       }
     }
 
-    public async Task DeleteLocationAsync(int[] locationIds)
+    public async Task DeleteLocationAsync(int[] locationIds, int userId)
     {
       OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -77,22 +79,36 @@ namespace StockManager.Services.Source.Services
               throw new OperationErrorException(errorsList);
             }
 
+            // Iterate through the productLocations and move the stock
+            // to the main location before remove the location
+            if (location.ProductLocations.Count() > 0)
+            {
+              while (location.ProductLocations.Count != 0)
+              {
+                ProductLocation producLocation = location.ProductLocations.ElementAt(0);
+
+                // Remove the ProductLocation association and move the stock
+                await AppServices.ProductLocationService
+                  .DeleteProductLocationAsyn(producLocation.ProductLocationId, userId);
+              }
+            }
+
             _locationRepo.RemoveLocation(location);
           }
         }
 
         await _locationRepo.SaveDbChangesAsync();
 
-        // Catch operation errors
       }
       catch (OperationErrorException operationErrorException)
       {
+        // Catch operation errors
         throw operationErrorException;
 
-        // catch other errors and send a Service Error Exception
       }
       catch
       {
+        // catch other errors and send a Service Error Exception
         errorsList.AddError("delete-location-db-error", Phrases.GlobalErrorOperationDB);
 
         throw new ServiceErrorException(errorsList);
