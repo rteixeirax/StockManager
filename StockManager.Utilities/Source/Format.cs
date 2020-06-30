@@ -12,7 +12,7 @@ namespace StockManager.Utilities.Source
     /// </summary>
     public static string DateTimeFormat(DateTime? date)
     {
-      return date?.ToString("MM/dd/yyyy HH:mm:ss");
+      return date?.ToString("dd MMM yyyy, HH:mm:ss");
     }
   }
 }
