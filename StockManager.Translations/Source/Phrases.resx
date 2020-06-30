@@ -316,4 +316,10 @@
   <data name="ProductLocationMinStockInfo" xml:space="preserve">
     <value>Product "{0}".</value>
   </data>
+  <data name="GlobalProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="GlobalMovement" xml:space="preserve">
+    <value>Movement</value>
+  </data>
 </root>

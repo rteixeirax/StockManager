@@ -232,6 +232,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Movement.
+        /// </summary>
+        public static string GlobalMovement {
+            get {
+                return ResourceManager.GetString("GlobalMovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string GlobalName {
@@ -255,6 +264,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalPoweredBy {
             get {
                 return ResourceManager.GetString("GlobalPoweredBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product.
+        /// </summary>
+        public static string GlobalProduct {
+            get {
+                return ResourceManager.GetString("GlobalProduct", resourceCulture);
             }
         }
         
