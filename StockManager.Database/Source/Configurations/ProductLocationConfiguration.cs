@@ -14,7 +14,7 @@ namespace StockManager.Database.Source.Configurations
 
       builder
         .Property(x => x.MinStock)
-       .HasDefaultValue(0);
+        .HasDefaultValue(0);
 
       builder
         .HasIndex(x => new { x.ProductId, x.LocationId })

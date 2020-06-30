@@ -147,10 +147,7 @@ namespace StockManager.Source.UserControls
       Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
       Spinner.StopSpinner();
 
-      // TODO: Crete the method in the MainForm the show the LocationProductUC (need to create that as well)
-      Console.WriteLine(location.Name);
-
-      //_mainForm.InventoryProductsBtnViewProducLocationsClick(location);
+      _mainForm.InventoryProductsBtnViewProducLocationsClick(null, location);
     }
 
     /// <summary>

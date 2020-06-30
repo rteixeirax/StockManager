@@ -164,7 +164,7 @@ namespace StockManager.Source.Forms
     /// <summary>
     /// Inventory > Locations button click
     /// </summary>
-    private void btnInventoryLocations_Click(object sender, EventArgs e)
+    public void btnInventoryLocations_Click(object sender, EventArgs e)
     {
       // Show the InventoryLocations view
       pnlViews.Controls.Clear();
@@ -190,12 +190,16 @@ namespace StockManager.Source.Forms
     /// <summary>
     /// Inventory > Products button view locations click
     /// </summary>
-    public void InventoryProductsBtnViewProducLocationsClick(Product product)
+    public void InventoryProductsBtnViewProducLocationsClick(Product product = null, Location location = null)
     {
       // Show the InventoryProducts view
       pnlViews.Controls.Clear();
-      lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
-      UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUc(this, product);
+
+      lbViewTitle.Text = (product != null)
+        ? $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}"
+        : $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations} > {location.Name} > {Phrases.GlobalProducts.ToLower()}";
+
+      UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUc(this, product, location);
       ucInventoryProductLocationsUserControl.Dock = DockStyle.Fill;
       pnlViews.Controls.Add(ucInventoryProductLocationsUserControl);
     }
