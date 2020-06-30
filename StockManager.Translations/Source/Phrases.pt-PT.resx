@@ -256,7 +256,7 @@
     <value>Já existe uma localização com este nome.</value>
   </data>
   <data name="LocationDialogDeleteBody" xml:space="preserve">
-    <value>Remover {0} localizações?</value>
+    <value>Remover {0} localizações? Se houver produtos, todo o seu stock será movido para a localização principal.</value>
   </data>
   <data name="LocationInfo" xml:space="preserve">
     <value>Informação da localização</value>
@@ -334,7 +334,7 @@
     <value>Alterar stock mínimo</value>
   </data>
   <data name="ProductLocationMinStockInfo" xml:space="preserve">
-    <value>Produto "{0}"</value>
+    <value>Produto "{0}".</value>
   </data>
   <data name="GlobalProduct" xml:space="preserve">
     <value>Produto</value>

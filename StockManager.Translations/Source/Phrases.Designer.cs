@@ -358,7 +358,7 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete {0} location(s)?.
+        ///   Looks up a localized string similar to Delete {0} location(s)? If has products,  all the stock  will be moved to the main location..
         /// </summary>
         public static string LocationDialogDeleteBody {
             get {
