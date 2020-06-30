@@ -201,7 +201,7 @@ namespace StockManager.Tests.Source.Services
       await AppServices.LocationService.CreateLocationAsync(mockLocation);
 
       // Act
-      await AppServices.LocationService.DeleteLocationAsync(new int[] { mockLocation.LocationId });
+      await AppServices.LocationService.DeleteLocationAsync(new int[] { mockLocation.LocationId }, 1);
 
       Location dbLocation = await AppServices.LocationService
         .GetLocationByIdAsync(mockLocation.LocationId);
@@ -222,7 +222,7 @@ namespace StockManager.Tests.Source.Services
       try
       {
         // Act
-        await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId });
+        await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId }, 1);
 
         Assert.Fail("It should have thrown an OperationErrorExeption");
       }
