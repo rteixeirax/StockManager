@@ -104,15 +104,15 @@ namespace StockManager.Source.UserControls
       _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
         .ToList()
         .ForEach((stockMovement) => {
-           dgvProductStockMovements.Rows.Add(
-           stockMovement.StockMovementId,
-           Format.DateTimeFormat(stockMovement.CreatedAt),
-           "", // The name column only render for the location stock movement
-           this.ConcatMovementString(stockMovement),
-           stockMovement.Qty,
-           stockMovement.Stock,
-           stockMovement.User?.Username
-         );
+          dgvProductStockMovements.Rows.Add(
+          stockMovement.StockMovementId,
+          Format.DateTimeFormat(stockMovement.CreatedAt),
+          "", // The name column only render for the location stock movement
+          this.ConcatMovementString(stockMovement),
+          stockMovement.Qty,
+          stockMovement.Stock,
+          stockMovement.User?.Username
+        );
         });
     }
 

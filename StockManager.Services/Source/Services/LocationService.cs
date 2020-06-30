@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
-using StockManager.Database.Source.Contracts;
+﻿using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
