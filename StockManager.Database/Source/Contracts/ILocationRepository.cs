@@ -29,7 +29,7 @@ namespace StockManager.Database.Source.Contracts
     /// <summary>
     /// Find location by id
     /// </summary>
-    Task<Location> FindLocationByIdAsync(int locationId);
+    Task<Location> FindLocationByIdAsync(int locationId, bool includeRelations = true);
 
     /// <summary>
     /// Find user by name
@@ -50,5 +50,10 @@ namespace StockManager.Database.Source.Contracts
     /// Count async all the locations in the DB
     /// </summary>
     Task<int> CountLocationsAsync();
+
+    /// <summary>
+    /// Find all stock movements for the given location Id
+    /// </summary>
+    Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId);
   }
 }

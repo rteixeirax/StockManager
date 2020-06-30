@@ -44,12 +44,20 @@ namespace StockManager.Database.Source.Repositories
       return await _db.Locations.Include(x => x.ProductLocations).ToListAsync();
     }
 
-    public async Task<Location> FindLocationByIdAsync(int locationId)
+    public async Task<Location> FindLocationByIdAsync(int locationId, bool includeRelations = true)
     {
+      if (includeRelations)
+      {
+        return await _db.Locations
+          .Include(x => x.ProductLocations)
+          .ThenInclude(x => x.Product)
+          .Where(location => location.LocationId == locationId)
+          .FirstOrDefaultAsync();
+      }
+
       return await _db.Locations
-        .Include(x => x.ProductLocations)
-        .Where(location => location.LocationId == locationId)
-        .FirstOrDefaultAsync();
+          .Where(location => location.LocationId == locationId)
+          .FirstOrDefaultAsync();
     }
 
     public async Task<Location> FindLocationByNameAsync(string name)
@@ -78,6 +86,14 @@ namespace StockManager.Database.Source.Repositories
     public async Task<int> CountLocationsAsync()
     {
       return await _db.Locations.CountAsync();
+    }
+
+    public async Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId)
+    {
+      return await _db.StockMovements
+        .Where(x => (x.FromLocationId == locationId) || (x.ToLocationId == locationId))
+        .OrderByDescending(x => x.CreatedAt)
+        .ToListAsync();
     }
   }
 }

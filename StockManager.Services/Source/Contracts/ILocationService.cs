@@ -35,5 +35,10 @@ namespace StockManager.Services.Source.Contracts
     /// Get location by id
     /// </summary>
     Task<Location> GetLocationByIdAsync(int locationId);
+
+    /// <summary>
+    /// Get all the stock movements for the given location id
+    /// </summary>
+    Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId);
   }
 }

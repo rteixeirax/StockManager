@@ -62,8 +62,7 @@ namespace StockManager.Services.Source.Services
         {
           int locationId = locationIds[i];
 
-          Location location = await _locationRepo
-            .FindLocationByIdAsync(locationId);
+          Location location = await _locationRepo.FindLocationByIdAsync(locationId, false);
 
           if (location != null)
           {
@@ -145,6 +144,11 @@ namespace StockManager.Services.Source.Services
 
         throw new OperationErrorException(errorsList);
       }
+    }
+
+    public async Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId)
+    {
+      return await _locationRepo.FindAllStockMovements(locationId);
     }
   }
 }
