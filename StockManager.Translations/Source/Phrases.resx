@@ -299,7 +299,7 @@
     <value>Already associated</value>
   </data>
   <data name="GlobalDialogDeleteProductLocationBody" xml:space="preserve">
-    <value>Remove the product from "{0}"? The product stock, if any, it will be moved to the main location.</value>
+    <value>The product stock, if any, it will be moved to the main location.</value>
   </data>
   <data name="GlobalMain" xml:space="preserve">
     <value>Main</value>
