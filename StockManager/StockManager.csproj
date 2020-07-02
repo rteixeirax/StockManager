@@ -178,6 +178,12 @@
     <Compile Include="Source\Forms\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Forms\ManualStockMovementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\ManualStockMovementForm.Designer.cs">
+      <DependentUpon>ManualStockMovementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\ProductLocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,9 @@
     <Compile Include="Source\Components\Spinner.cs" />
     <EmbeddedResource Include="Source\Forms\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\ManualStockMovementForm.resx">
+      <DependentUpon>ManualStockMovementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\ProductLocationForm.resx">
       <DependentUpon>ProductLocationForm.cs</DependentUpon>

@@ -44,6 +44,7 @@ namespace StockManager.Source.UserControls
     private void SetTranslatedPhrases()
     {
       btnback.Text = Phrases.GlobalBack;
+      btnStockMovement.Text = Phrases.GlobalCreateMov;
 
       dgvProductLocations.Columns[1].HeaderText = (_product != null)
         ? Phrases.ProductLocationTableHeader
@@ -267,6 +268,12 @@ namespace StockManager.Source.UserControls
           );
         }
       }
+    }
+
+    private async void btnStockMovement_Click(object sender, EventArgs e)
+    {
+      ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _product, _location);
+      await manualStockMovementForm.ShowManualStockMovementFormAsync();
     }
   }
 }
