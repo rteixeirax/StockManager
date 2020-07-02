@@ -42,6 +42,7 @@
       this.lbQty = new System.Windows.Forms.Label();
       this.cbFrom = new System.Windows.Forms.ComboBox();
       this.lbFrom = new System.Windows.Forms.Label();
+      this.lbErrorQty = new System.Windows.Forms.Label();
       this.pnlBody.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
       this.pnlTopBar.SuspendLayout();
@@ -50,6 +51,7 @@
       // pnlBody
       // 
       this.pnlBody.BackColor = System.Drawing.SystemColors.Control;
+      this.pnlBody.Controls.Add(this.lbErrorQty);
       this.pnlBody.Controls.Add(this.cbProduct);
       this.pnlBody.Controls.Add(this.lbProduct);
       this.pnlBody.Controls.Add(this.numQty);
@@ -64,7 +66,7 @@
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
-      this.pnlBody.Size = new System.Drawing.Size(451, 363);
+      this.pnlBody.Size = new System.Drawing.Size(451, 381);
       this.pnlBody.TabIndex = 8;
       // 
       // cbProduct
@@ -125,12 +127,13 @@
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(103, 305);
+      this.btnCancel.Location = new System.Drawing.Point(103, 327);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(120, 32);
       this.btnCancel.TabIndex = 17;
       this.btnCancel.Text = "btnCancel";
       this.btnCancel.UseVisualStyleBackColor = false;
+      this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
       // 
       // pnlTopBar
       // 
@@ -161,12 +164,13 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(235, 305);
+      this.btnSave.Location = new System.Drawing.Point(235, 327);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(120, 32);
       this.btnSave.TabIndex = 4;
       this.btnSave.Text = "btnSave";
       this.btnSave.UseVisualStyleBackColor = false;
+      this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
       // 
       // lbTo
       // 
@@ -203,7 +207,7 @@
       this.cbFrom.Name = "cbFrom";
       this.cbFrom.Size = new System.Drawing.Size(252, 24);
       this.cbFrom.TabIndex = 3;
-      this.cbFrom.SelectionChangeCommitted += new System.EventHandler(this.cbFrom_SelectedIndexChanged);
+      this.cbFrom.SelectionChangeCommitted += new System.EventHandler(this.cbFrom_SelectionChangeCommitted);
       // 
       // lbFrom
       // 
@@ -217,11 +221,23 @@
       this.lbFrom.TabIndex = 2;
       this.lbFrom.Text = "lbFrom";
       // 
+      // lbErrorQty
+      // 
+      this.lbErrorQty.AutoSize = true;
+      this.lbErrorQty.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbErrorQty.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorQty.Location = new System.Drawing.Point(102, 276);
+      this.lbErrorQty.MaximumSize = new System.Drawing.Size(252, 0);
+      this.lbErrorQty.Name = "lbErrorQty";
+      this.lbErrorQty.Size = new System.Drawing.Size(78, 16);
+      this.lbErrorQty.TabIndex = 22;
+      this.lbErrorQty.Text = "lbErrorQty";
+      // 
       // ManualStockMovementForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(451, 363);
+      this.ClientSize = new System.Drawing.Size(451, 381);
       this.Controls.Add(this.pnlBody);
       this.Font = new System.Drawing.Font("Courier New", 9.75F);
       this.ForeColor = System.Drawing.Color.White;
@@ -257,5 +273,6 @@
     private System.Windows.Forms.ComboBox cbTo;
     private System.Windows.Forms.ComboBox cbProduct;
     private System.Windows.Forms.Label lbProduct;
+    private System.Windows.Forms.Label lbErrorQty;
   }
 }

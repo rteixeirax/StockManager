@@ -23,6 +23,11 @@ namespace StockManager.Services.Source.Contracts
     Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false);
 
     /// <summary>
+    /// Move the stock from one location to another.
+    /// </summary>
+    Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId);
+
+    /// <summary>
     /// Get the product last stock movement
     /// </summary>
     Task<StockMovement> GetProductLastStockMovementAsync(int productId);

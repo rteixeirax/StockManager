@@ -16,24 +16,30 @@ namespace StockManager.Services.Source.Services
       _productLocationRepo = productLocationRepo;
     }
 
-    public async Task AddProductLocationAsync(ProductLocation data, int userId)
+    public async Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true)
     {
       try
       {
-        await this.ValidateProductLocationDataAsync(data);
-        await _productLocationRepo.InsertProductLocationAsync(data);
+        await this.ValidateProductLocationDataAsync(productLocation);
+        await _productLocationRepo.InsertProductLocationAsync(productLocation);
 
         StockMovement stockMovement = new StockMovement() {
           UserId = userId,
-          ProductId = data.ProductId,
-          ToLocationId = data.LocationId,
-          ToLocationName = data.Location.Name,
-          Qty = data.Stock,
+          ProductId = productLocation.ProductId,
+          ToLocationId = productLocation.LocationId,
+          ToLocationName = productLocation.Location.Name,
+          Qty = productLocation.Stock,
         };
 
-        await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
-        await _productLocationRepo.SaveDbChangesAsync();
+        if (createStockMovement)
+        {
+          await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+        }
 
+        if (applyDbChanges)
+        {
+          await _productLocationRepo.SaveDbChangesAsync();
+        }
       }
       catch (OperationErrorException operationErrorException)
       {
@@ -116,11 +122,11 @@ namespace StockManager.Services.Source.Services
       return await _productLocationRepo.FindProductLocationAsync(productId, locationId);
     }
 
-    private async Task ValidateProductLocationDataAsync(ProductLocation data)
+    private async Task ValidateProductLocationDataAsync(ProductLocation productLocation)
     {
       OperationErrorsList errorsList = new OperationErrorsList();
 
-      if (data.LocationId <= 0)
+      if (productLocation.LocationId <= 0)
       {
         errorsList.AddError("LocationId", Phrases.GlobalRequiredField);
       }
@@ -132,7 +138,7 @@ namespace StockManager.Services.Source.Services
 
       // check if the product is already associated with the location
       ProductLocation pLocationCheck = await _productLocationRepo
-        .FindProductLocationAsync(data.ProductId, data.LocationId);
+        .FindProductLocationAsync(productLocation.ProductId, productLocation.LocationId);
 
       if (pLocationCheck != null)
       {

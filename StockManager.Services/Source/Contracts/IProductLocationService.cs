@@ -8,7 +8,11 @@ namespace StockManager.Services.Source.Contracts
     /// <summary>
     /// Associate a product to a location
     /// </summary>
-    Task AddProductLocationAsync(ProductLocation data, int userId);
+    /// <param name="productLocation"></param>
+    /// <param name="userId"></param>
+    /// <param name="applyDbChanges">Set to false to skip the db save changes</param>
+    /// <param name="createStockMovement">Set to false to skip the creation of the stock movement</param>
+    Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true);
 
     /// <summary>
     /// Update the product location min stock

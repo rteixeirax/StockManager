@@ -50,7 +50,6 @@ namespace StockManager.Services.Source.Services
         {
           await _stockMovementRepo.SaveDbChangesAsync();
         }
-
       }
       catch
       {
@@ -93,6 +92,74 @@ namespace StockManager.Services.Source.Services
         {
           await _stockMovementRepo.SaveDbChangesAsync();
         }
+      }
+    }
+
+    public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId)
+    {
+      OperationErrorsList errorsList = new OperationErrorsList();
+
+      try
+      {
+        // Get the relation productId > fromLocationId to check if the qty can be accepted
+        ProductLocation fromLocationRelation = await AppServices.ProductLocationService
+           .GetProductLocationAsync(productId, fromLocationId);
+
+        if (fromLocationRelation.Stock < qty)
+        {
+          errorsList.AddError("qty", Phrases.StockMovementErrorQty);
+          throw new OperationErrorException(errorsList);
+        }
+
+        Location fromLocation = await AppServices.LocationService.GetLocationByIdAsync(fromLocationId);
+        Location toLocation = await AppServices.LocationService.GetLocationByIdAsync(toLocationId);
+
+        // Set the stock movement between locations
+        StockMovement stockMovement = new StockMovement() {
+          UserId = userId,
+          ProductId = productId,
+          FromLocationId = fromLocation.LocationId,
+          FromLocationName = fromLocation.Name,
+          ToLocationId = toLocation.LocationId,
+          ToLocationName = toLocation.Name,
+          Qty = qty,
+        };
+
+        // Create the stock movement
+        await this.AddStockMovementAsync(stockMovement);
+
+        // Update the stock in the From location
+        fromLocationRelation.Stock -= qty;
+
+        // Update the stock in the To location
+        ProductLocation toLocationRelation = await AppServices.ProductLocationService
+           .GetProductLocationAsync(productId, toLocationId);
+
+        // If the product is associated to the location, update the stock
+        if (toLocationRelation != null)
+        {
+          toLocationRelation.Stock += qty;
+        }
+        else
+        {
+          // If not, create the relation
+          await AppServices.ProductLocationService.AddProductLocationAsync(
+            new ProductLocation {
+              LocationId = toLocationId,
+              ProductId = productId,
+              Stock = qty,
+            },
+            userId,
+            false,
+            false
+          );
+        }
+
+        await _stockMovementRepo.SaveDbChangesAsync();
+      }
+      catch (OperationErrorException operationErrorException)
+      {
+        throw operationErrorException;
       }
     }
 

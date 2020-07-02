@@ -3,6 +3,7 @@ using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
+using StockManager.Types.Source;
 using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,9 @@ namespace StockManager.Source.Forms
     public async Task ShowManualStockMovementFormAsync()
     {
       this.Text = AppInfo.GetViewTitle(Phrases.StockMovementCreate);
+
+      // hide the error labels
+      lbErrorQty.Visible = false;
 
       Spinner.InitSpinner();
 
@@ -113,10 +117,24 @@ namespace StockManager.Source.Forms
       }
     }
 
+    private void ShowFormErrors(List<ErrorType> errors)
+    {
+      lbErrorQty.Visible = false;
+
+      foreach (ErrorType err in errors)
+      {
+        if (err.Field == "qty")
+        {
+          lbErrorQty.Text = err.Error;
+          lbErrorQty.Visible = true;
+        }
+      }
+    }
+
     /// <summary>
     /// When the From cb change, need to reset the Product cb data
     /// </summary>
-    private void cbFrom_SelectedIndexChanged(object sender, EventArgs e)
+    private void cbFrom_SelectionChangeCommitted(object sender, EventArgs e)
     {
       Location fromLocation = ( Location )cbFrom.SelectedItem;
       Location toLocation = ( Location )cbTo.SelectedItem;
@@ -131,8 +149,56 @@ namespace StockManager.Source.Forms
         cbTo.SelectedItem = toLocation;
       }
 
-
       this.SetProductComboboxData(fromLocation);
+    }
+
+    private async void btnSave_Click(object sender, EventArgs e)
+    {
+      try
+      {
+        Spinner.InitSpinner();
+
+        await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+          int.Parse(cbFrom.SelectedValue.ToString()),
+          int.Parse(cbTo.SelectedValue.ToString()),
+          int.Parse(cbProduct.SelectedValue.ToString()),
+          float.Parse(numQty.Value.ToString()),
+          Program.LoggedInUser.UserId
+        );
+
+        Spinner.StopSpinner();
+
+        // Update stock movements table
+        await _inventoryProductLocationsUc.LoadProductLocations();
+
+        // Close form
+        this.btnCancel_Click(sender, e);
+      }
+      catch (OperationErrorException ex)
+      {
+        Spinner.StopSpinner();
+
+        if (ex.Errors.Count() > 0)
+        {
+          this.ShowFormErrors(ex.Errors);
+        }
+      }
+      catch (ServiceErrorException ex)
+      {
+        Spinner.StopSpinner();
+
+        MessageBox.Show(
+          $"{ex.Errors[0].Error}",
+          Phrases.GlobalDialogErrorTitle,
+          MessageBoxButtons.OK,
+          MessageBoxIcon.Error
+        );
+      }
+    }
+
+    private void btnCancel_Click(object sender, EventArgs e)
+    {
+      this.Close();
     }
   }
 }
