@@ -322,4 +322,16 @@
   <data name="GlobalMovement" xml:space="preserve">
     <value>Movement</value>
   </data>
+  <data name="StockMovementManualMovement" xml:space="preserve">
+    <value>Manual stock movement</value>
+  </data>
+  <data name="GlobalSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="StockMovementCreate" xml:space="preserve">
+    <value>Create stock movement</value>
+  </data>
+  <data name="GlobalCreateMov" xml:space="preserve">
+    <value>Create mov.</value>
+  </data>
 </root>

@@ -115,6 +115,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create mov..
+        /// </summary>
+        public static string GlobalCreateMov {
+            get {
+                return ResourceManager.GetString("GlobalCreateMov", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string GlobalDate {
@@ -318,6 +327,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalStock {
             get {
                 return ResourceManager.GetString("GlobalStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string GlobalSubmit {
+            get {
+                return ResourceManager.GetString("GlobalSubmit", resourceCulture);
             }
         }
         
@@ -538,6 +556,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create stock movement.
+        /// </summary>
+        public static string StockMovementCreate {
+            get {
+                return ResourceManager.GetString("StockMovementCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string StockMovementFrom {
@@ -552,6 +579,15 @@ namespace StockManager.Translations.Source {
         public static string StockMovementLocationDeleted {
             get {
                 return ResourceManager.GetString("StockMovementLocationDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual stock movement.
+        /// </summary>
+        public static string StockMovementManualMovement {
+            get {
+                return ResourceManager.GetString("StockMovementManualMovement", resourceCulture);
             }
         }
         
