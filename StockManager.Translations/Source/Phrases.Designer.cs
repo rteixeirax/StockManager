@@ -565,6 +565,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The quantity that you want to move is higher than the quantity available..
+        /// </summary>
+        public static string StockMovementErrorQty {
+            get {
+                return ResourceManager.GetString("StockMovementErrorQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to From.
         /// </summary>
         public static string StockMovementFrom {

@@ -334,4 +334,7 @@
   <data name="GlobalCreateMov" xml:space="preserve">
     <value>Create mov.</value>
   </data>
+  <data name="StockMovementErrorQty" xml:space="preserve">
+    <value>The quantity that you want to move is higher than the quantity available.</value>
+  </data>
 </root>
