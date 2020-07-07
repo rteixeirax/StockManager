@@ -60,6 +60,37 @@ namespace StockManager.Services.Source.Services
       }
     }
 
+    public async Task AddStockMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId)
+    {
+      try
+      {
+        Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+        ProductLocation productLocation = await AppServices.ProductLocationService
+          .GetProductLocationAsync(productId, mainLocation.LocationId);
+
+        // If is an exit movement, set negative qty
+        float qtyToMove = isEntry ? qty : (qty * (-1));
+
+        // Create the stock movement
+        await this.AddStockMovementAsync(new StockMovement() {
+          UserId = userId,
+          ProductId = productId,
+          ToLocationId = mainLocation.LocationId,
+          ToLocationName = mainLocation.Name,
+          Qty = qtyToMove,
+        });
+
+        // Update the stock in the ProductLocation relation
+        productLocation.Stock += qtyToMove;
+
+        await _stockMovementRepo.SaveDbChangesAsync();
+      }
+      catch (OperationErrorException operationErrorException)
+      {
+        throw operationErrorException;
+      }
+    }
+
     public async Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false)
     {
       // Get the main location

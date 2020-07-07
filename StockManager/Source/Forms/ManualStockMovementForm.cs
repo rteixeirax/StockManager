@@ -200,17 +200,12 @@ namespace StockManager.Source.Forms
 
         if (checkMainLocationMoves.Checked)
         {
-          // TODO: This is not working properly. Need to update the ProductLocation relation stock.
-          // ?? Maybe change the AddStockMovementAsync to do that (sent a flag or something).
-
-          await AppServices.StockMovementService.AddStockMovementAsync(new StockMovement() {
-            UserId = Program.LoggedInUser.UserId,
-            ProductId = product.ProductId,
-            ToLocationId = fromLocation.LocationId,
-            ToLocationName = fromLocation.Name,
-            // If exit, set the negative qty, else, just set qty
-            Qty = (toLocation.LocationId == -1) ? qty * (-1) : qty,
-          }, true);
+          await AppServices.StockMovementService.AddStockMovementInsideMainLocationAsync(
+            product.ProductId,
+            qty,
+            (toLocation.LocationId == 0), // 0: entry; -1: exit;
+            Program.LoggedInUser.UserId
+          );
         }
         else
         {
