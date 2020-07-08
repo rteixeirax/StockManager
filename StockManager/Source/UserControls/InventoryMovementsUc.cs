@@ -1,4 +1,4 @@
-using StockManager.Services.Source;
+﻿using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
@@ -29,7 +29,7 @@ namespace StockManager.Source.UserControls
     {
       Spinner.InitSpinner();
       dgvMovements.Rows.Clear();
-      await this.LoadData();
+      await this.LoadDataAsync();
       Spinner.StopSpinner();
     }
 
@@ -37,10 +37,10 @@ namespace StockManager.Source.UserControls
     {
       tbSeachText.Text = "";
       _hasBeenSearching = false;
-      await this.LoadData();
+      await this.LoadDataAsync();
     }
 
-    private async Task LoadData(string searchValue = "")
+    private async Task LoadDataAsync(string searchValue = "")
     {
       dgvMovements.Rows.Clear();
       var movements = await AppServices.StockMovementService.GetAllAsync(searchValue);
@@ -59,7 +59,14 @@ namespace StockManager.Source.UserControls
 
     private async void pbSearchIcon_Click(object sender, System.EventArgs e)
     {
-      await this.LoadData(tbSeachText.Text);
+      string searchValue = tbSeachText.Text;
+
+      if (!string.IsNullOrEmpty(searchValue))
+      {
+        // sets the flag has been searching
+        _hasBeenSearching = true;
+        await this.LoadDataAsync(searchValue);
+      }
     }
 
     private void SetTranslatedPhrases()
@@ -97,11 +104,11 @@ namespace StockManager.Source.UserControls
         // If the user clear all the search box text after doing some search, i need to
         // query the DB without any search param to show all table data.
       }
-      else if ((tbSeachText.Text.Any()) && _hasBeenSearching)
+      else if (!tbSeachText.Text.Any() && _hasBeenSearching)
       {
         _hasBeenSearching = false;
         btnClearSearchValue.Visible = false;
-        await this.LoadData();
+        await this.LoadDataAsync();
       }
     }
   }
