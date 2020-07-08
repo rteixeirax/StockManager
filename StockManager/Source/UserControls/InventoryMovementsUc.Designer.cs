@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+      System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
       System.Windows.Forms.PictureBox pbSearchIcon;
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryMovementsUc));
       this.dgvMovements = new System.Windows.Forms.DataGridView();
@@ -46,10 +46,13 @@
       this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
       this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+      this.pnlActions = new System.Windows.Forms.Panel();
+      this.btnStockMovement = new System.Windows.Forms.Button();
       pbSearchIcon = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
       this.pnbSearchBox.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
+      this.pnlActions.SuspendLayout();
       this.SuspendLayout();
       // 
       // dgvMovements
@@ -58,26 +61,26 @@
       this.dgvMovements.AllowUserToDeleteRows = false;
       this.dgvMovements.AllowUserToResizeColumns = false;
       this.dgvMovements.AllowUserToResizeRows = false;
-      dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-      dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-      this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+      dataGridViewCellStyle31.BackColor = System.Drawing.Color.LightGray;
+      dataGridViewCellStyle31.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
+      this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
       this.dgvMovements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
       this.dgvMovements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
       this.dgvMovements.BackgroundColor = System.Drawing.SystemColors.Control;
       this.dgvMovements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-      dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F);
-      dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-      dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+      dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      dataGridViewCellStyle32.Font = new System.Drawing.Font("Courier New", 9.75F);
+      dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+      dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
       this.dgvMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.dgvMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStockMovementId,
@@ -87,36 +90,36 @@
             this.columnQty,
             this.columnStockAcc,
             this.columnUser});
-      dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F);
-      dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-      dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle3;
+      dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle33.Font = new System.Drawing.Font("Courier New", 9.75F);
+      dataGridViewCellStyle33.ForeColor = System.Drawing.Color.White;
+      dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle33;
       this.dgvMovements.EnableHeadersVisualStyles = false;
       this.dgvMovements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
       this.dgvMovements.Location = new System.Drawing.Point(8, 45);
       this.dgvMovements.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
       this.dgvMovements.Name = "dgvMovements";
       this.dgvMovements.ReadOnly = true;
-      dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-      dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F);
-      dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-      this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+      dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+      dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle34.Font = new System.Drawing.Font("Courier New", 9.75F);
+      dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+      this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
       this.dgvMovements.RowHeadersVisible = false;
       this.dgvMovements.RowHeadersWidth = 25;
-      dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-      dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-      dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-      dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-      this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle5;
+      dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
+      dataGridViewCellStyle35.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
+      dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
+      this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle35;
       this.dgvMovements.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
       this.dgvMovements.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Empty;
       this.dgvMovements.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.Empty;
@@ -228,10 +231,36 @@
       this.columnUser.Name = "columnUser";
       this.columnUser.ReadOnly = true;
       // 
+      // pnlActions
+      // 
+      this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+      this.pnlActions.Controls.Add(this.btnStockMovement);
+      this.pnlActions.Location = new System.Drawing.Point(654, 6);
+      this.pnlActions.Name = "pnlActions";
+      this.pnlActions.Size = new System.Drawing.Size(203, 34);
+      this.pnlActions.TabIndex = 23;
+      // 
+      // btnStockMovement
+      // 
+      this.btnStockMovement.Anchor = System.Windows.Forms.AnchorStyles.None;
+      this.btnStockMovement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+      this.btnStockMovement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.btnStockMovement.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.btnStockMovement.ForeColor = System.Drawing.Color.White;
+      this.btnStockMovement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+      this.btnStockMovement.Location = new System.Drawing.Point(79, 4);
+      this.btnStockMovement.Name = "btnStockMovement";
+      this.btnStockMovement.Size = new System.Drawing.Size(121, 27);
+      this.btnStockMovement.TabIndex = 7;
+      this.btnStockMovement.Text = "btnStockMovement";
+      this.btnStockMovement.UseVisualStyleBackColor = false;
+      this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
+      // 
       // InventoryMovementsUc
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.pnlActions);
       this.Controls.Add(this.pnbSearchBox);
       this.Controls.Add(this.dgvMovements);
       this.Font = new System.Drawing.Font("Courier New", 9.75F);
@@ -243,6 +272,7 @@
       this.pnbSearchBox.ResumeLayout(false);
       this.pnbSearchBox.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).EndInit();
+      this.pnlActions.ResumeLayout(false);
       this.ResumeLayout(false);
 
         }
@@ -259,5 +289,7 @@
     private System.Windows.Forms.DataGridViewTextBoxColumn columnQty;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
     private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
+    private System.Windows.Forms.Panel pnlActions;
+    private System.Windows.Forms.Button btnStockMovement;
   }
 }

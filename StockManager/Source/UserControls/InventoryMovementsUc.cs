@@ -1,4 +1,5 @@
-﻿using StockManager.Services.Source;
+﻿using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
@@ -22,10 +23,10 @@ namespace StockManager.Source.UserControls
       _mainForm = mainForm;
       btnClearSearchValue.Visible = false;
       this.SetTranslatedPhrases();
-      this.LoadMovements().Wait();
+      this.LoadMovementsAsync().Wait();
     }
 
-    public async Task LoadMovements()
+    public async Task LoadMovementsAsync()
     {
       Spinner.InitSpinner();
       dgvMovements.Rows.Clear();
@@ -71,6 +72,8 @@ namespace StockManager.Source.UserControls
 
     private void SetTranslatedPhrases()
     {
+      btnStockMovement.Text = Phrases.GlobalCreateMov;
+
       dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
       dgvMovements.Columns[2].HeaderText = Phrases.GlobalProduct;
       dgvMovements.Columns[3].HeaderText = Phrases.GlobalMovement;
@@ -110,6 +113,13 @@ namespace StockManager.Source.UserControls
         btnClearSearchValue.Visible = false;
         await this.LoadDataAsync();
       }
+    }
+
+    private async void btnStockMovement_Click(object sender, System.EventArgs e)
+    {
+      Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+      ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(null, null, mainLocation, this);
+      await manualStockMovementForm.ShowManualStockMovementFormAsync();
     }
   }
 }
