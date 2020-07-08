@@ -7,11 +7,8 @@ using StockManager.Types.Source;
 using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,6 +39,7 @@ namespace StockManager.Source.Forms
     private void SetTranslatedPhrases()
     {
       lbTitle.Text = Phrases.StockMovementManualMovement;
+      checkMainLocationMoves.Text = "Only main location"; // TODO: Add phrase
       lbFrom.Text = Phrases.StockMovementFrom;
       lbTo.Text = Phrases.StockMovementTo;
       lbProduct.Text = Phrases.GlobalProduct;
@@ -62,6 +60,14 @@ namespace StockManager.Source.Forms
       // Get the locations
       _locations = await AppServices.LocationService.GetLocationsAsync();
 
+      this.SetFormComboboxesData();
+
+      Spinner.StopSpinner();
+      this.ShowDialog();
+    }
+
+    private void SetFormComboboxesData()
+    {
       // From 
       cbFrom.DataSource = _locations;
       cbFrom.ValueMember = "LocationId";
@@ -84,12 +90,7 @@ namespace StockManager.Source.Forms
       cbTo.ValueMember = "LocationId";
       cbTo.DisplayMember = "Name";
 
-      //cbTo.SelectedItem = locations.First(x => x.LocationId != fromLocation.LocationId);
-
       this.SetProductComboboxData(fromLocation);
-
-      Spinner.StopSpinner();
-      this.ShowDialog();
     }
 
     private void SetProductComboboxData(Location fromLocation)
@@ -131,6 +132,40 @@ namespace StockManager.Source.Forms
       }
     }
 
+
+    private void checkMainLocationMoves_Click(object sender, EventArgs e)
+    {
+      Spinner.InitSpinner();
+
+      if (checkMainLocationMoves.Checked)
+      {
+        lbFrom.Text = "Main location"; // TODO: add phrases
+        lbTo.Text = "Movement";
+
+        // Get the main location
+        Location mainLocation = _locations.First(x => x.IsMain == true);
+        cbFrom.SelectedItem = mainLocation;
+
+        List<Location> entryExitMovements = new List<Location> {
+          new Location() { LocationId = 0, Name = "Entry" }, // TODO: add phrases
+          new Location() { LocationId = -1, Name = "Exit" }
+        };
+
+        //cbTo.BindingContext = new BindingContext();
+        cbTo.DataSource = entryExitMovements;
+
+        this.SetProductComboboxData(mainLocation);
+      }
+      else
+      {
+        this.SetFormComboboxesData();
+      }
+
+      cbFrom.Enabled = !checkMainLocationMoves.Checked;
+
+      Spinner.StopSpinner();
+    }
+
     /// <summary>
     /// When the From cb change, need to reset the Product cb data
     /// </summary>
@@ -158,13 +193,31 @@ namespace StockManager.Source.Forms
       {
         Spinner.InitSpinner();
 
-        await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
-          int.Parse(cbFrom.SelectedValue.ToString()),
-          int.Parse(cbTo.SelectedValue.ToString()),
-          int.Parse(cbProduct.SelectedValue.ToString()),
-          float.Parse(numQty.Value.ToString()),
-          Program.LoggedInUser.UserId
-        );
+        Location fromLocation = ( Location )cbFrom.SelectedItem;
+        Location toLocation = ( Location )cbTo.SelectedItem;
+        Product product = ( Product )cbProduct.SelectedItem;
+        float qty = float.Parse(numQty.Value.ToString());
+
+        if (checkMainLocationMoves.Checked)
+        {
+          await AppServices.StockMovementService.AddStockMovementInsideMainLocationAsync(
+            product.ProductId,
+            qty,
+            (toLocation.LocationId == 0), // 0: entry; -1: exit;
+            Program.LoggedInUser.UserId
+          );
+        }
+        else
+        {
+          await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+            fromLocation.LocationId,
+            toLocation.LocationId,
+            product.ProductId,
+            qty,
+            Program.LoggedInUser.UserId
+          );
+        }
+
 
         Spinner.StopSpinner();
 

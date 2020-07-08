@@ -30,6 +30,7 @@
     {
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualStockMovementForm));
       this.pnlBody = new System.Windows.Forms.Panel();
+      this.lbErrorQty = new System.Windows.Forms.Label();
       this.cbProduct = new System.Windows.Forms.ComboBox();
       this.lbProduct = new System.Windows.Forms.Label();
       this.numQty = new System.Windows.Forms.NumericUpDown();
@@ -42,7 +43,7 @@
       this.lbQty = new System.Windows.Forms.Label();
       this.cbFrom = new System.Windows.Forms.ComboBox();
       this.lbFrom = new System.Windows.Forms.Label();
-      this.lbErrorQty = new System.Windows.Forms.Label();
+      this.checkMainLocationMoves = new System.Windows.Forms.CheckBox();
       this.pnlBody.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.numQty)).BeginInit();
       this.pnlTopBar.SuspendLayout();
@@ -51,6 +52,7 @@
       // pnlBody
       // 
       this.pnlBody.BackColor = System.Drawing.SystemColors.Control;
+      this.pnlBody.Controls.Add(this.checkMainLocationMoves);
       this.pnlBody.Controls.Add(this.lbErrorQty);
       this.pnlBody.Controls.Add(this.cbProduct);
       this.pnlBody.Controls.Add(this.lbProduct);
@@ -66,8 +68,20 @@
       this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
       this.pnlBody.Location = new System.Drawing.Point(0, 0);
       this.pnlBody.Name = "pnlBody";
-      this.pnlBody.Size = new System.Drawing.Size(451, 381);
+      this.pnlBody.Size = new System.Drawing.Size(451, 413);
       this.pnlBody.TabIndex = 8;
+      // 
+      // lbErrorQty
+      // 
+      this.lbErrorQty.AutoSize = true;
+      this.lbErrorQty.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.lbErrorQty.ForeColor = System.Drawing.Color.Red;
+      this.lbErrorQty.Location = new System.Drawing.Point(102, 306);
+      this.lbErrorQty.MaximumSize = new System.Drawing.Size(252, 0);
+      this.lbErrorQty.Name = "lbErrorQty";
+      this.lbErrorQty.Size = new System.Drawing.Size(78, 16);
+      this.lbErrorQty.TabIndex = 22;
+      this.lbErrorQty.Text = "lbErrorQty";
       // 
       // cbProduct
       // 
@@ -76,7 +90,7 @@
       this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbProduct.ForeColor = System.Drawing.Color.Black;
       this.cbProduct.FormattingEnabled = true;
-      this.cbProduct.Location = new System.Drawing.Point(101, 193);
+      this.cbProduct.Location = new System.Drawing.Point(101, 223);
       this.cbProduct.Name = "cbProduct";
       this.cbProduct.Size = new System.Drawing.Size(252, 24);
       this.cbProduct.TabIndex = 21;
@@ -87,7 +101,7 @@
       this.lbProduct.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbProduct.Location = new System.Drawing.Point(98, 174);
+      this.lbProduct.Location = new System.Drawing.Point(98, 204);
       this.lbProduct.Name = "lbProduct";
       this.lbProduct.Size = new System.Drawing.Size(80, 16);
       this.lbProduct.TabIndex = 20;
@@ -97,7 +111,7 @@
       // 
       this.numQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.numQty.Font = new System.Drawing.Font("Courier New", 11.25F);
-      this.numQty.Location = new System.Drawing.Point(103, 249);
+      this.numQty.Location = new System.Drawing.Point(103, 279);
       this.numQty.Maximum = new decimal(new int[] {
             -1530494977,
             232830,
@@ -116,7 +130,7 @@
       this.cbTo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbTo.ForeColor = System.Drawing.Color.Black;
       this.cbTo.FormattingEnabled = true;
-      this.cbTo.Location = new System.Drawing.Point(103, 137);
+      this.cbTo.Location = new System.Drawing.Point(103, 167);
       this.cbTo.Name = "cbTo";
       this.cbTo.Size = new System.Drawing.Size(252, 24);
       this.cbTo.TabIndex = 18;
@@ -127,7 +141,7 @@
       this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnCancel.ForeColor = System.Drawing.Color.White;
-      this.btnCancel.Location = new System.Drawing.Point(103, 327);
+      this.btnCancel.Location = new System.Drawing.Point(103, 350);
       this.btnCancel.Name = "btnCancel";
       this.btnCancel.Size = new System.Drawing.Size(120, 32);
       this.btnCancel.TabIndex = 17;
@@ -164,7 +178,7 @@
       this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.btnSave.ForeColor = System.Drawing.Color.White;
-      this.btnSave.Location = new System.Drawing.Point(235, 327);
+      this.btnSave.Location = new System.Drawing.Point(235, 350);
       this.btnSave.Name = "btnSave";
       this.btnSave.Size = new System.Drawing.Size(120, 32);
       this.btnSave.TabIndex = 4;
@@ -178,7 +192,7 @@
       this.lbTo.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbTo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbTo.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbTo.Location = new System.Drawing.Point(100, 118);
+      this.lbTo.Location = new System.Drawing.Point(100, 148);
       this.lbTo.Name = "lbTo";
       this.lbTo.Size = new System.Drawing.Size(40, 16);
       this.lbTo.TabIndex = 9;
@@ -190,7 +204,7 @@
       this.lbQty.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbQty.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbQty.Location = new System.Drawing.Point(100, 230);
+      this.lbQty.Location = new System.Drawing.Point(100, 260);
       this.lbQty.Name = "lbQty";
       this.lbQty.Size = new System.Drawing.Size(48, 16);
       this.lbQty.TabIndex = 8;
@@ -203,7 +217,7 @@
       this.cbFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.cbFrom.ForeColor = System.Drawing.Color.Black;
       this.cbFrom.FormattingEnabled = true;
-      this.cbFrom.Location = new System.Drawing.Point(103, 83);
+      this.cbFrom.Location = new System.Drawing.Point(103, 113);
       this.cbFrom.Name = "cbFrom";
       this.cbFrom.Size = new System.Drawing.Size(252, 24);
       this.cbFrom.TabIndex = 3;
@@ -215,29 +229,29 @@
       this.lbFrom.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lbFrom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
       this.lbFrom.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbFrom.Location = new System.Drawing.Point(100, 64);
+      this.lbFrom.Location = new System.Drawing.Point(100, 94);
       this.lbFrom.Name = "lbFrom";
       this.lbFrom.Size = new System.Drawing.Size(56, 16);
       this.lbFrom.TabIndex = 2;
       this.lbFrom.Text = "lbFrom";
       // 
-      // lbErrorQty
+      // checkMainLocationMoves
       // 
-      this.lbErrorQty.AutoSize = true;
-      this.lbErrorQty.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorQty.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorQty.Location = new System.Drawing.Point(102, 276);
-      this.lbErrorQty.MaximumSize = new System.Drawing.Size(252, 0);
-      this.lbErrorQty.Name = "lbErrorQty";
-      this.lbErrorQty.Size = new System.Drawing.Size(78, 16);
-      this.lbErrorQty.TabIndex = 22;
-      this.lbErrorQty.Text = "lbErrorQty";
+      this.checkMainLocationMoves.AutoSize = true;
+      this.checkMainLocationMoves.ForeColor = System.Drawing.Color.Black;
+      this.checkMainLocationMoves.Location = new System.Drawing.Point(103, 61);
+      this.checkMainLocationMoves.Name = "checkMainLocationMoves";
+      this.checkMainLocationMoves.Size = new System.Drawing.Size(203, 20);
+      this.checkMainLocationMoves.TabIndex = 23;
+      this.checkMainLocationMoves.Text = "checkMainLocationMoves";
+      this.checkMainLocationMoves.UseVisualStyleBackColor = true;
+      this.checkMainLocationMoves.Click += new System.EventHandler(this.checkMainLocationMoves_Click);
       // 
       // ManualStockMovementForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(451, 381);
+      this.ClientSize = new System.Drawing.Size(451, 413);
       this.Controls.Add(this.pnlBody);
       this.Font = new System.Drawing.Font("Courier New", 9.75F);
       this.ForeColor = System.Drawing.Color.White;
@@ -274,5 +288,6 @@
     private System.Windows.Forms.ComboBox cbProduct;
     private System.Windows.Forms.Label lbProduct;
     private System.Windows.Forms.Label lbErrorQty;
+    private System.Windows.Forms.CheckBox checkMainLocationMoves;
   }
 }

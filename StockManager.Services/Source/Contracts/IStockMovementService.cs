@@ -16,6 +16,18 @@ namespace StockManager.Services.Source.Contracts
         /// </param>
         Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false);
 
+    /// <summary>
+    /// Add a entry/exit stock movement inside the main location and update the LocationProductStock
+    /// </summary>
+    Task AddStockMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId);
+
+    /// <summary>
+    /// Move the stock back to the main location
+    /// </summary>
+    /// <param name="applyDbChanges">
+    /// Set it to true if you want to call "SaveDbChangesAsync" immediately after finished the stock movement
+    /// </param>
+    Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false);
         /// <summary>
         /// Get all stock movements
         /// </summary>
