@@ -250,6 +250,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Movements.
+        /// </summary>
+        public static string GlobalMovements {
+            get {
+                return ResourceManager.GetString("GlobalMovements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string GlobalName {

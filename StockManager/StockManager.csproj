@@ -172,6 +172,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Source\ColorTables\MenuStripProfessionalColorTable.cs" />
+    <Compile Include="Source\Extensions\Extensions.cs" />
     <Compile Include="Source\Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +220,12 @@
     </Compile>
     <Compile Include="Source\UserControls\InventoryLocationsUc.Designer.cs">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UserControls\InventoryMovementsUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\UserControls\InventoryMovementsUc.Designer.cs">
+      <DependentUpon>InventoryMovementsUc.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\UserControls\LoginUc.cs">
       <SubType>UserControl</SubType>
@@ -290,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\InventoryLocationsUc.resx">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\UserControls\InventoryMovementsUc.resx">
+      <DependentUpon>InventoryMovementsUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\InventoryProductLocationsUc.resx">
       <DependentUpon>InventoryProductLocationsUc.cs</DependentUpon>

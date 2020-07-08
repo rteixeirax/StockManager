@@ -357,4 +357,7 @@
   <data name="StockMovementErrorQty" xml:space="preserve">
     <value>A quantidade que deseja mover é superior à quantidade disponível.</value>
   </data>
+  <data name="GlobalMovements" xml:space="preserve">
+    <value>Movimentos</value>
+  </data>
 </root>
