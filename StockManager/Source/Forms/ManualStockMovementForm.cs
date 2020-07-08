@@ -17,6 +17,7 @@ namespace StockManager.Source.Forms
   public partial class ManualStockMovementForm : Form
   {
     private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
+    private readonly InventoryMovementsUc _inventoryMovementsUc;
     private readonly Product _product;
     private readonly Location _location;
     private IEnumerable<Location> _locations;
@@ -24,12 +25,14 @@ namespace StockManager.Source.Forms
     public ManualStockMovementForm(
       InventoryProductLocationsUc inventoryProductLocationsUc,
       Product product,
-      Location location
+      Location location,
+      InventoryMovementsUc inventoryMovementsUc = null
     )
     {
       InitializeComponent();
 
       _inventoryProductLocationsUc = inventoryProductLocationsUc;
+      _inventoryMovementsUc = inventoryMovementsUc;
       _product = product;
       _location = location;
 
@@ -76,7 +79,7 @@ namespace StockManager.Source.Forms
       // Get the main location
       Location fromLocation = _locations.First(x => x.IsMain == true);
 
-      // Set the From location if the form was called from the InventoryLocationUc
+      // Set the From location if the form was called from the InventoryLocationUc / InventoryMovementsUc
       if (_location != null)
       {
         cbFrom.SelectedItem = _locations.First(x => x.LocationId == _location.LocationId);
@@ -222,7 +225,14 @@ namespace StockManager.Source.Forms
         Spinner.StopSpinner();
 
         // Update stock movements table
-        await _inventoryProductLocationsUc.LoadProductLocations();
+        if (_inventoryMovementsUc != null)
+        {
+          await _inventoryMovementsUc.LoadMovementsAsync();
+        }
+        else
+        {
+          await _inventoryProductLocationsUc.LoadProductLocations();
+        }
 
         // Close form
         this.btnCancel_Click(sender, e);
