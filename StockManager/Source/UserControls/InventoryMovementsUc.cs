@@ -1,4 +1,4 @@
-﻿using StockManager.Services.Source;
+using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
@@ -46,15 +46,13 @@ namespace StockManager.Source.UserControls
       var movements = await AppServices.StockMovementService.GetAllAsync(searchValue);
       movements.ToList().ForEach((stockMovement) => {
         dgvMovements.Rows.Add(
-
-            stockMovement.StockMovementId,
-            stockMovement.CreatedAt.ShortDateWithTime(),
-            "",
-            stockMovement.Product?.Name,
-            stockMovement.ConcatMovementString(),
-            stockMovement.Qty,
-            stockMovement.Stock,
-            stockMovement.User?.Username
+          stockMovement.StockMovementId,
+          stockMovement.CreatedAt.ShortDateWithTime(),
+          stockMovement.Product?.Name,
+          stockMovement.ConcatMovementString(),
+          stockMovement.Qty,
+          stockMovement.Stock,
+          stockMovement.User?.Username
         );
       });
     }
@@ -67,11 +65,11 @@ namespace StockManager.Source.UserControls
     private void SetTranslatedPhrases()
     {
       dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-      dgvMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
-      dgvMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
-      dgvMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
-      dgvMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
-      dgvMovements.Columns[7].HeaderText = Phrases.GlobalUser;
+      dgvMovements.Columns[2].HeaderText = Phrases.GlobalProduct;
+      dgvMovements.Columns[3].HeaderText = Phrases.GlobalMovement;
+      dgvMovements.Columns[4].HeaderText = Phrases.StockMovementQty;
+      dgvMovements.Columns[5].HeaderText = Phrases.StockMovementStockAcc;
+      dgvMovements.Columns[6].HeaderText = Phrases.GlobalUser;
     }
 
     private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
