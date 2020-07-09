@@ -5,23 +5,23 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database.Source.Repositories
 {
-  public class AppSettingsRepository : IAppSettingsRepository
-  {
-    private readonly DatabaseContext _db;
-
-    public AppSettingsRepository(DatabaseContext db)
+    public class AppSettingsRepository : IAppSettingsRepository
     {
-      _db = db;
-    }
+        private readonly DatabaseContext _db;
 
-    public async Task SaveDbChangesAsync()
-    {
-      await _db.SaveChangesAsync();
-    }
+        public AppSettingsRepository(DatabaseContext db)
+        {
+            _db = db;
+        }
 
-    public async Task<AppSettings> FindAppSettingsAsync()
-    {
-      return await _db.AppSettings.FirstOrDefaultAsync();
+        public async Task SaveDbChangesAsync()
+        {
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<AppSettings> FindAppSettingsAsync()
+        {
+            return await _db.AppSettings.FirstOrDefaultAsync();
+        }
     }
-  }
 }

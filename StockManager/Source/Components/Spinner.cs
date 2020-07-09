@@ -2,16 +2,16 @@
 
 namespace StockManager.Source.Components
 {
-  public static class Spinner
-  {
-    /// <summary>
-    /// Init the loading spinner
-    /// </summary>
-    public static void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
+    public static class Spinner
+    {
+        /// <summary>
+        /// Init the loading spinner
+        /// </summary>
+        public static void InitSpinner() { Cursor.Current = Cursors.WaitCursor; }
 
-    /// <summary>
-    /// Stop the loading spinner
-    /// </summary>
-    public static void StopSpinner() { Cursor.Current = Cursors.Default; }
-  }
+        /// <summary>
+        /// Stop the loading spinner
+        /// </summary>
+        public static void StopSpinner() { Cursor.Current = Cursors.Default; }
+    }
 }

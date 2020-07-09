@@ -2,13 +2,13 @@
 
 namespace StockManager.Source.UserControls
 {
-  public partial class DashboardUc : UserControl
-  {
-    public DashboardUc()
+    public partial class DashboardUc : UserControl
     {
-      InitializeComponent();
-    }
+        public DashboardUc()
+        {
+            InitializeComponent();
+        }
 
-    // TODO: Add content
-  }
+        // TODO: Add content
+    }
 }

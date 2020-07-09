@@ -4,17 +4,17 @@ using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Configurations
 {
-  public class StockMovementConfiguration : IEntityTypeConfiguration<StockMovement>
-  {
-    public void Configure(EntityTypeBuilder<StockMovement> builder)
+    public class StockMovementConfiguration : IEntityTypeConfiguration<StockMovement>
     {
-      builder
-         .Property(x => x.FromLocationName)
-         .HasDefaultValue(null);
+        public void Configure(EntityTypeBuilder<StockMovement> builder)
+        {
+            builder
+               .Property(x => x.FromLocationName)
+               .HasDefaultValue(null);
 
-      builder
-         .Property(x => x.ToLocationName)
-         .HasDefaultValue(null);
+            builder
+               .Property(x => x.ToLocationName)
+               .HasDefaultValue(null);
+        }
     }
-  }
 }

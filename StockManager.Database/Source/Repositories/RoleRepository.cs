@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database.Source.Repositories
 {
-  public class RoleRepository : IRoleRepository
-  {
-    private readonly DatabaseContext _db;
-
-    public RoleRepository(DatabaseContext db)
+    public class RoleRepository : IRoleRepository
     {
-      _db = db;
-    }
+        private readonly DatabaseContext _db;
 
-    public async Task<IEnumerable<Role>> FindAllRolesAsync()
-    {
-      return await _db.Roles.ToListAsync();
+        public RoleRepository(DatabaseContext db)
+        {
+            _db = db;
+        }
+
+        public async Task<IEnumerable<Role>> FindAllRolesAsync()
+        {
+            return await _db.Roles.ToListAsync();
+        }
     }
-  }
 }

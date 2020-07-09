@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace StockManager.Database.Source.Contracts
 {
-  public interface IRoleRepository
-  {
-    /// <summary>
-    /// Find all roles
-    /// </summary>
-    Task<IEnumerable<Role>> FindAllRolesAsync();
-  }
+    public interface IRoleRepository
+    {
+        /// <summary>
+        /// Find all roles
+        /// </summary>
+        Task<IEnumerable<Role>> FindAllRolesAsync();
+    }
 }

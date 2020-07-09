@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace StockManager.Types.Source
 {
-  public class OperationErrorException : ArgumentException
-  {
-    public List<ErrorType> Errors { get; private set; }
-
-    public OperationErrorException(OperationErrorsList operationErrors)
+    public class OperationErrorException : ArgumentException
     {
-      this.Errors = operationErrors.ErrorsList;
+        public List<ErrorType> Errors { get; private set; }
+
+        public OperationErrorException(OperationErrorsList operationErrors)
+        {
+            this.Errors = operationErrors.ErrorsList;
+        }
     }
-  }
 }

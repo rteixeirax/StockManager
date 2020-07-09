@@ -3,26 +3,27 @@ using System.Linq;
 
 namespace StockManager.Types.Source
 {
-  public class OperationErrorsList
-  {
-    public List<ErrorType> ErrorsList { get; private set; }
-
-    public OperationErrorsList()
+    public class OperationErrorsList
     {
-      this.ErrorsList = new List<ErrorType>();
-    }
+        public List<ErrorType> ErrorsList { get; private set; }
 
-    public void AddError(string field, string errorMessage)
-    {
-      this.ErrorsList.Add(new ErrorType {
-        Field = field,
-        Error = errorMessage,
-      });
-    }
+        public OperationErrorsList()
+        {
+            this.ErrorsList = new List<ErrorType>();
+        }
 
-    public bool HasErrors()
-    {
-      return (this.ErrorsList.Count() > 0);
+        public void AddError(string field, string errorMessage)
+        {
+            this.ErrorsList.Add(new ErrorType
+            {
+                Field = field,
+                Error = errorMessage,
+            });
+        }
+
+        public bool HasErrors()
+        {
+            return (this.ErrorsList.Count() > 0);
+        }
     }
-  }
 }
