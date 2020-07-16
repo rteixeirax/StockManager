@@ -23,33 +23,16 @@ namespace StockManager.Database.Source
         /// Add Database Tables Here..
         /// </summary>
         public DbSet<AppSettings> AppSettings { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
+
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Product> Products { get; set; }
         public DbSet<ProductLocation> ProductLocations { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<StockMovement> StockMovements { get; set; }
+        public DbSet<User> Users { get; set; }
 
         /// <summary>
-        /// Define the models relationships constraints, indexes and seed the initial data
-        /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
-        /// https://code-maze.com/efcore-relationships/
-        /// https://code-maze.com/migrations-and-seed-data-efcore/
-        /// </summary>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfiguration(new AppSettingsConfiguration());
-            modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new LocationConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductConfiguration());
-            modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
-            modelBuilder.ApplyConfiguration(new StockMovementConfiguration());
-        }
-
-        /// <summary>
-        /// Auto fill the CreatedAt and the UpdatedAt model fields
-        /// https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
+        /// Auto fill the CreatedAt and the UpdatedAt model fields https://www.entityframeworktutorial.net/faq/set-created-and-modified-date-in-efcore.aspx
         /// </summary>
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -69,6 +52,22 @@ namespace StockManager.Database.Source
             }
 
             return await base.SaveChangesAsync(true, cancellationToken);
+        }
+
+        /// <summary>
+        /// Define the models relationships constraints, indexes and seed the initial data
+        /// https://docs.microsoft.com/en-us/ef/core/modeling/indexes
+        /// https://code-maze.com/efcore-relationships/ https://code-maze.com/migrations-and-seed-data-efcore/
+        /// </summary>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AppSettingsConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
+            modelBuilder.ApplyConfiguration(new StockMovementConfiguration());
         }
     }
 }

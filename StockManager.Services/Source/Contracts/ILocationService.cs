@@ -12,24 +12,14 @@ namespace StockManager.Services.Source.Contracts
         Task CreateLocationAsync(Location location);
 
         /// <summary>
-        /// Edit location
-        /// </summary>
-        Task EditLocationAsync(Location location);
-
-        /// <summary>
         /// Delete locations
         /// </summary>
         Task DeleteLocationAsync(int[] locationIds, int userId);
 
         /// <summary>
-        /// Get the main location
+        /// Edit location
         /// </summary>
-        Task<Location> GetMainLocationAsync();
-
-        /// <summary>
-        /// Get all locations
-        /// </summary>
-        Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null);
+        Task EditLocationAsync(Location location);
 
         /// <summary>
         /// Get location by id
@@ -37,8 +27,18 @@ namespace StockManager.Services.Source.Contracts
         Task<Location> GetLocationByIdAsync(int locationId);
 
         /// <summary>
+        /// Get all locations
+        /// </summary>
+        Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null);
+
+        /// <summary>
         /// Get all the stock movements for the given location id
         /// </summary>
         Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId);
+
+        /// <summary>
+        /// Get the main location
+        /// </summary>
+        Task<Location> GetMainLocationAsync();
     }
 }

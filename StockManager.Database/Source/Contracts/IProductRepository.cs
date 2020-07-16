@@ -7,19 +7,9 @@ namespace StockManager.Database.Source.Contracts
     public interface IProductRepository
     {
         /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
-
-        /// <summary>
         /// Add new product
         /// </summary>
         Task AddProductAsync(Product product);
-
-        /// <summary>
-        /// Remove product
-        /// </summary>
-        void RemoveProduct(Product product);
 
         /// <summary>
         /// Find all products
@@ -35,5 +25,15 @@ namespace StockManager.Database.Source.Contracts
         /// Find user by reference
         /// </summary>
         Task<Product> FindProductByReferenceAsync(string reference);
+
+        /// <summary>
+        /// Remove product
+        /// </summary>
+        void RemoveProduct(Product product);
+
+        /// <summary>
+        /// Save DB changes
+        /// </summary>
+        Task SaveDbChangesAsync();
     }
 }

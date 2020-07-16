@@ -5,12 +5,12 @@ namespace StockManager.Types.Source
 {
     public class OperationErrorsList
     {
-        public List<ErrorType> ErrorsList { get; private set; }
-
         public OperationErrorsList()
         {
             this.ErrorsList = new List<ErrorType>();
         }
+
+        public List<ErrorType> ErrorsList { get; private set; }
 
         public void AddError(string field, string errorMessage)
         {

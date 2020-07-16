@@ -7,19 +7,9 @@ namespace StockManager.Database.Source.Contracts
     public interface IUserRepository
     {
         /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
-
-        /// <summary>
         /// Add new user
         /// </summary>
         Task AddUserAsync(User user);
-
-        /// <summary>
-        /// Remove user
-        /// </summary>
-        void RemoveUser(User user);
 
         /// <summary>
         /// Find all users
@@ -35,5 +25,15 @@ namespace StockManager.Database.Source.Contracts
         /// Find user by username
         /// </summary>
         Task<User> FindUserByUsernameAsync(string username);
+
+        /// <summary>
+        /// Remove user
+        /// </summary>
+        void RemoveUser(User user);
+
+        /// <summary>
+        /// Save DB changes
+        /// </summary>
+        Task SaveDbChangesAsync();
     }
 }

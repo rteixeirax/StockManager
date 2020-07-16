@@ -41,6 +41,13 @@ namespace StockManager.Source.UserControls
             await this.LoadDataAsync();
         }
 
+        private async void btnStockMovement_Click(object sender, System.EventArgs e)
+        {
+            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(null, null, mainLocation, this);
+            await manualStockMovementForm.ShowManualStockMovementFormAsync();
+        }
+
         private async Task LoadDataAsync(string searchValue = "")
         {
             dgvMovements.Rows.Clear();
@@ -113,13 +120,6 @@ namespace StockManager.Source.UserControls
                 btnClearSearchValue.Visible = false;
                 await this.LoadDataAsync();
             }
-        }
-
-        private async void btnStockMovement_Click(object sender, System.EventArgs e)
-        {
-            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
-            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(null, null, mainLocation, this);
-            await manualStockMovementForm.ShowManualStockMovementFormAsync();
         }
     }
 }

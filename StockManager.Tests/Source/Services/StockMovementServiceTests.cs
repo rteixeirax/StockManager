@@ -12,9 +12,15 @@ namespace StockManager.Tests.Source.Services
     public class StockMovementServiceTests
     {
         private TestsConfig _config;
-        private Product _mockProduct;
         private Location _mockLocation;
+        private Product _mockProduct;
         private User _mockUser;
+
+        [TestCleanup]
+        public void AfterEach()
+        {
+            _config.CloseConnection();
+        }
 
         [TestInitialize]
         public async Task BeforeEach()
@@ -41,12 +47,6 @@ namespace StockManager.Tests.Source.Services
               },
               _mockUser.UserId
             );
-        }
-
-        [TestCleanup]
-        public void AfterEach()
-        {
-            _config.CloseConnection();
         }
 
         [TestMethod]

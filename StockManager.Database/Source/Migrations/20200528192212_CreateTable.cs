@@ -5,6 +5,30 @@ namespace StockManager.Database.Source.Migrations
 {
     public partial class CreateTable : Migration
     {
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AppSettings");
+
+            migrationBuilder.DropTable(
+                name: "ProductLocations");
+
+            migrationBuilder.DropTable(
+                name: "StockMovements");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
+        }
+
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -248,30 +272,6 @@ namespace StockManager.Database.Source.Migrations
                 table: "Users",
                 column: "Username",
                 unique: true);
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AppSettings");
-
-            migrationBuilder.DropTable(
-                name: "ProductLocations");
-
-            migrationBuilder.DropTable(
-                name: "StockMovements");
-
-            migrationBuilder.DropTable(
-                name: "Locations");
-
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
         }
     }
 }

@@ -16,19 +16,9 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
-        }
-
         public async Task AddProductAsync(Product product)
         {
             await _db.Products.AddAsync(product);
-        }
-
-        public void RemoveProduct(Product product)
-        {
-            _db.Products.Remove(product);
         }
 
         public async Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue)
@@ -66,6 +56,16 @@ namespace StockManager.Database.Source.Repositories
             return await _db.Products
               .Where(product => product.Reference.ToLower() == reference.ToLower())
               .FirstOrDefaultAsync();
+        }
+
+        public void RemoveProduct(Product product)
+        {
+            _db.Products.Remove(product);
+        }
+
+        public async Task SaveDbChangesAsync()
+        {
+            await _db.SaveChangesAsync();
         }
     }
 }

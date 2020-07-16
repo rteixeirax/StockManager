@@ -33,25 +33,6 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task EditLocationAsync(Location location)
-        {
-            try
-            {
-                Location dbLocation = await _locationRepo
-                  .FindLocationByIdAsync(location.LocationId);
-
-                await this.ValidateLocationFormData(location, dbLocation);
-
-                dbLocation.Name = location.Name;
-
-                await _locationRepo.SaveDbChangesAsync();
-            }
-            catch (OperationErrorException operationErrorException)
-            {
-                throw operationErrorException;
-            }
-        }
-
         public async Task DeleteLocationAsync(int[] locationIds, int userId)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
@@ -77,8 +58,8 @@ namespace StockManager.Services.Source.Services
                             throw new OperationErrorException(errorsList);
                         }
 
-                        // Iterate through the productLocations and move the stock
-                        // to the main location before remove the location
+                        // Iterate through the productLocations and move the stock to the main
+                        // location before remove the location
                         if (location.ProductLocations.Count() > 0)
                         {
                             while (location.ProductLocations.Count != 0)
@@ -96,13 +77,11 @@ namespace StockManager.Services.Source.Services
                 }
 
                 await _locationRepo.SaveDbChangesAsync();
-
             }
             catch (OperationErrorException operationErrorException)
             {
                 // Catch operation errors
                 throw operationErrorException;
-
             }
             catch
             {
@@ -113,9 +92,28 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<Location> GetMainLocationAsync()
+        public async Task EditLocationAsync(Location location)
         {
-            return await _locationRepo.FindMainLocationAsync();
+            try
+            {
+                Location dbLocation = await _locationRepo
+                  .FindLocationByIdAsync(location.LocationId);
+
+                await this.ValidateLocationFormData(location, dbLocation);
+
+                dbLocation.Name = location.Name;
+
+                await _locationRepo.SaveDbChangesAsync();
+            }
+            catch (OperationErrorException operationErrorException)
+            {
+                throw operationErrorException;
+            }
+        }
+
+        public async Task<Location> GetLocationByIdAsync(int locationId)
+        {
+            return await _locationRepo.FindLocationByIdAsync(locationId);
         }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null)
@@ -123,9 +121,14 @@ namespace StockManager.Services.Source.Services
             return await _locationRepo.FindAllLocationsAsync(searchValue);
         }
 
-        public async Task<Location> GetLocationByIdAsync(int locationId)
+        public async Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId)
         {
-            return await _locationRepo.FindLocationByIdAsync(locationId);
+            return await _locationRepo.FindAllStockMovements(locationId);
+        }
+
+        public async Task<Location> GetMainLocationAsync()
+        {
+            return await _locationRepo.FindMainLocationAsync();
         }
 
         /// <summary>
@@ -145,9 +148,8 @@ namespace StockManager.Services.Source.Services
                 throw new OperationErrorException(errorsList);
             }
 
-            // Check if the name already exist
-            // This validation only occurs when all form fields have no errors
-            // And only if is a create or an update and the name has changed
+            // Check if the name already exist This validation only occurs when all form fields have
+            // no errors And only if is a create or an update and the name has changed
             Location nameCheck = ((dbLocation == null) || (dbLocation.Name != location.Name))
               ? await _locationRepo.FindLocationByNameAsync(location.Name)
               : null;
@@ -158,11 +160,6 @@ namespace StockManager.Services.Source.Services
 
                 throw new OperationErrorException(errorsList);
             }
-        }
-
-        public async Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId)
-        {
-            return await _locationRepo.FindAllStockMovements(locationId);
         }
     }
 }

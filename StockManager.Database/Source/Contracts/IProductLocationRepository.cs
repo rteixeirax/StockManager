@@ -6,16 +6,6 @@ namespace StockManager.Database.Source.Contracts
     public interface IProductLocationRepository
     {
         /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
-
-        /// <summary>
-        /// Insert a new product location association
-        /// </summary>
-        Task InsertProductLocationAsync(ProductLocation data);
-
-        /// <summary>
         /// Find a product location for the given id's
         /// </summary>
         Task<ProductLocation> FindProductLocationAsync(int productId, int locationId);
@@ -26,8 +16,18 @@ namespace StockManager.Database.Source.Contracts
         Task<ProductLocation> FindProductLocationByIdAsync(int productLocationId);
 
         /// <summary>
+        /// Insert a new product location association
+        /// </summary>
+        Task InsertProductLocationAsync(ProductLocation data);
+
+        /// <summary>
         /// Remove the product location
         /// </summary>
         void RemoveProductLocation(ProductLocation productLocation);
+
+        /// <summary>
+        /// Save DB changes
+        /// </summary>
+        Task SaveDbChangesAsync();
     }
 }

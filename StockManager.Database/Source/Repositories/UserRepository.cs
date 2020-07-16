@@ -16,19 +16,9 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
-        }
-
         public async Task AddUserAsync(User user)
         {
             await _db.Users.AddAsync(user);
-        }
-
-        public void RemoveUser(User user)
-        {
-            _db.Users.Remove(user);
         }
 
         public async Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null)
@@ -58,6 +48,16 @@ namespace StockManager.Database.Source.Repositories
               .Include(x => x.Role)
               .Where(user => user.Username.ToLower() == username.ToLower())
               .FirstOrDefaultAsync();
+        }
+
+        public void RemoveUser(User user)
+        {
+            _db.Users.Remove(user);
+        }
+
+        public async Task SaveDbChangesAsync()
+        {
+            await _db.SaveChangesAsync();
         }
     }
 }

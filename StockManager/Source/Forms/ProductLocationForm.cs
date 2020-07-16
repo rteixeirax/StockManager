@@ -12,24 +12,14 @@ namespace StockManager.Source.Forms
 {
     public partial class ProductLocationForm : Form
     {
-        private ProductLocation _productLocation = null;
         private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
+        private ProductLocation _productLocation = null;
 
         public ProductLocationForm(InventoryProductLocationsUc inventoryProductLocationsUc)
         {
             InitializeComponent();
             _inventoryProductLocationsUc = inventoryProductLocationsUc;
             this.SetTranslatedPhrases();
-        }
-
-        /// <summary>
-        /// Set the content strings for the correct app language
-        /// </summary>
-        private void SetTranslatedPhrases()
-        {
-            lbMinStock.Text = Phrases.StockMovementMinStock;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSave;
         }
 
         /// <summary>
@@ -46,6 +36,14 @@ namespace StockManager.Source.Forms
             numMinStock.Value = decimal.Parse(productLocation.MinStock.ToString());
 
             this.ShowDialog();
+        }
+
+        /// <summary>
+        /// Close button click
+        /// </summary>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         /// <summary>
@@ -82,11 +80,13 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Close button click
+        /// Set the content strings for the correct app language
         /// </summary>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            this.Close();
+            lbMinStock.Text = Phrases.StockMovementMinStock;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSave;
         }
     }
 }

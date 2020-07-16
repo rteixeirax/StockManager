@@ -16,9 +16,9 @@ namespace StockManager.Source.UserControls
 {
     public partial class InventoryProductLocationsUc : UserControl
     {
+        private readonly Location _location;
         private readonly MainForm _mainForm;
         private readonly Product _product;
-        private readonly Location _location;
 
         public InventoryProductLocationsUc(MainForm mainForm, Product product = null, Location location = null)
         {
@@ -36,32 +36,6 @@ namespace StockManager.Source.UserControls
 
             this.SetTranslatedPhrases();
             this.LoadProductLocations().Wait();
-        }
-
-        /// <summary>
-        /// Set the content strings for the correct app language
-        /// </summary>
-        private void SetTranslatedPhrases()
-        {
-            btnback.Text = Phrases.GlobalBack;
-            btnStockMovement.Text = Phrases.GlobalCreateMov;
-
-            dgvProductLocations.Columns[1].HeaderText = (_product != null)
-              ? Phrases.ProductLocationTableHeader
-              : Phrases.GlobalProduct;
-
-            dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
-            dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
-            dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit;
-            dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete;
-
-            lbProductStockMovements.Text = Phrases.StockMovementsLabel;
-            dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-            dgvProductStockMovements.Columns[2].HeaderText = Phrases.GlobalProduct;
-            dgvProductStockMovements.Columns[3].HeaderText = Phrases.GlobalMovement;
-            dgvProductStockMovements.Columns[4].HeaderText = Phrases.StockMovementQty;
-            dgvProductStockMovements.Columns[5].HeaderText = Phrases.StockMovementStockAcc;
-            dgvProductStockMovements.Columns[6].HeaderText = Phrases.GlobalUser;
         }
 
         /// <summary>
@@ -86,35 +60,132 @@ namespace StockManager.Source.UserControls
             Spinner.StopSpinner();
         }
 
-        /// <summary>
-        /// Populate the UC data for the given product
-        /// </summary>
-        private void LoadDataByProduct()
+        private async Task ActionDeleteClickAsync(int id)
         {
-            // fill the ProductLocations table
-            _product.ProductLocations?.ToList().ForEach((productLocation) => {
-                dgvProductLocations.Rows.Add(
-                 productLocation.ProductLocationId,
-                 productLocation.Location.Name,
-                 productLocation.Stock,
-                 productLocation.MinStock
-               );
-            });
+            if ((id > 0) && MessageBox.Show(
+             Phrases.GlobalDialogDeleteProductLocationBody,
+             Phrases.GlobalDialogDeleteTitle,
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
+             )
+            {
+                try
+                {
+                    Spinner.InitSpinner();
 
-            // populate the stock movments table
-            _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
-              .ToList()
-              .ForEach((stockMovement) => {
-                  dgvProductStockMovements.Rows.Add(
-              stockMovement.StockMovementId,
-              Format.DateTimeFormat(stockMovement.CreatedAt),
-              "", // The name column only render for the location stock movement
-              this.ConcatMovementString(stockMovement),
-              stockMovement.Qty,
-              stockMovement.Stock,
-              stockMovement.User?.Username
-            );
-              });
+                    if (_product != null)
+                    {
+                        await AppServices.ProductLocationService
+                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
+                    }
+                    else
+                    {
+                        await AppServices.ProductLocationService
+                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
+                    }
+
+                    // Reload Ui
+                    await this.LoadProductLocations();
+                    Spinner.StopSpinner();
+                }
+                catch (OperationErrorException ex)
+                {
+                    Spinner.StopSpinner();
+
+                    MessageBox.Show(
+                      $"{ex.Errors[0].Error}",
+                      Phrases.GlobalDialogWarningTitle,
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Warning
+                    );
+                }
+                catch (ServiceErrorException ex)
+                {
+                    Spinner.StopSpinner();
+
+                    MessageBox.Show(
+                      $"{ex.Errors[0].Error}",
+                      Phrases.GlobalDialogErrorTitle,
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error
+                    );
+                }
+            }
+        }
+
+        private async Task ActionEditClickAsync(int id)
+        {
+            Spinner.InitSpinner();
+
+            ProductLocation productLocation = await AppServices.ProductLocationService.GetProductLocationByIdAsync(id);
+            Spinner.StopSpinner();
+            ProductLocationForm productLocationForm = new ProductLocationForm(this);
+            productLocationForm.ShowLocationForm(productLocation);
+        }
+
+        /// <summary>
+        /// Go back to products/locations list
+        /// </summary>
+        private void btnback_Click(object sender, EventArgs e)
+        {
+            if (_product != null)
+            {
+                _mainForm.btnInventoryProducts_Click(sender, e);
+            }
+            else
+            {
+                _mainForm.btnInventoryLocations_Click(sender, e);
+            }
+        }
+
+        private async void btnStockMovement_Click(object sender, EventArgs e)
+        {
+            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _product, _location);
+            await manualStockMovementForm.ShowManualStockMovementFormAsync();
+        }
+
+        /// <summary>
+        /// Concat the "from" and "to" location names.
+        /// </summary>
+        private string ConcatMovementString(StockMovement stockMovement)
+        {
+            string fromLocation = (stockMovement.FromLocation != null)
+                ? stockMovement.FromLocation.Name
+                : stockMovement.FromLocationName;
+
+            string toLocation = (stockMovement.ToLocation != null)
+              ? stockMovement.ToLocation.Name
+              : stockMovement.ToLocationName;
+
+            string concat = $"{Phrases.StockMovementFrom}: {(fromLocation ?? "---")}"
+              + Environment.NewLine
+              + $"{Phrases.StockMovementTo}: {toLocation}";
+
+            return concat;
+        }
+
+        /// <summary>
+        /// Handle with table actions click
+        /// </summary>
+        private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if ((dgvProductLocations.SelectedRows.Count > 0) && (e.RowIndex >= 0))
+            {
+                int id = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                switch (e.ColumnIndex)
+                {
+                    case 4:
+                        await this.ActionEditClickAsync(id);
+                        break;
+
+                    case 5:
+                        await this.ActionDeleteClickAsync(id);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -150,130 +221,60 @@ namespace StockManager.Source.UserControls
         }
 
         /// <summary>
-        /// Concat the "from" and "to" location names.
+        /// Populate the UC data for the given product
         /// </summary>
-        private string ConcatMovementString(StockMovement stockMovement)
+        private void LoadDataByProduct()
         {
-            string fromLocation = (stockMovement.FromLocation != null)
-                ? stockMovement.FromLocation.Name
-                : stockMovement.FromLocationName;
+            // fill the ProductLocations table
+            _product.ProductLocations?.ToList().ForEach((productLocation) => {
+                dgvProductLocations.Rows.Add(
+                 productLocation.ProductLocationId,
+                 productLocation.Location.Name,
+                 productLocation.Stock,
+                 productLocation.MinStock
+               );
+            });
 
-            string toLocation = (stockMovement.ToLocation != null)
-              ? stockMovement.ToLocation.Name
-              : stockMovement.ToLocationName;
-
-            string concat = $"{Phrases.StockMovementFrom}: {(fromLocation ?? "---")}"
-              + Environment.NewLine
-              + $"{Phrases.StockMovementTo}: {toLocation}";
-
-            return concat;
+            // populate the stock movments table
+            _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
+              .ToList()
+              .ForEach((stockMovement) => {
+                  dgvProductStockMovements.Rows.Add(
+              stockMovement.StockMovementId,
+              Format.DateTimeFormat(stockMovement.CreatedAt),
+              "", // The name column only render for the location stock movement
+              this.ConcatMovementString(stockMovement),
+              stockMovement.Qty,
+              stockMovement.Stock,
+              stockMovement.User?.Username
+            );
+              });
         }
 
         /// <summary>
-        /// Go back to products/locations list
+        /// Set the content strings for the correct app language
         /// </summary>
-        private void btnback_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            if (_product != null)
-            {
-                _mainForm.btnInventoryProducts_Click(sender, e);
-            }
-            else
-            {
-                _mainForm.btnInventoryLocations_Click(sender, e);
-            }
-        }
+            btnback.Text = Phrases.GlobalBack;
+            btnStockMovement.Text = Phrases.GlobalCreateMov;
 
-        /// <summary>
-        /// Handle with table actions click
-        /// </summary>
-        private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if ((dgvProductLocations.SelectedRows.Count > 0) && (e.RowIndex >= 0))
-            {
-                int id = int.Parse(dgvProductLocations.Rows[e.RowIndex].Cells[0].Value.ToString());
+            dgvProductLocations.Columns[1].HeaderText = (_product != null)
+              ? Phrases.ProductLocationTableHeader
+              : Phrases.GlobalProduct;
 
-                switch (e.ColumnIndex)
-                {
-                    case 4:
-                        await this.ActionEditClickAsync(id);
-                        break;
-                    case 5:
-                        await this.ActionDeleteClickAsync(id);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+            dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
+            dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
+            dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit;
+            dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete;
 
-        private async Task ActionEditClickAsync(int id)
-        {
-            Spinner.InitSpinner();
-
-            ProductLocation productLocation = await AppServices.ProductLocationService.GetProductLocationByIdAsync(id);
-            Spinner.StopSpinner();
-            ProductLocationForm productLocationForm = new ProductLocationForm(this);
-            productLocationForm.ShowLocationForm(productLocation);
-        }
-
-        private async Task ActionDeleteClickAsync(int id)
-        {
-            if ((id > 0) && MessageBox.Show(
-             Phrases.GlobalDialogDeleteProductLocationBody,
-             Phrases.GlobalDialogDeleteTitle,
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes
-             )
-            {
-                try
-                {
-                    Spinner.InitSpinner();
-
-                    if (_product != null)
-                    {
-                        await AppServices.ProductLocationService
-                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
-                    }
-                    else
-                    {
-                        await AppServices.ProductLocationService
-                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
-                    }
-
-                    // Reload Ui
-                    await this.LoadProductLocations();
-                    Spinner.StopSpinner();
-
-                }
-                catch (OperationErrorException ex)
-                {
-                    Spinner.StopSpinner();
-
-                    MessageBox.Show(
-                      $"{ex.Errors[0].Error}",
-                      Phrases.GlobalDialogWarningTitle,
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Warning
-                    );
-                }
-                catch (ServiceErrorException ex)
-                {
-                    Spinner.StopSpinner();
-
-                    MessageBox.Show(
-                      $"{ex.Errors[0].Error}",
-                      Phrases.GlobalDialogErrorTitle,
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error
-                    );
-                }
-            }
-        }
-
-        private async void btnStockMovement_Click(object sender, EventArgs e)
-        {
-            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _product, _location);
-            await manualStockMovementForm.ShowManualStockMovementFormAsync();
+            lbProductStockMovements.Text = Phrases.StockMovementsLabel;
+            dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
+            dgvProductStockMovements.Columns[2].HeaderText = Phrases.GlobalProduct;
+            dgvProductStockMovements.Columns[3].HeaderText = Phrases.GlobalMovement;
+            dgvProductStockMovements.Columns[4].HeaderText = Phrases.StockMovementQty;
+            dgvProductStockMovements.Columns[5].HeaderText = Phrases.StockMovementStockAcc;
+            dgvProductStockMovements.Columns[6].HeaderText = Phrases.GlobalUser;
         }
     }
 }

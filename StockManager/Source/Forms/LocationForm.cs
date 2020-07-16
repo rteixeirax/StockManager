@@ -14,25 +14,14 @@ namespace StockManager.Source.Forms
 {
     public partial class LocationForm : Form
     {
-        private int _locationId = 0;
         private readonly InventoryLocationsUc _inventoryLocationsUserControl;
+        private int _locationId = 0;
 
         public LocationForm(InventoryLocationsUc inventoryLocationsUserControl)
         {
             InitializeComponent();
             _inventoryLocationsUserControl = inventoryLocationsUserControl;
             this.SetTranslatedPhrases();
-        }
-
-        /// <summary>
-        /// Set the content strings for the correct app language
-        /// </summary>
-        private void SetTranslatedPhrases()
-        {
-            lbTitle.Text = Phrases.LocationInfo;
-            lbName.Text = Phrases.GlobalName;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSave;
         }
 
         /// <summary>
@@ -61,20 +50,11 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Show the form errors, if any.
+        /// Close button click
         /// </summary>
-        private void ShowFormErrors(List<ErrorType> errors)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            lbErrorName.Visible = false;
-
-            foreach (ErrorType err in errors)
-            {
-                if (err.Field == "Name")
-                {
-                    lbErrorName.Text = err.Error;
-                    lbErrorName.Visible = true;
-                }
-            }
+            this.Close();
         }
 
         /// <summary>
@@ -119,11 +99,31 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Close button click
+        /// Set the content strings for the correct app language
         /// </summary>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            this.Close();
+            lbTitle.Text = Phrases.LocationInfo;
+            lbName.Text = Phrases.GlobalName;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSave;
+        }
+
+        /// <summary>
+        /// Show the form errors, if any.
+        /// </summary>
+        private void ShowFormErrors(List<ErrorType> errors)
+        {
+            lbErrorName.Visible = false;
+
+            foreach (ErrorType err in errors)
+            {
+                if (err.Field == "Name")
+                {
+                    lbErrorName.Text = err.Error;
+                    lbErrorName.Visible = true;
+                }
+            }
         }
     }
 }

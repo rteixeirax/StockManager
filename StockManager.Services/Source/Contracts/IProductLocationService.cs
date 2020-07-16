@@ -15,14 +15,14 @@ namespace StockManager.Services.Source.Contracts
         Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true);
 
         /// <summary>
-        /// Update the product location min stock
-        /// </summary>
-        Task UpdateProductLocationMinStock(int productLocation, float minStock);
-
-        /// <summary>
         /// Remove the association product-location
         /// </summary>
         Task DeleteProductLocationAsyn(int productLocationId, int userId);
+
+        /// <summary>
+        /// Get the ProductLocation relation for the given productId and locationId
+        /// </summary>
+        Task<ProductLocation> GetProductLocationAsync(int productId, int locationId);
 
         /// <summary>
         /// Get the ProductLocation by id
@@ -30,8 +30,8 @@ namespace StockManager.Services.Source.Contracts
         Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId);
 
         /// <summary>
-        /// Get the ProductLocation relation for the given productId and locationId
+        /// Update the product location min stock
         /// </summary>
-        Task<ProductLocation> GetProductLocationAsync(int productId, int locationId);
+        Task UpdateProductLocationMinStock(int productLocation, float minStock);
     }
 }

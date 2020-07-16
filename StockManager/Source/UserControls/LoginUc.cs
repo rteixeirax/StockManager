@@ -27,15 +27,37 @@ namespace StockManager.Source.UserControls
         }
 
         /// <summary>
-        /// Set the content string for the correct app language
+        /// Clean all the form content
         /// </summary>
-        private void SetTranslatedPhrases()
+        private void btnClean_Click(object sender, EventArgs e)
         {
-            lbLoginFormTitle.Text = Phrases.LoginFormTitle;
-            lbFirstName.Text = Phrases.GlobalUsername;
-            lbPassword.Text = Phrases.GlobalPassword;
-            btnClean.Text = Phrases.GlobalClean;
-            btnLogin.Text = Phrases.LoginLogin;
+            lbErrorUsername.Visible = false;
+            lbErrorPassword.Visible = false;
+            tbUsername.Text = "";
+            tbPassword.Text = "";
+        }
+
+        /// <summary>
+        /// Login button click
+        /// </summary>
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Spinner.InitSpinner();
+
+                User user = await AppServices.UserService
+                  .AuthenticateAsync(tbUsername.Text, tbPassword.Text);
+
+                Spinner.StopSpinner();
+
+                Program.SetLoggedInUser(user);
+                _mainForm.SetUi();
+            }
+            catch (OperationErrorException ex)
+            {
+                this.SetFormErrors(ex.Errors);
+            }
         }
 
         /// <summary>
@@ -70,37 +92,15 @@ namespace StockManager.Source.UserControls
         }
 
         /// <summary>
-        /// Clean all the form content
+        /// Set the content string for the correct app language
         /// </summary>
-        private void btnClean_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            lbErrorUsername.Visible = false;
-            lbErrorPassword.Visible = false;
-            tbUsername.Text = "";
-            tbPassword.Text = "";
-        }
-
-        /// <summary>
-        /// Login button click
-        /// </summary>
-        private async void btnLogin_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Spinner.InitSpinner();
-
-                User user = await AppServices.UserService
-                  .AuthenticateAsync(tbUsername.Text, tbPassword.Text);
-
-                Spinner.StopSpinner();
-
-                Program.SetLoggedInUser(user);
-                _mainForm.SetUi();
-            }
-            catch (OperationErrorException ex)
-            {
-                this.SetFormErrors(ex.Errors);
-            }
+            lbLoginFormTitle.Text = Phrases.LoginFormTitle;
+            lbFirstName.Text = Phrases.GlobalUsername;
+            lbPassword.Text = Phrases.GlobalPassword;
+            btnClean.Text = Phrases.GlobalClean;
+            btnLogin.Text = Phrases.LoginLogin;
         }
 
         /// <summary>

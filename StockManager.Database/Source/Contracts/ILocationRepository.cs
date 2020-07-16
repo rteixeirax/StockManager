@@ -7,24 +7,24 @@ namespace StockManager.Database.Source.Contracts
     public interface ILocationRepository
     {
         /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
-
-        /// <summary>
         /// Add new location
         /// </summary>
         Task AddLocationAsync(Location location);
 
         /// <summary>
-        /// Remove location
+        /// Count async all the locations in the DB
         /// </summary>
-        void RemoveLocation(Location location);
+        Task<int> CountLocationsAsync();
 
         /// <summary>
         /// Find all locations
         /// </summary>
         Task<IEnumerable<Location>> FindAllLocationsAsync(string searchValue = null);
+
+        /// <summary>
+        /// Find all stock movements for the given location Id
+        /// </summary>
+        Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId);
 
         /// <summary>
         /// Find location by id
@@ -39,21 +39,21 @@ namespace StockManager.Database.Source.Contracts
         /// <summary>
         /// Unset the main location
         /// </summary>
-        Task UnsetMainLocationAsync(int newMainlocationId);
+        Task<Location> FindMainLocationAsync();
+
+        /// <summary>
+        /// Remove location
+        /// </summary>
+        void RemoveLocation(Location location);
+
+        /// <summary>
+        /// Save DB changes
+        /// </summary>
+        Task SaveDbChangesAsync();
 
         /// <summary>
         /// Unset the main location
         /// </summary>
-        Task<Location> FindMainLocationAsync();
-
-        /// <summary>
-        /// Count async all the locations in the DB
-        /// </summary>
-        Task<int> CountLocationsAsync();
-
-        /// <summary>
-        /// Find all stock movements for the given location Id
-        /// </summary>
-        Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId);
+        Task UnsetMainLocationAsync(int newMainlocationId);
     }
 }

@@ -31,14 +31,14 @@ namespace StockManager.Tests.Source
         }
 
         /// <summary>
+        /// Close database connection
+        /// </summary>
+        public void CloseConnection() => _connection.Close();
+
+        /// <summary>
         /// Get the test database context
         /// </summary>
         /// <returns>DatabaseContext</returns>
         public DatabaseContext GetDatabaseContext() => _databaseContext;
-
-        /// <summary>
-        ///  Close database connection
-        /// </summary>
-        public void CloseConnection() => _connection.Close();
     }
 }

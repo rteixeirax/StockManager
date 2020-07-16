@@ -8,8 +8,7 @@ namespace StockManager.Database.Source
     {
         /// <summary>
         /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.design.idesigntimedbcontextfactory-1?view=efcore-3.1
-        /// This is only used by the design time tooling CLI
-        /// i.e Migrations
+        /// This is only used by the design time tooling CLI i.e Migrations
         /// </summary>
         public DatabaseContext CreateDbContext(string[] args)
         {

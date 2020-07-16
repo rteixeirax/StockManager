@@ -19,19 +19,19 @@ namespace StockManager.Source
         public static User LoggedInUser { get; private set; }
 
         /// <summary>
-        /// Set the user after authentication
-        /// </summary>
-        public static void SetLoggedInUser(User user)
-        {
-            LoggedInUser = user;
-        }
-
-        /// <summary>
         /// Kill the "Session"
         /// </summary>
         public static void Logout()
         {
             LoggedInUser = null;
+        }
+
+        /// <summary>
+        /// Set the user after authentication
+        /// </summary>
+        public static void SetLoggedInUser(User user)
+        {
+            LoggedInUser = user;
         }
 
         /// <summary>

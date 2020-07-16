@@ -13,16 +13,16 @@ namespace StockManager.Tests.Source.Services
     {
         private TestsConfig _config;
 
-        [TestInitialize]
-        public void BeforeEach()
-        {
-            _config = new TestsConfig();
-        }
-
         [TestCleanup]
         public void AfterEach()
         {
             _config.CloseConnection();
+        }
+
+        [TestInitialize]
+        public void BeforeEach()
+        {
+            _config = new TestsConfig();
         }
 
         /// <summary>

@@ -15,27 +15,14 @@ namespace StockManager.Source.Forms
 {
     public partial class UserForm : Form
     {
-        private int _userId = 0;
         private readonly UsersUc _usersUserControl;
+        private int _userId = 0;
 
         public UserForm(UsersUc usersUserControl)
         {
             InitializeComponent();
             _usersUserControl = usersUserControl;
             this.SetTranslatedPhrases();
-        }
-
-        /// <summary>
-        /// Set the content strings for the correct app language
-        /// </summary>
-        private void SetTranslatedPhrases()
-        {
-            lbTitle.Text = Phrases.UserInfo;
-            lbFirstName.Text = Phrases.GlobalUsername;
-            lbPassword.Text = Phrases.GlobalPassword;
-            lbRole.Text = Phrases.UserRole;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSave;
         }
 
         /// <summary>
@@ -76,27 +63,11 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Show the form errors, if any.
+        /// Close button click
         /// </summary>
-        private void ShowFormErrors(List<ErrorType> errors)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            lbErrorUsername.Visible = false;
-            lbErrorPassword.Visible = false;
-
-            foreach (ErrorType err in errors)
-            {
-                if (err.Field == "Username")
-                {
-                    lbErrorUsername.Text = err.Error;
-                    lbErrorUsername.Visible = true;
-                }
-
-                if (err.Field == "Password")
-                {
-                    lbErrorPassword.Text = err.Error;
-                    lbErrorPassword.Visible = true;
-                }
-            }
+            this.Close();
         }
 
         /// <summary>
@@ -143,11 +114,40 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Close button click
+        /// Set the content strings for the correct app language
         /// </summary>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            this.Close();
+            lbTitle.Text = Phrases.UserInfo;
+            lbFirstName.Text = Phrases.GlobalUsername;
+            lbPassword.Text = Phrases.GlobalPassword;
+            lbRole.Text = Phrases.UserRole;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSave;
+        }
+
+        /// <summary>
+        /// Show the form errors, if any.
+        /// </summary>
+        private void ShowFormErrors(List<ErrorType> errors)
+        {
+            lbErrorUsername.Visible = false;
+            lbErrorPassword.Visible = false;
+
+            foreach (ErrorType err in errors)
+            {
+                if (err.Field == "Username")
+                {
+                    lbErrorUsername.Text = err.Error;
+                    lbErrorUsername.Visible = true;
+                }
+
+                if (err.Field == "Password")
+                {
+                    lbErrorPassword.Text = err.Error;
+                    lbErrorPassword.Visible = true;
+                }
+            }
         }
     }
 }

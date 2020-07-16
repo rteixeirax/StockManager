@@ -6,6 +6,7 @@ namespace StockManager.Database.Source.Models
     {
         [Key]
         public int AppSettingsId { get; set; }
+
         public string Language { get; set; }
     }
 }

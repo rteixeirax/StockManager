@@ -6,6 +6,21 @@ namespace StockManager.Source.ColorTables
 {
     internal class MenuStripProfessionalColorTable : ProfessionalColorTable
     {
+        public override Color MenuItemPressedGradientBegin
+        {
+            get { return Color.Transparent; }
+        }
+
+        public override Color MenuItemPressedGradientEnd
+        {
+            get { return Color.Transparent; }
+        }
+
+        public override Color MenuItemPressedGradientMiddle
+        {
+            get { return Color.Transparent; }
+        }
+
         public override Color MenuItemSelected
         {
             get { return AppConstants.ColorBlue; }
@@ -17,21 +32,6 @@ namespace StockManager.Source.ColorTables
         }
 
         public override Color MenuItemSelectedGradientEnd
-        {
-            get { return Color.Transparent; }
-        }
-
-        public override Color MenuItemPressedGradientBegin
-        {
-            get { return Color.Transparent; }
-        }
-
-        public override Color MenuItemPressedGradientMiddle
-        {
-            get { return Color.Transparent; }
-        }
-
-        public override Color MenuItemPressedGradientEnd
         {
             get { return Color.Transparent; }
         }

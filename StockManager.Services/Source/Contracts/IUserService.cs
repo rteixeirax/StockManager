@@ -7,14 +7,9 @@ namespace StockManager.Services.Source.Contracts
     public interface IUserService
     {
         /// <summary>
-        /// Create new user async
+        /// Authentication the user
         /// </summary>
-        Task CreateUserAsync(User user);
-
-        /// <summary>
-        /// Edit user
-        /// </summary>
-        Task EditUserAsync(User user);
+        Task<User> AuthenticateAsync(string username, string password);
 
         /// <summary>
         /// Change Password
@@ -22,9 +17,9 @@ namespace StockManager.Services.Source.Contracts
         Task ChangePasswordAsync(int userId, string currentPassword, string newPassword);
 
         /// <summary>
-        /// Authentication the user
+        /// Create new user async
         /// </summary>
-        Task<User> AuthenticateAsync(string username, string password);
+        Task CreateUserAsync(User user);
 
         /// <summary>
         /// Delete users
@@ -32,13 +27,18 @@ namespace StockManager.Services.Source.Contracts
         Task DeleteUserAsync(int[] userIds, int loggedInUserId);
 
         /// <summary>
-        /// Get all users
+        /// Edit user
         /// </summary>
-        Task<IEnumerable<User>> GetUsersAsync(string searchValue = null);
+        Task EditUserAsync(User user);
 
         /// <summary>
         /// Get user by id
         /// </summary>
         Task<User> GetUserByIdAsync(int userId);
+
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        Task<IEnumerable<User>> GetUsersAsync(string searchValue = null);
     }
 }

@@ -9,8 +9,8 @@ namespace StockManager.Translations.Source
         {
             try
             {
-                // Set the app language.
-                // If the language code is invalid the default language (EN) is set instead.
+                // Set the app language. If the language code is invalid the default language (EN)
+                // is set instead.
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(appLanguageCode);
             }
             catch

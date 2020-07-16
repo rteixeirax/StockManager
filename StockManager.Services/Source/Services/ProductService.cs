@@ -51,26 +51,6 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task EditProductAsync(Product product)
-        {
-            try
-            {
-                Product dbProduct = await _productRepo
-                  .FindProductByIdAsync(product.ProductId, false);
-
-                await this.ValidateProductFormData(product, dbProduct);
-
-                dbProduct.Reference = product.Reference;
-                dbProduct.Name = product.Name;
-
-                await _productRepo.SaveDbChangesAsync();
-            }
-            catch (OperationErrorException operationErrorException)
-            {
-                throw operationErrorException;
-            }
-        }
-
         public async Task DeleteProductAsync(int[] productIds)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
@@ -99,6 +79,31 @@ namespace StockManager.Services.Source.Services
             }
         }
 
+        public async Task EditProductAsync(Product product)
+        {
+            try
+            {
+                Product dbProduct = await _productRepo
+                  .FindProductByIdAsync(product.ProductId, false);
+
+                await this.ValidateProductFormData(product, dbProduct);
+
+                dbProduct.Reference = product.Reference;
+                dbProduct.Name = product.Name;
+
+                await _productRepo.SaveDbChangesAsync();
+            }
+            catch (OperationErrorException operationErrorException)
+            {
+                throw operationErrorException;
+            }
+        }
+
+        public async Task<Product> GetProductByIdAsync(int productId)
+        {
+            return await _productRepo.FindProductByIdAsync(productId);
+        }
+
         public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null)
         {
             IEnumerable<Product> products = await _productRepo.FindAllProductsAsync(searchValue);
@@ -109,11 +114,6 @@ namespace StockManager.Services.Source.Services
             });
 
             return products;
-        }
-
-        public async Task<Product> GetProductByIdAsync(int productId)
-        {
-            return await _productRepo.FindProductByIdAsync(productId);
         }
 
         /// <summary>
@@ -138,9 +138,8 @@ namespace StockManager.Services.Source.Services
                 throw new OperationErrorException(errorsList);
             }
 
-            // Check if the reference already exist
-            // This validation only occurs when all form fields have no errors
-            // And only if is a create or an update and the reference has changed
+            // Check if the reference already exist This validation only occurs when all form fields
+            // have no errors And only if is a create or an update and the reference has changed
             Product nameCheck = ((dbProduct == null) || (dbProduct.Reference != product.Reference))
               ? await _productRepo.FindProductByReferenceAsync(product.Reference)
               : null;

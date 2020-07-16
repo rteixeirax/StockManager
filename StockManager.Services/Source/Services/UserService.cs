@@ -19,45 +19,44 @@ namespace StockManager.Services.Source.Services
             _userRepo = userRepo;
         }
 
-        public async Task CreateUserAsync(User user)
+        public async Task<User> AuthenticateAsync(string username, string password)
         {
-            try
+            OperationErrorsList errorsList = new OperationErrorsList();
+
+            // Validate data
+            if (string.IsNullOrEmpty(username))
             {
-                await this.ValidateUserFormDataAsync(user);
+                errorsList.AddError("Username", Phrases.GlobalRequiredField);
+            }
 
-                // Encrypt password
-                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            if (string.IsNullOrEmpty(password))
+            {
+                errorsList.AddError("Password", Phrases.GlobalRequiredField);
+            }
 
-                await _userRepo.AddUserAsync(user);
+            if (errorsList.HasErrors())
+            {
+                throw new OperationErrorException(errorsList);
+            }
+
+            // get the user from the DB
+            User user = await _userRepo.FindUserByUsernameAsync(username);
+
+            // If the user exist and the password are match, it's all good.
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
+            {
+                // Set the last login data
+                user.LastLogin = DateTime.UtcNow;
                 await _userRepo.SaveDbChangesAsync();
             }
-            catch (OperationErrorException operationErrorException)
+            else
             {
-                throw operationErrorException;
+                errorsList.AddError("Generic", Phrases.UserErrorLogin);
+
+                throw new OperationErrorException(errorsList);
             }
-        }
 
-        public async Task EditUserAsync(User user)
-        {
-            try
-            {
-                User dbUser = await _userRepo.FindUserByIdAsync(user.UserId);
-                await this.ValidateUserFormDataAsync(user, dbUser);
-
-                dbUser.Username = user.Username;
-                dbUser.RoleId = user.RoleId;
-
-                // If change password, encrypt it
-                dbUser.Password = string.IsNullOrEmpty(user.Password)
-                  ? dbUser.Password
-                  : BCrypt.Net.BCrypt.HashPassword(user.Password);
-
-                await _userRepo.SaveDbChangesAsync();
-            }
-            catch (OperationErrorException operationErrorException)
-            {
-                throw operationErrorException;
-            }
+            return user;
         }
 
         public async Task ChangePasswordAsync(int userId, string currentPassword, string newPassword)
@@ -97,44 +96,22 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<User> AuthenticateAsync(string username, string password)
+        public async Task CreateUserAsync(User user)
         {
-            OperationErrorsList errorsList = new OperationErrorsList();
-
-            // Validate data
-            if (string.IsNullOrEmpty(username))
+            try
             {
-                errorsList.AddError("Username", Phrases.GlobalRequiredField);
-            }
+                await this.ValidateUserFormDataAsync(user);
 
-            if (string.IsNullOrEmpty(password))
-            {
-                errorsList.AddError("Password", Phrases.GlobalRequiredField);
-            }
+                // Encrypt password
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            if (errorsList.HasErrors())
-            {
-                throw new OperationErrorException(errorsList);
-            }
-
-            // get the user from the DB
-            User user = await _userRepo.FindUserByUsernameAsync(username);
-
-            // If the user exist and the password are match, it's all good.
-            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
-            {
-                // Set the last login data
-                user.LastLogin = DateTime.UtcNow;
+                await _userRepo.AddUserAsync(user);
                 await _userRepo.SaveDbChangesAsync();
             }
-            else
+            catch (OperationErrorException operationErrorException)
             {
-                errorsList.AddError("Generic", Phrases.UserErrorLogin);
-
-                throw new OperationErrorException(errorsList);
+                throw operationErrorException;
             }
-
-            return user;
         }
 
         public async Task DeleteUserAsync(int[] userIds, int loggedInUserId)
@@ -181,14 +158,37 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null)
+        public async Task EditUserAsync(User user)
         {
-            return await _userRepo.FindAllUsersAsync(searchValue);
+            try
+            {
+                User dbUser = await _userRepo.FindUserByIdAsync(user.UserId);
+                await this.ValidateUserFormDataAsync(user, dbUser);
+
+                dbUser.Username = user.Username;
+                dbUser.RoleId = user.RoleId;
+
+                // If change password, encrypt it
+                dbUser.Password = string.IsNullOrEmpty(user.Password)
+                  ? dbUser.Password
+                  : BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+                await _userRepo.SaveDbChangesAsync();
+            }
+            catch (OperationErrorException operationErrorException)
+            {
+                throw operationErrorException;
+            }
         }
 
         public async Task<User> GetUserByIdAsync(int userId)
         {
             return await _userRepo.FindUserByIdAsync(userId);
+        }
+
+        public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null)
+        {
+            return await _userRepo.FindAllUsersAsync(searchValue);
         }
 
         /// <summary>
@@ -214,9 +214,8 @@ namespace StockManager.Services.Source.Services
                 throw new OperationErrorException(errorsList);
             }
 
-            // Check if the username already exist
-            // This validation only occurs when all form fields have no errors
-            // And only if is a create or an update and the username has changed
+            // Check if the username already exist This validation only occurs when all form fields
+            // have no errors And only if is a create or an update and the username has changed
             User usernameCheck = ((dbUser == null) || (dbUser.Username != user.Username))
               ? await _userRepo.FindUserByUsernameAsync(user.Username)
               : null;

@@ -16,10 +16,10 @@ namespace StockManager.Source.Forms
 {
     public partial class ManualStockMovementForm : Form
     {
-        private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
         private readonly InventoryMovementsUc _inventoryMovementsUc;
-        private readonly Product _product;
+        private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
         private readonly Location _location;
+        private readonly Product _product;
         private IEnumerable<Location> _locations;
 
         public ManualStockMovementForm(
@@ -37,18 +37,6 @@ namespace StockManager.Source.Forms
             _location = location;
 
             this.SetTranslatedPhrases();
-        }
-
-        private void SetTranslatedPhrases()
-        {
-            lbTitle.Text = Phrases.StockMovementManualMovement;
-            checkMainLocationMoves.Text = "Only main location"; // TODO: Add phrase
-            lbFrom.Text = Phrases.StockMovementFrom;
-            lbTo.Text = Phrases.StockMovementTo;
-            lbProduct.Text = Phrases.GlobalProduct;
-            lbQty.Text = Phrases.StockMovementQty;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSubmit;
         }
 
         public async Task ShowManualStockMovementFormAsync()
@@ -69,9 +57,137 @@ namespace StockManager.Source.Forms
             this.ShowDialog();
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Spinner.InitSpinner();
+
+                Location fromLocation = ( Location )cbFrom.SelectedItem;
+                Location toLocation = ( Location )cbTo.SelectedItem;
+                Product product = ( Product )cbProduct.SelectedItem;
+                float qty = float.Parse(numQty.Value.ToString());
+
+                if (checkMainLocationMoves.Checked)
+                {
+                    await AppServices.StockMovementService.AddStockMovementInsideMainLocationAsync(
+                      product.ProductId,
+                      qty,
+                      (toLocation.LocationId == 0), // 0: entry; -1: exit;
+                      Program.LoggedInUser.UserId
+                    );
+                }
+                else
+                {
+                    await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+                      fromLocation.LocationId,
+                      toLocation.LocationId,
+                      product.ProductId,
+                      qty,
+                      Program.LoggedInUser.UserId
+                    );
+                }
+
+                Spinner.StopSpinner();
+
+                // Update stock movements table
+                if (_inventoryMovementsUc != null)
+                {
+                    await _inventoryMovementsUc.LoadMovementsAsync();
+                }
+                else
+                {
+                    await _inventoryProductLocationsUc.LoadProductLocations();
+                }
+
+                // Close form
+                this.btnCancel_Click(sender, e);
+            }
+            catch (OperationErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                if (ex.Errors.Count() > 0)
+                {
+                    this.ShowFormErrors(ex.Errors);
+                }
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show(
+                  $"{ex.Errors[0].Error}",
+                  Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Error
+                );
+            }
+        }
+
+        /// <summary>
+        /// When the From cb change, need to reset the Product cb data
+        /// </summary>
+        private void cbFrom_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Location fromLocation = ( Location )cbFrom.SelectedItem;
+            Location toLocation = ( Location )cbTo.SelectedItem;
+
+            // Set the new To location data by remove the From location from the list
+            cbTo.DataSource = _locations.Where(x => x.LocationId != fromLocation.LocationId).ToList();
+
+            // If the new From location isn't the selecetd To location, keep it. Otherwise the To
+            // location will be cleared
+            if (fromLocation.LocationId != toLocation.LocationId)
+            {
+                cbTo.SelectedItem = toLocation;
+            }
+
+            this.SetProductComboboxData(fromLocation);
+        }
+
+        private void checkMainLocationMoves_Click(object sender, EventArgs e)
+        {
+            Spinner.InitSpinner();
+
+            if (checkMainLocationMoves.Checked)
+            {
+                lbFrom.Text = "Main location"; // TODO: add phrases
+                lbTo.Text = "Movement";
+
+                // Get the main location
+                Location mainLocation = _locations.First(x => x.IsMain == true);
+                cbFrom.SelectedItem = mainLocation;
+
+                List<Location> entryExitMovements = new List<Location>
+                {
+                  new Location() { LocationId = 0, Name = "Entry" }, // TODO: add phrases
+                  new Location() { LocationId = -1, Name = "Exit" }
+                };
+
+                //cbTo.BindingContext = new BindingContext();
+                cbTo.DataSource = entryExitMovements;
+
+                this.SetProductComboboxData(mainLocation);
+            }
+            else
+            {
+                this.SetFormComboboxesData();
+            }
+
+            cbFrom.Enabled = !checkMainLocationMoves.Checked;
+
+            Spinner.StopSpinner();
+        }
+
         private void SetFormComboboxesData()
         {
-            // From 
+            // From
             cbFrom.DataSource = _locations;
             cbFrom.ValueMember = "LocationId";
             cbFrom.DisplayMember = "Name";
@@ -122,6 +238,18 @@ namespace StockManager.Source.Forms
             }
         }
 
+        private void SetTranslatedPhrases()
+        {
+            lbTitle.Text = Phrases.StockMovementManualMovement;
+            checkMainLocationMoves.Text = "Only main location"; // TODO: Add phrase
+            lbFrom.Text = Phrases.StockMovementFrom;
+            lbTo.Text = Phrases.StockMovementTo;
+            lbProduct.Text = Phrases.GlobalProduct;
+            lbQty.Text = Phrases.StockMovementQty;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSubmit;
+        }
+
         private void ShowFormErrors(List<ErrorType> errors)
         {
             lbErrorQty.Visible = false;
@@ -134,136 +262,6 @@ namespace StockManager.Source.Forms
                     lbErrorQty.Visible = true;
                 }
             }
-        }
-
-
-        private void checkMainLocationMoves_Click(object sender, EventArgs e)
-        {
-            Spinner.InitSpinner();
-
-            if (checkMainLocationMoves.Checked)
-            {
-                lbFrom.Text = "Main location"; // TODO: add phrases
-                lbTo.Text = "Movement";
-
-                // Get the main location
-                Location mainLocation = _locations.First(x => x.IsMain == true);
-                cbFrom.SelectedItem = mainLocation;
-
-                List<Location> entryExitMovements = new List<Location> 
-                {
-                  new Location() { LocationId = 0, Name = "Entry" }, // TODO: add phrases
-                  new Location() { LocationId = -1, Name = "Exit" }
-                };
-
-                //cbTo.BindingContext = new BindingContext();
-                cbTo.DataSource = entryExitMovements;
-
-                this.SetProductComboboxData(mainLocation);
-            }
-            else
-            {
-                this.SetFormComboboxesData();
-            }
-
-            cbFrom.Enabled = !checkMainLocationMoves.Checked;
-
-            Spinner.StopSpinner();
-        }
-
-        /// <summary>
-        /// When the From cb change, need to reset the Product cb data
-        /// </summary>
-        private void cbFrom_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            Location fromLocation = ( Location )cbFrom.SelectedItem;
-            Location toLocation = ( Location )cbTo.SelectedItem;
-
-            // Set the new To location data by remove the From location from the list
-            cbTo.DataSource = _locations.Where(x => x.LocationId != fromLocation.LocationId).ToList();
-
-            // If the new From location isn't the selecetd To location, keep it.
-            // Otherwise the To location will be cleared
-            if (fromLocation.LocationId != toLocation.LocationId)
-            {
-                cbTo.SelectedItem = toLocation;
-            }
-
-            this.SetProductComboboxData(fromLocation);
-        }
-
-        private async void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Spinner.InitSpinner();
-
-                Location fromLocation = ( Location )cbFrom.SelectedItem;
-                Location toLocation = ( Location )cbTo.SelectedItem;
-                Product product = ( Product )cbProduct.SelectedItem;
-                float qty = float.Parse(numQty.Value.ToString());
-
-                if (checkMainLocationMoves.Checked)
-                {
-                    await AppServices.StockMovementService.AddStockMovementInsideMainLocationAsync(
-                      product.ProductId,
-                      qty,
-                      (toLocation.LocationId == 0), // 0: entry; -1: exit;
-                      Program.LoggedInUser.UserId
-                    );
-                }
-                else
-                {
-                    await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
-                      fromLocation.LocationId,
-                      toLocation.LocationId,
-                      product.ProductId,
-                      qty,
-                      Program.LoggedInUser.UserId
-                    );
-                }
-
-
-                Spinner.StopSpinner();
-
-                // Update stock movements table
-                if (_inventoryMovementsUc != null)
-                {
-                    await _inventoryMovementsUc.LoadMovementsAsync();
-                }
-                else
-                {
-                    await _inventoryProductLocationsUc.LoadProductLocations();
-                }
-
-                // Close form
-                this.btnCancel_Click(sender, e);
-            }
-            catch (OperationErrorException ex)
-            {
-                Spinner.StopSpinner();
-
-                if (ex.Errors.Count() > 0)
-                {
-                    this.ShowFormErrors(ex.Errors);
-                }
-            }
-            catch (ServiceErrorException ex)
-            {
-                Spinner.StopSpinner();
-
-                MessageBox.Show(
-                  $"{ex.Errors[0].Error}",
-                  Phrases.GlobalDialogErrorTitle,
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Error
-                );
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

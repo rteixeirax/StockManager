@@ -15,16 +15,6 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
-        }
-
-        public async Task InsertProductLocationAsync(ProductLocation data)
-        {
-            await _db.ProductLocations.AddAsync(data);
-        }
-
         public async Task<ProductLocation> FindProductLocationAsync(int productId, int locationId)
         {
             return await _db.ProductLocations
@@ -39,9 +29,19 @@ namespace StockManager.Database.Source.Repositories
               .FirstOrDefaultAsync();
         }
 
+        public async Task InsertProductLocationAsync(ProductLocation data)
+        {
+            await _db.ProductLocations.AddAsync(data);
+        }
+
         public void RemoveProductLocation(ProductLocation productLocation)
         {
             _db.ProductLocations.Remove(productLocation);
+        }
+
+        public async Task SaveDbChangesAsync()
+        {
+            await _db.SaveChangesAsync();
         }
     }
 }

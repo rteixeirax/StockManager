@@ -30,40 +30,11 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Set the content string for the correct app language
+        /// Close button click
         /// </summary>
-        private void SetTranslatedPhrases()
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
-            lbTitle.Text = Phrases.UserChangePassword;
-            lbCurrentPassword.Text = Phrases.UserCurrentPassword;
-            lbNewPassword.Text = Phrases.UserNewPassword;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSave;
-        }
-
-        /// <summary>
-        /// Show form errors
-        /// </summary>
-        private void SetFormErrors(List<ErrorType> errors)
-        {
-            lbErrorCurrentPassword.Visible = false;
-            lbErrorNewPassword.Visible = false;
-
-            foreach (var err in errors)
-            {
-                if (err.Field == "CurrentPassword")
-                {
-                    lbErrorCurrentPassword.Text = err.Error;
-                    lbErrorCurrentPassword.Visible = true;
-                }
-
-                if (err.Field == "NewPassword")
-                {
-                    lbErrorNewPassword.Text = err.Error;
-                    lbErrorNewPassword.Visible = true;
-                }
-            }
+            this.Close();
         }
 
         /// <summary>
@@ -92,11 +63,40 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Close button click
+        /// Show form errors
         /// </summary>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void SetFormErrors(List<ErrorType> errors)
         {
-            this.Close();
+            lbErrorCurrentPassword.Visible = false;
+            lbErrorNewPassword.Visible = false;
+
+            foreach (var err in errors)
+            {
+                if (err.Field == "CurrentPassword")
+                {
+                    lbErrorCurrentPassword.Text = err.Error;
+                    lbErrorCurrentPassword.Visible = true;
+                }
+
+                if (err.Field == "NewPassword")
+                {
+                    lbErrorNewPassword.Text = err.Error;
+                    lbErrorNewPassword.Visible = true;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Set the content string for the correct app language
+        /// </summary>
+        private void SetTranslatedPhrases()
+        {
+            this.Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
+            lbTitle.Text = Phrases.UserChangePassword;
+            lbCurrentPassword.Text = Phrases.UserCurrentPassword;
+            lbNewPassword.Text = Phrases.UserNewPassword;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSave;
         }
     }
 }

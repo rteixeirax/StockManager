@@ -16,19 +16,14 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
-        }
-
         public async Task AddLocationAsync(Location location)
         {
             await _db.Locations.AddAsync(location);
         }
 
-        public void RemoveLocation(Location location)
+        public async Task<int> CountLocationsAsync()
         {
-            _db.Locations.Remove(location);
+            return await _db.Locations.CountAsync();
         }
 
         public async Task<IEnumerable<Location>> FindAllLocationsAsync(string searchValue)
@@ -42,6 +37,14 @@ namespace StockManager.Database.Source.Repositories
             }
 
             return await _db.Locations.Include(x => x.ProductLocations).ToListAsync();
+        }
+
+        public async Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId)
+        {
+            return await _db.StockMovements
+              .Where(x => (x.FromLocationId == locationId) || (x.ToLocationId == locationId))
+              .OrderByDescending(x => x.CreatedAt)
+              .ToListAsync();
         }
 
         public async Task<Location> FindLocationByIdAsync(int locationId, bool includeRelations = true)
@@ -67,15 +70,6 @@ namespace StockManager.Database.Source.Repositories
               .FirstOrDefaultAsync();
         }
 
-        public async Task UnsetMainLocationAsync(int newMainlocationId)
-        {
-            Location previousMain = await _db.Locations
-              .Where(location => (location.LocationId != newMainlocationId) && (location.IsMain == true))
-              .FirstOrDefaultAsync();
-
-            previousMain.IsMain = false;
-        }
-
         public async Task<Location> FindMainLocationAsync()
         {
             return await _db.Locations
@@ -83,17 +77,23 @@ namespace StockManager.Database.Source.Repositories
               .FirstOrDefaultAsync();
         }
 
-        public async Task<int> CountLocationsAsync()
+        public void RemoveLocation(Location location)
         {
-            return await _db.Locations.CountAsync();
+            _db.Locations.Remove(location);
         }
 
-        public async Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId)
+        public async Task SaveDbChangesAsync()
         {
-            return await _db.StockMovements
-              .Where(x => (x.FromLocationId == locationId) || (x.ToLocationId == locationId))
-              .OrderByDescending(x => x.CreatedAt)
-              .ToListAsync();
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task UnsetMainLocationAsync(int newMainlocationId)
+        {
+            Location previousMain = await _db.Locations
+              .Where(location => (location.LocationId != newMainlocationId) && (location.IsMain == true))
+              .FirstOrDefaultAsync();
+
+            previousMain.IsMain = false;
         }
     }
 }

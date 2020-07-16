@@ -14,26 +14,14 @@ namespace StockManager.Source.Forms
 {
     public partial class ProductForm : Form
     {
-        private int _productId = 0;
         private readonly InventoryProductsUc _inventoryProductsUserControl;
+        private int _productId = 0;
 
         public ProductForm(InventoryProductsUc inventoryProductsUserControl)
         {
             InitializeComponent();
             _inventoryProductsUserControl = inventoryProductsUserControl;
             this.SetTranslatedPhrases();
-        }
-
-        /// <summary>
-        /// Set the content strings for the correct app language
-        /// </summary>
-        private void SetTranslatedPhrases()
-        {
-            lbTitle.Text = Phrases.ProductInfo;
-            lbReference.Text = Phrases.GlobalReference;
-            lbName.Text = Phrases.GlobalName;
-            btnCancel.Text = Phrases.GlobalCancel;
-            btnSave.Text = Phrases.GlobalSave;
         }
 
         /// <summary>
@@ -67,27 +55,11 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Show the form errors, if any.
+        /// Close button click
         /// </summary>
-        private void ShowFormErrors(List<ErrorType> errors)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            lbErrorReference.Visible = false;
-            lbErrorName.Visible = false;
-
-            foreach (ErrorType err in errors)
-            {
-                if (err.Field == "Reference")
-                {
-                    lbErrorReference.Text = err.Error;
-                    lbErrorReference.Visible = true;
-                }
-
-                if (err.Field == "Name")
-                {
-                    lbErrorName.Text = err.Error;
-                    lbErrorName.Visible = true;
-                }
-            }
+            this.Close();
         }
 
         /// <summary>
@@ -133,11 +105,39 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Close button click
+        /// Set the content strings for the correct app language
         /// </summary>
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void SetTranslatedPhrases()
         {
-            this.Close();
+            lbTitle.Text = Phrases.ProductInfo;
+            lbReference.Text = Phrases.GlobalReference;
+            lbName.Text = Phrases.GlobalName;
+            btnCancel.Text = Phrases.GlobalCancel;
+            btnSave.Text = Phrases.GlobalSave;
+        }
+
+        /// <summary>
+        /// Show the form errors, if any.
+        /// </summary>
+        private void ShowFormErrors(List<ErrorType> errors)
+        {
+            lbErrorReference.Visible = false;
+            lbErrorName.Visible = false;
+
+            foreach (ErrorType err in errors)
+            {
+                if (err.Field == "Reference")
+                {
+                    lbErrorReference.Text = err.Error;
+                    lbErrorReference.Visible = true;
+                }
+
+                if (err.Field == "Name")
+                {
+                    lbErrorName.Text = err.Error;
+                    lbErrorName.Visible = true;
+                }
+            }
         }
     }
 }

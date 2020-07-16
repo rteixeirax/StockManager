@@ -14,10 +14,16 @@ namespace StockManager.Tests.Source.Services
     public class ProductLocationServiceTests
     {
         private TestsConfig _config;
-        private Product _mockProduct;
         private Location _mockLocation;
         private Location _mockMainLocation;
+        private Product _mockProduct;
         private User _mockUser;
+
+        [TestCleanup]
+        public void AfterEach()
+        {
+            _config.CloseConnection();
+        }
 
         [TestInitialize]
         public async Task BeforeEach()
@@ -39,12 +45,6 @@ namespace StockManager.Tests.Source.Services
 
             await AppServices.ProductService
               .CreateProductAsync(_mockProduct, _mockUser.UserId);
-        }
-
-        [TestCleanup]
-        public void AfterEach()
-        {
-            _config.CloseConnection();
         }
 
         [TestMethod]
@@ -109,34 +109,6 @@ namespace StockManager.Tests.Source.Services
         }
 
         [TestMethod]
-        public async Task ShouldFailCreateProductLocation_NoLocationId()
-        {
-            // Arrange
-            ProductLocation newProductLocation = new ProductLocation()
-            {
-                ProductId = _mockProduct.ProductId,
-                Stock = 10,
-                MinStock = 5
-            };
-
-            try
-            {
-                // Act
-                await AppServices.ProductLocationService
-                  .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
-
-                Assert.Fail("It should have thrown an OperationErrorExeption");
-            }
-            catch (OperationErrorException ex)
-            {
-                // Assert
-                Assert.AreEqual(ex.Errors.Count, 1);
-                Assert.AreEqual(ex.Errors[0].Field, "LocationId");
-                Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
-            }
-        }
-
-        [TestMethod]
         public async Task ShouldFailCreateProductLocation_AlreadyAssociated()
         {
             // Arrange
@@ -173,6 +145,34 @@ namespace StockManager.Tests.Source.Services
                 Assert.AreEqual(ex.Errors.Count, 1);
                 Assert.AreEqual(ex.Errors[0].Field, "LocationId");
                 Assert.AreEqual(ex.Errors[0].Error, Phrases.ProductLocationErrorAlreadyAssociated);
+            }
+        }
+
+        [TestMethod]
+        public async Task ShouldFailCreateProductLocation_NoLocationId()
+        {
+            // Arrange
+            ProductLocation newProductLocation = new ProductLocation()
+            {
+                ProductId = _mockProduct.ProductId,
+                Stock = 10,
+                MinStock = 5
+            };
+
+            try
+            {
+                // Act
+                await AppServices.ProductLocationService
+                  .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+
+                Assert.Fail("It should have thrown an OperationErrorExeption");
+            }
+            catch (OperationErrorException ex)
+            {
+                // Assert
+                Assert.AreEqual(ex.Errors.Count, 1);
+                Assert.AreEqual(ex.Errors[0].Field, "LocationId");
+                Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
             }
         }
     }
