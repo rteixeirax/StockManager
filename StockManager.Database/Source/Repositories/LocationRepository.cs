@@ -31,12 +31,15 @@ namespace StockManager.Database.Source.Repositories
             if (!string.IsNullOrEmpty(searchValue))
             {
                 return await _db.Locations
-                  .Include(x => x.ProductLocations)
-                  .Where(location => location.Name.ToLower().Contains(searchValue.ToLower()))
-                  .ToListAsync();
+                    .Include(x => x.ProductLocations)
+                    .Where(location => location.Name.ToLower().Contains(searchValue.ToLower()))
+                    .ToListAsync();
             }
 
-            return await _db.Locations.Include(x => x.ProductLocations).ToListAsync();
+            return await _db.Locations
+                .Include(x => x.ProductLocations)
+                .ThenInclude(x => x.Product)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId)
