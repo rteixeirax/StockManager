@@ -1,6 +1,7 @@
 ﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
+using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
@@ -144,26 +145,6 @@ namespace StockManager.Source.UserControls
         }
 
         /// <summary>
-        /// Concat the "from" and "to" location names.
-        /// </summary>
-        private string ConcatMovementString(StockMovement stockMovement)
-        {
-            string fromLocation = (stockMovement.FromLocation != null)
-                ? stockMovement.FromLocation.Name
-                : stockMovement.FromLocationName;
-
-            string toLocation = (stockMovement.ToLocation != null)
-              ? stockMovement.ToLocation.Name
-              : stockMovement.ToLocationName;
-
-            string concat = $"{Phrases.StockMovementFrom}: {(fromLocation ?? "---")}"
-              + Environment.NewLine
-              + $"{Phrases.StockMovementTo}: {toLocation}";
-
-            return concat;
-        }
-
-        /// <summary>
         /// Handle with table actions click
         /// </summary>
         private async void dgvProductLocations_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -210,9 +191,9 @@ namespace StockManager.Source.UserControls
             stockMovements.ToList().ForEach((stockMovement) => {
                 dgvProductStockMovements.Rows.Add(
                  stockMovement.StockMovementId,
-                 Format.DateTimeFormat(stockMovement.CreatedAt),
+                 stockMovement.CreatedAt.ShortDateWithTime(),
                  stockMovement.Product.Name,
-                 this.ConcatMovementString(stockMovement),
+                 stockMovement.ConcatMovementString(),
                  stockMovement.Qty,
                  stockMovement.Stock,
                  stockMovement.User?.Username
@@ -241,9 +222,9 @@ namespace StockManager.Source.UserControls
               .ForEach((stockMovement) => {
                   dgvProductStockMovements.Rows.Add(
               stockMovement.StockMovementId,
-              Format.DateTimeFormat(stockMovement.CreatedAt),
+              stockMovement.CreatedAt.ShortDateWithTime(),
               "", // The name column only render for the location stock movement
-              this.ConcatMovementString(stockMovement),
+              stockMovement.ConcatMovementString(),
               stockMovement.Qty,
               stockMovement.Stock,
               stockMovement.User?.Username

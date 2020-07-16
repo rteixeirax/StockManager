@@ -1,6 +1,7 @@
 ﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
+using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
@@ -48,7 +49,7 @@ namespace StockManager.Source.UserControls
                   location.LocationId,
                   location.Name,
                   location.ProductLocations.Count,
-                  Format.DateTimeFormat(location.CreatedAt)
+                  location.CreatedAt.ShortDateWithTime()
                 );
             }
 

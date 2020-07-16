@@ -1,6 +1,7 @@
 ﻿using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
+using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
@@ -43,8 +44,8 @@ namespace StockManager.Source.UserControls
                   user.UserId,
                   user.Username,
                   user.Role.Code,
-                  Format.DateTimeFormat(user.LastLogin),
-                  Format.DateTimeFormat(user.CreatedAt)
+                  user.LastLogin.ShortDateWithTime(),
+                  user.CreatedAt.ShortDateWithTime()
                 );
             }
 

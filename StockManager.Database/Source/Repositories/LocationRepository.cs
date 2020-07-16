@@ -70,8 +70,17 @@ namespace StockManager.Database.Source.Repositories
               .FirstOrDefaultAsync();
         }
 
-        public async Task<Location> FindMainLocationAsync()
+        public async Task<Location> FindMainLocationAsync(bool includeProducts = false)
         {
+            if (includeProducts)
+            {
+                return await _db.Locations
+                    .Include(x => x.ProductLocations)
+                    .ThenInclude(x => x.Product)
+                    .Where(location => location.IsMain == true)
+                    .FirstOrDefaultAsync();
+            }
+
             return await _db.Locations
               .Where(location => location.IsMain == true)
               .FirstOrDefaultAsync();

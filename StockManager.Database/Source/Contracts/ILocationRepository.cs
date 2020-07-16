@@ -39,7 +39,7 @@ namespace StockManager.Database.Source.Contracts
         /// <summary>
         /// Unset the main location
         /// </summary>
-        Task<Location> FindMainLocationAsync();
+        Task<Location> FindMainLocationAsync(bool includeProducts = false);
 
         /// <summary>
         /// Remove location

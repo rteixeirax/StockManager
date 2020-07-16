@@ -39,6 +39,6 @@ namespace StockManager.Services.Source.Contracts
         /// <summary>
         /// Get the main location
         /// </summary>
-        Task<Location> GetMainLocationAsync();
+        Task<Location> GetMainLocationAsync(bool includeProducts = false);
     }
 }

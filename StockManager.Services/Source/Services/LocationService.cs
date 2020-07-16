@@ -126,9 +126,9 @@ namespace StockManager.Services.Source.Services
             return await _locationRepo.FindAllStockMovements(locationId);
         }
 
-        public async Task<Location> GetMainLocationAsync()
+        public async Task<Location> GetMainLocationAsync(bool includeProducts = false)
         {
-            return await _locationRepo.FindMainLocationAsync();
+            return await _locationRepo.FindMainLocationAsync(includeProducts);
         }
 
         /// <summary>
