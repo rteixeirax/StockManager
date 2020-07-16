@@ -60,9 +60,9 @@ namespace StockManager.Services.Source.Services
 
                         // Iterate through the productLocations and move the stock to the main
                         // location before remove the location
-                        if (location.ProductLocations.Count() > 0)
+                        if (location.ProductLocations.Any())
                         {
-                            while (location.ProductLocations.Count != 0)
+                            while (location.ProductLocations.Any())
                             {
                                 ProductLocation producLocation = location.ProductLocations.ElementAt(0);
 

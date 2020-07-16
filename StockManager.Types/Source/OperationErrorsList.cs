@@ -23,7 +23,7 @@ namespace StockManager.Types.Source
 
         public bool HasErrors()
         {
-            return (this.ErrorsList.Count() > 0);
+            return (this.ErrorsList.Any());
         }
     }
 }

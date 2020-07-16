@@ -106,7 +106,7 @@ namespace StockManager.Source.Forms
             {
                 Spinner.StopSpinner();
 
-                if (ex.Errors.Count() > 0)
+                if (ex.Errors.Any())
                 {
                     this.ShowFormErrors(ex.Errors);
                 }
