@@ -5,7 +5,6 @@ using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using StockManager.Utilities.Source;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,21 +20,39 @@ namespace StockManager.Source.UserControls
         private readonly MainForm _mainForm;
         private readonly Product _product;
 
-        public InventoryProductLocationsUc(MainForm mainForm, Product product = null, Location location = null)
+        public InventoryProductLocationsUc()
         {
             InitializeComponent();
+            this.SetTranslatedPhrases();
+        }
 
+        // Called from the InventoryProductsUc
+        public InventoryProductLocationsUc(MainForm mainForm, Product product) : this()
+        {
             // Set the MainForm pointer
             _mainForm = mainForm;
 
-            // Set the selected product/location
+            // Set the selected product
             _product = product;
+
+            // hide the stock movement product name column
+            columnName.Visible = false;
+
+            this.LoadProductLocations().Wait();
+        }
+
+        // Called from the InventoryLocationsUc
+        public InventoryProductLocationsUc(MainForm mainForm, Location location) : this()
+        {
+            // Set the MainForm pointer
+            _mainForm = mainForm;
+
+            // Set the selected location
             _location = location;
 
-            // Show/hide the stock movement product name column
-            columnName.Visible = (location != null);
+            // Show the stock movement product name column
+            columnName.Visible = false;
 
-            this.SetTranslatedPhrases();
             this.LoadProductLocations().Wait();
         }
 
@@ -53,7 +70,7 @@ namespace StockManager.Source.UserControls
             {
                 this.LoadDataByProduct();
             }
-            else
+            else if (_location != null)
             {
                 await this.LoadDataByLocation();
             }
@@ -73,16 +90,8 @@ namespace StockManager.Source.UserControls
                 {
                     Spinner.InitSpinner();
 
-                    if (_product != null)
-                    {
-                        await AppServices.ProductLocationService
-                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
-                    }
-                    else
-                    {
-                        await AppServices.ProductLocationService
-                          .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
-                    }
+                    await AppServices.ProductLocationService
+                      .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
 
                     // Reload Ui
                     await this.LoadProductLocations();
@@ -140,8 +149,16 @@ namespace StockManager.Source.UserControls
 
         private async void btnStockMovement_Click(object sender, EventArgs e)
         {
-            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _product, _location);
-            await manualStockMovementForm.ShowManualStockMovementFormAsync();
+            if (_product != null)
+            {
+                ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _product);
+                await manualStockMovementForm.ShowManualStockMovementFormAsync();
+            }
+            else if (_location != null)
+            {
+                ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, _location);
+                await manualStockMovementForm.ShowManualStockMovementFormAsync();
+            }
         }
 
         /// <summary>

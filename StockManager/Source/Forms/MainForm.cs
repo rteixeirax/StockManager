@@ -43,23 +43,6 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Inventory &gt; Products button view locations click
-        /// </summary>
-        public void InventoryProductsBtnViewProducLocationsClick(Product product = null, Location location = null)
-        {
-            // Show the InventoryProducts view
-            pnlViews.Controls.Clear();
-
-            lbViewTitle.Text = (product != null)
-              ? $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}"
-              : $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations} > {location.Name} > {Phrases.GlobalProducts.ToLower()}";
-
-            UserControl ucInventoryProductLocationsUserControl = new InventoryProductLocationsUc(this, product, location);
-            ucInventoryProductLocationsUserControl.Dock = DockStyle.Fill;
-            pnlViews.Controls.Add(ucInventoryProductLocationsUserControl);
-        }
-
-        /// <summary>
         /// Set the Ui after Login/Logout
         /// </summary>
         public void SetUi()
@@ -113,6 +96,34 @@ namespace StockManager.Source.Forms
             // Set the sub-menu visibility and sidebar marker position
             this.SetSubMenusVisibility();
             this.SetMarkerPosition(btnDashboard);
+        }
+
+        /// <summary>
+        /// Inventory &gt; Locations button view products click
+        /// </summary>
+        public void ShowProducLocationsFromLocationsUc(Location location)
+        {
+            pnlViews.Controls.Clear();
+
+            lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations} > {location.Name} > {Phrases.GlobalProducts.ToLower()}";
+            UserControl uc = new InventoryProductLocationsUc(this, location);
+
+            uc.Dock = DockStyle.Fill;
+            pnlViews.Controls.Add(uc);
+        }
+
+        /// <summary>
+        /// Inventory &gt; Products button view locations click
+        /// </summary>
+        public void ShowProducLocationsFromProductsUc(Product product)
+        {
+            pnlViews.Controls.Clear();
+
+            lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
+            UserControl uc = new InventoryProductLocationsUc(this, product);
+
+            uc.Dock = DockStyle.Fill;
+            pnlViews.Controls.Add(uc);
         }
 
         /// <summary>

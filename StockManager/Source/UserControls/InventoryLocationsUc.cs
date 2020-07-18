@@ -112,7 +112,7 @@ namespace StockManager.Source.UserControls
             Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
             Spinner.StopSpinner();
 
-            _mainForm.InventoryProductsBtnViewProducLocationsClick(null, location);
+            _mainForm.ShowProducLocationsFromLocationsUc(location);
         }
 
         /// <summary>

@@ -23,23 +23,38 @@ namespace StockManager.Source.Forms
         private readonly Product _product;
         private IEnumerable<Location> _locations;
 
-        public ManualStockMovementForm(
-          InventoryProductLocationsUc inventoryProductLocationsUc,
-          Product product,
-          Location location,
-          InventoryMovementsUc inventoryMovementsUc = null,
-          DashboardAdminUc dashboardAdminUc = null
-        )
+        public ManualStockMovementForm()
         {
             InitializeComponent();
-
-            _inventoryProductLocationsUc = inventoryProductLocationsUc;
-            _inventoryMovementsUc = inventoryMovementsUc;
-            _dashboardAdminUc = dashboardAdminUc;
-            _product = product;
-            _location = location;
-
             this.SetTranslatedPhrases();
+        }
+
+        // Called from the Products InventoryProductLocationsUc
+        public ManualStockMovementForm(InventoryProductLocationsUc inventoryProductLocationsUc, Product product) : this()
+        {
+            _inventoryProductLocationsUc = inventoryProductLocationsUc;
+            _product = product;
+        }
+
+        // Called from the Locations InventoryProductLocationsUc
+        public ManualStockMovementForm(InventoryProductLocationsUc inventoryProductLocationsUc, Location location) : this()
+        {
+            _inventoryProductLocationsUc = inventoryProductLocationsUc;
+            _location = location;
+        }
+
+        // Called from the InventoryMovementsUc
+        public ManualStockMovementForm(InventoryMovementsUc inventoryMovementsUc, Location location) : this()
+        {
+            _inventoryMovementsUc = inventoryMovementsUc;
+            _location = location;
+        }
+
+        // Called from the DashboardAdminUc
+        public ManualStockMovementForm(DashboardAdminUc dashboardAdminUc, Location location) : this()
+        {
+            _dashboardAdminUc = dashboardAdminUc;
+            _location = location;
         }
 
         public async Task ShowManualStockMovementFormAsync()
@@ -109,8 +124,7 @@ namespace StockManager.Source.Forms
                 }
                 else
                 {
-                    // TODO: add the await when
-                    _dashboardAdminUc.LoadDataAsync();
+                    await _dashboardAdminUc.LoadDataAsync();
                 }
 
                 // Close form

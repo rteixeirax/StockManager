@@ -109,7 +109,7 @@ namespace StockManager.Source.UserControls
             Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
             Spinner.StopSpinner();
 
-            _mainForm.InventoryProductsBtnViewProducLocationsClick(product);
+            _mainForm.ShowProducLocationsFromProductsUc(product);
         }
 
         /// <summary>
