@@ -12,6 +12,11 @@ namespace StockManager.Database.Source.Contracts
         Task AddProductAsync(Product product);
 
         /// <summary>
+        /// Count all the products in the DB
+        /// </summary>
+        Task<int> CountAsync();
+
+        /// <summary>
         /// Find all products
         /// </summary>
         Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue = null);

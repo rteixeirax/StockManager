@@ -21,6 +21,11 @@ namespace StockManager.Database.Source.Repositories
             await _db.Products.AddAsync(product);
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _db.Products.CountAsync();
+        }
+
         public async Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue)
         {
             if (!string.IsNullOrEmpty(searchValue))

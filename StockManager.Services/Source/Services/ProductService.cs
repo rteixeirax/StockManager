@@ -18,6 +18,11 @@ namespace StockManager.Services.Source.Services
             _productRepo = productRepo;
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _productRepo.CountAsync();
+        }
+
         public async Task CreateProductAsync(Product product, int userId)
         {
             try

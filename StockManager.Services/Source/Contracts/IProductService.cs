@@ -7,6 +7,11 @@ namespace StockManager.Services.Source.Contracts
     public interface IProductService
     {
         /// <summary>
+        /// Count and return the total of the products in the app
+        /// </summary>
+        Task<int> CountAsync();
+
+        /// <summary>
         /// Create new product
         /// </summary>
         Task CreateProductAsync(Product product, int userId);
