@@ -14,18 +14,24 @@ namespace StockManager.Source.UserControls
         {
             InitializeComponent();
             this.SetTranslatedPhrases();
+            this.LoadDataAsync().Wait();
         }
 
-        public void LoadDataAsync()
+        public async Task LoadDataAsync()
         {
-            // TODO: write the code
-            Console.WriteLine("Loading data....");
+            int locationsCount = await AppServices.LocationService.CountAsync();
+            int productsCount = await AppServices.ProductService.CountAsync();
+            int usersCount = await AppServices.UserService.CountAsync();
+
+            lbLocationsCount.Text = locationsCount.ToString();
+            lbProductsCount.Text = productsCount.ToString();
+            lbUsersCount.Text = usersCount.ToString();
         }
 
         private async void btnStockMovement_Click(object sender, System.EventArgs e)
         {
             Location mainLocation = await AppServices.LocationService.GetMainLocationAsync(true);
-            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(null, null, mainLocation, null, this);
+            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, mainLocation);
             await manualStockMovementForm.ShowManualStockMovementFormAsync();
         }
 
