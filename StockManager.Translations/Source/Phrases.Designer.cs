@@ -205,6 +205,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Global info.
+        /// </summary>
+        public static string GlobalInfo {
+            get {
+                return ResourceManager.GetString("GlobalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inventory.
         /// </summary>
         public static string GlobalInventoryTitle {
@@ -363,6 +372,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalStock {
             get {
                 return ResourceManager.GetString("GlobalStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock alerts.
+        /// </summary>
+        public static string GlobalStockAlerts {
+            get {
+                return ResourceManager.GetString("GlobalStockAlerts", resourceCulture);
             }
         }
         

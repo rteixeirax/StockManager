@@ -372,4 +372,10 @@
   <data name="StockMovementOnlyMainLocation" xml:space="preserve">
     <value>Apenas localização principal</value>
   </data>
+  <data name="GlobalInfo" xml:space="preserve">
+    <value>Informação geral</value>
+  </data>
+  <data name="GlobalStockAlerts" xml:space="preserve">
+    <value>Alertas de stock</value>
+  </data>
 </root>
