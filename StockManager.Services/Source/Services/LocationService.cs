@@ -18,6 +18,11 @@ namespace StockManager.Services.Source.Services
             _locationRepo = locationRepo;
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _locationRepo.CountLocationsAsync();
+        }
+
         public async Task CreateLocationAsync(Location location)
         {
             try

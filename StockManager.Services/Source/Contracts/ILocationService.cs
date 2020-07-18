@@ -7,6 +7,11 @@ namespace StockManager.Services.Source.Contracts
     public interface ILocationService
     {
         /// <summary>
+        /// Count and return the total of the locations in the app
+        /// </summary>
+        Task<int> CountAsync();
+
+        /// <summary>
         /// Create new location
         /// </summary>
         Task CreateLocationAsync(Location location);
