@@ -16,6 +16,7 @@ namespace StockManager.Source.Forms
 {
     public partial class ManualStockMovementForm : Form
     {
+        private readonly DashboardAdminUc _dashboardAdminUc;
         private readonly InventoryMovementsUc _inventoryMovementsUc;
         private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
         private readonly Location _location;
@@ -26,13 +27,15 @@ namespace StockManager.Source.Forms
           InventoryProductLocationsUc inventoryProductLocationsUc,
           Product product,
           Location location,
-          InventoryMovementsUc inventoryMovementsUc = null
+          InventoryMovementsUc inventoryMovementsUc = null,
+          DashboardAdminUc dashboardAdminUc = null
         )
         {
             InitializeComponent();
 
             _inventoryProductLocationsUc = inventoryProductLocationsUc;
             _inventoryMovementsUc = inventoryMovementsUc;
+            _dashboardAdminUc = dashboardAdminUc;
             _product = product;
             _location = location;
 
@@ -100,9 +103,14 @@ namespace StockManager.Source.Forms
                 {
                     await _inventoryMovementsUc.LoadMovementsAsync();
                 }
-                else
+                else if (_inventoryProductLocationsUc != null)
                 {
                     await _inventoryProductLocationsUc.LoadProductLocations();
+                }
+                else
+                {
+                    // TODO: add the await when
+                    _dashboardAdminUc.LoadDataAsync();
                 }
 
                 // Close form
