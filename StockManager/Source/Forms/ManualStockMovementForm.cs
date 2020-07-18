@@ -157,8 +157,8 @@ namespace StockManager.Source.Forms
 
             if (checkMainLocationMoves.Checked)
             {
-                lbFrom.Text = "Main location"; // TODO: add phrases
-                lbTo.Text = "Movement";
+                lbFrom.Text = Phrases.GlobalMainLocation;
+                lbTo.Text = Phrases.GlobalMovement;
 
                 // Get the main location
                 Location mainLocation = _locations.First(x => x.IsMain == true);
@@ -166,8 +166,8 @@ namespace StockManager.Source.Forms
 
                 List<Location> entryExitMovements = new List<Location>
                 {
-                  new Location() { LocationId = 0, Name = "Entry" }, // TODO: add phrases
-                  new Location() { LocationId = -1, Name = "Exit" }
+                  new Location() { LocationId = 0, Name = Phrases.GlobalMovementEntry },
+                  new Location() { LocationId = -1, Name = Phrases.GlobalMovementExit }
                 };
 
                 //cbTo.BindingContext = new BindingContext();
@@ -241,7 +241,7 @@ namespace StockManager.Source.Forms
         private void SetTranslatedPhrases()
         {
             lbTitle.Text = Phrases.StockMovementManualMovement;
-            checkMainLocationMoves.Text = "Only main location"; // TODO: Add phrase
+            checkMainLocationMoves.Text = Phrases.StockMovementOnlyMainLocation;
             lbFrom.Text = Phrases.StockMovementFrom;
             lbTo.Text = Phrases.StockMovementTo;
             lbProduct.Text = Phrases.GlobalProduct;

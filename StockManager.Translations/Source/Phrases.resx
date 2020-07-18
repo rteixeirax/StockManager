@@ -340,4 +340,16 @@
   <data name="GlobalMovements" xml:space="preserve">
     <value>Movements</value>
   </data>
+  <data name="GlobalMainLocation" xml:space="preserve">
+    <value>Main location</value>
+  </data>
+  <data name="GlobalMovementEntry" xml:space="preserve">
+    <value>Entry</value>
+  </data>
+  <data name="GlobalMovementExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="StockMovementOnlyMainLocation" xml:space="preserve">
+    <value>Only main location</value>
+  </data>
 </root>

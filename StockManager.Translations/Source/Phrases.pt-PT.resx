@@ -360,4 +360,16 @@
   <data name="GlobalMovements" xml:space="preserve">
     <value>Movimentos</value>
   </data>
+  <data name="GlobalMainLocation" xml:space="preserve">
+    <value>Localização principal</value>
+  </data>
+  <data name="GlobalMovementEntry" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="GlobalMovementExit" xml:space="preserve">
+    <value>Saida</value>
+  </data>
+  <data name="StockMovementOnlyMainLocation" xml:space="preserve">
+    <value>Apenas localização principal</value>
+  </data>
 </root>

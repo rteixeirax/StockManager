@@ -241,11 +241,38 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main location.
+        /// </summary>
+        public static string GlobalMainLocation {
+            get {
+                return ResourceManager.GetString("GlobalMainLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Movement.
         /// </summary>
         public static string GlobalMovement {
             get {
                 return ResourceManager.GetString("GlobalMovement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry.
+        /// </summary>
+        public static string GlobalMovementEntry {
+            get {
+                return ResourceManager.GetString("GlobalMovementEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string GlobalMovementExit {
+            get {
+                return ResourceManager.GetString("GlobalMovementExit", resourceCulture);
             }
         }
         
@@ -615,6 +642,15 @@ namespace StockManager.Translations.Source {
         public static string StockMovementMinStock {
             get {
                 return ResourceManager.GetString("StockMovementMinStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only main location.
+        /// </summary>
+        public static string StockMovementOnlyMainLocation {
+            get {
+                return ResourceManager.GetString("StockMovementOnlyMainLocation", resourceCulture);
             }
         }
         
