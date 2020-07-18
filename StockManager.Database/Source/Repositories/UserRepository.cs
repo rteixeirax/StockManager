@@ -21,6 +21,11 @@ namespace StockManager.Database.Source.Repositories
             await _db.Users.AddAsync(user);
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _db.Users.CountAsync();
+        }
+
         public async Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null)
         {
             if (!string.IsNullOrEmpty(searchValue))

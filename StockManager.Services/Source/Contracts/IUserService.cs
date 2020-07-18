@@ -17,6 +17,11 @@ namespace StockManager.Services.Source.Contracts
         Task ChangePasswordAsync(int userId, string currentPassword, string newPassword);
 
         /// <summary>
+        /// Count and return the total of the users in the app
+        /// </summary>
+        Task<int> CountAsync();
+
+        /// <summary>
         /// Create new user async
         /// </summary>
         Task CreateUserAsync(User user);

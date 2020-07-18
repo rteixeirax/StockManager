@@ -12,6 +12,11 @@ namespace StockManager.Database.Source.Contracts
         Task AddUserAsync(User user);
 
         /// <summary>
+        /// Count all the users in the DB
+        /// </summary>
+        Task<int> CountAsync();
+
+        /// <summary>
         /// Find all users
         /// </summary>
         Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null);

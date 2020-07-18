@@ -96,6 +96,11 @@ namespace StockManager.Services.Source.Services
             }
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _userRepo.CountAsync();
+        }
+
         public async Task CreateUserAsync(User user)
         {
             try
