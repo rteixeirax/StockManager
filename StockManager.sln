@@ -14,7 +14,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockManager.Tests", "Stock
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Translations", "StockManager.Translations\StockManager.Translations.csproj", "{F0754DAD-7255-4FEF-9303-3CC9B415FDE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockManager.Utilities", "StockManager.Utilities\StockManager.Utilities.csproj", "{C150E518-485F-4A5A-8FAD-8D502D255AAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Utilities", "StockManager.Utilities\StockManager.Utilities.csproj", "{C150E518-485F-4A5A-8FAD-8D502D255AAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AEC4B7C-2E17-4D2A-AC73-5B3C69851450}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
