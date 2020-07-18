@@ -8,11 +8,11 @@ namespace StockManager.Database.Source.Models
 {
     public class Product : BaseEntity
     {
-        [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; }
-
         [Key]
         public int ProductId { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
 
         public ICollection<ProductLocation> ProductLocations { get; set; }
 

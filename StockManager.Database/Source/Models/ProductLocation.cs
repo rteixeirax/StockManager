@@ -5,13 +5,18 @@ namespace StockManager.Database.Source.Models
 {
     public class ProductLocation : BaseEntity
     {
+        [Key]
+        public int ProductLocationId { get; set; }
+
+        public float Stock { get; set; }
+
+        public float MinStock { get; set; }
+
         public Location Location { get; set; }
 
         [Required(ErrorMessage = "LocationId is required")]
         [ForeignKey("Location")]
         public int LocationId { get; set; }
-
-        public float MinStock { get; set; }
 
         public Product Product { get; set; }
 
@@ -19,9 +24,5 @@ namespace StockManager.Database.Source.Models
         [ForeignKey("Product")]
         public int ProductId { get; set; }
 
-        [Key]
-        public int ProductLocationId { get; set; }
-
-        public float Stock { get; set; }
     }
 }
