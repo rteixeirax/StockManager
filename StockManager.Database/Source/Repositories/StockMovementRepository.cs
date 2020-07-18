@@ -20,7 +20,8 @@ namespace StockManager.Database.Source.Repositories
         {
             return await _db.StockMovements
                      .AsNoTracking()
-                     .Where(x => x.Product.Name.Contains(searchValue))
+                     .Where(x => x.Product.Reference.ToLower().Contains(searchValue.ToLower())
+                        || x.Product.Name.ToLower().Contains(searchValue.ToLower()))
                      .Include(x => x.Product)
                      .Include(x => x.User)
                      .OrderByDescending(x => x.CreatedAt)
