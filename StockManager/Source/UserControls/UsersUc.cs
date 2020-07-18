@@ -1,15 +1,15 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using StockManager.Utilities.Source;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
@@ -24,8 +24,8 @@ namespace StockManager.Source.UserControls
             // Hide the X button on the search textbox
             btnClearSearchValue.Visible = false;
 
-            this.SetTranslatedPhrases();
-            this.LoadUsersAsync().Wait();
+            SetTranslatedPhrases();
+            LoadUsersAsync().Wait();
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace StockManager.Source.UserControls
                     await AppServices.UserService.DeleteUserAsync(selectedIds, Program.LoggedInUser.UserId);
                     Spinner.StopSpinner();
 
-                    await this.LoadUsersAsync();
+                    await LoadUsersAsync();
                 }
                 catch (OperationErrorException ex)
                 {
@@ -116,7 +116,7 @@ namespace StockManager.Source.UserControls
         {
             tbSeachText.Text = "";
             _hasBeenSearching = false;
-            await this.LoadUsersAsync();
+            await LoadUsersAsync();
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace StockManager.Source.UserControls
                     arrayOfIds[i] = int.Parse(selectedItems[i].Cells[0].Value.ToString());
                 }
 
-                await this.ActionDeleteClickAsync(arrayOfIds);
+                await ActionDeleteClickAsync(arrayOfIds);
             }
         }
 
@@ -160,11 +160,11 @@ namespace StockManager.Source.UserControls
                 switch (e.ColumnIndex)
                 {
                     case 5:
-                        await this.ActionEditClickAsync(userId);
+                        await ActionEditClickAsync(userId);
                         break;
 
                     case 6:
-                        await this.ActionDeleteClickAsync(new int[] { userId });
+                        await ActionDeleteClickAsync(new int[] { userId });
                         break;
 
                     default:
@@ -184,7 +184,7 @@ namespace StockManager.Source.UserControls
             {
                 // sets the flag has been searching
                 _hasBeenSearching = true;
-                await this.LoadUsersAsync(searchValue);
+                await LoadUsersAsync(searchValue);
             }
         }
 
@@ -211,13 +211,13 @@ namespace StockManager.Source.UserControls
         {
             if (e.KeyChar == ( char )Keys.Enter)
             {
-                this.pbSearchIcon_Click(sender, e);
+                pbSearchIcon_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
             }
             else if (e.KeyChar == ( char )Keys.Escape)
             {
-                this.btnClearSearchValue_Click(sender, e);
+                btnClearSearchValue_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
             }
@@ -241,7 +241,7 @@ namespace StockManager.Source.UserControls
             {
                 _hasBeenSearching = false;
                 btnClearSearchValue.Visible = false;
-                await this.LoadUsersAsync();
+                await LoadUsersAsync();
             }
         }
     }

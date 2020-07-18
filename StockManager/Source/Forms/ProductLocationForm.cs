@@ -1,12 +1,13 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Windows.Forms;
 
 namespace StockManager.Source.Forms
 {
@@ -19,7 +20,7 @@ namespace StockManager.Source.Forms
         {
             InitializeComponent();
             _inventoryProductLocationsUc = inventoryProductLocationsUc;
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
         }
 
         /// <summary>
@@ -29,13 +30,13 @@ namespace StockManager.Source.Forms
         {
             _productLocation = productLocation;
 
-            this.Text = AppInfo.GetViewTitle($"{_productLocation.Location.Name} | {Phrases.ProductLocationMinStockEdit}");
+            Text = AppInfo.GetViewTitle($"{_productLocation.Location.Name} | {Phrases.ProductLocationMinStockEdit}");
             lbTitle.Text = string.Format(Phrases.ProductLocationMinStockInfo, _productLocation.Product.Reference);
 
             // hide the error labels
             numMinStock.Value = decimal.Parse(productLocation.MinStock.ToString());
 
-            this.ShowDialog();
+            ShowDialog();
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace StockManager.Source.Forms
 
                 await _inventoryProductLocationsUc.LoadProductLocations();
 
-                this.Close();
+                Close();
             }
             catch (OperationErrorException ex)
             {

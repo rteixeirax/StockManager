@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using StockManager.Database.Source.Configurations;
-using StockManager.Database.Source.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+
+using StockManager.Database.Source.Configurations;
+using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source
 {
@@ -17,7 +19,10 @@ namespace StockManager.Database.Source
 
         // Run the migrations when the DB is instantiated
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
-          : base(options) => this.Database.Migrate();
+          : base(options)
+        {
+            Database.Migrate();
+        }
 
         /// <summary>
         /// Add Database Tables Here..

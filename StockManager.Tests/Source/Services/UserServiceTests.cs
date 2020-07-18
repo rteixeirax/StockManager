@@ -1,12 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Tests.Source;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Tests.Services
 {
@@ -22,13 +24,13 @@ namespace StockManager.Tests.Services
         [TestCleanup]
         public void AfterEach()
         {
-            this.config.CloseConnection();
+            config.CloseConnection();
         }
 
         [TestInitialize]
         public void BeforeEach()
         {
-            this.config = new TestsConfig();
+            config = new TestsConfig();
 
             _mockUser = new User()
             {

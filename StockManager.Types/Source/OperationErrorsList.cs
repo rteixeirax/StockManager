@@ -7,14 +7,14 @@ namespace StockManager.Types.Source
     {
         public OperationErrorsList()
         {
-            this.ErrorsList = new List<ErrorType>();
+            ErrorsList = new List<ErrorType>();
         }
 
         public List<ErrorType> ErrorsList { get; private set; }
 
         public void AddError(string field, string errorMessage)
         {
-            this.ErrorsList.Add(new ErrorType
+            ErrorsList.Add(new ErrorType
             {
                 Field = field,
                 Error = errorMessage,
@@ -23,7 +23,7 @@ namespace StockManager.Types.Source
 
         public bool HasErrors()
         {
-            return (this.ErrorsList.Any());
+            return (ErrorsList.Any());
         }
     }
 }

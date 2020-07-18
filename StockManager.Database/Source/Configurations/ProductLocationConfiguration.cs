@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Configurations

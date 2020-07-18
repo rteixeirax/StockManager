@@ -1,10 +1,11 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Source.ColorTables;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Windows.Forms;
 
 namespace StockManager.Source.Forms
 {
@@ -13,7 +14,7 @@ namespace StockManager.Source.Forms
         public MainForm()
         {
             InitializeComponent();
-            this.SetUi();
+            SetUi();
         }
 
         /// <summary>
@@ -24,8 +25,10 @@ namespace StockManager.Source.Forms
             // Show the InventoryLocations view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations}";
-            UserControl ucInventoryLocations = new InventoryLocationsUc(this); // Passing the MainForm to this UC
-            ucInventoryLocations.Dock = DockStyle.Fill;
+            UserControl ucInventoryLocations = new InventoryLocationsUc(this)
+            {
+                Dock = DockStyle.Fill
+            }; // Passing the MainForm to this UC
             pnlViews.Controls.Add(ucInventoryLocations);
         }
 
@@ -37,8 +40,10 @@ namespace StockManager.Source.Forms
             // Show the InventoryProducts view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts}";
-            UserControl ucInventoryProducts = new InventoryProductsUc(this); // Passing the MainForm to this UC
-            ucInventoryProducts.Dock = DockStyle.Fill;
+            UserControl ucInventoryProducts = new InventoryProductsUc(this)
+            {
+                Dock = DockStyle.Fill
+            }; // Passing the MainForm to this UC
             pnlViews.Controls.Add(ucInventoryProducts);
         }
 
@@ -47,7 +52,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         public void SetUi()
         {
-            this.Text = AppInfo.Title;
+            Text = AppInfo.Title;
             lbAppVersion.Text = AppInfo.Version;
             linklbTwitter.Text = AppInfo.DevName;
 
@@ -74,15 +79,19 @@ namespace StockManager.Source.Forms
             if (loggedInUser == null)
             {
                 lbViewTitle.Text = Phrases.LoginWelcome;
-                UserControl ucLogin = new LoginUc(this);
-                ucLogin.Dock = DockStyle.Fill;
+                UserControl ucLogin = new LoginUc(this)
+                {
+                    Dock = DockStyle.Fill
+                };
                 pnlViews.Controls.Add(ucLogin);
             }
             else
             {
                 lbViewTitle.Text = "Dashboard";
-                UserControl ucDashboard = new DashboardAdminUc();
-                ucDashboard.Dock = DockStyle.Fill;
+                UserControl ucDashboard = new DashboardAdminUc
+                {
+                    Dock = DockStyle.Fill
+                };
                 pnlViews.Controls.Add(ucDashboard);
 
                 // Set the logged in username
@@ -91,11 +100,11 @@ namespace StockManager.Source.Forms
             }
 
             // Set the Ui by role
-            this.RenderButtonsByRole();
+            RenderButtonsByRole();
 
             // Set the sub-menu visibility and sidebar marker position
-            this.SetSubMenusVisibility();
-            this.SetMarkerPosition(btnDashboard);
+            SetSubMenusVisibility();
+            SetMarkerPosition(btnDashboard);
         }
 
         /// <summary>
@@ -106,9 +115,10 @@ namespace StockManager.Source.Forms
             pnlViews.Controls.Clear();
 
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalLocations} > {location.Name} > {Phrases.GlobalProducts.ToLower()}";
-            UserControl uc = new InventoryProductLocationsUc(this, location);
-
-            uc.Dock = DockStyle.Fill;
+            UserControl uc = new InventoryProductLocationsUc(this, location)
+            {
+                Dock = DockStyle.Fill
+            };
             pnlViews.Controls.Add(uc);
         }
 
@@ -120,9 +130,10 @@ namespace StockManager.Source.Forms
             pnlViews.Controls.Clear();
 
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
-            UserControl uc = new InventoryProductLocationsUc(this, product);
-
-            uc.Dock = DockStyle.Fill;
+            UserControl uc = new InventoryProductLocationsUc(this, product)
+            {
+                Dock = DockStyle.Fill
+            };
             pnlViews.Controls.Add(uc);
         }
 
@@ -131,14 +142,16 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            this.SetSubMenusVisibility();
-            this.SetMarkerPosition(btnDashboard);
+            SetSubMenusVisibility();
+            SetMarkerPosition(btnDashboard);
 
             // Show the Dashboard view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = "Dashboard";
-            UserControl ucDashboard = new DashboardAdminUc();
-            ucDashboard.Dock = DockStyle.Fill;
+            UserControl ucDashboard = new DashboardAdminUc
+            {
+                Dock = DockStyle.Fill
+            };
             pnlViews.Controls.Add(ucDashboard);
         }
 
@@ -155,8 +168,8 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            this.SetSubMenusVisibility(pnlInventorySubMenu);
-            this.SetMarkerPosition(btnInventory);
+            SetSubMenusVisibility(pnlInventorySubMenu);
+            SetMarkerPosition(btnInventory);
         }
 
         private void btnInventoryMovements_Click(object sender, EventArgs e)
@@ -164,8 +177,10 @@ namespace StockManager.Source.Forms
             // Show the InventoryProducts view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalMovements}";
-            UserControl ucInventoryMovements = new InventoryMovementsUc(this); // Passing the MainForm to this UC
-            ucInventoryMovements.Dock = DockStyle.Fill;
+            UserControl ucInventoryMovements = new InventoryMovementsUc(this)
+            {
+                Dock = DockStyle.Fill
+            }; // Passing the MainForm to this UC
             pnlViews.Controls.Add(ucInventoryMovements);
         }
 
@@ -174,14 +189,16 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            this.SetSubMenusVisibility();
-            this.SetMarkerPosition(btnSettings);
+            SetSubMenusVisibility();
+            SetMarkerPosition(btnSettings);
 
             // Show the Settings view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = "Settings";
-            UserControl ucSettings = new SettingsUc();
-            ucSettings.Dock = DockStyle.Fill;
+            UserControl ucSettings = new SettingsUc
+            {
+                Dock = DockStyle.Fill
+            };
             pnlViews.Controls.Add(ucSettings);
         }
 
@@ -190,14 +207,16 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            this.SetSubMenusVisibility();
-            this.SetMarkerPosition(btnUsers);
+            SetSubMenusVisibility();
+            SetMarkerPosition(btnUsers);
 
             // Show the UsersUser view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = Phrases.GlobalUsers;
-            UserControl ucUsers = new UsersUc();
-            ucUsers.Dock = DockStyle.Fill;
+            UserControl ucUsers = new UsersUc
+            {
+                Dock = DockStyle.Fill
+            };
             pnlViews.Controls.Add(ucUsers);
         }
 
@@ -206,7 +225,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var changePasswordForm = new ChangePasswordForm();
+            ChangePasswordForm changePasswordForm = new ChangePasswordForm();
             changePasswordForm.ShowChangePasswordForm();
         }
 
@@ -224,7 +243,7 @@ namespace StockManager.Source.Forms
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.Logout();
-            this.SetUi();
+            SetUi();
         }
 
         /// <summary>
@@ -289,7 +308,7 @@ namespace StockManager.Source.Forms
               ? true
               : false;
 
-            this.SetSidebarButtonsPosition(subMenu);
+            SetSidebarButtonsPosition(subMenu);
         }
     }
 }

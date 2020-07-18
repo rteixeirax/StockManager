@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+
 using StockManager.Database.Source;
 using StockManager.Services.Source;
 using StockManager.Utilities.Source;
@@ -20,7 +21,7 @@ namespace StockManager.Tests.Source
             _connection.Open();
 
             // Set the options builder for our test database context
-            var builder = new DbContextOptionsBuilder<DatabaseContext>();
+            DbContextOptionsBuilder<DatabaseContext> builder = new DbContextOptionsBuilder<DatabaseContext>();
             builder.UseSqlite(_connection);
 
             // Instantiate our test database context
@@ -33,12 +34,18 @@ namespace StockManager.Tests.Source
         /// <summary>
         /// Close database connection
         /// </summary>
-        public void CloseConnection() => _connection.Close();
+        public void CloseConnection()
+        {
+            _connection.Close();
+        }
 
         /// <summary>
         /// Get the test database context
         /// </summary>
         /// <returns>DatabaseContext</returns>
-        public DatabaseContext GetDatabaseContext() => _databaseContext;
+        public DatabaseContext GetDatabaseContext()
+        {
+            return _databaseContext;
+        }
     }
 }

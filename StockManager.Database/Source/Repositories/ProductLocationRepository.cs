@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using System.Threading.Tasks;
+
+using Microsoft.EntityFrameworkCore;
+
 using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Database.Source.Repositories
 {

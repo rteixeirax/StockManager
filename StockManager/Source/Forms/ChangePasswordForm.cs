@@ -1,11 +1,12 @@
-﻿using StockManager.Services.Source;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace StockManager.Source.Forms
 {
@@ -24,9 +25,9 @@ namespace StockManager.Source.Forms
             // hide the error labels
             lbErrorCurrentPassword.Visible = false;
             lbErrorNewPassword.Visible = false;
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
 
-            this.ShowDialog();
+            ShowDialog();
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -53,12 +54,12 @@ namespace StockManager.Source.Forms
                 );
 
                 Spinner.StopSpinner();
-                this.btnCancel_Click(sender, e);
+                btnCancel_Click(sender, e);
             }
             catch (OperationErrorException ex)
             {
                 Spinner.StopSpinner();
-                this.SetFormErrors(ex.Errors);
+                SetFormErrors(ex.Errors);
             }
         }
 
@@ -70,7 +71,7 @@ namespace StockManager.Source.Forms
             lbErrorCurrentPassword.Visible = false;
             lbErrorNewPassword.Visible = false;
 
-            foreach (var err in errors)
+            foreach (ErrorType err in errors)
             {
                 if (err.Field == "CurrentPassword")
                 {
@@ -91,7 +92,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void SetTranslatedPhrases()
         {
-            this.Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
+            Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
             lbTitle.Text = Phrases.UserChangePassword;
             lbCurrentPassword.Text = Phrases.UserCurrentPassword;
             lbNewPassword.Text = Phrases.UserNewPassword;

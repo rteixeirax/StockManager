@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
+
 using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {
@@ -20,7 +21,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                await this.ValidateProductLocationDataAsync(productLocation);
+                await ValidateProductLocationDataAsync(productLocation);
                 await _productLocationRepo.InsertProductLocationAsync(productLocation);
 
                 StockMovement stockMovement = new StockMovement()

@@ -1,12 +1,13 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {
@@ -105,7 +106,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                await this.ValidateUserFormDataAsync(user);
+                await ValidateUserFormDataAsync(user);
 
                 // Encrypt password
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
@@ -168,7 +169,7 @@ namespace StockManager.Services.Source.Services
             try
             {
                 User dbUser = await _userRepo.FindUserByIdAsync(user.UserId);
-                await this.ValidateUserFormDataAsync(user, dbUser);
+                await ValidateUserFormDataAsync(user, dbUser);
 
                 dbUser.Username = user.Username;
                 dbUser.RoleId = user.RoleId;

@@ -1,16 +1,17 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
@@ -23,7 +24,7 @@ namespace StockManager.Source.UserControls
         public InventoryProductLocationsUc()
         {
             InitializeComponent();
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
         }
 
         // Called from the InventoryProductsUc
@@ -38,7 +39,7 @@ namespace StockManager.Source.UserControls
             // hide the stock movement product name column
             columnName.Visible = false;
 
-            this.LoadProductLocations().Wait();
+            LoadProductLocations().Wait();
         }
 
         // Called from the InventoryLocationsUc
@@ -53,7 +54,7 @@ namespace StockManager.Source.UserControls
             // Show the stock movement product name column
             columnName.Visible = false;
 
-            this.LoadProductLocations().Wait();
+            LoadProductLocations().Wait();
         }
 
         /// <summary>
@@ -68,11 +69,11 @@ namespace StockManager.Source.UserControls
 
             if (_product != null)
             {
-                this.LoadDataByProduct();
+                LoadDataByProduct();
             }
             else if (_location != null)
             {
-                await this.LoadDataByLocation();
+                await LoadDataByLocation();
             }
 
             Spinner.StopSpinner();
@@ -94,7 +95,7 @@ namespace StockManager.Source.UserControls
                       .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
 
                     // Reload Ui
-                    await this.LoadProductLocations();
+                    await LoadProductLocations();
                     Spinner.StopSpinner();
                 }
                 catch (OperationErrorException ex)
@@ -173,11 +174,11 @@ namespace StockManager.Source.UserControls
                 switch (e.ColumnIndex)
                 {
                     case 4:
-                        await this.ActionEditClickAsync(id);
+                        await ActionEditClickAsync(id);
                         break;
 
                     case 5:
-                        await this.ActionDeleteClickAsync(id);
+                        await ActionDeleteClickAsync(id);
                         break;
 
                     default:

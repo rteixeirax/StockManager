@@ -1,6 +1,7 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+
+using StockManager.Database.Source.Models;
 using StockManager.Translations.Source;
-using System;
 
 namespace StockManager.Source.Extensions
 {

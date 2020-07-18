@@ -1,14 +1,15 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace StockManager.Source.Forms
 {
@@ -21,7 +22,7 @@ namespace StockManager.Source.Forms
         {
             InitializeComponent();
             _inventoryProductsUserControl = inventoryProductsUserControl;
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace StockManager.Source.Forms
             _productId = (product != null) ? product.ProductId : 0;
 
             // Set the Form title
-            this.Text = (_productId != 0)
+            Text = (_productId != 0)
               ? AppInfo.GetViewTitle(Phrases.ProductEdit)
               : AppInfo.GetViewTitle(Phrases.ProductCreateNewProduct);
 
@@ -51,7 +52,7 @@ namespace StockManager.Source.Forms
             }
 
             Spinner.StopSpinner();
-            this.ShowDialog();
+            ShowDialog();
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace StockManager.Source.Forms
                 Spinner.StopSpinner();
                 await _inventoryProductsUserControl.LoadProductsAsync();
 
-                this.Close();
+                Close();
             }
             catch (OperationErrorException ex)
             {
@@ -99,7 +100,7 @@ namespace StockManager.Source.Forms
 
                 if (ex.Errors.Any())
                 {
-                    this.ShowFormErrors(ex.Errors);
+                    ShowFormErrors(ex.Errors);
                 }
             }
         }

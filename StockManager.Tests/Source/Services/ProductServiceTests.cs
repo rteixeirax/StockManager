@@ -1,11 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Tests.Source.Services
 {
@@ -17,7 +19,7 @@ namespace StockManager.Tests.Source.Services
     {
         private User _adminUser;
         private TestsConfig _config;
-        private List<Product> _mockProducts = new List<Product>();
+        private readonly List<Product> _mockProducts = new List<Product>();
 
         [TestCleanup]
         public void AfterEach()

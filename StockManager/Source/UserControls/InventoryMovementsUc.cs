@@ -1,12 +1,13 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
@@ -22,15 +23,15 @@ namespace StockManager.Source.UserControls
             // Set the MainForm pointer
             _mainForm = mainForm;
             btnClearSearchValue.Visible = false;
-            this.SetTranslatedPhrases();
-            this.LoadMovementsAsync().Wait();
+            SetTranslatedPhrases();
+            LoadMovementsAsync().Wait();
         }
 
         public async Task LoadMovementsAsync()
         {
             Spinner.InitSpinner();
             dgvMovements.Rows.Clear();
-            await this.LoadDataAsync();
+            await LoadDataAsync();
             Spinner.StopSpinner();
         }
 
@@ -38,7 +39,7 @@ namespace StockManager.Source.UserControls
         {
             tbSeachText.Text = "";
             _hasBeenSearching = false;
-            await this.LoadDataAsync();
+            await LoadDataAsync();
         }
 
         private async void btnStockMovement_Click(object sender, System.EventArgs e)
@@ -51,7 +52,7 @@ namespace StockManager.Source.UserControls
         private async Task LoadDataAsync(string searchValue = "")
         {
             dgvMovements.Rows.Clear();
-            var movements = await AppServices.StockMovementService.GetAllAsync(searchValue);
+            System.Collections.Generic.IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(searchValue);
             movements.ToList().ForEach((stockMovement) => {
                 dgvMovements.Rows.Add(
                   stockMovement.StockMovementId,
@@ -73,7 +74,7 @@ namespace StockManager.Source.UserControls
             {
                 // sets the flag has been searching
                 _hasBeenSearching = true;
-                await this.LoadDataAsync(searchValue);
+                await LoadDataAsync(searchValue);
             }
         }
 
@@ -93,13 +94,13 @@ namespace StockManager.Source.UserControls
         {
             if (e.KeyChar == ( char )Keys.Enter)
             {
-                this.pbSearchIcon_Click(sender, e);
+                pbSearchIcon_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
             }
             else if (e.KeyChar == ( char )Keys.Escape)
             {
-                this.btnClearSearchValue_Click(sender, e);
+                btnClearSearchValue_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
             }
@@ -118,7 +119,7 @@ namespace StockManager.Source.UserControls
             {
                 _hasBeenSearching = false;
                 btnClearSearchValue.Visible = false;
-                await this.LoadDataAsync();
+                await LoadDataAsync();
             }
         }
     }

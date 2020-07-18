@@ -1,7 +1,8 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using System.Threading.Tasks;
+
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {

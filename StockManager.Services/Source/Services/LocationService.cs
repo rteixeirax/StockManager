@@ -1,11 +1,12 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {
@@ -27,7 +28,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                await this.ValidateLocationFormData(location);
+                await ValidateLocationFormData(location);
 
                 await _locationRepo.AddLocationAsync(location);
                 await _locationRepo.SaveDbChangesAsync();
@@ -104,7 +105,7 @@ namespace StockManager.Services.Source.Services
                 Location dbLocation = await _locationRepo
                   .FindLocationByIdAsync(location.LocationId);
 
-                await this.ValidateLocationFormData(location, dbLocation);
+                await ValidateLocationFormData(location, dbLocation);
 
                 dbLocation.Name = location.Name;
 

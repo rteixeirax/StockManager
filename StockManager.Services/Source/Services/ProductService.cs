@@ -1,11 +1,12 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {
@@ -27,7 +28,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                await this.ValidateProductFormData(product);
+                await ValidateProductFormData(product);
 
                 await _productRepo.AddProductAsync(product);
                 await _productRepo.SaveDbChangesAsync();
@@ -91,7 +92,7 @@ namespace StockManager.Services.Source.Services
                 Product dbProduct = await _productRepo
                   .FindProductByIdAsync(product.ProductId, false);
 
-                await this.ValidateProductFormData(product, dbProduct);
+                await ValidateProductFormData(product, dbProduct);
 
                 dbProduct.Reference = product.Reference;
                 dbProduct.Name = product.Name;

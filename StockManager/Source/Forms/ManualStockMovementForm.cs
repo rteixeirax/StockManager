@@ -1,16 +1,17 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source.Forms
 {
@@ -26,7 +27,7 @@ namespace StockManager.Source.Forms
         public ManualStockMovementForm()
         {
             InitializeComponent();
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
         }
 
         // Called from the Products InventoryProductLocationsUc
@@ -59,7 +60,7 @@ namespace StockManager.Source.Forms
 
         public async Task ShowManualStockMovementFormAsync()
         {
-            this.Text = AppInfo.GetViewTitle(Phrases.StockMovementCreate);
+            Text = AppInfo.GetViewTitle(Phrases.StockMovementCreate);
 
             // hide the error labels
             lbErrorQty.Visible = false;
@@ -69,15 +70,15 @@ namespace StockManager.Source.Forms
             // Get the locations
             _locations = await AppServices.LocationService.GetLocationsAsync();
 
-            this.SetFormComboboxesData();
+            SetFormComboboxesData();
 
             Spinner.StopSpinner();
-            this.ShowDialog();
+            ShowDialog();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace StockManager.Source.Forms
                 }
 
                 // Close form
-                this.btnCancel_Click(sender, e);
+                btnCancel_Click(sender, e);
             }
             catch (OperationErrorException ex)
             {
@@ -136,7 +137,7 @@ namespace StockManager.Source.Forms
 
                 if (ex.Errors.Any())
                 {
-                    this.ShowFormErrors(ex.Errors);
+                    ShowFormErrors(ex.Errors);
                 }
             }
             catch (ServiceErrorException ex)
@@ -170,7 +171,7 @@ namespace StockManager.Source.Forms
                 cbTo.SelectedItem = toLocation;
             }
 
-            this.SetProductComboboxData(fromLocation);
+            SetProductComboboxData(fromLocation);
         }
 
         private void checkMainLocationMoves_Click(object sender, EventArgs e)
@@ -195,11 +196,11 @@ namespace StockManager.Source.Forms
                 //cbTo.BindingContext = new BindingContext();
                 cbTo.DataSource = entryExitMovements;
 
-                this.SetProductComboboxData(mainLocation);
+                SetProductComboboxData(mainLocation);
             }
             else
             {
-                this.SetFormComboboxesData();
+                SetFormComboboxesData();
             }
 
             cbFrom.Enabled = !checkMainLocationMoves.Checked;
@@ -231,7 +232,7 @@ namespace StockManager.Source.Forms
             cbTo.ValueMember = "LocationId";
             cbTo.DisplayMember = "Name";
 
-            this.SetProductComboboxData(fromLocation);
+            SetProductComboboxData(fromLocation);
         }
 
         private void SetProductComboboxData(Location fromLocation)

@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 using StockManager.Database.Source.Models;
-using System;
 
 namespace StockManager.Database.Source.Configurations
 {

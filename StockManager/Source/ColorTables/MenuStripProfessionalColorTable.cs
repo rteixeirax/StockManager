@@ -1,39 +1,22 @@
-﻿using StockManager.Utilities.Source;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Windows.Forms;
+
+using StockManager.Utilities.Source;
 
 namespace StockManager.Source.ColorTables
 {
     internal class MenuStripProfessionalColorTable : ProfessionalColorTable
     {
-        public override Color MenuItemPressedGradientBegin
-        {
-            get { return Color.Transparent; }
-        }
+        public override Color MenuItemPressedGradientBegin => Color.Transparent;
 
-        public override Color MenuItemPressedGradientEnd
-        {
-            get { return Color.Transparent; }
-        }
+        public override Color MenuItemPressedGradientEnd => Color.Transparent;
 
-        public override Color MenuItemPressedGradientMiddle
-        {
-            get { return Color.Transparent; }
-        }
+        public override Color MenuItemPressedGradientMiddle => Color.Transparent;
 
-        public override Color MenuItemSelected
-        {
-            get { return AppConstants.ColorBlue; }
-        }
+        public override Color MenuItemSelected => AppConstants.ColorBlue;
 
-        public override Color MenuItemSelectedGradientBegin
-        {
-            get { return Color.Transparent; }
-        }
+        public override Color MenuItemSelectedGradientBegin => Color.Transparent;
 
-        public override Color MenuItemSelectedGradientEnd
-        {
-            get { return Color.Transparent; }
-        }
+        public override Color MenuItemSelectedGradientEnd => Color.Transparent;
     }
 }

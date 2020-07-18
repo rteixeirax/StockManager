@@ -1,13 +1,15 @@
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
 using Microsoft.EntityFrameworkCore;
+
 using StockManager.Database.Source;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Utilities.Source;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source
 {
@@ -44,7 +46,7 @@ namespace StockManager.Source
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Set the options builder for our database context
-            var builder = new DbContextOptionsBuilder<DatabaseContext>();
+            DbContextOptionsBuilder<DatabaseContext> builder = new DbContextOptionsBuilder<DatabaseContext>();
             builder.UseSqlite(AppConstants.connectionString);
 
             // Instantiate our database

@@ -1,12 +1,13 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
@@ -23,7 +24,7 @@ namespace StockManager.Source.UserControls
             lbErrorGeneric.Visible = false;
             lbErrorUsername.Visible = false;
             lbErrorPassword.Visible = false;
-            this.SetTranslatedPhrases();
+            SetTranslatedPhrases();
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace StockManager.Source.UserControls
             }
             catch (OperationErrorException ex)
             {
-                this.SetFormErrors(ex.Errors);
+                SetFormErrors(ex.Errors);
             }
         }
 
@@ -69,7 +70,7 @@ namespace StockManager.Source.UserControls
             lbErrorUsername.Visible = false;
             lbErrorPassword.Visible = false;
 
-            foreach (var err in errors)
+            foreach (ErrorType err in errors)
             {
                 if (err.Field == "Generic")
                 {
@@ -110,7 +111,7 @@ namespace StockManager.Source.UserControls
         {
             if (e.KeyChar == ( char )Keys.Enter)
             {
-                this.btnLogin_Click(sender, e);
+                btnLogin_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
             }

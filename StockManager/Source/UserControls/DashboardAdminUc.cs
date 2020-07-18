@@ -1,10 +1,10 @@
-﻿using StockManager.Database.Source.Models;
+﻿using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StockManager.Source.UserControls
 {
@@ -13,8 +13,8 @@ namespace StockManager.Source.UserControls
         public DashboardAdminUc()
         {
             InitializeComponent();
-            this.SetTranslatedPhrases();
-            this.LoadDataAsync().Wait();
+            SetTranslatedPhrases();
+            LoadDataAsync().Wait();
         }
 
         public async Task LoadDataAsync()

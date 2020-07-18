@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StockManager.Database.Source.Models;
-using StockManager.Services.Source;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using StockManager.Database.Source.Models;
+using StockManager.Services.Source;
 
 namespace StockManager.Tests.Source.Services
 {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+
 using StockManager.Utilities.Source;
 
 namespace StockManager.Database.Source
@@ -12,7 +13,7 @@ namespace StockManager.Database.Source
         /// </summary>
         public DatabaseContext CreateDbContext(string[] args)
         {
-            var builder = new DbContextOptionsBuilder<DatabaseContext>();
+            DbContextOptionsBuilder<DatabaseContext> builder = new DbContextOptionsBuilder<DatabaseContext>();
             builder.UseSqlite(AppConstants.connectionString);
 
             //Console.WriteLine(connectionString);

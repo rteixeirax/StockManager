@@ -7,7 +7,7 @@ namespace StockManager.Types.Source
     {
         public ServiceErrorException(OperationErrorsList operationErrors)
         {
-            this.Errors = operationErrors.ErrorsList;
+            Errors = operationErrors.ErrorsList;
         }
 
         public List<ErrorType> Errors { get; private set; }

@@ -1,10 +1,11 @@
-﻿using StockManager.Database.Source.Contracts;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source.Contracts;
 using StockManager.Translations.Source;
 using StockManager.Types.Source;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace StockManager.Services.Source.Services
 {
@@ -71,7 +72,7 @@ namespace StockManager.Services.Source.Services
                 float qtyToMove = isEntry ? qty : (qty * (-1));
 
                 // Create the stock movement
-                await this.AddStockMovementAsync(new StockMovement()
+                await AddStockMovementAsync(new StockMovement()
                 {
                     UserId = userId,
                     ProductId = productId,
@@ -135,7 +136,7 @@ namespace StockManager.Services.Source.Services
                 };
 
                 // Create the stock movement
-                await this.AddStockMovementAsync(stockMovement);
+                await AddStockMovementAsync(stockMovement);
 
                 // Update the stock in the From location
                 fromLocationRelation.Stock -= qty;
@@ -193,7 +194,7 @@ namespace StockManager.Services.Source.Services
                     Qty = data.Stock,
                 };
 
-                await this.AddStockMovementAsync(stockMovement);
+                await AddStockMovementAsync(stockMovement);
 
                 // Get the relation between the product and the main location to be updated
                 ProductLocation mainLocationRelation = await AppServices.ProductLocationService
