@@ -98,7 +98,7 @@ namespace StockManager.Source.Forms
             else
             {
                 lbViewTitle.Text = "Dashboard";
-                UserControl ucDashboard = new DashboardUc();
+                UserControl ucDashboard = new DashboardAdminUc();
                 ucDashboard.Dock = DockStyle.Fill;
                 pnlViews.Controls.Add(ucDashboard);
 
@@ -126,7 +126,7 @@ namespace StockManager.Source.Forms
             // Show the Dashboard view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = "Dashboard";
-            UserControl ucDashboard = new DashboardUc();
+            UserControl ucDashboard = new DashboardAdminUc();
             ucDashboard.Dock = DockStyle.Fill;
             pnlViews.Controls.Add(ucDashboard);
         }
