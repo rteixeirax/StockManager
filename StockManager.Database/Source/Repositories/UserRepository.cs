@@ -20,11 +20,6 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task AddUserAsync(User user)
-        {
-            await _db.Users.AddAsync(user);
-        }
-
         public async Task<IEnumerable<User>> FindAllWithRoleAsync(Expression<Func<User, bool>> expression)
         {
             return await _db.Users.Include(x => x.Role).Where(expression).ToListAsync();

@@ -10,11 +10,6 @@ namespace StockManager.Database.Source.Contracts
     public interface IUserRepository : IBaseRepository<User>
     {
         /// <summary>
-        /// Add new user
-        /// </summary>
-        Task AddUserAsync(User user);
-
-        /// <summary>
         /// Find all users with role included that satisfy the given lambda expression
         /// </summary>
         Task<IEnumerable<User>> FindAllWithRoleAsync(Expression<Func<User, bool>> expression);

@@ -111,7 +111,7 @@ namespace StockManager.Services.Source.Services
                 // Encrypt password
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-                await _repository.Users.AddUserAsync(user);
+                await _repository.Users.AddAsync(user);
                 await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
