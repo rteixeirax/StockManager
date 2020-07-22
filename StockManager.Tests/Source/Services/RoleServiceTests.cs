@@ -38,7 +38,7 @@ namespace StockManager.Tests.Source.Services
             // Arrange
 
             // Act
-            IEnumerable<Role> roles = await AppServices.RoleService.GetRolesAsync();
+            IEnumerable<Role> roles = await AppServices.RoleService.GetAllAsync();
 
             // Assert
             Assert.AreEqual(roles.Count(), 2);

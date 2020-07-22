@@ -10,6 +10,6 @@ namespace StockManager.Services.Source.Contracts
         /// <summary>
         /// Get all roles
         /// </summary>
-        Task<IEnumerable<Role>> GetRolesAsync();
+        Task<IEnumerable<Role>> GetAllAsync();
     }
 }

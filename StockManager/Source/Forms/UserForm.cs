@@ -46,7 +46,7 @@ namespace StockManager.Source.Forms
             lbErrorPassword.Visible = false;
 
             // Populate the combo box
-            IEnumerable<Role> roles = await AppServices.RoleService.GetRolesAsync();
+            IEnumerable<Role> roles = await AppServices.RoleService.GetAllAsync();
             cbRoles.DataSource = roles;
             cbRoles.ValueMember = "RoleId";
             cbRoles.DisplayMember = "Code";

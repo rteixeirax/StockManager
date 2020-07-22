@@ -16,9 +16,9 @@ namespace StockManager.Services.Source.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Role>> GetRolesAsync()
+        public async Task<IEnumerable<Role>> GetAllAsync()
         {
-            return await _repository.Roles.FindAllRolesAsync();
+            return await _repository.Roles.GetAllAsync();
         }
     }
 }

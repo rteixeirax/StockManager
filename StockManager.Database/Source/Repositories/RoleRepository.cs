@@ -1,25 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
-
+﻿
 using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Repositories
 {
-    public class RoleRepository : IRoleRepository
+    public class RoleRepository : BaseRepository<Role>, IRoleRepository
     {
         private readonly DatabaseContext _db;
 
-        public RoleRepository(DatabaseContext db)
+        public RoleRepository(DatabaseContext db) : base(db)
         {
             _db = db;
-        }
-
-        public async Task<IEnumerable<Role>> FindAllRolesAsync()
-        {
-            return await _db.Roles.ToListAsync();
         }
     }
 }

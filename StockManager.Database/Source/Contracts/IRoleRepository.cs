@@ -1,15 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
+﻿
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Contracts
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IBaseRepository<Role>
     {
-        /// <summary>
-        /// Find all roles
-        /// </summary>
-        Task<IEnumerable<Role>> FindAllRolesAsync();
+        // We only need a method that already exists in the BaseRepository
     }
 }
