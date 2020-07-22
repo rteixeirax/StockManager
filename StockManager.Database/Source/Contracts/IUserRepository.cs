@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Contracts
 {
-    public interface IUserRepository
+    public interface IUserRepository : IBaseRepository<User>
     {
         /// <summary>
         /// Add new user
@@ -13,33 +15,23 @@ namespace StockManager.Database.Source.Contracts
         Task AddUserAsync(User user);
 
         /// <summary>
-        /// Count all the users in the DB
+        /// Find all users with role included
         /// </summary>
-        Task<int> CountAsync();
+        Task<IEnumerable<User>> FindAllWithRoleAsync(Expression<Func<User, bool>> expression);
 
         /// <summary>
-        /// Find all users
+        /// Find all users with role included without lamba expression
         /// </summary>
-        Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null);
+        Task<IEnumerable<User>> FindAllWithRoleAsync();
 
         /// <summary>
-        /// Find user by id
+        /// Find one user with role included
         /// </summary>
-        Task<User> FindUserByIdAsync(int userId);
+        Task<User> FindOneWithRoleAsync(Expression<Func<User, bool>> expression);
 
         /// <summary>
-        /// Find user by username
+        /// Get user by id with role included
         /// </summary>
-        Task<User> FindUserByUsernameAsync(string username);
-
-        /// <summary>
-        /// Remove user
-        /// </summary>
-        void RemoveUser(User user);
-
-        /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
+        Task<User> GetByIdWithRoleAsync(int id);
     }
 }

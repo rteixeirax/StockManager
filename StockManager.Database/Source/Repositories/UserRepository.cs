@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +11,11 @@ using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         private readonly DatabaseContext _db;
 
-        public UserRepository(DatabaseContext db)
+        public UserRepository(DatabaseContext db) : base(db)
         {
             _db = db;
         }
@@ -23,48 +25,27 @@ namespace StockManager.Database.Source.Repositories
             await _db.Users.AddAsync(user);
         }
 
-        public async Task<int> CountAsync()
+        public async Task<IEnumerable<User>> FindAllWithRoleAsync(Expression<Func<User, bool>> expression)
         {
-            return await _db.Users.CountAsync();
+            return await _db.Users.Include(x => x.Role).Where(expression).ToListAsync();
         }
 
-        public async Task<IEnumerable<User>> FindAllUsersAsync(string searchValue = null)
+        public async Task<IEnumerable<User>> FindAllWithRoleAsync()
         {
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                return await _db.Users
-                  .Include(x => x.Role)
-                  .Where(user => user.Username.ToLower().Contains(searchValue.ToLower()))
-                  .ToListAsync();
-            }
-
             return await _db.Users.Include(x => x.Role).ToListAsync();
         }
 
-        public async Task<User> FindUserByIdAsync(int userId)
+        public async Task<User> FindOneWithRoleAsync(Expression<Func<User, bool>> expression)
+        {
+            return await _db.Users.Include(x => x.Role).SingleOrDefaultAsync(expression);
+        }
+
+        public async Task<User> GetByIdWithRoleAsync(int id)
         {
             return await _db.Users
-              .Include(x => x.Role)
-              .Where(user => user.UserId == userId)
-              .FirstOrDefaultAsync();
-        }
-
-        public async Task<User> FindUserByUsernameAsync(string username)
-        {
-            return await _db.Users
-              .Include(x => x.Role)
-              .Where(user => user.Username.ToLower() == username.ToLower())
-              .FirstOrDefaultAsync();
-        }
-
-        public void RemoveUser(User user)
-        {
-            _db.Users.Remove(user);
-        }
-
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
+                .Include(user => user.Role)
+                .Where(user => user.UserId == id)
+                .FirstOrDefaultAsync();
         }
     }
 }

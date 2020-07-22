@@ -13,11 +13,11 @@ namespace StockManager.Services.Source.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _userRepo;
+        private readonly IRepository _repository;
 
-        public UserService(IUserRepository userRepo)
+        public UserService(IRepository repository)
         {
-            _userRepo = userRepo;
+            _repository = repository;
         }
 
         public async Task<User> AuthenticateAsync(string username, string password)
@@ -41,14 +41,14 @@ namespace StockManager.Services.Source.Services
             }
 
             // get the user from the DB
-            User user = await _userRepo.FindUserByUsernameAsync(username);
+            User user = await _repository.Users.FindOneWithRoleAsync(u => u.Username.ToLower() == username.ToLower());
 
             // If the user exist and the password are match, it's all good.
             if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
             {
                 // Set the last login data
                 user.LastLogin = DateTime.UtcNow;
-                await _userRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             else
             {
@@ -81,13 +81,13 @@ namespace StockManager.Services.Source.Services
             }
 
             // Get the user to verify the current password
-            User dbUser = await _userRepo.FindUserByIdAsync(userId);
+            User dbUser = await _repository.Users.GetByIdWithRoleAsync(userId);
 
             if ((dbUser != null) && BCrypt.Net.BCrypt.Verify(currentPassword, dbUser.Password))
             {
                 // Encrypt password
                 dbUser.Password = BCrypt.Net.BCrypt.HashPassword(newPassword);
-                await _userRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             else
             {
@@ -99,7 +99,7 @@ namespace StockManager.Services.Source.Services
 
         public async Task<int> CountAsync()
         {
-            return await _userRepo.CountAsync();
+            return await _repository.Users.CountAsync();
         }
 
         public async Task CreateUserAsync(User user)
@@ -111,8 +111,8 @@ namespace StockManager.Services.Source.Services
                 // Encrypt password
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-                await _userRepo.AddUserAsync(user);
-                await _userRepo.SaveDbChangesAsync();
+                await _repository.Users.AddUserAsync(user);
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -138,15 +138,15 @@ namespace StockManager.Services.Source.Services
                 {
                     int userId = userIds[i];
 
-                    User user = await _userRepo.FindUserByIdAsync(userId);
+                    User user = await _repository.Users.GetByIdWithRoleAsync(userId);
 
                     if (user != null)
                     {
-                        _userRepo.RemoveUser(user);
+                        _repository.Users.Remove(user);
                     }
                 }
 
-                await _userRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
 
                 // Catch operation errors
             }
@@ -168,7 +168,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                User dbUser = await _userRepo.FindUserByIdAsync(user.UserId);
+                User dbUser = await _repository.Users.GetByIdWithRoleAsync(user.UserId);
                 await ValidateUserFormDataAsync(user, dbUser);
 
                 dbUser.Username = user.Username;
@@ -179,7 +179,7 @@ namespace StockManager.Services.Source.Services
                   ? dbUser.Password
                   : BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-                await _userRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -189,12 +189,20 @@ namespace StockManager.Services.Source.Services
 
         public async Task<User> GetUserByIdAsync(int userId)
         {
-            return await _userRepo.FindUserByIdAsync(userId);
+            return await _repository.Users.GetByIdWithRoleAsync(userId);
         }
 
         public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null)
         {
-            return await _userRepo.FindAllUsersAsync(searchValue);
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                return await _repository.Users
+                    .FindAllWithRoleAsync(user => user.Username.ToLower().Contains(searchValue.ToLower()));
+            }
+
+            return await _repository.Users.FindAllWithRoleAsync();
+
+            //return await _repository.Users.FindAllUsersAsync(searchValue);
         }
 
         /// <summary>
@@ -223,7 +231,7 @@ namespace StockManager.Services.Source.Services
             // Check if the username already exist This validation only occurs when all form fields
             // have no errors And only if is a create or an update and the username has changed
             User usernameCheck = ((dbUser == null) || (dbUser.Username != user.Username))
-              ? await _userRepo.FindUserByUsernameAsync(user.Username)
+              ? await _repository.Users.FindOneWithRoleAsync(u => u.Username.ToLower().Contains(user.Username.ToLower()))
               : null;
 
             if (usernameCheck != null)
