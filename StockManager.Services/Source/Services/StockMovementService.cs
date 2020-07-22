@@ -40,7 +40,7 @@ namespace StockManager.Services.Source.Services
                     data.Stock = data.Qty;
                 }
 
-                await _repository.StockMovements.InsertStockMovementAsync(data);
+                await _repository.StockMovements.AddAsync(data);
 
                 // Normally this service is called inside other services and the call of the
                 // SaveChangesAsync method it will be the responsibility of the other service. In
@@ -94,12 +94,14 @@ namespace StockManager.Services.Source.Services
 
         public async Task<IEnumerable<StockMovement>> GetAllAsync(string searchValue)
         {
-            return await _repository.StockMovements.FindAllMovementsAsync(searchValue);
+            return await _repository.StockMovements
+                .FindAllWithProductAndUserAsync(x => x.Product.Reference.ToLower().Contains(searchValue.ToLower())
+                    || x.Product.Name.ToLower().Contains(searchValue.ToLower()));
         }
 
         public async Task<StockMovement> GetProductLastStockMovementAsync(int productId)
         {
-            return await _repository.StockMovements.FindProductLastStockMovementAsync(productId);
+            return await _repository.StockMovements.FindLastStockMovementAsync(x => x.ProductId == productId);
         }
 
         public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId)

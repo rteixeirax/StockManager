@@ -1,35 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Contracts
 {
-    public interface IStockMovementRepository
+    public interface IStockMovementRepository : IBaseRepository<StockMovement>
     {
         /// <summary>
-        /// Find all movements
+        /// Find all movements with product and user included that satisfy the given lambda expression
         /// </summary>
-        Task<IEnumerable<StockMovement>> FindAllMovementsAsync(string searchValue);
+        Task<IEnumerable<StockMovement>> FindAllWithProductAndUserAsync(Expression<Func<StockMovement, bool>> expression);
 
         /// <summary>
-        /// Find the product last stock movement
+        /// Find the last stock movement that satisfy the given lambda expression
         /// </summary>
-        Task<StockMovement> FindProductLastStockMovementAsync(int productId);
-
-        /// <summary>
-        /// Find the product last stock movement for the given location
-        /// </summary>
-        Task<StockMovement> FindProductLocationLastStockMovementAsync(int productId, int locationId);
-
-        /// <summary>
-        /// Insert a new product stock movement
-        /// </summary>
-        Task InsertStockMovementAsync(StockMovement data);
-
-        /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
+        Task<StockMovement> FindLastStockMovementAsync(Expression<Func<StockMovement, bool>> expression);
     }
 }
