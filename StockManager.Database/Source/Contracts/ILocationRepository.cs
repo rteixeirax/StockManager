@@ -1,60 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Contracts
 {
-    public interface ILocationRepository
+    public interface ILocationRepository : IBaseRepository<Location>
     {
         /// <summary>
-        /// Add new location
+        /// Find all locations with productLocations included that satisfy the given lambda expression
         /// </summary>
-        Task AddLocationAsync(Location location);
+        Task<IEnumerable<Location>> FindAllWithProductLocationsAsync(Expression<Func<Location, bool>> expression);
 
         /// <summary>
-        /// Count async all the locations in the DB
+        ///  Find all locations with productLocations included without lamba expression
         /// </summary>
-        Task<int> CountLocationsAsync();
+        Task<IEnumerable<Location>> FindAllWithProductLocationsAsync();
 
         /// <summary>
-        /// Find all locations
+        ///  Find one location with productLocations included without lamba expression
         /// </summary>
-        Task<IEnumerable<Location>> FindAllLocationsAsync(string searchValue = null);
+        Task<Location> FindOneWithProductLocationsAsync(Expression<Func<Location, bool>> expression);
 
         /// <summary>
-        /// Find all stock movements for the given location Id
+        /// Get location by Id with productLocations included
         /// </summary>
-        Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId);
-
-        /// <summary>
-        /// Find location by id
-        /// </summary>
-        Task<Location> FindLocationByIdAsync(int locationId, bool includeRelations = true);
-
-        /// <summary>
-        /// Find user by name
-        /// </summary>
-        Task<Location> FindLocationByNameAsync(string name);
-
-        /// <summary>
-        /// Unset the main location
-        /// </summary>
-        Task<Location> FindMainLocationAsync(bool includeProducts = false);
-
-        /// <summary>
-        /// Remove location
-        /// </summary>
-        void RemoveLocation(Location location);
-
-        /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
-
-        /// <summary>
-        /// Unset the main location
-        /// </summary>
-        Task UnsetMainLocationAsync(int newMainlocationId);
+        Task<Location> GetByIdWithProductLocationsAsync(int locationId);
     }
 }

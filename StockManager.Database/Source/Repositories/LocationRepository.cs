@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
@@ -9,105 +11,47 @@ using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Repositories
 {
-    public class LocationRepository : ILocationRepository
+    public class LocationRepository : BaseRepository<Location>, ILocationRepository
     {
         private readonly DatabaseContext _db;
 
-        public LocationRepository(DatabaseContext db)
+        public LocationRepository(DatabaseContext db) : base(db)
         {
             _db = db;
         }
 
-        public async Task AddLocationAsync(Location location)
+        public async Task<IEnumerable<Location>> FindAllWithProductLocationsAsync(Expression<Func<Location, bool>> expression)
         {
-            await _db.Locations.AddAsync(location);
-        }
-
-        public async Task<int> CountLocationsAsync()
-        {
-            return await _db.Locations.CountAsync();
-        }
-
-        public async Task<IEnumerable<Location>> FindAllLocationsAsync(string searchValue)
-        {
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                return await _db.Locations
-                    .Include(x => x.ProductLocations)
-                    .Where(location => location.Name.ToLower().Contains(searchValue.ToLower()))
-                    .ToListAsync();
-            }
-
             return await _db.Locations
                 .Include(x => x.ProductLocations)
-                .ThenInclude(x => x.Product)
+                .Where(expression)
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<StockMovement>> FindAllStockMovements(int locationId)
+        public async Task<IEnumerable<Location>> FindAllWithProductLocationsAsync()
         {
-            return await _db.StockMovements
-              .Where(x => (x.FromLocationId == locationId) || (x.ToLocationId == locationId))
-              .OrderByDescending(x => x.CreatedAt)
-              .ToListAsync();
+            return await _db.Locations
+               .Include(x => x.ProductLocations)
+               .ThenInclude(x => x.Product)
+               .ToListAsync();
         }
 
-        public async Task<Location> FindLocationByIdAsync(int locationId, bool includeRelations = true)
+        public async Task<Location> FindOneWithProductLocationsAsync(Expression<Func<Location, bool>> expression)
         {
-            if (includeRelations)
-            {
-                return await _db.Locations
-                  .Include(x => x.ProductLocations)
-                  .ThenInclude(x => x.Product)
-                  .Where(location => location.LocationId == locationId)
-                  .FirstOrDefaultAsync();
-            }
-
             return await _db.Locations
-                .Where(location => location.LocationId == locationId)
+                .Include(x => x.ProductLocations)
+                .ThenInclude(x => x.Product)
+                .Where(expression)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Location> FindLocationByNameAsync(string name)
+        public async Task<Location> GetByIdWithProductLocationsAsync(int locationId)
         {
             return await _db.Locations
-              .Where(location => location.Name.ToLower() == name.ToLower())
-              .FirstOrDefaultAsync();
-        }
-
-        public async Task<Location> FindMainLocationAsync(bool includeProducts = false)
-        {
-            if (includeProducts)
-            {
-                return await _db.Locations
-                    .Include(x => x.ProductLocations)
-                    .ThenInclude(x => x.Product)
-                    .Where(location => location.IsMain == true)
-                    .FirstOrDefaultAsync();
-            }
-
-            return await _db.Locations
-              .Where(location => location.IsMain == true)
-              .FirstOrDefaultAsync();
-        }
-
-        public void RemoveLocation(Location location)
-        {
-            _db.Locations.Remove(location);
-        }
-
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
-        }
-
-        public async Task UnsetMainLocationAsync(int newMainlocationId)
-        {
-            Location previousMain = await _db.Locations
-              .Where(location => (location.LocationId != newMainlocationId) && (location.IsMain == true))
-              .FirstOrDefaultAsync();
-
-            previousMain.IsMain = false;
+                .Include(x => x.ProductLocations)
+                .ThenInclude(x => x.Product)
+                .Where(location => location.LocationId == locationId)
+                .FirstOrDefaultAsync();
         }
     }
 }

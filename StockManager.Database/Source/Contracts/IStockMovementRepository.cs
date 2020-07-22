@@ -15,6 +15,11 @@ namespace StockManager.Database.Source.Contracts
         Task<IEnumerable<StockMovement>> FindAllWithProductAndUserAsync(Expression<Func<StockMovement, bool>> expression);
 
         /// <summary>
+        /// Find all stock movements, order by descending, that satisfy the given lambda expression
+        /// </summary>
+        Task<IEnumerable<StockMovement>> FindAllWithOrderByDescendingAsync(Expression<Func<StockMovement, bool>> expression);
+
+        /// <summary>
         /// Find the last stock movement that satisfy the given lambda expression
         /// </summary>
         Task<StockMovement> FindLastStockMovementAsync(Expression<Func<StockMovement, bool>> expression);

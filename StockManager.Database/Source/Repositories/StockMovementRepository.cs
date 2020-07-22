@@ -31,6 +31,14 @@ namespace StockManager.Database.Source.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<StockMovement>> FindAllWithOrderByDescendingAsync(Expression<Func<StockMovement, bool>> expression)
+        {
+            return await _db.StockMovements
+              .Where(expression)
+              .OrderByDescending(x => x.CreatedAt)
+              .ToListAsync();
+        }
+
         public async Task<StockMovement> FindLastStockMovementAsync(Expression<Func<StockMovement, bool>> expression)
         {
             return await _db.StockMovements
