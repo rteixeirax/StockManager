@@ -39,6 +39,11 @@ namespace StockManager.Database.Source.Repositories
             return await _context.Set<TEntity>().SingleOrDefaultAsync(expression);
         }
 
+        public async Task<TEntity> FindOneAsync()
+        {
+            return await _context.Set<TEntity>().SingleOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _context.Set<TEntity>().ToListAsync();
