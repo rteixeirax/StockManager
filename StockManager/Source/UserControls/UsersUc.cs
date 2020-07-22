@@ -36,7 +36,7 @@ namespace StockManager.Source.UserControls
             Spinner.InitSpinner();
             dgvUsers.Rows.Clear();
 
-            IEnumerable<User> users = await AppServices.UserService.GetUsersAsync(searchValue);
+            IEnumerable<User> users = await AppServices.UserService.GetAllAsync(searchValue);
 
             foreach (User user in users)
             {
@@ -66,7 +66,7 @@ namespace StockManager.Source.UserControls
                 try
                 {
                     Spinner.InitSpinner();
-                    await AppServices.UserService.DeleteUserAsync(selectedIds, Program.LoggedInUser.UserId);
+                    await AppServices.UserService.DeleteAsync(selectedIds, Program.LoggedInUser.UserId);
                     Spinner.StopSpinner();
 
                     await LoadUsersAsync();
@@ -102,7 +102,7 @@ namespace StockManager.Source.UserControls
         private async Task ActionEditClickAsync(int userId)
         {
             Spinner.InitSpinner();
-            User user = await AppServices.UserService.GetUserByIdAsync(userId);
+            User user = await AppServices.UserService.GetByIdAsync(userId);
             Spinner.StopSpinner();
 
             UserForm userForm = new UserForm(this);

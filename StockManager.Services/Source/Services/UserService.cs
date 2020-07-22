@@ -102,7 +102,7 @@ namespace StockManager.Services.Source.Services
             return await _repository.Users.CountAsync();
         }
 
-        public async Task CreateUserAsync(User user)
+        public async Task CreateAsync(User user)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task DeleteUserAsync(int[] userIds, int loggedInUserId)
+        public async Task DeleteAsync(int[] userIds, int loggedInUserId)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -164,7 +164,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task EditUserAsync(User user)
+        public async Task EditAsync(User user)
         {
             try
             {
@@ -187,12 +187,12 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<User> GetUserByIdAsync(int userId)
+        public async Task<User> GetByIdAsync(int userId)
         {
             return await _repository.Users.GetByIdWithRoleAsync(userId);
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync(string searchValue = null)
+        public async Task<IEnumerable<User>> GetAllAsync(string searchValue = null)
         {
             if (!string.IsNullOrEmpty(searchValue))
             {
@@ -201,8 +201,6 @@ namespace StockManager.Services.Source.Services
             }
 
             return await _repository.Users.FindAllWithRoleAsync();
-
-            //return await _repository.Users.FindAllUsersAsync(searchValue);
         }
 
         /// <summary>

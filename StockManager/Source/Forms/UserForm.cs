@@ -90,11 +90,11 @@ namespace StockManager.Source.Forms
                 if ((_userId != 0))
                 {
                     user.UserId = _userId;
-                    await AppServices.UserService.EditUserAsync(user);
+                    await AppServices.UserService.EditAsync(user);
                 }
                 else
                 {
-                    await AppServices.UserService.CreateUserAsync(user);
+                    await AppServices.UserService.CreateAsync(user);
                 }
 
                 Spinner.StopSpinner();

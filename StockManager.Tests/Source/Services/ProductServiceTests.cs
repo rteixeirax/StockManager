@@ -32,7 +32,7 @@ namespace StockManager.Tests.Source.Services
         {
             _config = new TestsConfig();
 
-            _adminUser = await AppServices.UserService.GetUserByIdAsync(1);
+            _adminUser = await AppServices.UserService.GetByIdAsync(1);
 
             _mockProducts.AddRange(new Product[] {
        new Product() {
