@@ -53,7 +53,7 @@ namespace StockManager.Source
             // Instantiate our database
             DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
 
-            // Instantiate out repository
+            // Instantiate our repository
             IRepository Repository = new Repository(DatabaseContext);
 
             // Instantiate our services
