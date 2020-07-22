@@ -24,7 +24,7 @@ namespace StockManager.Services.Source.Services
             return await _repository.Products.CountAsync();
         }
 
-        public async Task CreateProductAsync(Product product, int userId)
+        public async Task CreateAsync(Product product, int userId)
         {
             try
             {
@@ -34,11 +34,11 @@ namespace StockManager.Services.Source.Services
                 await _repository.SaveChangesAsync();
 
                 // Get the main location
-                Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+                Location mainLocation = await AppServices.LocationService.GetMainAsync();
 
                 // Associate the product to the main location
                 await AppServices.ProductLocationService
-                  .AddProductLocationAsync(new ProductLocation()
+                  .CreateAsync(new ProductLocation()
                   {
                       LocationId = mainLocation.LocationId,
                       ProductId = product.ProductId,
@@ -57,7 +57,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task DeleteProductAsync(int[] productIds)
+        public async Task DeleteAsync(int[] productIds)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -85,7 +85,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task EditProductAsync(Product product)
+        public async Task EditAsync(Product product)
         {
             try
             {
@@ -103,12 +103,12 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<Product> GetProductByIdAsync(int productId)
+        public async Task<Product> GetByIdAsync(int productId)
         {
             return await _repository.Products.GetByIdWithProductLocationsAndStockMovementsAsync(productId);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null)
+        public async Task<IEnumerable<Product>> GetAllAsync(string searchValue = null)
         {
             IEnumerable<Product> products;
 

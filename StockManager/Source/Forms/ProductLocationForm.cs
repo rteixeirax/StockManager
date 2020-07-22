@@ -56,7 +56,7 @@ namespace StockManager.Source.Forms
             {
                 Spinner.InitSpinner();
 
-                await AppServices.ProductLocationService.UpdateProductLocationMinStock(
+                await AppServices.ProductLocationService.UpdateMinStock(
                   _productLocation.ProductLocationId,
                   float.Parse(numMinStock.Value.ToString())
                 );

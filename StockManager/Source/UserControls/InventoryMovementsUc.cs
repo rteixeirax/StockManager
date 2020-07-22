@@ -44,7 +44,7 @@ namespace StockManager.Source.UserControls
 
         private async void btnStockMovement_Click(object sender, System.EventArgs e)
         {
-            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync(true);
+            Location mainLocation = await AppServices.LocationService.GetMainAsync(true);
             ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, mainLocation);
             await manualStockMovementForm.ShowManualStockMovementFormAsync();
         }

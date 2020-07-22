@@ -8,19 +8,19 @@ namespace StockManager.Services.Source.Contracts
     public interface IStockMovementService
     {
         /// <summary>
-        /// Add a product stock movement
+        /// Create a stock movement
         /// </summary>
         /// <param name="data">StockMovement data</param>
         /// <param name="applyDbChanges">
         /// Set it to true if you want to call "SaveDbChangesAsync" immediately after create the
         /// stock movement
         /// </param>
-        Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false);
+        Task CreateAsync(StockMovement data, bool applyDbChanges = false);
 
         /// <summary>
-        /// Add a entry/exit stock movement inside the main location and update the LocationProductStock
+        /// Create an entry/exit stock movement inside the main location and update the LocationProductStock
         /// </summary>
-        Task AddStockMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId);
+        Task CreateMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId);
 
         /// <summary>
         /// Get all stock movements
@@ -30,7 +30,7 @@ namespace StockManager.Services.Source.Contracts
         /// <summary>
         /// Get the product last stock movement
         /// </summary>
-        Task<StockMovement> GetProductLastStockMovementAsync(int productId);
+        Task<StockMovement> GetProductLastMovementAsync(int productId);
 
         /// <summary>
         /// Move the stock from one location to another.

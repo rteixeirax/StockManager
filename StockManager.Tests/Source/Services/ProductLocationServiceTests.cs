@@ -39,14 +39,14 @@ namespace StockManager.Tests.Source.Services
             };
 
             await AppServices.LocationService
-              .CreateLocationAsync(new Location() { Name = "Test location" });
+              .CreateAsync(new Location() { Name = "Test location" });
 
-            _mockLocation = await AppServices.LocationService.GetLocationByIdAsync(2);
-            _mockMainLocation = await AppServices.LocationService.GetMainLocationAsync();
+            _mockLocation = await AppServices.LocationService.GetByIdAsync(2);
+            _mockMainLocation = await AppServices.LocationService.GetMainAsync();
             _mockUser = await AppServices.UserService.GetByIdAsync(1);
 
             await AppServices.ProductService
-              .CreateProductAsync(_mockProduct, _mockUser.UserId);
+              .CreateAsync(_mockProduct, _mockUser.UserId);
         }
 
         [TestMethod]
@@ -63,11 +63,11 @@ namespace StockManager.Tests.Source.Services
 
             // Act
             await AppServices.ProductLocationService
-              .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+              .CreateAsync(newProductLocation, _mockUser.UserId);
 
             // Assert
             StockMovement stockMovement = await AppServices.StockMovementService
-             .GetProductLastStockMovementAsync(newProductLocation.ProductId);
+             .GetProductLastMovementAsync(newProductLocation.ProductId);
 
             Assert.IsNotNull(newProductLocation.ProductLocationId);
             Assert.IsNotNull(newProductLocation.CreatedAt);
@@ -93,15 +93,15 @@ namespace StockManager.Tests.Source.Services
             };
 
             await AppServices.ProductLocationService
-              .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+              .CreateAsync(newProductLocation, _mockUser.UserId);
 
             // Act
             await AppServices.ProductLocationService
-              .DeleteProductLocationAsyn(newProductLocation.ProductLocationId, _mockUser.UserId);
+              .DeleteAsyn(newProductLocation.ProductLocationId, _mockUser.UserId);
 
             // Assert
             StockMovement stockMovement = await AppServices.StockMovementService
-              .GetProductLastStockMovementAsync(newProductLocation.ProductId);
+              .GetProductLastMovementAsync(newProductLocation.ProductId);
 
             Assert.AreEqual(stockMovement.FromLocationId, newProductLocation.LocationId);
             Assert.AreEqual(stockMovement.ToLocationId, _mockMainLocation.LocationId);
@@ -134,10 +134,10 @@ namespace StockManager.Tests.Source.Services
             {
                 // Act
                 await AppServices.ProductLocationService
-                  .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+                  .CreateAsync(newProductLocation, _mockUser.UserId);
 
                 await AppServices.ProductLocationService
-                  .AddProductLocationAsync(newProductLocation2, _mockUser.UserId);
+                  .CreateAsync(newProductLocation2, _mockUser.UserId);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -165,7 +165,7 @@ namespace StockManager.Tests.Source.Services
             {
                 // Act
                 await AppServices.ProductLocationService
-                  .AddProductLocationAsync(newProductLocation, _mockUser.UserId);
+                  .CreateAsync(newProductLocation, _mockUser.UserId);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }

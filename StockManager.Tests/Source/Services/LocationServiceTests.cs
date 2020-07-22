@@ -43,7 +43,7 @@ namespace StockManager.Tests.Source.Services
             Location location = _mockLocation;
 
             // Act
-            await AppServices.LocationService.CreateLocationAsync(location);
+            await AppServices.LocationService.CreateAsync(location);
 
             // Assert
             Assert.AreEqual(location.Name, "new Location");
@@ -59,13 +59,13 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             Location mockLocation = _mockLocation;
-            await AppServices.LocationService.CreateLocationAsync(mockLocation);
+            await AppServices.LocationService.CreateAsync(mockLocation);
 
             // Act
-            await AppServices.LocationService.DeleteLocationAsync(new int[] { mockLocation.LocationId }, 1);
+            await AppServices.LocationService.DeleteAsync(new int[] { mockLocation.LocationId }, 1);
 
             Location dbLocation = await AppServices.LocationService
-              .GetLocationByIdAsync(mockLocation.LocationId);
+              .GetByIdAsync(mockLocation.LocationId);
 
             // Assert
             Assert.IsNull(dbLocation);
@@ -78,7 +78,7 @@ namespace StockManager.Tests.Source.Services
         public async Task ShouldEditLocation()
         {
             // Arrange
-            Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
+            Location defaultLocation = await AppServices.LocationService.GetByIdAsync(1); // warehouse
 
             // Act
             Location updatedLocation = new Location()
@@ -87,8 +87,8 @@ namespace StockManager.Tests.Source.Services
                 Name = "Updated location"
             };
 
-            await AppServices.LocationService.EditLocationAsync(updatedLocation);
-            Location dbLocation = await AppServices.LocationService.GetLocationByIdAsync(updatedLocation.LocationId);
+            await AppServices.LocationService.EditAsync(updatedLocation);
+            Location dbLocation = await AppServices.LocationService.GetByIdAsync(updatedLocation.LocationId);
 
             // Assert
             Assert.AreEqual(dbLocation.LocationId, updatedLocation.LocationId);
@@ -108,7 +108,7 @@ namespace StockManager.Tests.Source.Services
             {
                 // Act
                 location.Name = "Warehouse"; // default
-                await AppServices.LocationService.CreateLocationAsync(location);
+                await AppServices.LocationService.CreateAsync(location);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -128,12 +128,12 @@ namespace StockManager.Tests.Source.Services
         public async Task ShouldFailDeleteLocation_MainLocation()
         {
             // Arrange
-            Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
+            Location defaultLocation = await AppServices.LocationService.GetByIdAsync(1); // warehouse
 
             try
             {
                 // Act
-                await AppServices.LocationService.DeleteLocationAsync(new int[] { defaultLocation.LocationId }, 1);
+                await AppServices.LocationService.DeleteAsync(new int[] { defaultLocation.LocationId }, 1);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -153,8 +153,8 @@ namespace StockManager.Tests.Source.Services
         public async Task ShouldFailEditLocation_ExistingLocationName()
         {
             // Arrange
-            Location defaultLocation = await AppServices.LocationService.GetLocationByIdAsync(1); // warehouse
-            Location defaultLocation2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle#1
+            Location defaultLocation = await AppServices.LocationService.GetByIdAsync(1); // warehouse
+            Location defaultLocation2 = await AppServices.LocationService.GetByIdAsync(2); // Vehicle#1
 
             try
             {
@@ -165,7 +165,7 @@ namespace StockManager.Tests.Source.Services
                     Name = defaultLocation2.Name,
                 };
 
-                await AppServices.LocationService.EditLocationAsync(updatedLocation);
+                await AppServices.LocationService.EditAsync(updatedLocation);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -185,11 +185,11 @@ namespace StockManager.Tests.Source.Services
         public async Task ShouldGetAllLocations()
         {
             // Arrange
-            Location default1 = await AppServices.LocationService.GetLocationByIdAsync(1); // Warehouse
-            Location default2 = await AppServices.LocationService.GetLocationByIdAsync(2); // Vehicle #1
+            Location default1 = await AppServices.LocationService.GetByIdAsync(1); // Warehouse
+            Location default2 = await AppServices.LocationService.GetByIdAsync(2); // Vehicle #1
 
             // Act
-            IEnumerable<Location> locations = await AppServices.LocationService.GetLocationsAsync();
+            IEnumerable<Location> locations = await AppServices.LocationService.GetAllAsync();
 
             // Assert
             Assert.AreEqual(locations.Count(), 2);
@@ -204,10 +204,10 @@ namespace StockManager.Tests.Source.Services
         public async Task ShouldSearchLocationByName()
         {
             // Arrange
-            Location default1 = await AppServices.LocationService.GetLocationByIdAsync(1); // Warehouse
+            Location default1 = await AppServices.LocationService.GetByIdAsync(1); // Warehouse
 
             // Act
-            IEnumerable<Location> locations = await AppServices.LocationService.GetLocationsAsync(default1.Name);
+            IEnumerable<Location> locations = await AppServices.LocationService.GetAllAsync(default1.Name);
 
             // Assert
             Assert.AreEqual(locations.Count(), 1);
@@ -226,7 +226,7 @@ namespace StockManager.Tests.Source.Services
             try
             {
                 // Act
-                await AppServices.LocationService.CreateLocationAsync(newLocation);
+                await AppServices.LocationService.CreateAsync(newLocation);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }

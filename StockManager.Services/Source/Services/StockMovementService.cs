@@ -18,7 +18,7 @@ namespace StockManager.Services.Source.Services
             _repository = repository;
         }
 
-        public async Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false)
+        public async Task CreateAsync(StockMovement data, bool applyDbChanges = false)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace StockManager.Services.Source.Services
                   : data.FromLocationId);
 
                 ProductLocation productLocation = await AppServices.ProductLocationService
-                  .GetProductLocationAsync(data.ProductId, locationId);
+                  .GetOneAsync(data.ProductId, locationId);
 
                 // Calculate the new accumulated stock
                 if (productLocation != null)
@@ -60,19 +60,19 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task AddStockMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId)
+        public async Task CreateMovementInsideMainLocationAsync(int productId, float qty, bool isEntry, int userId)
         {
             try
             {
-                Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+                Location mainLocation = await AppServices.LocationService.GetMainAsync();
                 ProductLocation productLocation = await AppServices.ProductLocationService
-                  .GetProductLocationAsync(productId, mainLocation.LocationId);
+                  .GetOneAsync(productId, mainLocation.LocationId);
 
                 // If is an exit movement, set negative qty
                 float qtyToMove = isEntry ? qty : (qty * (-1));
 
                 // Create the stock movement
-                await AddStockMovementAsync(new StockMovement()
+                await CreateAsync(new StockMovement()
                 {
                     UserId = userId,
                     ProductId = productId,
@@ -99,7 +99,7 @@ namespace StockManager.Services.Source.Services
                     || x.Product.Name.ToLower().Contains(searchValue.ToLower()));
         }
 
-        public async Task<StockMovement> GetProductLastStockMovementAsync(int productId)
+        public async Task<StockMovement> GetProductLastMovementAsync(int productId)
         {
             return await _repository.StockMovements.FindLastStockMovementAsync(x => x.ProductId == productId);
         }
@@ -112,7 +112,7 @@ namespace StockManager.Services.Source.Services
             {
                 // Get the relation productId > fromLocationId to check if the qty can be accepted
                 ProductLocation fromLocationRelation = await AppServices.ProductLocationService
-                   .GetProductLocationAsync(productId, fromLocationId);
+                   .GetOneAsync(productId, fromLocationId);
 
                 if (fromLocationRelation.Stock < qty)
                 {
@@ -120,8 +120,8 @@ namespace StockManager.Services.Source.Services
                     throw new OperationErrorException(errorsList);
                 }
 
-                Location fromLocation = await AppServices.LocationService.GetLocationByIdAsync(fromLocationId);
-                Location toLocation = await AppServices.LocationService.GetLocationByIdAsync(toLocationId);
+                Location fromLocation = await AppServices.LocationService.GetByIdAsync(fromLocationId);
+                Location toLocation = await AppServices.LocationService.GetByIdAsync(toLocationId);
 
                 // Set the stock movement between locations
                 StockMovement stockMovement = new StockMovement()
@@ -136,14 +136,14 @@ namespace StockManager.Services.Source.Services
                 };
 
                 // Create the stock movement
-                await AddStockMovementAsync(stockMovement);
+                await CreateAsync(stockMovement);
 
                 // Update the stock in the From location
                 fromLocationRelation.Stock -= qty;
 
                 // Update the stock in the To location
                 ProductLocation toLocationRelation = await AppServices.ProductLocationService
-                   .GetProductLocationAsync(productId, toLocationId);
+                   .GetOneAsync(productId, toLocationId);
 
                 // If the product is associated to the location, update the stock
                 if (toLocationRelation != null)
@@ -153,7 +153,7 @@ namespace StockManager.Services.Source.Services
                 else
                 {
                     // If not, create the relation
-                    await AppServices.ProductLocationService.AddProductLocationAsync(
+                    await AppServices.ProductLocationService.CreateAsync(
                       new ProductLocation
                       {
                           LocationId = toLocationId,
@@ -177,7 +177,7 @@ namespace StockManager.Services.Source.Services
         public async Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false)
         {
             // Get the main location
-            Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
+            Location mainLocation = await AppServices.LocationService.GetMainAsync();
 
             // Only create the stock movement if it has stock and the fromLocation is not the main location.
             if ((data.Stock > 0) && (mainLocation.LocationId != data.LocationId))
@@ -194,11 +194,11 @@ namespace StockManager.Services.Source.Services
                     Qty = data.Stock,
                 };
 
-                await AddStockMovementAsync(stockMovement);
+                await CreateAsync(stockMovement);
 
                 // Get the relation between the product and the main location to be updated
                 ProductLocation mainLocationRelation = await AppServices.ProductLocationService
-                  .GetProductLocationAsync(data.ProductId, mainLocation.LocationId);
+                  .GetOneAsync(data.ProductId, mainLocation.LocationId);
 
                 // Update the relation stock
                 mainLocationRelation.Stock += data.Stock;

@@ -41,7 +41,7 @@ namespace StockManager.Source.UserControls
             dgvLocations.Rows.Clear();
 
             IEnumerable<Location> locations = await AppServices.LocationService
-              .GetLocationsAsync(searchValue);
+              .GetAllAsync(searchValue);
 
             foreach (Location location in locations)
             {
@@ -72,7 +72,7 @@ namespace StockManager.Source.UserControls
                     Spinner.InitSpinner();
 
                     await AppServices.LocationService
-                      .DeleteLocationAsync(selectedIds, Program.LoggedInUser.UserId);
+                      .DeleteAsync(selectedIds, Program.LoggedInUser.UserId);
 
                     Spinner.StopSpinner();
 
@@ -109,7 +109,7 @@ namespace StockManager.Source.UserControls
         private async Task ActionDetailsClickAsync(int locationId)
         {
             Spinner.InitSpinner();
-            Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
+            Location location = await AppServices.LocationService.GetByIdAsync(locationId);
             Spinner.StopSpinner();
 
             _mainForm.ShowProducLocationsFromLocationsUc(location);
@@ -121,7 +121,7 @@ namespace StockManager.Source.UserControls
         private async Task ActionEditClickAsync(int locationId)
         {
             Spinner.InitSpinner();
-            Location location = await AppServices.LocationService.GetLocationByIdAsync(locationId);
+            Location location = await AppServices.LocationService.GetByIdAsync(locationId);
             Spinner.StopSpinner();
 
             LocationForm locationForm = new LocationForm(this);

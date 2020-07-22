@@ -17,7 +17,7 @@ namespace StockManager.Services.Source.Services
             _repository = repository;
         }
 
-        public async Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true)
+        public async Task CreateAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace StockManager.Services.Source.Services
 
                 if (createStockMovement)
                 {
-                    await AppServices.StockMovementService.AddStockMovementAsync(stockMovement);
+                    await AppServices.StockMovementService.CreateAsync(stockMovement);
                 }
 
                 if (applyDbChanges)
@@ -55,7 +55,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task DeleteProductLocationAsyn(int productLocationId, int userId)
+        public async Task DeleteAsyn(int productLocationId, int userId)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -93,18 +93,18 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<ProductLocation> GetProductLocationAsync(int productId, int locationId)
+        public async Task<ProductLocation> GetOneAsync(int productId, int locationId)
         {
             return await _repository.ProductLocations
                 .FindOneAsync(pl => pl.ProductId == productId && pl.LocationId == locationId);
         }
 
-        public async Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId)
+        public async Task<ProductLocation> GetByIdAsync(int productLocationId)
         {
             return await _repository.ProductLocations.GetByIdAsync(productLocationId);
         }
 
-        public async Task UpdateProductLocationMinStock(int productLocation, float minStock)
+        public async Task UpdateMinStock(int productLocation, float minStock)
         {
             try
             {

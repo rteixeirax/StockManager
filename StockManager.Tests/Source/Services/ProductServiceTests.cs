@@ -56,7 +56,7 @@ namespace StockManager.Tests.Source.Services
             Product product = _mockProducts[0];
 
             // Act
-            await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
 
             // Assert
             Assert.AreEqual(product.Reference, "mockRef1");
@@ -73,11 +73,11 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             Product mockProduct = _mockProducts[0];
-            await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(mockProduct, _adminUser.UserId);
 
             // Act
-            await AppServices.ProductService.DeleteProductAsync(new int[] { mockProduct.ProductId });
-            Product dbProduct = await AppServices.ProductService.GetProductByIdAsync(mockProduct.ProductId);
+            await AppServices.ProductService.DeleteAsync(new int[] { mockProduct.ProductId });
+            Product dbProduct = await AppServices.ProductService.GetByIdAsync(mockProduct.ProductId);
 
             // Assert
             Assert.IsNull(dbProduct);
@@ -91,7 +91,7 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             Product mockProduct = _mockProducts[0];
-            await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(mockProduct, _adminUser.UserId);
 
             // Act
             Product updatedProduct = new Product()
@@ -101,8 +101,8 @@ namespace StockManager.Tests.Source.Services
                 Name = "Updated product"
             };
 
-            await AppServices.ProductService.EditProductAsync(updatedProduct);
-            Product dbProduct = await AppServices.ProductService.GetProductByIdAsync(updatedProduct.ProductId);
+            await AppServices.ProductService.EditAsync(updatedProduct);
+            Product dbProduct = await AppServices.ProductService.GetByIdAsync(updatedProduct.ProductId);
 
             // Assert
             Assert.AreEqual(dbProduct.ProductId, updatedProduct.ProductId);
@@ -117,13 +117,13 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             Product product = _mockProducts[0];
-            await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
 
             try
             {
                 // Act
                 Product newProduct = _mockProducts[0];
-                await AppServices.ProductService.CreateProductAsync(newProduct, _adminUser.UserId);
+                await AppServices.ProductService.CreateAsync(newProduct, _adminUser.UserId);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -145,8 +145,8 @@ namespace StockManager.Tests.Source.Services
             // Arrange
             Product mockProduct = _mockProducts[0];
             Product mockProduct2 = _mockProducts[1];
-            await AppServices.ProductService.CreateProductAsync(mockProduct, _adminUser.UserId);
-            await AppServices.ProductService.CreateProductAsync(mockProduct2, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(mockProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(mockProduct2, _adminUser.UserId);
 
             try
             {
@@ -158,7 +158,7 @@ namespace StockManager.Tests.Source.Services
                     Name = mockProduct.Reference
                 };
 
-                await AppServices.ProductService.EditProductAsync(updatedProduct);
+                await AppServices.ProductService.EditAsync(updatedProduct);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }
@@ -180,11 +180,11 @@ namespace StockManager.Tests.Source.Services
             // Arrange
             Product product = _mockProducts[0];
             Product otherProduct = _mockProducts[1];
-            await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
-            await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(otherProduct, _adminUser.UserId);
 
             // Act
-            IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync();
+            IEnumerable<Product> products = await AppServices.ProductService.GetAllAsync();
 
             // Assert
             Assert.AreEqual(products.Count(), 2);
@@ -201,11 +201,11 @@ namespace StockManager.Tests.Source.Services
             // Arrange
             Product product = _mockProducts[0];
             Product otherProduct = _mockProducts[1];
-            await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
-            await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(otherProduct, _adminUser.UserId);
 
             // Act
-            IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync(product.Name);
+            IEnumerable<Product> products = await AppServices.ProductService.GetAllAsync(product.Name);
 
             // Assert
             Assert.AreEqual(products.Count(), 1);
@@ -221,11 +221,11 @@ namespace StockManager.Tests.Source.Services
             // Arrange
             Product product = _mockProducts[0];
             Product otherProduct = _mockProducts[1];
-            await AppServices.ProductService.CreateProductAsync(product, _adminUser.UserId);
-            await AppServices.ProductService.CreateProductAsync(otherProduct, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
+            await AppServices.ProductService.CreateAsync(otherProduct, _adminUser.UserId);
 
             // Act
-            IEnumerable<Product> products = await AppServices.ProductService.GetProductsAsync(product.Reference);
+            IEnumerable<Product> products = await AppServices.ProductService.GetAllAsync(product.Reference);
 
             // Assert
             Assert.AreEqual(products.Count(), 1);
@@ -244,7 +244,7 @@ namespace StockManager.Tests.Source.Services
             try
             {
                 // Act
-                await AppServices.ProductService.CreateProductAsync(newProduct, _adminUser.UserId);
+                await AppServices.ProductService.CreateAsync(newProduct, _adminUser.UserId);
 
                 Assert.Fail("It should have thrown an OperationErrorExeption");
             }

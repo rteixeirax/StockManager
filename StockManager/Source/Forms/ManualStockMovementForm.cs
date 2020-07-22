@@ -68,7 +68,7 @@ namespace StockManager.Source.Forms
             Spinner.InitSpinner();
 
             // Get the locations
-            _locations = await AppServices.LocationService.GetLocationsAsync();
+            _locations = await AppServices.LocationService.GetAllAsync();
 
             SetFormComboboxesData();
 
@@ -94,7 +94,7 @@ namespace StockManager.Source.Forms
 
                 if (checkMainLocationMoves.Checked)
                 {
-                    await AppServices.StockMovementService.AddStockMovementInsideMainLocationAsync(
+                    await AppServices.StockMovementService.CreateMovementInsideMainLocationAsync(
                       product.ProductId,
                       qty,
                       (toLocation.LocationId == 0), // 0: entry; -1: exit;

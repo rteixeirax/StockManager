@@ -92,7 +92,7 @@ namespace StockManager.Source.UserControls
                     Spinner.InitSpinner();
 
                     await AppServices.ProductLocationService
-                      .DeleteProductLocationAsyn(id, Program.LoggedInUser.UserId);
+                      .DeleteAsyn(id, Program.LoggedInUser.UserId);
 
                     // Reload Ui
                     await LoadProductLocations();
@@ -127,7 +127,7 @@ namespace StockManager.Source.UserControls
         {
             Spinner.InitSpinner();
 
-            ProductLocation productLocation = await AppServices.ProductLocationService.GetProductLocationByIdAsync(id);
+            ProductLocation productLocation = await AppServices.ProductLocationService.GetByIdAsync(id);
             Spinner.StopSpinner();
             ProductLocationForm productLocationForm = new ProductLocationForm(this);
             productLocationForm.ShowLocationForm(productLocation);
@@ -204,7 +204,7 @@ namespace StockManager.Source.UserControls
 
             // fill the location stock movements table
             IEnumerable<StockMovement> stockMovements = await AppServices.LocationService
-              .GetLocationStockMovements(_location.LocationId);
+              .GetAllStockMovements(_location.LocationId);
 
             stockMovements.ToList().ForEach((stockMovement) => {
                 dgvProductStockMovements.Rows.Add(

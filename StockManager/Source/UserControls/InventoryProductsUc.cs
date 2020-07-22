@@ -40,7 +40,7 @@ namespace StockManager.Source.UserControls
             dgvProducts.Rows.Clear();
 
             IEnumerable<Product> products = await AppServices.ProductService
-              .GetProductsAsync(searchValue);
+              .GetAllAsync(searchValue);
 
             foreach (Product product in products)
             {
@@ -70,7 +70,7 @@ namespace StockManager.Source.UserControls
                 try
                 {
                     Spinner.InitSpinner();
-                    await AppServices.ProductService.DeleteProductAsync(selectedIds);
+                    await AppServices.ProductService.DeleteAsync(selectedIds);
                     Spinner.StopSpinner();
 
                     await LoadProductsAsync();
@@ -106,7 +106,7 @@ namespace StockManager.Source.UserControls
         private async Task ActionDetailsClickAsync(int productId)
         {
             Spinner.InitSpinner();
-            Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
+            Product product = await AppServices.ProductService.GetByIdAsync(productId);
             Spinner.StopSpinner();
 
             _mainForm.ShowProducLocationsFromProductsUc(product);
@@ -118,7 +118,7 @@ namespace StockManager.Source.UserControls
         private async Task ActionEditClickAsync(int productId)
         {
             Spinner.InitSpinner();
-            Product product = await AppServices.ProductService.GetProductByIdAsync(productId);
+            Product product = await AppServices.ProductService.GetByIdAsync(productId);
             Spinner.StopSpinner();
 
             ProductForm productForm = new ProductForm(this);

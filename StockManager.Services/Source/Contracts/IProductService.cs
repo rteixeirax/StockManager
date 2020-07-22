@@ -15,26 +15,26 @@ namespace StockManager.Services.Source.Contracts
         /// <summary>
         /// Create new product
         /// </summary>
-        Task CreateProductAsync(Product product, int userId);
+        Task CreateAsync(Product product, int userId);
 
         /// <summary>
         /// Delete products
         /// </summary>
-        Task DeleteProductAsync(int[] productIds);
+        Task DeleteAsync(int[] productIds);
 
         /// <summary>
         /// Edit product
         /// </summary>
-        Task EditProductAsync(Product product);
+        Task EditAsync(Product product);
 
         /// <summary>
         /// Get product by id
         /// </summary>
-        Task<Product> GetProductByIdAsync(int productId);
+        Task<Product> GetByIdAsync(int productId);
 
         /// <summary>
         /// Get all products
         /// </summary>
-        Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null);
+        Task<IEnumerable<Product>> GetAllAsync(string searchValue = null);
     }
 }

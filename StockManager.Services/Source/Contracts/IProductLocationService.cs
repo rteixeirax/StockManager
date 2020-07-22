@@ -13,26 +13,26 @@ namespace StockManager.Services.Source.Contracts
         /// <param name="userId"></param>
         /// <param name="applyDbChanges">Set to false to skip the db save changes</param>
         /// <param name="createStockMovement">Set to false to skip the creation of the stock movement</param>
-        Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true);
+        Task CreateAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true);
 
         /// <summary>
         /// Remove the association product-location
         /// </summary>
-        Task DeleteProductLocationAsyn(int productLocationId, int userId);
+        Task DeleteAsyn(int productLocationId, int userId);
 
         /// <summary>
         /// Get the ProductLocation relation for the given productId and locationId
         /// </summary>
-        Task<ProductLocation> GetProductLocationAsync(int productId, int locationId);
+        Task<ProductLocation> GetOneAsync(int productId, int locationId);
 
         /// <summary>
         /// Get the ProductLocation by id
         /// </summary>
-        Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId);
+        Task<ProductLocation> GetByIdAsync(int productLocationId);
 
         /// <summary>
         /// Update the product location min stock
         /// </summary>
-        Task UpdateProductLocationMinStock(int productLocation, float minStock);
+        Task UpdateMinStock(int productLocation, float minStock);
     }
 }

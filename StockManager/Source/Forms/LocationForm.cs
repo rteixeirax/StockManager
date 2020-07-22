@@ -75,11 +75,11 @@ namespace StockManager.Source.Forms
                 if ((_locationId != 0))
                 {
                     location.LocationId = _locationId;
-                    await AppServices.LocationService.EditLocationAsync(location);
+                    await AppServices.LocationService.EditAsync(location);
                 }
                 else
                 {
-                    await AppServices.LocationService.CreateLocationAsync(location);
+                    await AppServices.LocationService.CreateAsync(location);
                 }
 
                 Spinner.StopSpinner();

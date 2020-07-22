@@ -81,12 +81,12 @@ namespace StockManager.Source.Forms
                 if ((_productId != 0))
                 {
                     product.ProductId = _productId;
-                    await AppServices.ProductService.EditProductAsync(product);
+                    await AppServices.ProductService.EditAsync(product);
                 }
                 else
                 {
                     await AppServices.ProductService
-                      .CreateProductAsync(product, Program.LoggedInUser.UserId);
+                      .CreateAsync(product, Program.LoggedInUser.UserId);
                 }
 
                 Spinner.StopSpinner();

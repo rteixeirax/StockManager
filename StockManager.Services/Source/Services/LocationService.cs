@@ -24,7 +24,7 @@ namespace StockManager.Services.Source.Services
             return await _repository.Locations.CountAsync();
         }
 
-        public async Task CreateLocationAsync(Location location)
+        public async Task CreateAsync(Location location)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task DeleteLocationAsync(int[] locationIds, int userId)
+        public async Task DeleteAsync(int[] locationIds, int userId)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -74,7 +74,7 @@ namespace StockManager.Services.Source.Services
 
                                 // Remove the ProductLocation association and move the stock
                                 await AppServices.ProductLocationService
-                                  .DeleteProductLocationAsyn(producLocation.ProductLocationId, userId);
+                                  .DeleteAsyn(producLocation.ProductLocationId, userId);
                             }
                         }
 
@@ -98,7 +98,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task EditLocationAsync(Location location)
+        public async Task EditAsync(Location location)
         {
             try
             {
@@ -116,12 +116,12 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<Location> GetLocationByIdAsync(int locationId)
+        public async Task<Location> GetByIdAsync(int locationId)
         {
             return await _repository.Locations.GetByIdWithProductLocationsAsync(locationId);
         }
 
-        public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null)
+        public async Task<IEnumerable<Location>> GetAllAsync(string searchValue = null)
         {
             if (!string.IsNullOrEmpty(searchValue))
             {
@@ -132,13 +132,13 @@ namespace StockManager.Services.Source.Services
             return await _repository.Locations.FindAllWithProductLocationsAsync();
         }
 
-        public async Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId)
+        public async Task<IEnumerable<StockMovement>> GetAllStockMovements(int locationId)
         {
             return await _repository.StockMovements
                 .FindAllWithOrderByDescendingAsync(x => (x.FromLocationId == locationId) || (x.ToLocationId == locationId));
         }
 
-        public async Task<Location> GetMainLocationAsync(bool includeProducts = false)
+        public async Task<Location> GetMainAsync(bool includeProducts = false)
         {
             if (includeProducts)
             {
