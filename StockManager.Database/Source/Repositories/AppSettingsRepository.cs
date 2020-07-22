@@ -1,29 +1,16 @@
-﻿using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
-
+﻿
 using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Repositories
 {
-    public class AppSettingsRepository : IAppSettingsRepository
+    public class AppSettingsRepository : BaseRepository<AppSettings>, IAppSettingsRepository
     {
         private readonly DatabaseContext _db;
 
-        public AppSettingsRepository(DatabaseContext db)
+        public AppSettingsRepository(DatabaseContext db) : base(db)
         {
             _db = db;
-        }
-
-        public async Task<AppSettings> FindAppSettingsAsync()
-        {
-            return await _db.AppSettings.FirstOrDefaultAsync();
-        }
-
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
         }
     }
 }

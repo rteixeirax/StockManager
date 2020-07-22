@@ -12,7 +12,7 @@ namespace StockManager.Services.Source.Contracts
         Task<string> GetAppLanguageAsync();
 
         /// <summary>
-        /// Get all the App settings
+        /// Get the App settings
         /// </summary>
         Task<AppSettings> GetAppSettingsAsync();
     }

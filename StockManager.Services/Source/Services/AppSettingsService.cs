@@ -17,14 +17,14 @@ namespace StockManager.Services.Source.Services
 
         public async Task<string> GetAppLanguageAsync()
         {
-            AppSettings appSettings = await _repository.AppSettings.FindAppSettingsAsync();
+            AppSettings appSettings = await _repository.AppSettings.FindOneAsync();
 
             return appSettings.Language;
         }
 
         public async Task<AppSettings> GetAppSettingsAsync()
         {
-            return await _repository.AppSettings.FindAppSettingsAsync();
+            return await _repository.AppSettings.FindOneAsync();
         }
     }
 }
