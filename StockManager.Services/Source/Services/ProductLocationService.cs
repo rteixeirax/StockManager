@@ -22,7 +22,7 @@ namespace StockManager.Services.Source.Services
             try
             {
                 await ValidateProductLocationDataAsync(productLocation);
-                await _repository.ProductLocations.InsertProductLocationAsync(productLocation);
+                await _repository.ProductLocations.AddAsync(productLocation);
 
                 StockMovement stockMovement = new StockMovement()
                 {
@@ -61,8 +61,7 @@ namespace StockManager.Services.Source.Services
 
             try
             {
-                ProductLocation productLocation = await _repository.ProductLocations
-                  .FindProductLocationByIdAsync(productLocationId);
+                ProductLocation productLocation = await _repository.ProductLocations.GetByIdAsync(productLocationId);
 
                 if (productLocation != null)
                 {
@@ -77,7 +76,7 @@ namespace StockManager.Services.Source.Services
                     await AppServices.StockMovementService.MoveStockToMainLocationAsync(productLocation, userId);
 
                     // Remove the location
-                    _repository.ProductLocations.RemoveProductLocation(productLocation);
+                    _repository.ProductLocations.Remove(productLocation);
                     await _repository.SaveChangesAsync();
                 }
             }
@@ -96,23 +95,21 @@ namespace StockManager.Services.Source.Services
 
         public async Task<ProductLocation> GetProductLocationAsync(int productId, int locationId)
         {
-            return await _repository.ProductLocations.FindProductLocationAsync(productId, locationId);
+            return await _repository.ProductLocations
+                .FindOneAsync(pl => pl.ProductId == productId && pl.LocationId == locationId);
         }
 
         public async Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId)
         {
-            return await _repository.ProductLocations.FindProductLocationByIdAsync(productLocationId);
+            return await _repository.ProductLocations.GetByIdAsync(productLocationId);
         }
 
         public async Task UpdateProductLocationMinStock(int productLocation, float minStock)
         {
             try
             {
-                ProductLocation dbProductLocation = await _repository.ProductLocations
-                  .FindProductLocationByIdAsync(productLocation);
-
+                ProductLocation dbProductLocation = await _repository.ProductLocations.GetByIdAsync(productLocation);
                 dbProductLocation.MinStock = minStock;
-
                 await _repository.SaveChangesAsync();
             }
             catch
@@ -140,7 +137,7 @@ namespace StockManager.Services.Source.Services
 
             // check if the product is already associated with the location
             ProductLocation pLocationCheck = await _repository.ProductLocations
-              .FindProductLocationAsync(productLocation.ProductId, productLocation.LocationId);
+                .FindOneAsync(pl => pl.ProductId == productLocation.ProductId && pl.LocationId == productLocation.LocationId);
 
             if (pLocationCheck != null)
             {

@@ -1,49 +1,16 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
-
+﻿
 using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Repositories
 {
-    public class ProductLocationRepository : IProductLocationRepository
+    public class ProductLocationRepository : BaseRepository<ProductLocation>, IProductLocationRepository
     {
         private readonly DatabaseContext _db;
 
-        public ProductLocationRepository(DatabaseContext db)
+        public ProductLocationRepository(DatabaseContext db) : base(db)
         {
             _db = db;
-        }
-
-        public async Task<ProductLocation> FindProductLocationAsync(int productId, int locationId)
-        {
-            return await _db.ProductLocations
-              .Where(pl => pl.ProductId == productId && pl.LocationId == locationId)
-              .FirstOrDefaultAsync();
-        }
-
-        public async Task<ProductLocation> FindProductLocationByIdAsync(int productLocationId)
-        {
-            return await _db.ProductLocations
-              .Where(x => x.ProductLocationId == productLocationId)
-              .FirstOrDefaultAsync();
-        }
-
-        public async Task InsertProductLocationAsync(ProductLocation data)
-        {
-            await _db.ProductLocations.AddAsync(data);
-        }
-
-        public void RemoveProductLocation(ProductLocation productLocation)
-        {
-            _db.ProductLocations.Remove(productLocation);
-        }
-
-        public async Task SaveDbChangesAsync()
-        {
-            await _db.SaveChangesAsync();
         }
     }
 }
