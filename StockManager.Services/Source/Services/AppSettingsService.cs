@@ -8,23 +8,23 @@ namespace StockManager.Services.Source.Services
 {
     public class AppSettingsService : IAppSettingsService
     {
-        private readonly IAppSettingsRepository _settingsRepo;
+        private readonly IRepository _repository;
 
-        public AppSettingsService(IAppSettingsRepository settingsRepo)
+        public AppSettingsService(IRepository repository)
         {
-            _settingsRepo = settingsRepo;
+            _repository = repository;
         }
 
         public async Task<string> GetAppLanguageAsync()
         {
-            AppSettings appSettings = await _settingsRepo.FindAppSettingsAsync();
+            AppSettings appSettings = await _repository.AppSettings.FindAppSettingsAsync();
 
             return appSettings.Language;
         }
 
         public async Task<AppSettings> GetAppSettingsAsync()
         {
-            return await _settingsRepo.FindAppSettingsAsync();
+            return await _repository.AppSettings.FindAppSettingsAsync();
         }
     }
 }

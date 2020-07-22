@@ -9,16 +9,16 @@ namespace StockManager.Services.Source.Services
 {
     public class RoleService : IRoleService
     {
-        private readonly IRoleRepository _roleRepo;
+        private readonly IRepository _repository;
 
-        public RoleService(IRoleRepository roleRepo)
+        public RoleService(IRepository repository)
         {
-            _roleRepo = roleRepo;
+            _repository = repository;
         }
 
         public async Task<IEnumerable<Role>> GetRolesAsync()
         {
-            return await _roleRepo.FindAllRolesAsync();
+            return await _repository.Roles.FindAllRolesAsync();
         }
     }
 }

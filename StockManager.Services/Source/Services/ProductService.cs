@@ -12,16 +12,16 @@ namespace StockManager.Services.Source.Services
 {
     public class ProductService : IProductService
     {
-        private readonly IProductRepository _productRepo;
+        private readonly IRepository _repository;
 
-        public ProductService(IProductRepository productRepo)
+        public ProductService(IRepository repository)
         {
-            _productRepo = productRepo;
+            _repository = repository;
         }
 
         public async Task<int> CountAsync()
         {
-            return await _productRepo.CountAsync();
+            return await _repository.Products.CountAsync();
         }
 
         public async Task CreateProductAsync(Product product, int userId)
@@ -30,8 +30,8 @@ namespace StockManager.Services.Source.Services
             {
                 await ValidateProductFormData(product);
 
-                await _productRepo.AddProductAsync(product);
-                await _productRepo.SaveDbChangesAsync();
+                await _repository.Products.AddProductAsync(product);
+                await _repository.SaveChangesAsync();
 
                 // Get the main location
                 Location mainLocation = await AppServices.LocationService.GetMainLocationAsync();
@@ -49,7 +49,7 @@ namespace StockManager.Services.Source.Services
                 );
 
                 // Save changes to save the association
-                await _productRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -67,15 +67,15 @@ namespace StockManager.Services.Source.Services
                 {
                     int productId = productIds[i];
 
-                    Product product = await _productRepo.FindProductByIdAsync(productId, false);
+                    Product product = await _repository.Products.FindProductByIdAsync(productId, false);
 
                     if (product != null)
                     {
-                        _productRepo.RemoveProduct(product);
+                        _repository.Products.RemoveProduct(product);
                     }
                 }
 
-                await _productRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch
             {
@@ -89,15 +89,13 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                Product dbProduct = await _productRepo
-                  .FindProductByIdAsync(product.ProductId, false);
-
+                Product dbProduct = await _repository.Products.FindProductByIdAsync(product.ProductId, false);
                 await ValidateProductFormData(product, dbProduct);
 
                 dbProduct.Reference = product.Reference;
                 dbProduct.Name = product.Name;
 
-                await _productRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -107,12 +105,12 @@ namespace StockManager.Services.Source.Services
 
         public async Task<Product> GetProductByIdAsync(int productId)
         {
-            return await _productRepo.FindProductByIdAsync(productId);
+            return await _repository.Products.FindProductByIdAsync(productId);
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null)
         {
-            IEnumerable<Product> products = await _productRepo.FindAllProductsAsync(searchValue);
+            IEnumerable<Product> products = await _repository.Products.FindAllProductsAsync(searchValue);
 
             // Calculate the product total stock
             products.ToList().ForEach(product => {
@@ -147,7 +145,7 @@ namespace StockManager.Services.Source.Services
             // Check if the reference already exist This validation only occurs when all form fields
             // have no errors And only if is a create or an update and the reference has changed
             Product nameCheck = ((dbProduct == null) || (dbProduct.Reference != product.Reference))
-              ? await _productRepo.FindProductByReferenceAsync(product.Reference)
+              ? await _repository.Products.FindProductByReferenceAsync(product.Reference)
               : null;
 
             if (nameCheck != null)

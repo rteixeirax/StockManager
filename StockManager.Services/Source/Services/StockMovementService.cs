@@ -11,11 +11,11 @@ namespace StockManager.Services.Source.Services
 {
     public class StockMovementService : IStockMovementService
     {
-        private readonly IStockMovementRepository _stockMovementRepo;
+        private readonly IRepository _repository;
 
-        public StockMovementService(IStockMovementRepository stockMovementRepo)
+        public StockMovementService(IRepository repository)
         {
-            _stockMovementRepo = stockMovementRepo;
+            _repository = repository;
         }
 
         public async Task AddStockMovementAsync(StockMovement data, bool applyDbChanges = false)
@@ -40,7 +40,7 @@ namespace StockManager.Services.Source.Services
                     data.Stock = data.Qty;
                 }
 
-                await _stockMovementRepo.InsertStockMovementAsync(data);
+                await _repository.StockMovements.InsertStockMovementAsync(data);
 
                 // Normally this service is called inside other services and the call of the
                 // SaveChangesAsync method it will be the responsibility of the other service. In
@@ -48,7 +48,7 @@ namespace StockManager.Services.Source.Services
                 // movement, for that we need to sent the applyDbChanges setted to true.
                 if (applyDbChanges)
                 {
-                    await _stockMovementRepo.SaveDbChangesAsync();
+                    await _repository.SaveChangesAsync();
                 }
             }
             catch
@@ -84,7 +84,7 @@ namespace StockManager.Services.Source.Services
                 // Update the stock in the ProductLocation relation
                 productLocation.Stock += qtyToMove;
 
-                await _stockMovementRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -94,14 +94,12 @@ namespace StockManager.Services.Source.Services
 
         public async Task<IEnumerable<StockMovement>> GetAllAsync(string searchValue)
         {
-            return await _stockMovementRepo
-                  .FindAllMovementsAsync(searchValue);
+            return await _repository.StockMovements.FindAllMovementsAsync(searchValue);
         }
 
         public async Task<StockMovement> GetProductLastStockMovementAsync(int productId)
         {
-            return await _stockMovementRepo
-              .FindProductLastStockMovementAsync(productId);
+            return await _repository.StockMovements.FindProductLastStockMovementAsync(productId);
         }
 
         public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId)
@@ -166,7 +164,7 @@ namespace StockManager.Services.Source.Services
                     );
                 }
 
-                await _stockMovementRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -205,7 +203,7 @@ namespace StockManager.Services.Source.Services
 
                 if (applyDbChanges)
                 {
-                    await _stockMovementRepo.SaveDbChangesAsync();
+                    await _repository.SaveChangesAsync();
                 }
             }
         }

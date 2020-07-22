@@ -10,11 +10,11 @@ namespace StockManager.Services.Source.Services
 {
     public class ProductLocationService : IProductLocationService
     {
-        private readonly IProductLocationRepository _productLocationRepo;
+        private readonly IRepository _repository;
 
-        public ProductLocationService(IProductLocationRepository productLocationRepo)
+        public ProductLocationService(IRepository repository)
         {
-            _productLocationRepo = productLocationRepo;
+            _repository = repository;
         }
 
         public async Task AddProductLocationAsync(ProductLocation productLocation, int userId, bool applyDbChanges = true, bool createStockMovement = true)
@@ -22,7 +22,7 @@ namespace StockManager.Services.Source.Services
             try
             {
                 await ValidateProductLocationDataAsync(productLocation);
-                await _productLocationRepo.InsertProductLocationAsync(productLocation);
+                await _repository.ProductLocations.InsertProductLocationAsync(productLocation);
 
                 StockMovement stockMovement = new StockMovement()
                 {
@@ -40,7 +40,7 @@ namespace StockManager.Services.Source.Services
 
                 if (applyDbChanges)
                 {
-                    await _productLocationRepo.SaveDbChangesAsync();
+                    await _repository.SaveChangesAsync();
                 }
             }
             catch (OperationErrorException operationErrorException)
@@ -61,7 +61,7 @@ namespace StockManager.Services.Source.Services
 
             try
             {
-                ProductLocation productLocation = await _productLocationRepo
+                ProductLocation productLocation = await _repository.ProductLocations
                   .FindProductLocationByIdAsync(productLocationId);
 
                 if (productLocation != null)
@@ -77,8 +77,8 @@ namespace StockManager.Services.Source.Services
                     await AppServices.StockMovementService.MoveStockToMainLocationAsync(productLocation, userId);
 
                     // Remove the location
-                    _productLocationRepo.RemoveProductLocation(productLocation);
-                    await _productLocationRepo.SaveDbChangesAsync();
+                    _repository.ProductLocations.RemoveProductLocation(productLocation);
+                    await _repository.SaveChangesAsync();
                 }
             }
             catch (OperationErrorException operationErrorException)
@@ -96,24 +96,24 @@ namespace StockManager.Services.Source.Services
 
         public async Task<ProductLocation> GetProductLocationAsync(int productId, int locationId)
         {
-            return await _productLocationRepo.FindProductLocationAsync(productId, locationId);
+            return await _repository.ProductLocations.FindProductLocationAsync(productId, locationId);
         }
 
         public async Task<ProductLocation> GetProductLocationByIdAsync(int productLocationId)
         {
-            return await _productLocationRepo.FindProductLocationByIdAsync(productLocationId);
+            return await _repository.ProductLocations.FindProductLocationByIdAsync(productLocationId);
         }
 
         public async Task UpdateProductLocationMinStock(int productLocation, float minStock)
         {
             try
             {
-                ProductLocation dbProductLocation = await _productLocationRepo
+                ProductLocation dbProductLocation = await _repository.ProductLocations
                   .FindProductLocationByIdAsync(productLocation);
 
                 dbProductLocation.MinStock = minStock;
 
-                await _productLocationRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch
             {
@@ -139,7 +139,7 @@ namespace StockManager.Services.Source.Services
             }
 
             // check if the product is already associated with the location
-            ProductLocation pLocationCheck = await _productLocationRepo
+            ProductLocation pLocationCheck = await _repository.ProductLocations
               .FindProductLocationAsync(productLocation.ProductId, productLocation.LocationId);
 
             if (pLocationCheck != null)

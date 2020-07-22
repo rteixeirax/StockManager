@@ -12,16 +12,16 @@ namespace StockManager.Services.Source.Services
 {
     public class LocationService : ILocationService
     {
-        private readonly ILocationRepository _locationRepo;
+        private readonly IRepository _repository;
 
-        public LocationService(ILocationRepository locationRepo)
+        public LocationService(IRepository repository)
         {
-            _locationRepo = locationRepo;
+            _repository = repository;
         }
 
         public async Task<int> CountAsync()
         {
-            return await _locationRepo.CountLocationsAsync();
+            return await _repository.Locations.CountLocationsAsync();
         }
 
         public async Task CreateLocationAsync(Location location)
@@ -30,8 +30,8 @@ namespace StockManager.Services.Source.Services
             {
                 await ValidateLocationFormData(location);
 
-                await _locationRepo.AddLocationAsync(location);
-                await _locationRepo.SaveDbChangesAsync();
+                await _repository.Locations.AddLocationAsync(location);
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -49,7 +49,7 @@ namespace StockManager.Services.Source.Services
                 {
                     int locationId = locationIds[i];
 
-                    Location location = await _locationRepo.FindLocationByIdAsync(locationId, false);
+                    Location location = await _repository.Locations.FindLocationByIdAsync(locationId, false);
 
                     if (location != null)
                     {
@@ -78,11 +78,11 @@ namespace StockManager.Services.Source.Services
                             }
                         }
 
-                        _locationRepo.RemoveLocation(location);
+                        _repository.Locations.RemoveLocation(location);
                     }
                 }
 
-                await _locationRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -102,14 +102,13 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                Location dbLocation = await _locationRepo
-                  .FindLocationByIdAsync(location.LocationId);
+                Location dbLocation = await _repository.Locations.FindLocationByIdAsync(location.LocationId);
 
                 await ValidateLocationFormData(location, dbLocation);
 
                 dbLocation.Name = location.Name;
 
-                await _locationRepo.SaveDbChangesAsync();
+                await _repository.SaveChangesAsync();
             }
             catch (OperationErrorException operationErrorException)
             {
@@ -119,22 +118,22 @@ namespace StockManager.Services.Source.Services
 
         public async Task<Location> GetLocationByIdAsync(int locationId)
         {
-            return await _locationRepo.FindLocationByIdAsync(locationId);
+            return await _repository.Locations.FindLocationByIdAsync(locationId);
         }
 
         public async Task<IEnumerable<Location>> GetLocationsAsync(string searchValue = null)
         {
-            return await _locationRepo.FindAllLocationsAsync(searchValue);
+            return await _repository.Locations.FindAllLocationsAsync(searchValue);
         }
 
         public async Task<IEnumerable<StockMovement>> GetLocationStockMovements(int locationId)
         {
-            return await _locationRepo.FindAllStockMovements(locationId);
+            return await _repository.Locations.FindAllStockMovements(locationId);
         }
 
         public async Task<Location> GetMainLocationAsync(bool includeProducts = false)
         {
-            return await _locationRepo.FindMainLocationAsync(includeProducts);
+            return await _repository.Locations.FindMainLocationAsync(includeProducts);
         }
 
         /// <summary>
@@ -157,7 +156,7 @@ namespace StockManager.Services.Source.Services
             // Check if the name already exist This validation only occurs when all form fields have
             // no errors And only if is a create or an update and the name has changed
             Location nameCheck = ((dbLocation == null) || (dbLocation.Name != location.Name))
-              ? await _locationRepo.FindLocationByNameAsync(location.Name)
+              ? await _repository.Locations.FindLocationByNameAsync(location.Name)
               : null;
 
             if (nameCheck != null)
