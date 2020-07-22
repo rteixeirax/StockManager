@@ -30,7 +30,7 @@ namespace StockManager.Services.Source.Services
             {
                 await ValidateProductFormData(product);
 
-                await _repository.Products.AddProductAsync(product);
+                await _repository.Products.AddAsync(product);
                 await _repository.SaveChangesAsync();
 
                 // Get the main location
@@ -67,11 +67,11 @@ namespace StockManager.Services.Source.Services
                 {
                     int productId = productIds[i];
 
-                    Product product = await _repository.Products.FindProductByIdAsync(productId, false);
+                    Product product = await _repository.Products.GetByIdAsync(productId);
 
                     if (product != null)
                     {
-                        _repository.Products.RemoveProduct(product);
+                        _repository.Products.Remove(product);
                     }
                 }
 
@@ -89,7 +89,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                Product dbProduct = await _repository.Products.FindProductByIdAsync(product.ProductId, false);
+                Product dbProduct = await _repository.Products.GetByIdAsync(product.ProductId);
                 await ValidateProductFormData(product, dbProduct);
 
                 dbProduct.Reference = product.Reference;
@@ -105,12 +105,21 @@ namespace StockManager.Services.Source.Services
 
         public async Task<Product> GetProductByIdAsync(int productId)
         {
-            return await _repository.Products.FindProductByIdAsync(productId);
+            return await _repository.Products.GetByIdWithProductLocationsAndStockMovementsAsync(productId);
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync(string searchValue = null)
         {
-            IEnumerable<Product> products = await _repository.Products.FindAllProductsAsync(searchValue);
+            IEnumerable<Product> products;
+
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                products = await _repository.Products
+                    .FindAllWithProductLocationsAsync(product => product.Reference.ToLower().Contains(searchValue.ToLower())
+                    || product.Name.ToLower().Contains(searchValue.ToLower()));
+            }
+
+            products = await _repository.Products.FindAllWithProductLocationsAsync();
 
             // Calculate the product total stock
             products.ToList().ForEach(product => {
@@ -145,7 +154,7 @@ namespace StockManager.Services.Source.Services
             // Check if the reference already exist This validation only occurs when all form fields
             // have no errors And only if is a create or an update and the reference has changed
             Product nameCheck = ((dbProduct == null) || (dbProduct.Reference != product.Reference))
-              ? await _repository.Products.FindProductByReferenceAsync(product.Reference)
+              ? await _repository.Products.FindOneAsync(p => p.Reference.ToLower() == product.Reference.ToLower())
               : null;
 
             if (nameCheck != null)

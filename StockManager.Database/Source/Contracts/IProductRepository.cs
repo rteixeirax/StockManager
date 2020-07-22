@@ -1,45 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source.Contracts
 {
-    public interface IProductRepository
+    public interface IProductRepository : IBaseRepository<Product>
     {
         /// <summary>
-        /// Add new product
+        /// Find all products with productLocations included that satisfy the given lambda expression
         /// </summary>
-        Task AddProductAsync(Product product);
+        Task<IEnumerable<Product>> FindAllWithProductLocationsAsync(Expression<Func<Product, bool>> expression);
 
         /// <summary>
-        /// Count all the products in the DB
+        /// Find all products with productLocations included  without lamba expression
         /// </summary>
-        Task<int> CountAsync();
+        Task<IEnumerable<Product>> FindAllWithProductLocationsAsync();
 
         /// <summary>
-        /// Find all products
+        /// Get user by id with productLocations and stockMovements included
         /// </summary>
-        Task<IEnumerable<Product>> FindAllProductsAsync(string searchValue = null);
-
-        /// <summary>
-        /// Find product by id
-        /// </summary>
-        Task<Product> FindProductByIdAsync(int productId, bool includeRelations = true);
-
-        /// <summary>
-        /// Find user by reference
-        /// </summary>
-        Task<Product> FindProductByReferenceAsync(string reference);
-
-        /// <summary>
-        /// Remove product
-        /// </summary>
-        void RemoveProduct(Product product);
-
-        /// <summary>
-        /// Save DB changes
-        /// </summary>
-        Task SaveDbChangesAsync();
+        Task<Product> GetByIdWithProductLocationsAndStockMovementsAsync(int id);
     }
 }
