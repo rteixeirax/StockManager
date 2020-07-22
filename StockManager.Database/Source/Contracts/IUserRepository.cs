@@ -15,7 +15,7 @@ namespace StockManager.Database.Source.Contracts
         Task AddUserAsync(User user);
 
         /// <summary>
-        /// Find all users with role included
+        /// Find all users with role included that satisfy the given lambda expression
         /// </summary>
         Task<IEnumerable<User>> FindAllWithRoleAsync(Expression<Func<User, bool>> expression);
 
@@ -25,7 +25,7 @@ namespace StockManager.Database.Source.Contracts
         Task<IEnumerable<User>> FindAllWithRoleAsync();
 
         /// <summary>
-        /// Find one user with role included
+        /// Find one user with role included that satisfy the given lambda expression
         /// </summary>
         Task<User> FindOneWithRoleAsync(Expression<Func<User, bool>> expression);
 
