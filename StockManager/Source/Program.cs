@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 
 using StockManager.Database.Source;
+using StockManager.Database.Source.Contracts;
 using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Forms;
@@ -52,8 +53,11 @@ namespace StockManager.Source
             // Instantiate our database
             DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
 
+            // Instantiate out repository
+            IRepository Repository = new Repository(DatabaseContext);
+
             // Instantiate our services
-            AppServices.ConfigureServices(DatabaseContext);
+            AppServices.ConfigureServices(Repository);
 
             // Set the application language
             AppTranslations.ConfigureLanguage(await AppServices.SettingsService.GetAppLanguageAsync());
