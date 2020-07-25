@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using StockManager.Database.Source.Contracts;
-using StockManager.Database.Source.Models;
-using StockManager.Services.Source.Contracts;
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Services;
 
 namespace StockManager.Services.Source.Services
 {
     public class RoleService : IRoleService
     {
-        private readonly IRepository _repository;
+        private readonly IAppRepository _repository;
 
-        public RoleService(IRepository repository)
+        public RoleService(IAppRepository repository)
         {
             _repository = repository;
         }

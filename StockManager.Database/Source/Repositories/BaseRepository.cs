@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
-using StockManager.Database.Source.Contracts;
+using StockManager.Core.Source.Repositories;
 
 namespace StockManager.Database.Source.Repositories
 {

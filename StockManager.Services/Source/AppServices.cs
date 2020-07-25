@@ -1,5 +1,5 @@
-﻿using StockManager.Database.Source.Contracts;
-using StockManager.Services.Source.Contracts;
+﻿using StockManager.Core.Source;
+using StockManager.Core.Source.Services;
 using StockManager.Services.Source.Services;
 
 namespace StockManager.Services.Source
@@ -14,7 +14,7 @@ namespace StockManager.Services.Source
         public static IStockMovementService StockMovementService { get; private set; }
         public static IUserService UserService { get; private set; }
 
-        public static void ConfigureServices(IRepository repository)
+        public static void ConfigureServices(IAppRepository repository)
         {
             // Instantiate our services
             SettingsService = new AppSettingsService(repository);

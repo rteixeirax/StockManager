@@ -3,7 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
 
 namespace StockManager.Database.Source.Configurations
 {

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
+using StockManager.Core.Source;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
-using StockManager.Utilities.Source;
 
 namespace StockManager.Source.Forms
 {

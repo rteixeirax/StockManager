@@ -1,16 +1,15 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
+using StockManager.Core.Source;
 using StockManager.Database.Source;
 using StockManager.Services.Source;
-using StockManager.Utilities.Source;
 
 namespace StockManager.Tests.Source
 {
     public class TestsConfig
     {
         private readonly SqliteConnection _connection;
-        private readonly DatabaseContext _databaseContext;
 
         public TestsConfig()
         {
@@ -25,10 +24,13 @@ namespace StockManager.Tests.Source
             builder.UseSqlite(_connection);
 
             // Instantiate our test database context
-            _databaseContext = new DatabaseContext(builder.Options);
+            DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
+
+            // Instantiate our repository
+            IAppRepository AppRepository = new AppRepository(DatabaseContext);
 
             // Instantiate our services
-            AppServices.ConfigureServices(_databaseContext);
+            AppServices.ConfigureServices(AppRepository);
         }
 
         /// <summary>
@@ -37,15 +39,6 @@ namespace StockManager.Tests.Source
         public void CloseConnection()
         {
             _connection.Close();
-        }
-
-        /// <summary>
-        /// Get the test database context
-        /// </summary>
-        /// <returns>DatabaseContext</returns>
-        public DatabaseContext GetDatabaseContext()
-        {
-            return _databaseContext;
         }
     }
 }

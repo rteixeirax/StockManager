@@ -1,6 +1,6 @@
 ﻿
-using StockManager.Database.Source.Contracts;
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Repositories;
 
 namespace StockManager.Database.Source.Repositories
 {

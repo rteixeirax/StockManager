@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
 using StockManager.Source.ColorTables;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
-using StockManager.Utilities.Source;
 
 namespace StockManager.Source.Forms
 {

@@ -4,13 +4,12 @@ using System.Windows.Forms;
 
 using Microsoft.EntityFrameworkCore;
 
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
 using StockManager.Database.Source;
-using StockManager.Database.Source.Contracts;
-using StockManager.Database.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
-using StockManager.Utilities.Source;
 
 namespace StockManager.Source
 {
@@ -54,10 +53,10 @@ namespace StockManager.Source
             DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
 
             // Instantiate our repository
-            IRepository Repository = new Repository(DatabaseContext);
+            IAppRepository AppRepository = new AppRepository(DatabaseContext);
 
             // Instantiate our services
-            AppServices.ConfigureServices(Repository);
+            AppServices.ConfigureServices(AppRepository);
 
             // Set the application language
             AppTranslations.ConfigureLanguage(await AppServices.SettingsService.GetAppLanguageAsync());

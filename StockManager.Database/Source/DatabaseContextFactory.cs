@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-using StockManager.Utilities.Source;
+using StockManager.Core.Source;
 
 namespace StockManager.Database.Source
 {

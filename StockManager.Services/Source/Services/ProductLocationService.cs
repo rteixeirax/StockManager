@@ -1,18 +1,18 @@
 using System.Threading.Tasks;
 
-using StockManager.Database.Source.Contracts;
-using StockManager.Database.Source.Models;
-using StockManager.Services.Source.Contracts;
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Services;
+using StockManager.Core.Source.Types;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
 
 namespace StockManager.Services.Source.Services
 {
     public class ProductLocationService : IProductLocationService
     {
-        private readonly IRepository _repository;
+        private readonly IAppRepository _repository;
 
-        public ProductLocationService(IRepository repository)
+        public ProductLocationService(IAppRepository repository)
         {
             _repository = repository;
         }

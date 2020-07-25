@@ -2,10 +2,10 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
 
 namespace StockManager.Tests.Source.Services
 {

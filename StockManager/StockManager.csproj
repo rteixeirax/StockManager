@@ -172,7 +172,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Source\ColorTables\MenuStripProfessionalColorTable.cs" />
-    <Compile Include="Source\Extensions\Extensions.cs" />
     <Compile Include="Source\Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,6 +333,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StockManager.Core\StockManager.Core.csproj">
+      <Project>{7f28e1ee-2d54-472a-a632-5ea2f88e6097}</Project>
+      <Name>StockManager.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StockManager.Database\StockManager.Database.csproj">
       <Project>{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}</Project>
       <Name>StockManager.Database</Name>
@@ -345,14 +348,6 @@
     <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
       <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
       <Name>StockManager.Translations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj">
-      <Project>{40d9acbf-76a7-4f70-84cf-b82571830b53}</Project>
-      <Name>StockManager.Types</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Utilities\StockManager.Utilities.csproj">
-      <Project>{c150e518-485f-4a5a-8fad-8d502d255aad}</Project>
-      <Name>StockManager.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

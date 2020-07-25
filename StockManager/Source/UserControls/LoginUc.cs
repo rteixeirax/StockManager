@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
 
 namespace StockManager.Source.UserControls
 {

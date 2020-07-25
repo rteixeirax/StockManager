@@ -178,6 +178,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StockManager.Core\StockManager.Core.csproj">
+      <Project>{7F28E1EE-2D54-472A-A632-5EA2F88E6097}</Project>
+      <Name>StockManager.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StockManager.Services\StockManager.Services.csproj">
       <Project>{06E6DF51-756B-4D4C-BBBC-5FC389F681F3}</Project>
       <Name>StockManager.Services</Name>
@@ -189,14 +193,6 @@
     <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
       <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
       <Name>StockManager.Translations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj">
-      <Project>{40D9ACBF-76A7-4F70-84CF-B82571830B53}</Project>
-      <Name>StockManager.Types</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Utilities\StockManager.Utilities.csproj">
-      <Project>{c150e518-485f-4a5a-8fad-8d502d255aad}</Project>
-      <Name>StockManager.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;

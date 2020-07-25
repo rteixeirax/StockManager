@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StockManager.Types\StockManager.Types.csproj" />
-    <ProjectReference Include="..\StockManager.Utilities\StockManager.Utilities.csproj" />
+    <ProjectReference Include="..\StockManager.Core\StockManager.Core.csproj" />
   </ItemGroup>
 
 </Project>

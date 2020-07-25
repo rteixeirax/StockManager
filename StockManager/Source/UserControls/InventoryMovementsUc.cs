@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Extensions;
+using StockManager.Core.Source.Models;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
-using StockManager.Source.Extensions;
 using StockManager.Source.Forms;
 using StockManager.Translations.Source;
 

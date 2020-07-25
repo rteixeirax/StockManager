@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.UserControls;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
-using StockManager.Utilities.Source;
 
 namespace StockManager.Source.Forms
 {

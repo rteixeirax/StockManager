@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using StockManager.Database.Source.Contracts;
-using StockManager.Database.Source.Models;
-using StockManager.Services.Source.Contracts;
+using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Services;
+using StockManager.Core.Source.Types;
 using StockManager.Translations.Source;
-using StockManager.Types.Source;
 
 namespace StockManager.Services.Source.Services
 {
     public class UserService : IUserService
     {
-        private readonly IRepository _repository;
+        private readonly IAppRepository _repository;
 
-        public UserService(IRepository repository)
+        public UserService(IAppRepository repository)
         {
             _repository = repository;
         }

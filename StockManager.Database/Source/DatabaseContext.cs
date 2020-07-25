@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
+using StockManager.Core.Source.Models;
 using StockManager.Database.Source.Configurations;
-using StockManager.Database.Source.Models;
 
 namespace StockManager.Database.Source
 {

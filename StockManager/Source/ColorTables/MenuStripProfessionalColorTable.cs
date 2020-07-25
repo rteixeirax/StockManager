@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-using StockManager.Utilities.Source;
+using StockManager.Core.Source;
 
 namespace StockManager.Source.ColorTables
 {

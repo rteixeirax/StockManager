@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using StockManager.Database.Source.Models;
+using StockManager.Core.Source.Models;
 using StockManager.Services.Source;
 
 namespace StockManager.Tests.Source.Services
