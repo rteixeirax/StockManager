@@ -17,8 +17,12 @@ namespace StockManager.Database.Source.Configurations
               .HasName("UniqueName");
 
             builder
-               .Property(x => x.IsMain)
-               .HasDefaultValue(false);
+              .HasIndex(x => x.IsMain)
+              .HasName("IsMainIndex");
+
+            builder
+              .Property(x => x.IsMain)
+              .HasDefaultValue(false);
 
             builder
              .HasMany(x => x.ProductLocations)
