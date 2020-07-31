@@ -118,8 +118,10 @@ namespace StockManager.Services.Source.Services
                     .FindAllWithProductLocationsAsync(product => product.Reference.ToLower().Contains(searchValue.ToLower())
                     || product.Name.ToLower().Contains(searchValue.ToLower()));
             }
-
-            products = await _repository.Products.FindAllWithProductLocationsAsync();
+            else
+            {
+                products = await _repository.Products.FindAllWithProductLocationsAsync();
+            }
 
             // Calculate the product total stock
             products.ToList().ForEach(product => {

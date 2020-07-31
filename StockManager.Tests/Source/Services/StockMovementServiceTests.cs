@@ -39,16 +39,6 @@ namespace StockManager.Tests.Source.Services
             _mockUser = await AppServices.UserService.GetByIdAsync(1);
 
             await AppServices.ProductService.CreateAsync(_mockProduct, _mockUser.UserId);
-            await AppServices.ProductLocationService
-              .CreateAsync(new ProductLocation()
-              {
-                  ProductId = _mockProduct.ProductId,
-                  LocationId = _mockLocation.LocationId,
-                  Stock = 10,
-                  MinStock = 0
-              },
-              _mockUser.UserId
-            );
         }
 
         [TestMethod]
@@ -60,6 +50,7 @@ namespace StockManager.Tests.Source.Services
                 UserId = _mockUser.UserId,
                 ProductId = _mockProduct.ProductId,
                 ToLocationId = _mockLocation.LocationId,
+                ToLocationName = _mockLocation.Name,
                 Qty = 10,
             };
 
@@ -68,7 +59,7 @@ namespace StockManager.Tests.Source.Services
 
             // Assert
             Assert.AreEqual(stockMovement.Qty, 10);
-            Assert.AreEqual(stockMovement.Stock, 20);
+            Assert.AreEqual(stockMovement.Stock, 10);
             Assert.AreEqual(stockMovement.ToLocationId, _mockLocation.LocationId);
             Assert.AreEqual(stockMovement.ProductId, _mockProduct.ProductId);
             Assert.AreEqual(stockMovement.UserId, _mockUser.UserId);
@@ -94,7 +85,7 @@ namespace StockManager.Tests.Source.Services
 
             // Assert
             Assert.AreEqual(stockMovement.Qty, -10);
-            Assert.AreEqual(stockMovement.Stock, 0);
+            Assert.AreEqual(stockMovement.Stock, -10);
             Assert.AreEqual(stockMovement.FromLocationId, _mockLocation.LocationId);
             Assert.AreEqual(stockMovement.ProductId, _mockProduct.ProductId);
             Assert.AreEqual(stockMovement.UserId, _mockUser.UserId);
