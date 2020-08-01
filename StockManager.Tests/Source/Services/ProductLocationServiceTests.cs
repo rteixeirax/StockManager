@@ -81,6 +81,23 @@ namespace StockManager.Tests.Source.Services
         }
 
         [TestMethod]
+        public async Task ShouldUpdateProductLocationMinStock()
+        {
+            // Arrange / Act
+            ProductLocation productLocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProduct.ProductId, _mockMainLocation.LocationId);
+
+            // Assert
+            Assert.AreEqual(productLocation.MinStock, 0);
+
+            // Act
+            await AppServices.ProductLocationService.UpdateMinStock(productLocation.ProductLocationId, 5);
+
+            // Assert
+            Assert.AreEqual(productLocation.MinStock, 5);
+        }
+
+        [TestMethod]
         public async Task ShouldDeleteProductLocation()
         {
             // Arrange
@@ -103,6 +120,7 @@ namespace StockManager.Tests.Source.Services
             StockMovement stockMovement = await AppServices.StockMovementService
               .GetProductLastMovementAsync(newProductLocation.ProductId);
 
+            // Assert that the product stock is moved back to the main location
             Assert.AreEqual(stockMovement.FromLocationId, newProductLocation.LocationId);
             Assert.AreEqual(stockMovement.ToLocationId, _mockMainLocation.LocationId);
             Assert.AreEqual(stockMovement.UserId, _mockUser.UserId);
@@ -175,6 +193,30 @@ namespace StockManager.Tests.Source.Services
                 Assert.AreEqual(ex.Errors.Count, 1);
                 Assert.AreEqual(ex.Errors[0].Field, "LocationId");
                 Assert.AreEqual(ex.Errors[0].Error, Phrases.GlobalRequiredField);
+            }
+        }
+
+        [TestMethod]
+        public async Task ShouldFailDeleteProductLocation_TheAssociationWithMainLocationCantBeRemove()
+        {
+            // Arrange
+            ProductLocation productLocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProduct.ProductId, _mockMainLocation.LocationId);
+
+            try
+            {
+                // Act
+                await AppServices.ProductLocationService
+                  .DeleteAsyn(productLocation.ProductLocationId, _mockUser.UserId);
+
+                Assert.Fail("It should have thrown an OperationErrorExeption");
+            }
+            catch (OperationErrorException ex)
+            {
+                // Assert
+                Assert.AreEqual(ex.Errors.Count, 1);
+                Assert.AreEqual(ex.Errors[0].Field, "LocationId");
+                Assert.AreEqual(ex.Errors[0].Error, Phrases.ProductLocationDeleteErrorMainLocation);
             }
         }
     }

@@ -72,6 +72,58 @@ namespace StockManager.Tests.Source.Services
         }
 
         /// <summary>
+        /// Should delete location
+        /// </summary>
+        [TestMethod]
+        public async Task ShouldDeleteLocationWithProducts_TheProductsStockShouldBeMovedToMainLocation()
+        {
+            // Arrange
+            User admin = await AppServices.UserService.GetByIdAsync(1);
+            Location mainLocation = await AppServices.LocationService.GetMainAsync();
+
+            await AppServices.LocationService.CreateAsync(_mockLocation);
+
+            Product product = new Product() { Reference = "mockProduct", Name = "Mock product" };
+            await AppServices.ProductService.CreateAsync(product, admin.UserId);
+            // Add product stock to the main location
+            await AppServices.StockMovementService.CreateMovementInsideMainLocationAsync(product.ProductId, 20, true, admin.UserId);
+
+            // Act
+            // Move stock to the mock location
+            await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+                mainLocation.LocationId,
+                _mockLocation.LocationId,
+                product.ProductId, 10,
+                admin.UserId
+            );
+
+            StockMovement smToMockLocation = await AppServices.StockMovementService.GetProductLastMovementAsync(product.ProductId);
+
+            // Assert
+            Assert.AreEqual(smToMockLocation.FromLocationId, mainLocation.LocationId);
+            Assert.AreEqual(smToMockLocation.FromLocationName, mainLocation.Name);
+            Assert.AreEqual(smToMockLocation.ToLocationId, _mockLocation.LocationId);
+            Assert.AreEqual(smToMockLocation.ProductId, product.ProductId);
+            Assert.AreEqual(smToMockLocation.Qty, 10);
+            Assert.AreEqual(smToMockLocation.Stock, 10);
+
+            // Act
+            await AppServices.LocationService.DeleteAsync(new int[] { _mockLocation.LocationId }, 1);
+            Location dbLocation = await AppServices.LocationService.GetByIdAsync(_mockLocation.LocationId);
+
+            StockMovement smBackToMainLocation = await AppServices.StockMovementService.GetProductLastMovementAsync(product.ProductId);
+
+            // Assert
+            Assert.IsNull(dbLocation);
+            Assert.IsNull(smBackToMainLocation.FromLocationId);
+            Assert.AreEqual(smBackToMainLocation.FromLocationName, _mockLocation.Name);
+            Assert.AreEqual(smBackToMainLocation.ToLocationId, mainLocation.LocationId);
+            Assert.AreEqual(smBackToMainLocation.ProductId, product.ProductId);
+            Assert.AreEqual(smBackToMainLocation.Qty, 10);
+            Assert.AreEqual(smBackToMainLocation.Stock, 20);
+        }
+
+        /// <summary>
         /// Should edit location
         /// </summary>
         [TestMethod]

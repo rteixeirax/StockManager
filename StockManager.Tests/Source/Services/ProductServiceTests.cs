@@ -35,15 +35,15 @@ namespace StockManager.Tests.Source.Services
             _adminUser = await AppServices.UserService.GetByIdAsync(1);
 
             _mockProducts.AddRange(new Product[] {
-       new Product() {
-          Reference = "mockRef1",
-          Name = "Mock product 1",
-        },
-        new Product() {
-          Reference = "mockRef2",
-          Name = "Mock product 2",
-        }
-      });
+                new Product() {
+                    Reference = "mockRef1",
+                    Name = "Mock product 1",
+                },
+                new Product() {
+                    Reference = "mockRef2",
+                    Name = "Mock product 2",
+                }
+            });
         }
 
         /// <summary>
@@ -63,6 +63,39 @@ namespace StockManager.Tests.Source.Services
             Assert.AreEqual(product.Name, "Mock product 1");
             Assert.IsNotNull(product.CreatedAt);
             Assert.IsNotNull(product.UpdatedAt);
+        }
+
+        /// <summary>
+        /// Should create product
+        /// </summary>
+        [TestMethod]
+        public async Task ShouldCreateProductAndCheckIfTheAssociationWithMainLocationWasCreated()
+        {
+            // Arrange
+            Product product = _mockProducts[1];
+            Location mainLocation = await AppServices.LocationService.GetMainAsync();
+
+            // Act
+            await AppServices.ProductService.CreateAsync(product, _adminUser.UserId);
+
+            ProductLocation productLocation = await AppServices.ProductLocationService
+                .GetOneAsync(product.ProductId, mainLocation.LocationId);
+
+            StockMovement stockMovement = await AppServices.StockMovementService
+                .GetProductLastMovementAsync(product.ProductId);
+
+            // Assert
+            Assert.AreEqual(product.Reference, "mockRef2");
+            Assert.AreEqual(productLocation.LocationId, mainLocation.LocationId);
+            Assert.AreEqual(productLocation.Stock, 0);
+            Assert.AreEqual(productLocation.MinStock, 0);
+
+            Assert.AreEqual(stockMovement.ProductId, product.ProductId);
+            Assert.AreEqual(stockMovement.ToLocationId, mainLocation.LocationId);
+            Assert.AreEqual(stockMovement.ToLocationName, mainLocation.Name);
+            Assert.AreEqual(stockMovement.Qty, 0);
+            Assert.AreEqual(stockMovement.Stock, 0);
+            Assert.IsNull(stockMovement.FromLocationId);
         }
 
         /// <summary>
