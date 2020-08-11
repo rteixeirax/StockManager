@@ -11,6 +11,9 @@ namespace StockManager.Database.Source.Configurations
     {
         public void Configure(EntityTypeBuilder<AppSettings> builder)
         {
+            builder
+                .HasKey(x => x.AppSettingsId);
+
             builder.HasData(
              new AppSettings
              {

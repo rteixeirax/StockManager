@@ -1,41 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace StockManager.Core.Source.Models
+﻿namespace StockManager.Core.Source.Models
 {
     public class StockMovement : BaseEntity
     {
-        [Key]
         public int StockMovementId { get; set; }
 
-        [Required(ErrorMessage = "Qty is required")]
         public float Qty { get; set; }
 
-        [Required(ErrorMessage = "Stock is required")]
         public float Stock { get; set; }
-
-        [Required(ErrorMessage = "ProductId is required")]
-        [ForeignKey(nameof(Product))]
-        public int ProductId { get; set; }
-
-        public Product Product { get; set; }
-
-        [ForeignKey(nameof(ToLocation))]
-        public int? ToLocationId { get; set; }
-
-        public Location ToLocation { get; set; }
 
         public string ToLocationName { get; set; }
 
-        [ForeignKey(nameof(FromLocation))]
-        public int? FromLocationId { get; set; }
-
-        public Location FromLocation { get; set; }
-
         public string FromLocationName { get; set; }
 
-        [ForeignKey(nameof(User))]
+        public int ProductId { get; set; }
+
+        public int? ToLocationId { get; set; }
+
+        public int? FromLocationId { get; set; }
+
         public int? UserId { get; set; }
+
+        public Product Product { get; set; }
+
+        public Location ToLocation { get; set; }
+
+        public Location FromLocation { get; set; }
 
         public User User { get; set; }
     }

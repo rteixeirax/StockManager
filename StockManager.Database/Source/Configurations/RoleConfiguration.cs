@@ -12,15 +12,22 @@ namespace StockManager.Database.Source.Configurations
         public void Configure(EntityTypeBuilder<Role> builder)
         {
             builder
-              .HasIndex(x => x.Code)
-              .IsUnique()
-              .HasName("UniqueCode");
+                .HasKey(x => x.RoleId);
 
             builder
-              .HasMany(x => x.Users)
-              .WithOne(x => x.Role)
-              .HasForeignKey(x => x.RoleId)
-              .OnDelete(DeleteBehavior.Restrict);
+                .Property(x => x.Code)
+                .IsRequired();
+
+            builder
+                .HasIndex(x => x.Code)
+                .IsUnique()
+                .HasName("UniqueCode");
+
+            builder
+                .HasMany(x => x.Users)
+                .WithOne(x => x.Role)
+                .HasForeignKey(x => x.RoleId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasData(
               new Role

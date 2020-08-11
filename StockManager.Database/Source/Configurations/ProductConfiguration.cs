@@ -10,21 +10,32 @@ namespace StockManager.Database.Source.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder
-              .HasIndex(x => x.Reference)
-              .IsUnique()
-              .HasName("UniqueReference");
+                .HasKey(x => x.ProductId);
 
             builder
-              .HasMany(x => x.ProductLocations)
-              .WithOne(x => x.Product)
-              .HasForeignKey(x => x.ProductId)
-              .OnDelete(DeleteBehavior.Cascade);
+                .Property(x => x.Name)
+                .IsRequired();
 
             builder
-              .HasMany(x => x.StockMovements)
-              .WithOne(x => x.Product)
-              .HasForeignKey(x => x.ProductId)
-              .OnDelete(DeleteBehavior.Cascade);
+                .Property(x => x.Reference)
+                .IsRequired();
+
+            builder
+                .HasIndex(x => x.Reference)
+                .IsUnique()
+                .HasName("UniqueReference");
+
+            builder
+                .HasMany(x => x.ProductLocations)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder
+                .HasMany(x => x.StockMovements)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

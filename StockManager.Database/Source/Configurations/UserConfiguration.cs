@@ -12,15 +12,30 @@ namespace StockManager.Database.Source.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder
-              .HasIndex(x => x.Username)
-              .IsUnique()
-              .HasName("UniqueUsername");
+                .HasKey(x => x.UserId);
 
             builder
-             .HasMany(x => x.StockMovements)
-             .WithOne(x => x.User)
-             .HasForeignKey(x => x.UserId)
-             .OnDelete(DeleteBehavior.SetNull);
+                .Property(x => x.Username)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Password)
+                .IsRequired();
+
+            builder
+                .Property(x => x.RoleId)
+                .IsRequired();
+
+            builder
+                .HasIndex(x => x.Username)
+                .IsUnique()
+                .HasName("UniqueUsername");
+
+            builder
+                .HasMany(x => x.StockMovements)
+                .WithOne(x => x.User)
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasData(
               new User

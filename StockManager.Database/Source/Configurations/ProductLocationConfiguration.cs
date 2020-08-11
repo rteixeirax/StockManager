@@ -10,17 +10,28 @@ namespace StockManager.Database.Source.Configurations
         public void Configure(EntityTypeBuilder<ProductLocation> builder)
         {
             builder
-              .Property(x => x.Stock)
-              .HasDefaultValue(0);
+                .HasKey(x => x.ProductLocationId);
 
             builder
-              .Property(x => x.MinStock)
-              .HasDefaultValue(0);
+                .Property(x => x.LocationId)
+                .IsRequired();
 
             builder
-              .HasIndex(x => new { x.ProductId, x.LocationId })
-              .IsUnique()
-              .HasName("UniqueProductIdLocationIdPair");
+                .Property(x => x.ProductId)
+                .IsRequired();
+
+            builder
+                .Property(x => x.Stock)
+                .HasDefaultValue(0);
+
+            builder
+                .Property(x => x.MinStock)
+                .HasDefaultValue(0);
+
+            builder
+                .HasIndex(x => new { x.ProductId, x.LocationId })
+                .IsUnique()
+                .HasName("UniqueProductIdLocationIdPair");
 
             builder
                 .HasMany(x => x.Notifications)
