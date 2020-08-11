@@ -9,16 +9,16 @@ using StockManager.Database.Source;
 namespace StockManager.Database.Source.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20200606162003_AddToAndFromLocationNameToStockMovementTable")]
-    partial class AddToAndFromLocationNameToStockMovementTable
+    [Migration("20200811171649_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.3");
+                .HasAnnotation("ProductVersion", "3.1.6");
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.AppSettings", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.AppSettings", b =>
                 {
                     b.Property<int>("AppSettingsId")
                         .ValueGeneratedOnAdd()
@@ -41,13 +41,13 @@ namespace StockManager.Database.Source.Migrations
                         new
                         {
                             AppSettingsId = 1,
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 276, DateTimeKind.Utc).AddTicks(6142),
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920),
                             Language = "pt-PT",
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 276, DateTimeKind.Utc).AddTicks(6142)
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920)
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.Location", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.Location", b =>
                 {
                     b.Property<int>("LocationId")
                         .ValueGeneratedOnAdd()
@@ -70,6 +70,9 @@ namespace StockManager.Database.Source.Migrations
 
                     b.HasKey("LocationId");
 
+                    b.HasIndex("IsMain")
+                        .HasName("IsMainIndex");
+
                     b.HasIndex("Name")
                         .IsUnique()
                         .HasName("UniqueName");
@@ -80,22 +83,44 @@ namespace StockManager.Database.Source.Migrations
                         new
                         {
                             LocationId = 1,
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 426, DateTimeKind.Utc).AddTicks(9872),
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032),
                             IsMain = true,
                             Name = "Warehouse",
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 426, DateTimeKind.Utc).AddTicks(9872)
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032)
                         },
                         new
                         {
                             LocationId = 2,
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 426, DateTimeKind.Utc).AddTicks(9872),
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032),
                             IsMain = false,
                             Name = "Vehicle #1",
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 426, DateTimeKind.Utc).AddTicks(9872)
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032)
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.Product", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.Notification", b =>
+                {
+                    b.Property<int>("NotificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductLocationId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("NotificationId");
+
+                    b.HasIndex("ProductLocationId");
+
+                    b.ToTable("Notifications");
+                });
+
+            modelBuilder.Entity("StockManager.Core.Source.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
@@ -124,7 +149,7 @@ namespace StockManager.Database.Source.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.ProductLocation", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.ProductLocation", b =>
                 {
                     b.Property<int>("ProductLocationId")
                         .ValueGeneratedOnAdd()
@@ -163,7 +188,7 @@ namespace StockManager.Database.Source.Migrations
                     b.ToTable("ProductLocations");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.Role", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
@@ -192,19 +217,19 @@ namespace StockManager.Database.Source.Migrations
                         {
                             RoleId = 1,
                             Code = "Admin",
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 303, DateTimeKind.Utc).AddTicks(9519),
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 303, DateTimeKind.Utc).AddTicks(9519)
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903),
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903)
                         },
                         new
                         {
                             RoleId = 2,
                             Code = "User",
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 303, DateTimeKind.Utc).AddTicks(9519),
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 303, DateTimeKind.Utc).AddTicks(9519)
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903),
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903)
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.StockMovement", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.StockMovement", b =>
                 {
                     b.Property<int>("StockMovementId")
                         .ValueGeneratedOnAdd()
@@ -257,7 +282,7 @@ namespace StockManager.Database.Source.Migrations
                     b.ToTable("StockMovements");
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.User", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -297,56 +322,65 @@ namespace StockManager.Database.Source.Migrations
                         new
                         {
                             UserId = 1,
-                            CreatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 406, DateTimeKind.Utc).AddTicks(4670),
-                            Password = "$2b$10$rn5xwUrgAdCHiFcQEHrtOeExRVWU/l.wCWcaATKn.6tnPjbpg4bZa",
+                            CreatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655),
+                            Password = "$2b$10$yYXe.jRSGmxvxqQOrEzwwu1SQxElcQYaGK7MI82VJGkFpq46N4UYW",
                             RoleId = 1,
-                            UpdatedAt = new DateTime(2020, 6, 6, 16, 20, 2, 406, DateTimeKind.Utc).AddTicks(4670),
+                            UpdatedAt = new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655),
                             Username = "Admin"
                         });
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.ProductLocation", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.Notification", b =>
                 {
-                    b.HasOne("StockManager.Database.Source.Models.Location", "Location")
+                    b.HasOne("StockManager.Core.Source.Models.ProductLocation", "ProductLocation")
+                        .WithMany("Notifications")
+                        .HasForeignKey("ProductLocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("StockManager.Core.Source.Models.ProductLocation", b =>
+                {
+                    b.HasOne("StockManager.Core.Source.Models.Location", "Location")
                         .WithMany("ProductLocations")
                         .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Source.Models.Product", "Product")
+                    b.HasOne("StockManager.Core.Source.Models.Product", "Product")
                         .WithMany("ProductLocations")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.StockMovement", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.StockMovement", b =>
                 {
-                    b.HasOne("StockManager.Database.Source.Models.Location", "FromLocation")
+                    b.HasOne("StockManager.Core.Source.Models.Location", "FromLocation")
                         .WithMany("StockMovementsFrom")
                         .HasForeignKey("FromLocationId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("StockManager.Database.Source.Models.Product", "Product")
+                    b.HasOne("StockManager.Core.Source.Models.Product", "Product")
                         .WithMany("StockMovements")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StockManager.Database.Source.Models.Location", "ToLocation")
+                    b.HasOne("StockManager.Core.Source.Models.Location", "ToLocation")
                         .WithMany("StockMovementsTo")
                         .HasForeignKey("ToLocationId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.HasOne("StockManager.Database.Source.Models.User", "User")
+                    b.HasOne("StockManager.Core.Source.Models.User", "User")
                         .WithMany("StockMovements")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 
-            modelBuilder.Entity("StockManager.Database.Source.Models.User", b =>
+            modelBuilder.Entity("StockManager.Core.Source.Models.User", b =>
                 {
-                    b.HasOne("StockManager.Database.Source.Models.Role", "Role")
+                    b.HasOne("StockManager.Core.Source.Models.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)

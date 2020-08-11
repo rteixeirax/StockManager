@@ -33,11 +33,11 @@ namespace StockManager.Database.Source.Configurations
                 .IsUnique()
                 .HasName("UniqueProductIdLocationIdPair");
 
-            builder
-                .HasMany(x => x.Notifications)
-                .WithOne(x => x.ProductLocation)
-                .HasForeignKey(x => x.ProductLocationId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //builder
+            //    .HasMany(x => x.Notifications)
+            //    .WithOne(x => x.ProductLocation)
+            //    .HasForeignKey(x => x.ProductLocationId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

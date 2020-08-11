@@ -4,32 +4,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockManager.Database.Source.Migrations
 {
-    public partial class CreateTable : Migration
+    public partial class CreateTables : Migration
     {
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "AppSettings");
-
-            migrationBuilder.DropTable(
-                name: "ProductLocations");
-
-            migrationBuilder.DropTable(
-                name: "StockMovements");
-
-            migrationBuilder.DropTable(
-                name: "Locations");
-
-            migrationBuilder.DropTable(
-                name: "Products");
-
-            migrationBuilder.DropTable(
-                name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
-        }
-
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -52,6 +28,7 @@ namespace StockManager.Database.Source.Migrations
                 {
                     LocationId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    IsMain = table.Column<bool>(nullable: false, defaultValue: false),
                     Name = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true)
@@ -66,8 +43,8 @@ namespace StockManager.Database.Source.Migrations
                 {
                     ProductId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Reference = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
+                    Reference = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
@@ -97,8 +74,8 @@ namespace StockManager.Database.Source.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Stock = table.Column<float>(nullable: false, defaultValue: 0f),
                     MinStock = table.Column<float>(nullable: false, defaultValue: 0f),
-                    ProductId = table.Column<int>(nullable: false),
                     LocationId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
@@ -142,6 +119,26 @@ namespace StockManager.Database.Source.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    NotificationId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ProductLocationId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
+                    UpdatedAt = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table => {
+                    table.PrimaryKey("PK_Notifications", x => x.NotificationId);
+                    table.ForeignKey(
+                        name: "FK_Notifications_ProductLocations_ProductLocationId",
+                        column: x => x.ProductLocationId,
+                        principalTable: "ProductLocations",
+                        principalColumn: "ProductLocationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StockMovements",
                 columns: table => new
                 {
@@ -149,9 +146,11 @@ namespace StockManager.Database.Source.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Qty = table.Column<float>(nullable: false),
                     Stock = table.Column<float>(nullable: false),
+                    ToLocationName = table.Column<string>(nullable: true),
+                    FromLocationName = table.Column<string>(nullable: true),
                     ProductId = table.Column<int>(nullable: false),
-                    FromLocationId = table.Column<int>(nullable: true),
                     ToLocationId = table.Column<int>(nullable: true),
+                    FromLocationId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true)
@@ -187,38 +186,48 @@ namespace StockManager.Database.Source.Migrations
             migrationBuilder.InsertData(
                 table: "AppSettings",
                 columns: new[] { "AppSettingsId", "CreatedAt", "Language", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 15, DateTimeKind.Utc).AddTicks(1085), "pt-PT", new DateTime(2020, 5, 28, 19, 22, 12, 16, DateTimeKind.Utc).AddTicks(848) });
+                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920), "pt-PT", new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920) });
+
+            migrationBuilder.InsertData(
+                table: "Locations",
+                columns: new[] { "LocationId", "CreatedAt", "IsMain", "Name", "UpdatedAt" },
+                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032), true, "Warehouse", new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497), "Warehouse", new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497) });
-
-            migrationBuilder.InsertData(
-                table: "Locations",
-                columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 2, new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497), "Vehicle #1", new DateTime(2020, 5, 28, 19, 22, 12, 162, DateTimeKind.Utc).AddTicks(7497) });
+                values: new object[] { 2, new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032), "Vehicle #1", new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1, "Admin", new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393), new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393) });
+                values: new object[] { 1, "Admin", new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903), new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 2, "User", new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393), new DateTime(2020, 5, 28, 19, 22, 12, 44, DateTimeKind.Utc).AddTicks(2393) });
+                values: new object[] { 2, "User", new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903), new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903) });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "LastLogin", "Password", "RoleId", "UpdatedAt", "Username" },
-                values: new object[] { 1, new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280), null, "$2b$10$FU0sSJy/GT32lnoisqX4BueFInBfAjmjHn1kN7AZI.q7c8xA6iKvq", 1, new DateTime(2020, 5, 28, 19, 22, 12, 147, DateTimeKind.Utc).AddTicks(1280), "Admin" });
+                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655), null, "$2b$10$yYXe.jRSGmxvxqQOrEzwwu1SQxElcQYaGK7MI82VJGkFpq46N4UYW", 1, new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655), "Admin" });
+
+            migrationBuilder.CreateIndex(
+                name: "IsMainIndex",
+                table: "Locations",
+                column: "IsMain");
 
             migrationBuilder.CreateIndex(
                 name: "UniqueName",
                 table: "Locations",
                 column: "Name",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notifications_ProductLocationId",
+                table: "Notifications",
+                column: "ProductLocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductLocations_LocationId",
@@ -273,6 +282,33 @@ namespace StockManager.Database.Source.Migrations
                 table: "Users",
                 column: "Username",
                 unique: true);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "AppSettings");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
+
+            migrationBuilder.DropTable(
+                name: "StockMovements");
+
+            migrationBuilder.DropTable(
+                name: "ProductLocations");
+
+            migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }
