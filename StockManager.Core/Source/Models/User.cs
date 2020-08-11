@@ -18,7 +18,7 @@ namespace StockManager.Core.Source.Models
 
         public DateTime? LastLogin { get; set; }
 
-        [ForeignKey("Role")]
+        [ForeignKey(nameof(Role))]
         public int RoleId { get; set; }
 
         public Role Role { get; set; }

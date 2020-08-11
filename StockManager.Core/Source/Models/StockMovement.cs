@@ -15,26 +15,26 @@ namespace StockManager.Core.Source.Models
         public float Stock { get; set; }
 
         [Required(ErrorMessage = "ProductId is required")]
-        [ForeignKey("Product")]
+        [ForeignKey(nameof(Product))]
         public int ProductId { get; set; }
 
         public Product Product { get; set; }
 
-        [ForeignKey("ToLocation")]
+        [ForeignKey(nameof(ToLocation))]
         public int? ToLocationId { get; set; }
 
         public Location ToLocation { get; set; }
 
         public string ToLocationName { get; set; }
 
-        [ForeignKey("FromLocation")]
+        [ForeignKey(nameof(FromLocation))]
         public int? FromLocationId { get; set; }
 
         public Location FromLocation { get; set; }
 
         public string FromLocationName { get; set; }
 
-        [ForeignKey("User")]
+        [ForeignKey(nameof(User))]
         public int? UserId { get; set; }
 
         public User User { get; set; }
