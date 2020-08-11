@@ -21,6 +21,12 @@ namespace StockManager.Database.Source.Configurations
               .HasIndex(x => new { x.ProductId, x.LocationId })
               .IsUnique()
               .HasName("UniqueProductIdLocationIdPair");
+
+            builder
+                .HasMany(x => x.Notifications)
+                .WithOne(x => x.ProductLocation)
+                .HasForeignKey(x => x.ProductLocationId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

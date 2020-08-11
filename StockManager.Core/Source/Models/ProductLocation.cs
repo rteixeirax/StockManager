@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StockManager.Core.Source.Models
@@ -15,14 +16,15 @@ namespace StockManager.Core.Source.Models
         public Location Location { get; set; }
 
         [Required(ErrorMessage = "LocationId is required")]
-        [ForeignKey("Location")]
+        [ForeignKey(nameof(Location))]
         public int LocationId { get; set; }
 
         public Product Product { get; set; }
 
         [Required(ErrorMessage = "ProductId is required")]
-        [ForeignKey("Product")]
+        [ForeignKey(nameof(Product))]
         public int ProductId { get; set; }
 
+        public ICollection<Notification> Notifications { get; set; }
     }
 }

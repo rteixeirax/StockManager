@@ -29,6 +29,7 @@ namespace StockManager.Database.Source
         /// </summary>
         public DbSet<AppSettings> AppSettings { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<ProductLocation> ProductLocations { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -43,12 +44,13 @@ namespace StockManager.Database.Source
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new AppSettingsConfiguration());
-            modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new LocationConfiguration());
+            modelBuilder.ApplyConfiguration(new NotificationConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new StockMovementConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
 
         /// <summary>
