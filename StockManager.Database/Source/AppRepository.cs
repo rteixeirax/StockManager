@@ -11,6 +11,7 @@ namespace StockManager.Database.Source
         private readonly DatabaseContext _context;
         private AppSettingsRepository _appSettingsRepository;
         private LocationRepository _locationRepository;
+        private NotificationRepository _notificationRepository;
         private ProductLocationRepository _productLocationRepository;
         private ProductRepository _productRepository;
         private RoleRepository _roleRepository;
@@ -26,6 +27,8 @@ namespace StockManager.Database.Source
 
         public ILocationRepository Locations => _locationRepository = _locationRepository ?? new LocationRepository(_context);
 
+        public INotificationRepository Notifications => _notificationRepository = _notificationRepository ?? new NotificationRepository(_context);
+
         public IProductLocationRepository ProductLocations => _productLocationRepository = _productLocationRepository ?? new ProductLocationRepository(_context);
 
         public IProductRepository Products => _productRepository = _productRepository ?? new ProductRepository(_context);
@@ -35,7 +38,6 @@ namespace StockManager.Database.Source
         public IStockMovementRepository StockMovements => _stockMovementRepository = _stockMovementRepository ?? new StockMovementRepository(_context);
 
         public IUserRepository Users => _userRepository = _userRepository ?? new UserRepository(_context);
-
 
         public async Task SaveChangesAsync()
         {

@@ -11,6 +11,8 @@ namespace StockManager.Core.Source
 
         ILocationRepository Locations { get; }
 
+        INotificationRepository Notifications { get; }
+
         IProductLocationRepository ProductLocations { get; }
 
         IProductRepository Products { get; }
