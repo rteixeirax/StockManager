@@ -36,7 +36,7 @@ namespace StockManager.Tests.Source.Services
             // Arrange
 
             // Act
-            AppSettings settings = await AppServices.SettingsService.GetAppSettingsAsync();
+            AppSettings settings = await AppServices.AppSettingsService.GetAppSettingsAsync();
 
             // Assert
             Assert.AreEqual(settings.Language, "pt-PT");
@@ -51,7 +51,7 @@ namespace StockManager.Tests.Source.Services
             // Arrange
 
             // Act
-            string appLanguage = await AppServices.SettingsService.GetAppLanguageAsync();
+            string appLanguage = await AppServices.AppSettingsService.GetAppLanguageAsync();
 
             // Assert
             Assert.AreEqual(appLanguage, "pt-PT");

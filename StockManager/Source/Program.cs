@@ -59,7 +59,7 @@ namespace StockManager.Source
             AppServices.ConfigureServices(AppRepository);
 
             // Set the application language
-            AppTranslations.ConfigureLanguage(await AppServices.SettingsService.GetAppLanguageAsync());
+            AppTranslations.ConfigureLanguage(await AppServices.AppSettingsService.GetAppLanguageAsync());
 
             Application.Run(new MainForm());
         }

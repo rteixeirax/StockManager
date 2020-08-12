@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using StockManager.Core.Source;
@@ -19,7 +19,7 @@ namespace StockManager.Services.Source.Services
         public async Task CreateAsync(int productLocationId)
         {
             await _repository.Notifications
-                .AddAsync(new Notification { ProductLocationId = productLocationId });
+                .AddAsync(new Notification() { ProductLocationId = productLocationId });
 
             await _repository.SaveChangesAsync();
         }

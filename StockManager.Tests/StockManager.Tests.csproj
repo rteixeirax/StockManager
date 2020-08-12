@@ -169,6 +169,7 @@
     <Compile Include="Source\Services\LocationServiceTests.cs" />
     <Compile Include="Source\Services\AppSettingsService.cs" />
     <Compile Include="Source\Services\StockMovementServiceTests.cs" />
+    <Compile Include="Source\Services\NotificationServiceTests.cs" />
     <Compile Include="Source\Services\UserServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\TestsConfig.cs" />
