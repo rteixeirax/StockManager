@@ -24,7 +24,6 @@ namespace StockManager.Source.UserControls
         public InventoryProductLocationsUc()
         {
             InitializeComponent();
-            SetTranslatedPhrases();
         }
 
         // Called from the InventoryProductsUc
@@ -36,9 +35,14 @@ namespace StockManager.Source.UserControls
             // Set the selected product
             _product = product;
 
-            // hide the stock movement product name column
-            columnName.Visible = false;
+            // Hide product locations table ref column
+            columnReference.Visible = false;
 
+            // hide the stock movement product name and ref columns
+            columnSmProductName.Visible = false;
+            columnSmProductRef.Visible = false;
+
+            SetTranslatedPhrases();
             LoadProductLocations().Wait();
         }
 
@@ -51,9 +55,14 @@ namespace StockManager.Source.UserControls
             // Set the selected location
             _location = location;
 
-            // Show the stock movement product name column
-            columnName.Visible = false;
+            // Show product locations table ref column
+            columnReference.Visible = true;
 
+            // Show the stock movement product name and ref columns
+            columnSmProductName.Visible = true;
+            columnSmProductRef.Visible = true;
+
+            SetTranslatedPhrases();
             LoadProductLocations().Wait();
         }
 
@@ -173,11 +182,11 @@ namespace StockManager.Source.UserControls
 
                 switch (e.ColumnIndex)
                 {
-                    case 4:
+                    case 5:
                         await ActionEditClickAsync(id);
                         break;
 
-                    case 5:
+                    case 6:
                         await ActionDeleteClickAsync(id);
                         break;
 
@@ -196,6 +205,7 @@ namespace StockManager.Source.UserControls
             _location.ProductLocations?.ToList().ForEach((productLocation) => {
                 dgvProductLocations.Rows.Add(
                  productLocation.ProductLocationId,
+                 productLocation.Product.Reference,
                  productLocation.Product.Name,
                  productLocation.Stock,
                  productLocation.MinStock
@@ -210,6 +220,7 @@ namespace StockManager.Source.UserControls
                 dgvProductStockMovements.Rows.Add(
                  stockMovement.StockMovementId,
                  stockMovement.CreatedAt.ShortDateWithTime(),
+                 stockMovement.Product.Reference,
                  stockMovement.Product.Name,
                  stockMovement.ConcatMovementString(),
                  stockMovement.Qty,
@@ -228,6 +239,7 @@ namespace StockManager.Source.UserControls
             _product.ProductLocations?.ToList().ForEach((productLocation) => {
                 dgvProductLocations.Rows.Add(
                  productLocation.ProductLocationId,
+                 "", // The ref column only render for the location
                  productLocation.Location.Name,
                  productLocation.Stock,
                  productLocation.MinStock
@@ -236,17 +248,17 @@ namespace StockManager.Source.UserControls
 
             // populate the stock movments table
             _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
-              .ToList()
-              .ForEach((stockMovement) => {
+              .ToList().ForEach((stockMovement) => {
                   dgvProductStockMovements.Rows.Add(
-              stockMovement.StockMovementId,
-              stockMovement.CreatedAt.ShortDateWithTime(),
-              "", // The name column only render for the location stock movement
-              stockMovement.ConcatMovementString(),
-              stockMovement.Qty,
-              stockMovement.Stock,
-              stockMovement.User?.Username
-            );
+                    stockMovement.StockMovementId,
+                    stockMovement.CreatedAt.ShortDateWithTime(),
+                    "", // The ref column only render for the location stock movement
+                    "", // The name column only render for the location stock movement
+                    stockMovement.ConcatMovementString(),
+                    stockMovement.Qty,
+                    stockMovement.Stock,
+                    stockMovement.User?.Username
+                );
               });
         }
 
@@ -258,22 +270,25 @@ namespace StockManager.Source.UserControls
             btnback.Text = Phrases.GlobalBack;
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
-            dgvProductLocations.Columns[1].HeaderText = (_product != null)
+            dgvProductLocations.Columns[1].HeaderText = Phrases.GlobalReference;
+
+            dgvProductLocations.Columns[2].HeaderText = (_product != null)
               ? Phrases.ProductLocationTableHeader
               : Phrases.GlobalProduct;
 
-            dgvProductLocations.Columns[2].HeaderText = Phrases.StockMovementsStock;
-            dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementMinStock;
-            dgvProductLocations.Columns[4].CellTemplate.ToolTipText = Phrases.GlobalEdit;
-            dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalDelete;
+            dgvProductLocations.Columns[3].HeaderText = Phrases.StockMovementsStock;
+            dgvProductLocations.Columns[4].HeaderText = Phrases.StockMovementMinStock;
+            dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit;
+            dgvProductLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete;
 
             lbProductStockMovements.Text = Phrases.StockMovementsLabel;
             dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-            dgvProductStockMovements.Columns[2].HeaderText = Phrases.GlobalProduct;
-            dgvProductStockMovements.Columns[3].HeaderText = Phrases.GlobalMovement;
-            dgvProductStockMovements.Columns[4].HeaderText = Phrases.StockMovementQty;
-            dgvProductStockMovements.Columns[5].HeaderText = Phrases.StockMovementStockAcc;
-            dgvProductStockMovements.Columns[6].HeaderText = Phrases.GlobalUser;
+            dgvProductStockMovements.Columns[2].HeaderText = Phrases.GlobalReference;
+            dgvProductStockMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
+            dgvProductStockMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
+            dgvProductStockMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
+            dgvProductStockMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
+            dgvProductStockMovements.Columns[7].HeaderText = Phrases.GlobalUser;
         }
     }
 }
