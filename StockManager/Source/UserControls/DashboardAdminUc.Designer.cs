@@ -46,8 +46,8 @@
             this.tblpGlobalInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lbLocations = new System.Windows.Forms.Label();
             this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLocationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMinStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,8 +122,8 @@
             this.dgvProductStockAlerts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductStockAlerts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnDate,
-            this.columnProductName,
             this.columnProducRef,
+            this.columnProductName,
             this.columnLocationName,
             this.columnMinStock,
             this.columnStock});
@@ -285,13 +285,6 @@
             this.columnDate.Name = "columnDate";
             this.columnDate.ReadOnly = true;
             // 
-            // columnProductName
-            // 
-            this.columnProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnProductName.HeaderText = "columnProductName";
-            this.columnProductName.Name = "columnProductName";
-            this.columnProductName.ReadOnly = true;
-            // 
             // columnProducRef
             // 
             this.columnProducRef.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -299,6 +292,13 @@
             this.columnProducRef.Name = "columnProducRef";
             this.columnProducRef.ReadOnly = true;
             this.columnProducRef.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // columnProductName
+            // 
+            this.columnProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnProductName.HeaderText = "columnProductName";
+            this.columnProductName.Name = "columnProductName";
+            this.columnProductName.ReadOnly = true;
             // 
             // columnLocationName
             // 
@@ -361,8 +361,8 @@
         private System.Windows.Forms.TableLayoutPanel tblpGlobalInfo;
         private System.Windows.Forms.Label lbLocations;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProducRef;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLocationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnMinStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStock;

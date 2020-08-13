@@ -38,8 +38,8 @@ namespace StockManager.Source.UserControls
 
             notifications?.ToList().ForEach(notification => dgvProductStockAlerts.Rows.Add(
                 notification.CreatedAt.ShortDateWithTime(),
-                notification.ProductLocation?.Product?.Name,
                 notification.ProductLocation?.Product?.Reference,
+                notification.ProductLocation?.Product?.Name,
                 notification.ProductLocation?.Location?.Name,
                 notification.ProductLocation?.MinStock,
                 notification.ProductLocation?.Stock
@@ -69,8 +69,8 @@ namespace StockManager.Source.UserControls
 
             lbStockAlerts.Text = Phrases.GlobalStockAlerts;
             dgvProductStockAlerts.Columns[0].HeaderText = Phrases.GlobalDate;
-            dgvProductStockAlerts.Columns[1].HeaderText = Phrases.GlobalProduct;
-            dgvProductStockAlerts.Columns[2].HeaderText = Phrases.GlobalReference;
+            dgvProductStockAlerts.Columns[1].HeaderText = Phrases.GlobalReference;
+            dgvProductStockAlerts.Columns[2].HeaderText = Phrases.GlobalProduct;
             dgvProductStockAlerts.Columns[3].HeaderText = Phrases.GlobalLocation;
             dgvProductStockAlerts.Columns[4].HeaderText = Phrases.StockMovementMinStock;
             dgvProductStockAlerts.Columns[5].HeaderText = Phrases.StockMovementsStock;
