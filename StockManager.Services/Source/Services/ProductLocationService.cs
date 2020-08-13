@@ -110,6 +110,8 @@ namespace StockManager.Services.Source.Services
             {
                 ProductLocation dbProductLocation = await _repository.ProductLocations.GetByIdAsync(productLocation);
                 dbProductLocation.MinStock = minStock;
+
+                await AppServices.NotificationService.ToggleStockAlertsAsync(dbProductLocation, dbProductLocation.Stock);
                 await _repository.SaveChangesAsync();
             }
             catch
