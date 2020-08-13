@@ -243,7 +243,7 @@ namespace StockManager.Source.Forms
                  {
                      ProductId = pl.Product.ProductId,
                      Reference = pl.Product.Reference,
-                     Name = $"{pl.Product.Name}({pl.Stock})",
+                     Name = $"{pl.Product.Reference} {pl.Product.Name}({pl.Stock})",
                  };
 
                  return product;
