@@ -31,7 +31,7 @@ namespace StockManager.Core.Source.Extensions
                 return "";
             }
 
-            return date?.ToString("dd MMM yyyy, HH:mm:ss");
+            return date?.ToLocalTime().ToString("dd MMM yyyy, HH:mm:ss");
         }
     }
 }
