@@ -36,17 +36,19 @@ namespace StockManager.Services.Source.Services
                 // Get the main location
                 Location mainLocation = await AppServices.LocationService.GetMainAsync();
 
+                ProductLocation plocation = new ProductLocation()
+                {
+                    LocationId = mainLocation.LocationId,
+                    ProductId = product.ProductId,
+                    Stock = 0,
+                    MinStock = 0,
+                };
+
                 // Associate the product to the main location
-                await AppServices.ProductLocationService
-                  .CreateAsync(new ProductLocation()
-                  {
-                      LocationId = mainLocation.LocationId,
-                      ProductId = product.ProductId,
-                      Stock = 0,
-                      MinStock = 0,
-                  },
-                  userId
-                );
+                await AppServices.ProductLocationService.CreateAsync(plocation, userId);
+
+                // When the product is created the stock is 0 by default, so we need to set an stock alert
+                await AppServices.NotificationService.ToggleStockAlertsAsync(plocation, 0);
 
                 // Save changes to save the association
                 await _repository.SaveChangesAsync();
