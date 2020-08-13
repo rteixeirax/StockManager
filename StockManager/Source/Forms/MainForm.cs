@@ -88,10 +88,7 @@ namespace StockManager.Source.Forms
             else
             {
                 lbViewTitle.Text = "Dashboard";
-                UserControl ucDashboard = new DashboardAdminUc
-                {
-                    Dock = DockStyle.Fill
-                };
+                UserControl ucDashboard = GetDashboardByRole();
                 pnlViews.Controls.Add(ucDashboard);
 
                 // Set the logged in username
@@ -105,6 +102,19 @@ namespace StockManager.Source.Forms
             // Set the sub-menu visibility and sidebar marker position
             SetSubMenusVisibility();
             SetMarkerPosition(btnDashboard);
+        }
+
+        /// <summary>
+        /// Instantiate the correct dashboard for the logged in user.
+        /// </summary>
+        private UserControl GetDashboardByRole()
+        {
+            if (Program.LoggedInUser.Role.Code == "Admin")
+            {
+                return new DashboardAdminUc { Dock = DockStyle.Fill };
+            }
+
+            return new DashboardUc { Dock = DockStyle.Fill };
         }
 
         /// <summary>
@@ -148,10 +158,7 @@ namespace StockManager.Source.Forms
             // Show the Dashboard view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = "Dashboard";
-            UserControl ucDashboard = new DashboardAdminUc
-            {
-                Dock = DockStyle.Fill
-            };
+            UserControl ucDashboard = GetDashboardByRole();
             pnlViews.Controls.Add(ucDashboard);
         }
 
