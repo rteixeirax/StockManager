@@ -214,6 +214,12 @@
     <Compile Include="Source\UserControls\DashboardAdminUc.Designer.cs">
       <DependentUpon>DashboardAdminUc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\UserControls\DashboardUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\UserControls\DashboardUc.Designer.cs">
+      <DependentUpon>DashboardUc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\UserControls\InventoryLocationsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\DashboardAdminUc.resx">
       <DependentUpon>DashboardAdminUc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\UserControls\DashboardUc.resx">
+      <DependentUpon>DashboardUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\InventoryLocationsUc.resx">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
