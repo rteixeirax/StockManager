@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using StockManager.Core.Source;
@@ -91,6 +92,11 @@ namespace StockManager.Services.Source.Services
                 errorsList.AddError("remove-product-location-db-error", Phrases.GlobalErrorOperationDB);
                 throw new ServiceErrorException(errorsList);
             }
+        }
+
+        public async Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId)
+        {
+            return await _repository.ProductLocations.FindAllAsync(x => x.LocationId == locationId);
         }
 
         public async Task<ProductLocation> GetOneAsync(int productId, int locationId)

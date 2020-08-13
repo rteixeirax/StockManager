@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using StockManager.Core.Source.Models;
 
@@ -19,6 +20,11 @@ namespace StockManager.Core.Source.Services
         /// Remove the association product-location
         /// </summary>
         Task DeleteAsyn(int productLocationId, int userId);
+
+        /// <summary>
+        /// Find all ProductLocations that belongs to the given locationId
+        /// </summary>
+        Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId);
 
         /// <summary>
         /// Get the ProductLocation relation for the given productId and locationId
