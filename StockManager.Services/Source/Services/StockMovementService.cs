@@ -33,6 +33,8 @@ namespace StockManager.Services.Source.Services
                 if (productLocation != null)
                 {
                     data.Stock = (productLocation.Stock + data.Qty);
+
+                    await AppServices.NotificationService.ToggleStockAlertsAsync(productLocation, data.Stock);
                 }
                 else
                 {
@@ -83,6 +85,8 @@ namespace StockManager.Services.Source.Services
 
                 // Update the stock in the ProductLocation relation
                 productLocation.Stock += qtyToMove;
+
+                await AppServices.NotificationService.ToggleStockAlertsAsync(productLocation, productLocation.Stock);
 
                 await _repository.SaveChangesAsync();
             }
@@ -140,6 +144,8 @@ namespace StockManager.Services.Source.Services
 
                 // Update the stock in the From location
                 fromLocationRelation.Stock -= qty;
+
+                await AppServices.NotificationService.ToggleStockAlertsAsync(fromLocationRelation, fromLocationRelation.Stock);
 
                 // Update the stock in the To location
                 ProductLocation toLocationRelation = await AppServices.ProductLocationService
@@ -202,6 +208,8 @@ namespace StockManager.Services.Source.Services
 
                 // Update the relation stock
                 mainLocationRelation.Stock += data.Stock;
+
+                await AppServices.NotificationService.ToggleStockAlertsAsync(mainLocationRelation, mainLocationRelation.Stock);
 
                 if (applyDbChanges)
                 {
