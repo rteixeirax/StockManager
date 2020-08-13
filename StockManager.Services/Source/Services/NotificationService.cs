@@ -16,17 +16,20 @@ namespace StockManager.Services.Source.Services
             _repository = repository;
         }
 
-        public async Task CreateAsync(int productLocationId)
+        public async Task CreateAsync(int productLocationId, bool applyDbChanges = true)
         {
             await _repository.Notifications
                 .AddAsync(new Notification() { ProductLocationId = productLocationId });
 
-            await _repository.SaveChangesAsync();
+            if (applyDbChanges)
+            {
+                await _repository.SaveChangesAsync();
+            }
         }
 
         public async Task<IEnumerable<Notification>> GetAllAsync()
         {
-            return await _repository.Notifications.GetAllAsync();
+            return await _repository.Notifications.GetAllWithProductLocationAsync();
         }
 
         public async Task<Notification> GetByIdAsync(int id)
@@ -45,6 +48,24 @@ namespace StockManager.Services.Source.Services
             Notification notification = await _repository.Notifications.GetByIdAsync(id);
             _repository.Notifications.Remove(notification);
             await _repository.SaveChangesAsync();
+        }
+
+        public async Task ToggleStockAlertsAsync(ProductLocation plocation, float newStock)
+        {
+            Notification notification = await GetByProductLocationIdAsync(plocation.ProductLocationId);
+
+            // If there is a notification for that productLocationId
+            // and the new acc stock is greater than the min stock, we remove the existing notification.
+            if ((notification != null) && (newStock > plocation.MinStock))
+            {
+                await RemoveAsync(notification.NotificationId);
+            }
+            else if ((notification == null) && (newStock <= plocation.MinStock))
+            {
+                // If no notification but the new acc stock is less or equal than the min stock,
+                // we need to create a new notification to alert the admin
+                await CreateAsync(plocation.ProductLocationId);
+            }
         }
     }
 }

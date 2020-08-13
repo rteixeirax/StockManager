@@ -10,7 +10,7 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Create a notification for the given product location id
         /// </summary>
-        Task CreateAsync(int productLocationId);
+        Task CreateAsync(int productLocationId, bool applyDbChanges = true);
 
         /// <summary>
         /// Get all notifications
@@ -28,8 +28,13 @@ namespace StockManager.Core.Source.Services
         Task<Notification> GetByProductLocationIdAsync(int productLocationId);
 
         /// <summary>
-        /// Remove the notification
+        /// Remove the notification with the given notification id
         /// </summary>
         Task RemoveAsync(int id);
+
+        /// <summary>
+        /// Create or remove stock alerts for the given ProductLocation
+        /// </summary>
+        Task ToggleStockAlertsAsync(ProductLocation plocation, float newStock);
     }
 }
