@@ -36,11 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMovements = new System.Windows.Forms.DataGridView();
-            this.pnbSearchBox = new System.Windows.Forms.Panel();
-            this.btnClearSearchValue = new System.Windows.Forms.Button();
-            this.tbSeachText = new System.Windows.Forms.TextBox();
-            this.pnlActions = new System.Windows.Forms.Panel();
-            this.btnStockMovement = new System.Windows.Forms.Button();
             this.columnStockMovementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +44,11 @@
             this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnbSearchBox = new System.Windows.Forms.Panel();
+            this.btnClearSearchValue = new System.Windows.Forms.Button();
+            this.tbSeachText = new System.Windows.Forms.TextBox();
+            this.pnlActions = new System.Windows.Forms.Panel();
+            this.btnStockMovement = new System.Windows.Forms.Button();
             pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
@@ -136,9 +136,67 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMovements.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMovements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovements.Size = new System.Drawing.Size(845, 365);
             this.dgvMovements.TabIndex = 17;
+            // 
+            // columnStockMovementId
+            // 
+            this.columnStockMovementId.HeaderText = "columnStockMovementId";
+            this.columnStockMovementId.Name = "columnStockMovementId";
+            this.columnStockMovementId.ReadOnly = true;
+            this.columnStockMovementId.Visible = false;
+            // 
+            // columnDate
+            // 
+            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDate.HeaderText = "columnDate";
+            this.columnDate.Name = "columnDate";
+            this.columnDate.ReadOnly = true;
+            // 
+            // columnReference
+            // 
+            this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnReference.HeaderText = "columnReference";
+            this.columnReference.Name = "columnReference";
+            this.columnReference.ReadOnly = true;
+            // 
+            // columnProduct
+            // 
+            this.columnProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnProduct.HeaderText = "columnProduct";
+            this.columnProduct.Name = "columnProduct";
+            this.columnProduct.ReadOnly = true;
+            // 
+            // columnMovement
+            // 
+            this.columnMovement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnMovement.HeaderText = "columnMovement";
+            this.columnMovement.Name = "columnMovement";
+            this.columnMovement.ReadOnly = true;
+            this.columnMovement.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // columnQty
+            // 
+            this.columnQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnQty.HeaderText = "columnQty";
+            this.columnQty.Name = "columnQty";
+            this.columnQty.ReadOnly = true;
+            // 
+            // columnStockAcc
+            // 
+            this.columnStockAcc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnStockAcc.HeaderText = "columnStockAcc";
+            this.columnStockAcc.Name = "columnStockAcc";
+            this.columnStockAcc.ReadOnly = true;
+            // 
+            // columnUser
+            // 
+            this.columnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnUser.HeaderText = "columnUser";
+            this.columnUser.Name = "columnUser";
+            this.columnUser.ReadOnly = true;
             // 
             // pnbSearchBox
             // 
@@ -203,63 +261,6 @@
             this.btnStockMovement.Text = "btnStockMovement";
             this.btnStockMovement.UseVisualStyleBackColor = false;
             this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
-            // 
-            // columnStockMovementId
-            // 
-            this.columnStockMovementId.HeaderText = "columnStockMovementId";
-            this.columnStockMovementId.Name = "columnStockMovementId";
-            this.columnStockMovementId.ReadOnly = true;
-            this.columnStockMovementId.Visible = false;
-            // 
-            // columnDate
-            // 
-            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDate.HeaderText = "columnDate";
-            this.columnDate.Name = "columnDate";
-            this.columnDate.ReadOnly = true;
-            // 
-            // columnReference
-            // 
-            this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnReference.HeaderText = "columnReference";
-            this.columnReference.Name = "columnReference";
-            this.columnReference.ReadOnly = true;
-            // 
-            // columnProduct
-            // 
-            this.columnProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnProduct.HeaderText = "columnProduct";
-            this.columnProduct.Name = "columnProduct";
-            this.columnProduct.ReadOnly = true;
-            // 
-            // columnMovement
-            // 
-            this.columnMovement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnMovement.HeaderText = "columnMovement";
-            this.columnMovement.Name = "columnMovement";
-            this.columnMovement.ReadOnly = true;
-            this.columnMovement.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnQty
-            // 
-            this.columnQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnQty.HeaderText = "columnQty";
-            this.columnQty.Name = "columnQty";
-            this.columnQty.ReadOnly = true;
-            // 
-            // columnStockAcc
-            // 
-            this.columnStockAcc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnStockAcc.HeaderText = "columnStockAcc";
-            this.columnStockAcc.Name = "columnStockAcc";
-            this.columnStockAcc.ReadOnly = true;
-            // 
-            // columnUser
-            // 
-            this.columnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnUser.HeaderText = "columnUser";
-            this.columnUser.Name = "columnUser";
-            this.columnUser.ReadOnly = true;
             // 
             // InventoryMovementsUc
             // 
