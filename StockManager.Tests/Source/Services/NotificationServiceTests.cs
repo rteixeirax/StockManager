@@ -42,12 +42,13 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             await AppServices.ProductService.CreateAsync(_mockProducts[0], _admin.UserId);
+
             ProductLocation plocation = await AppServices.ProductLocationService
                 .GetOneAsync(_mockProducts[0].ProductId, _mainLocation.LocationId);
 
             // Act
-            await AppServices.NotificationService.CreateAsync(plocation.ProductLocationId);
-            Notification notification = await AppServices.NotificationService.GetByProductLocationIdAsync(plocation.ProductLocationId);
+            Notification notification = await AppServices.NotificationService
+                .GetByProductLocationIdAsync(plocation.ProductLocationId);
 
             // Assert
             Assert.AreEqual(notification.ProductLocationId, plocation.ProductLocationId);
@@ -69,9 +70,6 @@ namespace StockManager.Tests.Source.Services
             ProductLocation plocation2 = await AppServices.ProductLocationService
                 .GetOneAsync(_mockProducts[1].ProductId, _mainLocation.LocationId);
 
-            await AppServices.NotificationService.CreateAsync(plocation1.ProductLocationId);
-            await AppServices.NotificationService.CreateAsync(plocation2.ProductLocationId);
-
             // Act
             IEnumerable<Notification> notifications = await AppServices.NotificationService.GetAllAsync();
 
@@ -79,6 +77,8 @@ namespace StockManager.Tests.Source.Services
             Assert.AreEqual(notifications.Count(), 2);
             Assert.AreEqual(notifications.ElementAt(0).ProductLocationId, plocation1.ProductLocationId);
             Assert.AreEqual(notifications.ElementAt(0).ProductLocation.ProductId, _mockProducts[0].ProductId);
+            Assert.AreEqual(notifications.ElementAt(1).ProductLocationId, plocation2.ProductLocationId);
+            Assert.AreEqual(notifications.ElementAt(1).ProductLocation.ProductId, _mockProducts[1].ProductId);
         }
 
         [TestMethod]
@@ -86,18 +86,82 @@ namespace StockManager.Tests.Source.Services
         {
             // Arrange
             await AppServices.ProductService.CreateAsync(_mockProducts[0], _admin.UserId);
+
             ProductLocation plocation = await AppServices.ProductLocationService
                 .GetOneAsync(_mockProducts[0].ProductId, _mainLocation.LocationId);
 
-            await AppServices.NotificationService.CreateAsync(plocation.ProductLocationId);
-            Notification notification = await AppServices.NotificationService.GetByProductLocationIdAsync(plocation.ProductLocationId);
+            Notification notification = await AppServices.NotificationService
+                .GetByProductLocationIdAsync(plocation.ProductLocationId);
 
             // Act
             await AppServices.NotificationService.RemoveAsync(notification.NotificationId);
+
             Notification deletedNotification = await AppServices.NotificationService.GetByIdAsync(notification.NotificationId);
 
             // Assert
             Assert.AreEqual(deletedNotification, null);
+        }
+
+        [TestMethod]
+        public async Task ShouldToggleStockAlert_StockEqualMinStock()
+        {
+            // Arrange
+            await AppServices.ProductService.CreateAsync(_mockProducts[0], _admin.UserId);
+
+            ProductLocation plocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProducts[0].ProductId, _mainLocation.LocationId);
+
+            // Act
+            Notification notification = await AppServices.NotificationService
+                .GetByProductLocationIdAsync(plocation.ProductLocationId);
+
+            // Assert
+            Assert.AreEqual(notification.ProductLocationId, plocation.ProductLocationId);
+            Assert.AreEqual(notification.ProductLocation.Stock, 0);
+            Assert.AreEqual(notification.ProductLocation.MinStock, 0);
+        }
+
+        [TestMethod]
+        public async Task ShouldToggleStockAlert_StockBelowMinStock()
+        {
+            // Arrange
+            await AppServices.ProductService.CreateAsync(_mockProducts[0], _admin.UserId);
+
+            ProductLocation plocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProducts[0].ProductId, _mainLocation.LocationId);
+
+            // Act
+            await AppServices.StockMovementService
+                .CreateMovementInsideMainLocationAsync(_mockProducts[0].ProductId, 10, false, _admin.UserId);
+
+            Notification notification = await AppServices.NotificationService
+                .GetByProductLocationIdAsync(plocation.ProductLocationId);
+
+            // Asset
+            Assert.AreEqual(notification.ProductLocationId, plocation.ProductLocationId);
+            Assert.AreEqual(notification.ProductLocation.Stock, -10);
+            Assert.IsTrue(notification.ProductLocation.Stock < notification.ProductLocation.MinStock);
+        }
+
+        [TestMethod]
+        public async Task ShouldToggleStockAlert_StockAboveMinStock()
+        {
+            // Arrange
+            await AppServices.ProductService.CreateAsync(_mockProducts[0], _admin.UserId);
+
+            ProductLocation plocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProducts[0].ProductId, _mainLocation.LocationId);
+
+            // Act
+            await AppServices.StockMovementService
+                .CreateMovementInsideMainLocationAsync(_mockProducts[0].ProductId, 10, true, _admin.UserId);
+
+            Notification notification = await AppServices.NotificationService
+                .GetByProductLocationIdAsync(plocation.ProductLocationId);
+
+            // Asset
+            Assert.IsNull(notification);
+            Assert.IsTrue(plocation.Stock > plocation.MinStock);
         }
     }
 }
