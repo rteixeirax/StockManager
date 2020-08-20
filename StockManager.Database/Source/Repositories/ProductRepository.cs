@@ -34,7 +34,9 @@ namespace StockManager.Database.Source.Repositories
         {
             return await _db.Products
                  .Include(x => x.ProductLocations)
+                 .ThenInclude(x => x.Location)
                  .Include(x => x.StockMovements)
+                 .ThenInclude(x => x.User)
                  .Where(product => product.ProductId == id)
                  .FirstOrDefaultAsync();
         }
