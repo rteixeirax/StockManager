@@ -35,7 +35,12 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Move the stock from one location to another.
         /// </summary>
-        Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId);
+        /// <param name="verifyStock">
+        ///   True by default. 
+        ///   If False, it will skip the stock verification that check if is stock available in the from location to move.
+        /// </param>
+        /// <returns></returns>
+        Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId, bool verifyStock = true);
 
         /// <summary>
         /// Move the stock back to the main location
@@ -45,5 +50,12 @@ namespace StockManager.Core.Source.Services
         /// stock movement
         /// </param>
         Task MoveStockToMainLocationAsync(ProductLocation data, int userId, bool applyDbChanges = false);
+
+        /// <summary>
+        /// Refill the stock in the given locationId for the given productId.
+        /// It will remove the given qty from the given locationId and
+        /// move stock from the main location to the given locationId.
+        /// </summary>
+        Task RefillStockAsync(int locationId, int productId, float qty, int userId);
     }
 }

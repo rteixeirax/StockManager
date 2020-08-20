@@ -172,6 +172,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Source\ColorTables\MenuStripProfessionalColorTable.cs" />
+    <Compile Include="Source\Components\DataGridViewNumericUpDownCell\DataGridViewNumericUpDownCell.cs" />
+    <Compile Include="Source\Components\DataGridViewNumericUpDownCell\DataGridViewNumericUpDownColumn.cs" />
+    <Compile Include="Source\Components\DataGridViewNumericUpDownCell\DataGridViewNumericUpDownEditingControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Source\Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>

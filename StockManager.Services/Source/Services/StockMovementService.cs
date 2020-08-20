@@ -108,7 +108,7 @@ namespace StockManager.Services.Source.Services
             return await _repository.StockMovements.FindLastStockMovementAsync(x => x.ProductId == productId);
         }
 
-        public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId)
+        public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId, bool verifyStock = true)
         {
             OperationErrorsList errorsList = new OperationErrorsList();
 
@@ -118,7 +118,7 @@ namespace StockManager.Services.Source.Services
                 ProductLocation fromLocationRelation = await AppServices.ProductLocationService
                    .GetOneAsync(productId, fromLocationId);
 
-                if (fromLocationRelation.Stock < qty)
+                if (verifyStock && fromLocationRelation.Stock < qty)
                 {
                     errorsList.AddError("qty", Phrases.StockMovementErrorQty);
                     throw new OperationErrorException(errorsList);
@@ -216,6 +216,34 @@ namespace StockManager.Services.Source.Services
                     await _repository.SaveChangesAsync();
                 }
             }
+        }
+
+        public async Task RefillStockAsync(int locationId, int productId, float qty, int userId)
+        {
+            // Get the main location
+            Location mainLocation = await AppServices.LocationService.GetMainAsync();
+
+            // Get the current location
+            Location location = await AppServices.LocationService.GetByIdAsync(locationId);
+
+            // Get the relation between product and the main location
+            ProductLocation mainProductLocation = await AppServices.ProductLocationService
+                .GetOneAsync(productId, mainLocation.LocationId);
+
+            // Remove the used stock from the given location
+            // The logic is, if the user refiled two units we assume that he spend thos two units.
+            // Make sense?? ¯\_(ツ)_/¯ ... i hope soo!! 
+            await CreateAsync(new StockMovement()
+            {
+                UserId = userId,
+                ProductId = productId,
+                FromLocationId = locationId,
+                FromLocationName = location.Name,
+                Qty = (qty * (-1)),
+            }, true);
+
+            // Move stock from the main location to the given location
+            await MoveStockBetweenLocationsAsync(mainLocation.LocationId, locationId, productId, qty, userId, false);
         }
     }
 }

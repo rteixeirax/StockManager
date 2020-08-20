@@ -23,9 +23,9 @@ namespace StockManager.Source.UserControls
         {
             lbLocation.Text = Phrases.GlobalLocation;
 
-            dgvProducts.Columns[1].HeaderText = Phrases.GlobalReference;
-            dgvProducts.Columns[2].HeaderText = Phrases.GlobalProduct;
-            dgvProducts.Columns[3].HeaderText = Phrases.StockMovementQty;
+            dgvProducts.Columns[2].HeaderText = Phrases.GlobalReference;
+            dgvProducts.Columns[3].HeaderText = Phrases.GlobalProduct;
+            dgvProducts.Columns[4].HeaderText = Phrases.StockMovementQty;
         }
 
         private async Task LoadDataAsync()
@@ -52,10 +52,11 @@ namespace StockManager.Source.UserControls
                    .FindAllByLocationIdAsync(locationId);
 
             pLocations?.ToList().ForEach((plocation) => dgvProducts.Rows.Add(
-                plocation.ProductLocationId,
+                plocation.LocationId,
+                plocation.ProductId,
                 plocation?.Product?.Reference,
                 plocation?.Product?.Name,
-                "TODO: Add input" // TODO: Add input here
+                0
             ));
         }
 
@@ -69,6 +70,60 @@ namespace StockManager.Source.UserControls
                 await LoadProductsTableDataAsync(location.LocationId);
                 Spinner.StopSpinner();
             }
+        }
+
+        private async void btnSubmit_Click(object sender, System.EventArgs e)
+        {
+            int errorsCount = 0;
+
+            Spinner.InitSpinner();
+
+            for (int i = 0; i < dgvProducts.Rows.Count; i++)
+            {
+                int locationId = int.Parse(dgvProducts.Rows[i].Cells[0].Value.ToString());
+                int productId = int.Parse(dgvProducts.Rows[i].Cells[1].Value.ToString());
+                float qty = float.Parse(dgvProducts.Rows[i].Cells[4].Value.ToString());
+
+                // TODO: change this.
+                // The table should have the input to the stock count and the stock refill
+
+                // TODO: Wrappe this in a try/catch, catch the errors and save them in a list. Show them in a message later.
+                // Show to the user what stock movements went wrong.
+
+                if (qty > 0)
+                {
+                    try
+                    {
+                        // Only create the stock movement if has qty to move.
+                        await AppServices.StockMovementService.RefillStockAsync(locationId, productId, qty, Program.LoggedInUser.UserId);
+                    }
+                    catch
+                    {
+                        errorsCount++;
+                    }
+                }
+            }
+
+            if (errorsCount > 0)
+            {
+                MessageBox.Show(
+                    "TODO: add message", // TODO: Change phrase to try again later
+                    Phrases.GlobalDialogWarningTitle,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                   "TODO: add message",
+                   Phrases.GlobalDialogErrorTitle, // TODO: change phrase to a success
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+               );
+            }
+
+            Spinner.StopSpinner();
         }
     }
 }
