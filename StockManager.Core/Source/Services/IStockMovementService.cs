@@ -53,9 +53,7 @@ namespace StockManager.Core.Source.Services
 
         /// <summary>
         /// Refill the stock in the given locationId for the given productId.
-        /// It will remove the given qty from the given locationId and
-        /// move stock from the main location to the given locationId.
         /// </summary>
-        Task RefillStockAsync(int locationId, int productId, float qty, int userId);
+        Task RefillStockAsync(int locationId, int productId, float currentStock, float refiledlQty, int userId);
     }
 }

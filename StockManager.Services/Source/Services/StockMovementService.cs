@@ -218,32 +218,47 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task RefillStockAsync(int locationId, int productId, float qty, int userId)
+        public async Task RefillStockAsync(int locationId, int productId, float currentStock, float refiledlQty, int userId)
         {
-            // Get the main location
-            Location mainLocation = await AppServices.LocationService.GetMainAsync();
 
-            // Get the current location
-            Location location = await AppServices.LocationService.GetByIdAsync(locationId);
+            // TODO: We need to guarantee that if anything fails, we rollback the changes already done.
+            // Otherwise we keep creating the same movement over again....
 
-            // Get the relation between product and the main location
-            ProductLocation mainProductLocation = await AppServices.ProductLocationService
-                .GetOneAsync(productId, mainLocation.LocationId);
+            // Get the product location relation
+            ProductLocation productLocation = await AppServices.ProductLocationService.GetOneAsync(productId, locationId);
 
-            // Remove the used stock from the given location
-            // The logic is, if the user refiled two units we assume that he spend thos two units.
-            // Make sense?? ¯\_(ツ)_/¯ ... i hope soo!! 
-            await CreateAsync(new StockMovement()
+            // Only proceed if the user have make real changes to the qtys.
+            if ((productLocation.Stock != currentStock) || (refiledlQty != 0))
             {
-                UserId = userId,
-                ProductId = productId,
-                FromLocationId = locationId,
-                FromLocationName = location.Name,
-                Qty = (qty * (-1)),
-            }, true);
+                // Calculate how much units has spend
+                float stockToRemove = productLocation.Stock - currentStock;
 
-            // Move stock from the main location to the given location
-            await MoveStockBetweenLocationsAsync(mainLocation.LocationId, locationId, productId, qty, userId, false);
+                // We only create a remove movement if the diff is not zero.
+                if (stockToRemove != 0)
+                {
+                    // Get the current location
+                    Location location = await AppServices.LocationService.GetByIdAsync(locationId);
+
+                    // Remove the used stock from the given location
+                    await CreateAsync(new StockMovement()
+                    {
+                        UserId = userId,
+                        ProductId = productId,
+                        FromLocationId = locationId,
+                        FromLocationName = location.Name,
+                        Qty = (stockToRemove * (-1)),
+                    }, true);
+                }
+
+                if (refiledlQty != 0)
+                {
+                    // Get the main location
+                    Location mainLocation = await AppServices.LocationService.GetMainAsync();
+
+                    // Move stock from the main location to the given location
+                    await MoveStockBetweenLocationsAsync(mainLocation.LocationId, locationId, productId, refiledlQty, userId);
+                }
+            }
         }
     }
 }
