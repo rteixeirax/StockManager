@@ -43,7 +43,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewNumericUpDownColumn1 = new StockManager.Source.Components.DataGridViewNumericUpDownCell.DataGridViewNumericUpDownColumn();
             this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,16 +193,6 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // dataGridViewNumericUpDownColumn1
-            // 
-            this.dataGridViewNumericUpDownColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewNumericUpDownColumn1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewNumericUpDownColumn1.HeaderText = "columnQty";
-            this.dataGridViewNumericUpDownColumn1.Name = "dataGridViewNumericUpDownColumn1";
-            this.dataGridViewNumericUpDownColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewNumericUpDownColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // columnLocationId
             // 
             this.columnLocationId.HeaderText = "columnLocationId";
@@ -281,7 +270,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private Components.DataGridViewNumericUpDownCell.DataGridViewNumericUpDownColumn dataGridViewNumericUpDownColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
