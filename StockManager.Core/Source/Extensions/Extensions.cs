@@ -17,11 +17,22 @@ namespace StockManager.Core.Source.Extensions
               ? stockMovement.ToLocation.Name
               : stockMovement.ToLocationName;
 
-            string concat = $"{Phrases.StockMovementFrom}: {(fromLocation ?? "---")}"
-              + Environment.NewLine
-              + $"{Phrases.StockMovementTo}: {toLocation}";
+            // Between locations
+            if (!string.IsNullOrEmpty(fromLocation) && !string.IsNullOrEmpty(toLocation))
+            {
+                return $"{Phrases.StockMovementFrom}: {fromLocation}"
+                  + Environment.NewLine
+                  + $"{Phrases.StockMovementTo}: {toLocation}";
+            }
 
-            return concat;
+            // Inside main location (entry)
+            if (string.IsNullOrEmpty(fromLocation) && !string.IsNullOrEmpty(toLocation))
+            {
+                return $"{Phrases.StockMovementTo}: {toLocation}";
+            }
+
+            // Removed from location
+            return $"{Phrases.StockMovementFrom}: {fromLocation}";
         }
 
         public static string ShortDateWithTime(this DateTime? date)
