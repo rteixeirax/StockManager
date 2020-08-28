@@ -73,15 +73,27 @@ namespace StockManager.Services.Source.Services
                 // If is an exit movement, set negative qty
                 float qtyToMove = isEntry ? qty : (qty * (-1));
 
-                // Create the stock movement
-                await CreateAsync(new StockMovement()
+                StockMovement movement = new StockMovement()
                 {
                     UserId = userId,
                     ProductId = productId,
-                    ToLocationId = mainLocation.LocationId,
-                    ToLocationName = mainLocation.Name,
                     Qty = qtyToMove,
-                });
+                };
+
+                if (isEntry)
+                {
+                    movement.ToLocationId = mainLocation.LocationId;
+                    movement.ToLocationName = mainLocation.Name;
+                }
+                else
+                {
+                    movement.FromLocationId = mainLocation.LocationId;
+                    movement.FromLocationName = mainLocation.Name;
+                }
+
+
+                // Create the stock movement
+                await CreateAsync(movement);
 
                 // Update the stock in the ProductLocation relation
                 productLocation.Stock += qtyToMove;
