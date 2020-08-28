@@ -43,13 +43,12 @@ namespace StockManager.Source.Forms
 
         private void SetTranslatedPhrases()
         {
-            Text = AppInfo.GetViewTitle("Refill stock"); // TODO: Change this
+            Text = AppInfo.GetViewTitle(Phrases.RefillStock);
 
             lbTitle.Text = $"{Phrases.GlobalProduct}: {_productName}";
 
-            // TODO: Change this
-            lbCurrentStock.Text = "Current stock";
-            lbRefillQty.Text = "Refill qty";
+            lbCurrentStock.Text = Phrases.RefillStockCurrentStock;
+            lbRefillQty.Text = Phrases.RefillStockRefilledQty;
 
             btnCancel.Text = Phrases.GlobalCancel;
             btnSave.Text = Phrases.GlobalSave;

@@ -40,8 +40,8 @@ namespace StockManager.Source.UserControls
 
             dgvProducts.Columns[2].HeaderText = Phrases.GlobalReference;
             dgvProducts.Columns[3].HeaderText = Phrases.GlobalProduct;
-            dgvProducts.Columns[4].HeaderText = "Current stock"; // TODO: Change this
-            dgvProducts.Columns[5].HeaderText = "Refill Qty";
+            dgvProducts.Columns[4].HeaderText = Phrases.RefillStockCurrentStock;
+            dgvProducts.Columns[5].HeaderText = Phrases.RefillStockRefilledQty;
             // Actions
             dgvProducts.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalEdit; // Action edit
         }

@@ -358,4 +358,13 @@
   <data name="GlobalStockAlerts" xml:space="preserve">
     <value>Stock alerts</value>
   </data>
+  <data name="RefillStock" xml:space="preserve">
+    <value>Refill stock</value>
+  </data>
+  <data name="RefillStockCurrentStock" xml:space="preserve">
+    <value>Current stock</value>
+  </data>
+  <data name="RefillStockRefilledQty" xml:space="preserve">
+    <value>Refilled qty</value>
+  </data>
 </root>
