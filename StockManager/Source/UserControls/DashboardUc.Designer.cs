@@ -33,8 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardUc));
+            System.Windows.Forms.PictureBox pbSearchIcon;
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnCurrentStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnRefillQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.lbLocation = new System.Windows.Forms.Label();
             this.cbLocations = new System.Windows.Forms.ComboBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,14 +51,14 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnCurrentStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnRefillQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tbSeachText = new System.Windows.Forms.TextBox();
+            this.btnClearSearchValue = new System.Windows.Forms.Button();
+            this.pnbSearchBox = new System.Windows.Forms.Panel();
+            this.lbProductLocation = new System.Windows.Forms.Label();
+            pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
+            this.pnbSearchBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProducts
@@ -98,7 +106,7 @@
             this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProducts.EnableHeadersVisualStyles = false;
             this.dgvProducts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            this.dgvProducts.Location = new System.Drawing.Point(9, 86);
+            this.dgvProducts.Location = new System.Drawing.Point(9, 173);
             this.dgvProducts.Name = "dgvProducts";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -119,79 +127,9 @@
             this.dgvProducts.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProducts.RowTemplate.Height = 30;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(845, 548);
+            this.dgvProducts.Size = new System.Drawing.Size(845, 461);
             this.dgvProducts.TabIndex = 30;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
-            // 
-            // lbLocation
-            // 
-            this.lbLocation.AutoSize = true;
-            this.lbLocation.BackColor = System.Drawing.Color.Transparent;
-            this.lbLocation.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            this.lbLocation.Location = new System.Drawing.Point(5, 21);
-            this.lbLocation.Name = "lbLocation";
-            this.lbLocation.Size = new System.Drawing.Size(120, 22);
-            this.lbLocation.TabIndex = 33;
-            this.lbLocation.Text = "lbLocation";
-            // 
-            // cbLocations
-            // 
-            this.cbLocations.BackColor = System.Drawing.Color.White;
-            this.cbLocations.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbLocations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLocations.ForeColor = System.Drawing.Color.Black;
-            this.cbLocations.FormattingEnabled = true;
-            this.cbLocations.Location = new System.Drawing.Point(9, 46);
-            this.cbLocations.Name = "cbLocations";
-            this.cbLocations.Size = new System.Drawing.Size(217, 24);
-            this.cbLocations.TabIndex = 34;
-            this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ColumnProductLocationId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "columnProducRef";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "columnProductName";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "columnProductName";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "columnCurrentStock";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.HeaderText = "columnRefillQty";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // columnLocationId
             // 
@@ -245,10 +183,143 @@
             this.columnEdit.ReadOnly = true;
             this.columnEdit.Width = 30;
             // 
+            // lbLocation
+            // 
+            this.lbLocation.AutoSize = true;
+            this.lbLocation.BackColor = System.Drawing.Color.Transparent;
+            this.lbLocation.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.lbLocation.Location = new System.Drawing.Point(5, 21);
+            this.lbLocation.Name = "lbLocation";
+            this.lbLocation.Size = new System.Drawing.Size(120, 22);
+            this.lbLocation.TabIndex = 33;
+            this.lbLocation.Text = "lbLocation";
+            // 
+            // cbLocations
+            // 
+            this.cbLocations.BackColor = System.Drawing.Color.White;
+            this.cbLocations.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbLocations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLocations.ForeColor = System.Drawing.Color.Black;
+            this.cbLocations.FormattingEnabled = true;
+            this.cbLocations.Location = new System.Drawing.Point(9, 46);
+            this.cbLocations.Name = "cbLocations";
+            this.cbLocations.Size = new System.Drawing.Size(256, 24);
+            this.cbLocations.TabIndex = 34;
+            this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "ColumnProductLocationId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "columnProducRef";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "columnProductName";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "columnProductName";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "columnCurrentStock";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.HeaderText = "columnRefillQty";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // tbSeachText
+            // 
+            this.tbSeachText.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbSeachText.BackColor = System.Drawing.Color.White;
+            this.tbSeachText.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbSeachText.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSeachText.Location = new System.Drawing.Point(27, 6);
+            this.tbSeachText.Name = "tbSeachText";
+            this.tbSeachText.Size = new System.Drawing.Size(266, 22);
+            this.tbSeachText.TabIndex = 4;
+            // 
+            // btnClearSearchValue
+            // 
+            this.btnClearSearchValue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClearSearchValue.BackColor = System.Drawing.Color.White;
+            this.btnClearSearchValue.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearSearchValue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearSearchValue.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearSearchValue.ForeColor = System.Drawing.Color.White;
+            this.btnClearSearchValue.Image = ((System.Drawing.Image)(resources.GetObject("btnClearSearchValue.Image")));
+            this.btnClearSearchValue.Location = new System.Drawing.Point(274, 7);
+            this.btnClearSearchValue.Name = "btnClearSearchValue";
+            this.btnClearSearchValue.Size = new System.Drawing.Size(17, 20);
+            this.btnClearSearchValue.TabIndex = 11;
+            this.btnClearSearchValue.UseVisualStyleBackColor = false;
+            // 
+            // pbSearchIcon
+            // 
+            pbSearchIcon.BackColor = System.Drawing.Color.LightGray;
+            pbSearchIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pbSearchIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            pbSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchIcon.Image")));
+            pbSearchIcon.Location = new System.Drawing.Point(5, 6);
+            pbSearchIcon.Name = "pbSearchIcon";
+            pbSearchIcon.Size = new System.Drawing.Size(24, 22);
+            pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            pbSearchIcon.TabIndex = 5;
+            pbSearchIcon.TabStop = false;
+            // 
+            // pnbSearchBox
+            // 
+            this.pnbSearchBox.Controls.Add(pbSearchIcon);
+            this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
+            this.pnbSearchBox.Controls.Add(this.tbSeachText);
+            this.pnbSearchBox.Location = new System.Drawing.Point(5, 134);
+            this.pnbSearchBox.Name = "pnbSearchBox";
+            this.pnbSearchBox.Size = new System.Drawing.Size(302, 33);
+            this.pnbSearchBox.TabIndex = 35;
+            // 
+            // lbProductLocation
+            // 
+            this.lbProductLocation.AutoSize = true;
+            this.lbProductLocation.BackColor = System.Drawing.Color.Transparent;
+            this.lbProductLocation.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProductLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.lbProductLocation.Location = new System.Drawing.Point(5, 103);
+            this.lbProductLocation.Name = "lbProductLocation";
+            this.lbProductLocation.Size = new System.Drawing.Size(197, 22);
+            this.lbProductLocation.TabIndex = 36;
+            this.lbProductLocation.Text = "lbProductLocation";
+            // 
             // DashboardUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbProductLocation);
+            this.Controls.Add(this.pnbSearchBox);
             this.Controls.Add(this.cbLocations);
             this.Controls.Add(this.lbLocation);
             this.Controls.Add(this.dgvProducts);
@@ -258,6 +329,9 @@
             this.Name = "DashboardUc";
             this.Size = new System.Drawing.Size(860, 643);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).EndInit();
+            this.pnbSearchBox.ResumeLayout(false);
+            this.pnbSearchBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +354,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCurrentStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnRefillQty;
         private System.Windows.Forms.DataGridViewImageColumn columnEdit;
+        private System.Windows.Forms.TextBox tbSeachText;
+        private System.Windows.Forms.Button btnClearSearchValue;
+        private System.Windows.Forms.Panel pnbSearchBox;
+        private System.Windows.Forms.Label lbProductLocation;
     }
 }

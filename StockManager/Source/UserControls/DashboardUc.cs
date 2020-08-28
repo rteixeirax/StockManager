@@ -37,6 +37,7 @@ namespace StockManager.Source.UserControls
         private void SetTranslatedPhrases()
         {
             lbLocation.Text = Phrases.GlobalLocation;
+            lbProductLocation.Text = Phrases.GlobalProducts;
 
             dgvProducts.Columns[2].HeaderText = Phrases.GlobalReference;
             dgvProducts.Columns[3].HeaderText = Phrases.GlobalProduct;
