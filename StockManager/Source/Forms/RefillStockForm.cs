@@ -62,25 +62,23 @@ namespace StockManager.Source.Forms
                 Spinner.InitSpinner();
 
                 float currentStock = float.Parse(numCurrentStock.Value.ToString());
-                float refiledlQty = float.Parse(numRefillQty.Value.ToString());
+                float refilledQty = float.Parse(numRefillQty.Value.ToString());
 
                 await AppServices.StockMovementService.RefillStockAsync(
                     _locationId,
                     _productId,
                     currentStock,
-                    refiledlQty,
+                    refilledQty,
                     Program.LoggedInUser.UserId
                 );
 
                 Spinner.StopSpinner();
 
-                // TODO: Create a function in the DashboardUC that recive
-                // the locationId, productId, currentStock and the refilledQty.
-                // That function should update the table with that values.
+                // Update the table with the new data
+                _dashboardUc.UpdateTable(currentStock, refilledQty);
 
+                // Close the dialog
                 btnCancel_Click(sender, e);
-
-                // TODO: add a catch to catch the DB errors and show an message box to the user
             }
             catch (OperationErrorException ex)
             {
@@ -90,6 +88,17 @@ namespace StockManager.Source.Forms
                 {
                     ShowFormErrors(ex.Errors);
                 }
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show(
+                  $"{ex.Errors[0].Error}",
+                  Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Error
+                );
             }
         }
 
@@ -106,7 +115,7 @@ namespace StockManager.Source.Forms
                     lbErrorCurrentStock.Visible = true;
                 }
 
-                if (err.Field == "qty")
+                if (err.Field == "RefillQty")
                 {
                     lbErrorRefillQty.Text = err.Error;
                     lbErrorRefillQty.Visible = true;

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RefillStockForm));
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.numRefillQty = new System.Windows.Forms.NumericUpDown();
+            this.numCurrentStock = new System.Windows.Forms.NumericUpDown();
             this.btnCancel = new System.Windows.Forms.Button();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.lbTitle = new System.Windows.Forms.Label();
@@ -38,12 +40,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lbRefillQty = new System.Windows.Forms.Label();
             this.lbCurrentStock = new System.Windows.Forms.Label();
-            this.numCurrentStock = new System.Windows.Forms.NumericUpDown();
-            this.numRefillQty = new System.Windows.Forms.NumericUpDown();
             this.pnlBody.SuspendLayout();
-            this.pnlTopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCurrentStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRefillQty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCurrentStock)).BeginInit();
+            this.pnlTopBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlBody
@@ -60,10 +60,44 @@
             this.pnlBody.Controls.Add(this.lbCurrentStock);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
-            this.pnlBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(451, 299);
             this.pnlBody.TabIndex = 8;
+            // 
+            // numRefillQty
+            // 
+            this.numRefillQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numRefillQty.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.numRefillQty.Location = new System.Drawing.Point(103, 149);
+            this.numRefillQty.Margin = new System.Windows.Forms.Padding(4);
+            this.numRefillQty.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numRefillQty.Name = "numRefillQty";
+            this.numRefillQty.Size = new System.Drawing.Size(252, 24);
+            this.numRefillQty.TabIndex = 19;
+            this.numRefillQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numRefillQty.ThousandsSeparator = true;
+            // 
+            // numCurrentStock
+            // 
+            this.numCurrentStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numCurrentStock.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.numCurrentStock.Location = new System.Drawing.Point(103, 83);
+            this.numCurrentStock.Margin = new System.Windows.Forms.Padding(4);
+            this.numCurrentStock.Maximum = new decimal(new int[] {
+            -1530494977,
+            232830,
+            0,
+            0});
+            this.numCurrentStock.Name = "numCurrentStock";
+            this.numCurrentStock.Size = new System.Drawing.Size(252, 24);
+            this.numCurrentStock.TabIndex = 18;
+            this.numCurrentStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numCurrentStock.ThousandsSeparator = true;
             // 
             // btnCancel
             // 
@@ -109,6 +143,7 @@
             this.lbErrorRefillQty.ForeColor = System.Drawing.Color.Red;
             this.lbErrorRefillQty.Location = new System.Drawing.Point(106, 174);
             this.lbErrorRefillQty.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbErrorRefillQty.MaximumSize = new System.Drawing.Size(252, 0);
             this.lbErrorRefillQty.Name = "lbErrorRefillQty";
             this.lbErrorRefillQty.Size = new System.Drawing.Size(120, 16);
             this.lbErrorRefillQty.TabIndex = 15;
@@ -166,40 +201,6 @@
             this.lbCurrentStock.TabIndex = 2;
             this.lbCurrentStock.Text = "lbCurrentStock";
             // 
-            // numCurrentStock
-            // 
-            this.numCurrentStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numCurrentStock.Font = new System.Drawing.Font("Courier New", 11.25F);
-            this.numCurrentStock.Location = new System.Drawing.Point(103, 83);
-            this.numCurrentStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.numCurrentStock.Maximum = new decimal(new int[] {
-            -1530494977,
-            232830,
-            0,
-            0});
-            this.numCurrentStock.Name = "numCurrentStock";
-            this.numCurrentStock.Size = new System.Drawing.Size(252, 24);
-            this.numCurrentStock.TabIndex = 18;
-            this.numCurrentStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numCurrentStock.ThousandsSeparator = true;
-            // 
-            // numRefillQty
-            // 
-            this.numRefillQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRefillQty.Font = new System.Drawing.Font("Courier New", 11.25F);
-            this.numRefillQty.Location = new System.Drawing.Point(103, 149);
-            this.numRefillQty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.numRefillQty.Maximum = new decimal(new int[] {
-            -1530494977,
-            232830,
-            0,
-            0});
-            this.numRefillQty.Name = "numRefillQty";
-            this.numRefillQty.Size = new System.Drawing.Size(252, 24);
-            this.numRefillQty.TabIndex = 19;
-            this.numRefillQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.numRefillQty.ThousandsSeparator = true;
-            // 
             // RefillStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -210,7 +211,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RefillStockForm";
@@ -218,10 +219,10 @@
             this.Text = "Stock Manager | Edit stock";
             this.pnlBody.ResumeLayout(false);
             this.pnlBody.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numRefillQty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numCurrentStock)).EndInit();
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCurrentStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numRefillQty)).EndInit();
             this.ResumeLayout(false);
 
         }

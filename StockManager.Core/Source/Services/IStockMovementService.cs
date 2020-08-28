@@ -54,6 +54,6 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Refill the stock in the given locationId for the given productId.
         /// </summary>
-        Task RefillStockAsync(int locationId, int productId, float currentStock, float refiledlQty, int userId);
+        Task RefillStockAsync(int locationId, int productId, float currentStock, float refilledQty, int userId);
     }
 }

@@ -110,18 +110,15 @@ namespace StockManager.Services.Source.Services
 
         public async Task MoveStockBetweenLocationsAsync(int fromLocationId, int toLocationId, int productId, float qty, int userId, bool verifyStock = true)
         {
-            OperationErrorsList errorsList = new OperationErrorsList();
-
             try
             {
-                // Get the relation productId > fromLocationId to check if the qty can be accepted
+                // Get the relation productId > fromLocationId to check if the qty can be accepted 
                 ProductLocation fromLocationRelation = await AppServices.ProductLocationService
                    .GetOneAsync(productId, fromLocationId);
 
-                if (verifyStock && fromLocationRelation.Stock < qty)
+                if (verifyStock)
                 {
-                    errorsList.AddError("qty", Phrases.StockMovementErrorQty);
-                    throw new OperationErrorException(errorsList);
+                    VerifyIfHasStockAvailableToMove(fromLocationRelation, qty);
                 }
 
                 Location fromLocation = await AppServices.LocationService.GetByIdAsync(fromLocationId);
@@ -218,46 +215,76 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task RefillStockAsync(int locationId, int productId, float currentStock, float refiledlQty, int userId)
+        public async Task RefillStockAsync(int locationId, int productId, float currentStock, float refilledQty, int userId)
         {
-
-            // TODO: We need to guarantee that if anything fails, we rollback the changes already done.
-            // Otherwise we keep creating the same movement over again....
-
-            // Get the product location relation
-            ProductLocation productLocation = await AppServices.ProductLocationService.GetOneAsync(productId, locationId);
-
-            // Only proceed if the user have make real changes to the qtys.
-            if ((productLocation.Stock != currentStock) || (refiledlQty != 0))
+            try
             {
-                // Calculate how much units has spend
-                float stockToRemove = productLocation.Stock - currentStock;
+                // Get the product location relation
+                ProductLocation productLocation = await AppServices.ProductLocationService.GetOneAsync(productId, locationId);
 
-                // We only create a remove movement if the diff is not zero.
-                if (stockToRemove != 0)
-                {
-                    // Get the current location
-                    Location location = await AppServices.LocationService.GetByIdAsync(locationId);
-
-                    // Remove the used stock from the given location
-                    await CreateAsync(new StockMovement()
-                    {
-                        UserId = userId,
-                        ProductId = productId,
-                        FromLocationId = locationId,
-                        FromLocationName = location.Name,
-                        Qty = (stockToRemove * (-1)),
-                    }, true);
-                }
-
-                if (refiledlQty != 0)
+                // Only proceed if the user has make real changes to the qtys.
+                if ((productLocation.Stock != currentStock) || (refilledQty != 0))
                 {
                     // Get the main location
                     Location mainLocation = await AppServices.LocationService.GetMainAsync();
 
-                    // Move stock from the main location to the given location
-                    await MoveStockBetweenLocationsAsync(mainLocation.LocationId, locationId, productId, refiledlQty, userId);
+                    // check if the main location has enough stock that allow the qty to be accepted
+                    if (refilledQty != 0)
+                    {
+                        ProductLocation mainPlocation = await AppServices.ProductLocationService
+                            .GetOneAsync(productId, mainLocation.LocationId);
+
+                        VerifyIfHasStockAvailableToMove(mainPlocation, refilledQty, "RefillQty");
+                    }
+
+                    // Calculate how much units has spend
+                    float stockToRemove = productLocation.Stock - currentStock;
+
+                    // We only create a exit movement if we have units to remove.
+                    if (stockToRemove != 0)
+                    {
+                        // Get the current location
+                        Location location = await AppServices.LocationService.GetByIdAsync(locationId);
+
+                        // Remove the used stock from the given location
+                        await CreateAsync(new StockMovement()
+                        {
+                            UserId = userId,
+                            ProductId = productId,
+                            FromLocationId = locationId,
+                            FromLocationName = location.Name,
+                            Qty = (stockToRemove * (-1)),
+                        }, true);
+
+                        // Update the stock in the location
+                        productLocation.Stock -= stockToRemove;
+                    }
+
+                    // Move stock from the main location to the given location.
+                    // Skip this if the qty is zero.
+                    if (refilledQty != 0)
+                    {
+                        // The stock in the main location is already verified, soo at this point, 
+                        // we know that the main location has enough stock to allow us to refill the given location.
+                        // For that reason, we send the flag set as false to skip the stock verification.
+                        await MoveStockBetweenLocationsAsync(mainLocation.LocationId, locationId, productId, refilledQty, userId, false);
+                    }
                 }
+            }
+            catch (OperationErrorException operationErrorException)
+            {
+                throw operationErrorException;
+            }
+        }
+
+        private void VerifyIfHasStockAvailableToMove(ProductLocation plocation, float qty, string field = "qty")
+        {
+            OperationErrorsList errorsList = new OperationErrorsList();
+
+            if (plocation.Stock < qty)
+            {
+                errorsList.AddError(field, Phrases.StockMovementErrorQty);
+                throw new OperationErrorException(errorsList);
             }
         }
     }
