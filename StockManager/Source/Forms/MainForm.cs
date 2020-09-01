@@ -62,12 +62,16 @@ namespace StockManager.Source.Forms
             changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
             logoutToolStripMenuItem.Text = Phrases.LoginLogout;
 
-            btnExit.Text = $" {Phrases.GlobalExit}";
-            btnUsers.Text = $" {Phrases.GlobalUsers}";
+            btnDashboard.Text = " Dashboard"; // TODO: add phrase
+            btnRefillStock.Text = " Refill stock"; // TODO: add phrase
             btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";
             btnInventoryProducts.Text = Phrases.GlobalProducts;
             btnInventoryLocations.Text = Phrases.GlobalLocations;
             btnInventoryMovements.Text = Phrases.GlobalMovements;
+            btnUsers.Text = $" {Phrases.GlobalUsers}";
+            btnSettings.Text = " Settings"; // TODO: add phrase
+
+            btnExit.Text = $" {Phrases.GlobalExit}";
 
             // Get the logged In User, if any.
             User loggedInUser = Program.LoggedInUser;
@@ -87,9 +91,16 @@ namespace StockManager.Source.Forms
             }
             else
             {
-                lbViewTitle.Text = "Dashboard";
-                UserControl ucDashboard = GetDashboardByRole();
-                pnlViews.Controls.Add(ucDashboard);
+                if (Program.LoggedInUser.Role.Code == "Admin")
+                {
+                    lbViewTitle.Text = "Dashboard"; // TODO: add phrase
+                    pnlViews.Controls.Add(new DashboardUc { Dock = DockStyle.Fill });
+                }
+                else
+                {
+                    lbViewTitle.Text = Phrases.RefillStock;
+                    pnlViews.Controls.Add(new RefillStockUc { Dock = DockStyle.Fill });
+                }
 
                 // Set the logged in username
                 msUsername.Renderer = new ToolStripProfessionalRenderer(new MenuStripProfessionalColorTable());
@@ -102,19 +113,6 @@ namespace StockManager.Source.Forms
             // Set the sub-menu visibility and sidebar marker position
             SetSubMenusVisibility();
             SetMarkerPosition(btnDashboard);
-        }
-
-        /// <summary>
-        /// Instantiate the correct dashboard for the logged in user.
-        /// </summary>
-        private UserControl GetDashboardByRole()
-        {
-            if (Program.LoggedInUser.Role.Code == "Admin")
-            {
-                return new DashboardAdminUc { Dock = DockStyle.Fill };
-            }
-
-            return new DashboardUc { Dock = DockStyle.Fill };
         }
 
         /// <summary>
@@ -157,9 +155,24 @@ namespace StockManager.Source.Forms
 
             // Show the Dashboard view
             pnlViews.Controls.Clear();
-            lbViewTitle.Text = "Dashboard";
-            UserControl ucDashboard = GetDashboardByRole();
+            lbViewTitle.Text = "Dashboard"; // TODO: Add phrase
+            UserControl ucDashboard = new DashboardUc { Dock = DockStyle.Fill };
             pnlViews.Controls.Add(ucDashboard);
+        }
+
+        /// <summary>
+        /// Refill stock button click
+        /// </summary>
+        private void btnRefillStock_Click(object sender, EventArgs e)
+        {
+            SetSubMenusVisibility();
+            SetMarkerPosition(btnRefillStock);
+
+            // Show the Dashboard view
+            pnlViews.Controls.Clear();
+            lbViewTitle.Text = Phrases.RefillStock;
+            UserControl ucStockRefilling = new RefillStockUc { Dock = DockStyle.Fill };
+            pnlViews.Controls.Add(ucStockRefilling);
         }
 
         /// <summary>
@@ -201,7 +214,7 @@ namespace StockManager.Source.Forms
 
             // Show the Settings view
             pnlViews.Controls.Clear();
-            lbViewTitle.Text = "Settings";
+            lbViewTitle.Text = "Settings"; // TODO: add phrase
             UserControl ucSettings = new SettingsUc
             {
                 Dock = DockStyle.Fill
@@ -263,6 +276,7 @@ namespace StockManager.Source.Forms
             msUsername.Visible = false;
             pnlSideMarker.Visible = false;
             btnDashboard.Visible = false;
+            btnRefillStock.Visible = false;
             btnInventory.Visible = false;
             btnUsers.Visible = false;
             btnSettings.Visible = false;
@@ -272,12 +286,21 @@ namespace StockManager.Source.Forms
             {
                 msUsername.Visible = true;
                 pnlSideMarker.Visible = true;
-                btnDashboard.Visible = true;
+                btnRefillStock.Visible = true;
+
+                // Set the position for the refill stock btn
+                if (loggedInUser.Role.Code != "Admin")
+                {
+                    btnRefillStock.Top = btnDashboard.Top;
+                }
             }
 
             // If logged in as "Admin" unlock the other buttons
             if ((loggedInUser != null) && (loggedInUser.Role.Code == "Admin"))
             {
+                btnDashboard.Visible = true;
+                btnRefillStock.Visible = true;
+                btnRefillStock.Top = btnDashboard.Bottom + 6;
                 btnInventory.Visible = true;
                 btnUsers.Visible = true;
                 btnSettings.Visible = true;

@@ -13,12 +13,12 @@ namespace StockManager.Source.Forms
 {
     public partial class RefillStockForm : Form
     {
-        private readonly DashboardUc _dashboardUc;
+        private readonly RefillStockUc _dashboardUc;
         private readonly int _locationId;
         private readonly int _productId;
         private readonly string _productName;
 
-        public RefillStockForm(DashboardUc dashboardUc, int locationId, int productId, string productName)
+        public RefillStockForm(RefillStockUc dashboardUc, int locationId, int productId, string productName)
         {
             InitializeComponent();
 
@@ -30,7 +30,7 @@ namespace StockManager.Source.Forms
             SetTranslatedPhrases();
         }
 
-        public void ShowRefilStockForm(float currentStock, float refillQty)
+        public void ShowRefillStockForm(float currentStock, float refillQty)
         {
             numCurrentStock.Value = ( decimal )currentStock;
             numRefillQty.Value = ( decimal )refillQty;

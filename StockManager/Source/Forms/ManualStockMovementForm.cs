@@ -17,7 +17,7 @@ namespace StockManager.Source.Forms
 {
     public partial class ManualStockMovementForm : Form
     {
-        private readonly DashboardAdminUc _dashboardAdminUc;
+        private readonly DashboardUc _dashboardAdminUc;
         private readonly InventoryMovementsUc _inventoryMovementsUc;
         private readonly InventoryProductLocationsUc _inventoryProductLocationsUc;
         private readonly Location _location;
@@ -52,7 +52,7 @@ namespace StockManager.Source.Forms
         }
 
         // Called from the DashboardAdminUc
-        public ManualStockMovementForm(DashboardAdminUc dashboardAdminUc, Location location) : this()
+        public ManualStockMovementForm(DashboardUc dashboardAdminUc, Location location) : this()
         {
             _dashboardAdminUc = dashboardAdminUc;
             _location = location;

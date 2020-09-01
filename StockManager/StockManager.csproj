@@ -214,17 +214,17 @@
     <Compile Include="Source\Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\DashboardAdminUc.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Source\UserControls\DashboardAdminUc.Designer.cs">
-      <DependentUpon>DashboardAdminUc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Source\UserControls\DashboardUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Source\UserControls\DashboardUc.Designer.cs">
       <DependentUpon>DashboardUc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\UserControls\RefillStockUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\UserControls\RefillStockUc.Designer.cs">
+      <DependentUpon>RefillStockUc.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\UserControls\InventoryLocationsUc.cs">
       <SubType>UserControl</SubType>
@@ -306,11 +306,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\DashboardAdminUc.resx">
-      <DependentUpon>DashboardAdminUc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\DashboardUc.resx">
       <DependentUpon>DashboardUc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\UserControls\RefillStockUc.resx">
+      <DependentUpon>RefillStockUc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\UserControls\InventoryLocationsUc.resx">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
