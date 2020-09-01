@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.PictureBox pbSearchIconx;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardUc));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardUc));
-            System.Windows.Forms.PictureBox pbSearchIcon;
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.columnLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProductLocationId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,11 +55,25 @@
             this.btnClearSearchValue = new System.Windows.Forms.Button();
             this.pnbSearchBox = new System.Windows.Forms.Panel();
             this.lbProductLocation = new System.Windows.Forms.Label();
-            pbSearchIcon = new System.Windows.Forms.PictureBox();
+            pbSearchIconx = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(pbSearchIconx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             this.pnbSearchBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pbSearchIconx
+            // 
+            pbSearchIconx.BackColor = System.Drawing.Color.LightGray;
+            pbSearchIconx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            pbSearchIconx.Cursor = System.Windows.Forms.Cursors.Hand;
+            pbSearchIconx.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchIconx.Image")));
+            pbSearchIconx.Location = new System.Drawing.Point(5, 6);
+            pbSearchIconx.Name = "pbSearchIconx";
+            pbSearchIconx.Size = new System.Drawing.Size(24, 22);
+            pbSearchIconx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            pbSearchIconx.TabIndex = 5;
+            pbSearchIconx.TabStop = false;
+            pbSearchIconx.Click += new System.EventHandler(this.pbSearchIcon_Click);
             // 
             // dgvProducts
             // 
@@ -89,7 +103,7 @@
             this.dgvProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.columnLocationId,
+            this.columnProductLocationId,
             this.columnProductId,
             this.columnProducRef,
             this.columnProductName,
@@ -131,11 +145,11 @@
             this.dgvProducts.TabIndex = 30;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
-            // columnLocationId
+            // columnProductLocationId
             // 
-            this.columnLocationId.HeaderText = "columnLocationId";
-            this.columnLocationId.Name = "columnLocationId";
-            this.columnLocationId.Visible = false;
+            this.columnProductLocationId.HeaderText = "columnProductLocationId";
+            this.columnProductLocationId.Name = "columnProductLocationId";
+            this.columnProductLocationId.Visible = false;
             // 
             // columnProductId
             // 
@@ -263,6 +277,8 @@
             this.tbSeachText.Name = "tbSeachText";
             this.tbSeachText.Size = new System.Drawing.Size(266, 22);
             this.tbSeachText.TabIndex = 4;
+            this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
+            this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
             // 
             // btnClearSearchValue
             // 
@@ -278,23 +294,11 @@
             this.btnClearSearchValue.Size = new System.Drawing.Size(17, 20);
             this.btnClearSearchValue.TabIndex = 11;
             this.btnClearSearchValue.UseVisualStyleBackColor = false;
-            // 
-            // pbSearchIcon
-            // 
-            pbSearchIcon.BackColor = System.Drawing.Color.LightGray;
-            pbSearchIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pbSearchIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            pbSearchIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchIcon.Image")));
-            pbSearchIcon.Location = new System.Drawing.Point(5, 6);
-            pbSearchIcon.Name = "pbSearchIcon";
-            pbSearchIcon.Size = new System.Drawing.Size(24, 22);
-            pbSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            pbSearchIcon.TabIndex = 5;
-            pbSearchIcon.TabStop = false;
+            this.btnClearSearchValue.Click += new System.EventHandler(this.btnClearSearchValue_Click);
             // 
             // pnbSearchBox
             // 
-            this.pnbSearchBox.Controls.Add(pbSearchIcon);
+            this.pnbSearchBox.Controls.Add(pbSearchIconx);
             this.pnbSearchBox.Controls.Add(this.btnClearSearchValue);
             this.pnbSearchBox.Controls.Add(this.tbSeachText);
             this.pnbSearchBox.Location = new System.Drawing.Point(5, 134);
@@ -328,8 +332,8 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DashboardUc";
             this.Size = new System.Drawing.Size(860, 643);
+            ((System.ComponentModel.ISupportInitialize)(pbSearchIconx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).EndInit();
             this.pnbSearchBox.ResumeLayout(false);
             this.pnbSearchBox.PerformLayout();
             this.ResumeLayout(false);
@@ -347,16 +351,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnLocationId;
+        private System.Windows.Forms.TextBox tbSeachText;
+        private System.Windows.Forms.Button btnClearSearchValue;
+        private System.Windows.Forms.Panel pnbSearchBox;
+        private System.Windows.Forms.Label lbProductLocation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProducRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCurrentStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnRefillQty;
         private System.Windows.Forms.DataGridViewImageColumn columnEdit;
-        private System.Windows.Forms.TextBox tbSeachText;
-        private System.Windows.Forms.Button btnClearSearchValue;
-        private System.Windows.Forms.Panel pnbSearchBox;
-        private System.Windows.Forms.Label lbProductLocation;
     }
 }

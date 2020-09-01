@@ -47,7 +47,7 @@ namespace StockManager.Source.Forms
 
             lbTitle.Text = $"{Phrases.GlobalProduct}: {_productName}";
 
-            lbCurrentStock.Text = Phrases.RefillStockCurrentStock;
+            lbCurrentStock.Text = Phrases.RefillStockStockAtEndOfShift;
             lbRefillQty.Text = Phrases.RefillStockRefilledQty;
 
             btnCancel.Text = Phrases.GlobalCancel;
@@ -74,7 +74,7 @@ namespace StockManager.Source.Forms
                 Spinner.StopSpinner();
 
                 // Update the table with the new data
-                _dashboardUc.UpdateTable(currentStock, refilledQty);
+                await _dashboardUc.UpdateTable(refilledQty);
 
                 // Close the dialog
                 btnCancel_Click(sender, e);
