@@ -94,8 +94,17 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId)
+        public async Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId, string searchValue = null)
         {
+            if (!string.IsNullOrEmpty(searchValue))
+            {
+                string searchValueToLower = searchValue.ToLower();
+
+                return await _repository.ProductLocations
+                    .FindAllAsync(x => (x.LocationId == locationId)
+                    && (x.Product.Name.ToLower().Contains(searchValueToLower) || x.Product.Reference.ToLower().Contains(searchValueToLower)));
+            }
+
             return await _repository.ProductLocations.FindAllAsync(x => x.LocationId == locationId);
         }
 

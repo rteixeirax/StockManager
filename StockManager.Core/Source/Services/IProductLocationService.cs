@@ -24,7 +24,7 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Find all ProductLocations that belongs to the given locationId
         /// </summary>
-        Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId);
+        Task<IEnumerable<ProductLocation>> FindAllByLocationIdAsync(int locationId, string searchValue = null);
 
         /// <summary>
         /// Get the ProductLocation relation for the given productId and locationId
