@@ -200,6 +200,9 @@ namespace StockManager.Source.Forms
             }
             else
             {
+                lbFrom.Text = Phrases.StockMovementFrom;
+                lbTo.Text = Phrases.StockMovementTo;
+
                 SetFormComboboxesData();
             }
 
