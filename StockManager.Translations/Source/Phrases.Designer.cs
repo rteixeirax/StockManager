@@ -619,20 +619,20 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current stock.
-        /// </summary>
-        public static string RefillStockCurrentStock {
-            get {
-                return ResourceManager.GetString("RefillStockCurrentStock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Refilled qty.
         /// </summary>
         public static string RefillStockRefilledQty {
             get {
                 return ResourceManager.GetString("RefillStockRefilledQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stock at end of shift.
+        /// </summary>
+        public static string RefillStockStockAtEndOfShift {
+            get {
+                return ResourceManager.GetString("RefillStockStockAtEndOfShift", resourceCulture);
             }
         }
         

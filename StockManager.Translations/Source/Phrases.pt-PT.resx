@@ -381,8 +381,8 @@
   <data name="RefillStock" xml:space="preserve">
     <value>Repor stock</value>
   </data>
-  <data name="RefillStockCurrentStock" xml:space="preserve">
-    <value>Stock atual</value>
+  <data name="RefillStockStockAtEndOfShift" xml:space="preserve">
+    <value>Stock no final do turno</value>
   </data>
   <data name="RefillStockRefilledQty" xml:space="preserve">
     <value>Qtd. reposta</value>
