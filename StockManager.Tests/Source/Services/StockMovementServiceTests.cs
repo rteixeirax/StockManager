@@ -1,9 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
+using StockManager.Translations.Source;
 
 namespace StockManager.Tests.Source.Services
 {
@@ -92,6 +96,133 @@ namespace StockManager.Tests.Source.Services
             Assert.IsNull(stockMovement.ToLocationId);
             Assert.IsNotNull(stockMovement.CreatedAt);
             Assert.IsNotNull(stockMovement.UpdatedAt);
+        }
+
+        [TestMethod]
+        public async Task ShouldRefillStock()
+        {
+            // Arrange
+            int mainLocationStock = 10;
+            int locationStock = 5;
+            int currentStock = 3;
+            int refilledStock = 1;
+            int qtySpended = locationStock - currentStock;
+
+            Location location = await AppServices.LocationService.GetByIdAsync(2); // non main location
+
+            // Add stock to the main location
+            await AppServices.StockMovementService.CreateMovementInsideMainLocationAsync(
+                _mockProduct.ProductId,
+                mainLocationStock,
+                true,
+                _mockUser.UserId
+            );
+
+            // Move stock from the main location to this location
+            await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+                _mockLocation.LocationId,
+                location.LocationId,
+                _mockProduct.ProductId,
+                locationStock,
+                _mockUser.UserId
+            );
+
+            // Act
+            await AppServices.StockMovementService.RefillStockAsync(
+                location.LocationId,
+                _mockProduct.ProductId,
+                currentStock,
+                refilledStock,
+                _mockUser.UserId
+            );
+
+            // Assert
+            ProductLocation plocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockProduct.ProductId, location.LocationId);
+
+            ProductLocation mainPlocation = await AppServices.ProductLocationService
+                .GetOneAsync(_mockLocation.LocationId, _mockProduct.ProductId);
+
+            // Get all product stock movements
+            IEnumerable<StockMovement> movements = await AppServices
+                .StockMovementService.GetAllAsync(_mockProduct.Reference);
+
+            // Remove movement
+            StockMovement removeMvm = movements.FirstOrDefault(x =>
+                x.FromLocationId == location.LocationId
+                && x.ProductId == _mockProduct.ProductId
+                && x.Qty == (qtySpended * -1)
+            );
+
+            // Refill movement
+            StockMovement refillMvm = movements.FirstOrDefault(x =>
+                x.FromLocationId == _mockLocation.LocationId
+                && x.ToLocationId == location.LocationId
+                && x.ProductId == _mockProduct.ProductId
+                && x.Qty == refilledStock
+            );
+
+            // Assert the remove stock movement
+            Assert.IsNotNull(removeMvm);
+            Assert.AreEqual(removeMvm.Stock, locationStock - qtySpended);
+
+            // Assert the refill stock movment
+            Assert.IsNotNull(refillMvm);
+            Assert.AreEqual(refillMvm.Stock, plocation.Stock);
+
+            // Assert the locations stock after the refill movements
+            Assert.AreEqual(plocation.Stock, (locationStock - qtySpended) + refilledStock);
+            Assert.AreEqual(mainPlocation.Stock, (mainLocationStock - locationStock) - refilledStock);
+        }
+
+        [TestMethod]
+        public async Task ShouldFailRefillStock_NoStockAvailable()
+        {
+            try
+            {
+                // Arrange
+                int mainLocationStock = 10;
+                int locationStock = 10;
+                int currentStock = 5;
+                int refilledStock = 5;
+
+                Location location = await AppServices.LocationService.GetByIdAsync(2); // non main location
+
+                // Add stock to the main location
+                await AppServices.StockMovementService.CreateMovementInsideMainLocationAsync(
+                    _mockProduct.ProductId,
+                    mainLocationStock,
+                    true,
+                    _mockUser.UserId
+                );
+
+                // Move stock from the main location to this location
+                await AppServices.StockMovementService.MoveStockBetweenLocationsAsync(
+                    _mockLocation.LocationId,
+                    location.LocationId,
+                    _mockProduct.ProductId,
+                    locationStock,
+                    _mockUser.UserId
+                );
+
+                // Act
+                await AppServices.StockMovementService.RefillStockAsync(
+                    location.LocationId,
+                    _mockProduct.ProductId,
+                    currentStock,
+                    refilledStock,
+                    _mockUser.UserId
+                );
+
+                Assert.Fail("It should have thrown an OperationErrorExeption");
+            }
+            catch (OperationErrorException ex)
+            {
+                // Assert
+                Assert.AreEqual(ex.Errors.Count, 1);
+                Assert.AreEqual(ex.Errors[0].Field, "RefillQty");
+                Assert.AreEqual(ex.Errors[0].Error, Phrases.StockMovementErrorQty);
+            }
         }
     }
 }
