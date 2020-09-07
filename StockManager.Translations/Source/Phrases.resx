@@ -373,4 +373,7 @@
   <data name="GlobalSettings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="GlobalLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
 </root>

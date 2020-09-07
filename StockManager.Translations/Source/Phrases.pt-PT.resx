@@ -393,4 +393,7 @@
   <data name="GlobalDashboard" xml:space="preserve">
     <value>Geral</value>
   </data>
+  <data name="GlobalLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
 </root>
