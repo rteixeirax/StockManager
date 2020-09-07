@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
+
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Core.Source
 {
@@ -6,6 +9,13 @@ namespace StockManager.Core.Source
     {
         public const string connectionString = @"Data Source=.\App.db.sqlite";
         public const string connectionStringTestDB = "DataSource =:memory:";
+
+        // Available app languages
+        public static readonly List<AppLanguage> AppLanguages = new List<AppLanguage>()
+        {
+            new AppLanguage() {  Code = "pt-PT", Name = "Português"},
+            new AppLanguage() {  Code = "en-EN", Name = "English"}
+        };
 
         // #0576b9
         public static readonly Color ColorBlue = Color.FromArgb(5, 118, 185);
