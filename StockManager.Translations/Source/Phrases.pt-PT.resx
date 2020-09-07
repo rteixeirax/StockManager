@@ -387,4 +387,10 @@
   <data name="RefillStockRefilledQty" xml:space="preserve">
     <value>Qtd. reposta</value>
   </data>
+  <data name="GlobalSettings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="GlobalDashboard" xml:space="preserve">
+    <value>Geral</value>
+  </data>
 </root>

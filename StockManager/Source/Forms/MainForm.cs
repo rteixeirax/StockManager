@@ -62,14 +62,14 @@ namespace StockManager.Source.Forms
             changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
             logoutToolStripMenuItem.Text = Phrases.LoginLogout;
 
-            btnDashboard.Text = " Dashboard"; // TODO: add phrase
-            btnRefillStock.Text = " Refill stock"; // TODO: add phrase
+            btnDashboard.Text = $" {Phrases.GlobalDashboard}";
+            btnRefillStock.Text = $" {Phrases.RefillStock}";
             btnInventory.Text = $" {Phrases.GlobalInventoryTitle}";
             btnInventoryProducts.Text = Phrases.GlobalProducts;
             btnInventoryLocations.Text = Phrases.GlobalLocations;
             btnInventoryMovements.Text = Phrases.GlobalMovements;
             btnUsers.Text = $" {Phrases.GlobalUsers}";
-            btnSettings.Text = " Settings"; // TODO: add phrase
+            btnSettings.Text = $" {Phrases.GlobalSettings}";
 
             btnExit.Text = $" {Phrases.GlobalExit}";
 
@@ -93,7 +93,7 @@ namespace StockManager.Source.Forms
             {
                 if (Program.LoggedInUser.Role.Code == "Admin")
                 {
-                    lbViewTitle.Text = "Dashboard"; // TODO: add phrase
+                    lbViewTitle.Text = $"{Phrases.GlobalDashboard}";
                     pnlViews.Controls.Add(new DashboardUc { Dock = DockStyle.Fill });
                 }
                 else
@@ -155,7 +155,7 @@ namespace StockManager.Source.Forms
 
             // Show the Dashboard view
             pnlViews.Controls.Clear();
-            lbViewTitle.Text = "Dashboard"; // TODO: Add phrase
+            lbViewTitle.Text = $"{Phrases.GlobalDashboard}";
             UserControl ucDashboard = new DashboardUc { Dock = DockStyle.Fill };
             pnlViews.Controls.Add(ucDashboard);
         }
@@ -214,7 +214,7 @@ namespace StockManager.Source.Forms
 
             // Show the Settings view
             pnlViews.Controls.Clear();
-            lbViewTitle.Text = "Settings"; // TODO: add phrase
+            lbViewTitle.Text = $"{Phrases.GlobalSettings}";
             UserControl ucSettings = new SettingsUc
             {
                 Dock = DockStyle.Fill

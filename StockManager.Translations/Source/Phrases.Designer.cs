@@ -124,6 +124,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string GlobalDashboard {
+            get {
+                return ResourceManager.GetString("GlobalDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
         public static string GlobalDate {
@@ -363,6 +372,15 @@ namespace StockManager.Translations.Source {
         public static string GlobalSave {
             get {
                 return ResourceManager.GetString("GlobalSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string GlobalSettings {
+            get {
+                return ResourceManager.GetString("GlobalSettings", resourceCulture);
             }
         }
         
