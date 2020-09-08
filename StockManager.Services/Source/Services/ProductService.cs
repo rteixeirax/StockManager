@@ -40,8 +40,6 @@ namespace StockManager.Services.Source.Services
                 {
                     LocationId = mainLocation.LocationId,
                     ProductId = product.ProductId,
-                    Stock = 0,
-                    MinStock = 0,
                 };
 
                 // Associate the product to the main location

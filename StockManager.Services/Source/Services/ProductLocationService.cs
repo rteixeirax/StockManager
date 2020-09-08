@@ -23,6 +23,11 @@ namespace StockManager.Services.Source.Services
             try
             {
                 await ValidateProductLocationDataAsync(productLocation);
+
+                // Get the app settings to set the min stock
+                AppSettings appSettings = await AppServices.AppSettingsService.GetAppSettingsAsync();
+                productLocation.MinStock = appSettings.DefaultGlobalMinStock;
+
                 await _repository.ProductLocations.AddAsync(productLocation);
 
                 StockMovement stockMovement = new StockMovement()
