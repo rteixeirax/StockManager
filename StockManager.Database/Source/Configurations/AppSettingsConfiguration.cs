@@ -14,15 +14,17 @@ namespace StockManager.Database.Source.Configurations
             builder
                 .HasKey(x => x.AppSettingsId);
 
-            builder.HasData(
-             new AppSettings
-             {
-                 AppSettingsId = 1,
-                 Language = "pt-PT",
-                 CreatedAt = DateTime.UtcNow,
-                 UpdatedAt = DateTime.UtcNow
-             }
-           );
+            builder
+                .Property(x => x.DefaultGlobalMinStock)
+                .HasDefaultValue(0);
+
+            builder.HasData(new AppSettings
+            {
+                AppSettingsId = 1,
+                Language = "pt-PT",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            });
         }
     }
 }
