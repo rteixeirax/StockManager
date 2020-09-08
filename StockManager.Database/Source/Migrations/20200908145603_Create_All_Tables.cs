@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StockManager.Database.Source.Migrations
 {
-    public partial class CreateTables : Migration
+    public partial class Create_All_Tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace StockManager.Database.Source.Migrations
                     AppSettingsId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Language = table.Column<string>(nullable: true),
+                    DefaultGlobalMinStock = table.Column<float>(nullable: false, defaultValue: 0f),
                     CreatedAt = table.Column<DateTime>(nullable: true),
                     UpdatedAt = table.Column<DateTime>(nullable: true)
                 },
@@ -101,12 +102,12 @@ namespace StockManager.Database.Source.Migrations
                 {
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: true),
                     Password = table.Column<string>(nullable: false),
                     LastLogin = table.Column<DateTime>(nullable: true),
                     RoleId = table.Column<int>(nullable: false),
-                    CreatedAt = table.Column<DateTime>(nullable: true),
-                    UpdatedAt = table.Column<DateTime>(nullable: true)
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    Username = table.Column<string>(nullable: false)
                 },
                 constraints: table => {
                     table.PrimaryKey("PK_Users", x => x.UserId);
@@ -186,32 +187,32 @@ namespace StockManager.Database.Source.Migrations
             migrationBuilder.InsertData(
                 table: "AppSettings",
                 columns: new[] { "AppSettingsId", "CreatedAt", "Language", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920), "pt-PT", new DateTime(2020, 8, 11, 17, 16, 48, 619, DateTimeKind.Utc).AddTicks(8920) });
+                values: new object[] { 1, new DateTime(2020, 9, 8, 14, 56, 2, 109, DateTimeKind.Utc).AddTicks(7104), "pt-PT", new DateTime(2020, 9, 8, 14, 56, 2, 109, DateTimeKind.Utc).AddTicks(7104) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "IsMain", "Name", "UpdatedAt" },
-                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032), true, "Warehouse", new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032) });
+                values: new object[] { 1, new DateTime(2020, 9, 8, 14, 56, 2, 150, DateTimeKind.Utc).AddTicks(6875), true, "Warehouse", new DateTime(2020, 9, 8, 14, 56, 2, 150, DateTimeKind.Utc).AddTicks(6875) });
 
             migrationBuilder.InsertData(
                 table: "Locations",
                 columns: new[] { "LocationId", "CreatedAt", "Name", "UpdatedAt" },
-                values: new object[] { 2, new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032), "Vehicle #1", new DateTime(2020, 8, 11, 17, 16, 48, 664, DateTimeKind.Utc).AddTicks(8032) });
+                values: new object[] { 2, new DateTime(2020, 9, 8, 14, 56, 2, 150, DateTimeKind.Utc).AddTicks(6875), "Vehicle #1", new DateTime(2020, 9, 8, 14, 56, 2, 150, DateTimeKind.Utc).AddTicks(6875) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 1, "Admin", new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903), new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903) });
+                values: new object[] { 1, "Admin", new DateTime(2020, 9, 8, 14, 56, 2, 159, DateTimeKind.Utc).AddTicks(6821), new DateTime(2020, 9, 8, 14, 56, 2, 159, DateTimeKind.Utc).AddTicks(6821) });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "RoleId", "Code", "CreatedAt", "UpdatedAt" },
-                values: new object[] { 2, "User", new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903), new DateTime(2020, 8, 11, 17, 16, 48, 673, DateTimeKind.Utc).AddTicks(5903) });
+                values: new object[] { 2, "User", new DateTime(2020, 9, 8, 14, 56, 2, 159, DateTimeKind.Utc).AddTicks(6821), new DateTime(2020, 9, 8, 14, 56, 2, 159, DateTimeKind.Utc).AddTicks(6821) });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "CreatedAt", "LastLogin", "Password", "RoleId", "UpdatedAt", "Username" },
-                values: new object[] { 1, new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655), null, "$2b$10$yYXe.jRSGmxvxqQOrEzwwu1SQxElcQYaGK7MI82VJGkFpq46N4UYW", 1, new DateTime(2020, 8, 11, 17, 16, 48, 774, DateTimeKind.Utc).AddTicks(1655), "Admin" });
+                values: new object[] { 1, new DateTime(2020, 9, 8, 14, 56, 2, 280, DateTimeKind.Utc).AddTicks(6293), null, "$2b$10$zCub4BkDY61jj9es4oacDOdE3kROL20mRfUzn62RUSoTwc1/9nXxW", 1, new DateTime(2020, 9, 8, 14, 56, 2, 280, DateTimeKind.Utc).AddTicks(6293), "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IsMainIndex",
