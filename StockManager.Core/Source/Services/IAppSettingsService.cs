@@ -15,5 +15,11 @@ namespace StockManager.Core.Source.Services
         /// Get the App settings
         /// </summary>
         Task<AppSettings> GetAppSettingsAsync();
+
+
+        /// <summary>
+        /// Update the app settings
+        /// </summary>
+        Task UpdateAppSettingsAsync(AppSettings data);
     }
 }
