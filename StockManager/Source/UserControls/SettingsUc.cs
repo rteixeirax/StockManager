@@ -50,9 +50,10 @@ namespace StockManager.Source.UserControls
             cbLanguage.ValueMember = "Code";
             cbLanguage.DisplayMember = "Name";
             cbLanguage.SelectedItem = AppConstants.AppLanguages.FirstOrDefault(x => x.Code == _appSettings.Language);
-            lbLanguageWarning.Visible = false;
+            lbLanguageWarning.Visible = _flagIsRestartRequired;
 
-            numDefaultGlobalMinStock.Value = 0; // TODO: change this
+            // Global default min stock
+            numDefaultGlobalMinStock.Value = ( decimal )_appSettings.DefaultGlobalMinStock;
 
             Spinner.StopSpinner();
         }
@@ -76,37 +77,39 @@ namespace StockManager.Source.UserControls
                 AppSettings appSettings = new AppSettings
                 {
                     AppSettingsId = _appSettings.AppSettingsId,
-                    Language = cbLanguage.SelectedValue.ToString()
+                    Language = cbLanguage.SelectedValue.ToString(),
+                    DefaultGlobalMinStock = float.Parse(numDefaultGlobalMinStock.Value.ToString())
                 };
 
                 await AppServices.AppSettingsService.UpdateAppSettingsAsync(appSettings);
 
                 Spinner.StopSpinner();
 
-                // Show msg box to the user asking if he want to restart de app for the changes take effect
-                if (_flagIsRestartRequired && MessageBox.Show(
-                    "Restart now?",
-                    "Apply changes",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question) == DialogResult.Yes
-                )
+                if (_flagIsRestartRequired)
                 {
-                    Application.Restart();
-                    Environment.Exit(0);
+                    // Show msg box to the user asking if he want to restart de app for the changes take effect
+                    if (MessageBox.Show(
+                        "Some changes only take effect after a restart. Restart now?",
+                        "Apply changes",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.Yes
+                    )
+                    {
+                        Application.Restart();
+                        Environment.Exit(0);
+                    }
                 }
-                else if (!_flagIsRestartRequired)
-                {
-                    // Reload the settings
-                    await LoadSettingsAsync();
 
-                    // Show success msg box
-                    MessageBox.Show(
-                      "Settings updated", // TODO: Add phrase
-                      "Success",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Information
-                    );
-                }
+                // Reload the settings
+                await LoadSettingsAsync();
+
+                // Show success msg box
+                MessageBox.Show(
+                  "Settings updated", // TODO: Add phrase
+                  "Success",
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Information
+                );
             }
             catch (ServiceErrorException ex)
             {
@@ -130,6 +133,9 @@ namespace StockManager.Source.UserControls
                 MessageBoxIcon.Question) == DialogResult.Yes
             )
             {
+                // Reset the flag
+                _flagIsRestartRequired = false;
+
                 await LoadSettingsAsync();
             }
         }
