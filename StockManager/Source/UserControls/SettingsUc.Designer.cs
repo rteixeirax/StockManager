@@ -36,6 +36,7 @@
             this.lbLanguageWarning = new System.Windows.Forms.Label();
             this.numDefaultGlobalMinStock = new System.Windows.Forms.NumericUpDown();
             this.lbDefaultGlobalMinStock = new System.Windows.Forms.Label();
+            this.lbDefaultGlobalMinStockWarning = new System.Windows.Forms.Label();
             this.pnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDefaultGlobalMinStock)).BeginInit();
             this.SuspendLayout();
@@ -110,11 +111,12 @@
             // lbLanguageWarning
             // 
             this.lbLanguageWarning.AutoSize = true;
-            this.lbLanguageWarning.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLanguageWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(78)))));
-            this.lbLanguageWarning.Location = new System.Drawing.Point(18, 90);
+            this.lbLanguageWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLanguageWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.lbLanguageWarning.Location = new System.Drawing.Point(13, 89);
+            this.lbLanguageWarning.MaximumSize = new System.Drawing.Size(350, 0);
             this.lbLanguageWarning.Name = "lbLanguageWarning";
-            this.lbLanguageWarning.Size = new System.Drawing.Size(127, 16);
+            this.lbLanguageWarning.Size = new System.Drawing.Size(126, 15);
             this.lbLanguageWarning.TabIndex = 15;
             this.lbLanguageWarning.Text = "lbLanguageWarning";
             // 
@@ -146,11 +148,24 @@
             this.lbDefaultGlobalMinStock.TabIndex = 17;
             this.lbDefaultGlobalMinStock.Text = "lbDefaultGlobalMinStock";
             // 
+            // lbDefaultGlobalMinStockWarning
+            // 
+            this.lbDefaultGlobalMinStockWarning.AutoSize = true;
+            this.lbDefaultGlobalMinStockWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDefaultGlobalMinStockWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.lbDefaultGlobalMinStockWarning.Location = new System.Drawing.Point(13, 168);
+            this.lbDefaultGlobalMinStockWarning.MaximumSize = new System.Drawing.Size(350, 0);
+            this.lbDefaultGlobalMinStockWarning.Name = "lbDefaultGlobalMinStockWarning";
+            this.lbDefaultGlobalMinStockWarning.Size = new System.Drawing.Size(217, 15);
+            this.lbDefaultGlobalMinStockWarning.TabIndex = 18;
+            this.lbDefaultGlobalMinStockWarning.Text = "lbDefaultGlobalMinStockWarning";
+            // 
             // SettingsUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.lbDefaultGlobalMinStockWarning);
             this.Controls.Add(this.numDefaultGlobalMinStock);
             this.Controls.Add(this.lbDefaultGlobalMinStock);
             this.Controls.Add(this.lbLanguageWarning);
@@ -179,5 +194,6 @@
         private System.Windows.Forms.Label lbLanguageWarning;
         private System.Windows.Forms.NumericUpDown numDefaultGlobalMinStock;
         private System.Windows.Forms.Label lbDefaultGlobalMinStock;
+        private System.Windows.Forms.Label lbDefaultGlobalMinStockWarning;
     }
 }

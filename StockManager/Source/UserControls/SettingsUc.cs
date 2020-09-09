@@ -34,9 +34,10 @@ namespace StockManager.Source.UserControls
             btnCancel.Text = Phrases.GlobalCancel;
 
             lbLanguage.Text = Phrases.GlobalLanguage;
-            lbLanguageWarning.Text = "Restart is required to take effect"; // TODO: add phrase
+            lbLanguageWarning.Text = $"*{Phrases.AppSettingRestartRequired}";
 
-            lbDefaultGlobalMinStock.Text = "Default global min stock"; // TODO: add phrase
+            lbDefaultGlobalMinStock.Text = Phrases.AppSettingsDefaultGlobalMinStock;
+            lbDefaultGlobalMinStockWarning.Text = $"*{Phrases.AppSettingsOnlyAppliedToNewProducts}";
         }
 
         private async Task LoadSettingsAsync()
@@ -50,7 +51,6 @@ namespace StockManager.Source.UserControls
             cbLanguage.ValueMember = "Code";
             cbLanguage.DisplayMember = "Name";
             cbLanguage.SelectedItem = AppConstants.AppLanguages.FirstOrDefault(x => x.Code == _appSettings.Language);
-            lbLanguageWarning.Visible = _flagIsRestartRequired;
 
             // Global default min stock
             numDefaultGlobalMinStock.Value = ( decimal )_appSettings.DefaultGlobalMinStock;
@@ -61,11 +61,7 @@ namespace StockManager.Source.UserControls
         private void cbLanguage_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string selectedLanguage = cbLanguage.SelectedValue.ToString();
-            bool hasChange = (selectedLanguage != _appSettings.Language);
-
-            // Show label to alert the user that app restart is needed for the changes take effect.
-            lbLanguageWarning.Visible = hasChange;
-            _flagIsRestartRequired = hasChange;
+            _flagIsRestartRequired = (selectedLanguage != _appSettings.Language);
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -89,8 +85,8 @@ namespace StockManager.Source.UserControls
                 {
                     // Show msg box to the user asking if he want to restart de app for the changes take effect
                     if (MessageBox.Show(
-                        "Some changes only take effect after a restart. Restart now?",
-                        "Apply changes",
+                        Phrases.AppSettingsDialogRestartBody,
+                        Phrases.AppSettingsDialogRestartTitle,
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question) == DialogResult.Yes
                     )
@@ -105,8 +101,8 @@ namespace StockManager.Source.UserControls
 
                 // Show success msg box
                 MessageBox.Show(
-                  "Settings updated", // TODO: Add phrase
-                  "Success",
+                 Phrases.AppSettingsDialogSuccessBody,
+                  Phrases.AppSettingsDialogSuccessTitle,
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Information
                 );
@@ -127,8 +123,8 @@ namespace StockManager.Source.UserControls
         private async void btnCancel_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(
-                "Are you sure?", // TODO: Add phrase
-                "Drop changes",
+                Phrases.GlobalDialogDeleteTitle,
+                Phrases.AppSettingsDialogCancelChangesTitle,
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes
             )
