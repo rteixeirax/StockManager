@@ -33,5 +33,15 @@ namespace StockManager.Core.Source.Extensions
 
             return date?.ToLocalTime().ToString("dd MMM yyyy, HH:mm:ss");
         }
+
+        public static DateTime SetDateToBeginningOfTheDay(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0);
+        }
+
+        public static DateTime SetDateToEndOfTheDay(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
+        }
     }
 }
