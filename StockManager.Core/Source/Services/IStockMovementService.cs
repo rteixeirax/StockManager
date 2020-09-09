@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Core.Source.Services
 {
@@ -25,7 +26,7 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Get all stock movements
         /// </summary>
-        Task<IEnumerable<StockMovement>> GetAllAsync(string searchValue);
+        Task<IEnumerable<StockMovement>> GetAllAsync(StockMovementOptions options);
 
         /// <summary>
         /// Get the product last stock movement

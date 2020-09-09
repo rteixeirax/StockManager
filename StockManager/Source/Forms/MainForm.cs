@@ -197,7 +197,7 @@ namespace StockManager.Source.Forms
             // Show the InventoryProducts view
             pnlViews.Controls.Clear();
             lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalMovements}";
-            UserControl ucInventoryMovements = new InventoryMovementsUc(this)
+            UserControl ucInventoryMovements = new InventoryMovementsUc()
             {
                 Dock = DockStyle.Fill
             }; // Passing the MainForm to this UC

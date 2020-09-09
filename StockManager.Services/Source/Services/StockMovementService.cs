@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using StockManager.Core.Source;
@@ -108,11 +109,15 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public async Task<IEnumerable<StockMovement>> GetAllAsync(string searchValue)
+        public async Task<IEnumerable<StockMovement>> GetAllAsync(StockMovementOptions options)
         {
-            return await _repository.StockMovements
-                .FindAllWithProductAndUserAsync(x => x.Product.Reference.ToLower().Contains(searchValue.ToLower())
-                    || x.Product.Name.ToLower().Contains(searchValue.ToLower()));
+            string searchValue = options.SearchValue.ToLower();
+            DateTime startDate = new DateTime(options.StartDate.Year, options.StartDate.Month, options.StartDate.Day, 0, 0, 0);
+            DateTime endDate = new DateTime(options.EndDate.Year, options.EndDate.Month, options.EndDate.Day, 23, 59, 59);
+
+            return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
+            (x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue))
+            && (x.CreatedAt >= startDate) && (x.CreatedAt <= endDate));
         }
 
         public async Task<StockMovement> GetProductLastMovementAsync(int productId)

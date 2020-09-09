@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Forms;
@@ -13,16 +16,16 @@ namespace StockManager.Source.UserControls
 {
     public partial class InventoryMovementsUc : UserControl
     {
-        private readonly MainForm _mainForm;
         private bool _hasBeenSearching = false; // Flags if the user has been searching
 
-        public InventoryMovementsUc(MainForm mainForm)
+        public InventoryMovementsUc()
         {
             InitializeComponent();
 
-            // Set the MainForm pointer
-            _mainForm = mainForm;
             btnClearSearchValue.Visible = false;
+            dtpStart.MaxDate = DateTime.Now;
+            dtpEnd.MaxDate = DateTime.Now;
+
             SetTranslatedPhrases();
             LoadMovementsAsync().Wait();
         }
@@ -35,24 +38,33 @@ namespace StockManager.Source.UserControls
             Spinner.StopSpinner();
         }
 
-        private async void btnClearSearchValue_Click(object sender, System.EventArgs e)
+        private async void btnClearSearchValue_Click(object sender, EventArgs e)
         {
             tbSeachText.Text = "";
             _hasBeenSearching = false;
             await LoadDataAsync();
         }
 
-        private async void btnStockMovement_Click(object sender, System.EventArgs e)
+        private async void btnStockMovement_Click(object sender, EventArgs e)
         {
             Location mainLocation = await AppServices.LocationService.GetMainAsync(true);
             ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, mainLocation);
             await manualStockMovementForm.ShowManualStockMovementFormAsync();
         }
 
-        private async Task LoadDataAsync(string searchValue = "")
+        private async Task LoadDataAsync()
         {
             dgvMovements.Rows.Clear();
-            System.Collections.Generic.IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(searchValue);
+
+            StockMovementOptions options = new StockMovementOptions()
+            {
+                SearchValue = tbSeachText.Text,
+                StartDate = dtpStart.Value,
+                EndDate = dtpEnd.Value
+            };
+
+            IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(options);
+
             movements.ToList().ForEach((stockMovement) => {
                 dgvMovements.Rows.Add(
                   stockMovement.StockMovementId,
@@ -67,7 +79,7 @@ namespace StockManager.Source.UserControls
             });
         }
 
-        private async void pbSearchIcon_Click(object sender, System.EventArgs e)
+        private async void pbSearchIcon_Click(object sender, EventArgs e)
         {
             string searchValue = tbSeachText.Text;
 
@@ -75,13 +87,15 @@ namespace StockManager.Source.UserControls
             {
                 // sets the flag has been searching
                 _hasBeenSearching = true;
-                await LoadDataAsync(searchValue);
+                await LoadDataAsync();
             }
         }
 
         private void SetTranslatedPhrases()
         {
             btnStockMovement.Text = Phrases.GlobalCreateMov;
+
+            lbFilterDate.Text = "Filter by date"; // TODO: Add phrase
 
             dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
             dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
@@ -108,7 +122,7 @@ namespace StockManager.Source.UserControls
             }
         }
 
-        private async void tbSeachText_TextChanged(object sender, System.EventArgs e)
+        private async void tbSeachText_TextChanged(object sender, EventArgs e)
         {
             if (tbSeachText.Text.Any())
             {
@@ -123,6 +137,17 @@ namespace StockManager.Source.UserControls
                 btnClearSearchValue.Visible = false;
                 await LoadDataAsync();
             }
+        }
+
+        private async void dtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            dtpEnd.MinDate = dtpStart.Value;
+            await LoadDataAsync();
+        }
+
+        private async void dtpEnd_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
