@@ -26,7 +26,7 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Get all stock movements
         /// </summary>
-        Task<IEnumerable<StockMovement>> GetAllAsync(StockMovementOptions options);
+        Task<IEnumerable<StockMovement>> GetAllAsync(StockMovementOptions options = null);
 
         /// <summary>
         /// Get the product last stock movement
