@@ -40,6 +40,7 @@ namespace StockManager.Tests.Source.Services
 
             // Assert
             Assert.AreEqual(settings.Language, "pt-PT");
+            Assert.AreEqual(settings.DefaultGlobalMinStock, 0);
         }
 
         /// <summary>
@@ -55,6 +56,27 @@ namespace StockManager.Tests.Source.Services
 
             // Assert
             Assert.AreEqual(appLanguage, "pt-PT");
+        }
+
+        [TestMethod]
+        public async Task ShouldUpdateSettings()
+        {
+            // Arrange
+            AppSettings dbSettings = await AppServices.AppSettingsService.GetAppSettingsAsync();
+
+            AppSettings updatedSettings = new AppSettings()
+            {
+                AppSettingsId = dbSettings.AppSettingsId,
+                Language = "en-EN",
+                DefaultGlobalMinStock = 10
+            };
+
+            // Act 
+            await AppServices.AppSettingsService.UpdateAppSettingsAsync(updatedSettings);
+
+            // Assert
+            Assert.AreEqual(dbSettings.Language, "en-EN");
+            Assert.AreEqual(dbSettings.DefaultGlobalMinStock, 10);
         }
     }
 }
