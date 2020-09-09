@@ -1,28 +1,33 @@
-﻿namespace StockManager.Source.UserControls {
-  partial class InventoryProductLocationsUc {
-    /// <summary> 
-    /// Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
+﻿namespace StockManager.Source.UserControls
+{
+    partial class InventoryProductLocationsUc
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
-    /// Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing) {
-      if (disposing && (components != null)) {
-        components.Dispose();
-      }
-      base.Dispose(disposing);
-    }
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-    #region Component Designer generated code
+        #region Component Designer generated code
 
-    /// <summary> 
-    /// Required method for Designer support - do not modify 
-    /// the contents of this method with the code editor.
-    /// </summary>
-    private void InitializeComponent() {
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,9 +60,9 @@
             this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).BeginInit();
+            (( System.ComponentModel.ISupportInitialize )(this.dgvProductLocations)).BeginInit();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).BeginInit();
+            (( System.ComponentModel.ISupportInitialize )(this.dgvProductStockMovements)).BeginInit();
             this.pnlActions.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,22 +73,22 @@
             this.dgvProductLocations.AllowUserToResizeColumns = false;
             this.dgvProductLocations.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvProductLocations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProductLocations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvProductLocations.Anchor = (( System.Windows.Forms.AnchorStyles )((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductLocations.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProductLocations.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProductLocations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductLocations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -105,7 +110,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProductLocations.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductLocations.EnableHeadersVisualStyles = false;
-            this.dgvProductLocations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.dgvProductLocations.GridColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             this.dgvProductLocations.Location = new System.Drawing.Point(4, 4);
             this.dgvProductLocations.MultiSelect = false;
             this.dgvProductLocations.Name = "dgvProductLocations";
@@ -121,7 +126,7 @@
             this.dgvProductLocations.RowHeadersVisible = false;
             this.dgvProductLocations.RowHeadersWidth = 25;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
@@ -134,9 +139,9 @@
             // 
             // btnback
             // 
-            this.btnback.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.btnback.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             this.btnback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnback.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnback.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             this.btnback.ForeColor = System.Drawing.Color.White;
             this.btnback.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnback.Location = new System.Drawing.Point(8, 12);
@@ -149,8 +154,8 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnlTop.Anchor = (( System.Windows.Forms.AnchorStyles )((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTop.Controls.Add(this.dgvProductLocations);
             this.pnlTop.Location = new System.Drawing.Point(4, 44);
@@ -165,21 +170,21 @@
             this.dgvProductStockMovements.AllowUserToResizeColumns = false;
             this.dgvProductStockMovements.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvProductStockMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvProductStockMovements.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvProductStockMovements.Anchor = (( System.Windows.Forms.AnchorStyles )(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductStockMovements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProductStockMovements.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProductStockMovements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Courier New", 9.75F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductStockMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
@@ -202,7 +207,7 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductStockMovements.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProductStockMovements.EnableHeadersVisualStyles = false;
-            this.dgvProductStockMovements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.dgvProductStockMovements.GridColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             this.dgvProductStockMovements.Location = new System.Drawing.Point(8, 374);
             this.dgvProductStockMovements.Name = "dgvProductStockMovements";
             this.dgvProductStockMovements.ReadOnly = true;
@@ -217,7 +222,7 @@
             this.dgvProductStockMovements.RowHeadersVisible = false;
             this.dgvProductStockMovements.RowHeadersWidth = 25;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
@@ -229,11 +234,11 @@
             // 
             // lbProductStockMovements
             // 
-            this.lbProductStockMovements.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbProductStockMovements.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbProductStockMovements.AutoSize = true;
             this.lbProductStockMovements.BackColor = System.Drawing.Color.Transparent;
-            this.lbProductStockMovements.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProductStockMovements.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            this.lbProductStockMovements.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
+            this.lbProductStockMovements.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
             this.lbProductStockMovements.Location = new System.Drawing.Point(5, 348);
             this.lbProductStockMovements.Name = "lbProductStockMovements";
             this.lbProductStockMovements.Size = new System.Drawing.Size(263, 22);
@@ -242,7 +247,7 @@
             // 
             // pnlActions
             // 
-            this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlActions.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlActions.Controls.Add(this.btnStockMovement);
             this.pnlActions.Location = new System.Drawing.Point(654, 9);
             this.pnlActions.Name = "pnlActions";
@@ -252,9 +257,9 @@
             // btnStockMovement
             // 
             this.btnStockMovement.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnStockMovement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.btnStockMovement.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
             this.btnStockMovement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockMovement.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockMovement.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
             this.btnStockMovement.ForeColor = System.Drawing.Color.White;
             this.btnStockMovement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnStockMovement.Location = new System.Drawing.Point(79, 4);
@@ -391,24 +396,23 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InventoryProductLocationsUc";
             this.Size = new System.Drawing.Size(860, 643);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).EndInit();
+            (( System.ComponentModel.ISupportInitialize )(this.dgvProductLocations)).EndInit();
             this.pnlTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockMovements)).EndInit();
+            (( System.ComponentModel.ISupportInitialize )(this.dgvProductStockMovements)).EndInit();
             this.pnlActions.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
-    }
+        }
 
         #endregion
         private System.Windows.Forms.DataGridView dgvProductLocations;
         private System.Windows.Forms.Button btnback;
         private System.Windows.Forms.Panel pnlTop;
-    private System.Windows.Forms.DataGridView dgvProductStockMovements;
-    private System.Windows.Forms.Label lbProductStockMovements;
-    private System.Windows.Forms.Panel pnlActions;
-    private System.Windows.Forms.Button btnStockMovement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnRef;
+        private System.Windows.Forms.DataGridView dgvProductStockMovements;
+        private System.Windows.Forms.Label lbProductStockMovements;
+        private System.Windows.Forms.Panel pnlActions;
+        private System.Windows.Forms.Button btnStockMovement;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProductLocationId;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLocation;
