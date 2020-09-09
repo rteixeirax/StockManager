@@ -61,6 +61,78 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App restart is required to take effect..
+        /// </summary>
+        public static string AppSettingRestartRequired {
+            get {
+                return ResourceManager.GetString("AppSettingRestartRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default global min stock.
+        /// </summary>
+        public static string AppSettingsDefaultGlobalMinStock {
+            get {
+                return ResourceManager.GetString("AppSettingsDefaultGlobalMinStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel changes.
+        /// </summary>
+        public static string AppSettingsDialogCancelChangesTitle {
+            get {
+                return ResourceManager.GetString("AppSettingsDialogCancelChangesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some changes only take effect after a app restart. Restart it now?.
+        /// </summary>
+        public static string AppSettingsDialogRestartBody {
+            get {
+                return ResourceManager.GetString("AppSettingsDialogRestartBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply changes.
+        /// </summary>
+        public static string AppSettingsDialogRestartTitle {
+            get {
+                return ResourceManager.GetString("AppSettingsDialogRestartTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings updated.
+        /// </summary>
+        public static string AppSettingsDialogSuccessBody {
+            get {
+                return ResourceManager.GetString("AppSettingsDialogSuccessBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string AppSettingsDialogSuccessTitle {
+            get {
+                return ResourceManager.GetString("AppSettingsDialogSuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only applied to the new products when added to a new location..
+        /// </summary>
+        public static string AppSettingsOnlyAppliedToNewProducts {
+            get {
+                return ResourceManager.GetString("AppSettingsOnlyAppliedToNewProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string GlobalAdd {
@@ -768,15 +840,6 @@ namespace StockManager.Translations.Source {
         public static string StockMovementTo {
             get {
                 return ResourceManager.GetString("StockMovementTo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure?.
-        /// </summary>
-        public static string User {
-            get {
-                return ResourceManager.GetString("User", resourceCulture);
             }
         }
         

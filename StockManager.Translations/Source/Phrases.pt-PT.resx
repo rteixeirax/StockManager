@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="User" xml:space="preserve">
-    <value>Tem a certeza?</value>
-  </data>
   <data name="UserDialogDeleteBody" xml:space="preserve">
     <value>Remover {0} utilizador(es)?</value>
   </data>
@@ -395,5 +392,29 @@
   </data>
   <data name="GlobalLanguage" xml:space="preserve">
     <value>Idioma</value>
+  </data>
+  <data name="AppSettingRestartRequired" xml:space="preserve">
+    <value>É necessário reiniciar a app para ter efeito.</value>
+  </data>
+  <data name="AppSettingsDefaultGlobalMinStock" xml:space="preserve">
+    <value>Stock mínimo global padrão</value>
+  </data>
+  <data name="AppSettingsOnlyAppliedToNewProducts" xml:space="preserve">
+    <value>Aplicado apenas aos novos produtos quando adicionados a uma nova localização.</value>
+  </data>
+  <data name="AppSettingsDialogRestartBody" xml:space="preserve">
+    <value>Algumas alterações só têm efeito após reiniciar a app. Reiniciar agora?</value>
+  </data>
+  <data name="AppSettingsDialogRestartTitle" xml:space="preserve">
+    <value>Aplicar alterações</value>
+  </data>
+  <data name="AppSettingsDialogSuccessBody" xml:space="preserve">
+    <value>Configurações atualizadas</value>
+  </data>
+  <data name="AppSettingsDialogSuccessTitle" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="AppSettingsDialogCancelChangesTitle" xml:space="preserve">
+    <value>Cancelar alterações</value>
   </data>
 </root>
