@@ -144,8 +144,8 @@ namespace StockManager.Tests.Source.Services
                 .GetOneAsync(_mockLocation.LocationId, _mockProduct.ProductId);
 
             // Get all product stock movements
-            IEnumerable<StockMovement> movements = await AppServices
-                .StockMovementService.GetAllAsync(_mockProduct.Reference);
+            IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(
+                new StockMovementOptions() { SearchValue = _mockProduct.Reference });
 
             // Remove movement
             StockMovement removeMvm = movements.FirstOrDefault(x =>
