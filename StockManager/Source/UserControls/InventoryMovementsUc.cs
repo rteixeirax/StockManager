@@ -147,7 +147,8 @@ namespace StockManager.Source.UserControls
 
         private async void dtpEnd_ValueChanged(object sender, EventArgs e)
         {
-
+            dtpStart.MaxDate = dtpEnd.Value;
+            await LoadDataAsync();
         }
     }
 }
