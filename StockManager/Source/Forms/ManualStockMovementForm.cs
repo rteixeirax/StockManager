@@ -117,7 +117,7 @@ namespace StockManager.Source.Forms
                 // Update stock movements table
                 if (_inventoryMovementsUc != null)
                 {
-                    await _inventoryMovementsUc.LoadMovementsAsync();
+                    await _inventoryMovementsUc.LoadDataAsync();
                 }
                 else if (_inventoryProductLocationsUc != null)
                 {

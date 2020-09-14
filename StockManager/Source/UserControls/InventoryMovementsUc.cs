@@ -23,37 +23,23 @@ namespace StockManager.Source.UserControls
             InitializeComponent();
 
             btnClearSearchValue.Visible = false;
-            dtpStart.MaxDate = DateTime.Now;
-            dtpEnd.MaxDate = DateTime.Now;
+
+            dtpStart.MaxDate = DateTime.Today;
+            dtpStart.MinDate = new DateTime(1753, 1, 1);
+            dtpStart.Value = DateTime.Today;
+
+            dtpEnd.MaxDate = DateTime.Now.AddYears(10);
+            dtpEnd.MinDate = dtpStart.Value;
+            dtpEnd.Value = dtpStart.Value;
 
             SetTranslatedPhrases();
-            LoadMovementsAsync().Wait();
+            LoadDataAsync().Wait();
         }
 
-        public async Task LoadMovementsAsync()
+        public async Task LoadDataAsync()
         {
             Spinner.InitSpinner();
-            dgvMovements.Rows.Clear();
-            await LoadDataAsync();
-            Spinner.StopSpinner();
-        }
 
-        private async void btnClearSearchValue_Click(object sender, EventArgs e)
-        {
-            tbSeachText.Text = "";
-            _hasBeenSearching = false;
-            await LoadDataAsync();
-        }
-
-        private async void btnStockMovement_Click(object sender, EventArgs e)
-        {
-            Location mainLocation = await AppServices.LocationService.GetMainAsync(true);
-            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, mainLocation);
-            await manualStockMovementForm.ShowManualStockMovementFormAsync();
-        }
-
-        private async Task LoadDataAsync()
-        {
             dgvMovements.Rows.Clear();
 
             StockMovementOptions options = new StockMovementOptions()
@@ -77,6 +63,22 @@ namespace StockManager.Source.UserControls
                   stockMovement.User?.Username
                 );
             });
+
+            Spinner.StopSpinner();
+        }
+
+        private async void btnClearSearchValue_Click(object sender, EventArgs e)
+        {
+            tbSeachText.Text = "";
+            _hasBeenSearching = false;
+            await LoadDataAsync();
+        }
+
+        private async void btnStockMovement_Click(object sender, EventArgs e)
+        {
+            Location mainLocation = await AppServices.LocationService.GetMainAsync(true);
+            ManualStockMovementForm manualStockMovementForm = new ManualStockMovementForm(this, mainLocation);
+            await manualStockMovementForm.ShowManualStockMovementFormAsync();
         }
 
         private async void pbSearchIcon_Click(object sender, EventArgs e)
@@ -139,13 +141,13 @@ namespace StockManager.Source.UserControls
             }
         }
 
-        private async void dtpStart_ValueChanged(object sender, EventArgs e)
+        private async void dtpStart_CloseUp(object sender, EventArgs e)
         {
             dtpEnd.MinDate = dtpStart.Value;
             await LoadDataAsync();
         }
 
-        private async void dtpEnd_ValueChanged(object sender, EventArgs e)
+        private async void dtpEnd_CloseUp(object sender, EventArgs e)
         {
             dtpStart.MaxDate = dtpEnd.Value;
             await LoadDataAsync();
