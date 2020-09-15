@@ -286,6 +286,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filters:.
+        /// </summary>
+        public static string GlobalFilters {
+            get {
+                return ResourceManager.GetString("GlobalFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Global info.
         /// </summary>
         public static string GlobalInfo {

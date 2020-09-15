@@ -397,4 +397,7 @@
   <data name="AppSettingsDialogCancelChangesTitle" xml:space="preserve">
     <value>Cancel changes</value>
   </data>
+  <data name="GlobalFilters" xml:space="preserve">
+    <value>Filters:</value>
+  </data>
 </root>

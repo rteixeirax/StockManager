@@ -97,7 +97,7 @@ namespace StockManager.Source.UserControls
         {
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
-            lbFilterDate.Text = "Filter by date"; // TODO: Add phrase
+            lbFilterDate.Text = Phrases.GlobalFilterByDate;
 
             dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
             dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
