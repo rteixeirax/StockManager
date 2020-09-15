@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 
 using StockManager.Core.Source;
-using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Services;
 using StockManager.Core.Source.Types;
@@ -111,72 +110,9 @@ namespace StockManager.Services.Source.Services
 
         public async Task<IEnumerable<StockMovement>> GetAllAsync(StockMovementOptions options = null)
         {
-            if (options != null)
-            {
-                // TODO:
-                // Yeh..i know, it's a mess ¯\_(ツ)_/¯
-                // There must be a better way to do this without so many ifs...
-                // I need to search more about this..Must be a way to build the expression by using conditionals and avoid this hole mess.
-
-                string searchValue = options.SearchValue.ToLower();
-
-                // All options sent
-                if (!string.IsNullOrEmpty(options.SearchValue) && (options.StartDate != default) && (options.EndDate != default))
-                {
-                    return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
-                       (x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue))
-                       && (x.CreatedAt >= options.StartDate.SetDateToBeginningOfTheDay())
-                       && (x.CreatedAt <= options.EndDate.SetDateToEndOfTheDay()));
-                }
-
-                // Only Search
-                if (!string.IsNullOrEmpty(options.SearchValue) && (options.StartDate == default) && (options.EndDate == default))
-                {
-                    return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
-                       (x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue)));
-                }
-
-                // Only Search and EndDate
-                if (!string.IsNullOrEmpty(options.SearchValue) && (options.StartDate == default) && (options.EndDate != default))
-                {
-                    return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
-                       (x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue))
-                       && (x.CreatedAt <= options.EndDate.SetDateToEndOfTheDay()));
-                }
-
-                // Only Search and StartDate
-                if (!string.IsNullOrEmpty(options.SearchValue) && (options.StartDate != default) && (options.EndDate == default))
-                {
-                    return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
-                       (x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue))
-                       && (x.CreatedAt >= options.StartDate.SetDateToBeginningOfTheDay()));
-                }
-
-                // Only StartDate and EndDate
-                if (string.IsNullOrEmpty(options.SearchValue) && (options.StartDate != default) && (options.EndDate != default))
-                {
-                    return await _repository.StockMovements.FindAllWithProductAndUserAsync(x =>
-                       (x.CreatedAt >= options.StartDate.SetDateToBeginningOfTheDay())
-                       && (x.CreatedAt <= options.EndDate.SetDateToEndOfTheDay()));
-                }
-
-                // Only StartDate
-                if (string.IsNullOrEmpty(options.SearchValue) && (options.StartDate != default) && (options.EndDate == default))
-                {
-                    return await _repository.StockMovements
-                        .FindAllWithProductAndUserAsync(x => (x.CreatedAt >= options.StartDate.SetDateToBeginningOfTheDay()));
-                }
-
-                // Only EndDate
-                if (string.IsNullOrEmpty(options.SearchValue) && (options.StartDate == default) && (options.EndDate != default))
-                {
-                    return await _repository.StockMovements
-                        .FindAllWithProductAndUserAsync(x => (x.CreatedAt <= options.EndDate.SetDateToEndOfTheDay()));
-                }
-            }
-
-            // No options
-            return await _repository.StockMovements.FindAllWithProductAndUserAsync(x => true);
+            return options != null
+                ? await _repository.StockMovements.FindAllOrderedByDescendingWithProductAndUserAsync(options)
+                : await _repository.StockMovements.FindAllOrderedByDescendingWithProductAndUserAsync();
         }
 
         public async Task<StockMovement> GetProductLastMovementAsync(int productId)

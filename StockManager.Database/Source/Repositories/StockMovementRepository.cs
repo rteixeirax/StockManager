@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
 
+using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Repositories;
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Database.Source.Repositories
 {
@@ -20,15 +22,42 @@ namespace StockManager.Database.Source.Repositories
             _db = db;
         }
 
-        public async Task<IEnumerable<StockMovement>> FindAllWithProductAndUserAsync(Expression<Func<StockMovement, bool>> expression)
+        public async Task<IEnumerable<StockMovement>> FindAllOrderedByDescendingWithProductAndUserAsync()
         {
             return await _db.StockMovements
                 .AsNoTracking()
                 .Include(x => x.Product)
                 .Include(x => x.User)
-                .Where(expression)
                 .OrderByDescending(x => x.CreatedAt)
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<StockMovement>> FindAllOrderedByDescendingWithProductAndUserAsync(StockMovementOptions options)
+        {
+            /*
+             * Dynamically Composing Expression Predicates
+             * http://www.albahari.com/nutshell/predicatebuilder.aspx
+             */
+
+            IQueryable<StockMovement> queryable = _db.StockMovements.AsNoTracking().Include(x => x.Product).Include(x => x.User);
+
+            if (!string.IsNullOrEmpty(options.SearchValue))
+            {
+                string searchValue = options.SearchValue.ToLower();
+                queryable = queryable.Where(x => x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue));
+            }
+
+            if (options.StartDate != default)
+            {
+                queryable = queryable.Where(x => x.CreatedAt >= options.StartDate.SetDateToBeginningOfTheDay());
+            }
+
+            if (options.EndDate != default)
+            {
+                queryable = queryable.Where(x => x.CreatedAt <= options.EndDate.SetDateToEndOfTheDay());
+            }
+
+            return await queryable.OrderByDescending(x => x.CreatedAt).ToListAsync();
         }
 
         public async Task<IEnumerable<StockMovement>> FindAllWithOrderByDescendingAsync(Expression<Func<StockMovement, bool>> expression)

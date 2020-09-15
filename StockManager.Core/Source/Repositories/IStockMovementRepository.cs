@@ -4,15 +4,21 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Core.Source.Repositories
 {
     public interface IStockMovementRepository : IBaseRepository<StockMovement>
     {
         /// <summary>
-        /// Find all movements with product and user included that satisfy the given lambda expression
+        /// Find all movements, ordered by descending, with product and user included.
         /// </summary>
-        Task<IEnumerable<StockMovement>> FindAllWithProductAndUserAsync(Expression<Func<StockMovement, bool>> expression);
+        Task<IEnumerable<StockMovement>> FindAllOrderedByDescendingWithProductAndUserAsync();
+
+        /// <summary>
+        /// Find all movements, ordered by descending, with product and user included that satisfy the given StockMovementOptions
+        /// </summary>
+        Task<IEnumerable<StockMovement>> FindAllOrderedByDescendingWithProductAndUserAsync(StockMovementOptions options);
 
         /// <summary>
         /// Find all stock movements, order by descending, that satisfy the given lambda expression
