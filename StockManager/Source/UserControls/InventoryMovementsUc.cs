@@ -97,7 +97,10 @@ namespace StockManager.Source.UserControls
         {
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
-            lbFilterDate.Text = Phrases.GlobalFilterByDate;
+            lbFilter.Text = Phrases.GlobalFilters;
+            lbFilterDate.Text = Phrases.GlobalDate;
+            lbFilterLocation.Text = Phrases.GlobalLocation;
+            lbFilterUser.Text = Phrases.GlobalUser;
 
             dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
             dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
