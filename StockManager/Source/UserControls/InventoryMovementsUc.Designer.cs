@@ -30,11 +30,11 @@
         {
             System.Windows.Forms.PictureBox pbSearchIcon;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryMovementsUc));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMovements = new System.Windows.Forms.DataGridView();
             this.columnStockMovementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,13 +55,13 @@
             this.tlpFilterByDate = new System.Windows.Forms.TableLayoutPanel();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.pnFilters = new System.Windows.Forms.Panel();
+            this.btClearFilterDate = new System.Windows.Forms.Button();
+            this.btClearFilterUser = new System.Windows.Forms.Button();
+            this.btClearFilterLocation = new System.Windows.Forms.Button();
             this.cbUsers = new System.Windows.Forms.ComboBox();
+            this.lbFilterLocation = new System.Windows.Forms.Label();
             this.lbFilterUser = new System.Windows.Forms.Label();
             this.cbLocations = new System.Windows.Forms.ComboBox();
-            this.lbFilterLocation = new System.Windows.Forms.Label();
-            this.btClearFilterLocation = new System.Windows.Forms.Button();
-            this.btClearFilterUser = new System.Windows.Forms.Button();
-            this.btClearFilterDate = new System.Windows.Forms.Button();
             pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
@@ -91,26 +91,26 @@
             this.dgvMovements.AllowUserToDeleteRows = false;
             this.dgvMovements.AllowUserToResizeColumns = false;
             this.dgvMovements.AllowUserToResizeRows = false;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMovements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMovements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMovements.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvMovements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStockMovementId,
@@ -121,36 +121,36 @@
             this.columnQty,
             this.columnStockAcc,
             this.columnUser});
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMovements.EnableHeadersVisualStyles = false;
             this.dgvMovements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.dgvMovements.Location = new System.Drawing.Point(8, 169);
             this.dgvMovements.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMovements.Name = "dgvMovements";
             this.dgvMovements.ReadOnly = true;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMovements.RowHeadersVisible = false;
             this.dgvMovements.RowHeadersWidth = 25;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvMovements.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMovements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovements.Size = new System.Drawing.Size(845, 241);
@@ -298,7 +298,7 @@
             this.lbFilterDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFilterDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
             this.lbFilterDate.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbFilterDate.Location = new System.Drawing.Point(2, 60);
+            this.lbFilterDate.Location = new System.Drawing.Point(2, 63);
             this.lbFilterDate.Name = "lbFilterDate";
             this.lbFilterDate.Size = new System.Drawing.Size(104, 16);
             this.lbFilterDate.TabIndex = 26;
@@ -330,7 +330,7 @@
             this.tlpFilterByDate.Name = "tlpFilterByDate";
             this.tlpFilterByDate.RowCount = 1;
             this.tlpFilterByDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFilterByDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpFilterByDate.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tlpFilterByDate.Size = new System.Drawing.Size(445, 28);
             this.tlpFilterByDate.TabIndex = 28;
             // 
@@ -364,6 +364,54 @@
             this.pnFilters.Size = new System.Drawing.Size(850, 116);
             this.pnFilters.TabIndex = 30;
             // 
+            // btClearFilterDate
+            // 
+            this.btClearFilterDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterDate.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterDate.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterDate.Image")));
+            this.btClearFilterDate.Location = new System.Drawing.Point(442, 84);
+            this.btClearFilterDate.Name = "btClearFilterDate";
+            this.btClearFilterDate.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterDate.TabIndex = 37;
+            this.btClearFilterDate.UseVisualStyleBackColor = false;
+            this.btClearFilterDate.Click += new System.EventHandler(this.btClearFilterDate_Click);
+            // 
+            // btClearFilterUser
+            // 
+            this.btClearFilterUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterUser.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterUser.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterUser.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterUser.Image")));
+            this.btClearFilterUser.Location = new System.Drawing.Point(442, 26);
+            this.btClearFilterUser.Name = "btClearFilterUser";
+            this.btClearFilterUser.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterUser.TabIndex = 36;
+            this.btClearFilterUser.UseVisualStyleBackColor = false;
+            this.btClearFilterUser.Click += new System.EventHandler(this.btClearFilterUser_Click);
+            // 
+            // btClearFilterLocation
+            // 
+            this.btClearFilterLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterLocation.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterLocation.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterLocation.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterLocation.Image")));
+            this.btClearFilterLocation.Location = new System.Drawing.Point(212, 26);
+            this.btClearFilterLocation.Name = "btClearFilterLocation";
+            this.btClearFilterLocation.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterLocation.TabIndex = 12;
+            this.btClearFilterLocation.UseVisualStyleBackColor = false;
+            this.btClearFilterLocation.Click += new System.EventHandler(this.btClearFilterLocation_Click);
+            // 
             // cbUsers
             // 
             this.cbUsers.BackColor = System.Drawing.Color.White;
@@ -376,6 +424,19 @@
             this.cbUsers.Size = new System.Drawing.Size(203, 24);
             this.cbUsers.TabIndex = 35;
             this.cbUsers.SelectionChangeCommitted += new System.EventHandler(this.cbUsers_SelectionChangeCommitted);
+            // 
+            // lbFilterLocation
+            // 
+            this.lbFilterLocation.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbFilterLocation.AutoSize = true;
+            this.lbFilterLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFilterLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.lbFilterLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbFilterLocation.Location = new System.Drawing.Point(1, 5);
+            this.lbFilterLocation.Name = "lbFilterLocation";
+            this.lbFilterLocation.Size = new System.Drawing.Size(136, 16);
+            this.lbFilterLocation.TabIndex = 27;
+            this.lbFilterLocation.Text = "lbFilterLocation";
             // 
             // lbFilterUser
             // 
@@ -403,67 +464,6 @@
             this.cbLocations.Size = new System.Drawing.Size(206, 24);
             this.cbLocations.TabIndex = 35;
             this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
-            // 
-            // lbFilterLocation
-            // 
-            this.lbFilterLocation.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbFilterLocation.AutoSize = true;
-            this.lbFilterLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFilterLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-            this.lbFilterLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbFilterLocation.Location = new System.Drawing.Point(1, 5);
-            this.lbFilterLocation.Name = "lbFilterLocation";
-            this.lbFilterLocation.Size = new System.Drawing.Size(136, 16);
-            this.lbFilterLocation.TabIndex = 27;
-            this.lbFilterLocation.Text = "lbFilterLocation";
-            // 
-            // btClearFilterLocation
-            // 
-            this.btClearFilterLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btClearFilterLocation.BackColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterLocation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btClearFilterLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClearFilterLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClearFilterLocation.ForeColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterLocation.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterLocation.Image")));
-            this.btClearFilterLocation.Location = new System.Drawing.Point(212, 26);
-            this.btClearFilterLocation.Name = "btClearFilterLocation";
-            this.btClearFilterLocation.Size = new System.Drawing.Size(17, 20);
-            this.btClearFilterLocation.TabIndex = 12;
-            this.btClearFilterLocation.UseVisualStyleBackColor = false;
-            this.btClearFilterLocation.Click += new System.EventHandler(this.btClearFilterLocation_Click);
-            // 
-            // btClearFilterUser
-            // 
-            this.btClearFilterUser.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btClearFilterUser.BackColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btClearFilterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClearFilterUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClearFilterUser.ForeColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterUser.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterUser.Image")));
-            this.btClearFilterUser.Location = new System.Drawing.Point(442, 26);
-            this.btClearFilterUser.Name = "btClearFilterUser";
-            this.btClearFilterUser.Size = new System.Drawing.Size(17, 20);
-            this.btClearFilterUser.TabIndex = 36;
-            this.btClearFilterUser.UseVisualStyleBackColor = false;
-            this.btClearFilterUser.Click += new System.EventHandler(this.btClearFilterUser_Click);
-            // 
-            // btClearFilterDate
-            // 
-            this.btClearFilterDate.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btClearFilterDate.BackColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterDate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btClearFilterDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClearFilterDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClearFilterDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.btClearFilterDate.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterDate.Image")));
-            this.btClearFilterDate.Location = new System.Drawing.Point(442, 84);
-            this.btClearFilterDate.Name = "btClearFilterDate";
-            this.btClearFilterDate.Size = new System.Drawing.Size(17, 20);
-            this.btClearFilterDate.TabIndex = 37;
-            this.btClearFilterDate.UseVisualStyleBackColor = false;
-            this.btClearFilterDate.Click += new System.EventHandler(this.btClearFilterDate_Click);
             // 
             // InventoryMovementsUc
             // 

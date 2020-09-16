@@ -121,7 +121,7 @@ namespace StockManager.Source.Forms
                 }
                 else if (_inventoryProductLocationsUc != null)
                 {
-                    await _inventoryProductLocationsUc.LoadProductLocations();
+                    _inventoryProductLocationsUc.LoadProductLocations();
                 }
                 else
                 {

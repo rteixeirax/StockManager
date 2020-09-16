@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
@@ -38,12 +35,8 @@ namespace StockManager.Source.UserControls
             // Hide product locations table ref column
             columnReference.Visible = false;
 
-            // hide the stock movement product name and ref columns
-            columnSmProductName.Visible = false;
-            columnSmProductRef.Visible = false;
-
             SetTranslatedPhrases();
-            LoadProductLocations().Wait();
+            LoadProductLocations();
         }
 
         // Called from the InventoryLocationsUc
@@ -58,23 +51,18 @@ namespace StockManager.Source.UserControls
             // Show product locations table ref column
             columnReference.Visible = true;
 
-            // Show the stock movement product name and ref columns
-            columnSmProductName.Visible = true;
-            columnSmProductRef.Visible = true;
-
             SetTranslatedPhrases();
-            LoadProductLocations().Wait();
+            LoadProductLocations();
         }
 
         /// <summary>
         /// Fill the UC content
         /// </summary>
-        public async Task LoadProductLocations()
+        public void LoadProductLocations()
         {
             Spinner.InitSpinner();
 
             dgvProductLocations.Rows.Clear();
-            dgvProductStockMovements.Rows.Clear();
 
             if (_product != null)
             {
@@ -82,7 +70,7 @@ namespace StockManager.Source.UserControls
             }
             else if (_location != null)
             {
-                await LoadDataByLocation();
+                LoadDataByLocation();
             }
 
             Spinner.StopSpinner();
@@ -104,7 +92,8 @@ namespace StockManager.Source.UserControls
                       .DeleteAsyn(id, Program.LoggedInUser.UserId);
 
                     // Reload Ui
-                    await LoadProductLocations();
+                    LoadProductLocations();
+
                     Spinner.StopSpinner();
                 }
                 catch (OperationErrorException ex)
@@ -199,7 +188,7 @@ namespace StockManager.Source.UserControls
         /// <summary>
         /// Populate the UC data for the given location
         /// </summary>
-        private async Task LoadDataByLocation()
+        private void LoadDataByLocation()
         {
             // fill the Location products table
             _location.ProductLocations?.ToList().ForEach((productLocation) => {
@@ -209,23 +198,6 @@ namespace StockManager.Source.UserControls
                  productLocation.Product.Name,
                  productLocation.Stock,
                  productLocation.MinStock
-               );
-            });
-
-            // fill the location stock movements table
-            IEnumerable<StockMovement> stockMovements = await AppServices.LocationService
-              .GetAllStockMovements(_location.LocationId);
-
-            stockMovements.ToList().ForEach((stockMovement) => {
-                dgvProductStockMovements.Rows.Add(
-                 stockMovement.StockMovementId,
-                 stockMovement.CreatedAt.ShortDateWithTime(),
-                 stockMovement.Product.Reference,
-                 stockMovement.Product.Name,
-                 stockMovement.ConcatMovementString(),
-                 stockMovement.Qty,
-                 stockMovement.Stock,
-                 stockMovement.User?.Username
                );
             });
         }
@@ -245,21 +217,6 @@ namespace StockManager.Source.UserControls
                  productLocation.MinStock
                );
             });
-
-            // populate the stock movments table
-            _product.StockMovements?.OrderByDescending(x => x.CreatedAt)
-              .ToList().ForEach((stockMovement) => {
-                  dgvProductStockMovements.Rows.Add(
-                    stockMovement.StockMovementId,
-                    stockMovement.CreatedAt.ShortDateWithTime(),
-                    "", // The ref column only render for the location stock movement
-                    "", // The name column only render for the location stock movement
-                    stockMovement.ConcatMovementString(),
-                    stockMovement.Qty,
-                    stockMovement.Stock,
-                    stockMovement.User?.Username
-                );
-              });
         }
 
         /// <summary>
@@ -280,15 +237,6 @@ namespace StockManager.Source.UserControls
             dgvProductLocations.Columns[4].HeaderText = Phrases.StockMovementMinStock;
             dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit;
             dgvProductLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete;
-
-            lbProductStockMovements.Text = Phrases.StockMovementsLabel;
-            dgvProductStockMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-            dgvProductStockMovements.Columns[2].HeaderText = Phrases.GlobalReference;
-            dgvProductStockMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
-            dgvProductStockMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
-            dgvProductStockMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
-            dgvProductStockMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
-            dgvProductStockMovements.Columns[7].HeaderText = Phrases.GlobalUser;
         }
     }
 }

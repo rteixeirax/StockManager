@@ -63,7 +63,7 @@ namespace StockManager.Source.Forms
 
                 Spinner.StopSpinner();
 
-                await _inventoryProductLocationsUc.LoadProductLocations();
+                _inventoryProductLocationsUc.LoadProductLocations();
 
                 Close();
             }
