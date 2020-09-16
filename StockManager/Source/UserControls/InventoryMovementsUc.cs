@@ -24,14 +24,7 @@ namespace StockManager.Source.UserControls
 
             btnClearSearchValue.Visible = false;
 
-            dtpStart.MaxDate = DateTime.Today;
-            dtpStart.MinDate = new DateTime(1753, 1, 1);
-            dtpStart.Value = DateTime.Today;
-
-            dtpEnd.MaxDate = DateTime.Now.AddYears(10);
-            dtpEnd.MinDate = dtpStart.Value;
-            dtpEnd.Value = dtpStart.Value;
-
+            LoadFiltersDataAsync().Wait();
             SetTranslatedPhrases();
             LoadDataAsync().Wait();
         }
@@ -63,6 +56,33 @@ namespace StockManager.Source.UserControls
                   stockMovement.User?.Username
                 );
             });
+
+            Spinner.StopSpinner();
+        }
+
+        private async Task LoadFiltersDataAsync()
+        {
+            Spinner.InitSpinner();
+
+            IEnumerable<Location> locations = await AppServices.LocationService.GetAllAsync();
+            cbLocations.DataSource = locations;
+            cbLocations.ValueMember = "LocationId";
+            cbLocations.DisplayMember = "Name";
+            cbLocations.SelectedItem = null;
+
+            IEnumerable<User> users = await AppServices.UserService.GetAllAsync();
+            cbUsers.DataSource = users;
+            cbUsers.ValueMember = "UserId";
+            cbUsers.DisplayMember = "Username";
+            cbUsers.SelectedItem = null;
+
+            dtpStart.MaxDate = DateTime.Today;
+            dtpStart.MinDate = new DateTime(1753, 1, 1);
+            dtpStart.Value = DateTime.Today;
+
+            dtpEnd.MaxDate = DateTime.Now.AddYears(10);
+            dtpEnd.MinDate = dtpStart.Value;
+            dtpEnd.Value = dtpStart.Value;
 
             Spinner.StopSpinner();
         }
