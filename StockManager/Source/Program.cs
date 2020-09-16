@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,6 +43,25 @@ namespace StockManager.Source
         [STAThread]
         private static async Task Main()
         {
+            // https://www.c-sharpcorner.com/UploadFile/f9f215/how-to-restrict-the-application-to-just-one-instance/
+            // Restrict the application to run in just one instance
+            Mutex mutex = new Mutex(true, AppInfo.AppName, out bool createdNew);
+
+            // If it is not the first instance, means that the App is already running!
+            // We need to alert the user and then exiting the application.
+            if (!createdNew)
+            {
+                MessageBox.Show(
+                  "An instance of the App is already running.",
+                  AppInfo.AppName,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Error
+                );
+
+                // Exit
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
