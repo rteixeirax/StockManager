@@ -44,7 +44,20 @@ namespace StockManager.Database.Source.Repositories
             if (!string.IsNullOrEmpty(options.SearchValue))
             {
                 string searchValue = options.SearchValue.ToLower();
-                queryable = queryable.Where(x => x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue));
+
+                queryable = queryable
+                    .Where(x => x.Product.Reference.ToLower().Contains(searchValue) || x.Product.Name.ToLower().Contains(searchValue));
+            }
+
+            if (options.LocationId != null)
+            {
+                queryable = queryable
+                    .Where(x => (x.ToLocationId == options.LocationId) || (x.FromLocationId == options.LocationId));
+            }
+
+            if (options.UserId != null)
+            {
+                queryable = queryable.Where(x => x.UserId == options.UserId);
             }
 
             if (options.StartDate != default)

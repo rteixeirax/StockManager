@@ -162,4 +162,25 @@
         gBgrIMvT2CRwKqYFYGAAANP9DdmuEvOZAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btClearFilterDate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAFNJREFUKFNj
+        oDtghNLIAJsYGIAkdgOxDZgHAeZAvA+IcWqyAuJnQOwIxMZA/ATKxgssgRikCYTtQAKEAEka0J30GIid
+        gBgrIMvT2CRwKqYFYGAAANP9DdmuEvOZAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btClearFilterUser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAFNJREFUKFNj
+        oDtghNLIAJsYGIAkdgOxDZgHAeZAvA+IcWqyAuJnQOwIxMZA/ATKxgssgRikCYTtQAKEAEka0J30GIid
+        gBgrIMvT2CRwKqYFYGAAANP9DdmuEvOZAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btClearFilterLocation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAFNJREFUKFNj
+        oDtghNLIAJsYGIAkdgOxDZgHAeZAvA+IcWqyAuJnQOwIxMZA/ATKxgssgRikCYTtQAKEAEka0J30GIid
+        gBgrIMvT2CRwKqYFYGAAANP9DdmuEvOZAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

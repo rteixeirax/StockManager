@@ -21,12 +21,20 @@ namespace StockManager.Source.UserControls
         public InventoryMovementsUc()
         {
             InitializeComponent();
+            LoadInitialDataAsync().Wait();
+        }
 
+        private async Task LoadInitialDataAsync()
+        {
             btnClearSearchValue.Visible = false;
+            btClearFilterLocation.Visible = false;
+            btClearFilterUser.Visible = false;
+            btClearFilterDate.Visible = false;
 
-            LoadFiltersDataAsync().Wait();
             SetTranslatedPhrases();
-            LoadDataAsync().Wait();
+
+            await LoadFiltersDataAsync();
+            await LoadDataAsync();
         }
 
         public async Task LoadDataAsync()
@@ -38,6 +46,8 @@ namespace StockManager.Source.UserControls
             StockMovementOptions options = new StockMovementOptions()
             {
                 SearchValue = tbSeachText.Text,
+                LocationId = ( int? )cbLocations.SelectedValue,
+                UserId = ( int? )cbUsers.SelectedValue,
                 StartDate = dtpStart.Value,
                 EndDate = dtpEnd.Value
             };
@@ -60,6 +70,34 @@ namespace StockManager.Source.UserControls
             Spinner.StopSpinner();
         }
 
+        private void SetTranslatedPhrases()
+        {
+            btnStockMovement.Text = Phrases.GlobalCreateMov;
+
+            lbFilterDate.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalDate}";
+            lbFilterLocation.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalLocation}";
+            lbFilterUser.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalUser}";
+
+            dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
+            dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
+            dgvMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
+            dgvMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
+            dgvMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
+            dgvMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
+            dgvMovements.Columns[7].HeaderText = Phrases.GlobalUser;
+        }
+
+        private void SetInitialDateTimePickerValues()
+        {
+            dtpStart.MaxDate = DateTime.Today;
+            dtpStart.MinDate = new DateTime(1753, 1, 1);
+            dtpStart.Value = DateTime.Today;
+
+            dtpEnd.MaxDate = DateTime.Now.AddYears(10);
+            dtpEnd.MinDate = dtpStart.Value;
+            dtpEnd.Value = dtpStart.Value;
+        }
+
         private async Task LoadFiltersDataAsync()
         {
             Spinner.InitSpinner();
@@ -76,13 +114,7 @@ namespace StockManager.Source.UserControls
             cbUsers.DisplayMember = "Username";
             cbUsers.SelectedItem = null;
 
-            dtpStart.MaxDate = DateTime.Today;
-            dtpStart.MinDate = new DateTime(1753, 1, 1);
-            dtpStart.Value = DateTime.Today;
-
-            dtpEnd.MaxDate = DateTime.Now.AddYears(10);
-            dtpEnd.MinDate = dtpStart.Value;
-            dtpEnd.Value = dtpStart.Value;
+            SetInitialDateTimePickerValues();
 
             Spinner.StopSpinner();
         }
@@ -111,23 +143,6 @@ namespace StockManager.Source.UserControls
                 _hasBeenSearching = true;
                 await LoadDataAsync();
             }
-        }
-
-        private void SetTranslatedPhrases()
-        {
-            btnStockMovement.Text = Phrases.GlobalCreateMov;
-
-            lbFilterDate.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalDate}";
-            lbFilterLocation.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalLocation}";
-            lbFilterUser.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalUser}";
-
-            dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-            dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
-            dgvMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
-            dgvMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
-            dgvMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
-            dgvMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
-            dgvMovements.Columns[7].HeaderText = Phrases.GlobalUser;
         }
 
         private void tbSeachText_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,15 +178,51 @@ namespace StockManager.Source.UserControls
             }
         }
 
+        private async void cbLocations_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            btClearFilterLocation.Visible = true;
+            await LoadDataAsync();
+        }
+
+        private async void btClearFilterLocation_Click(object sender, EventArgs e)
+        {
+            cbLocations.SelectedItem = null;
+            btClearFilterLocation.Visible = false;
+            await LoadDataAsync();
+        }
+
+        private async void cbUsers_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            btClearFilterUser.Visible = true;
+            await LoadDataAsync();
+        }
+
+        private async void btClearFilterUser_Click(object sender, EventArgs e)
+        {
+            cbUsers.SelectedItem = null;
+            btClearFilterUser.Visible = false;
+            await LoadDataAsync();
+        }
+
         private async void dtpStart_CloseUp(object sender, EventArgs e)
         {
             dtpEnd.MinDate = dtpStart.Value;
+            btClearFilterDate.Visible = true;
             await LoadDataAsync();
         }
 
         private async void dtpEnd_CloseUp(object sender, EventArgs e)
         {
             dtpStart.MaxDate = dtpEnd.Value;
+            btClearFilterDate.Visible = true;
+            await LoadDataAsync();
+        }
+
+        private async void btClearFilterDate_Click(object sender, EventArgs e)
+        {
+            SetInitialDateTimePickerValues();
+
+            btClearFilterDate.Visible = false;
             await LoadDataAsync();
         }
     }

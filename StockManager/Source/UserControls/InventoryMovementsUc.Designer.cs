@@ -30,11 +30,11 @@
         {
             System.Windows.Forms.PictureBox pbSearchIcon;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryMovementsUc));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMovements = new System.Windows.Forms.DataGridView();
             this.columnStockMovementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +59,9 @@
             this.lbFilterUser = new System.Windows.Forms.Label();
             this.cbLocations = new System.Windows.Forms.ComboBox();
             this.lbFilterLocation = new System.Windows.Forms.Label();
+            this.btClearFilterLocation = new System.Windows.Forms.Button();
+            this.btClearFilterUser = new System.Windows.Forms.Button();
+            this.btClearFilterDate = new System.Windows.Forms.Button();
             pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
@@ -88,26 +91,26 @@
             this.dgvMovements.AllowUserToDeleteRows = false;
             this.dgvMovements.AllowUserToResizeColumns = false;
             this.dgvMovements.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
             this.dgvMovements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMovements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMovements.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvMovements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dgvMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStockMovementId,
@@ -118,36 +121,36 @@
             this.columnQty,
             this.columnStockAcc,
             this.columnUser});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle28;
             this.dgvMovements.EnableHeadersVisualStyles = false;
             this.dgvMovements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.dgvMovements.Location = new System.Drawing.Point(8, 169);
             this.dgvMovements.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMovements.Name = "dgvMovements";
             this.dgvMovements.ReadOnly = true;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dgvMovements.RowHeadersVisible = false;
             this.dgvMovements.RowHeadersWidth = 25;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.dgvMovements.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMovements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovements.Size = new System.Drawing.Size(845, 241);
@@ -347,6 +350,9 @@
             // 
             // pnFilters
             // 
+            this.pnFilters.Controls.Add(this.btClearFilterDate);
+            this.pnFilters.Controls.Add(this.btClearFilterUser);
+            this.pnFilters.Controls.Add(this.btClearFilterLocation);
             this.pnFilters.Controls.Add(this.cbUsers);
             this.pnFilters.Controls.Add(this.lbFilterLocation);
             this.pnFilters.Controls.Add(this.lbFilterUser);
@@ -369,6 +375,7 @@
             this.cbUsers.Name = "cbUsers";
             this.cbUsers.Size = new System.Drawing.Size(203, 24);
             this.cbUsers.TabIndex = 35;
+            this.cbUsers.SelectionChangeCommitted += new System.EventHandler(this.cbUsers_SelectionChangeCommitted);
             // 
             // lbFilterUser
             // 
@@ -395,6 +402,7 @@
             this.cbLocations.Name = "cbLocations";
             this.cbLocations.Size = new System.Drawing.Size(206, 24);
             this.cbLocations.TabIndex = 35;
+            this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
             // 
             // lbFilterLocation
             // 
@@ -408,6 +416,54 @@
             this.lbFilterLocation.Size = new System.Drawing.Size(136, 16);
             this.lbFilterLocation.TabIndex = 27;
             this.lbFilterLocation.Text = "lbFilterLocation";
+            // 
+            // btClearFilterLocation
+            // 
+            this.btClearFilterLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterLocation.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterLocation.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterLocation.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterLocation.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterLocation.Image")));
+            this.btClearFilterLocation.Location = new System.Drawing.Point(212, 26);
+            this.btClearFilterLocation.Name = "btClearFilterLocation";
+            this.btClearFilterLocation.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterLocation.TabIndex = 12;
+            this.btClearFilterLocation.UseVisualStyleBackColor = false;
+            this.btClearFilterLocation.Click += new System.EventHandler(this.btClearFilterLocation_Click);
+            // 
+            // btClearFilterUser
+            // 
+            this.btClearFilterUser.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterUser.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterUser.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterUser.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterUser.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterUser.Image")));
+            this.btClearFilterUser.Location = new System.Drawing.Point(442, 26);
+            this.btClearFilterUser.Name = "btClearFilterUser";
+            this.btClearFilterUser.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterUser.TabIndex = 36;
+            this.btClearFilterUser.UseVisualStyleBackColor = false;
+            this.btClearFilterUser.Click += new System.EventHandler(this.btClearFilterUser_Click);
+            // 
+            // btClearFilterDate
+            // 
+            this.btClearFilterDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btClearFilterDate.BackColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btClearFilterDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFilterDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClearFilterDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.btClearFilterDate.Image = ((System.Drawing.Image)(resources.GetObject("btClearFilterDate.Image")));
+            this.btClearFilterDate.Location = new System.Drawing.Point(442, 84);
+            this.btClearFilterDate.Name = "btClearFilterDate";
+            this.btClearFilterDate.Size = new System.Drawing.Size(17, 20);
+            this.btClearFilterDate.TabIndex = 37;
+            this.btClearFilterDate.UseVisualStyleBackColor = false;
+            this.btClearFilterDate.Click += new System.EventHandler(this.btClearFilterDate_Click);
             // 
             // InventoryMovementsUc
             // 
@@ -460,5 +516,8 @@
         private System.Windows.Forms.Label lbFilterLocation;
         private System.Windows.Forms.ComboBox cbUsers;
         private System.Windows.Forms.ComboBox cbLocations;
+        private System.Windows.Forms.Button btClearFilterDate;
+        private System.Windows.Forms.Button btClearFilterUser;
+        private System.Windows.Forms.Button btClearFilterLocation;
     }
 }
