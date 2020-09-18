@@ -43,16 +43,8 @@ namespace StockManager.Source.UserControls
 
             dgvMovements.Rows.Clear();
 
-            StockMovementOptions options = new StockMovementOptions()
-            {
-                SearchValue = tbSeachText.Text,
-                LocationId = ( int? )cbLocations.SelectedValue,
-                UserId = ( int? )cbUsers.SelectedValue,
-                StartDate = dtpStart.Value,
-                EndDate = dtpEnd.Value
-            };
-
-            IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(options);
+            IEnumerable<StockMovement> movements = await AppServices
+                .StockMovementService.GetAllAsync(GetOptions());
 
             movements.ToList().ForEach((stockMovement) => {
                 dgvMovements.Rows.Add(
@@ -70,8 +62,23 @@ namespace StockManager.Source.UserControls
             Spinner.StopSpinner();
         }
 
+        private StockMovementOptions GetOptions()
+        {
+            StockMovementOptions options = new StockMovementOptions()
+            {
+                SearchValue = tbSeachText.Text,
+                LocationId = ( int? )cbLocations.SelectedValue,
+                UserId = ( int? )cbUsers.SelectedValue,
+                StartDate = dtpStart.Value,
+                EndDate = dtpEnd.Value
+            };
+
+            return options;
+        }
+
         private void SetTranslatedPhrases()
         {
+            btnCreatePdf.Text = "Export to PDF"; // TODO: Add phrase
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
             lbFilterDate.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalDate}";
@@ -224,6 +231,15 @@ namespace StockManager.Source.UserControls
 
             btClearFilterDate.Visible = false;
             await LoadDataAsync();
+        }
+
+        private async void btnCreatePdf_Click(object sender, EventArgs e)
+        {
+            Spinner.InitSpinner();
+
+            await AppServices.PdfService.ExportStockMovementsToPdfAsync(GetOptions());
+
+            Spinner.StopSpinner();
         }
     }
 }
