@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
+    <PackageReference Include="PdfSharp.MigraDoc.Standard" Version="1.51.12" />
   </ItemGroup>
 
   <ItemGroup>
