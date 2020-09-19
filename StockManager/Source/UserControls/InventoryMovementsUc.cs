@@ -238,12 +238,26 @@ namespace StockManager.Source.UserControls
 
         private void btnCreatePdf_Click(object sender, EventArgs e)
         {
-            Spinner.InitSpinner();
+            try
+            {
+                Spinner.InitSpinner();
 
-            AppServices.PdfService.ExportStockMovementsToPdfAsync(
-                new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
+                AppServices.PdfService.ExportStockMovementsToPdfAsync(
+                    new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
 
-            Spinner.StopSpinner();
+                Spinner.StopSpinner();
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show(
+                  $"{ex.Errors[0].Error}",
+                  Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK,
+                  MessageBoxIcon.Error
+                );
+            }
         }
     }
 }

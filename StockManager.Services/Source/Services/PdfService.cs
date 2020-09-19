@@ -12,6 +12,7 @@ using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Services;
 using StockManager.Core.Source.Types;
+using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Services
 {
@@ -27,59 +28,69 @@ namespace StockManager.Services.Source.Services
 
         public void ExportStockMovementsToPdfAsync(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data)
         {
-            IEnumerable<StockMovement> movements = data.Data;
-            StockMovementOptions options = data?.Options;
-
-            Document document = CreateDocument();
-            Section section = document.AddSection();
-            SetSectionStyles(section);
-            SetPageFooter(section);
-
-            // Set title
-            AddParagraph(section, "Stock movements", true, 16); // TODO: change this
-
-            if (options != null) // TODO: Verify if the dates are sent
+            try
             {
-                AddParagraph(section, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, null, 2); // TODO: change this
+                IEnumerable<StockMovement> movements = data.Data;
+                StockMovementOptions options = data?.Options;
+
+                Document document = CreateDocument();
+                Section section = document.AddSection();
+                SetSectionStyles(section);
+                SetPageFooter(section);
+
+                // Set title
+                AddParagraph(section, "Stock movements", true, false, 16); // TODO: change this
+
+                if (options != null) // TODO: Verify if the dates are sent
+                {
+                    AddParagraph(section, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 2); // TODO: change this
+                }
+
+                // Define table and table columns
+                Table table = CreateTable();
+                AddTableColumn(table, ParagraphAlignment.Left);
+                AddTableColumn(table, ParagraphAlignment.Left);
+                AddTableColumn(table, ParagraphAlignment.Left);
+                AddTableColumn(table, ParagraphAlignment.Left);
+                AddTableColumn(table, ParagraphAlignment.Center);
+                AddTableColumn(table, ParagraphAlignment.Center);
+                AddTableColumn(table, ParagraphAlignment.Left);
+
+                // Define table header
+                Row row = table.AddRow();
+                AddTableRowCell(row, 0, ParagraphAlignment.Left, "Date", true); // TODO: change this
+                AddTableRowCell(row, 1, ParagraphAlignment.Left, "Reference", true);
+                AddTableRowCell(row, 2, ParagraphAlignment.Left, "Name", true);
+                AddTableRowCell(row, 3, ParagraphAlignment.Left, "Movement", true);
+                AddTableRowCell(row, 4, ParagraphAlignment.Center, "Qty", true);
+                AddTableRowCell(row, 5, ParagraphAlignment.Center, "Stock acc.", true);
+                AddTableRowCell(row, 6, ParagraphAlignment.Left, "User", true);
+
+                // Populate the table rows
+                movements.ToList().ForEach((movement) => {
+                    row = table.AddRow();
+                    AddTableRowCell(row, 0, ParagraphAlignment.Left, movement.CreatedAt.ShortDateWithTime());
+                    AddTableRowCell(row, 1, ParagraphAlignment.Left, movement.Product.Reference);
+                    AddTableRowCell(row, 2, ParagraphAlignment.Left, movement.Product.Name);
+                    AddTableRowCell(row, 3, ParagraphAlignment.Left, movement.ConcatMovementString());
+                    AddTableRowCell(row, 4, ParagraphAlignment.Center, movement.Qty.ToString());
+                    AddTableRowCell(row, 5, ParagraphAlignment.Center, movement.Stock.ToString());
+                    AddTableRowCell(row, 6, ParagraphAlignment.Left, movement.User.Username);
+                });
+
+                // Add the table to the document
+                document.LastSection.Add(table);
+
+                // Rendering the document
+                RenderAndShowPdf(document);
             }
+            catch
+            {
+                OperationErrorsList errorsList = new OperationErrorsList();
+                errorsList.AddError("export-stock-movements-error", Phrases.GlobalErrorOperationDB);
 
-            // Define table and table columns
-            Table table = CreateTable();
-            AddTableColumn(table, ParagraphAlignment.Left);
-            AddTableColumn(table, ParagraphAlignment.Left);
-            AddTableColumn(table, ParagraphAlignment.Left);
-            AddTableColumn(table, ParagraphAlignment.Left);
-            AddTableColumn(table, ParagraphAlignment.Center);
-            AddTableColumn(table, ParagraphAlignment.Center);
-            AddTableColumn(table, ParagraphAlignment.Left);
-
-            // Define table header
-            Row row = table.AddRow();
-            AddTableRowCell(row, 0, ParagraphAlignment.Left, "Date", true); // TODO: change this
-            AddTableRowCell(row, 1, ParagraphAlignment.Left, "Reference", true);
-            AddTableRowCell(row, 2, ParagraphAlignment.Left, "Name", true);
-            AddTableRowCell(row, 3, ParagraphAlignment.Left, "Movement", true);
-            AddTableRowCell(row, 4, ParagraphAlignment.Center, "Qty", true);
-            AddTableRowCell(row, 5, ParagraphAlignment.Center, "Stock acc.", true);
-            AddTableRowCell(row, 6, ParagraphAlignment.Left, "User", true);
-
-            // Populate the table rows
-            movements.ToList().ForEach((movement) => {
-                row = table.AddRow();
-                AddTableRowCell(row, 0, ParagraphAlignment.Left, movement.CreatedAt.ShortDateWithTime());
-                AddTableRowCell(row, 1, ParagraphAlignment.Left, movement.Product.Reference);
-                AddTableRowCell(row, 2, ParagraphAlignment.Left, movement.Product.Name);
-                AddTableRowCell(row, 3, ParagraphAlignment.Left, movement.ConcatMovementString());
-                AddTableRowCell(row, 4, ParagraphAlignment.Center, movement.Qty.ToString());
-                AddTableRowCell(row, 5, ParagraphAlignment.Center, movement.Stock.ToString());
-                AddTableRowCell(row, 6, ParagraphAlignment.Left, movement.User.Username);
-            });
-
-            // Add the table to the document
-            document.LastSection.Add(table);
-
-            // Rendering the document
-            RenderAndShowPdf(document);
+                throw new ServiceErrorException(errorsList);
+            }
         }
 
         private Document CreateDocument()
@@ -90,6 +101,20 @@ namespace StockManager.Services.Source.Services
             style.Font.Size = _documentDefaultfontSize;
 
             return document;
+        }
+
+        private Table CreateTable()
+        {
+            Table table = new Table
+            {
+                TopPadding = 2,
+                BottomPadding = 2,
+            };
+
+            table.Borders.Bottom.Color = Colors.LightGray;
+            table.Borders.Bottom.Width = 0.5;
+
+            return table;
         }
 
         private void SetSectionStyles(Section section)
@@ -127,12 +152,18 @@ namespace StockManager.Services.Source.Services
             section.Footers.EvenPage.Add(footerPage.Clone());
         }
 
-        private void AddParagraph(Section section, string text, bool bold = false, float? fontSize = null, float? spaceAfter = null)
+        private void AddParagraph(Section section, string text, bool bold = false, bool caption = false, float? fontSize = null, float? spaceAfter = null)
         {
             Paragraph paragraph = new Paragraph();
             paragraph.AddText(text);
             paragraph.Format.Font.Size = fontSize ?? _documentDefaultfontSize;
             paragraph.Format.Font.Bold = bold;
+
+            if (caption)
+            {
+                paragraph.Format.Font.Color = Colors.DimGray;
+                paragraph.Format.Font.Size = 6;
+            }
 
             if (spaceAfter != null)
             {
@@ -140,17 +171,6 @@ namespace StockManager.Services.Source.Services
             }
 
             section.Add(paragraph);
-        }
-
-        private Table CreateTable()
-        {
-            Table table = new Table { Style = "Table" };
-            table.TopPadding = 2;
-            table.BottomPadding = 2;
-            table.Borders.Bottom.Color = Colors.LightGray;
-            table.Borders.Bottom.Width = 0.5;
-
-            return table;
         }
 
         private void AddTableColumn(Table table, ParagraphAlignment alignment)
