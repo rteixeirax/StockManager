@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
@@ -19,17 +18,17 @@ namespace StockManager.Services.Source.Services
     public class PdfService : IPdfService
     {
         private readonly IAppRepository _repository;
-        private enum ParagraphType { H1, P };
+        private const float _documentDefaultfontSize = 8;
 
         public PdfService(IAppRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task ExportStockMovementsToPdfAsync(StockMovementOptions options = null)
+        public void ExportStockMovementsToPdfAsync(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data)
         {
-            // Get the stock movements
-            IEnumerable<StockMovement> movements = await AppServices.StockMovementService.GetAllAsync(options);
+            IEnumerable<StockMovement> movements = data.Data;
+            StockMovementOptions options = data?.Options;
 
             Document document = CreateDocument();
             Section section = document.AddSection();
@@ -37,7 +36,12 @@ namespace StockManager.Services.Source.Services
             SetPageFooter(section);
 
             // Set title
-            AddParagraph(section, "Stock movements", 16, true, 2); // TODO: change this
+            AddParagraph(section, "Stock movements", true, 16); // TODO: change this
+
+            if (options != null) // TODO: Verify if the dates are sent
+            {
+                AddParagraph(section, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, null, 2); // TODO: change this
+            }
 
             // Define table and table columns
             Table table = CreateTable();
@@ -83,7 +87,7 @@ namespace StockManager.Services.Source.Services
             Document document = new Document();
             Style style = document.Styles.Normal;
             style.Font.Name = "Arial";
-            style.Font.Size = 8;
+            style.Font.Size = _documentDefaultfontSize;
 
             return document;
         }
@@ -123,11 +127,11 @@ namespace StockManager.Services.Source.Services
             section.Footers.EvenPage.Add(footerPage.Clone());
         }
 
-        private void AddParagraph(Section section, string text, float fontSize = 10, bool bold = false, float? spaceAfter = null)
+        private void AddParagraph(Section section, string text, bool bold = false, float? fontSize = null, float? spaceAfter = null)
         {
             Paragraph paragraph = new Paragraph();
             paragraph.AddText(text);
-            paragraph.Format.Font.Size = fontSize;
+            paragraph.Format.Font.Size = fontSize ?? _documentDefaultfontSize;
             paragraph.Format.Font.Bold = bold;
 
             if (spaceAfter != null)
@@ -141,8 +145,8 @@ namespace StockManager.Services.Source.Services
         private Table CreateTable()
         {
             Table table = new Table { Style = "Table" };
-            table.TopPadding = 5;
-            table.BottomPadding = 5;
+            table.TopPadding = 2;
+            table.BottomPadding = 2;
             table.Borders.Bottom.Color = Colors.LightGray;
             table.Borders.Bottom.Width = 0.5;
 

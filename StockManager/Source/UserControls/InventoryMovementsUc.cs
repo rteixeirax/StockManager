@@ -17,6 +17,7 @@ namespace StockManager.Source.UserControls
     public partial class InventoryMovementsUc : UserControl
     {
         private bool _hasBeenSearching = false; // Flags if the user has been searching
+        private IEnumerable<StockMovement> _movements;
 
         public InventoryMovementsUc()
         {
@@ -45,6 +46,8 @@ namespace StockManager.Source.UserControls
 
             IEnumerable<StockMovement> movements = await AppServices
                 .StockMovementService.GetAllAsync(GetOptions());
+
+            _movements = movements;
 
             movements.ToList().ForEach((stockMovement) => {
                 dgvMovements.Rows.Add(
@@ -233,11 +236,12 @@ namespace StockManager.Source.UserControls
             await LoadDataAsync();
         }
 
-        private async void btnCreatePdf_Click(object sender, EventArgs e)
+        private void btnCreatePdf_Click(object sender, EventArgs e)
         {
             Spinner.InitSpinner();
 
-            await AppServices.PdfService.ExportStockMovementsToPdfAsync(GetOptions());
+            AppServices.PdfService.ExportStockMovementsToPdfAsync(
+                new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
 
             Spinner.StopSpinner();
         }
