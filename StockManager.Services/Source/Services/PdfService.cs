@@ -35,15 +35,14 @@ namespace StockManager.Services.Source.Services
 
                 Document document = CreateDocument();
                 Section section = document.AddSection();
-                SetSectionStyles(section);
                 SetPageFooter(section);
 
                 // Set title
-                AddParagraph(section, "Stock movements", true, false, 16); // TODO: change this
+                AddParagraph(document, "Stock movements", true, false, 16); // TODO: change this
 
                 if (options != null) // TODO: Verify if the dates are sent
                 {
-                    AddParagraph(section, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 2); // TODO: change this
+                    AddParagraph(document, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 1); // TODO: change this
                 }
 
                 // Define table and table columns
@@ -96,6 +95,16 @@ namespace StockManager.Services.Source.Services
         private Document CreateDocument()
         {
             Document document = new Document();
+            document.DefaultPageSetup.PageFormat = PageFormat.A4;
+            document.DefaultPageSetup.Orientation = Orientation.Portrait;
+            document.DefaultPageSetup.LeftMargin = Unit.FromCentimeter(1);
+            document.DefaultPageSetup.RightMargin = Unit.FromCentimeter(1);
+            document.DefaultPageSetup.TopMargin = Unit.FromCentimeter(1);
+            document.DefaultPageSetup.BottomMargin = Unit.FromCentimeter(1);
+            // http://www.pdfsharp.net/wiki/MigraDoc_PageSetup.ashx?HL=oddandevenpagesheaderfooter
+            document.DefaultPageSetup.OddAndEvenPagesHeaderFooter = true;
+            document.DefaultPageSetup.StartingNumber = 1;
+
             Style style = document.Styles.Normal;
             style.Font.Name = "Arial";
             style.Font.Size = _documentDefaultfontSize;
@@ -111,26 +120,15 @@ namespace StockManager.Services.Source.Services
                 BottomPadding = 2,
             };
 
+            table.Rows.Alignment = RowAlignment.Left;
             table.Borders.Bottom.Color = Colors.LightGray;
             table.Borders.Bottom.Width = 0.5;
 
             return table;
         }
 
-        private void SetSectionStyles(Section section)
-        {
-            section.PageSetup.PageFormat = PageFormat.A4;
-            section.PageSetup.Orientation = Orientation.Portrait;
-            section.PageSetup.TopMargin = Unit.FromCentimeter(1);
-            section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
-        }
-
         private void SetPageFooter(Section section)
         {
-            // http://www.pdfsharp.net/wiki/MigraDoc_PageSetup.ashx?HL=oddandevenpagesheaderfooter
-            section.PageSetup.OddAndEvenPagesHeaderFooter = true;
-            section.PageSetup.StartingNumber = 1;
-
             // Footer
             Paragraph footerText = new Paragraph();
             footerText.AddText("Stock manager v.0.0.1"); // TODO: get from AppInfo and add DateTime
@@ -152,12 +150,13 @@ namespace StockManager.Services.Source.Services
             section.Footers.EvenPage.Add(footerPage.Clone());
         }
 
-        private void AddParagraph(Section section, string text, bool bold = false, bool caption = false, float? fontSize = null, float? spaceAfter = null)
+        private void AddParagraph(Document document, string text, bool bold = false, bool caption = false, float? fontSize = null, float? spaceAfter = null)
         {
             Paragraph paragraph = new Paragraph();
             paragraph.AddText(text);
             paragraph.Format.Font.Size = fontSize ?? _documentDefaultfontSize;
             paragraph.Format.Font.Bold = bold;
+            paragraph.Format.Alignment = ParagraphAlignment.Left;
 
             if (caption)
             {
@@ -170,7 +169,7 @@ namespace StockManager.Services.Source.Services
                 paragraph.Format.SpaceAfter = Unit.FromCentimeter(( double )spaceAfter);
             }
 
-            section.Add(paragraph);
+            document.LastSection.Add(paragraph);
         }
 
         private void AddTableColumn(Table table, ParagraphAlignment alignment)
