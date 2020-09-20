@@ -56,5 +56,10 @@ namespace StockManager.Core.Source.Services
         /// Refill the stock in the given locationId for the given productId.
         /// </summary>
         Task RefillStockAsync(int locationId, int productId, float currentStock, float refilledQty, int userId);
+
+        /// <summary>
+        /// Create a PDF with the given data
+        /// </summary>
+        void ExportStockMovementsToPDF(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data);
     }
 }

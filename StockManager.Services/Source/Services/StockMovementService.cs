@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+
 using StockManager.Core.Source;
+using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Services;
 using StockManager.Core.Source.Types;
+using StockManager.Services.Source.Tools;
 using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Services
@@ -286,6 +292,75 @@ namespace StockManager.Services.Source.Services
             catch (OperationErrorException operationErrorException)
             {
                 throw operationErrorException;
+            }
+        }
+
+        public void ExportStockMovementsToPDF(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data)
+        {
+            try
+            {
+                IEnumerable<StockMovement> movements = data.Data;
+                StockMovementOptions options = data?.Options;
+
+                PDFGenerator pdf = new PDFGenerator();
+                Document document = pdf.CreateDocument();
+                Section section = pdf.CreateDocumentSection(document);
+
+                // Set title
+                pdf.AddParagraph(document, "Stock movements", true, false, 16); // TODO: Translations
+
+                if (options != null) // TODO: Verify if the dates are sent
+                {
+                    pdf.AddParagraph(document, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 1);
+                }
+
+                // TODO: if options.locationId, add the location name
+                // TODO: if options.userId, add the user name
+
+                // Create table and table columns
+                Table table = pdf.CreateTable();
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Center);
+                pdf.AddTableColumn(table, ParagraphAlignment.Center);
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+
+                // Create table header
+                Row row = pdf.CreateTableHeaderRow(table);
+                pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, "Date", true); // TODO: add translations
+                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, "Reference", true);
+                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, "Name", true);
+                pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, "Movement", true);
+                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, "Qty", true);
+                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, "Stock acc.", true);
+                pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, "User", true);
+
+                // Populate the table rows
+                movements.ToList().ForEach((movement) => {
+                    row = table.AddRow();
+                    pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, movement.CreatedAt.ShortDateWithTime());
+                    pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, movement.Product.Reference);
+                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, movement.Product.Name);
+                    pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, movement.ConcatMovementString());
+                    pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, movement.Qty.ToString());
+                    pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, movement.Stock.ToString());
+                    pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, movement.User.Username);
+                });
+
+                // Add the table to the document
+                document.LastSection.Add(table);
+
+                // Rendering the document
+                pdf.RenderDocument(document, "StockMovements"); // TODO: Change this (translate the stock movements)
+            }
+            catch
+            {
+                OperationErrorsList errorsList = new OperationErrorsList();
+                errorsList.AddError("export-stock-movements-error", Phrases.GlobalErrorOperationDB);
+
+                throw new ServiceErrorException(errorsList);
             }
         }
 

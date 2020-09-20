@@ -244,7 +244,7 @@ namespace StockManager.Source.UserControls
 
                 Spinner.InitSpinner();
 
-                AppServices.PdfService.ExportStockMovementsToPdfAsync(
+                AppServices.StockMovementService.ExportStockMovementsToPDF(
                     new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
 
                 Spinner.StopSpinner();
