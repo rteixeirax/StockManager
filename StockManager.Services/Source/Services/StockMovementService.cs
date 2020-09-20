@@ -303,15 +303,14 @@ namespace StockManager.Services.Source.Services
                 StockMovementOptions options = data?.Options;
 
                 PDFGenerator pdf = new PDFGenerator();
-                Document document = pdf.CreateDocument();
-                Section section = pdf.CreateDocumentSection(document);
+                Section section = pdf.CreateDocumentSection();
 
                 // Set title
-                pdf.AddParagraph(document, "Stock movements", true, false, 16); // TODO: Translations
+                pdf.AddParagraph("Stock movements", true, false, 16); // TODO: Translations
 
                 if (options != null) // TODO: Verify if the dates are sent
                 {
-                    pdf.AddParagraph(document, $"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 1);
+                    pdf.AddParagraph($"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 1);
                 }
 
                 // TODO: if options.locationId, add the location name
@@ -350,16 +349,15 @@ namespace StockManager.Services.Source.Services
                 });
 
                 // Add the table to the document
-                document.LastSection.Add(table);
+                pdf.AddTableToDocument(table);
 
                 // Rendering the document
-                pdf.RenderDocument(document, "StockMovements"); // TODO: Change this (translate the stock movements)
+                pdf.GeneratePDF("StockMovements"); // TODO: Change this (translate the stock movements)
             }
             catch
             {
                 OperationErrorsList errorsList = new OperationErrorsList();
                 errorsList.AddError("export-stock-movements-error", Phrases.GlobalErrorOperationDB);
-
                 throw new ServiceErrorException(errorsList);
             }
         }

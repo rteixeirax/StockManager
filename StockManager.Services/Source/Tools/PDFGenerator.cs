@@ -11,29 +11,29 @@ namespace StockManager.Services.Source.Tools
 {
     public class PDFGenerator
     {
-        public Document CreateDocument()
-        {
-            Document document = new Document();
-            document.DefaultPageSetup.PageFormat = PageFormat.A4;
-            document.DefaultPageSetup.Orientation = Orientation.Portrait;
-            document.DefaultPageSetup.LeftMargin = Unit.FromCentimeter(2);
-            document.DefaultPageSetup.RightMargin = Unit.FromCentimeter(2);
-            document.DefaultPageSetup.TopMargin = Unit.FromCentimeter(2);
-            document.DefaultPageSetup.BottomMargin = Unit.FromCentimeter(2);
-            // http://www.pdfsharp.net/wiki/MigraDoc_PageSetup.ashx?HL=oddandevenpagesheaderfooter
-            document.DefaultPageSetup.OddAndEvenPagesHeaderFooter = true;
-            document.DefaultPageSetup.StartingNumber = 1;
+        private readonly Document _document;
 
-            Style style = document.Styles.Normal;
+        public PDFGenerator()
+        {
+            _document = new Document();
+            _document.DefaultPageSetup.PageFormat = PageFormat.A4;
+            _document.DefaultPageSetup.Orientation = Orientation.Portrait;
+            _document.DefaultPageSetup.LeftMargin = Unit.FromCentimeter(2);
+            _document.DefaultPageSetup.RightMargin = Unit.FromCentimeter(2);
+            _document.DefaultPageSetup.TopMargin = Unit.FromCentimeter(2);
+            _document.DefaultPageSetup.BottomMargin = Unit.FromCentimeter(2);
+            // http://www.pdfsharp.net/wiki/MigraDoc_PageSetup.ashx?HL=oddandevenpagesheaderfooter
+            _document.DefaultPageSetup.OddAndEvenPagesHeaderFooter = true;
+            _document.DefaultPageSetup.StartingNumber = 1;
+
+            Style style = _document.Styles.Normal;
             style.Font.Name = "Arial";
             style.Font.Size = 8;
-
-            return document;
         }
 
-        public Section CreateDocumentSection(Document document)
+        public Section CreateDocumentSection()
         {
-            Section section = document.AddSection();
+            Section section = _document.AddSection();
 
             // Set section footer
             Paragraph paragraph = new Paragraph();
@@ -96,11 +96,16 @@ namespace StockManager.Services.Source.Tools
             row.Cells[index].VerticalAlignment = VerticalAlignment.Center;
         }
 
-        public void AddParagraph(Document document, string text, bool bold = false, bool caption = false, float? fontSize = null, float? spaceAfter = null)
+        public void AddTableToDocument(Table table)
+        {
+            _document.LastSection.Add(table);
+        }
+
+        public void AddParagraph(string text, bool bold = false, bool caption = false, float? fontSize = null, float? spaceAfter = null)
         {
             Paragraph paragraph = new Paragraph();
             paragraph.AddText(text);
-            paragraph.Format.Font.Size = fontSize ?? document.Styles.Normal.Font.Size;
+            paragraph.Format.Font.Size = fontSize ?? _document.Styles.Normal.Font.Size;
             paragraph.Format.Font.Bold = bold;
             paragraph.Format.Alignment = ParagraphAlignment.Left;
 
@@ -115,25 +120,25 @@ namespace StockManager.Services.Source.Tools
                 paragraph.Format.SpaceAfter = Unit.FromCentimeter(( double )spaceAfter);
             }
 
-            document.LastSection.Add(paragraph);
+            _document.LastSection.Add(paragraph);
         }
 
-        public void RenderDocument(Document document, string fileName)
+        public void GeneratePDF(string fileName)
         {
             // Rendering the document
             PdfDocumentRenderer documentRenderer = new PdfDocumentRenderer(false)
             {
-                Document = document
+                Document = _document
             };
 
             documentRenderer.RenderDocument();
 
             // Open file
-            string pdfName = $"{fileName}_{DateTime.Now.FileNameDateTime()}.pdf";
-            documentRenderer.PdfDocument.Save(pdfName);
+            string pdfFileName = $"{fileName}_{DateTime.Now.FileNameDateTime()}.pdf";
+            documentRenderer.PdfDocument.Save(pdfFileName);
 
             // Show the pdf
-            Process.Start(pdfName);
+            Process.Start(pdfFileName);
         }
     }
 }
