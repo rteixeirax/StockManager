@@ -240,6 +240,8 @@ namespace StockManager.Source.UserControls
         {
             try
             {
+                // TODO: Ask the user if he want to generate the pdf. (avoid mistakes)
+
                 Spinner.InitSpinner();
 
                 AppServices.PdfService.ExportStockMovementsToPdfAsync(
