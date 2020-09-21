@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
@@ -13,9 +14,13 @@ namespace StockManager.Services.Source.Tools
     {
         private readonly Document _document;
 
-        public PDFGenerator()
+        public PDFGenerator(string documentTitle, string documentSubject = "")
         {
             _document = new Document();
+            _document.Info.Title = documentTitle;
+            _document.Info.Subject = documentSubject;
+            _document.Info.Author = "Stock manager v.0.0.1"; // TODO: get from AppInfo and add more text";
+
             _document.DefaultPageSetup.PageFormat = PageFormat.A4;
             _document.DefaultPageSetup.Orientation = Orientation.Portrait;
             _document.DefaultPageSetup.LeftMargin = Unit.FromCentimeter(2);
@@ -41,8 +46,8 @@ namespace StockManager.Services.Source.Tools
             paragraph.Format.Alignment = ParagraphAlignment.Right;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Font.Color = Colors.DarkGray;
-            paragraph.AddText("Stock manager v.0.0.1"); // TODO: get from AppInfo and add more text
-            paragraph.AddTab();
+            paragraph.AddText("Powered by Stock manager v.0.0.1"); // TODO: get from AppInfo and translate it
+            paragraph.AddSpace(3);
             paragraph.AddText("|");
             paragraph.AddSpace(3);
             paragraph.AddText("Page"); // TODO: add phrase
@@ -96,7 +101,7 @@ namespace StockManager.Services.Source.Tools
             row.Cells[index].VerticalAlignment = VerticalAlignment.Center;
         }
 
-        public void AddTableToDocument(Table table)
+        public void AddTableToLastSection(Table table)
         {
             _document.LastSection.Add(table);
         }
@@ -123,8 +128,10 @@ namespace StockManager.Services.Source.Tools
             _document.LastSection.Add(paragraph);
         }
 
-        public void GeneratePDF(string fileName)
+        public void Generate()
         {
+            string pdfFileName = $"{Regex.Replace(_document.Info.Title, @"\s+", "_")}_{DateTime.Now.FileNameDateTime()}.pdf";
+
             // Rendering the document
             PdfDocumentRenderer documentRenderer = new PdfDocumentRenderer(false)
             {
@@ -134,7 +141,6 @@ namespace StockManager.Services.Source.Tools
             documentRenderer.RenderDocument();
 
             // Open file
-            string pdfFileName = $"{fileName}_{DateTime.Now.FileNameDateTime()}.pdf";
             documentRenderer.PdfDocument.Save(pdfFileName);
 
             // Show the pdf

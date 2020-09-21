@@ -52,7 +52,7 @@ namespace StockManager.Core.Source.Extensions
 
         public static string FileNameDateTime(this DateTime date)
         {
-            return Regex.Replace(date.ToString(), @"\s+", "_").Replace("/", "-").Replace(":", ".").ToString();
+            return Regex.Replace(date.ToString(), @"\s+", "_").Replace("/", "_").Replace(":", "").ToString();
         }
     }
 }

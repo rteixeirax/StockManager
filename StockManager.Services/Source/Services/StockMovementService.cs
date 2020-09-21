@@ -302,7 +302,7 @@ namespace StockManager.Services.Source.Services
                 IEnumerable<StockMovement> movements = data.Data;
                 StockMovementOptions options = data?.Options;
 
-                PDFGenerator pdf = new PDFGenerator();
+                PDFGenerator pdf = new PDFGenerator("Stock movements", "List of stock movements");
                 Section section = pdf.CreateDocumentSection();
 
                 // Set title
@@ -348,11 +348,11 @@ namespace StockManager.Services.Source.Services
                     pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, movement.User.Username);
                 });
 
-                // Add the table to the document
-                pdf.AddTableToDocument(table);
+                // Add the table to the section
+                pdf.AddTableToLastSection(table);
 
                 // Rendering the document
-                pdf.GeneratePDF("StockMovements"); // TODO: Change this (translate the stock movements)
+                pdf.Generate();
             }
             catch
             {
