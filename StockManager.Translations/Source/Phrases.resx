@@ -400,4 +400,16 @@
   <data name="GlobalFilterBy" xml:space="preserve">
     <value>Filter by</value>
   </data>
+  <data name="StockMovementsListOf" xml:space="preserve">
+    <value>List of stock movements</value>
+  </data>
+  <data name="GlobalPage" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="GlobalOf" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="GlobalExportToPDF" xml:space="preserve">
+    <value>Export to PDF</value>
+  </data>
 </root>

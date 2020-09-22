@@ -286,6 +286,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export to PDF.
+        /// </summary>
+        public static string GlobalExportToPDF {
+            get {
+                return ResourceManager.GetString("GlobalExportToPDF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter by.
         /// </summary>
         public static string GlobalFilterBy {
@@ -399,6 +408,24 @@ namespace StockManager.Translations.Source {
         public static string GlobalName {
             get {
                 return ResourceManager.GetString("GlobalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of.
+        /// </summary>
+        public static string GlobalOf {
+            get {
+                return ResourceManager.GetString("GlobalOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page.
+        /// </summary>
+        public static string GlobalPage {
+            get {
+                return ResourceManager.GetString("GlobalPage", resourceCulture);
             }
         }
         
@@ -822,6 +849,15 @@ namespace StockManager.Translations.Source {
         public static string StockMovementsLabel {
             get {
                 return ResourceManager.GetString("StockMovementsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of stock movements.
+        /// </summary>
+        public static string StockMovementsListOf {
+            get {
+                return ResourceManager.GetString("StockMovementsListOf", resourceCulture);
             }
         }
         
