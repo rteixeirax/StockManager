@@ -250,6 +250,33 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export the data to PDF?.
+        /// </summary>
+        public static string GlobalDialogExportBody {
+            get {
+                return ResourceManager.GetString("GlobalDialogExportBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporting.
+        /// </summary>
+        public static string GlobalDialogExportTitle {
+            get {
+                return ResourceManager.GetString("GlobalDialogExportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no data to export..
+        /// </summary>
+        public static string GlobalDialogExportWarningBody {
+            get {
+                return ResourceManager.GetString("GlobalDialogExportWarningBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         public static string GlobalDialogWarningTitle {

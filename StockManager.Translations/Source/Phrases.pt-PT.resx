@@ -432,4 +432,13 @@
   <data name="GlobalExportToPDF" xml:space="preserve">
     <value>Exportar para PDF</value>
   </data>
+  <data name="GlobalDialogExportWarningBody" xml:space="preserve">
+    <value>Não há dados para exportar.</value>
+  </data>
+  <data name="GlobalDialogExportBody" xml:space="preserve">
+    <value>Exportar os dados para PDF?</value>
+  </data>
+  <data name="GlobalDialogExportTitle" xml:space="preserve">
+    <value>Exportador</value>
+  </data>
 </root>
