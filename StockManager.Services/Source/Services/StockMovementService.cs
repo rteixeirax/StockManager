@@ -320,7 +320,7 @@ namespace StockManager.Services.Source.Services
 
                     pdf.AddParagraph($"{Phrases.GlobalDate}: {startDate}{endDate}", false, true);
 
-                    if (options.SearchValue != null)
+                    if (!string.IsNullOrEmpty(options.SearchValue))
                     {
                         Product product = movements.ElementAt(0).Product;
                         pdf.AddParagraph($"{Phrases.GlobalProduct}: {product.Reference} {product.Name}", false, true);
