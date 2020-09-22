@@ -240,25 +240,28 @@ namespace StockManager.Source.UserControls
         {
             try
             {
-                // TODO: Ask the user if he want to generate the pdf. (avoid mistakes)
+                if (!_movements.Any())
+                {
+                    MessageBox.Show(Phrases.GlobalDialogExportWarningBody, Phrases.GlobalDialogWarningTitle,
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (MessageBox.Show(Phrases.GlobalDialogExportBody, Phrases.GlobalDialogExportTitle,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Spinner.InitSpinner();
 
-                Spinner.InitSpinner();
+                    AppServices.StockMovementService.ExportStockMovementsToPDF(
+                        new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
 
-                AppServices.StockMovementService.ExportStockMovementsToPDF(
-                    new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
-
-                Spinner.StopSpinner();
+                    Spinner.StopSpinner();
+                }
             }
             catch (ServiceErrorException ex)
             {
                 Spinner.StopSpinner();
 
-                MessageBox.Show(
-                  $"{ex.Errors[0].Error}",
-                  Phrases.GlobalDialogErrorTitle,
-                  MessageBoxButtons.OK,
-                  MessageBoxIcon.Error
-                );
+                MessageBox.Show($"{ex.Errors[0].Error}", Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
