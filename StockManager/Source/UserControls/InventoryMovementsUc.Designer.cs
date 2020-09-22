@@ -48,6 +48,7 @@
             this.btnClearSearchValue = new System.Windows.Forms.Button();
             this.tbSeachText = new System.Windows.Forms.TextBox();
             this.pnlActions = new System.Windows.Forms.Panel();
+            this.btnCreatePdf = new System.Windows.Forms.Button();
             this.btnStockMovement = new System.Windows.Forms.Button();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.lbFilterDate = new System.Windows.Forms.Label();
@@ -62,7 +63,6 @@
             this.lbFilterLocation = new System.Windows.Forms.Label();
             this.lbFilterUser = new System.Windows.Forms.Label();
             this.cbLocations = new System.Windows.Forms.ComboBox();
-            this.btnCreatePdf = new System.Windows.Forms.Button();
             pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
@@ -262,6 +262,22 @@
             this.pnlActions.Name = "pnlActions";
             this.pnlActions.Size = new System.Drawing.Size(303, 34);
             this.pnlActions.TabIndex = 23;
+            // 
+            // btnCreatePdf
+            // 
+            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
+            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
+            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreatePdf.Location = new System.Drawing.Point(3, 4);
+            this.btnCreatePdf.Name = "btnCreatePdf";
+            this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
+            this.btnCreatePdf.TabIndex = 8;
+            this.btnCreatePdf.Text = "btnCreatePdf";
+            this.btnCreatePdf.UseVisualStyleBackColor = false;
+            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
             // 
             // btnStockMovement
             // 
@@ -466,22 +482,6 @@
             this.cbLocations.Size = new System.Drawing.Size(206, 24);
             this.cbLocations.TabIndex = 35;
             this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
-            // 
-            // btnCreatePdf
-            // 
-            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
-            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreatePdf.Location = new System.Drawing.Point(52, 4);
-            this.btnCreatePdf.Name = "btnCreatePdf";
-            this.btnCreatePdf.Size = new System.Drawing.Size(121, 27);
-            this.btnCreatePdf.TabIndex = 8;
-            this.btnCreatePdf.Text = "btnCreatePdf";
-            this.btnCreatePdf.UseVisualStyleBackColor = false;
-            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
             // 
             // InventoryMovementsUc
             // 

@@ -81,7 +81,7 @@ namespace StockManager.Source.UserControls
 
         private void SetTranslatedPhrases()
         {
-            btnCreatePdf.Text = "Export to PDF"; // TODO: Add phrase
+            btnCreatePdf.Text = Phrases.GlobalExportToPDF;
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
             lbFilterDate.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalDate}";

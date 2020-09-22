@@ -302,11 +302,11 @@ namespace StockManager.Services.Source.Services
                 IEnumerable<StockMovement> movements = data.Data;
                 StockMovementOptions options = data?.Options;
 
-                PDFGenerator pdf = new PDFGenerator("Stock movements", "List of stock movements");
+                PDFGenerator pdf = new PDFGenerator(Phrases.StockMovementsLabel, Phrases.StockMovementsListOf);
                 Section section = pdf.CreateDocumentSection();
 
                 // Set title
-                pdf.AddParagraph("Stock movements", true, false, 16); // TODO: Translations
+                pdf.AddParagraph(Phrases.StockMovementsLabel, true, false, 16);
 
                 if (options != null) // TODO: Verify if the dates are sent
                 {
@@ -328,13 +328,13 @@ namespace StockManager.Services.Source.Services
 
                 // Create table header
                 Row row = pdf.CreateTableHeaderRow(table);
-                pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, "Date", true); // TODO: add translations
-                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, "Reference", true);
-                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, "Name", true);
-                pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, "Movement", true);
-                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, "Qty", true);
-                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, "Stock acc.", true);
-                pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, "User", true);
+                pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, Phrases.GlobalDate, true);
+                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalReference, true);
+                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, Phrases.GlobalName, true);
+                pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, Phrases.GlobalMovement, true);
+                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, Phrases.StockMovementQty, true);
+                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, Phrases.StockMovementStockAcc, true);
+                pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, Phrases.GlobalUser, true);
 
                 // Populate the table rows
                 movements.ToList().ForEach((movement) => {

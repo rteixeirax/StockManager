@@ -6,7 +6,9 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 
+using StockManager.Core.Source;
 using StockManager.Core.Source.Extensions;
+using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Tools
 {
@@ -19,7 +21,7 @@ namespace StockManager.Services.Source.Tools
             _document = new Document();
             _document.Info.Title = documentTitle;
             _document.Info.Subject = documentSubject;
-            _document.Info.Author = "Stock manager v.0.0.1"; // TODO: get from AppInfo and add more text";
+            _document.Info.Author = $"{AppInfo.Title} {AppInfo.Version}";
 
             _document.DefaultPageSetup.PageFormat = PageFormat.A4;
             _document.DefaultPageSetup.Orientation = Orientation.Portrait;
@@ -46,15 +48,15 @@ namespace StockManager.Services.Source.Tools
             paragraph.Format.Alignment = ParagraphAlignment.Right;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Font.Color = Colors.DarkGray;
-            paragraph.AddText("Powered by Stock manager v.0.0.1"); // TODO: get from AppInfo and translate it
+            paragraph.AddText($"Powered by {AppInfo.Title} {AppInfo.Version}");
             paragraph.AddSpace(3);
             paragraph.AddText("|");
             paragraph.AddSpace(3);
-            paragraph.AddText("Page"); // TODO: add phrase
+            paragraph.AddText(Phrases.GlobalPage);
             paragraph.AddSpace(1);
             paragraph.AddPageField();
             paragraph.AddSpace(1);
-            paragraph.AddText("of"); // TODO: add phrase
+            paragraph.AddText(Phrases.GlobalOf);
             paragraph.AddSpace(1);
             paragraph.AddNumPagesField();
 
