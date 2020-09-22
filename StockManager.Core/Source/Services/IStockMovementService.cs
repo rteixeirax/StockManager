@@ -60,6 +60,6 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Create a PDF with the given data
         /// </summary>
-        void ExportStockMovementsToPDF(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data);
+        Task ExportStockMovementsToPDFAsync(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data);
     }
 }

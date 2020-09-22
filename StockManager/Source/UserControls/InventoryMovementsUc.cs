@@ -236,7 +236,7 @@ namespace StockManager.Source.UserControls
             await LoadDataAsync();
         }
 
-        private void btnCreatePdf_Click(object sender, EventArgs e)
+        private async void btnCreatePdf_Click(object sender, EventArgs e)
         {
             try
             {
@@ -250,7 +250,7 @@ namespace StockManager.Source.UserControls
                 {
                     Spinner.InitSpinner();
 
-                    AppServices.StockMovementService.ExportStockMovementsToPDF(
+                    await AppServices.StockMovementService.ExportStockMovementsToPDFAsync(
                         new ExportData<IEnumerable<StockMovement>, StockMovementOptions>(_movements, GetOptions()));
 
                     Spinner.StopSpinner();

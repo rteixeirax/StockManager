@@ -295,7 +295,7 @@ namespace StockManager.Services.Source.Services
             }
         }
 
-        public void ExportStockMovementsToPDF(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data)
+        public async Task ExportStockMovementsToPDFAsync(ExportData<IEnumerable<StockMovement>, StockMovementOptions> data)
         {
             try
             {
@@ -308,13 +308,39 @@ namespace StockManager.Services.Source.Services
                 // Set title
                 pdf.AddParagraph(Phrases.StockMovementsLabel, true, false, 16);
 
-                if (options != null) // TODO: Verify if the dates are sent
+                if (options != null)
                 {
-                    pdf.AddParagraph($"{options.StartDate.ShortDate()} - {options.EndDate.ShortDate()}", false, true, null, 1);
-                }
+                    string startDate = (options?.StartDate != default)
+                        ? $"{options.StartDate.ShortDate()} - "
+                        : "";
 
-                // TODO: if options.locationId, add the location name
-                // TODO: if options.userId, add the user name
+                    string endDate = (options?.EndDate != default)
+                        ? options.EndDate.ShortDate()
+                        : "";
+
+                    pdf.AddParagraph($"{Phrases.GlobalDate}: {startDate}{endDate}", false, true);
+
+                    if (options.SearchValue != null)
+                    {
+                        Product product = movements.ElementAt(0).Product;
+                        pdf.AddParagraph($"{Phrases.GlobalProduct}: {product.Reference} {product.Name}", false, true);
+                    }
+
+                    if (options.LocationId != null)
+                    {
+                        Location location = await AppServices.LocationService.GetByIdAsync(( int )options.LocationId);
+                        pdf.AddParagraph($"{Phrases.GlobalLocation}: {location.Name}", false, true);
+                    }
+
+
+                    if (options.UserId != null)
+                    {
+                        User user = await AppServices.UserService.GetByIdAsync(( int )options.UserId);
+                        pdf.AddParagraph($"{Phrases.GlobalUser}: {user.Username}", false, true);
+                    }
+
+                    pdf.AddParagraph("", false, false, null, 1);
+                }
 
                 // Create table and table columns
                 Table table = pdf.CreateTable();
