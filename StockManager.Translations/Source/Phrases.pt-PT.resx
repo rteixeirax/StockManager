@@ -441,4 +441,13 @@
   <data name="GlobalDialogExportTitle" xml:space="preserve">
     <value>Exportador</value>
   </data>
+  <data name="AppSettingsDocumentsFolder" xml:space="preserve">
+    <value>Exportar PDF para</value>
+  </data>
+  <data name="AppConstantsDesktopFolder" xml:space="preserve">
+    <value>Área de trabalho</value>
+  </data>
+  <data name="AppConstantsDocumentsFolder" xml:space="preserve">
+    <value>Os meus documentos</value>
+  </data>
 </root>

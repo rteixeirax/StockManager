@@ -61,6 +61,24 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desktop.
+        /// </summary>
+        public static string AppConstantsDesktopFolder {
+            get {
+                return ResourceManager.GetString("AppConstantsDesktopFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My documents.
+        /// </summary>
+        public static string AppConstantsDocumentsFolder {
+            get {
+                return ResourceManager.GetString("AppConstantsDocumentsFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App restart is required to take effect..
         /// </summary>
         public static string AppSettingRestartRequired {
@@ -120,6 +138,15 @@ namespace StockManager.Translations.Source {
         public static string AppSettingsDialogSuccessTitle {
             get {
                 return ResourceManager.GetString("AppSettingsDialogSuccessTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export PDF to.
+        /// </summary>
+        public static string AppSettingsDocumentsFolder {
+            get {
+                return ResourceManager.GetString("AppSettingsDocumentsFolder", resourceCulture);
             }
         }
         
