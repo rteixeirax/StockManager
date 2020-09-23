@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 
 using StockManager.Core.Source;
+using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Tools
@@ -130,7 +134,7 @@ namespace StockManager.Services.Source.Tools
             _document.LastSection.Add(paragraph);
         }
 
-        public void Generate()
+        public async Task Generate()
         {
             // Rendering the document
             PdfDocumentRenderer documentRenderer = new PdfDocumentRenderer(false)
@@ -141,29 +145,18 @@ namespace StockManager.Services.Source.Tools
             // Render document
             documentRenderer.RenderDocument();
 
-            bool saveInDocumentsFolder = false;
+            AppSettings appSettings = await AppServices.AppSettingsService.GetAppSettingsAsync();
+            DocumentsFolder folder = AppConstants.DocumentsFolders.FirstOrDefault(x => x.Code == appSettings.DocumentsFolder);
 
-            string dateNow = Regex.Replace(DateTime.Now.ToString(), @"\s+", "_").Replace("/", "_").Replace(":", "").ToString();
-            string pdfFile = $"{Regex.Replace(_document.Info.Title, @"\s+", "_")}_{dateNow}.pdf";
-            string filePath;
+            string dateTimeNow = Regex.Replace(DateTime.Now.ToString(), @"\s+", "_").Replace("/", "_").Replace(":", "").ToString();
+            string pdfFile = $"{Regex.Replace(_document.Info.Title, @"\s+", "_")}_{dateTimeNow}.pdf";
 
-            if (saveInDocumentsFolder)
+            if (folder.CreateFolder && !Directory.Exists(folder.Path))
             {
-                string myDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string myDocumentsFolderSlashStockManager = $@"{myDocumentsFolderPath}\{AppInfo.AppName}";
-
-                if (!Directory.Exists(myDocumentsFolderSlashStockManager))
-                {
-                    Directory.CreateDirectory(myDocumentsFolderSlashStockManager);
-
-                }
-
-                filePath = $@"{myDocumentsFolderSlashStockManager}\{pdfFile}";
+                Directory.CreateDirectory(folder.Path);
             }
-            else
-            {
-                filePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\{pdfFile}";
-            }
+
+            string filePath = $@"{folder.Path}\{pdfFile}";
 
             // Save file
             documentRenderer.PdfDocument.Save(filePath);
