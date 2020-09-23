@@ -134,7 +134,7 @@ namespace StockManager.Services.Source.Tools
             _document.LastSection.Add(paragraph);
         }
 
-        public async Task Generate()
+        public async Task GenerateAsync()
         {
             // Rendering the document
             PdfDocumentRenderer documentRenderer = new PdfDocumentRenderer(false)

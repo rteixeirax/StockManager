@@ -378,7 +378,7 @@ namespace StockManager.Services.Source.Services
                 pdf.AddTableToLastSection(table);
 
                 // Rendering the document
-                await pdf.Generate();
+                await pdf.GenerateAsync();
             }
             catch
             {
