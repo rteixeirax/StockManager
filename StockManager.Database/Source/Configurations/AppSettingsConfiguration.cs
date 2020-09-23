@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+using StockManager.Core.Source;
 using StockManager.Core.Source.Models;
 
 namespace StockManager.Database.Source.Configurations
@@ -21,7 +23,8 @@ namespace StockManager.Database.Source.Configurations
             builder.HasData(new AppSettings
             {
                 AppSettingsId = 1,
-                Language = "pt-PT",
+                DocumentsFolder = AppConstants.DocumentsFolders.ElementAt(0).Code,
+                Language = AppConstants.AppLanguages.ElementAt(0).Code,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             });
