@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 
 using StockManager.Core.Source.Models;
 using StockManager.Translations.Source;
@@ -48,11 +47,6 @@ namespace StockManager.Core.Source.Extensions
         public static DateTime SetDateToEndOfTheDay(this DateTime date)
         {
             return new DateTime(date.Year, date.Month, date.Day, 23, 59, 59);
-        }
-
-        public static string FileNameDateTime(this DateTime date)
-        {
-            return Regex.Replace(date.ToString(), @"\s+", "_").Replace("/", "_").Replace(":", "").ToString();
         }
     }
 }

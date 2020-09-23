@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 
 using MigraDoc.DocumentObjectModel;
@@ -7,7 +8,6 @@ using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 
 using StockManager.Core.Source;
-using StockManager.Core.Source.Extensions;
 using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Tools
@@ -132,21 +132,44 @@ namespace StockManager.Services.Source.Tools
 
         public void Generate()
         {
-            string pdfFileName = $"{Regex.Replace(_document.Info.Title, @"\s+", "_")}_{DateTime.Now.FileNameDateTime()}.pdf";
-
             // Rendering the document
             PdfDocumentRenderer documentRenderer = new PdfDocumentRenderer(false)
             {
                 Document = _document
             };
 
+            // Render document
             documentRenderer.RenderDocument();
 
-            // Open file
-            documentRenderer.PdfDocument.Save(pdfFileName);
+            bool saveInDocumentsFolder = false;
+
+            string dateNow = Regex.Replace(DateTime.Now.ToString(), @"\s+", "_").Replace("/", "_").Replace(":", "").ToString();
+            string pdfFile = $"{Regex.Replace(_document.Info.Title, @"\s+", "_")}_{dateNow}.pdf";
+            string filePath;
+
+            if (saveInDocumentsFolder)
+            {
+                string myDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string myDocumentsFolderSlashStockManager = $@"{myDocumentsFolderPath}\{AppInfo.AppName}";
+
+                if (!Directory.Exists(myDocumentsFolderSlashStockManager))
+                {
+                    Directory.CreateDirectory(myDocumentsFolderSlashStockManager);
+
+                }
+
+                filePath = $@"{myDocumentsFolderSlashStockManager}\{pdfFile}";
+            }
+            else
+            {
+                filePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\{pdfFile}";
+            }
+
+            // Save file
+            documentRenderer.PdfDocument.Save(filePath);
 
             // Show the pdf
-            Process.Start(pdfFileName);
+            Process.Start(filePath);
         }
     }
 }
