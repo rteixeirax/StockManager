@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 using StockManager.Core.Source.Types;
+using StockManager.Translations.Source;
 
 namespace StockManager.Core.Source
 {
@@ -9,6 +11,23 @@ namespace StockManager.Core.Source
     {
         public const string connectionString = @"Data Source=.\App.db.sqlite";
         public const string connectionStringTestDB = "DataSource =:memory:";
+
+        // Available app export documents folders
+        public static readonly List<DocumentsFolder> DocumentsFolders = new List<DocumentsFolder>()
+        {
+            new DocumentsFolder() {
+                Code = "desktop",
+                Name = Phrases.AppConstantsDesktopFolder,
+                CreateFolder = false,
+                Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+            },
+            new DocumentsFolder() {
+                Code = "myDocuments",
+                Name = Phrases.AppConstantsDocumentsFolder,
+                CreateFolder = true,
+                Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{AppInfo.AppName}"
+            }
+        };
 
         // Available app languages
         public static readonly List<AppLanguage> AppLanguages = new List<AppLanguage>()
