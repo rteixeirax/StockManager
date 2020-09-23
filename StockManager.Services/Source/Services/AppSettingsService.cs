@@ -36,6 +36,7 @@ namespace StockManager.Services.Source.Services
             try
             {
                 AppSettings appSettings = await _repository.AppSettings.GetByIdAsync(data.AppSettingsId);
+                appSettings.DocumentsFolder = data.DocumentsFolder;
                 appSettings.Language = data.Language;
                 appSettings.DefaultGlobalMinStock = data.DefaultGlobalMinStock;
 
