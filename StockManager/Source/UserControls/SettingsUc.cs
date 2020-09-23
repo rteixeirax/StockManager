@@ -33,6 +33,8 @@ namespace StockManager.Source.UserControls
             btnSave.Text = Phrases.GlobalSave;
             btnCancel.Text = Phrases.GlobalCancel;
 
+            lbDocumentsFolder.Text = Phrases.AppSettingsDocumentsFolder;
+
             lbLanguage.Text = Phrases.GlobalLanguage;
             lbLanguageWarning.Text = $"*{Phrases.AppSettingRestartRequired}";
 
@@ -45,6 +47,14 @@ namespace StockManager.Source.UserControls
             Spinner.InitSpinner();
 
             _appSettings = await AppServices.AppSettingsService.GetAppSettingsAsync();
+
+            // Populate the export documents folder combo
+            DocumentsFolder documentFolder = AppConstants.DocumentsFolders.FirstOrDefault(x => x.Code == _appSettings.DocumentsFolder);
+            cbDocumentsFolder.DataSource = AppConstants.DocumentsFolders;
+            cbDocumentsFolder.ValueMember = "Code";
+            cbDocumentsFolder.DisplayMember = "Name";
+            cbDocumentsFolder.SelectedItem = documentFolder;
+            lbDocumentsFolderPath.Text = $"*{documentFolder.Path}";
 
             // Populate the language combo
             cbLanguage.DataSource = AppConstants.AppLanguages;
@@ -73,6 +83,7 @@ namespace StockManager.Source.UserControls
                 AppSettings appSettings = new AppSettings
                 {
                     AppSettingsId = _appSettings.AppSettingsId,
+                    DocumentsFolder = cbDocumentsFolder.SelectedValue.ToString(),
                     Language = cbLanguage.SelectedValue.ToString(),
                     DefaultGlobalMinStock = float.Parse(numDefaultGlobalMinStock.Value.ToString())
                 };
@@ -134,6 +145,12 @@ namespace StockManager.Source.UserControls
 
                 await LoadSettingsAsync();
             }
+        }
+
+        private void cbDocumentsFolder_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            DocumentsFolder selectedFolder = ( DocumentsFolder )cbDocumentsFolder.SelectedItem;
+            lbDocumentsFolderPath.Text = $"*{AppConstants.DocumentsFolders.FirstOrDefault(x => x.Code == selectedFolder.Code).Path}";
         }
     }
 }
