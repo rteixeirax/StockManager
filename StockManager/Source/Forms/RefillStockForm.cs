@@ -43,7 +43,7 @@ namespace StockManager.Source.Forms
 
         private void SetTranslatedPhrases()
         {
-            Text = AppInfo.GetViewTitle(Phrases.RefillStock);
+            Text = AppConstants.GetViewTitle(Phrases.RefillStock);
 
             lbTitle.Text = $"{Phrases.GlobalProduct}: {_productName}";
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 using StockManager.Core.Source.Types;
 using StockManager.Translations.Source;
@@ -11,6 +12,18 @@ namespace StockManager.Core.Source
     {
         public const string connectionString = @"Data Source=.\App.db.sqlite";
         public const string connectionStringTestDB = "DataSource =:memory:";
+
+        public static readonly string Version = "v.0.0.1";
+        public static readonly string Title = "Stock Manager";
+        public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
+        public static readonly string DevName = "Ricardo Teixeira";
+        public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
+
+        // Concat the app title with the form title
+        public static string GetViewTitle(string viewName)
+        {
+            return $"{Title} | {viewName}";
+        }
 
         // Available app export documents folders
         public static readonly List<DocumentsFolder> DocumentsFolders = new List<DocumentsFolder>()
@@ -25,7 +38,7 @@ namespace StockManager.Core.Source
                 Code = "myDocuments",
                 Name = Phrases.AppConstantsDocumentsFolder,
                 CreateFolder = true,
-                Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{AppInfo.AppName}"
+                Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{AppName}"
             }
         };
 
@@ -36,19 +49,11 @@ namespace StockManager.Core.Source
             new AppLanguage() {  Code = "en-EN", Name = "English"}
         };
 
-        // #0576b9
-        public static readonly Color ColorBlue = Color.FromArgb(5, 118, 185);
-
-        // #1a1d21
-        public static readonly Color ColorDarkBlue = Color.FromArgb(26, 29, 33);
-
-        // #5cb85c
-        public static readonly Color ColorGreen = Color.FromArgb(92, 184, 92);
-
-        // #f0ad4e
-        public static readonly Color ColorOrange = Color.FromArgb(240, 173, 78);
-
-        // #d9534f
-        public static readonly Color ColorRed = Color.FromArgb(217, 83, 79);
+        // App Colors
+        public static readonly Color ColorBlue = Color.FromArgb(5, 118, 185); // #0576b9
+        public static readonly Color ColorDarkBlue = Color.FromArgb(26, 29, 33); // #1a1d21
+        public static readonly Color ColorGreen = Color.FromArgb(92, 184, 92); // #5cb85c
+        public static readonly Color ColorOrange = Color.FromArgb(240, 173, 78); // #f0ad4e
+        public static readonly Color ColorRed = Color.FromArgb(217, 83, 79); // #d9534f
     }
 }

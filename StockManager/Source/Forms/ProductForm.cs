@@ -37,8 +37,8 @@ namespace StockManager.Source.Forms
 
             // Set the Form title
             Text = (_productId != 0)
-              ? AppInfo.GetViewTitle(Phrases.ProductEdit)
-              : AppInfo.GetViewTitle(Phrases.ProductCreateNewProduct);
+              ? AppConstants.GetViewTitle(Phrases.ProductEdit)
+              : AppConstants.GetViewTitle(Phrases.ProductCreateNewProduct);
 
             // hide the error labels
             lbErrorReference.Visible = false;

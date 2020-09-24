@@ -52,9 +52,9 @@ namespace StockManager.Source.Forms
         /// </summary>
         public void SetUi()
         {
-            Text = AppInfo.Title;
-            lbAppVersion.Text = AppInfo.Version;
-            linklbTwitter.Text = AppInfo.DevName;
+            Text = AppConstants.Title;
+            lbAppVersion.Text = AppConstants.Version;
+            linklbTwitter.Text = AppConstants.DevName;
 
             // Set the content strings for the correct app language
             lbPoweredBy.Text = Phrases.GlobalPoweredBy;
@@ -254,7 +254,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(AppInfo.TwitterUrl);
+            System.Diagnostics.Process.Start(AppConstants.TwitterUrl);
         }
 
         /// <summary>

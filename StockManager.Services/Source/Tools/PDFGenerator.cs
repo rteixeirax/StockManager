@@ -25,7 +25,7 @@ namespace StockManager.Services.Source.Tools
             _document = new Document();
             _document.Info.Title = documentTitle;
             _document.Info.Subject = documentSubject;
-            _document.Info.Author = $"{AppInfo.Title} {AppInfo.Version}";
+            _document.Info.Author = $"{AppConstants.Title} {AppConstants.Version}";
 
             _document.DefaultPageSetup.PageFormat = PageFormat.A4;
             _document.DefaultPageSetup.Orientation = Orientation.Portrait;
@@ -52,7 +52,7 @@ namespace StockManager.Services.Source.Tools
             paragraph.Format.Alignment = ParagraphAlignment.Right;
             paragraph.Format.Font.Italic = false;
             paragraph.Format.Font.Color = Colors.DarkGray;
-            paragraph.AddText($"Powered by {AppInfo.Title} {AppInfo.Version}");
+            paragraph.AddText($"Powered by {AppConstants.Title} {AppConstants.Version}");
             paragraph.AddSpace(3);
             paragraph.AddText("|");
             paragraph.AddSpace(3);

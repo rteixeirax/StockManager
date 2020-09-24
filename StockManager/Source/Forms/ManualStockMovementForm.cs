@@ -60,7 +60,7 @@ namespace StockManager.Source.Forms
 
         public async Task ShowManualStockMovementFormAsync()
         {
-            Text = AppInfo.GetViewTitle(Phrases.StockMovementCreate);
+            Text = AppConstants.GetViewTitle(Phrases.StockMovementCreate);
 
             // hide the error labels
             lbErrorQty.Visible = false;

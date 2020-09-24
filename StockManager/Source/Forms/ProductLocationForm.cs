@@ -30,7 +30,7 @@ namespace StockManager.Source.Forms
         {
             _productLocation = productLocation;
 
-            Text = AppInfo.GetViewTitle($"{_productLocation.Location.Name} | {Phrases.ProductLocationMinStockEdit}");
+            Text = AppConstants.GetViewTitle($"{_productLocation.Location.Name} | {Phrases.ProductLocationMinStockEdit}");
             lbTitle.Text = string.Format(Phrases.ProductLocationMinStockInfo, _productLocation.Product.Reference);
 
             // hide the error labels

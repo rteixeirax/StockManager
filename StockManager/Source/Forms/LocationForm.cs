@@ -35,8 +35,8 @@ namespace StockManager.Source.Forms
 
             // Set the Form title
             Text = (_locationId != 0)
-              ? AppInfo.GetViewTitle(Phrases.LocationEdit)
-              : AppInfo.GetViewTitle(Phrases.LocationCreate);
+              ? AppConstants.GetViewTitle(Phrases.LocationEdit)
+              : AppConstants.GetViewTitle(Phrases.LocationCreate);
 
             // hide the error labels
             lbErrorName.Visible = false;

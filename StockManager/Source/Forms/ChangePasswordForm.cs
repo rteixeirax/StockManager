@@ -92,7 +92,7 @@ namespace StockManager.Source.Forms
         /// </summary>
         private void SetTranslatedPhrases()
         {
-            Text = AppInfo.GetViewTitle(Phrases.UserChangePassword);
+            Text = AppConstants.GetViewTitle(Phrases.UserChangePassword);
             lbTitle.Text = Phrases.UserChangePassword;
             lbCurrentPassword.Text = Phrases.UserCurrentPassword;
             lbNewPassword.Text = Phrases.UserNewPassword;
