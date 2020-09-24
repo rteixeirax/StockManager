@@ -36,5 +36,10 @@ namespace StockManager.Core.Source.Services
         /// Create or remove stock alerts for the given ProductLocation
         /// </summary>
         Task ToggleStockAlertsAsync(ProductLocation plocation, float newStock);
+
+        /// <summary>
+        /// Create a PDF with the given data
+        /// </summary>
+        Task ExportNotificationsToPDFAsync(IEnumerable<Notification> notifications);
     }
 }

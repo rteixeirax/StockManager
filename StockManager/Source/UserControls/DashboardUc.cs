@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 using StockManager.Services.Source;
 using StockManager.Source.Components;
 using StockManager.Source.Forms;
@@ -14,6 +15,8 @@ namespace StockManager.Source.UserControls
 {
     public partial class DashboardUc : UserControl
     {
+        private IEnumerable<Notification> _notifications;
+
         public DashboardUc()
         {
             InitializeComponent();
@@ -36,6 +39,8 @@ namespace StockManager.Source.UserControls
 
             IEnumerable<Notification> notifications = await AppServices.NotificationService.GetAllAsync();
 
+            _notifications = notifications;
+
             notifications?.ToList().ForEach(notification => dgvProductStockAlerts.Rows.Add(
                 notification.CreatedAt.ShortDateWithTime(),
                 notification.ProductLocation?.Product?.Reference,
@@ -57,6 +62,7 @@ namespace StockManager.Source.UserControls
 
         private void SetTranslatedPhrases()
         {
+            btnCreatePdf.Text = Phrases.GlobalExportToPDF;
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
             lbGlobalInfo.Text = Phrases.GlobalInfo;
@@ -74,6 +80,34 @@ namespace StockManager.Source.UserControls
             dgvProductStockAlerts.Columns[3].HeaderText = Phrases.GlobalLocation;
             dgvProductStockAlerts.Columns[4].HeaderText = Phrases.StockMovementMinStock;
             dgvProductStockAlerts.Columns[5].HeaderText = Phrases.StockMovementsStock;
+        }
+
+        private async void btnCreatePdf_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                if (!_notifications.Any())
+                {
+                    MessageBox.Show(Phrases.GlobalDialogExportWarningBody, Phrases.GlobalDialogWarningTitle,
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (MessageBox.Show(Phrases.GlobalDialogExportBody, Phrases.GlobalDialogExportTitle,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Spinner.InitSpinner();
+
+                    await AppServices.NotificationService.ExportNotificationsToPDFAsync(_notifications);
+
+                    Spinner.StopSpinner();
+                }
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show($"{ex.Errors[0].Error}", Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
