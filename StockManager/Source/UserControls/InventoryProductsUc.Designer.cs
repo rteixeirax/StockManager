@@ -37,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlActions = new System.Windows.Forms.Panel();
+            this.btnCreatePdf = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
@@ -78,12 +79,29 @@
             // pnlActions
             // 
             this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlActions.Controls.Add(this.btnCreatePdf);
             this.pnlActions.Controls.Add(this.btnDelete);
             this.pnlActions.Controls.Add(this.btnCreate);
-            this.pnlActions.Location = new System.Drawing.Point(658, 6);
+            this.pnlActions.Location = new System.Drawing.Point(470, 6);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(198, 34);
+            this.pnlActions.Size = new System.Drawing.Size(386, 34);
             this.pnlActions.TabIndex = 14;
+            // 
+            // btnCreatePdf
+            // 
+            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
+            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
+            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreatePdf.Location = new System.Drawing.Point(19, 3);
+            this.btnCreatePdf.Name = "btnCreatePdf";
+            this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
+            this.btnCreatePdf.TabIndex = 10;
+            this.btnCreatePdf.Text = "btnCreatePdf";
+            this.btnCreatePdf.UseVisualStyleBackColor = false;
+            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
             // 
             // btnDelete
             // 
@@ -93,7 +111,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(102, 3);
+            this.btnDelete.Location = new System.Drawing.Point(290, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(93, 27);
             this.btnDelete.TabIndex = 9;
@@ -109,7 +127,7 @@
             this.btnCreate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.ForeColor = System.Drawing.Color.White;
             this.btnCreate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreate.Location = new System.Drawing.Point(5, 3);
+            this.btnCreate.Location = new System.Drawing.Point(193, 3);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(93, 27);
             this.btnCreate.TabIndex = 7;
@@ -367,5 +385,6 @@
     private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
     private System.Windows.Forms.DataGridViewImageColumn columnActionDetails;
     private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
-  }
+        private System.Windows.Forms.Button btnCreatePdf;
+    }
 }

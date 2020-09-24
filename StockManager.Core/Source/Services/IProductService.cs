@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Core.Source.Services
 {
@@ -35,6 +36,11 @@ namespace StockManager.Core.Source.Services
         /// <summary>
         /// Get all products
         /// </summary>
-        Task<IEnumerable<Product>> GetAllAsync(string searchValue = null);
+        Task<IEnumerable<Product>> GetAllAsync(ProductOptions options = null);
+
+        /// <summary>
+        /// Create a PDF with the given data
+        /// </summary>
+        Task ExportProductsToPDFAsync(IEnumerable<Product> products);
     }
 }

@@ -145,9 +145,7 @@ namespace StockManager.Source.UserControls
 
         private async void pbSearchIcon_Click(object sender, EventArgs e)
         {
-            string searchValue = tbSeachText.Text;
-
-            if (!string.IsNullOrEmpty(searchValue))
+            if (!string.IsNullOrEmpty(tbSeachText.Text))
             {
                 // sets the flag has been searching
                 _hasBeenSearching = true;

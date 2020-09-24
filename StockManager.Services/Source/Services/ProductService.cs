@@ -2,10 +2,14 @@
 using System.Linq;
 using System.Threading.Tasks;
 
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+
 using StockManager.Core.Source;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Services;
 using StockManager.Core.Source.Types;
+using StockManager.Services.Source.Tools;
 using StockManager.Translations.Source;
 
 namespace StockManager.Services.Source.Services
@@ -108,20 +112,11 @@ namespace StockManager.Services.Source.Services
             return await _repository.Products.GetByIdWithProductLocationsAndStockMovementsAsync(productId);
         }
 
-        public async Task<IEnumerable<Product>> GetAllAsync(string searchValue = null)
+        public async Task<IEnumerable<Product>> GetAllAsync(ProductOptions options = null)
         {
-            IEnumerable<Product> products;
-
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                products = await _repository.Products
-                    .FindAllWithProductLocationsAsync(product => product.Reference.ToLower().Contains(searchValue.ToLower())
-                    || product.Name.ToLower().Contains(searchValue.ToLower()));
-            }
-            else
-            {
-                products = await _repository.Products.FindAllWithProductLocationsAsync();
-            }
+            IEnumerable<Product> products = (options != null)
+                ? await _repository.Products.FindAllWithProductLocationsAsync(options)
+                : await _repository.Products.FindAllWithProductLocationsAsync();
 
             // Calculate the product total stock
             products.ToList().ForEach(product => {
@@ -129,6 +124,50 @@ namespace StockManager.Services.Source.Services
             });
 
             return products;
+        }
+
+        public async Task ExportProductsToPDFAsync(IEnumerable<Product> products)
+        {
+            try
+            {
+                PDFGenerator pdf = new PDFGenerator(Phrases.GlobalProducts, "List of products"); // TODO: translate
+                Section section = pdf.CreateDocumentSection();
+
+                // Set title
+                pdf.AddParagraph(Phrases.GlobalProducts, true, false, 16, 1);
+
+                // Create table and table columns
+                Table table = pdf.CreateTable();
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Center);
+
+                // Create table header
+                Row row = pdf.CreateTableHeaderRow(table);
+                pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, Phrases.GlobalReference, true);
+                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalName, true);
+                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Center, Phrases.GlobalStock, true);
+
+                // Populate the table rows
+                products.ToList().ForEach((product) => {
+                    row = table.AddRow();
+                    pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, product.Reference);
+                    pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, product.Name);
+                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Center, product.Stock.ToString());
+                });
+
+                // Add the table to the section
+                pdf.AddTableToLastSection(table);
+
+                // Rendering the document
+                await pdf.GenerateAsync();
+            }
+            catch
+            {
+                OperationErrorsList errorsList = new OperationErrorsList();
+                errorsList.AddError("export-products-error", Phrases.GlobalErrorOperationDB);
+                throw new ServiceErrorException(errorsList);
+            }
         }
 
         /// <summary>

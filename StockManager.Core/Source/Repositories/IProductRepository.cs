@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 using StockManager.Core.Source.Models;
+using StockManager.Core.Source.Types;
 
 namespace StockManager.Core.Source.Repositories
 {
@@ -18,6 +19,11 @@ namespace StockManager.Core.Source.Repositories
         /// Find all products with productLocations included  without lamba expression
         /// </summary>
         Task<IEnumerable<Product>> FindAllWithProductLocationsAsync();
+
+        /// <summary>
+        /// Find all products with productLocations included that satisfy the given ProductOptions
+        /// </summary>
+        Task<IEnumerable<Product>> FindAllWithProductLocationsAsync(ProductOptions options);
 
         /// <summary>
         /// Get user by id with productLocations and stockMovements included

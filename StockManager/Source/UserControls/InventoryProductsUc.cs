@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +18,7 @@ namespace StockManager.Source.UserControls
     {
         private readonly MainForm _mainForm;
         private bool _hasBeenSearching = false; // Flags if the user has been searching
+        private IEnumerable<Product> _products;
 
         public InventoryProductsUc(MainForm mainForm)
         {
@@ -34,16 +36,17 @@ namespace StockManager.Source.UserControls
         /// <summary>
         /// Fill the Data Grid View
         /// </summary>
-        public async Task LoadProductsAsync(string searchValue = null)
+        public async Task LoadProductsAsync()
         {
             Spinner.InitSpinner();
             dgvProducts.Rows.Clear();
 
-            IEnumerable<Product> products = await AppServices.ProductService
-              .GetAllAsync(searchValue);
+            IEnumerable<Product> products = await AppServices
+                .ProductService.GetAllAsync(new ProductOptions() { SearchValue = tbSeachText.Text });
 
-            foreach (Product product in products)
-            {
+            _products = products;
+
+            products.ToList().ForEach((product) => {
                 dgvProducts.Rows.Add(
                   product.ProductId,
                   product.Reference,
@@ -51,7 +54,7 @@ namespace StockManager.Source.UserControls
                   product.Stock,
                   product.CreatedAt.ShortDateWithTime()
                 );
-            }
+            });
 
             Spinner.StopSpinner();
         }
@@ -198,14 +201,12 @@ namespace StockManager.Source.UserControls
         /// </summary>
         private async void pbSearchIcon_Click(object sender, EventArgs e)
         {
-            string searchValue = tbSeachText.Text;
-
-            if (!string.IsNullOrEmpty(searchValue))
+            if (!string.IsNullOrEmpty(tbSeachText.Text))
             {
                 // sets the flag has been searching
                 _hasBeenSearching = true;
 
-                await LoadProductsAsync(searchValue);
+                await LoadProductsAsync();
             }
         }
 
@@ -214,6 +215,7 @@ namespace StockManager.Source.UserControls
         /// </summary>
         private void SetTranslatedPhrases()
         {
+            btnCreatePdf.Text = Phrases.GlobalExportToPDF;
             btnCreate.Text = Phrases.GlobalCreate;
             btnDelete.Text = Phrases.GlobalDelete;
             dgvProducts.Columns[1].HeaderText = Phrases.GlobalReference;
@@ -262,6 +264,34 @@ namespace StockManager.Source.UserControls
                 _hasBeenSearching = false;
                 btnClearSearchValue.Visible = false;
                 await LoadProductsAsync();
+            }
+        }
+
+        private async void btnCreatePdf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!_products.Any())
+                {
+                    MessageBox.Show(Phrases.GlobalDialogExportWarningBody, Phrases.GlobalDialogWarningTitle,
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (MessageBox.Show(Phrases.GlobalDialogExportBody, Phrases.GlobalDialogExportTitle,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Spinner.InitSpinner();
+
+                    await AppServices.ProductService.ExportProductsToPDFAsync(_products);
+
+                    Spinner.StopSpinner();
+                }
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show($"{ex.Errors[0].Error}", Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
