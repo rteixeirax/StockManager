@@ -433,4 +433,7 @@
   <data name="ProductsListOf" xml:space="preserve">
     <value>List of products</value>
   </data>
+  <data name="StockAlertsListOf" xml:space="preserve">
+    <value>List of stock alerts</value>
+  </data>
 </root>

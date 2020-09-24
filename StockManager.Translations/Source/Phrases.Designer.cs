@@ -835,6 +835,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of stock alerts.
+        /// </summary>
+        public static string StockAlertsListOf {
+            get {
+                return ResourceManager.GetString("StockAlertsListOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create stock movement.
         /// </summary>
         public static string StockMovementCreate {
