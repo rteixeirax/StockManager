@@ -109,6 +109,10 @@ namespace StockManager.Services.Source.Tools
 
         public void AddTableToLastSection(Table table)
         {
+            // Set the table columns width
+            PageSetup page = _document.DefaultPageSetup;
+            table.Columns.Width = ((page.PageWidth - page.LeftMargin - page.RightMargin) / table.Columns.Count);
+
             _document.LastSection.Add(table);
         }
 
