@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -6,6 +7,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 
 using StockManager.Core.Source;
+using StockManager.Core.Source.Extensions;
 using StockManager.Core.Source.Models;
 using StockManager.Core.Source.Services;
 using StockManager.Core.Source.Types;
@@ -134,7 +136,8 @@ namespace StockManager.Services.Source.Services
                 Section section = pdf.CreateDocumentSection();
 
                 // Set title
-                pdf.AddParagraph(Phrases.GlobalProducts, true, false, 16, 1);
+                pdf.AddParagraph(Phrases.GlobalProducts, true, false, 16);
+                pdf.AddParagraph($"{Phrases.GlobalDate}: {DateTime.Now.ShortDate()}", false, true, null, 1);
 
                 // Create table and table columns
                 Table table = pdf.CreateTable();
