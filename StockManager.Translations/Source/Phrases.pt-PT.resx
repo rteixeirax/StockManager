@@ -450,4 +450,7 @@
   <data name="AppConstantsDocumentsFolder" xml:space="preserve">
     <value>Os meus documentos</value>
   </data>
+  <data name="ProductsListOf" xml:space="preserve">
+    <value>Listagem de produtos</value>
+  </data>
 </root>

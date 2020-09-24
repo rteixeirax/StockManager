@@ -130,7 +130,7 @@ namespace StockManager.Services.Source.Services
         {
             try
             {
-                PDFGenerator pdf = new PDFGenerator(Phrases.GlobalProducts, "List of products"); // TODO: translate
+                PDFGenerator pdf = new PDFGenerator(Phrases.GlobalProducts, Phrases.ProductsListOf);
                 Section section = pdf.CreateDocumentSection();
 
                 // Set title

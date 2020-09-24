@@ -799,6 +799,15 @@ namespace StockManager.Translations.Source {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of products.
+        /// </summary>
+        public static string ProductsListOf {
+            get {
+                return ResourceManager.GetString("ProductsListOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refill stock.
         /// </summary>
         public static string RefillStock {
