@@ -92,6 +92,12 @@ namespace StockManager.Source.Forms
                 Product product = ( Product )cbProduct.SelectedItem;
                 float qty = float.Parse(numQty.Value.ToString());
 
+                if (qty == 0)
+                {
+                    // If qty is zero, do nothing...
+                    return;
+                }
+
                 if (checkMainLocationMoves.Checked)
                 {
                     await AppServices.StockMovementService.CreateMovementInsideMainLocationAsync(
@@ -246,7 +252,7 @@ namespace StockManager.Source.Forms
                  {
                      ProductId = pl.Product.ProductId,
                      Reference = pl.Product.Reference,
-                     Name = $"{pl.Product.Reference} {pl.Product.Name}({pl.Stock})",
+                     Name = $"({pl.Stock}){pl.Product.Reference} {pl.Product.Name}",
                  };
 
                  return product;
