@@ -238,7 +238,8 @@ namespace StockManager.Tests.Source.Services
             await AppServices.ProductService.CreateAsync(otherProduct, _adminUser.UserId);
 
             // Act
-            IEnumerable<Product> products = await AppServices.ProductService.GetAllAsync(product.Name);
+            IEnumerable<Product> products = await AppServices.ProductService
+                .GetAllAsync(new ProductOptions() { SearchValue = product.Name });
 
             // Assert
             Assert.AreEqual(products.Count(), 1);
@@ -258,7 +259,8 @@ namespace StockManager.Tests.Source.Services
             await AppServices.ProductService.CreateAsync(otherProduct, _adminUser.UserId);
 
             // Act
-            IEnumerable<Product> products = await AppServices.ProductService.GetAllAsync(product.Reference);
+            IEnumerable<Product> products = await AppServices.ProductService
+                .GetAllAsync(new ProductOptions() { SearchValue = product.Reference });
 
             // Assert
             Assert.AreEqual(products.Count(), 1);
