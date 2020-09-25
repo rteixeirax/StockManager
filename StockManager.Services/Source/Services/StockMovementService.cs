@@ -348,30 +348,30 @@ namespace StockManager.Services.Source.Services
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
-                pdf.AddTableColumn(table, ParagraphAlignment.Center);
-                pdf.AddTableColumn(table, ParagraphAlignment.Center);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
+                pdf.AddTableColumn(table, ParagraphAlignment.Right);
+                pdf.AddTableColumn(table, ParagraphAlignment.Right);
 
                 // Create table header
                 Row row = pdf.CreateTableHeaderRow(table);
                 pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, Phrases.GlobalDate, true);
-                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalReference, true);
-                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, Phrases.GlobalName, true);
-                pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, Phrases.GlobalMovement, true);
-                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, Phrases.StockMovementQty, true);
-                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, Phrases.StockMovementStockAcc, true);
-                pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, Phrases.GlobalUser, true);
+                pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalUser, true);
+                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, Phrases.GlobalReference, true);
+                pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, Phrases.GlobalName, true);
+                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Left, Phrases.GlobalMovement, true);
+                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Right, Phrases.StockMovementQty, true);
+                pdf.AddTableRowCell(row, 6, ParagraphAlignment.Right, Phrases.StockMovementStockAcc, true);
 
                 // Populate the table rows
                 movements.ToList().ForEach((movement) => {
                     row = table.AddRow();
                     pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, movement.CreatedAt.ShortDateWithTime());
-                    pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, movement.Product.Reference);
-                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, movement.Product.Name);
-                    pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, movement.ConcatMovementString());
-                    pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, movement.Qty.ToString());
-                    pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, movement.Stock.ToString());
-                    pdf.AddTableRowCell(row, 6, ParagraphAlignment.Left, movement.User.Username);
+                    pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, movement.User.Username);
+                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, movement.Product.Reference);
+                    pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, movement.Product.Name);
+                    pdf.AddTableRowCell(row, 4, ParagraphAlignment.Left, movement.ConcatMovementString());
+                    pdf.AddTableRowCell(row, 5, ParagraphAlignment.Right, movement.Qty.ToString());
+                    pdf.AddTableRowCell(row, 6, ParagraphAlignment.Right, movement.Stock.ToString());
                 });
 
                 // Add the table to the section

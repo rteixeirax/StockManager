@@ -137,7 +137,9 @@ namespace StockManager.Source.Forms
         {
             pnlViews.Controls.Clear();
 
-            lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {product.Reference} > {Phrases.GlobalLocations.ToLower()}";
+            string productName = $"{product.Reference} {product.Name}";
+
+            lbViewTitle.Text = $"{Phrases.GlobalInventoryTitle} > {Phrases.GlobalProducts} > {productName} > {Phrases.GlobalLocations.ToLower()}";
             UserControl uc = new InventoryProductLocationsUc(this, product)
             {
                 Dock = DockStyle.Fill

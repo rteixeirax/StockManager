@@ -143,20 +143,20 @@ namespace StockManager.Services.Source.Services
                 Table table = pdf.CreateTable();
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
-                pdf.AddTableColumn(table, ParagraphAlignment.Center);
+                pdf.AddTableColumn(table, ParagraphAlignment.Right);
 
                 // Create table header
                 Row row = pdf.CreateTableHeaderRow(table);
                 pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, Phrases.GlobalReference, true);
                 pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalName, true);
-                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Center, Phrases.GlobalStock, true);
+                pdf.AddTableRowCell(row, 2, ParagraphAlignment.Right, Phrases.GlobalStock, true);
 
                 // Populate the table rows
                 products.ToList().ForEach((product) => {
                     row = table.AddRow();
                     pdf.AddTableRowCell(row, 0, ParagraphAlignment.Left, product.Reference);
                     pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, product.Name);
-                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Center, product.Stock.ToString());
+                    pdf.AddTableRowCell(row, 2, ParagraphAlignment.Right, product.Stock.ToString());
                 });
 
                 // Add the table to the section

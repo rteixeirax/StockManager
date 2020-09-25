@@ -95,8 +95,8 @@ namespace StockManager.Services.Source.Services
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
                 pdf.AddTableColumn(table, ParagraphAlignment.Left);
-                pdf.AddTableColumn(table, ParagraphAlignment.Center);
-                pdf.AddTableColumn(table, ParagraphAlignment.Center);
+                pdf.AddTableColumn(table, ParagraphAlignment.Right);
+                pdf.AddTableColumn(table, ParagraphAlignment.Right);
 
                 // Create table header
                 Row row = pdf.CreateTableHeaderRow(table);
@@ -104,8 +104,8 @@ namespace StockManager.Services.Source.Services
                 pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, Phrases.GlobalReference, true);
                 pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, Phrases.GlobalProduct, true);
                 pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, Phrases.GlobalLocation, true);
-                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, Phrases.StockMovementMinStock, true);
-                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, Phrases.StockMovementsStock, true);
+                pdf.AddTableRowCell(row, 4, ParagraphAlignment.Right, Phrases.StockMovementMinStock, true);
+                pdf.AddTableRowCell(row, 5, ParagraphAlignment.Right, Phrases.StockMovementsStock, true);
 
                 // Populate the table rows
                 notifications.ToList().ForEach((notification) => {
@@ -114,8 +114,8 @@ namespace StockManager.Services.Source.Services
                     pdf.AddTableRowCell(row, 1, ParagraphAlignment.Left, notification.ProductLocation.Product.Reference);
                     pdf.AddTableRowCell(row, 2, ParagraphAlignment.Left, notification.ProductLocation.Product.Name);
                     pdf.AddTableRowCell(row, 3, ParagraphAlignment.Left, notification.ProductLocation.Location.Name);
-                    pdf.AddTableRowCell(row, 4, ParagraphAlignment.Center, notification.ProductLocation.Stock.ToString());
-                    pdf.AddTableRowCell(row, 5, ParagraphAlignment.Center, notification.ProductLocation.MinStock.ToString());
+                    pdf.AddTableRowCell(row, 4, ParagraphAlignment.Right, notification.ProductLocation.Stock.ToString());
+                    pdf.AddTableRowCell(row, 5, ParagraphAlignment.Right, notification.ProductLocation.MinStock.ToString());
 
                 });
 

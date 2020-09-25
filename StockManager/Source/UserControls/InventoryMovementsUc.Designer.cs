@@ -30,20 +30,12 @@
         {
             System.Windows.Forms.PictureBox pbSearchIcon;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryMovementsUc));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvMovements = new System.Windows.Forms.DataGridView();
-            this.columnStockMovementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnbSearchBox = new System.Windows.Forms.Panel();
             this.btnClearSearchValue = new System.Windows.Forms.Button();
             this.tbSeachText = new System.Windows.Forms.TextBox();
@@ -63,6 +55,14 @@
             this.lbFilterLocation = new System.Windows.Forms.Label();
             this.lbFilterUser = new System.Windows.Forms.Label();
             this.cbLocations = new System.Windows.Forms.ComboBox();
+            this.columnStockMovementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnReference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnMovement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnStockAcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             pbSearchIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(pbSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovements)).BeginInit();
@@ -92,127 +92,70 @@
             this.dgvMovements.AllowUserToDeleteRows = false;
             this.dgvMovements.AllowUserToResizeColumns = false;
             this.dgvMovements.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvMovements.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMovements.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMovements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMovements.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvMovements.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnStockMovementId,
             this.columnDate,
+            this.columnUser,
             this.columnReference,
             this.columnProduct,
             this.columnMovement,
             this.columnQty,
-            this.columnStockAcc,
-            this.columnUser});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle8;
+            this.columnStockAcc});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMovements.EnableHeadersVisualStyles = false;
             this.dgvMovements.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.dgvMovements.Location = new System.Drawing.Point(8, 169);
             this.dgvMovements.Margin = new System.Windows.Forms.Padding(4);
             this.dgvMovements.Name = "dgvMovements";
             this.dgvMovements.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Courier New", 9.75F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMovements.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMovements.RowHeadersVisible = false;
             this.dgvMovements.RowHeadersWidth = 25;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvMovements.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvMovements.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMovements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovements.Size = new System.Drawing.Size(845, 241);
             this.dgvMovements.TabIndex = 17;
-            // 
-            // columnStockMovementId
-            // 
-            this.columnStockMovementId.HeaderText = "columnStockMovementId";
-            this.columnStockMovementId.Name = "columnStockMovementId";
-            this.columnStockMovementId.ReadOnly = true;
-            this.columnStockMovementId.Visible = false;
-            // 
-            // columnDate
-            // 
-            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnDate.HeaderText = "columnDate";
-            this.columnDate.Name = "columnDate";
-            this.columnDate.ReadOnly = true;
-            // 
-            // columnReference
-            // 
-            this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnReference.HeaderText = "columnReference";
-            this.columnReference.Name = "columnReference";
-            this.columnReference.ReadOnly = true;
-            // 
-            // columnProduct
-            // 
-            this.columnProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnProduct.HeaderText = "columnProduct";
-            this.columnProduct.Name = "columnProduct";
-            this.columnProduct.ReadOnly = true;
-            // 
-            // columnMovement
-            // 
-            this.columnMovement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnMovement.HeaderText = "columnMovement";
-            this.columnMovement.Name = "columnMovement";
-            this.columnMovement.ReadOnly = true;
-            this.columnMovement.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // columnQty
-            // 
-            this.columnQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnQty.HeaderText = "columnQty";
-            this.columnQty.Name = "columnQty";
-            this.columnQty.ReadOnly = true;
-            // 
-            // columnStockAcc
-            // 
-            this.columnStockAcc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnStockAcc.HeaderText = "columnStockAcc";
-            this.columnStockAcc.Name = "columnStockAcc";
-            this.columnStockAcc.ReadOnly = true;
-            // 
-            // columnUser
-            // 
-            this.columnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.columnUser.HeaderText = "columnUser";
-            this.columnUser.Name = "columnUser";
-            this.columnUser.ReadOnly = true;
             // 
             // pnbSearchBox
             // 
@@ -483,6 +426,63 @@
             this.cbLocations.TabIndex = 35;
             this.cbLocations.SelectionChangeCommitted += new System.EventHandler(this.cbLocations_SelectionChangeCommitted);
             // 
+            // columnStockMovementId
+            // 
+            this.columnStockMovementId.HeaderText = "columnStockMovementId";
+            this.columnStockMovementId.Name = "columnStockMovementId";
+            this.columnStockMovementId.ReadOnly = true;
+            this.columnStockMovementId.Visible = false;
+            // 
+            // columnDate
+            // 
+            this.columnDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnDate.HeaderText = "columnDate";
+            this.columnDate.Name = "columnDate";
+            this.columnDate.ReadOnly = true;
+            // 
+            // columnUser
+            // 
+            this.columnUser.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnUser.HeaderText = "columnUser";
+            this.columnUser.Name = "columnUser";
+            this.columnUser.ReadOnly = true;
+            // 
+            // columnReference
+            // 
+            this.columnReference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnReference.HeaderText = "columnReference";
+            this.columnReference.Name = "columnReference";
+            this.columnReference.ReadOnly = true;
+            // 
+            // columnProduct
+            // 
+            this.columnProduct.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnProduct.HeaderText = "columnProduct";
+            this.columnProduct.Name = "columnProduct";
+            this.columnProduct.ReadOnly = true;
+            // 
+            // columnMovement
+            // 
+            this.columnMovement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnMovement.HeaderText = "columnMovement";
+            this.columnMovement.Name = "columnMovement";
+            this.columnMovement.ReadOnly = true;
+            this.columnMovement.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // columnQty
+            // 
+            this.columnQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnQty.HeaderText = "columnQty";
+            this.columnQty.Name = "columnQty";
+            this.columnQty.ReadOnly = true;
+            // 
+            // columnStockAcc
+            // 
+            this.columnStockAcc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.columnStockAcc.HeaderText = "columnStockAcc";
+            this.columnStockAcc.Name = "columnStockAcc";
+            this.columnStockAcc.ReadOnly = true;
+            // 
             // InventoryMovementsUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -516,14 +516,6 @@
     private System.Windows.Forms.TextBox tbSeachText;
     private System.Windows.Forms.Panel pnlActions;
     private System.Windows.Forms.Button btnStockMovement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStockMovementId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnMovement;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
         private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.Label lbFilterDate;
         private System.Windows.Forms.Label label1;
@@ -538,5 +530,13 @@
         private System.Windows.Forms.Button btClearFilterUser;
         private System.Windows.Forms.Button btClearFilterLocation;
         private System.Windows.Forms.Button btnCreatePdf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStockMovementId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnReference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnMovement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStockAcc;
     }
 }

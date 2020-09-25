@@ -53,12 +53,12 @@ namespace StockManager.Source.UserControls
                 dgvMovements.Rows.Add(
                   stockMovement.StockMovementId,
                   stockMovement.CreatedAt.ShortDateWithTime(),
+                  stockMovement.User?.Username,
                   stockMovement.Product?.Reference,
                   stockMovement.Product?.Name,
                   stockMovement.ConcatMovementString(),
                   stockMovement.Qty,
-                  stockMovement.Stock,
-                  stockMovement.User?.Username
+                  stockMovement.Stock
                 );
             });
 
@@ -89,12 +89,12 @@ namespace StockManager.Source.UserControls
             lbFilterUser.Text = $"{Phrases.GlobalFilterBy} {Phrases.GlobalUser}";
 
             dgvMovements.Columns[1].HeaderText = Phrases.GlobalDate;
-            dgvMovements.Columns[2].HeaderText = Phrases.GlobalReference;
-            dgvMovements.Columns[3].HeaderText = Phrases.GlobalProduct;
-            dgvMovements.Columns[4].HeaderText = Phrases.GlobalMovement;
-            dgvMovements.Columns[5].HeaderText = Phrases.StockMovementQty;
-            dgvMovements.Columns[6].HeaderText = Phrases.StockMovementStockAcc;
-            dgvMovements.Columns[7].HeaderText = Phrases.GlobalUser;
+            dgvMovements.Columns[2].HeaderText = Phrases.GlobalUser;
+            dgvMovements.Columns[3].HeaderText = Phrases.GlobalReference;
+            dgvMovements.Columns[4].HeaderText = Phrases.GlobalProduct;
+            dgvMovements.Columns[5].HeaderText = Phrases.GlobalMovement;
+            dgvMovements.Columns[6].HeaderText = Phrases.StockMovementQty;
+            dgvMovements.Columns[7].HeaderText = Phrases.StockMovementStockAcc;
         }
 
         private void SetInitialDateTimePickerValues()
