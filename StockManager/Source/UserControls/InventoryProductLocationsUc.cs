@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -225,6 +226,7 @@ namespace StockManager.Source.UserControls
         private void SetTranslatedPhrases()
         {
             btnback.Text = Phrases.GlobalBack;
+            btnCreatePdf.Text = Phrases.GlobalExportToPDF;
             btnStockMovement.Text = Phrases.GlobalCreateMov;
 
             dgvProductLocations.Columns[1].HeaderText = Phrases.GlobalReference;
@@ -237,6 +239,47 @@ namespace StockManager.Source.UserControls
             dgvProductLocations.Columns[4].HeaderText = Phrases.StockMovementMinStock;
             dgvProductLocations.Columns[5].CellTemplate.ToolTipText = Phrases.GlobalEdit;
             dgvProductLocations.Columns[6].CellTemplate.ToolTipText = Phrases.GlobalDelete;
+        }
+
+        private async void btnCreatePdf_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ICollection<ProductLocation> productLocations = (_product != null)
+                    ? _product?.ProductLocations
+                    : _location?.ProductLocations;
+
+                if (!productLocations.Any())
+                {
+                    MessageBox.Show(Phrases.GlobalDialogExportWarningBody, Phrases.GlobalDialogWarningTitle,
+                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (MessageBox.Show(Phrases.GlobalDialogExportBody, Phrases.GlobalDialogExportTitle,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Spinner.InitSpinner();
+
+                    if (_location != null)
+                    {
+                        await AppServices.ProductLocationService
+                            .ExportProductLocationsFromLocationToPDFAsync(productLocations);
+                    }
+                    else
+                    {
+                        await AppServices.ProductLocationService
+                            .ExportProductLocationsFromProductToPDFAsync(productLocations);
+                    }
+
+                    Spinner.StopSpinner();
+                }
+            }
+            catch (ServiceErrorException ex)
+            {
+                Spinner.StopSpinner();
+
+                MessageBox.Show($"{ex.Errors[0].Error}", Phrases.GlobalDialogErrorTitle,
+                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

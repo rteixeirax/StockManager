@@ -40,5 +40,15 @@ namespace StockManager.Core.Source.Services
         /// Update the product location min stock
         /// </summary>
         Task UpdateMinStock(int productLocation, float minStock);
+
+        /// <summary>
+        /// Create a PDF with the given data
+        /// </summary>
+        Task ExportProductLocationsFromLocationToPDFAsync(IEnumerable<ProductLocation> productLocations);
+
+        /// <summary>
+        /// Create a PDF with the given data
+        /// </summary>
+        Task ExportProductLocationsFromProductToPDFAsync(IEnumerable<ProductLocation> productLocations);
     }
 }

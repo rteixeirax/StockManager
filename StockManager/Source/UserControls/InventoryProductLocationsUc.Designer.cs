@@ -44,6 +44,7 @@
             this.btnback = new System.Windows.Forms.Button();
             this.pnlActions = new System.Windows.Forms.Panel();
             this.btnStockMovement = new System.Windows.Forms.Button();
+            this.btnCreatePdf = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductLocations)).BeginInit();
             this.pnlActions.SuspendLayout();
             this.SuspendLayout();
@@ -191,10 +192,11 @@
             // pnlActions
             // 
             this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlActions.Controls.Add(this.btnCreatePdf);
             this.pnlActions.Controls.Add(this.btnStockMovement);
-            this.pnlActions.Location = new System.Drawing.Point(654, 6);
+            this.pnlActions.Location = new System.Drawing.Point(532, 6);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(203, 34);
+            this.pnlActions.Size = new System.Drawing.Size(325, 34);
             this.pnlActions.TabIndex = 22;
             // 
             // btnStockMovement
@@ -205,13 +207,29 @@
             this.btnStockMovement.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStockMovement.ForeColor = System.Drawing.Color.White;
             this.btnStockMovement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockMovement.Location = new System.Drawing.Point(79, 4);
+            this.btnStockMovement.Location = new System.Drawing.Point(200, 4);
             this.btnStockMovement.Name = "btnStockMovement";
             this.btnStockMovement.Size = new System.Drawing.Size(121, 27);
             this.btnStockMovement.TabIndex = 7;
             this.btnStockMovement.Text = "btnStockMovement";
             this.btnStockMovement.UseVisualStyleBackColor = false;
             this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
+            // 
+            // btnCreatePdf
+            // 
+            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
+            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
+            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreatePdf.Location = new System.Drawing.Point(26, 4);
+            this.btnCreatePdf.Name = "btnCreatePdf";
+            this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
+            this.btnCreatePdf.TabIndex = 12;
+            this.btnCreatePdf.Text = "btnCreatePdf";
+            this.btnCreatePdf.UseVisualStyleBackColor = false;
+            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
             // 
             // InventoryProductLocationsUc
             // 
@@ -243,5 +261,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnMinStock;
         private System.Windows.Forms.DataGridViewImageColumn columnActionEdit;
         private System.Windows.Forms.DataGridViewImageColumn columnActionDelete;
+        private System.Windows.Forms.Button btnCreatePdf;
     }
 }
