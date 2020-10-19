@@ -13,7 +13,7 @@ namespace StockManager.Core.Source
         public const string connectionString = @"Data Source=.\App.db.sqlite";
         public const string connectionStringTestDB = "DataSource =:memory:";
 
-        public static readonly string Version = "v.0.0.1";
+        public static readonly string Version = "v0.0.1";
         public static readonly string Title = "Stock Manager";
         public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
         public static readonly string DevName = "Ricardo Teixeira";
