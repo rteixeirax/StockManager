@@ -49,7 +49,9 @@ namespace StockManager.Source.UserControls
             _appSettings = await AppServices.AppSettingsService.GetAppSettingsAsync();
 
             // Populate the export documents folder combo
-            DocumentsFolder documentFolder = AppConstants.DocumentsFolders.FirstOrDefault(x => x.Code == _appSettings.DocumentsFolder);
+            DocumentsFolder documentFolder = AppConstants.DocumentsFolders
+                .FirstOrDefault(x => x.Code == _appSettings.DocumentsFolder);
+
             cbDocumentsFolder.DataSource = AppConstants.DocumentsFolders;
             cbDocumentsFolder.ValueMember = "Code";
             cbDocumentsFolder.DisplayMember = "Name";
