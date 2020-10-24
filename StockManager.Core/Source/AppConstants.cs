@@ -12,15 +12,22 @@ namespace StockManager.Core.Source
 {
     public static class AppConstants
     {
-        public const string connectionString = @"Data Source=.\App.db.sqlite";
-        public const string connectionStringTestDB = "DataSource =:memory:";
-
         // Fetch the version from the AssemblyInfo.cs.
-        public static readonly string Version = $"v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
         public static readonly string Title = "Stock Manager";
-        public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
         public static readonly string DevName = "Ricardo Teixeira";
         public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
+        public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
+        public static readonly string Version = $"v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
+
+        // Special folders paths
+        public static readonly string MyDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static readonly string DesktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public static readonly string DatabaseFolderPath = $@"{MyDocumentsFolderPath}\{AppName}\Data";
+
+        // Connection strings
+        public static readonly string connectionString = $@"Data Source={DatabaseFolderPath}\{AppName}DB.sqlite";
+        public static readonly string connectionStringDev = @"Data Source=.\App.db.sqlite";
+        public static readonly string connectionStringTestDB = "DataSource =:memory:";
 
         // Concat the app title with the form title
         public static string GetViewTitle(string viewName)
@@ -35,13 +42,13 @@ namespace StockManager.Core.Source
                 Code = "desktop",
                 Name = Phrases.AppConstantsDesktopFolder,
                 CreateFolder = false,
-                Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                Path = DesktopFolderPath
             },
             new DocumentsFolder() {
                 Code = "myDocuments",
                 Name = Phrases.AppConstantsDocumentsFolder,
                 CreateFolder = true,
-                Path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\{AppName}"
+                Path = $@"{MyDocumentsFolderPath}\{AppName}"
             }
         };
 

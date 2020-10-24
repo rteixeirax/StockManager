@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,6 +39,18 @@ namespace StockManager.Source
         }
 
         /// <summary>
+        /// Check if it is in debug mode
+        /// </summary>
+        private static bool isDebug()
+        {
+#if DEBUG
+            return true;
+#else
+            return false;
+#endif
+        }
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -65,9 +78,15 @@ namespace StockManager.Source
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // When in production, check if the DB folder exists. If not, create it.
+            if (!isDebug() && !Directory.Exists(AppConstants.DatabaseFolderPath))
+            {
+                Directory.CreateDirectory(AppConstants.DatabaseFolderPath);
+            }
+
             // Set the options builder for our database context
             DbContextOptionsBuilder<DatabaseContext> builder = new DbContextOptionsBuilder<DatabaseContext>();
-            builder.UseSqlite(AppConstants.connectionString);
+            builder.UseSqlite(isDebug() ? AppConstants.connectionStringDev : AppConstants.connectionString);
 
             // Instantiate our database
             DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);
