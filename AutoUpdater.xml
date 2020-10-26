@@ -3,6 +3,5 @@
 <item>
     <version>1.0.1.0</version>
     <url>https://github.com/ricardotx/StockManager/releases/download/v1.0.0.0/StockManager.v1.0.0.0.msi</url>
-    <!--<changelog>https://github.com/ricardotx/StockManager/releases/tag/v1.0.0.0</changelog>-->
-    <mandatory mode="1">false</mandatory>
+    <mandatory mode="1">true</mandatory>
 </item>
