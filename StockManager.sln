@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3AEC4B7C-2E17-4D2A-AC73-5B3C69851450}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		AutoUpdater.xml = AutoUpdater.xml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockManager.Core", "StockManager.Core\StockManager.Core.csproj", "{7F28E1EE-2D54-472A-A632-5EA2F88E6097}"
