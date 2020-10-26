@@ -4,6 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using AutoUpdaterDotNET;
+
 using Microsoft.EntityFrameworkCore;
 
 using StockManager.Core.Source;
@@ -41,7 +43,7 @@ namespace StockManager.Source
         /// <summary>
         /// Check if it is in debug mode
         /// </summary>
-        private static bool isDebug()
+        private static bool IsDebug()
         {
 #if DEBUG
             return true;
@@ -51,17 +53,39 @@ namespace StockManager.Source
         }
 
         /// <summary>
+        /// Check if exists a new StockManager release.
+        /// </summary>
+        private static void CheckForNewRelease()
+        {
+            // https://github.com/ravibpatel/AutoUpdater.NET#adding-one-line-to-make-it-work
+            AutoUpdater.DownloadPath = AppConstants.DesktopFolderPath;
+            AutoUpdater.ShowSkipButton = false;
+            AutoUpdater.Start(AppConstants.AutoUpdaterXmlFileUrl);
+        }
+
+        /// <summary>
+        ///  When in production, check if the DB folder exists. If not, create it.
+        /// </summary>
+        private static void CreateDataFolderInProduction()
+        {
+            if (!IsDebug() && !Directory.Exists(AppConstants.DatabaseFolderPath))
+            {
+                Directory.CreateDirectory(AppConstants.DatabaseFolderPath);
+            }
+        }
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         private static async Task Main()
         {
-            // https://www.c-sharpcorner.com/UploadFile/f9f215/how-to-restrict-the-application-to-just-one-instance/
-            // Restrict the application to run in just one instance
+            // https://www.c-sharpcorner.com/UploadFile/f9f215/how-to-restrict-the-application-to-just-one-instance/ 
+            // Restrict the application to run in just one instance 
             Mutex mutex = new Mutex(true, AppConstants.AppName, out bool createdNew);
 
-            // If it is not the first instance, means that the App is already running!
-            // We need to alert the user and then exiting the application.
+            // If it is not the first instance, means that the App is already running! 
+            // We need to alert the user and then exiting the application. 
             if (!createdNew)
             {
                 MessageBox.Show(
@@ -71,22 +95,22 @@ namespace StockManager.Source
                   MessageBoxIcon.Error
                 );
 
-                // Exit
+                // Exit 
                 return;
             }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Check if exists a new StockManager release.
+            CheckForNewRelease();
+
             // When in production, check if the DB folder exists. If not, create it.
-            if (!isDebug() && !Directory.Exists(AppConstants.DatabaseFolderPath))
-            {
-                Directory.CreateDirectory(AppConstants.DatabaseFolderPath);
-            }
+            CreateDataFolderInProduction();
 
             // Set the options builder for our database context
             DbContextOptionsBuilder<DatabaseContext> builder = new DbContextOptionsBuilder<DatabaseContext>();
-            builder.UseSqlite(isDebug() ? AppConstants.connectionStringDev : AppConstants.connectionString);
+            builder.UseSqlite(IsDebug() ? AppConstants.connectionStringDev : AppConstants.connectionString);
 
             // Instantiate our database
             DatabaseContext DatabaseContext = new DatabaseContext(builder.Options);

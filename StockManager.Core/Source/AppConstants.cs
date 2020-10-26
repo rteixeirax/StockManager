@@ -20,6 +20,7 @@ namespace StockManager.Core.Source
         public static readonly string Version = $"v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
 
         // Special folders paths
+        public static readonly string AutoUpdaterXmlFileUrl = "https://raw.githubusercontent.com/ricardotx/StockManager/master/AutoUpdater.xml";
         public static readonly string MyDocumentsFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         public static readonly string DesktopFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public static readonly string DatabaseFolderPath = $@"{MyDocumentsFolderPath}\{AppName}\Data";
