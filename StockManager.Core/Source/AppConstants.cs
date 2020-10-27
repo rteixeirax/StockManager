@@ -11,15 +11,12 @@ namespace StockManager.Core.Source
 {
     public static class AppConstants
     {
-        // App version used in the AssemblyInfo.cs
-        public const string AppVersion = "1.0.0.0";
-
-        // App Info
+        // Fetch the version from the AssemblyInfo.cs.
+        public static readonly string Version = "v0.0.1.0";
         public static readonly string Title = "Stock Manager";
         public static readonly string DevName = "Ricardo Teixeira";
         public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
         public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
-        public static readonly string Version = $"v{AppVersion}";
 
         // Special folders paths
         public static readonly string AutoUpdaterXmlFileUrl = "https://raw.githubusercontent.com/ricardotx/StockManager/master/AutoUpdater.xml";
