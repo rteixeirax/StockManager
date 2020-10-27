@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--https://github.com/ravibpatel/AutoUpdater.NET#xml-file-->
 <item>
-    <version>1.0.0</version>
-    <url>https://github.com/ricardotx/StockManager/releases/download/v1.0.0/StockManager.v1.0.0.msi</url>
+    <version>1.0.0.0</version>
+    <url>https://github.com/ricardotx/StockManager/releases/download/v1.0.0.0/StockManager.v1.0.0.0.msi</url>
     <mandatory>false</mandatory>
 </item>
