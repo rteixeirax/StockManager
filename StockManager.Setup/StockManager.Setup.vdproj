@@ -69,12 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_1A11C9FFBB394A108F04B58F470D074B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_1D82989DAE63D2D25E79ABC69302D563"
         "OwnerKey" = "8:_BFC48E7D3ECD43DE863FE44D0FA1AC66"
         "MsmSig" = "8:_UNDEFINED"
@@ -453,6 +447,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_557F51C8D0A1492A85E9FC8170258ACC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5EFF19546027A7EC745DE3DB470D093E"
         "OwnerKey" = "8:_BFC48E7D3ECD43DE863FE44D0FA1AC66"
         "MsmSig" = "8:_UNDEFINED"
@@ -820,6 +820,30 @@
         "Entry"
         {
         "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
+        "OwnerKey" = "8:_A11CF0494AE74072A8AB19EE806FA01A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
+        "OwnerKey" = "8:_9A85AE59203242568A4DA129F5023B37"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
+        "OwnerKey" = "8:_8385A5D41BD04281A13F4788C6054E9C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
+        "OwnerKey" = "8:_78E7766EB6C54F018B4E0B4DBE560253"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
         "OwnerKey" = "8:_7ACD3DDEDF3B545D26C6A3B69B38DF87"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -839,30 +863,6 @@
         {
         "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
         "OwnerKey" = "8:_915D9FD68C48AAACAEEA7E9CE8461576"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
-        "OwnerKey" = "8:_9A85AE59203242568A4DA129F5023B37"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
-        "OwnerKey" = "8:_8385A5D41BD04281A13F4788C6054E9C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
-        "OwnerKey" = "8:_A11CF0494AE74072A8AB19EE806FA01A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE8725DDA29437B20C5C69F2F09B7263"
-        "OwnerKey" = "8:_78E7766EB6C54F018B4E0B4DBE560253"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1606,26 +1606,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1A11C9FFBB394A108F04B58F470D074B"
-            {
-            "SourcePath" = "8:..\\StockManager\\bin\\Release\\runtimes\\win-x86\\native\\e_sqlite3.dll"
-            "TargetName" = "8:e_sqlite3.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_EAF635D7BF3A475E9006EFB377F871B8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D82989DAE63D2D25E79ABC69302D563"
             {
             "AssemblyRegister" = "3:1"
@@ -2047,6 +2027,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_557F51C8D0A1492A85E9FC8170258ACC"
+            {
+            "SourcePath" = "8:..\\StockManager\\bin\\Release\\runtimes\\win-x86\\native\\e_sqlite3.dll"
+            "TargetName" = "8:e_sqlite3.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_EAF635D7BF3A475E9006EFB377F871B8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5EFF19546027A7EC745DE3DB470D093E"
@@ -3462,12 +3462,12 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:StockManager"
-        "ProductCode" = "8:{10733EA4-4FBC-4BAD-B6AE-4EE2A5D8DB32}"
-        "PackageCode" = "8:{552DC1AB-9073-4A1E-998E-3796F59E9F37}"
+        "ProductCode" = "8:{AD9AAA35-9F97-4AC0-A70A-FF962CD886B4}"
+        "PackageCode" = "8:{0DC91BEF-F509-4308-810D-0C2DCD7C80F5}"
         "UpgradeCode" = "8:{75C658B4-D232-4B06-82C6-7522DEE600A4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"

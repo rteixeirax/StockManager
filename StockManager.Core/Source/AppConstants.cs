@@ -12,7 +12,7 @@ namespace StockManager.Core.Source
     public static class AppConstants
     {
         // Fetch the version from the AssemblyInfo.cs.
-        public static readonly string Version = "v0.0.1.0";
+        public static readonly string Version = "v1.0.0.0";
         public static readonly string Title = "Stock Manager";
         public static readonly string DevName = "Ricardo Teixeira";
         public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
