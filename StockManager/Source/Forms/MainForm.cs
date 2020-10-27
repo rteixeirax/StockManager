@@ -113,6 +113,9 @@ namespace StockManager.Source.Forms
             // Set the sub-menu visibility and sidebar marker position
             SetSubMenusVisibility();
             SetMarkerPosition(btnDashboard);
+
+            // Check if exists a new StockManager release.
+            Program.CheckForNewRelease();
         }
 
         /// <summary>

@@ -25,6 +25,27 @@ namespace StockManager.Source
         public static User LoggedInUser { get; private set; }
 
         /// <summary>
+        /// Check if exists a new StockManager release.
+        /// </summary>
+        public static void CheckForNewRelease()
+        {
+            // Check if exists a new StockManager release.
+            // Only check if it is an admin, otherwise, skipt this.
+            if (LoggedInUser?.Role?.Code == "Admin")
+            {
+                if (!Directory.Exists(AppConstants.DownloadsFolderPath))
+                {
+                    Directory.CreateDirectory(AppConstants.DownloadsFolderPath);
+                }
+
+                // https://github.com/ravibpatel/AutoUpdater.NET#adding-one-line-to-make-it-work
+                AutoUpdater.DownloadPath = AppConstants.DownloadsFolderPath;
+                AutoUpdater.ShowSkipButton = false;
+                AutoUpdater.Start(AppConstants.AutoUpdaterXmlFileUrl);
+            }
+        }
+
+        /// <summary>
         /// Kill the "Session"
         /// </summary>
         public static void Logout()
@@ -50,17 +71,6 @@ namespace StockManager.Source
 #else
             return false;
 #endif
-        }
-
-        /// <summary>
-        /// Check if exists a new StockManager release.
-        /// </summary>
-        private static void CheckForNewRelease()
-        {
-            // https://github.com/ravibpatel/AutoUpdater.NET#adding-one-line-to-make-it-work
-            AutoUpdater.DownloadPath = AppConstants.DesktopFolderPath;
-            AutoUpdater.ShowSkipButton = false;
-            AutoUpdater.Start(AppConstants.AutoUpdaterXmlFileUrl);
         }
 
         /// <summary>
@@ -101,9 +111,6 @@ namespace StockManager.Source
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            // Check if exists a new StockManager release.
-            CheckForNewRelease();
 
             // When in production, check if the DB folder exists. If not, create it.
             CreateDataFolderInProduction();
