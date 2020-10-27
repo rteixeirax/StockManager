@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 using StockManager.Core.Source.Types;
@@ -13,12 +11,15 @@ namespace StockManager.Core.Source
 {
     public static class AppConstants
     {
-        // Fetch the version from the AssemblyInfo.cs.
+        // App version used in the AssemblyInfo.cs
+        public const string AppVersion = "1.0.0.0";
+
+        // App Info
         public static readonly string Title = "Stock Manager";
         public static readonly string DevName = "Ricardo Teixeira";
         public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
         public static readonly string AppName = Regex.Replace(Title, @"\s+", ""); // Same as the title but without the spaces.
-        public static readonly string Version = $"v{FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion}";
+        public static readonly string Version = $"v{AppVersion}";
 
         // Special folders paths
         public static readonly string AutoUpdaterXmlFileUrl = "https://raw.githubusercontent.com/ricardotx/StockManager/master/AutoUpdater.xml";
