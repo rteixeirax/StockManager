@@ -18,7 +18,7 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Inventory &gt; Locations button click
+        /// Inventory > Locations button click
         /// </summary>
         public void btnInventoryLocations_Click(object sender, EventArgs e)
         {
@@ -33,7 +33,7 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Inventory &gt; Products button click
+        /// Inventory > Products button click
         /// </summary>
         public void btnInventoryProducts_Click(object sender, EventArgs e)
         {
@@ -119,7 +119,7 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Inventory &gt; Locations button view products click
+        /// Inventory > Locations button view products click
         /// </summary>
         public void ShowProducLocationsFromLocationsUc(Location location)
         {
@@ -134,7 +134,7 @@ namespace StockManager.Source.Forms
         }
 
         /// <summary>
-        /// Inventory &gt; Products button view locations click
+        /// Inventory > Products button view locations click
         /// </summary>
         public void ShowProducLocationsFromProductsUc(Product product)
         {

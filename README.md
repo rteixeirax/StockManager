@@ -48,3 +48,4 @@ If the file `App.db.sqlite` isn't in the project **StockManager**
 * [Microsoft.EntityFrameworkCore.Tool](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools)
 * [BCrypt.Net-Core](https://www.nuget.org/packages/BCrypt.Net-Core)
 * [PdfSharp.MigraDoc.Standard](https://www.nuget.org/packages/PdfSharp.MigraDoc.Standard)
+* [Autoupdater.NET.Official](https://www.nuget.org/packages/Autoupdater.NET.Official)
