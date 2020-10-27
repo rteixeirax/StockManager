@@ -28,169 +28,169 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.pnlLoginForm = new System.Windows.Forms.Panel();
-      this.lbErrorGeneric = new System.Windows.Forms.Label();
-      this.lbLoginFormTitle = new System.Windows.Forms.Label();
-      this.btnClean = new System.Windows.Forms.Button();
-      this.lbErrorPassword = new System.Windows.Forms.Label();
-      this.lbErrorUsername = new System.Windows.Forms.Label();
-      this.btnLogin = new System.Windows.Forms.Button();
-      this.tbPassword = new System.Windows.Forms.TextBox();
-      this.lbPassword = new System.Windows.Forms.Label();
-      this.tbUsername = new System.Windows.Forms.TextBox();
-      this.lbFirstName = new System.Windows.Forms.Label();
-      this.pnlLoginForm.SuspendLayout();
-      this.SuspendLayout();
-      //
-      // pnlLoginForm
-      //
-      this.pnlLoginForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-      this.pnlLoginForm.BackColor = System.Drawing.SystemColors.ControlLight;
-      this.pnlLoginForm.Controls.Add(this.lbErrorGeneric);
-      this.pnlLoginForm.Controls.Add(this.lbLoginFormTitle);
-      this.pnlLoginForm.Controls.Add(this.btnClean);
-      this.pnlLoginForm.Controls.Add(this.lbErrorPassword);
-      this.pnlLoginForm.Controls.Add(this.lbErrorUsername);
-      this.pnlLoginForm.Controls.Add(this.btnLogin);
-      this.pnlLoginForm.Controls.Add(this.tbPassword);
-      this.pnlLoginForm.Controls.Add(this.lbPassword);
-      this.pnlLoginForm.Controls.Add(this.tbUsername);
-      this.pnlLoginForm.Controls.Add(this.lbFirstName);
-      this.pnlLoginForm.Location = new System.Drawing.Point(264, 62);
-      this.pnlLoginForm.Name = "pnlLoginForm";
-      this.pnlLoginForm.Size = new System.Drawing.Size(337, 275);
-      this.pnlLoginForm.TabIndex = 28;
-      //
-      // lbErrorGeneric
-      //
-      this.lbErrorGeneric.AutoSize = true;
-      this.lbErrorGeneric.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorGeneric.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorGeneric.Location = new System.Drawing.Point(40, 43);
-      this.lbErrorGeneric.Name = "lbErrorGeneric";
-      this.lbErrorGeneric.Size = new System.Drawing.Size(120, 16);
-      this.lbErrorGeneric.TabIndex = 37;
-      this.lbErrorGeneric.Text = "Generic errors";
-      //
-      // lbLoginFormTitle
-      //
-      this.lbLoginFormTitle.AutoSize = true;
-      this.lbLoginFormTitle.BackColor = System.Drawing.Color.Transparent;
-      this.lbLoginFormTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
-      this.lbLoginFormTitle.ForeColor = System.Drawing.Color.Black;
-      this.lbLoginFormTitle.Location = new System.Drawing.Point(39, 13);
-      this.lbLoginFormTitle.Name = "lbLoginFormTitle";
-      this.lbLoginFormTitle.Size = new System.Drawing.Size(87, 22);
-      this.lbLoginFormTitle.TabIndex = 36;
-      this.lbLoginFormTitle.Text = "Sign in";
-      //
-      // btnClean
-      //
-      this.btnClean.BackColor = System.Drawing.Color.DarkGray;
-      this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnClean.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnClean.ForeColor = System.Drawing.Color.White;
-      this.btnClean.Location = new System.Drawing.Point(43, 223);
-      this.btnClean.Name = "btnClean";
-      this.btnClean.Size = new System.Drawing.Size(120, 32);
-      this.btnClean.TabIndex = 35;
-      this.btnClean.Text = "Clear";
-      this.btnClean.UseVisualStyleBackColor = false;
-      this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
-      //
-      // lbErrorPassword
-      //
-      this.lbErrorPassword.AutoSize = true;
-      this.lbErrorPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorPassword.Location = new System.Drawing.Point(46, 182);
-      this.lbErrorPassword.Name = "lbErrorPassword";
-      this.lbErrorPassword.Size = new System.Drawing.Size(113, 16);
-      this.lbErrorPassword.TabIndex = 34;
-      this.lbErrorPassword.Text = "Password errors";
-      //
-      // lbErrorUsername
-      //
-      this.lbErrorUsername.AutoSize = true;
-      this.lbErrorUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
-      this.lbErrorUsername.Location = new System.Drawing.Point(46, 115);
-      this.lbErrorUsername.Name = "lbErrorUsername";
-      this.lbErrorUsername.Size = new System.Drawing.Size(113, 16);
-      this.lbErrorUsername.TabIndex = 33;
-      this.lbErrorUsername.Text = "Username errors";
-      //
-      // btnLogin
-      //
-      this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
-      this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.btnLogin.ForeColor = System.Drawing.Color.White;
-      this.btnLogin.Location = new System.Drawing.Point(175, 223);
-      this.btnLogin.Name = "btnLogin";
-      this.btnLogin.Size = new System.Drawing.Size(120, 32);
-      this.btnLogin.TabIndex = 31;
-      this.btnLogin.Text = "Login";
-      this.btnLogin.UseVisualStyleBackColor = false;
-      this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-      //
-      // tbPassword
-      //
-      this.tbPassword.BackColor = System.Drawing.Color.White;
-      this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbPassword.ForeColor = System.Drawing.Color.Black;
-      this.tbPassword.Location = new System.Drawing.Point(43, 157);
-      this.tbPassword.Name = "tbPassword";
-      this.tbPassword.PasswordChar = '*';
-      this.tbPassword.Size = new System.Drawing.Size(252, 20);
-      this.tbPassword.TabIndex = 29;
-      this.tbPassword.UseSystemPasswordChar = true;
-      this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
-      //
-      // lbPassword
-      //
-      this.lbPassword.AutoSize = true;
-      this.lbPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbPassword.Location = new System.Drawing.Point(40, 138);
-      this.lbPassword.Name = "lbPassword";
-      this.lbPassword.Size = new System.Drawing.Size(72, 16);
-      this.lbPassword.TabIndex = 32;
-      this.lbPassword.Text = "Password";
-      //
-      // tbUsername
-      //
-      this.tbUsername.BackColor = System.Drawing.Color.White;
-      this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-      this.tbUsername.ForeColor = System.Drawing.Color.Black;
-      this.tbUsername.Location = new System.Drawing.Point(43, 90);
-      this.tbUsername.Name = "tbUsername";
-      this.tbUsername.Size = new System.Drawing.Size(252, 20);
-      this.tbUsername.TabIndex = 28;
-      //
-      // lbFirstName
-      //
-      this.lbFirstName.AutoSize = true;
-      this.lbFirstName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-      this.lbFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-      this.lbFirstName.Location = new System.Drawing.Point(40, 71);
-      this.lbFirstName.Name = "lbFirstName";
-      this.lbFirstName.Size = new System.Drawing.Size(72, 16);
-      this.lbFirstName.TabIndex = 30;
-      this.lbFirstName.Text = "Username";
-      //
-      // LoginUserControl
-      //
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.Controls.Add(this.pnlLoginForm);
-      this.Name = "LoginUserControl";
-      this.Size = new System.Drawing.Size(860, 420);
-      this.pnlLoginForm.ResumeLayout(false);
-      this.pnlLoginForm.PerformLayout();
-      this.ResumeLayout(false);
+            this.pnlLoginForm = new System.Windows.Forms.Panel();
+            this.lbErrorGeneric = new System.Windows.Forms.Label();
+            this.lbLoginFormTitle = new System.Windows.Forms.Label();
+            this.btnClean = new System.Windows.Forms.Button();
+            this.lbErrorPassword = new System.Windows.Forms.Label();
+            this.lbErrorUsername = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.lbPassword = new System.Windows.Forms.Label();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.lbFirstName = new System.Windows.Forms.Label();
+            this.pnlLoginForm.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // pnlLoginForm
+            // 
+            this.pnlLoginForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlLoginForm.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlLoginForm.Controls.Add(this.lbErrorGeneric);
+            this.pnlLoginForm.Controls.Add(this.lbLoginFormTitle);
+            this.pnlLoginForm.Controls.Add(this.btnClean);
+            this.pnlLoginForm.Controls.Add(this.lbErrorPassword);
+            this.pnlLoginForm.Controls.Add(this.lbErrorUsername);
+            this.pnlLoginForm.Controls.Add(this.btnLogin);
+            this.pnlLoginForm.Controls.Add(this.tbPassword);
+            this.pnlLoginForm.Controls.Add(this.lbPassword);
+            this.pnlLoginForm.Controls.Add(this.tbUsername);
+            this.pnlLoginForm.Controls.Add(this.lbFirstName);
+            this.pnlLoginForm.Location = new System.Drawing.Point(264, 62);
+            this.pnlLoginForm.Name = "pnlLoginForm";
+            this.pnlLoginForm.Size = new System.Drawing.Size(337, 275);
+            this.pnlLoginForm.TabIndex = 28;
+            // 
+            // lbErrorGeneric
+            // 
+            this.lbErrorGeneric.AutoSize = true;
+            this.lbErrorGeneric.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorGeneric.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorGeneric.Location = new System.Drawing.Point(40, 43);
+            this.lbErrorGeneric.Name = "lbErrorGeneric";
+            this.lbErrorGeneric.Size = new System.Drawing.Size(120, 16);
+            this.lbErrorGeneric.TabIndex = 37;
+            this.lbErrorGeneric.Text = "Generic errors";
+            // 
+            // lbLoginFormTitle
+            // 
+            this.lbLoginFormTitle.AutoSize = true;
+            this.lbLoginFormTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lbLoginFormTitle.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lbLoginFormTitle.ForeColor = System.Drawing.Color.Black;
+            this.lbLoginFormTitle.Location = new System.Drawing.Point(39, 13);
+            this.lbLoginFormTitle.Name = "lbLoginFormTitle";
+            this.lbLoginFormTitle.Size = new System.Drawing.Size(87, 22);
+            this.lbLoginFormTitle.TabIndex = 36;
+            this.lbLoginFormTitle.Text = "Sign in";
+            // 
+            // btnClean
+            // 
+            this.btnClean.BackColor = System.Drawing.Color.DarkGray;
+            this.btnClean.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClean.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClean.ForeColor = System.Drawing.Color.White;
+            this.btnClean.Location = new System.Drawing.Point(43, 223);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(120, 32);
+            this.btnClean.TabIndex = 3;
+            this.btnClean.Text = "Clear";
+            this.btnClean.UseVisualStyleBackColor = false;
+            this.btnClean.Click += new System.EventHandler(this.btnClean_Click);
+            // 
+            // lbErrorPassword
+            // 
+            this.lbErrorPassword.AutoSize = true;
+            this.lbErrorPassword.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorPassword.Location = new System.Drawing.Point(46, 182);
+            this.lbErrorPassword.Name = "lbErrorPassword";
+            this.lbErrorPassword.Size = new System.Drawing.Size(113, 16);
+            this.lbErrorPassword.TabIndex = 34;
+            this.lbErrorPassword.Text = "Password errors";
+            // 
+            // lbErrorUsername
+            // 
+            this.lbErrorUsername.AutoSize = true;
+            this.lbErrorUsername.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorUsername.Location = new System.Drawing.Point(46, 115);
+            this.lbErrorUsername.Name = "lbErrorUsername";
+            this.lbErrorUsername.Size = new System.Drawing.Size(113, 16);
+            this.lbErrorUsername.TabIndex = 33;
+            this.lbErrorUsername.Text = "Username errors";
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(175, 223);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(120, 32);
+            this.btnLogin.TabIndex = 2;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.BackColor = System.Drawing.Color.White;
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPassword.ForeColor = System.Drawing.Color.Black;
+            this.tbPassword.Location = new System.Drawing.Point(43, 157);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(252, 20);
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.UseSystemPasswordChar = true;
+            this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
+            // 
+            // lbPassword
+            // 
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.lbPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbPassword.Location = new System.Drawing.Point(40, 138);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(72, 16);
+            this.lbPassword.TabIndex = 32;
+            this.lbPassword.Text = "Password";
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.BackColor = System.Drawing.Color.White;
+            this.tbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbUsername.ForeColor = System.Drawing.Color.Black;
+            this.tbUsername.Location = new System.Drawing.Point(43, 90);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(252, 20);
+            this.tbUsername.TabIndex = 0;
+            // 
+            // lbFirstName
+            // 
+            this.lbFirstName.AutoSize = true;
+            this.lbFirstName.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.lbFirstName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbFirstName.Location = new System.Drawing.Point(40, 71);
+            this.lbFirstName.Name = "lbFirstName";
+            this.lbFirstName.Size = new System.Drawing.Size(72, 16);
+            this.lbFirstName.TabIndex = 30;
+            this.lbFirstName.Text = "Username";
+            // 
+            // LoginUc
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlLoginForm);
+            this.Name = "LoginUc";
+            this.Size = new System.Drawing.Size(860, 420);
+            this.pnlLoginForm.ResumeLayout(false);
+            this.pnlLoginForm.PerformLayout();
+            this.ResumeLayout(false);
 
     }
 

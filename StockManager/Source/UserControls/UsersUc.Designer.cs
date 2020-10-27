@@ -91,7 +91,7 @@
             this.btnDeleteUser.Location = new System.Drawing.Point(102, 3);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(93, 27);
-            this.btnDeleteUser.TabIndex = 9;
+            this.btnDeleteUser.TabIndex = 13;
             this.btnDeleteUser.Text = "Delete";
             this.btnDeleteUser.UseVisualStyleBackColor = false;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
@@ -107,7 +107,7 @@
             this.btnCreateUser.Location = new System.Drawing.Point(5, 3);
             this.btnCreateUser.Name = "btnCreateUser";
             this.btnCreateUser.Size = new System.Drawing.Size(93, 27);
-            this.btnCreateUser.TabIndex = 7;
+            this.btnCreateUser.TabIndex = 12;
             this.btnCreateUser.Text = "Add new";
             this.btnCreateUser.UseVisualStyleBackColor = false;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
@@ -245,7 +245,7 @@
             this.tbSeachText.Location = new System.Drawing.Point(30, 6);
             this.tbSeachText.Name = "tbSeachText";
             this.tbSeachText.Size = new System.Drawing.Size(274, 22);
-            this.tbSeachText.TabIndex = 4;
+            this.tbSeachText.TabIndex = 14;
             this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
             this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
             // 

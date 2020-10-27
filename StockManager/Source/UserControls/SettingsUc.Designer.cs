@@ -66,7 +66,7 @@
             this.cbLanguage.Location = new System.Drawing.Point(15, 57);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(252, 24);
-            this.cbLanguage.TabIndex = 9;
+            this.cbLanguage.TabIndex = 14;
             this.cbLanguage.SelectionChangeCommitted += new System.EventHandler(this.cbLanguage_SelectionChangeCommitted);
             // 
             // pnlActions
@@ -90,7 +90,7 @@
             this.btnCancel.Location = new System.Drawing.Point(102, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 27);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -106,7 +106,7 @@
             this.btnSave.Location = new System.Drawing.Point(5, 3);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(93, 27);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.TabIndex = 12;
             this.btnSave.Text = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -185,7 +185,7 @@
             this.cbDocumentsFolder.Location = new System.Drawing.Point(15, 139);
             this.cbDocumentsFolder.Name = "cbDocumentsFolder";
             this.cbDocumentsFolder.Size = new System.Drawing.Size(252, 24);
-            this.cbDocumentsFolder.TabIndex = 19;
+            this.cbDocumentsFolder.TabIndex = 15;
             this.cbDocumentsFolder.SelectionChangeCommitted += new System.EventHandler(this.cbDocumentsFolder_SelectionChangeCommitted);
             // 
             // lbDocumentsFolderPath

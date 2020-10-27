@@ -28,14 +28,15 @@
     /// </summary>
     private void InitializeComponent()
     {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnStockMovement = new System.Windows.Forms.Button();
             this.lbStockAlerts = new System.Windows.Forms.Label();
             this.pnlActions = new System.Windows.Forms.Panel();
+            this.btnCreatePdf = new System.Windows.Forms.Button();
             this.dgvProductStockAlerts = new System.Windows.Forms.DataGridView();
             this.columnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProducRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +52,6 @@
             this.lbGlobalInfo = new System.Windows.Forms.Label();
             this.tblpGlobalInfo = new System.Windows.Forms.TableLayoutPanel();
             this.lbLocations = new System.Windows.Forms.Label();
-            this.btnCreatePdf = new System.Windows.Forms.Button();
             this.pnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductStockAlerts)).BeginInit();
             this.tblpGlobalInfo.SuspendLayout();
@@ -68,7 +68,7 @@
             this.btnStockMovement.Location = new System.Drawing.Point(237, 4);
             this.btnStockMovement.Name = "btnStockMovement";
             this.btnStockMovement.Size = new System.Drawing.Size(121, 27);
-            this.btnStockMovement.TabIndex = 7;
+            this.btnStockMovement.TabIndex = 13;
             this.btnStockMovement.Text = "btnStockMovement";
             this.btnStockMovement.UseVisualStyleBackColor = false;
             this.btnStockMovement.Click += new System.EventHandler(this.btnStockMovement_Click);
@@ -95,32 +95,48 @@
             this.pnlActions.Size = new System.Drawing.Size(361, 34);
             this.pnlActions.TabIndex = 27;
             // 
+            // btnCreatePdf
+            // 
+            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
+            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
+            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCreatePdf.Location = new System.Drawing.Point(64, 4);
+            this.btnCreatePdf.Name = "btnCreatePdf";
+            this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
+            this.btnCreatePdf.TabIndex = 12;
+            this.btnCreatePdf.Text = "btnCreatePdf";
+            this.btnCreatePdf.UseVisualStyleBackColor = false;
+            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
+            // 
             // dgvProductStockAlerts
             // 
             this.dgvProductStockAlerts.AllowUserToAddRows = false;
             this.dgvProductStockAlerts.AllowUserToDeleteRows = false;
             this.dgvProductStockAlerts.AllowUserToResizeColumns = false;
             this.dgvProductStockAlerts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvProductStockAlerts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvProductStockAlerts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductStockAlerts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductStockAlerts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProductStockAlerts.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProductStockAlerts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductStockAlerts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductStockAlerts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductStockAlerts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductStockAlerts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnDate,
@@ -129,35 +145,35 @@
             this.columnLocationName,
             this.columnMinStock,
             this.columnStock});
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductStockAlerts.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductStockAlerts.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductStockAlerts.EnableHeadersVisualStyles = false;
             this.dgvProductStockAlerts.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.dgvProductStockAlerts.Location = new System.Drawing.Point(8, 205);
             this.dgvProductStockAlerts.Name = "dgvProductStockAlerts";
             this.dgvProductStockAlerts.ReadOnly = true;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductStockAlerts.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductStockAlerts.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductStockAlerts.RowHeadersVisible = false;
             this.dgvProductStockAlerts.RowHeadersWidth = 25;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvProductStockAlerts.RowsDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvProductStockAlerts.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProductStockAlerts.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductStockAlerts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductStockAlerts.Size = new System.Drawing.Size(845, 429);
@@ -322,22 +338,6 @@
             this.lbLocations.TabIndex = 9;
             this.lbLocations.Text = "lbLocations";
             this.lbLocations.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnCreatePdf
-            // 
-            this.btnCreatePdf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCreatePdf.BackColor = System.Drawing.Color.Gray;
-            this.btnCreatePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreatePdf.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreatePdf.ForeColor = System.Drawing.Color.White;
-            this.btnCreatePdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCreatePdf.Location = new System.Drawing.Point(64, 4);
-            this.btnCreatePdf.Name = "btnCreatePdf";
-            this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
-            this.btnCreatePdf.TabIndex = 11;
-            this.btnCreatePdf.Text = "btnCreatePdf";
-            this.btnCreatePdf.UseVisualStyleBackColor = false;
-            this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
             // 
             // DashboardUc
             // 

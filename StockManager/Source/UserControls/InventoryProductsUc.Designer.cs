@@ -98,7 +98,7 @@
             this.btnCreatePdf.Location = new System.Drawing.Point(19, 3);
             this.btnCreatePdf.Name = "btnCreatePdf";
             this.btnCreatePdf.Size = new System.Drawing.Size(170, 27);
-            this.btnCreatePdf.TabIndex = 10;
+            this.btnCreatePdf.TabIndex = 12;
             this.btnCreatePdf.Text = "btnCreatePdf";
             this.btnCreatePdf.UseVisualStyleBackColor = false;
             this.btnCreatePdf.Click += new System.EventHandler(this.btnCreatePdf_Click);
@@ -114,7 +114,7 @@
             this.btnDelete.Location = new System.Drawing.Point(290, 3);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(93, 27);
-            this.btnDelete.TabIndex = 9;
+            this.btnDelete.TabIndex = 14;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -130,7 +130,7 @@
             this.btnCreate.Location = new System.Drawing.Point(193, 3);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(93, 27);
-            this.btnCreate.TabIndex = 7;
+            this.btnCreate.TabIndex = 13;
             this.btnCreate.Text = "Add new";
             this.btnCreate.UseVisualStyleBackColor = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -286,7 +286,7 @@
             this.tbSeachText.Location = new System.Drawing.Point(30, 6);
             this.tbSeachText.Name = "tbSeachText";
             this.tbSeachText.Size = new System.Drawing.Size(274, 22);
-            this.tbSeachText.TabIndex = 4;
+            this.tbSeachText.TabIndex = 15;
             this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
             this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
             // 

@@ -217,6 +217,7 @@
             this.cbLocations.ForeColor = System.Drawing.Color.Black;
             this.cbLocations.FormattingEnabled = true;
             this.cbLocations.Location = new System.Drawing.Point(9, 46);
+            this.cbLocations.MaxDropDownItems = 14;
             this.cbLocations.Name = "cbLocations";
             this.cbLocations.Size = new System.Drawing.Size(256, 24);
             this.cbLocations.TabIndex = 34;
@@ -276,7 +277,7 @@
             this.tbSeachText.Location = new System.Drawing.Point(27, 6);
             this.tbSeachText.Name = "tbSeachText";
             this.tbSeachText.Size = new System.Drawing.Size(266, 22);
-            this.tbSeachText.TabIndex = 4;
+            this.tbSeachText.TabIndex = 15;
             this.tbSeachText.TextChanged += new System.EventHandler(this.tbSeachText_TextChanged);
             this.tbSeachText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSeachText_KeyPress);
             // 
@@ -318,7 +319,7 @@
             this.lbProductLocation.TabIndex = 36;
             this.lbProductLocation.Text = "lbProductLocation";
             // 
-            // DashboardUc
+            // RefillStockUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -330,7 +331,7 @@
             this.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "DashboardUc";
+            this.Name = "RefillStockUc";
             this.Size = new System.Drawing.Size(860, 643);
             ((System.ComponentModel.ISupportInitialize)(pbSearchIconx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();

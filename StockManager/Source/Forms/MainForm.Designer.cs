@@ -98,7 +98,7 @@ namespace StockManager.Source.Forms
             this.btnRefillStock.Name = "btnRefillStock";
             this.btnRefillStock.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnRefillStock.Size = new System.Drawing.Size(216, 31);
-            this.btnRefillStock.TabIndex = 12;
+            this.btnRefillStock.TabIndex = 1;
             this.btnRefillStock.Text = " Refill stock";
             this.btnRefillStock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRefillStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -118,7 +118,7 @@ namespace StockManager.Source.Forms
             this.linklbTwitter.Location = new System.Drawing.Point(12, 634);
             this.linklbTwitter.Name = "linklbTwitter";
             this.linklbTwitter.Size = new System.Drawing.Size(136, 17);
-            this.linklbTwitter.TabIndex = 0;
+            this.linklbTwitter.TabIndex = 8;
             this.linklbTwitter.TabStop = true;
             this.linklbTwitter.Text = "Ricardo Teixeira";
             this.linklbTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbTwitter_LinkClicked);
@@ -203,7 +203,7 @@ namespace StockManager.Source.Forms
             this.btnInventoryMovements.Name = "btnInventoryMovements";
             this.btnInventoryMovements.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnInventoryMovements.Size = new System.Drawing.Size(155, 27);
-            this.btnInventoryMovements.TabIndex = 12;
+            this.btnInventoryMovements.TabIndex = 5;
             this.btnInventoryMovements.Text = "Movements";
             this.btnInventoryMovements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventoryMovements.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -223,7 +223,7 @@ namespace StockManager.Source.Forms
             this.btnInventoryProducts.Name = "btnInventoryProducts";
             this.btnInventoryProducts.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnInventoryProducts.Size = new System.Drawing.Size(155, 27);
-            this.btnInventoryProducts.TabIndex = 11;
+            this.btnInventoryProducts.TabIndex = 4;
             this.btnInventoryProducts.Text = "Products";
             this.btnInventoryProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventoryProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -243,7 +243,7 @@ namespace StockManager.Source.Forms
             this.btnInventoryLocations.Name = "btnInventoryLocations";
             this.btnInventoryLocations.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnInventoryLocations.Size = new System.Drawing.Size(155, 27);
-            this.btnInventoryLocations.TabIndex = 10;
+            this.btnInventoryLocations.TabIndex = 3;
             this.btnInventoryLocations.Text = "Locations";
             this.btnInventoryLocations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInventoryLocations.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -265,7 +265,7 @@ namespace StockManager.Source.Forms
             this.btnExit.Name = "btnExit";
             this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnExit.Size = new System.Drawing.Size(216, 40);
-            this.btnExit.TabIndex = 5;
+            this.btnExit.TabIndex = 9;
             this.btnExit.Text = " Exit";
             this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -286,7 +286,7 @@ namespace StockManager.Source.Forms
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnSettings.Size = new System.Drawing.Size(216, 31);
-            this.btnSettings.TabIndex = 4;
+            this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = " Settings";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -307,7 +307,7 @@ namespace StockManager.Source.Forms
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnUsers.Size = new System.Drawing.Size(216, 31);
-            this.btnUsers.TabIndex = 3;
+            this.btnUsers.TabIndex = 6;
             this.btnUsers.Text = " Users";
             this.btnUsers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsers.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -349,7 +349,7 @@ namespace StockManager.Source.Forms
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnDashboard.Size = new System.Drawing.Size(216, 31);
-            this.btnDashboard.TabIndex = 1;
+            this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = " Dashboard";
             this.btnDashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -428,7 +428,7 @@ namespace StockManager.Source.Forms
             this.pnlViews.Location = new System.Drawing.Point(241, 43);
             this.pnlViews.Name = "pnlViews";
             this.pnlViews.Size = new System.Drawing.Size(767, 686);
-            this.pnlViews.TabIndex = 8;
+            this.pnlViews.TabIndex = 11;
             // 
             // pnlTopBar
             // 
@@ -440,7 +440,7 @@ namespace StockManager.Source.Forms
             this.pnlTopBar.Location = new System.Drawing.Point(241, 0);
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(767, 44);
-            this.pnlTopBar.TabIndex = 9;
+            this.pnlTopBar.TabIndex = 10;
             // 
             // pnlDivider
             // 
