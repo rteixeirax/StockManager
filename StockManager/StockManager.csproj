@@ -428,6 +428,7 @@
     <None Include="Resources\icon-pencil-drawing-24px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\StockManager.ico" />
     <Content Include="StockManager.ico" />
   </ItemGroup>
   <ItemGroup>
