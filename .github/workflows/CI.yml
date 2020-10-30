@@ -33,4 +33,4 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test -v n
+      run: dotnet test --logger "console;verbosity=detailed" -v n
