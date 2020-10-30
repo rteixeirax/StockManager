@@ -17,7 +17,7 @@ jobs:
 
     env:
       Solution_Name: StockManager.sln
-      Test_Project_Path: StockManager.Tests.csproj
+      Test_Project_Path: StockManager.Tests\StockManager.Tests.csproj
       
     steps:
     - name: Checkout
