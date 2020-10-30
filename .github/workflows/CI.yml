@@ -33,4 +33,4 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: dotnet test -v n
+      run: dotnet test ${{ env.Test_Project_Path }} -v n
