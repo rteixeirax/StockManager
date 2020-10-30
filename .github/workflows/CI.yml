@@ -13,7 +13,7 @@ jobs:
     
     strategy:
       matrix:
-        configuration: [Debug, Release] 
+        configuration: [Debug] 
 
     env:
       Solution_Name: StockManager.sln
