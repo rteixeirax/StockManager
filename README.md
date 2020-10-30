@@ -1,5 +1,7 @@
 # Stock Manager
 
+[![Licence](https://img.shields.io/github/license/ricardotx/StockManager?label=License&logo=github)](https://github.com/ricardotx/StockManager/blob/master/LICENSE)
+
 **Language:** `C# winForms`
 
 ### After download or clone the project:
