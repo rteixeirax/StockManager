@@ -1,7 +1,6 @@
 # Stock Manager
 
 [![Licence](https://img.shields.io/github/license/ricardotx/StockManager?label=License&logo=github)](https://github.com/ricardotx/StockManager/blob/master/LICENSE)
-[![CI](https://github.com/ricardotx/StockManager/workflows/CI/badge.svg?branch=master)](https://github.com/ricardotx/StockManager/actions)
 
 **Language:** `C# winForms`
 
