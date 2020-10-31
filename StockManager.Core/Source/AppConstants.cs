@@ -11,7 +11,7 @@ namespace StockManager.Core.Source
     public static class AppConstants
     {
         // Values used in the AssemblyInfo.cs 
-        public const string AssemblyVersion = "1.0.0.0";
+        public const string AssemblyVersion = "1.0.1.0";
         public const string AppName = "StockManager";
 
         public static readonly string AppTitle = "Stock Manager";
