@@ -40,6 +40,9 @@
             this.lbDocumentsFolder = new System.Windows.Forms.Label();
             this.cbDocumentsFolder = new System.Windows.Forms.ComboBox();
             this.lbDocumentsFolderPath = new System.Windows.Forms.Label();
+            this.linklbStockManager = new System.Windows.Forms.LinkLabel();
+            this.linklbPoweredBy = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDefaultGlobalMinStock)).BeginInit();
             this.SuspendLayout();
@@ -200,11 +203,63 @@
             this.lbDocumentsFolderPath.TabIndex = 21;
             this.lbDocumentsFolderPath.Text = "lbDocumentsFolderPath";
             // 
+            // linklbStockManager
+            // 
+            this.linklbStockManager.ActiveLinkColor = System.Drawing.Color.Transparent;
+            this.linklbStockManager.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linklbStockManager.AutoSize = true;
+            this.linklbStockManager.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linklbStockManager.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
+            this.linklbStockManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.linklbStockManager.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linklbStockManager.LinkColor = System.Drawing.Color.Gray;
+            this.linklbStockManager.Location = new System.Drawing.Point(13, 390);
+            this.linklbStockManager.Name = "linklbStockManager";
+            this.linklbStockManager.Size = new System.Drawing.Size(152, 17);
+            this.linklbStockManager.TabIndex = 22;
+            this.linklbStockManager.TabStop = true;
+            this.linklbStockManager.Text = "linklbStockManager";
+            this.linklbStockManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbStockManager_LinkClicked);
+            // 
+            // linklbPoweredBy
+            // 
+            this.linklbPoweredBy.ActiveLinkColor = System.Drawing.Color.Transparent;
+            this.linklbPoweredBy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linklbPoweredBy.AutoSize = true;
+            this.linklbPoweredBy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.linklbPoweredBy.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
+            this.linklbPoweredBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.linklbPoweredBy.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linklbPoweredBy.LinkColor = System.Drawing.Color.Gray;
+            this.linklbPoweredBy.Location = new System.Drawing.Point(209, 390);
+            this.linklbPoweredBy.Name = "linklbPoweredBy";
+            this.linklbPoweredBy.Size = new System.Drawing.Size(128, 17);
+            this.linklbPoweredBy.TabIndex = 24;
+            this.linklbPoweredBy.TabStop = true;
+            this.linklbPoweredBy.Text = "linklbPoweredBy";
+            this.linklbPoweredBy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbPoweredBy_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label1.Location = new System.Drawing.Point(191, 391);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(16, 16);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "|";
+            // 
             // SettingsUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.linklbPoweredBy);
+            this.Controls.Add(this.linklbStockManager);
             this.Controls.Add(this.lbDocumentsFolderPath);
             this.Controls.Add(this.lbDocumentsFolder);
             this.Controls.Add(this.cbDocumentsFolder);
@@ -241,5 +296,8 @@
         private System.Windows.Forms.Label lbDocumentsFolder;
         private System.Windows.Forms.ComboBox cbDocumentsFolder;
         private System.Windows.Forms.Label lbDocumentsFolderPath;
+        private System.Windows.Forms.LinkLabel linklbStockManager;
+        private System.Windows.Forms.LinkLabel linklbPoweredBy;
+        private System.Windows.Forms.Label label1;
     }
 }

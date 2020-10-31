@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,9 @@ namespace StockManager.Source.UserControls
 
         private void SetTranslatedPhrases()
         {
+            linklbStockManager.Text = $"{AppConstants.AppName} {AppConstants.AppVersion}";
+            linklbPoweredBy.Text = $"{Phrases.GlobalPoweredBy} {AppConstants.DevName}";
+
             btnSave.Text = Phrases.GlobalSave;
             btnCancel.Text = Phrases.GlobalCancel;
 
@@ -153,6 +157,16 @@ namespace StockManager.Source.UserControls
         {
             DocumentsFolder selectedFolder = ( DocumentsFolder )cbDocumentsFolder.SelectedItem;
             lbDocumentsFolderPath.Text = $"*{AppConstants.DocumentsFolders.FirstOrDefault(x => x.Code == selectedFolder.Code).Path}";
+        }
+
+        private void linklbStockManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(AppConstants.AppReleaseUrl);
+        }
+
+        private void linklbPoweredBy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(AppConstants.TwitterUrl);
         }
     }
 }
