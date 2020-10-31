@@ -229,7 +229,7 @@ namespace StockManager.Services.Source.Services
             // Check if the username already exist This validation only occurs when all form fields
             // have no errors And only if is a create or an update and the username has changed
             User usernameCheck = ((dbUser == null) || (dbUser.Username != user.Username))
-              ? await _repository.Users.FindOneWithRoleAsync(u => u.Username.ToLower().Contains(user.Username.ToLower()))
+              ? await _repository.Users.FindOneWithRoleAsync(u => u.Username.ToLower() == user.Username.ToLower())
               : null;
 
             if (usernameCheck != null)
