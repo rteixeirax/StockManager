@@ -66,6 +66,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProductLocations.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvProductLocations.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvProductLocations.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductLocations.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
