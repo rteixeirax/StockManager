@@ -150,5 +150,25 @@ namespace StockManager.Source.Forms
                 }
             }
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Remove the annoying beep
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnSave.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                // Remove the annoying beep
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnCancel.PerformClick();
+            }
+        }
     }
 }

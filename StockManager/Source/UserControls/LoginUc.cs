@@ -107,13 +107,15 @@ namespace StockManager.Source.UserControls
         /// <summary>
         /// Call Login button click when pressed enter in the password textbox
         /// </summary>
-        private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyChar == ( char )Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
-                btnLogin_Click(sender, e);
                 // Remove the annoying beep
                 e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnLogin.PerformClick();
             }
         }
     }

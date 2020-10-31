@@ -78,9 +78,10 @@
             0});
             this.numRefillQty.Name = "numRefillQty";
             this.numRefillQty.Size = new System.Drawing.Size(252, 24);
-            this.numRefillQty.TabIndex = 19;
+            this.numRefillQty.TabIndex = 1;
             this.numRefillQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numRefillQty.ThousandsSeparator = true;
+            this.numRefillQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // numCurrentStock
             // 
@@ -95,9 +96,10 @@
             0});
             this.numCurrentStock.Name = "numCurrentStock";
             this.numCurrentStock.Size = new System.Drawing.Size(252, 24);
-            this.numCurrentStock.TabIndex = 18;
+            this.numCurrentStock.TabIndex = 0;
             this.numCurrentStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numCurrentStock.ThousandsSeparator = true;
+            this.numCurrentStock.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // btnCancel
             // 
@@ -108,7 +110,7 @@
             this.btnCancel.Location = new System.Drawing.Point(103, 229);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 32);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -170,7 +172,7 @@
             this.btnSave.Location = new System.Drawing.Point(235, 229);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 32);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

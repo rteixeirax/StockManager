@@ -78,7 +78,7 @@
             this.checkMainLocationMoves.Location = new System.Drawing.Point(103, 61);
             this.checkMainLocationMoves.Name = "checkMainLocationMoves";
             this.checkMainLocationMoves.Size = new System.Drawing.Size(203, 20);
-            this.checkMainLocationMoves.TabIndex = 23;
+            this.checkMainLocationMoves.TabIndex = 7;
             this.checkMainLocationMoves.Text = "checkMainLocationMoves";
             this.checkMainLocationMoves.UseVisualStyleBackColor = true;
             this.checkMainLocationMoves.Click += new System.EventHandler(this.checkMainLocationMoves_Click);
@@ -105,7 +105,8 @@
             this.cbProduct.Location = new System.Drawing.Point(101, 223);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(252, 24);
-            this.cbProduct.TabIndex = 21;
+            this.cbProduct.TabIndex = 3;
+            this.cbProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // lbProduct
             // 
@@ -131,9 +132,10 @@
             0});
             this.numQty.Name = "numQty";
             this.numQty.Size = new System.Drawing.Size(252, 24);
-            this.numQty.TabIndex = 19;
+            this.numQty.TabIndex = 4;
             this.numQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numQty.ThousandsSeparator = true;
+            this.numQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // cbTo
             // 
@@ -145,7 +147,8 @@
             this.cbTo.Location = new System.Drawing.Point(103, 167);
             this.cbTo.Name = "cbTo";
             this.cbTo.Size = new System.Drawing.Size(252, 24);
-            this.cbTo.TabIndex = 18;
+            this.cbTo.TabIndex = 2;
+            this.cbTo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // btnCancel
             // 
@@ -156,7 +159,7 @@
             this.btnCancel.Location = new System.Drawing.Point(103, 350);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(120, 32);
-            this.btnCancel.TabIndex = 17;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "btnCancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -193,7 +196,7 @@
             this.btnSave.Location = new System.Drawing.Point(235, 350);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 32);
-            this.btnSave.TabIndex = 4;
+            this.btnSave.TabIndex = 5;
             this.btnSave.Text = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -232,8 +235,9 @@
             this.cbFrom.Location = new System.Drawing.Point(103, 113);
             this.cbFrom.Name = "cbFrom";
             this.cbFrom.Size = new System.Drawing.Size(252, 24);
-            this.cbFrom.TabIndex = 3;
+            this.cbFrom.TabIndex = 1;
             this.cbFrom.SelectionChangeCommitted += new System.EventHandler(this.cbFrom_SelectionChangeCommitted);
+            this.cbFrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // lbFrom
             // 

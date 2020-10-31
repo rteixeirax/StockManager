@@ -145,7 +145,7 @@
             this.tbPassword.Size = new System.Drawing.Size(252, 20);
             this.tbPassword.TabIndex = 1;
             this.tbPassword.UseSystemPasswordChar = true;
-            this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // lbPassword
             // 
@@ -168,6 +168,7 @@
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(252, 20);
             this.tbUsername.TabIndex = 0;
+            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             // 
             // lbFirstName
             // 

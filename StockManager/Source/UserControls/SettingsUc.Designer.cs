@@ -1,4 +1,4 @@
-﻿namespace StockManager.Source.UserControls
+namespace StockManager.Source.UserControls
 {
     partial class SettingsUc
     {
@@ -69,7 +69,7 @@
             this.cbLanguage.Location = new System.Drawing.Point(15, 57);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(252, 24);
-            this.cbLanguage.TabIndex = 14;
+            this.cbLanguage.TabIndex = 1;
             this.cbLanguage.SelectionChangeCommitted += new System.EventHandler(this.cbLanguage_SelectionChangeCommitted);
             // 
             // pnlActions
@@ -138,7 +138,7 @@
             0});
             this.numDefaultGlobalMinStock.Name = "numDefaultGlobalMinStock";
             this.numDefaultGlobalMinStock.Size = new System.Drawing.Size(252, 24);
-            this.numDefaultGlobalMinStock.TabIndex = 16;
+            this.numDefaultGlobalMinStock.TabIndex = 3;
             this.numDefaultGlobalMinStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numDefaultGlobalMinStock.ThousandsSeparator = true;
             // 
@@ -188,7 +188,7 @@
             this.cbDocumentsFolder.Location = new System.Drawing.Point(15, 139);
             this.cbDocumentsFolder.Name = "cbDocumentsFolder";
             this.cbDocumentsFolder.Size = new System.Drawing.Size(252, 24);
-            this.cbDocumentsFolder.TabIndex = 15;
+            this.cbDocumentsFolder.TabIndex = 2;
             this.cbDocumentsFolder.SelectionChangeCommitted += new System.EventHandler(this.cbDocumentsFolder_SelectionChangeCommitted);
             // 
             // lbDocumentsFolderPath
