@@ -52,12 +52,8 @@ namespace StockManager.Source.Forms
         /// </summary>
         public void SetUi()
         {
-            Text = AppConstants.Title;
-            lbAppVersion.Text = AppConstants.Version;
-            linklbTwitter.Text = AppConstants.DevName;
-
-            // Set the content strings for the correct app language
-            lbPoweredBy.Text = Phrases.GlobalPoweredBy;
+            Text = AppConstants.AppTitle;
+            lbAppVersion.Text = AppConstants.AppVersion;
 
             changePasswordToolStripMenuItem.Text = Phrases.UserChangePassword;
             logoutToolStripMenuItem.Text = Phrases.LoginLogout;
@@ -252,14 +248,6 @@ namespace StockManager.Source.Forms
         {
             ChangePasswordForm changePasswordForm = new ChangePasswordForm();
             changePasswordForm.ShowChangePasswordForm();
-        }
-
-        /// <summary>
-        /// LinkLabel click
-        /// </summary>
-        private void linklbTwitter_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(AppConstants.TwitterUrl);
         }
 
         /// <summary>

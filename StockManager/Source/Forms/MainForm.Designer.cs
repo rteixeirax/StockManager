@@ -31,8 +31,6 @@ namespace StockManager.Source.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlSidebar = new System.Windows.Forms.Panel();
             this.btnRefillStock = new System.Windows.Forms.Button();
-            this.linklbTwitter = new System.Windows.Forms.LinkLabel();
-            this.lbPoweredBy = new System.Windows.Forms.Label();
             this.pnlSideBarAvatar = new System.Windows.Forms.Panel();
             this.lbAppVersion = new System.Windows.Forms.Label();
             this.lbAppName = new System.Windows.Forms.Label();
@@ -68,8 +66,6 @@ namespace StockManager.Source.Forms
             // 
             this.pnlSidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.pnlSidebar.Controls.Add(this.btnRefillStock);
-            this.pnlSidebar.Controls.Add(this.linklbTwitter);
-            this.pnlSidebar.Controls.Add(this.lbPoweredBy);
             this.pnlSidebar.Controls.Add(this.pnlSideBarAvatar);
             this.pnlSidebar.Controls.Add(this.pnlInventorySubMenu);
             this.pnlSidebar.Controls.Add(this.btnExit);
@@ -104,37 +100,6 @@ namespace StockManager.Source.Forms
             this.btnRefillStock.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRefillStock.UseVisualStyleBackColor = false;
             this.btnRefillStock.Click += new System.EventHandler(this.btnRefillStock_Click);
-            // 
-            // linklbTwitter
-            // 
-            this.linklbTwitter.ActiveLinkColor = System.Drawing.Color.Transparent;
-            this.linklbTwitter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.linklbTwitter.AutoSize = true;
-            this.linklbTwitter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linklbTwitter.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
-            this.linklbTwitter.ForeColor = System.Drawing.Color.White;
-            this.linklbTwitter.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.linklbTwitter.LinkColor = System.Drawing.Color.Transparent;
-            this.linklbTwitter.Location = new System.Drawing.Point(12, 634);
-            this.linklbTwitter.Name = "linklbTwitter";
-            this.linklbTwitter.Size = new System.Drawing.Size(136, 17);
-            this.linklbTwitter.TabIndex = 8;
-            this.linklbTwitter.TabStop = true;
-            this.linklbTwitter.Text = "Ricardo Teixeira";
-            this.linklbTwitter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbTwitter_LinkClicked);
-            // 
-            // lbPoweredBy
-            // 
-            this.lbPoweredBy.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lbPoweredBy.AutoSize = true;
-            this.lbPoweredBy.BackColor = System.Drawing.Color.Transparent;
-            this.lbPoweredBy.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPoweredBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
-            this.lbPoweredBy.Location = new System.Drawing.Point(12, 616);
-            this.lbPoweredBy.Name = "lbPoweredBy";
-            this.lbPoweredBy.Size = new System.Drawing.Size(88, 17);
-            this.lbPoweredBy.TabIndex = 11;
-            this.lbPoweredBy.Text = "Powered by";
             // 
             // pnlSideBarAvatar
             // 
@@ -479,7 +444,6 @@ namespace StockManager.Source.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock Manager";
             this.pnlSidebar.ResumeLayout(false);
-            this.pnlSidebar.PerformLayout();
             this.pnlSideBarAvatar.ResumeLayout(false);
             this.pnlSideBarAvatar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -516,9 +480,7 @@ namespace StockManager.Source.Forms
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Panel pnlDivider;
         private System.Windows.Forms.Label lbViewTitle;
-    private System.Windows.Forms.Label lbPoweredBy;
     private System.Windows.Forms.Label lbAppVersion;
-    private System.Windows.Forms.LinkLabel linklbTwitter;
         private System.Windows.Forms.Button btnInventoryMovements;
         private System.Windows.Forms.Button btnRefillStock;
     }
