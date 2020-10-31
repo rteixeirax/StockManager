@@ -11,11 +11,12 @@ namespace StockManager.Core.Source
     public static class AppConstants
     {
         // Values used in the AssemblyInfo.cs 
-        public const string AppVersion = "1.0.0.0";
+        public const string AssemblyVersion = "1.0.0.0";
         public const string AppName = "StockManager";
 
-        public static readonly string Title = "Stock Manager";
-        public static readonly string Version = $"v{AppVersion}";
+        public static readonly string AppTitle = "Stock Manager";
+        public static readonly string AppVersion = $"v{AssemblyVersion}";
+        public static readonly string AppReleaseUrl = $"https://github.com/ricardotx/StockManager/releases/tag/{AppVersion}";
         public static readonly string DevName = "Ricardo Teixeira";
         public static readonly string TwitterUrl = "https://twitter.com/ricardotx86";
 
@@ -34,7 +35,7 @@ namespace StockManager.Core.Source
         // Concat the app title with the form title
         public static string GetViewTitle(string viewName)
         {
-            return $"{Title} | {viewName}";
+            return $"{AppTitle} | {viewName}";
         }
 
         // Available app export documents folders
