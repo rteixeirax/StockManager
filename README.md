@@ -2,7 +2,9 @@
 
 [![Licence](https://img.shields.io/github/license/ricardotx/StockManager?label=License&logo=github)](https://github.com/ricardotx/StockManager/blob/master/LICENSE)
 
-**Language:** `C# winForms`
+[![Framework](https://img.shields.io/badge/Framework-Windows%20Forms-informational)](https://docs.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8)
+
+[![Runtime](https://img.shields.io/badge/Runtime-.NETFramework%204.7.2-informational)](https://github.com/ricardotx/StockManager/blob/master/StockManager/App.config)
 
 ### After download or clone the project:
 1) Run `rebuild solution` to install all dependencies.
