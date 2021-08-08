@@ -112,11 +112,6 @@ namespace StockManager.Src.Views.UserControls
             _flagIsRestartRequired = (selectedLanguage != _appSettings.Language);
         }
 
-        private void linklbPoweredBy_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(AppConstants.TwitterUrl);
-        }
-
         private void linklbStockManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(AppConstants.AppReleaseUrl);
@@ -153,7 +148,6 @@ namespace StockManager.Src.Views.UserControls
         private void SetTranslatedPhrases()
         {
             linklbStockManager.Text = $"{AppConstants.AppName} {AppConstants.AppVersion}";
-            linklbPoweredBy.Text = $"{Phrases.GlobalPoweredBy} {AppConstants.DevName}";
 
             btnSave.Text = Phrases.GlobalSave;
             btnCancel.Text = Phrases.GlobalCancel;

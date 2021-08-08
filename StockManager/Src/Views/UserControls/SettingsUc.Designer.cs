@@ -41,17 +41,15 @@ namespace StockManager.Src.Views.UserControls
             this.cbDocumentsFolder = new System.Windows.Forms.ComboBox();
             this.lbDocumentsFolderPath = new System.Windows.Forms.Label();
             this.linklbStockManager = new System.Windows.Forms.LinkLabel();
-            this.linklbPoweredBy = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlActions.SuspendLayout();
-            (( System.ComponentModel.ISupportInitialize )(this.numDefaultGlobalMinStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDefaultGlobalMinStock)).BeginInit();
             this.SuspendLayout();
             // 
             // lbLanguage
             // 
             this.lbLanguage.AutoSize = true;
-            this.lbLanguage.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbLanguage.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
+            this.lbLanguage.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
             this.lbLanguage.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbLanguage.Location = new System.Drawing.Point(12, 38);
             this.lbLanguage.Name = "lbLanguage";
@@ -74,7 +72,7 @@ namespace StockManager.Src.Views.UserControls
             // 
             // pnlActions
             // 
-            this.pnlActions.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlActions.Controls.Add(this.btnCancel);
             this.pnlActions.Controls.Add(this.btnSave);
             this.pnlActions.Location = new System.Drawing.Point(658, 3);
@@ -85,9 +83,9 @@ namespace StockManager.Src.Views.UserControls
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(217)))), (( int )((( byte )(83)))), (( int )((( byte )(79)))));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(83)))), ((int)(((byte)(79)))));
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCancel.Location = new System.Drawing.Point(102, 3);
@@ -101,9 +99,9 @@ namespace StockManager.Src.Views.UserControls
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb((( int )((( byte )(92)))), (( int )((( byte )(184)))), (( int )((( byte )(92)))));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(184)))), ((int)(((byte)(92)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
+            this.btnSave.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(5, 3);
@@ -117,8 +115,8 @@ namespace StockManager.Src.Views.UserControls
             // lbLanguageWarning
             // 
             this.lbLanguageWarning.AutoSize = true;
-            this.lbLanguageWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbLanguageWarning.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
+            this.lbLanguageWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLanguageWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.lbLanguageWarning.Location = new System.Drawing.Point(13, 84);
             this.lbLanguageWarning.MaximumSize = new System.Drawing.Size(350, 0);
             this.lbLanguageWarning.Name = "lbLanguageWarning";
@@ -129,7 +127,7 @@ namespace StockManager.Src.Views.UserControls
             // numDefaultGlobalMinStock
             // 
             this.numDefaultGlobalMinStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numDefaultGlobalMinStock.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
+            this.numDefaultGlobalMinStock.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numDefaultGlobalMinStock.Location = new System.Drawing.Point(14, 222);
             this.numDefaultGlobalMinStock.Maximum = new decimal(new int[] {
             -1530494977,
@@ -145,8 +143,8 @@ namespace StockManager.Src.Views.UserControls
             // lbDefaultGlobalMinStock
             // 
             this.lbDefaultGlobalMinStock.AutoSize = true;
-            this.lbDefaultGlobalMinStock.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbDefaultGlobalMinStock.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
+            this.lbDefaultGlobalMinStock.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDefaultGlobalMinStock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
             this.lbDefaultGlobalMinStock.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbDefaultGlobalMinStock.Location = new System.Drawing.Point(12, 202);
             this.lbDefaultGlobalMinStock.Name = "lbDefaultGlobalMinStock";
@@ -157,8 +155,8 @@ namespace StockManager.Src.Views.UserControls
             // lbDefaultGlobalMinStockWarning
             // 
             this.lbDefaultGlobalMinStockWarning.AutoSize = true;
-            this.lbDefaultGlobalMinStockWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbDefaultGlobalMinStockWarning.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
+            this.lbDefaultGlobalMinStockWarning.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDefaultGlobalMinStockWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.lbDefaultGlobalMinStockWarning.Location = new System.Drawing.Point(12, 249);
             this.lbDefaultGlobalMinStockWarning.MaximumSize = new System.Drawing.Size(350, 0);
             this.lbDefaultGlobalMinStockWarning.Name = "lbDefaultGlobalMinStockWarning";
@@ -169,8 +167,8 @@ namespace StockManager.Src.Views.UserControls
             // lbDocumentsFolder
             // 
             this.lbDocumentsFolder.AutoSize = true;
-            this.lbDocumentsFolder.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbDocumentsFolder.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
+            this.lbDocumentsFolder.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDocumentsFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
             this.lbDocumentsFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbDocumentsFolder.Location = new System.Drawing.Point(12, 120);
             this.lbDocumentsFolder.Name = "lbDocumentsFolder";
@@ -194,8 +192,8 @@ namespace StockManager.Src.Views.UserControls
             // lbDocumentsFolderPath
             // 
             this.lbDocumentsFolderPath.AutoSize = true;
-            this.lbDocumentsFolderPath.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.lbDocumentsFolderPath.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(26)))), (( int )((( byte )(29)))), (( int )((( byte )(33)))));
+            this.lbDocumentsFolderPath.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDocumentsFolderPath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(33)))));
             this.lbDocumentsFolderPath.Location = new System.Drawing.Point(13, 167);
             this.lbDocumentsFolderPath.MaximumSize = new System.Drawing.Size(350, 0);
             this.lbDocumentsFolderPath.Name = "lbDocumentsFolderPath";
@@ -206,11 +204,11 @@ namespace StockManager.Src.Views.UserControls
             // linklbStockManager
             // 
             this.linklbStockManager.ActiveLinkColor = System.Drawing.Color.Transparent;
-            this.linklbStockManager.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linklbStockManager.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linklbStockManager.AutoSize = true;
             this.linklbStockManager.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linklbStockManager.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
-            this.linklbStockManager.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
+            this.linklbStockManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(118)))), ((int)(((byte)(185)))));
             this.linklbStockManager.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linklbStockManager.LinkColor = System.Drawing.Color.Gray;
             this.linklbStockManager.Location = new System.Drawing.Point(13, 390);
@@ -221,44 +219,11 @@ namespace StockManager.Src.Views.UserControls
             this.linklbStockManager.Text = "linklbStockManager";
             this.linklbStockManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbStockManager_LinkClicked);
             // 
-            // linklbPoweredBy
-            // 
-            this.linklbPoweredBy.ActiveLinkColor = System.Drawing.Color.Transparent;
-            this.linklbPoweredBy.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linklbPoweredBy.AutoSize = true;
-            this.linklbPoweredBy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linklbPoweredBy.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Italic);
-            this.linklbPoweredBy.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
-            this.linklbPoweredBy.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linklbPoweredBy.LinkColor = System.Drawing.Color.Gray;
-            this.linklbPoweredBy.Location = new System.Drawing.Point(209, 390);
-            this.linklbPoweredBy.Name = "linklbPoweredBy";
-            this.linklbPoweredBy.Size = new System.Drawing.Size(128, 17);
-            this.linklbPoweredBy.TabIndex = 24;
-            this.linklbPoweredBy.TabStop = true;
-            this.linklbPoweredBy.Text = "linklbPoweredBy";
-            this.linklbPoweredBy.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklbPoweredBy_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = (( System.Windows.Forms.AnchorStyles )((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb((( int )((( byte )(5)))), (( int )((( byte )(118)))), (( int )((( byte )(185)))));
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label1.Location = new System.Drawing.Point(191, 391);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 16);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "|";
-            // 
             // SettingsUc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.linklbPoweredBy);
             this.Controls.Add(this.linklbStockManager);
             this.Controls.Add(this.lbDocumentsFolderPath);
             this.Controls.Add(this.lbDocumentsFolder);
@@ -270,13 +235,13 @@ namespace StockManager.Src.Views.UserControls
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.lbLanguage);
             this.Controls.Add(this.cbLanguage);
-            this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, (( byte )(0)));
+            this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SettingsUc";
             this.Size = new System.Drawing.Size(860, 420);
             this.pnlActions.ResumeLayout(false);
-            (( System.ComponentModel.ISupportInitialize )(this.numDefaultGlobalMinStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDefaultGlobalMinStock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +262,5 @@ namespace StockManager.Src.Views.UserControls
         private System.Windows.Forms.ComboBox cbDocumentsFolder;
         private System.Windows.Forms.Label lbDocumentsFolderPath;
         private System.Windows.Forms.LinkLabel linklbStockManager;
-        private System.Windows.Forms.LinkLabel linklbPoweredBy;
-        private System.Windows.Forms.Label label1;
     }
 }
