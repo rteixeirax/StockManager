@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="UserDialogDeleteBody" xml:space="preserve">
+    <value>Remover {0} utilizador(es)?</value>
+  </data>
+  <data name="GlobalUsername" xml:space="preserve">
+    <value>Utilizador</value>
+  </data>
+  <data name="UserRole" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="UserLastLogin" xml:space="preserve">
+    <value>Último acesso</value>
+  </data>
+  <data name="GlobalCreatedAt" xml:space="preserve">
+    <value>Criado em</value>
+  </data>
+  <data name="GlobalCreate" xml:space="preserve">
+    <value>Criar novo</value>
+  </data>
+  <data name="GlobalEdit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="GlobalDelete" xml:space="preserve">
+    <value>Remover</value>
+  </data>
+  <data name="GlobalDialogErrorTitle" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="GlobalDialogWarningTitle" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="GlobalUsers" xml:space="preserve">
+    <value>Utilizadores</value>
+  </data>
+  <data name="UserEditUser" xml:space="preserve">
+    <value>Editar utilizador</value>
+  </data>
+  <data name="UserCreateNewUser" xml:space="preserve">
+    <value>Criar novo utilizador</value>
+  </data>
+  <data name="GlobalPassword" xml:space="preserve">
+    <value>Palavra-passe</value>
+  </data>
+  <data name="UserInfo" xml:space="preserve">
+    <value>Informação do utilizador</value>
+  </data>
+  <data name="GlobalCancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="GlobalSave" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="UserErrorUsername" xml:space="preserve">
+    <value>Este utilizador já existe.</value>
+  </data>
+  <data name="GlobalRequiredField" xml:space="preserve">
+    <value>Este campo é obrigatório.</value>
+  </data>
+  <data name="GlobalErrorOperationDB" xml:space="preserve">
+    <value>Oops .. algo correu mal. Tente de novo!</value>
+  </data>
+  <data name="UserErrorDeleteYourself" xml:space="preserve">
+    <value>Não podes eliminar-te a ti próprio.</value>
+  </data>
+  <data name="UserErrorLogin" xml:space="preserve">
+    <value>Combinação utilizador e palavra-passe inválida.</value>
+  </data>
+  <data name="UserErrorInvalidPassword" xml:space="preserve">
+    <value>Palavra-passe inválida.</value>
+  </data>
+  <data name="UserChangePassword" xml:space="preserve">
+    <value>Alterar palavra-passe</value>
+  </data>
+  <data name="UserCurrentPassword" xml:space="preserve">
+    <value>Palavra-passe atual</value>
+  </data>
+  <data name="UserNewPassword" xml:space="preserve">
+    <value>Nova palavra-passe</value>
+  </data>
+  <data name="LoginFormTitle" xml:space="preserve">
+    <value>Iniciar sessão</value>
+  </data>
+  <data name="GlobalClean" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="LoginLogin" xml:space="preserve">
+    <value>Entrar</value>
+  </data>
+  <data name="LoginWelcome" xml:space="preserve">
+    <value>Bem-vindo</value>
+  </data>
+  <data name="GlobalExit" xml:space="preserve">
+    <value>Sair</value>
+  </data>
+  <data name="GlobalPoweredBy" xml:space="preserve">
+    <value>Distribuído por</value>
+  </data>
+  <data name="GlobalInventoryTitle" xml:space="preserve">
+    <value>Inventário</value>
+  </data>
+  <data name="GlobalProducts" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="GlobalReference" xml:space="preserve">
+    <value>Referência</value>
+  </data>
+  <data name="GlobalName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="GlobalStock" xml:space="preserve">
+    <value>Stock global</value>
+  </data>
+  <data name="ProductEdit" xml:space="preserve">
+    <value>Editar produto</value>
+  </data>
+  <data name="ProductCreateNewProduct" xml:space="preserve">
+    <value>Criar novo produto</value>
+  </data>
+  <data name="ProductInfo" xml:space="preserve">
+    <value>Informação do produto</value>
+  </data>
+  <data name="ProductDialogDeleteBody" xml:space="preserve">
+    <value>Remover {0} produto(s)?</value>
+  </data>
+  <data name="ProductErrorReference" xml:space="preserve">
+    <value>Já existe um produto com esta referência.</value>
+  </data>
+  <data name="GlobalLocations" xml:space="preserve">
+    <value>Localizações</value>
+  </data>
+  <data name="LocationErrorMainLocation" xml:space="preserve">
+    <value>Não pode remover a localização principal.</value>
+  </data>
+  <data name="LocationErrorName" xml:space="preserve">
+    <value>Já existe uma localização com este nome.</value>
+  </data>
+  <data name="LocationDialogDeleteBody" xml:space="preserve">
+    <value>Remover {0} localizações? Se houver produtos, todo o seu stock será movido para a localização principal.</value>
+  </data>
+  <data name="LocationInfo" xml:space="preserve">
+    <value>Informação da localização</value>
+  </data>
+  <data name="LocationEdit" xml:space="preserve">
+    <value>Editar localização</value>
+  </data>
+  <data name="LocationCreate" xml:space="preserve">
+    <value>Criar nova localização</value>
+  </data>
+  <data name="LoginLogout" xml:space="preserve">
+    <value>Terminar sessão</value>
+  </data>
+  <data name="GlobalAdd" xml:space="preserve">
+    <value>Adicionar</value>
+  </data>
+  <data name="StockMovementQty" xml:space="preserve">
+    <value>Qtd</value>
+  </data>
+  <data name="StockMovementMinStock" xml:space="preserve">
+    <value>Stock mínimo</value>
+  </data>
+  <data name="ProductLocationAddToLocation" xml:space="preserve">
+    <value>Adicionar à localização</value>
+  </data>
+  <data name="ProductLocationTableHeader" xml:space="preserve">
+    <value>Localização</value>
+  </data>
+  <data name="StockMovementsStock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="StockMovementsLabel" xml:space="preserve">
+    <value>Movimentos de stock</value>
+  </data>
+  <data name="GlobalDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="StockMovementFrom" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="StockMovementTo" xml:space="preserve">
+    <value>Para</value>
+  </data>
+  <data name="StockMovementStockAcc" xml:space="preserve">
+    <value>Stock Acc.</value>
+  </data>
+  <data name="GlobalUser" xml:space="preserve">
+    <value>Utilizador</value>
+  </data>
+  <data name="GlobalBack" xml:space="preserve">
+    <value>Voltar</value>
+  </data>
+  <data name="GlobalDialogDeleteTitle" xml:space="preserve">
+    <value>Tem a certeza?</value>
+  </data>
+  <data name="GlobalLocation" xml:space="preserve">
+    <value>Localização</value>
+  </data>
+  <data name="ProductLocationErrorAlreadyAssociated" xml:space="preserve">
+    <value>Já associado</value>
+  </data>
+  <data name="GlobalDialogDeleteProductLocationBody" xml:space="preserve">
+    <value>O stock do produto, se houver, será movido para a localização principal.</value>
+  </data>
+  <data name="GlobalMain" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="StockMovementLocationDeleted" xml:space="preserve">
+    <value>Eliminado</value>
+  </data>
+  <data name="ProductLocationDeleteErrorMainLocation" xml:space="preserve">
+    <value>Não é possível remover produtos da localização principal</value>
+  </data>
+  <data name="ProductLocationMinStockEdit" xml:space="preserve">
+    <value>Alterar stock mínimo</value>
+  </data>
+  <data name="ProductLocationMinStockInfo" xml:space="preserve">
+    <value>Produto "{0}".</value>
+  </data>
+  <data name="GlobalProduct" xml:space="preserve">
+    <value>Produto</value>
+  </data>
+  <data name="GlobalMovement" xml:space="preserve">
+    <value>Movimento</value>
+  </data>
+  <data name="StockMovementManualMovement" xml:space="preserve">
+    <value>Movimento manual de stock</value>
+  </data>
+  <data name="GlobalSubmit" xml:space="preserve">
+    <value>Submeter</value>
+  </data>
+  <data name="StockMovementCreate" xml:space="preserve">
+    <value>Criar movimento de stock</value>
+  </data>
+  <data name="GlobalCreateMov" xml:space="preserve">
+    <value>Criar mov.</value>
+  </data>
+  <data name="StockMovementErrorQty" xml:space="preserve">
+    <value>A quantidade que deseja mover é superior à quantidade disponível.</value>
+  </data>
+  <data name="GlobalMovements" xml:space="preserve">
+    <value>Movimentos</value>
+  </data>
+  <data name="GlobalMainLocation" xml:space="preserve">
+    <value>Localização principal</value>
+  </data>
+  <data name="GlobalMovementEntry" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="GlobalMovementExit" xml:space="preserve">
+    <value>Saida</value>
+  </data>
+  <data name="StockMovementOnlyMainLocation" xml:space="preserve">
+    <value>Apenas localização principal</value>
+  </data>
+  <data name="GlobalInfo" xml:space="preserve">
+    <value>Informação geral</value>
+  </data>
+  <data name="GlobalStockAlerts" xml:space="preserve">
+    <value>Alertas de stock</value>
+  </data>
+  <data name="RefillStock" xml:space="preserve">
+    <value>Repor stock</value>
+  </data>
+  <data name="RefillStockStockAtEndOfShift" xml:space="preserve">
+    <value>Stock no final do turno</value>
+  </data>
+  <data name="RefillStockRefilledQty" xml:space="preserve">
+    <value>Qtd. reposta</value>
+  </data>
+  <data name="GlobalSettings" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="GlobalDashboard" xml:space="preserve">
+    <value>Geral</value>
+  </data>
+  <data name="GlobalLanguage" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="AppSettingRestartRequired" xml:space="preserve">
+    <value>É necessário reiniciar a app para ter efeito.</value>
+  </data>
+  <data name="AppSettingsDefaultGlobalMinStock" xml:space="preserve">
+    <value>Stock mínimo global padrão</value>
+  </data>
+  <data name="AppSettingsOnlyAppliedToNewProducts" xml:space="preserve">
+    <value>Aplicado apenas aos novos produtos quando adicionados a uma nova localização.</value>
+  </data>
+  <data name="AppSettingsDialogRestartBody" xml:space="preserve">
+    <value>Algumas alterações só têm efeito após reiniciar a app. Reiniciar agora?</value>
+  </data>
+  <data name="AppSettingsDialogRestartTitle" xml:space="preserve">
+    <value>Aplicar alterações</value>
+  </data>
+  <data name="AppSettingsDialogSuccessBody" xml:space="preserve">
+    <value>Configurações atualizadas</value>
+  </data>
+  <data name="AppSettingsDialogSuccessTitle" xml:space="preserve">
+    <value>Sucesso</value>
+  </data>
+  <data name="AppSettingsDialogCancelChangesTitle" xml:space="preserve">
+    <value>Cancelar alterações</value>
+  </data>
+  <data name="GlobalFilterBy" xml:space="preserve">
+    <value>Filtrar por</value>
+  </data>
+  <data name="StockMovementsListOf" xml:space="preserve">
+    <value>Listagem de movimentos de stock</value>
+  </data>
+  <data name="GlobalPage" xml:space="preserve">
+    <value>Página</value>
+  </data>
+  <data name="GlobalOf" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="GlobalExportToPDF" xml:space="preserve">
+    <value>Exportar para PDF</value>
+  </data>
+  <data name="GlobalDialogExportWarningBody" xml:space="preserve">
+    <value>Não há dados para exportar.</value>
+  </data>
+  <data name="GlobalDialogExportBody" xml:space="preserve">
+    <value>Exportar os dados para PDF?</value>
+  </data>
+  <data name="GlobalDialogExportTitle" xml:space="preserve">
+    <value>Exportador</value>
+  </data>
+  <data name="AppSettingsDocumentsFolder" xml:space="preserve">
+    <value>Exportar PDF para</value>
+  </data>
+  <data name="AppConstantsDesktopFolder" xml:space="preserve">
+    <value>Área de trabalho</value>
+  </data>
+  <data name="AppConstantsDocumentsFolder" xml:space="preserve">
+    <value>Os meus documentos</value>
+  </data>
+  <data name="ProductsListOf" xml:space="preserve">
+    <value>Listagem de produtos</value>
+  </data>
+  <data name="StockAlertsListOf" xml:space="preserve">
+    <value>Listagem de alertas de stock</value>
+  </data>
+</root>

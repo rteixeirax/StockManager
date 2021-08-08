@@ -218,134 +218,219 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Source\ColorTables\MenuStripProfessionalColorTable.cs" />
-    <Compile Include="Source\Forms\ChangePasswordForm.cs">
+    <Compile Include="Src\AppConstants.cs" />
+    <Compile Include="Src\Data\Configurations\AppSettingsConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\LocationConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\NotificationConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\ProductConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\ProductLocationConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\RoleConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\StockMovementConfiguration.cs" />
+    <Compile Include="Src\Data\Configurations\UserConfiguration.cs" />
+    <Compile Include="Src\Data\DatabaseContext.cs" />
+    <Compile Include="Src\Data\DatabaseContextFactory.cs" />
+    <Compile Include="Src\Data\Migrations\20200908145603_Create_All_Tables.cs" />
+    <Compile Include="Src\Data\Migrations\20200908145603_Create_All_Tables.Designer.cs">
+      <DependentUpon>20200908145603_Create_All_Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\Data\Migrations\20200923192743_Change_AppSettingsTable_Add_DocumentsFolder_Column.cs" />
+    <Compile Include="Src\Data\Migrations\20200923192743_Change_AppSettingsTable_Add_DocumentsFolder_Column.Designer.cs">
+      <DependentUpon>20200923192743_Change_AppSettingsTable_Add_DocumentsFolder_Column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\Data\Migrations\20201019202820_Fix_Default_DocumentsFolder_in_AppSettings_table.cs" />
+    <Compile Include="Src\Data\Migrations\20201019202820_Fix_Default_DocumentsFolder_in_AppSettings_table.Designer.cs">
+      <DependentUpon>20201019202820_Fix_Default_DocumentsFolder_in_AppSettings_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Src\Data\Migrations\DatabaseContextModelSnapshot.cs" />
+    <Compile Include="Src\Data\Entities\AppSettings.cs" />
+    <Compile Include="Src\Data\Entities\BaseEntity.cs" />
+    <Compile Include="Src\Data\Entities\Location.cs" />
+    <Compile Include="Src\Data\Entities\Notification.cs" />
+    <Compile Include="Src\Data\Entities\Product.cs" />
+    <Compile Include="Src\Data\Entities\ProductLocation.cs" />
+    <Compile Include="Src\Data\Entities\Role.cs" />
+    <Compile Include="Src\Data\Entities\StockMovement.cs" />
+    <Compile Include="Src\Data\Entities\User.cs" />
+    <Compile Include="Src\Data\Repositories\AppRepository.cs" />
+    <Compile Include="Src\Data\Repositories\AppSettingsRepository.cs" />
+    <Compile Include="Src\Data\Repositories\BaseRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IAppRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IAppSettingsRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IBaseRepository.cs" />
+    <Compile Include="Src\Data\Repositories\ILocationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\INotificationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IProductLocationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IProductRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IRoleRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IStockMovementRepository.cs" />
+    <Compile Include="Src\Data\Repositories\IUserRepository.cs" />
+    <Compile Include="Src\Data\Repositories\LocationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\NotificationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\ProductLocationRepository.cs" />
+    <Compile Include="Src\Data\Repositories\ProductRepository.cs" />
+    <Compile Include="Src\Data\Repositories\RoleRepository.cs" />
+    <Compile Include="Src\Data\Repositories\StockMovementRepository.cs" />
+    <Compile Include="Src\Data\Repositories\UserRepository.cs" />
+    <Compile Include="Src\Extensions\Extensions.cs" />
+    <Compile Include="Src\Services\AppServices.cs" />
+    <Compile Include="Src\Services\AppSettingsService.cs" />
+    <Compile Include="Src\Services\IAppSettingsService.cs" />
+    <Compile Include="Src\Services\ILocationService.cs" />
+    <Compile Include="Src\Services\INotificationService.cs" />
+    <Compile Include="Src\Services\IProductLocationService.cs" />
+    <Compile Include="Src\Services\IProductService.cs" />
+    <Compile Include="Src\Services\IRoleService.cs" />
+    <Compile Include="Src\Services\IStockMovementService.cs" />
+    <Compile Include="Src\Services\IUserService.cs" />
+    <Compile Include="Src\Services\LocationService.cs" />
+    <Compile Include="Src\Services\NotificationService.cs" />
+    <Compile Include="Src\Services\ProductLocationService.cs" />
+    <Compile Include="Src\Services\ProductService.cs" />
+    <Compile Include="Src\Services\RoleService.cs" />
+    <Compile Include="Src\Services\StockMovementService.cs" />
+    <Compile Include="Src\Services\UserService.cs" />
+    <Compile Include="Src\Tools\PDFGenerator.cs" />
+    <Compile Include="Src\Translations\AppTranslations.cs" />
+    <Compile Include="Src\Translations\Phrases.Designer.cs" />
+    <Compile Include="Src\Models\AppLanguage.cs" />
+    <Compile Include="Src\Models\DocumentsFolder.cs" />
+    <Compile Include="Src\Models\ErrorType.cs" />
+    <Compile Include="Src\Models\ExportData.cs" />
+    <Compile Include="Src\Models\OperationErrorException.cs" />
+    <Compile Include="Src\Models\OperationErrorsList.cs" />
+    <Compile Include="Src\Models\ProductOptions.cs" />
+    <Compile Include="Src\Models\ServiceErrorException.cs" />
+    <Compile Include="Src\Models\StockMovementOptions.cs" />
+    <Compile Include="Src\Views\ColorTables\MenuStripProfessionalColorTable.cs" />
+    <Compile Include="Src\Views\Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ChangePasswordForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\ManualStockMovementForm.cs">
+    <Compile Include="Src\Views\Forms\ManualStockMovementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ManualStockMovementForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\ManualStockMovementForm.Designer.cs">
       <DependentUpon>ManualStockMovementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\ProductLocationForm.cs">
+    <Compile Include="Src\Views\Forms\ProductLocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ProductLocationForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\ProductLocationForm.Designer.cs">
       <DependentUpon>ProductLocationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\LocationForm.cs">
+    <Compile Include="Src\Views\Forms\LocationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\LocationForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\LocationForm.Designer.cs">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\ProductForm.cs">
+    <Compile Include="Src\Views\Forms\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ProductForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\RefillStockForm.cs">
+    <Compile Include="Src\Views\Forms\RefillStockForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\RefillStockForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\RefillStockForm.Designer.cs">
       <DependentUpon>RefillStockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\UserForm.cs">
+    <Compile Include="Src\Views\Forms\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\UserForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\UserForm.Designer.cs">
       <DependentUpon>UserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\DashboardUc.cs">
+    <Compile Include="Src\Views\UserControls\DashboardUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\DashboardUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\DashboardUc.Designer.cs">
       <DependentUpon>DashboardUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\RefillStockUc.cs">
+    <Compile Include="Src\Views\UserControls\RefillStockUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\RefillStockUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\RefillStockUc.Designer.cs">
       <DependentUpon>RefillStockUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryLocationsUc.cs">
+    <Compile Include="Src\Views\UserControls\InventoryLocationsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryLocationsUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\InventoryLocationsUc.Designer.cs">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryMovementsUc.cs">
+    <Compile Include="Src\Views\UserControls\InventoryMovementsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryMovementsUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\InventoryMovementsUc.Designer.cs">
       <DependentUpon>InventoryMovementsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\LoginUc.cs">
+    <Compile Include="Src\Views\UserControls\LoginUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\LoginUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\LoginUc.Designer.cs">
       <DependentUpon>LoginUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductLocationsUc.cs">
+    <Compile Include="Src\Views\UserControls\InventoryProductLocationsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductLocationsUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\InventoryProductLocationsUc.Designer.cs">
       <DependentUpon>InventoryProductLocationsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\SettingsUc.cs">
+    <Compile Include="Src\Views\UserControls\SettingsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\SettingsUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\SettingsUc.Designer.cs">
       <DependentUpon>SettingsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\MainForm.cs">
+    <Compile Include="Src\Views\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MainForm.Designer.cs">
+    <Compile Include="Src\Views\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\UserControls\InventoryProductsUc.cs">
+    <Compile Include="Src\Views\UserControls\InventoryProductsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\InventoryProductsUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\InventoryProductsUc.Designer.cs">
       <DependentUpon>InventoryProductsUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\UserControls\UsersUc.cs">
+    <Compile Include="Src\Views\UserControls\UsersUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\UserControls\UsersUc.Designer.cs">
+    <Compile Include="Src\Views\UserControls\UsersUc.Designer.cs">
       <DependentUpon>UsersUc.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Components\Spinner.cs" />
-    <EmbeddedResource Include="Source\Forms\ChangePasswordForm.resx">
+    <Compile Include="Src\Views\Components\Spinner.cs" />
+    <EmbeddedResource Include="Src\Translations\Phrases.pt-PT.resx" />
+    <EmbeddedResource Include="Src\Translations\Phrases.resx" />
+    <EmbeddedResource Include="Src\Views\Forms\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\ManualStockMovementForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\ManualStockMovementForm.resx">
       <DependentUpon>ManualStockMovementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\ProductLocationForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\ProductLocationForm.resx">
       <DependentUpon>ProductLocationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\LocationForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\LocationForm.resx">
       <DependentUpon>LocationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MainForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\ProductForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\RefillStockForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\RefillStockForm.resx">
       <DependentUpon>RefillStockForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\UserForm.resx">
+    <EmbeddedResource Include="Src\Views\Forms\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -353,31 +438,31 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\DashboardUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\DashboardUc.resx">
       <DependentUpon>DashboardUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\RefillStockUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\RefillStockUc.resx">
       <DependentUpon>RefillStockUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryLocationsUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\InventoryLocationsUc.resx">
       <DependentUpon>InventoryLocationsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryMovementsUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\InventoryMovementsUc.resx">
       <DependentUpon>InventoryMovementsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryProductLocationsUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\InventoryProductLocationsUc.resx">
       <DependentUpon>InventoryProductLocationsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\LoginUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\LoginUc.resx">
       <DependentUpon>LoginUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\SettingsUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\SettingsUc.resx">
       <DependentUpon>SettingsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\InventoryProductsUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\InventoryProductsUc.resx">
       <DependentUpon>InventoryProductsUc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\UserControls\UsersUc.resx">
+    <EmbeddedResource Include="Src\Views\UserControls\UsersUc.resx">
       <DependentUpon>UsersUc.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.db.sqlite" Condition="Exists('.\App.db.sqlite')">
@@ -396,24 +481,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StockManager.Core\StockManager.Core.csproj">
-      <Project>{7f28e1ee-2d54-472a-a632-5ea2f88e6097}</Project>
-      <Name>StockManager.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Database\StockManager.Database.csproj">
-      <Project>{C3C9810D-B92C-4DBF-B68E-0272114CBAB9}</Project>
-      <Name>StockManager.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Services\StockManager.Services.csproj">
-      <Project>{06e6df51-756b-4d4c-bbbc-5fc389f681f3}</Project>
-      <Name>StockManager.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StockManager.Translations\StockManager.Translations.csproj">
-      <Project>{f0754dad-7255-4fef-9303-3cc9b415fde4}</Project>
-      <Name>StockManager.Translations</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -443,6 +510,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.4\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
