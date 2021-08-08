@@ -8,11 +8,11 @@ using StockManager.Src.Services;
 
 namespace StockManager.Tests
 {
-    public class TestsConfig
+    public class Config
     {
         private readonly SqliteConnection _connection;
 
-        public TestsConfig()
+        public Config()
         {
             // Set the Sqlite in memory database connection
             _connection = new SqliteConnection(AppConstants.connectionStringTestDB);
