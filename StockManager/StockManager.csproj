@@ -496,7 +496,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\StockManager.ico" />
-    <Content Include="SharpZipLib\ReadMe.txt" />
     <Content Include="StockManager.ico" />
   </ItemGroup>
   <ItemGroup>
