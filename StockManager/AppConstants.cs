@@ -6,7 +6,7 @@ using System.IO;
 using StockManager.Src.Models;
 using StockManager.Src.Translations;
 
-namespace StockManager.Src
+namespace StockManager
 {
     public static class AppConstants
     {

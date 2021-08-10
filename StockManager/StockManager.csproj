@@ -218,7 +218,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Src\AppConstants.cs" />
+    <Compile Include="AppConstants.cs" />
     <Compile Include="Src\Data\Configurations\AppSettingsConfiguration.cs" />
     <Compile Include="Src\Data\Configurations\LocationConfiguration.cs" />
     <Compile Include="Src\Data\Configurations\NotificationConfiguration.cs" />
