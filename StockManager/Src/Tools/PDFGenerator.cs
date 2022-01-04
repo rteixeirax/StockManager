@@ -166,7 +166,9 @@ namespace StockManager.Src.Tools
             documentRenderer.PdfDocument.Save(filePath);
 
             // Show the pdf
-            Process.Start(filePath);
+            Process process = new();
+            process.StartInfo = new ProcessStartInfo(filePath) { UseShellExecute = true };
+            process.Start();
         }
     }
 }

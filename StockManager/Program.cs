@@ -1,5 +1,6 @@
-using System;
+﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,7 +9,6 @@ using AutoUpdaterDotNET;
 
 using Microsoft.EntityFrameworkCore;
 
-using StockManager.Src;
 using StockManager.Src.Data;
 using StockManager.Src.Data.Entities;
 using StockManager.Src.Data.Repositories;
@@ -111,7 +111,9 @@ namespace StockManager
             }
 
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             // When in production, check if the DB folder exists. If not, create it.
             CreateDataFolderInProduction();
